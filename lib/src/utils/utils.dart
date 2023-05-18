@@ -1,5 +1,12 @@
+import 'dart:convert';
+import 'dart:io';
+
+final String UnknownPlatform = "unknown platform";
+
 /// Provides a case-insensitive check that a provided content type is a known JSON-like content type.
 final RegExp jsonRegex = RegExp(r"(?i)^(application/json|[^;/ \t]+/[^;/ \t]+[+]json)[ \t](;.)?$");
+
+String cachedUserClient = "";
 
 /// Select the Accept header's value from the given accepts list:
 /// if JSON exists in the given list, use it;
@@ -54,4 +61,30 @@ bool isJsonMime(String mime) {
   }
 
   return jsonRegex.hasMatch(mime) || mime.toLowerCase() == "application/json-patch+json";
+}
+
+String getConektaClientUserAgent() {
+  if (!cachedUserClient.isEmpty) {
+    return cachedUserClient;
+  }
+  Map<String, dynamic> cachedData = <String, dynamic>{
+    "bindings_version": "6.0.0-beta.1",
+    "lang": "Dart",
+    "publisher": "conekta",
+    "lang_version": Platform.version.split(' ')[0],
+    "uname": getUname(),
+  };
+
+  cachedUserClient = JsonEncoder().convert(cachedData);
+  return cachedUserClient;
+}
+
+String getUname() {
+  var unameResult = Process.runSync('uname', ['-a']);
+
+  if (unameResult.exitCode != 0) {
+    return UnknownPlatform;
+  }
+
+  return unameResult.stdout.toString();
 }

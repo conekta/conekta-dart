@@ -76,6 +76,7 @@ class CustomersApi {
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
         if (localVarContentType != null) r'Content-Type': localVarContentType,
+        r'X-Conekta-Client-User-Agent' : getConektaClientUserAgent(),
         ...?headers,
       },
       extra: <String, dynamic>{
@@ -201,6 +202,7 @@ class CustomersApi {
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
         if (localVarContentType != null) r'Content-Type': localVarContentType,
+        r'X-Conekta-Client-User-Agent' : getConektaClientUserAgent(),
         ...?headers,
       },
       extra: <String, dynamic>{
@@ -323,6 +325,7 @@ class CustomersApi {
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
         if (localVarContentType != null) r'Content-Type': localVarContentType,
+        r'X-Conekta-Client-User-Agent' : getConektaClientUserAgent(),
         ...?headers,
       },
       extra: <String, dynamic>{
@@ -425,6 +428,7 @@ class CustomersApi {
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
         if (localVarContentType != null) r'Content-Type': localVarContentType,
+        r'X-Conekta-Client-User-Agent' : getConektaClientUserAgent(),
         ...?headers,
       },
       extra: <String, dynamic>{
@@ -533,6 +537,7 @@ class CustomersApi {
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
         if (localVarContentType != null) r'Content-Type': localVarContentType,
+        r'X-Conekta-Client-User-Agent' : getConektaClientUserAgent(),
         ...?headers,
       },
       extra: <String, dynamic>{
@@ -646,6 +651,7 @@ class CustomersApi {
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
         if (localVarContentType != null) r'Content-Type': localVarContentType,
+        r'X-Conekta-Client-User-Agent' : getConektaClientUserAgent(),
         ...?headers,
       },
       extra: <String, dynamic>{
@@ -773,6 +779,7 @@ class CustomersApi {
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
         if (localVarContentType != null) r'Content-Type': localVarContentType,
+        r'X-Conekta-Client-User-Agent' : getConektaClientUserAgent(),
         ...?headers,
       },
       extra: <String, dynamic>{
