@@ -10,6 +10,7 @@ import 'package:conekta/src/auth/basic_auth.dart';
 import 'package:conekta/src/auth/bearer_auth.dart';
 import 'package:conekta/src/auth/oauth.dart';
 import 'package:conekta/src/api/antifraud_api.dart';
+import 'package:conekta/src/api/api_keys_api.dart';
 import 'package:conekta/src/api/balances_api.dart';
 import 'package:conekta/src/api/charges_api.dart';
 import 'package:conekta/src/api/companies_api.dart';
@@ -90,6 +91,12 @@ class Conekta {
   /// by doing that all interceptors will not be executed
   AntifraudApi getAntifraudApi() {
     return AntifraudApi(dio, serializers);
+  }
+
+  /// Get ApiKeysApi instance, base route and serializer can be overridden by a given but be careful,
+  /// by doing that all interceptors will not be executed
+  ApiKeysApi getApiKeysApi() {
+    return ApiKeysApi(dio, serializers);
   }
 
   /// Get BalancesApi instance, base route and serializer can be overridden by a given but be careful,

@@ -13,6 +13,7 @@ Method | HTTP request | Description
 [**deleteWebhook**](WebhooksApi.md#deletewebhook) | **DELETE** /webhooks/{id} | Delete Webhook
 [**getWebhook**](WebhooksApi.md#getwebhook) | **GET** /webhooks/{id} | Get Webhook
 [**getWebhooks**](WebhooksApi.md#getwebhooks) | **GET** /webhooks | Get List of Webhooks
+[**testWebhook**](WebhooksApi.md#testwebhook) | **POST** /webhooks/{id}/test | Test Webhook
 [**updateWebhook**](WebhooksApi.md#updatewebhook) | **PUT** /webhooks/{id} | Update Webhook
 
 
@@ -202,6 +203,54 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**GetWebhooksResponse**](GetWebhooksResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/vnd.conekta-v2.1.0+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **testWebhook**
+> WebhookResponse testWebhook(id, acceptLanguage)
+
+Test Webhook
+
+Send a webhook.ping event
+
+### Example
+```dart
+import 'package:conekta/api.dart';
+// TODO Configure HTTP basic authorization: bearerAuth
+//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
+//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
+
+final api = Conekta().getWebhooksApi();
+final String id = 6307a60c41de27127515a575; // String | Identifier of the resource
+final String acceptLanguage = es; // String | Use for knowing which language to use
+
+try {
+    final response = api.testWebhook(id, acceptLanguage);
+    print(response);
+} catch on DioError (e) {
+    print('Exception when calling WebhooksApi->testWebhook: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| Identifier of the resource | 
+ **acceptLanguage** | **String**| Use for knowing which language to use | [optional] [default to 'es']
+
+### Return type
+
+[**WebhookResponse**](WebhookResponse.md)
 
 ### Authorization
 

@@ -11,6 +11,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**getEvent**](EventsApi.md#getevent) | **GET** /events/{id} | Get Event
 [**getEvents**](EventsApi.md#getevents) | **GET** /events | Get list of Events
+[**resendEvent**](EventsApi.md#resendevent) | **POST** /events/{event_id}/webhook_logs/{webhook_log_id}/resend | Resend Event
 
 
 # **getEvent**
@@ -105,6 +106,56 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**GetEventsResponse**](GetEventsResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/vnd.conekta-v2.1.0+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **resendEvent**
+> EventsResendResponse resendEvent(eventId, webhookLogId, acceptLanguage)
+
+Resend Event
+
+Try to send an event
+
+### Example
+```dart
+import 'package:conekta/api.dart';
+// TODO Configure HTTP basic authorization: bearerAuth
+//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
+//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
+
+final api = Conekta().getEventsApi();
+final String eventId = 6463d6e35a4c3e001819e760; // String | event identifier
+final String webhookLogId = webhl_2tsv6NzWJHBWCkqGt; // String | webhook log identifier
+final String acceptLanguage = es; // String | Use for knowing which language to use
+
+try {
+    final response = api.resendEvent(eventId, webhookLogId, acceptLanguage);
+    print(response);
+} catch on DioError (e) {
+    print('Exception when calling EventsApi->resendEvent: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **eventId** | **String**| event identifier | 
+ **webhookLogId** | **String**| webhook log identifier | 
+ **acceptLanguage** | **String**| Use for knowing which language to use | [optional] [default to 'es']
+
+### Return type
+
+[**EventsResendResponse**](EventsResendResponse.md)
 
 ### Authorization
 

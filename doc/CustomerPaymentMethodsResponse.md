@@ -8,8 +8,8 @@ import 'package:conekta/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**object** | **String** | Object type, in this case is list | 
 **hasMore** | **bool** | Indicates if there are more pages to be requested | 
+**object** | **String** | Object type, in this case is list | 
 **nextPageUrl** | **String** | URL of the next page. | [optional] 
 **previousPageUrl** | **String** | Url of the previous page. | [optional] 
 **data** | [**BuiltList&lt;CustomerPaymentMethodsData&gt;**](CustomerPaymentMethodsData.md) |  | [optional] 

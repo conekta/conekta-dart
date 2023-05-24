@@ -8,13 +8,15 @@ part of 'webhook_key_response.dart';
 
 class _$WebhookKeyResponse extends WebhookKeyResponse {
   @override
+  final String? id;
+  @override
   final bool? active;
   @override
   final int? createdAt;
   @override
   final int? deactivatedAt;
   @override
-  final String? id;
+  final String? publicKey;
   @override
   final bool? livemode;
   @override
@@ -25,10 +27,11 @@ class _$WebhookKeyResponse extends WebhookKeyResponse {
       (new WebhookKeyResponseBuilder()..update(updates))._build();
 
   _$WebhookKeyResponse._(
-      {this.active,
+      {this.id,
+      this.active,
       this.createdAt,
       this.deactivatedAt,
-      this.id,
+      this.publicKey,
       this.livemode,
       this.object})
       : super._();
@@ -46,10 +49,11 @@ class _$WebhookKeyResponse extends WebhookKeyResponse {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is WebhookKeyResponse &&
+        id == other.id &&
         active == other.active &&
         createdAt == other.createdAt &&
         deactivatedAt == other.deactivatedAt &&
-        id == other.id &&
+        publicKey == other.publicKey &&
         livemode == other.livemode &&
         object == other.object;
   }
@@ -59,9 +63,11 @@ class _$WebhookKeyResponse extends WebhookKeyResponse {
     return $jf($jc(
         $jc(
             $jc(
-                $jc($jc($jc(0, active.hashCode), createdAt.hashCode),
+                $jc(
+                    $jc($jc($jc(0, id.hashCode), active.hashCode),
+                        createdAt.hashCode),
                     deactivatedAt.hashCode),
-                id.hashCode),
+                publicKey.hashCode),
             livemode.hashCode),
         object.hashCode));
   }
@@ -69,10 +75,11 @@ class _$WebhookKeyResponse extends WebhookKeyResponse {
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'WebhookKeyResponse')
+          ..add('id', id)
           ..add('active', active)
           ..add('createdAt', createdAt)
           ..add('deactivatedAt', deactivatedAt)
-          ..add('id', id)
+          ..add('publicKey', publicKey)
           ..add('livemode', livemode)
           ..add('object', object))
         .toString();
@@ -82,6 +89,10 @@ class _$WebhookKeyResponse extends WebhookKeyResponse {
 class WebhookKeyResponseBuilder
     implements Builder<WebhookKeyResponse, WebhookKeyResponseBuilder> {
   _$WebhookKeyResponse? _$v;
+
+  String? _id;
+  String? get id => _$this._id;
+  set id(String? id) => _$this._id = id;
 
   bool? _active;
   bool? get active => _$this._active;
@@ -96,9 +107,9 @@ class WebhookKeyResponseBuilder
   set deactivatedAt(int? deactivatedAt) =>
       _$this._deactivatedAt = deactivatedAt;
 
-  String? _id;
-  String? get id => _$this._id;
-  set id(String? id) => _$this._id = id;
+  String? _publicKey;
+  String? get publicKey => _$this._publicKey;
+  set publicKey(String? publicKey) => _$this._publicKey = publicKey;
 
   bool? _livemode;
   bool? get livemode => _$this._livemode;
@@ -115,10 +126,11 @@ class WebhookKeyResponseBuilder
   WebhookKeyResponseBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
+      _id = $v.id;
       _active = $v.active;
       _createdAt = $v.createdAt;
       _deactivatedAt = $v.deactivatedAt;
-      _id = $v.id;
+      _publicKey = $v.publicKey;
       _livemode = $v.livemode;
       _object = $v.object;
       _$v = null;
@@ -143,10 +155,11 @@ class WebhookKeyResponseBuilder
   _$WebhookKeyResponse _build() {
     final _$result = _$v ??
         new _$WebhookKeyResponse._(
+            id: id,
             active: active,
             createdAt: createdAt,
             deactivatedAt: deactivatedAt,
-            id: id,
+            publicKey: publicKey,
             livemode: livemode,
             object: object);
     replace(_$result);

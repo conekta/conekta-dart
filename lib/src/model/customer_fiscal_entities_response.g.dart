@@ -10,21 +10,21 @@ class _$CustomerFiscalEntitiesResponse extends CustomerFiscalEntitiesResponse {
   @override
   final BuiltList<CustomerFiscalEntitiesDataResponse>? data;
   @override
-  final String object;
-  @override
   final bool hasMore;
+  @override
+  final String object;
 
   factory _$CustomerFiscalEntitiesResponse(
           [void Function(CustomerFiscalEntitiesResponseBuilder)? updates]) =>
       (new CustomerFiscalEntitiesResponseBuilder()..update(updates))._build();
 
   _$CustomerFiscalEntitiesResponse._(
-      {this.data, required this.object, required this.hasMore})
+      {this.data, required this.hasMore, required this.object})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        object, r'CustomerFiscalEntitiesResponse', 'object');
-    BuiltValueNullFieldError.checkNotNull(
         hasMore, r'CustomerFiscalEntitiesResponse', 'hasMore');
+    BuiltValueNullFieldError.checkNotNull(
+        object, r'CustomerFiscalEntitiesResponse', 'object');
   }
 
   @override
@@ -41,22 +41,22 @@ class _$CustomerFiscalEntitiesResponse extends CustomerFiscalEntitiesResponse {
     if (identical(other, this)) return true;
     return other is CustomerFiscalEntitiesResponse &&
         data == other.data &&
-        object == other.object &&
-        hasMore == other.hasMore;
+        hasMore == other.hasMore &&
+        object == other.object;
   }
 
   @override
   int get hashCode {
     return $jf(
-        $jc($jc($jc(0, data.hashCode), object.hashCode), hasMore.hashCode));
+        $jc($jc($jc(0, data.hashCode), hasMore.hashCode), object.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'CustomerFiscalEntitiesResponse')
           ..add('data', data)
-          ..add('object', object)
-          ..add('hasMore', hasMore))
+          ..add('hasMore', hasMore)
+          ..add('object', object))
         .toString();
   }
 }
@@ -75,13 +75,13 @@ class CustomerFiscalEntitiesResponseBuilder
   set data(covariant ListBuilder<CustomerFiscalEntitiesDataResponse>? data) =>
       _$this._data = data;
 
-  String? _object;
-  String? get object => _$this._object;
-  set object(covariant String? object) => _$this._object = object;
-
   bool? _hasMore;
   bool? get hasMore => _$this._hasMore;
   set hasMore(covariant bool? hasMore) => _$this._hasMore = hasMore;
+
+  String? _object;
+  String? get object => _$this._object;
+  set object(covariant String? object) => _$this._object = object;
 
   CustomerFiscalEntitiesResponseBuilder() {
     CustomerFiscalEntitiesResponse._defaults(this);
@@ -91,8 +91,8 @@ class CustomerFiscalEntitiesResponseBuilder
     final $v = _$v;
     if ($v != null) {
       _data = $v.data?.toBuilder();
-      _object = $v.object;
       _hasMore = $v.hasMore;
+      _object = $v.object;
       _$v = null;
     }
     return this;
@@ -119,10 +119,10 @@ class CustomerFiscalEntitiesResponseBuilder
       _$result = _$v ??
           new _$CustomerFiscalEntitiesResponse._(
               data: _data?.build(),
-              object: BuiltValueNullFieldError.checkNotNull(
-                  object, r'CustomerFiscalEntitiesResponse', 'object'),
               hasMore: BuiltValueNullFieldError.checkNotNull(
-                  hasMore, r'CustomerFiscalEntitiesResponse', 'hasMore'));
+                  hasMore, r'CustomerFiscalEntitiesResponse', 'hasMore'),
+              object: BuiltValueNullFieldError.checkNotNull(
+                  object, r'CustomerFiscalEntitiesResponse', 'object'));
     } catch (_) {
       late String _$failedField;
       try {

@@ -16,8 +16,8 @@ part 'get_payment_method_response.g.dart';
 /// GetPaymentMethodResponse
 ///
 /// Properties:
-/// * [object] - Object type, in this case is list
 /// * [hasMore] - Indicates if there are more pages to be requested
+/// * [object] - Object type, in this case is list
 /// * [nextPageUrl] - URL of the next page.
 /// * [previousPageUrl] - Url of the previous page.
 /// * [data] 

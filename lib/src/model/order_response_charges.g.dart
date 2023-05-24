@@ -10,21 +10,21 @@ class _$OrderResponseCharges extends OrderResponseCharges {
   @override
   final BuiltList<ChargesDataResponse>? data;
   @override
-  final String object;
-  @override
   final bool hasMore;
+  @override
+  final String object;
 
   factory _$OrderResponseCharges(
           [void Function(OrderResponseChargesBuilder)? updates]) =>
       (new OrderResponseChargesBuilder()..update(updates))._build();
 
   _$OrderResponseCharges._(
-      {this.data, required this.object, required this.hasMore})
+      {this.data, required this.hasMore, required this.object})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        object, r'OrderResponseCharges', 'object');
-    BuiltValueNullFieldError.checkNotNull(
         hasMore, r'OrderResponseCharges', 'hasMore');
+    BuiltValueNullFieldError.checkNotNull(
+        object, r'OrderResponseCharges', 'object');
   }
 
   @override
@@ -41,22 +41,22 @@ class _$OrderResponseCharges extends OrderResponseCharges {
     if (identical(other, this)) return true;
     return other is OrderResponseCharges &&
         data == other.data &&
-        object == other.object &&
-        hasMore == other.hasMore;
+        hasMore == other.hasMore &&
+        object == other.object;
   }
 
   @override
   int get hashCode {
     return $jf(
-        $jc($jc($jc(0, data.hashCode), object.hashCode), hasMore.hashCode));
+        $jc($jc($jc(0, data.hashCode), hasMore.hashCode), object.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'OrderResponseCharges')
           ..add('data', data)
-          ..add('object', object)
-          ..add('hasMore', hasMore))
+          ..add('hasMore', hasMore)
+          ..add('object', object))
         .toString();
   }
 }
@@ -74,13 +74,13 @@ class OrderResponseChargesBuilder
   set data(covariant ListBuilder<ChargesDataResponse>? data) =>
       _$this._data = data;
 
-  String? _object;
-  String? get object => _$this._object;
-  set object(covariant String? object) => _$this._object = object;
-
   bool? _hasMore;
   bool? get hasMore => _$this._hasMore;
   set hasMore(covariant bool? hasMore) => _$this._hasMore = hasMore;
+
+  String? _object;
+  String? get object => _$this._object;
+  set object(covariant String? object) => _$this._object = object;
 
   OrderResponseChargesBuilder() {
     OrderResponseCharges._defaults(this);
@@ -90,8 +90,8 @@ class OrderResponseChargesBuilder
     final $v = _$v;
     if ($v != null) {
       _data = $v.data?.toBuilder();
-      _object = $v.object;
       _hasMore = $v.hasMore;
+      _object = $v.object;
       _$v = null;
     }
     return this;
@@ -118,10 +118,10 @@ class OrderResponseChargesBuilder
       _$result = _$v ??
           new _$OrderResponseCharges._(
               data: _data?.build(),
-              object: BuiltValueNullFieldError.checkNotNull(
-                  object, r'OrderResponseCharges', 'object'),
               hasMore: BuiltValueNullFieldError.checkNotNull(
-                  hasMore, r'OrderResponseCharges', 'hasMore'));
+                  hasMore, r'OrderResponseCharges', 'hasMore'),
+              object: BuiltValueNullFieldError.checkNotNull(
+                  object, r'OrderResponseCharges', 'object'));
     } catch (_) {
       late String _$failedField;
       try {

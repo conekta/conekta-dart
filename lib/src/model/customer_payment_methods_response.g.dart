@@ -14,9 +14,9 @@ class _$CustomerPaymentMethodsResponse extends CustomerPaymentMethodsResponse {
   @override
   final String? previousPageUrl;
   @override
-  final String object;
-  @override
   final bool hasMore;
+  @override
+  final String object;
 
   factory _$CustomerPaymentMethodsResponse(
           [void Function(CustomerPaymentMethodsResponseBuilder)? updates]) =>
@@ -26,13 +26,13 @@ class _$CustomerPaymentMethodsResponse extends CustomerPaymentMethodsResponse {
       {this.data,
       this.nextPageUrl,
       this.previousPageUrl,
-      required this.object,
-      required this.hasMore})
+      required this.hasMore,
+      required this.object})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        object, r'CustomerPaymentMethodsResponse', 'object');
-    BuiltValueNullFieldError.checkNotNull(
         hasMore, r'CustomerPaymentMethodsResponse', 'hasMore');
+    BuiltValueNullFieldError.checkNotNull(
+        object, r'CustomerPaymentMethodsResponse', 'object');
   }
 
   @override
@@ -51,8 +51,8 @@ class _$CustomerPaymentMethodsResponse extends CustomerPaymentMethodsResponse {
         data == other.data &&
         nextPageUrl == other.nextPageUrl &&
         previousPageUrl == other.previousPageUrl &&
-        object == other.object &&
-        hasMore == other.hasMore;
+        hasMore == other.hasMore &&
+        object == other.object;
   }
 
   @override
@@ -61,8 +61,8 @@ class _$CustomerPaymentMethodsResponse extends CustomerPaymentMethodsResponse {
         $jc(
             $jc($jc($jc(0, data.hashCode), nextPageUrl.hashCode),
                 previousPageUrl.hashCode),
-            object.hashCode),
-        hasMore.hashCode));
+            hasMore.hashCode),
+        object.hashCode));
   }
 
   @override
@@ -71,8 +71,8 @@ class _$CustomerPaymentMethodsResponse extends CustomerPaymentMethodsResponse {
           ..add('data', data)
           ..add('nextPageUrl', nextPageUrl)
           ..add('previousPageUrl', previousPageUrl)
-          ..add('object', object)
-          ..add('hasMore', hasMore))
+          ..add('hasMore', hasMore)
+          ..add('object', object))
         .toString();
   }
 }
@@ -102,13 +102,13 @@ class CustomerPaymentMethodsResponseBuilder
   set previousPageUrl(covariant String? previousPageUrl) =>
       _$this._previousPageUrl = previousPageUrl;
 
-  String? _object;
-  String? get object => _$this._object;
-  set object(covariant String? object) => _$this._object = object;
-
   bool? _hasMore;
   bool? get hasMore => _$this._hasMore;
   set hasMore(covariant bool? hasMore) => _$this._hasMore = hasMore;
+
+  String? _object;
+  String? get object => _$this._object;
+  set object(covariant String? object) => _$this._object = object;
 
   CustomerPaymentMethodsResponseBuilder() {
     CustomerPaymentMethodsResponse._defaults(this);
@@ -120,8 +120,8 @@ class CustomerPaymentMethodsResponseBuilder
       _data = $v.data?.toBuilder();
       _nextPageUrl = $v.nextPageUrl;
       _previousPageUrl = $v.previousPageUrl;
-      _object = $v.object;
       _hasMore = $v.hasMore;
+      _object = $v.object;
       _$v = null;
     }
     return this;
@@ -150,10 +150,10 @@ class CustomerPaymentMethodsResponseBuilder
               data: _data?.build(),
               nextPageUrl: nextPageUrl,
               previousPageUrl: previousPageUrl,
-              object: BuiltValueNullFieldError.checkNotNull(
-                  object, r'CustomerPaymentMethodsResponse', 'object'),
               hasMore: BuiltValueNullFieldError.checkNotNull(
-                  hasMore, r'CustomerPaymentMethodsResponse', 'hasMore'));
+                  hasMore, r'CustomerPaymentMethodsResponse', 'hasMore'),
+              object: BuiltValueNullFieldError.checkNotNull(
+                  object, r'CustomerPaymentMethodsResponse', 'object'));
     } catch (_) {
       late String _$failedField;
       try {

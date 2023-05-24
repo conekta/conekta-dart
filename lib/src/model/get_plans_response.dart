@@ -16,8 +16,8 @@ part 'get_plans_response.g.dart';
 /// GetPlansResponse
 ///
 /// Properties:
-/// * [object] - Object type, in this case is list
 /// * [hasMore] - Indicates if there are more pages to be requested
+/// * [object] - Object type, in this case is list
 /// * [nextPageUrl] - URL of the next page.
 /// * [previousPageUrl] - Url of the previous page.
 /// * [data] 

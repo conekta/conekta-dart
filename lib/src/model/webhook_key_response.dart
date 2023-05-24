@@ -11,14 +11,19 @@ part 'webhook_key_response.g.dart';
 /// webhook keys model
 ///
 /// Properties:
+/// * [id] - Unique identifier of the webhook key
 /// * [active] - Indicates if the webhook key is active
 /// * [createdAt] - Unix timestamp in seconds with the creation date of the webhook key
 /// * [deactivatedAt] - Unix timestamp in seconds with the deactivation date of the webhook key
-/// * [id] - Unique identifier of the webhook key
+/// * [publicKey] - Public key to be used in the webhook
 /// * [livemode] - Indicates if the webhook key is in live mode
 /// * [object] - Object name, value is webhook_key
 @BuiltValue()
 abstract class WebhookKeyResponse implements Built<WebhookKeyResponse, WebhookKeyResponseBuilder> {
+  /// Unique identifier of the webhook key
+  @BuiltValueField(wireName: r'id')
+  String? get id;
+
   /// Indicates if the webhook key is active
   @BuiltValueField(wireName: r'active')
   bool? get active;
@@ -31,9 +36,9 @@ abstract class WebhookKeyResponse implements Built<WebhookKeyResponse, WebhookKe
   @BuiltValueField(wireName: r'deactivated_at')
   int? get deactivatedAt;
 
-  /// Unique identifier of the webhook key
-  @BuiltValueField(wireName: r'id')
-  String? get id;
+  /// Public key to be used in the webhook
+  @BuiltValueField(wireName: r'public_key')
+  String? get publicKey;
 
   /// Indicates if the webhook key is in live mode
   @BuiltValueField(wireName: r'livemode')
@@ -66,6 +71,13 @@ class _$WebhookKeyResponseSerializer implements PrimitiveSerializer<WebhookKeyRe
     WebhookKeyResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
+    if (object.id != null) {
+      yield r'id';
+      yield serializers.serialize(
+        object.id,
+        specifiedType: const FullType(String),
+      );
+    }
     if (object.active != null) {
       yield r'active';
       yield serializers.serialize(
@@ -87,10 +99,10 @@ class _$WebhookKeyResponseSerializer implements PrimitiveSerializer<WebhookKeyRe
         specifiedType: const FullType.nullable(int),
       );
     }
-    if (object.id != null) {
-      yield r'id';
+    if (object.publicKey != null) {
+      yield r'public_key';
       yield serializers.serialize(
-        object.id,
+        object.publicKey,
         specifiedType: const FullType(String),
       );
     }
@@ -131,6 +143,13 @@ class _$WebhookKeyResponseSerializer implements PrimitiveSerializer<WebhookKeyRe
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
+        case r'id':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.id = valueDes;
+          break;
         case r'active':
           final valueDes = serializers.deserialize(
             value,
@@ -153,12 +172,12 @@ class _$WebhookKeyResponseSerializer implements PrimitiveSerializer<WebhookKeyRe
           if (valueDes == null) continue;
           result.deactivatedAt = valueDes;
           break;
-        case r'id':
+        case r'public_key':
           final valueDes = serializers.deserialize(
             value,
             specifiedType: const FullType(String),
           ) as String;
-          result.id = valueDes;
+          result.publicKey = valueDes;
           break;
         case r'livemode':
           final valueDes = serializers.deserialize(
