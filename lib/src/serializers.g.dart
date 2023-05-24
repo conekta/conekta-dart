@@ -7,6 +7,8 @@ part of 'serializers.dart';
 // **************************************************************************
 
 Serializers _$serializers = (new Serializers().toBuilder()
+      ..add($ApiKeyCreateResponseAllOf.serializer)
+      ..add($ApiKeyResponse.serializer)
       ..add($ChargeDataPaymentMethodBankTransferResponse.serializer)
       ..add($ChargeDataPaymentMethodCardResponse.serializer)
       ..add($ChargeDataPaymentMethodCashResponse.serializer)
@@ -26,10 +28,12 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add($CustomerShippingContactsDataResponseAllOf.serializer)
       ..add($CustomerShippingContactsResponse.serializer)
       ..add($CustomersResponseAllOf.serializer)
+      ..add($DeleteApiKeysResponseAllOf.serializer)
       ..add($Details.serializer)
       ..add($DiscountLinesResponse.serializer)
       ..add($DiscountLinesResponseAllOf.serializer)
       ..add($ErrorAllOf.serializer)
+      ..add($GetApiKeysResponseAllOf.serializer)
       ..add($GetChargesResponseAllOf.serializer)
       ..add($GetCompaniesResponseAllOf.serializer)
       ..add($GetEventsResponseAllOf.serializer)
@@ -65,6 +69,9 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add($ShippingRequest.serializer)
       ..add($UpdateCustomerFiscalEntitiesResponseAllOf.serializer)
       ..add($UpdateOrderTaxResponseAllOf.serializer)
+      ..add(ApiKeyCreateResponse.serializer)
+      ..add(ApiKeyRequest.serializer)
+      ..add(ApiKeyUpdateRequest.serializer)
       ..add(BalanceCommonField.serializer)
       ..add(BalanceResponse.serializer)
       ..add(BlacklistRuleResponse.serializer)
@@ -115,6 +122,7 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(CustomerUpdateFiscalEntitiesRequest.serializer)
       ..add(CustomerUpdateShippingContacts.serializer)
       ..add(CustomersResponse.serializer)
+      ..add(DeleteApiKeysResponse.serializer)
       ..add(DeletedBlacklistRuleResponse.serializer)
       ..add(DeletedWhitelistRuleResponse.serializer)
       ..add(DetailsError.serializer)
@@ -122,6 +130,8 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(EmailCheckoutRequest.serializer)
       ..add(Error.serializer)
       ..add(EventResponse.serializer)
+      ..add(EventsResendResponse.serializer)
+      ..add(GetApiKeysResponse.serializer)
       ..add(GetChargesResponse.serializer)
       ..add(GetCompaniesResponse.serializer)
       ..add(GetCustomerPaymentMethodDataResponse.serializer)
@@ -204,6 +214,12 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(WebhookResponse.serializer)
       ..add(WebhookUpdateRequest.serializer)
       ..add(WhitelistlistRuleResponse.serializer)
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(ApiKeyResponse)]),
+          () => new ListBuilder<ApiKeyResponse>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(ApiKeyResponse)]),
+          () => new ListBuilder<ApiKeyResponse>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(BalanceCommonField)]),
           () => new ListBuilder<BalanceCommonField>())
@@ -593,6 +609,12 @@ Serializers _$serializers = (new Serializers().toBuilder()
           const FullType(
               BuiltMap, const [const FullType(String), const FullType(String)]),
           () => new MapBuilder<String, String>())
+      ..addBuilderFactory(
+          const FullType(BuiltMap, const [
+            const FullType(String),
+            const FullType.nullable(JsonObject)
+          ]),
+          () => new MapBuilder<String, JsonObject?>())
       ..addBuilderFactory(
           const FullType(BuiltMap, const [
             const FullType(String),

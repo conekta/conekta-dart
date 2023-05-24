@@ -14,9 +14,9 @@ class _$GetOrderDiscountLinesResponse extends GetOrderDiscountLinesResponse {
   @override
   final String? previousPageUrl;
   @override
-  final String object;
-  @override
   final bool hasMore;
+  @override
+  final String object;
 
   factory _$GetOrderDiscountLinesResponse(
           [void Function(GetOrderDiscountLinesResponseBuilder)? updates]) =>
@@ -26,13 +26,13 @@ class _$GetOrderDiscountLinesResponse extends GetOrderDiscountLinesResponse {
       {this.data,
       this.nextPageUrl,
       this.previousPageUrl,
-      required this.object,
-      required this.hasMore})
+      required this.hasMore,
+      required this.object})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        object, r'GetOrderDiscountLinesResponse', 'object');
-    BuiltValueNullFieldError.checkNotNull(
         hasMore, r'GetOrderDiscountLinesResponse', 'hasMore');
+    BuiltValueNullFieldError.checkNotNull(
+        object, r'GetOrderDiscountLinesResponse', 'object');
   }
 
   @override
@@ -51,8 +51,8 @@ class _$GetOrderDiscountLinesResponse extends GetOrderDiscountLinesResponse {
         data == other.data &&
         nextPageUrl == other.nextPageUrl &&
         previousPageUrl == other.previousPageUrl &&
-        object == other.object &&
-        hasMore == other.hasMore;
+        hasMore == other.hasMore &&
+        object == other.object;
   }
 
   @override
@@ -61,8 +61,8 @@ class _$GetOrderDiscountLinesResponse extends GetOrderDiscountLinesResponse {
         $jc(
             $jc($jc($jc(0, data.hashCode), nextPageUrl.hashCode),
                 previousPageUrl.hashCode),
-            object.hashCode),
-        hasMore.hashCode));
+            hasMore.hashCode),
+        object.hashCode));
   }
 
   @override
@@ -71,8 +71,8 @@ class _$GetOrderDiscountLinesResponse extends GetOrderDiscountLinesResponse {
           ..add('data', data)
           ..add('nextPageUrl', nextPageUrl)
           ..add('previousPageUrl', previousPageUrl)
-          ..add('object', object)
-          ..add('hasMore', hasMore))
+          ..add('hasMore', hasMore)
+          ..add('object', object))
         .toString();
   }
 }
@@ -102,13 +102,13 @@ class GetOrderDiscountLinesResponseBuilder
   set previousPageUrl(covariant String? previousPageUrl) =>
       _$this._previousPageUrl = previousPageUrl;
 
-  String? _object;
-  String? get object => _$this._object;
-  set object(covariant String? object) => _$this._object = object;
-
   bool? _hasMore;
   bool? get hasMore => _$this._hasMore;
   set hasMore(covariant bool? hasMore) => _$this._hasMore = hasMore;
+
+  String? _object;
+  String? get object => _$this._object;
+  set object(covariant String? object) => _$this._object = object;
 
   GetOrderDiscountLinesResponseBuilder() {
     GetOrderDiscountLinesResponse._defaults(this);
@@ -120,8 +120,8 @@ class GetOrderDiscountLinesResponseBuilder
       _data = $v.data?.toBuilder();
       _nextPageUrl = $v.nextPageUrl;
       _previousPageUrl = $v.previousPageUrl;
-      _object = $v.object;
       _hasMore = $v.hasMore;
+      _object = $v.object;
       _$v = null;
     }
     return this;
@@ -150,10 +150,10 @@ class GetOrderDiscountLinesResponseBuilder
               data: _data?.build(),
               nextPageUrl: nextPageUrl,
               previousPageUrl: previousPageUrl,
-              object: BuiltValueNullFieldError.checkNotNull(
-                  object, r'GetOrderDiscountLinesResponse', 'object'),
               hasMore: BuiltValueNullFieldError.checkNotNull(
-                  hasMore, r'GetOrderDiscountLinesResponse', 'hasMore'));
+                  hasMore, r'GetOrderDiscountLinesResponse', 'hasMore'),
+              object: BuiltValueNullFieldError.checkNotNull(
+                  object, r'GetOrderDiscountLinesResponse', 'object'));
     } catch (_) {
       late String _$failedField;
       try {

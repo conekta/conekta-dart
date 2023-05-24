@@ -9,8 +9,8 @@ import 'package:conekta/api.dart';
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **data** | [**BuiltList&lt;CustomerResponse&gt;**](CustomerResponse.md) |  | [optional] 
-**object** | **String** | Object type, in this case is list | 
 **hasMore** | **bool** | Indicates if there are more pages to be requested | 
+**object** | **String** | Object type, in this case is list | 
 **nextPageUrl** | **String** | URL of the next page. | [optional] 
 **previousPageUrl** | **String** | Url of the previous page. | [optional] 
 

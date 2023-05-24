@@ -15,8 +15,8 @@ part 'customer_response_shipping_contacts.g.dart';
 /// CustomerResponseShippingContacts
 ///
 /// Properties:
-/// * [object] - Object type, in this case is list
 /// * [hasMore] - Indicates if there are more pages to be requested
+/// * [object] - Object type, in this case is list
 /// * [data] 
 @BuiltValue()
 abstract class CustomerResponseShippingContacts implements CustomerResponseShippingContactsAllOf, Pagination, Built<CustomerResponseShippingContacts, CustomerResponseShippingContactsBuilder> {

@@ -15,8 +15,8 @@ part 'order_response_discount_lines.g.dart';
 /// OrderResponseDiscountLines
 ///
 /// Properties:
-/// * [object] - Object type, in this case is list
 /// * [hasMore] - Indicates if there are more pages to be requested
+/// * [object] - Object type, in this case is list
 /// * [data] 
 @BuiltValue()
 abstract class OrderResponseDiscountLines implements OrderResponseDiscountLinesAllOf, Pagination, Built<OrderResponseDiscountLines, OrderResponseDiscountLinesBuilder> {

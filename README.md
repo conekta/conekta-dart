@@ -18,7 +18,7 @@ For more information, please visit [https://github.com/conekta/openapi/issues](h
 To use the package from [pub.dev](https://pub.dev), please include the following in pubspec.yaml
 ```yaml
 dependencies:
-  conekta: 6.0.0-beta.1
+  conekta: 6.0.0-beta.2
 ```
 
 ### Github
@@ -27,7 +27,7 @@ If this Dart package is published to Github, please include the following in pub
 dependencies:
   conekta:
     git:
-      url: https://github.com/GIT_USER_ID/GIT_REPO_ID.git
+      url: https://github.com/conekta/conekta-dart.git
       #ref: main
 ```
 
@@ -72,6 +72,11 @@ Class | Method | HTTP request | Description
 [*AntifraudApi*](doc/AntifraudApi.md) | [**deleteRuleWhitelist**](doc/AntifraudApi.md#deleterulewhitelist) | **DELETE** /antifraud/whitelists/{id} | Delete whitelisted rule
 [*AntifraudApi*](doc/AntifraudApi.md) | [**getRuleBlacklist**](doc/AntifraudApi.md#getruleblacklist) | **GET** /antifraud/blacklists | Get list of blacklisted rules
 [*AntifraudApi*](doc/AntifraudApi.md) | [**getRuleWhitelist**](doc/AntifraudApi.md#getrulewhitelist) | **GET** /antifraud/whitelists | Get a list of whitelisted rules
+[*ApiKeysApi*](doc/ApiKeysApi.md) | [**createApiKey**](doc/ApiKeysApi.md#createapikey) | **POST** /api_keys | Create Api Key
+[*ApiKeysApi*](doc/ApiKeysApi.md) | [**deleteApiKey**](doc/ApiKeysApi.md#deleteapikey) | **DELETE** /api_keys/{id} | Delete Api Key
+[*ApiKeysApi*](doc/ApiKeysApi.md) | [**getApiKey**](doc/ApiKeysApi.md#getapikey) | **GET** /api_keys/{id} | Get Api Key
+[*ApiKeysApi*](doc/ApiKeysApi.md) | [**getApiKeys**](doc/ApiKeysApi.md#getapikeys) | **GET** /api_keys | Get list of Api Keys
+[*ApiKeysApi*](doc/ApiKeysApi.md) | [**updateApiKey**](doc/ApiKeysApi.md#updateapikey) | **PUT** /api_keys/{id} | Update Api Key
 [*BalancesApi*](doc/BalancesApi.md) | [**getBalance**](doc/BalancesApi.md#getbalance) | **GET** /balances | Get a company&#39;s balance
 [*ChargesApi*](doc/ChargesApi.md) | [**getCharges**](doc/ChargesApi.md#getcharges) | **GET** /charges | Get A List of Charges
 [*ChargesApi*](doc/ChargesApi.md) | [**ordersCreateCharge**](doc/ChargesApi.md#orderscreatecharge) | **POST** /orders/{id}/charges | Create charge
@@ -91,6 +96,7 @@ Class | Method | HTTP request | Description
 [*DiscountsApi*](doc/DiscountsApi.md) | [**ordersUpdateDiscountLines**](doc/DiscountsApi.md#ordersupdatediscountlines) | **PUT** /orders/{id}/discount_lines/{discount_lines_id} | Update Discount
 [*EventsApi*](doc/EventsApi.md) | [**getEvent**](doc/EventsApi.md#getevent) | **GET** /events/{id} | Get Event
 [*EventsApi*](doc/EventsApi.md) | [**getEvents**](doc/EventsApi.md#getevents) | **GET** /events | Get list of Events
+[*EventsApi*](doc/EventsApi.md) | [**resendEvent**](doc/EventsApi.md#resendevent) | **POST** /events/{event_id}/webhook_logs/{webhook_log_id}/resend | Resend Event
 [*LogsApi*](doc/LogsApi.md) | [**getLogById**](doc/LogsApi.md#getlogbyid) | **GET** /logs/{id} | Get Log
 [*LogsApi*](doc/LogsApi.md) | [**getLogs**](doc/LogsApi.md#getlogs) | **GET** /logs | Get List Of Logs
 [*OrdersApi*](doc/OrdersApi.md) | [**cancelOrder**](doc/OrdersApi.md#cancelorder) | **POST** /orders/{id}/cancel | Cancel Order
@@ -149,11 +155,17 @@ Class | Method | HTTP request | Description
 [*WebhooksApi*](doc/WebhooksApi.md) | [**deleteWebhook**](doc/WebhooksApi.md#deletewebhook) | **DELETE** /webhooks/{id} | Delete Webhook
 [*WebhooksApi*](doc/WebhooksApi.md) | [**getWebhook**](doc/WebhooksApi.md#getwebhook) | **GET** /webhooks/{id} | Get Webhook
 [*WebhooksApi*](doc/WebhooksApi.md) | [**getWebhooks**](doc/WebhooksApi.md#getwebhooks) | **GET** /webhooks | Get List of Webhooks
+[*WebhooksApi*](doc/WebhooksApi.md) | [**testWebhook**](doc/WebhooksApi.md#testwebhook) | **POST** /webhooks/{id}/test | Test Webhook
 [*WebhooksApi*](doc/WebhooksApi.md) | [**updateWebhook**](doc/WebhooksApi.md#updatewebhook) | **PUT** /webhooks/{id} | Update Webhook
 
 
 ## Documentation For Models
 
+ - [ApiKeyCreateResponse](doc/ApiKeyCreateResponse.md)
+ - [ApiKeyCreateResponseAllOf](doc/ApiKeyCreateResponseAllOf.md)
+ - [ApiKeyRequest](doc/ApiKeyRequest.md)
+ - [ApiKeyResponse](doc/ApiKeyResponse.md)
+ - [ApiKeyUpdateRequest](doc/ApiKeyUpdateRequest.md)
  - [BalanceCommonField](doc/BalanceCommonField.md)
  - [BalanceResponse](doc/BalanceResponse.md)
  - [BlacklistRuleResponse](doc/BlacklistRuleResponse.md)
@@ -218,6 +230,8 @@ Class | Method | HTTP request | Description
  - [CustomerUpdateShippingContacts](doc/CustomerUpdateShippingContacts.md)
  - [CustomersResponse](doc/CustomersResponse.md)
  - [CustomersResponseAllOf](doc/CustomersResponseAllOf.md)
+ - [DeleteApiKeysResponse](doc/DeleteApiKeysResponse.md)
+ - [DeleteApiKeysResponseAllOf](doc/DeleteApiKeysResponseAllOf.md)
  - [DeletedBlacklistRuleResponse](doc/DeletedBlacklistRuleResponse.md)
  - [DeletedWhitelistRuleResponse](doc/DeletedWhitelistRuleResponse.md)
  - [Details](doc/Details.md)
@@ -229,6 +243,9 @@ Class | Method | HTTP request | Description
  - [Error](doc/Error.md)
  - [ErrorAllOf](doc/ErrorAllOf.md)
  - [EventResponse](doc/EventResponse.md)
+ - [EventsResendResponse](doc/EventsResendResponse.md)
+ - [GetApiKeysResponse](doc/GetApiKeysResponse.md)
+ - [GetApiKeysResponseAllOf](doc/GetApiKeysResponseAllOf.md)
  - [GetChargesResponse](doc/GetChargesResponse.md)
  - [GetChargesResponseAllOf](doc/GetChargesResponseAllOf.md)
  - [GetCompaniesResponse](doc/GetCompaniesResponse.md)

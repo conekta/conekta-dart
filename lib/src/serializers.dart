@@ -14,6 +14,11 @@ import 'package:built_value/iso_8601_date_time_serializer.dart';
 import 'package:conekta/src/date_serializer.dart';
 import 'package:conekta/src/model/date.dart';
 
+import 'package:conekta/src/model/api_key_create_response.dart';
+import 'package:conekta/src/model/api_key_create_response_all_of.dart';
+import 'package:conekta/src/model/api_key_request.dart';
+import 'package:conekta/src/model/api_key_response.dart';
+import 'package:conekta/src/model/api_key_update_request.dart';
 import 'package:conekta/src/model/balance_common_field.dart';
 import 'package:conekta/src/model/balance_response.dart';
 import 'package:conekta/src/model/blacklist_rule_response.dart';
@@ -78,6 +83,8 @@ import 'package:conekta/src/model/customer_update_fiscal_entities_request.dart';
 import 'package:conekta/src/model/customer_update_shipping_contacts.dart';
 import 'package:conekta/src/model/customers_response.dart';
 import 'package:conekta/src/model/customers_response_all_of.dart';
+import 'package:conekta/src/model/delete_api_keys_response.dart';
+import 'package:conekta/src/model/delete_api_keys_response_all_of.dart';
 import 'package:conekta/src/model/deleted_blacklist_rule_response.dart';
 import 'package:conekta/src/model/deleted_whitelist_rule_response.dart';
 import 'package:conekta/src/model/details.dart';
@@ -89,6 +96,9 @@ import 'package:conekta/src/model/email_checkout_request.dart';
 import 'package:conekta/src/model/error.dart';
 import 'package:conekta/src/model/error_all_of.dart';
 import 'package:conekta/src/model/event_response.dart';
+import 'package:conekta/src/model/events_resend_response.dart';
+import 'package:conekta/src/model/get_api_keys_response.dart';
+import 'package:conekta/src/model/get_api_keys_response_all_of.dart';
 import 'package:conekta/src/model/get_charges_response.dart';
 import 'package:conekta/src/model/get_charges_response_all_of.dart';
 import 'package:conekta/src/model/get_companies_response.dart';
@@ -209,6 +219,11 @@ import 'package:conekta/src/model/whitelistlist_rule_response.dart';
 part 'serializers.g.dart';
 
 @SerializersFor([
+  ApiKeyCreateResponse,
+  ApiKeyCreateResponseAllOf,$ApiKeyCreateResponseAllOf,
+  ApiKeyRequest,
+  ApiKeyResponse,$ApiKeyResponse,
+  ApiKeyUpdateRequest,
   BalanceCommonField,
   BalanceResponse,
   BlacklistRuleResponse,
@@ -273,6 +288,8 @@ part 'serializers.g.dart';
   CustomerUpdateShippingContacts,
   CustomersResponse,
   CustomersResponseAllOf,$CustomersResponseAllOf,
+  DeleteApiKeysResponse,
+  DeleteApiKeysResponseAllOf,$DeleteApiKeysResponseAllOf,
   DeletedBlacklistRuleResponse,
   DeletedWhitelistRuleResponse,
   Details,$Details,
@@ -284,6 +301,9 @@ part 'serializers.g.dart';
   Error,
   ErrorAllOf,$ErrorAllOf,
   EventResponse,
+  EventsResendResponse,
+  GetApiKeysResponse,
+  GetApiKeysResponseAllOf,$GetApiKeysResponseAllOf,
   GetChargesResponse,
   GetChargesResponseAllOf,$GetChargesResponseAllOf,
   GetCompaniesResponse,
@@ -402,6 +422,8 @@ part 'serializers.g.dart';
   WhitelistlistRuleResponse,
 ])
 Serializers serializers = (_$serializers.toBuilder()
+      ..add(ApiKeyCreateResponseAllOf.serializer)
+      ..add(ApiKeyResponse.serializer)
       ..add(ChargeDataPaymentMethodBankTransferResponse.serializer)
       ..add(ChargeDataPaymentMethodCardResponse.serializer)
       ..add(ChargeDataPaymentMethodCashResponse.serializer)
@@ -421,10 +443,12 @@ Serializers serializers = (_$serializers.toBuilder()
       ..add(CustomerShippingContactsDataResponseAllOf.serializer)
       ..add(CustomerShippingContactsResponse.serializer)
       ..add(CustomersResponseAllOf.serializer)
+      ..add(DeleteApiKeysResponseAllOf.serializer)
       ..add(Details.serializer)
       ..add(DiscountLinesResponse.serializer)
       ..add(DiscountLinesResponseAllOf.serializer)
       ..add(ErrorAllOf.serializer)
+      ..add(GetApiKeysResponseAllOf.serializer)
       ..add(GetChargesResponseAllOf.serializer)
       ..add(GetCompaniesResponseAllOf.serializer)
       ..add(GetEventsResponseAllOf.serializer)

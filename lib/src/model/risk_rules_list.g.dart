@@ -12,9 +12,9 @@ class _$RiskRulesList extends RiskRulesList {
   @override
   final String? previousPageUrl;
   @override
-  final String object;
-  @override
   final bool hasMore;
+  @override
+  final String object;
   @override
   final BuiltList<RiskRulesData>? data;
 
@@ -24,12 +24,12 @@ class _$RiskRulesList extends RiskRulesList {
   _$RiskRulesList._(
       {this.nextPageUrl,
       this.previousPageUrl,
-      required this.object,
       required this.hasMore,
+      required this.object,
       this.data})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(object, r'RiskRulesList', 'object');
     BuiltValueNullFieldError.checkNotNull(hasMore, r'RiskRulesList', 'hasMore');
+    BuiltValueNullFieldError.checkNotNull(object, r'RiskRulesList', 'object');
   }
 
   @override
@@ -45,8 +45,8 @@ class _$RiskRulesList extends RiskRulesList {
     return other is RiskRulesList &&
         nextPageUrl == other.nextPageUrl &&
         previousPageUrl == other.previousPageUrl &&
-        object == other.object &&
         hasMore == other.hasMore &&
+        object == other.object &&
         data == other.data;
   }
 
@@ -55,8 +55,8 @@ class _$RiskRulesList extends RiskRulesList {
     return $jf($jc(
         $jc(
             $jc($jc($jc(0, nextPageUrl.hashCode), previousPageUrl.hashCode),
-                object.hashCode),
-            hasMore.hashCode),
+                hasMore.hashCode),
+            object.hashCode),
         data.hashCode));
   }
 
@@ -65,8 +65,8 @@ class _$RiskRulesList extends RiskRulesList {
     return (newBuiltValueToStringHelper(r'RiskRulesList')
           ..add('nextPageUrl', nextPageUrl)
           ..add('previousPageUrl', previousPageUrl)
-          ..add('object', object)
           ..add('hasMore', hasMore)
+          ..add('object', object)
           ..add('data', data))
         .toString();
   }
@@ -90,13 +90,13 @@ class RiskRulesListBuilder
   set previousPageUrl(covariant String? previousPageUrl) =>
       _$this._previousPageUrl = previousPageUrl;
 
-  String? _object;
-  String? get object => _$this._object;
-  set object(covariant String? object) => _$this._object = object;
-
   bool? _hasMore;
   bool? get hasMore => _$this._hasMore;
   set hasMore(covariant bool? hasMore) => _$this._hasMore = hasMore;
+
+  String? _object;
+  String? get object => _$this._object;
+  set object(covariant String? object) => _$this._object = object;
 
   ListBuilder<RiskRulesData>? _data;
   ListBuilder<RiskRulesData> get data =>
@@ -112,8 +112,8 @@ class RiskRulesListBuilder
     if ($v != null) {
       _nextPageUrl = $v.nextPageUrl;
       _previousPageUrl = $v.previousPageUrl;
-      _object = $v.object;
       _hasMore = $v.hasMore;
+      _object = $v.object;
       _data = $v.data?.toBuilder();
       _$v = null;
     }
@@ -142,10 +142,10 @@ class RiskRulesListBuilder
           new _$RiskRulesList._(
               nextPageUrl: nextPageUrl,
               previousPageUrl: previousPageUrl,
-              object: BuiltValueNullFieldError.checkNotNull(
-                  object, r'RiskRulesList', 'object'),
               hasMore: BuiltValueNullFieldError.checkNotNull(
                   hasMore, r'RiskRulesList', 'hasMore'),
+              object: BuiltValueNullFieldError.checkNotNull(
+                  object, r'RiskRulesList', 'object'),
               data: _data?.build());
     } catch (_) {
       late String _$failedField;

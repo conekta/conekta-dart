@@ -15,8 +15,8 @@ part 'order_response_charges.g.dart';
 /// The charges associated with the order
 ///
 /// Properties:
-/// * [object] - Object type, in this case is list
 /// * [hasMore] - Indicates if there are more pages to be requested
+/// * [object] - Object type, in this case is list
 /// * [data] 
 @BuiltValue()
 abstract class OrderResponseCharges implements OrderResponseChargesAllOf, Pagination, Built<OrderResponseCharges, OrderResponseChargesBuilder> {

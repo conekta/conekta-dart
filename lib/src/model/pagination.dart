@@ -11,17 +11,17 @@ part 'pagination.g.dart';
 /// pagination metadata
 ///
 /// Properties:
-/// * [object] - Object type, in this case is list
 /// * [hasMore] - Indicates if there are more pages to be requested
+/// * [object] - Object type, in this case is list
 @BuiltValue(instantiable: false)
 abstract class Pagination  {
-  /// Object type, in this case is list
-  @BuiltValueField(wireName: r'object')
-  String get object;
-
   /// Indicates if there are more pages to be requested
   @BuiltValueField(wireName: r'has_more')
   bool get hasMore;
+
+  /// Object type, in this case is list
+  @BuiltValueField(wireName: r'object')
+  String get object;
 
   @BuiltValueSerializer(custom: true)
   static Serializer<Pagination> get serializer => _$PaginationSerializer();
@@ -39,15 +39,15 @@ class _$PaginationSerializer implements PrimitiveSerializer<Pagination> {
     Pagination object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    yield r'object';
-    yield serializers.serialize(
-      object.object,
-      specifiedType: const FullType(String),
-    );
     yield r'has_more';
     yield serializers.serialize(
       object.hasMore,
       specifiedType: const FullType(bool),
+    );
+    yield r'object';
+    yield serializers.serialize(
+      object.object,
+      specifiedType: const FullType(String),
     );
   }
 
@@ -112,19 +112,19 @@ class _$$PaginationSerializer implements PrimitiveSerializer<$Pagination> {
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
-        case r'object':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.object = valueDes;
-          break;
         case r'has_more':
           final valueDes = serializers.deserialize(
             value,
             specifiedType: const FullType(bool),
           ) as bool;
           result.hasMore = valueDes;
+          break;
+        case r'object':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.object = valueDes;
           break;
         default:
           unhandled.add(key);
