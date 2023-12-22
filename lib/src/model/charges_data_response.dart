@@ -24,7 +24,6 @@ part 'charges_data_response.g.dart';
 /// * [deviceFingerprint] 
 /// * [failureCode] 
 /// * [failureMessage] 
-/// * [fee] 
 /// * [id] 
 /// * [livemode] 
 /// * [object] 
@@ -92,13 +91,6 @@ class _$ChargesDataResponseSerializer implements PrimitiveSerializer<ChargesData
       yield serializers.serialize(
         object.orderId,
         specifiedType: const FullType(String),
-      );
-    }
-    if (object.fee != null) {
-      yield r'fee';
-      yield serializers.serialize(
-        object.fee,
-        specifiedType: const FullType(int),
       );
     }
     if (object.channel != null) {
@@ -249,13 +241,6 @@ class _$ChargesDataResponseSerializer implements PrimitiveSerializer<ChargesData
             specifiedType: const FullType(String),
           ) as String;
           result.orderId = valueDes;
-          break;
-        case r'fee':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.fee = valueDes;
           break;
         case r'channel':
           final valueDes = serializers.deserialize(

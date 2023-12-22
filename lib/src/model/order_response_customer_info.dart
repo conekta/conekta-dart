@@ -3,9 +3,9 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:conekta/src/model/customer_info_response.dart';
 import 'package:conekta/src/model/order_response_customer_info_all_of.dart';
 import 'package:conekta/src/model/customer_info_just_customer_id_response.dart';
+import 'package:conekta/src/model/order_customer_info_response.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -15,13 +15,14 @@ part 'order_response_customer_info.g.dart';
 ///
 /// Properties:
 /// * [object] 
+/// * [customerCustomReference] - Custom reference
 /// * [name] 
 /// * [email] 
 /// * [phone] 
 /// * [corporate] 
 /// * [customerId] 
 @BuiltValue()
-abstract class OrderResponseCustomerInfo implements CustomerInfoJustCustomerIdResponse, CustomerInfoResponse, OrderResponseCustomerInfoAllOf, Built<OrderResponseCustomerInfo, OrderResponseCustomerInfoBuilder> {
+abstract class OrderResponseCustomerInfo implements CustomerInfoJustCustomerIdResponse, OrderCustomerInfoResponse, OrderResponseCustomerInfoAllOf, Built<OrderResponseCustomerInfo, OrderResponseCustomerInfoBuilder> {
   OrderResponseCustomerInfo._();
 
   factory OrderResponseCustomerInfo([void updates(OrderResponseCustomerInfoBuilder b)]) = _$OrderResponseCustomerInfo;
@@ -46,6 +47,13 @@ class _$OrderResponseCustomerInfoSerializer implements PrimitiveSerializer<Order
     OrderResponseCustomerInfo object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
+    if (object.customerCustomReference != null) {
+      yield r'customer_custom_reference';
+      yield serializers.serialize(
+        object.customerCustomReference,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
     if (object.phone != null) {
       yield r'phone';
       yield serializers.serialize(
@@ -60,17 +68,17 @@ class _$OrderResponseCustomerInfoSerializer implements PrimitiveSerializer<Order
         specifiedType: const FullType(bool),
       );
     }
-    if (object.name != null) {
-      yield r'name';
-      yield serializers.serialize(
-        object.name,
-        specifiedType: const FullType(String),
-      );
-    }
     if (object.customerId != null) {
       yield r'customer_id';
       yield serializers.serialize(
         object.customerId,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.name != null) {
+      yield r'name';
+      yield serializers.serialize(
+        object.name,
         specifiedType: const FullType(String),
       );
     }
@@ -111,6 +119,14 @@ class _$OrderResponseCustomerInfoSerializer implements PrimitiveSerializer<Order
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
+        case r'customer_custom_reference':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.customerCustomReference = valueDes;
+          break;
         case r'phone':
           final valueDes = serializers.deserialize(
             value,
@@ -125,19 +141,19 @@ class _$OrderResponseCustomerInfoSerializer implements PrimitiveSerializer<Order
           ) as bool;
           result.corporate = valueDes;
           break;
-        case r'name':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.name = valueDes;
-          break;
         case r'customer_id':
           final valueDes = serializers.deserialize(
             value,
             specifiedType: const FullType(String),
           ) as String;
           result.customerId = valueDes;
+          break;
+        case r'name':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.name = valueDes;
           break;
         case r'email':
           final valueDes = serializers.deserialize(

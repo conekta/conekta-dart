@@ -34,7 +34,7 @@ class TokensApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [TokenResponse] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<TokenResponse>> createToken({ 
     required Token token,
     String? acceptLanguage = 'es',
@@ -45,7 +45,7 @@ class TokensApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    
+    final _path = r'/tokens';
     // to determine the Accept header
     List<String> _contentTypes = [ 
         "application/json"
@@ -57,12 +57,10 @@ class TokensApi {
         "application/vnd.conekta-v2.1.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
-
-    final _path = r'/tokens';
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/6.0.0-beta.2',
+        r'User-Agent': r'Conekta/v2 DartBindings/6.0.0',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (localVarAccept != null) r'Accept': localVarAccept,
         if (localVarContentType != null) r'Content-Type': localVarContentType,
@@ -90,12 +88,12 @@ class TokensApi {
       _bodyData = _serializers.serialize(token, specifiedType: _type);
 
     } catch(error, stackTrace) {
-      throw DioError(
+      throw DioException(
          requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -120,10 +118,10 @@ class TokensApi {
       ) as TokenResponse;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );

@@ -3,8 +3,8 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:conekta/src/model/api_key_response.dart';
 import 'package:conekta/src/model/delete_api_keys_response_all_of.dart';
+import 'package:conekta/src/model/api_key_response_on_delete.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -14,16 +14,16 @@ part 'delete_api_keys_response.g.dart';
 ///
 /// Properties:
 /// * [active] - Indicates if the api key is active
-/// * [createdAt] - Unix timestamp in seconds with the creation date of the api key
-/// * [description] - Detail of the use that will be given to the api key
-/// * [id] - Unique identifier of the api key
-/// * [livemode] - Indicates if the api key is in live mode
-/// * [object] - Object name, value is api_key
+/// * [createdAt] - Unix timestamp in seconds of when the api key was created
+/// * [description] - A name or brief explanation of what this api key is used for
+/// * [livemode] - Indicates if the api key is in production
 /// * [prefix] - The first few characters of the authentication_token
-/// * [role] - Indicates the user account private=owner or public=public
+/// * [id] - Unique identifier of the api key
+/// * [object] - Object name, value is 'api_key'
 /// * [deleted] 
+/// * [role] - Indicates if the api key is private or public
 @BuiltValue()
-abstract class DeleteApiKeysResponse implements ApiKeyResponse, DeleteApiKeysResponseAllOf, Built<DeleteApiKeysResponse, DeleteApiKeysResponseBuilder> {
+abstract class DeleteApiKeysResponse implements ApiKeyResponseOnDelete, DeleteApiKeysResponseAllOf, Built<DeleteApiKeysResponse, DeleteApiKeysResponseBuilder> {
   DeleteApiKeysResponse._();
 
   factory DeleteApiKeysResponse([void updates(DeleteApiKeysResponseBuilder b)]) = _$DeleteApiKeysResponse;
@@ -54,18 +54,18 @@ class _$DeleteApiKeysResponseSerializer implements PrimitiveSerializer<DeleteApi
         specifiedType: const FullType(int),
       );
     }
-    if (object.role != null) {
-      yield r'role';
-      yield serializers.serialize(
-        object.role,
-        specifiedType: const FullType(String),
-      );
-    }
     if (object.deleted != null) {
       yield r'deleted';
       yield serializers.serialize(
         object.deleted,
         specifiedType: const FullType(bool),
+      );
+    }
+    if (object.role != null) {
+      yield r'role';
+      yield serializers.serialize(
+        object.role,
+        specifiedType: const FullType(String),
       );
     }
     if (object.livemode != null) {
@@ -140,19 +140,19 @@ class _$DeleteApiKeysResponseSerializer implements PrimitiveSerializer<DeleteApi
           ) as int;
           result.createdAt = valueDes;
           break;
-        case r'role':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.role = valueDes;
-          break;
         case r'deleted':
           final valueDes = serializers.deserialize(
             value,
             specifiedType: const FullType(bool),
           ) as bool;
           result.deleted = valueDes;
+          break;
+        case r'role':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.role = valueDes;
           break;
         case r'livemode':
           final valueDes = serializers.deserialize(

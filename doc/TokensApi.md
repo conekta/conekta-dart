@@ -22,9 +22,6 @@ Generate a payment token, to associate it with a card
 ### Example
 ```dart
 import 'package:conekta/api.dart';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 
 final api = Conekta().getTokensApi();
 final Token token = ; // Token | requested field for token
@@ -33,7 +30,7 @@ final String acceptLanguage = es; // String | Use for knowing which language to 
 try {
     final response = api.createToken(token, acceptLanguage);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling TokensApi->createToken: $e\n');
 }
 ```

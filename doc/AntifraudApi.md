@@ -25,9 +25,6 @@ Create blacklisted rule
 ### Example
 ```dart
 import 'package:conekta/api.dart';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 
 final api = Conekta().getAntifraudApi();
 final CreateRiskRulesData createRiskRulesData = ; // CreateRiskRulesData | requested field for blacklist rule
@@ -36,7 +33,7 @@ final String acceptLanguage = es; // String | Use for knowing which language to 
 try {
     final response = api.createRuleBlacklist(createRiskRulesData, acceptLanguage);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling AntifraudApi->createRuleBlacklist: $e\n');
 }
 ```
@@ -71,9 +68,6 @@ Create whitelisted rule
 ### Example
 ```dart
 import 'package:conekta/api.dart';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 
 final api = Conekta().getAntifraudApi();
 final String acceptLanguage = es; // String | Use for knowing which language to use
@@ -82,7 +76,7 @@ final CreateRiskRulesData createRiskRulesData = ; // CreateRiskRulesData |
 try {
     final response = api.createRuleWhitelist(acceptLanguage, createRiskRulesData);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling AntifraudApi->createRuleWhitelist: $e\n');
 }
 ```
@@ -117,9 +111,6 @@ Delete blacklisted rule
 ### Example
 ```dart
 import 'package:conekta/api.dart';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 
 final api = Conekta().getAntifraudApi();
 final String id = 6307a60c41de27127515a575; // String | Identifier of the resource
@@ -129,7 +120,7 @@ final String xChildCompanyId = 6441b6376b60c3a638da80af; // String | In the case
 try {
     final response = api.deleteRuleBlacklist(id, acceptLanguage, xChildCompanyId);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling AntifraudApi->deleteRuleBlacklist: $e\n');
 }
 ```
@@ -165,9 +156,6 @@ Delete whitelisted rule
 ### Example
 ```dart
 import 'package:conekta/api.dart';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 
 final api = Conekta().getAntifraudApi();
 final String id = 6307a60c41de27127515a575; // String | Identifier of the resource
@@ -177,7 +165,7 @@ final String xChildCompanyId = 6441b6376b60c3a638da80af; // String | In the case
 try {
     final response = api.deleteRuleWhitelist(id, acceptLanguage, xChildCompanyId);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling AntifraudApi->deleteRuleWhitelist: $e\n');
 }
 ```
@@ -215,9 +203,6 @@ Return all rules
 ### Example
 ```dart
 import 'package:conekta/api.dart';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 
 final api = Conekta().getAntifraudApi();
 final String acceptLanguage = es; // String | Use for knowing which language to use
@@ -225,7 +210,7 @@ final String acceptLanguage = es; // String | Use for knowing which language to 
 try {
     final response = api.getRuleBlacklist(acceptLanguage);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling AntifraudApi->getRuleBlacklist: $e\n');
 }
 ```
@@ -261,9 +246,6 @@ Return all rules
 ### Example
 ```dart
 import 'package:conekta/api.dart';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 
 final api = Conekta().getAntifraudApi();
 final String acceptLanguage = es; // String | Use for knowing which language to use
@@ -271,7 +253,7 @@ final String acceptLanguage = es; // String | Use for knowing which language to 
 try {
     final response = api.getRuleWhitelist(acceptLanguage);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling AntifraudApi->getRuleWhitelist: $e\n');
 }
 ```

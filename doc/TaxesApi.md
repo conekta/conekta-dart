@@ -24,9 +24,6 @@ Create new taxes for an existing orden
 ### Example
 ```dart
 import 'package:conekta/api.dart';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 
 final api = Conekta().getTaxesApi();
 final String id = 6307a60c41de27127515a575; // String | Identifier of the resource
@@ -37,7 +34,7 @@ final String xChildCompanyId = 6441b6376b60c3a638da80af; // String | In the case
 try {
     final response = api.ordersCreateTaxes(id, orderTaxRequest, acceptLanguage, xChildCompanyId);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling TaxesApi->ordersCreateTaxes: $e\n');
 }
 ```
@@ -76,9 +73,6 @@ Delete taxes for an existing orden
 ### Example
 ```dart
 import 'package:conekta/api.dart';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 
 final api = Conekta().getTaxesApi();
 final String id = 6307a60c41de27127515a575; // String | Identifier of the resource
@@ -89,7 +83,7 @@ final String xChildCompanyId = 6441b6376b60c3a638da80af; // String | In the case
 try {
     final response = api.ordersDeleteTaxes(id, taxId, acceptLanguage, xChildCompanyId);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling TaxesApi->ordersDeleteTaxes: $e\n');
 }
 ```
@@ -128,9 +122,6 @@ Update taxes for an existing orden
 ### Example
 ```dart
 import 'package:conekta/api.dart';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 
 final api = Conekta().getTaxesApi();
 final String id = 6307a60c41de27127515a575; // String | Identifier of the resource
@@ -142,7 +133,7 @@ final String xChildCompanyId = 6441b6376b60c3a638da80af; // String | In the case
 try {
     final response = api.ordersUpdateTaxes(id, taxId, updateOrderTaxRequest, acceptLanguage, xChildCompanyId);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling TaxesApi->ordersUpdateTaxes: $e\n');
 }
 ```

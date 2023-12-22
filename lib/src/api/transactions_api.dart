@@ -36,7 +36,7 @@ class TransactionsApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [TransactionResponse] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<TransactionResponse>> getTransaction({ 
     required String id,
     String? acceptLanguage = 'es',
@@ -48,7 +48,7 @@ class TransactionsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    
+    final _path = r'/transactions/{id}'.replaceAll('{' r'id' '}', encodeQueryParameter(_serializers, id, const FullType(String)).toString());
     // to determine the Accept header
     List<String> _contentTypes = [ 
     ];
@@ -59,12 +59,10 @@ class TransactionsApi {
         "application/vnd.conekta-v2.1.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
-
-    final _path = r'/transactions/{id}'.replaceAll('{' r'id' '}', id.toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/6.0.0-beta.2',
+        r'User-Agent': r'Conekta/v2 DartBindings/6.0.0',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
@@ -103,10 +101,10 @@ class TransactionsApi {
       ) as TransactionResponse;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -131,9 +129,12 @@ class TransactionsApi {
   /// * [acceptLanguage] - Use for knowing which language to use
   /// * [xChildCompanyId] - In the case of a holding company, the company id of the child company to which will process the request.
   /// * [limit] - The numbers of items to return, the maximum value is 250
-  /// * [search] - General order search, e.g. by mail, reference etc.
   /// * [next] - next page
   /// * [previous] - previous page
+  /// * [id] - id of the object to be retrieved
+  /// * [chargeId] - id of the charge used for filtering
+  /// * [type] - type of the object to be retrieved
+  /// * [currency] - currency of the object to be retrieved
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -142,14 +143,17 @@ class TransactionsApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [GetTransactionsResponse] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<GetTransactionsResponse>> getTransactions({ 
     String? acceptLanguage = 'es',
     String? xChildCompanyId,
     int? limit = 20,
-    String? search,
     String? next,
     String? previous,
+    String? id,
+    String? chargeId,
+    String? type,
+    String? currency,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -157,7 +161,7 @@ class TransactionsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    
+    final _path = r'/transactions';
     // to determine the Accept header
     List<String> _contentTypes = [ 
     ];
@@ -168,12 +172,10 @@ class TransactionsApi {
         "application/vnd.conekta-v2.1.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
-
-    final _path = r'/transactions';
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/6.0.0-beta.2',
+        r'User-Agent': r'Conekta/v2 DartBindings/6.0.0',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
@@ -196,9 +198,12 @@ class TransactionsApi {
 
     final _queryParameters = <String, dynamic>{
       if (limit != null) r'limit': encodeQueryParameter(_serializers, limit, const FullType(int)),
-      if (search != null) r'search': encodeQueryParameter(_serializers, search, const FullType(String)),
       if (next != null) r'next': encodeQueryParameter(_serializers, next, const FullType(String)),
       if (previous != null) r'previous': encodeQueryParameter(_serializers, previous, const FullType(String)),
+      if (id != null) r'id': encodeQueryParameter(_serializers, id, const FullType(String)),
+      if (chargeId != null) r'charge_id': encodeQueryParameter(_serializers, chargeId, const FullType(String)),
+      if (type != null) r'type': encodeQueryParameter(_serializers, type, const FullType(String)),
+      if (currency != null) r'currency': encodeQueryParameter(_serializers, currency, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(
@@ -220,10 +225,10 @@ class TransactionsApi {
       ) as GetTransactionsResponse;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );

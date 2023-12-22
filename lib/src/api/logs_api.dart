@@ -36,7 +36,7 @@ class LogsApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [LogResponse] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<LogResponse>> getLogById({ 
     required String id,
     String? acceptLanguage = 'es',
@@ -48,7 +48,7 @@ class LogsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    
+    final _path = r'/logs/{id}'.replaceAll('{' r'id' '}', encodeQueryParameter(_serializers, id, const FullType(String)).toString());
     // to determine the Accept header
     List<String> _contentTypes = [ 
     ];
@@ -59,12 +59,10 @@ class LogsApi {
         "application/vnd.conekta-v2.1.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
-
-    final _path = r'/logs/{id}'.replaceAll('{' r'id' '}', id.toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/6.0.0-beta.2',
+        r'User-Agent': r'Conekta/v2 DartBindings/6.0.0',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
@@ -103,10 +101,10 @@ class LogsApi {
       ) as LogResponse;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -142,7 +140,7 @@ class LogsApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [LogsResponse] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<LogsResponse>> getLogs({ 
     String? acceptLanguage = 'es',
     String? xChildCompanyId,
@@ -157,7 +155,7 @@ class LogsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    
+    final _path = r'/logs';
     // to determine the Accept header
     List<String> _contentTypes = [ 
     ];
@@ -168,12 +166,10 @@ class LogsApi {
         "application/vnd.conekta-v2.1.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
-
-    final _path = r'/logs';
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/6.0.0-beta.2',
+        r'User-Agent': r'Conekta/v2 DartBindings/6.0.0',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
@@ -220,10 +216,10 @@ class LogsApi {
       ) as LogsResponse;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );

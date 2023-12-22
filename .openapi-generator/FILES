@@ -3,7 +3,6 @@ AUTHORS.md
 CODE_OF_CONDUCT.md
 CONTRIBUTING.md
 LICENSE
-README.md
 VERSION
 analysis_options.yaml
 conekta.png
@@ -12,6 +11,7 @@ doc/ApiKeyCreateResponse.md
 doc/ApiKeyCreateResponseAllOf.md
 doc/ApiKeyRequest.md
 doc/ApiKeyResponse.md
+doc/ApiKeyResponseOnDelete.md
 doc/ApiKeyUpdateRequest.md
 doc/ApiKeysApi.md
 doc/BalanceCommonField.md
@@ -31,6 +31,7 @@ doc/ChargeResponsePaymentMethod.md
 doc/ChargeResponseRefunds.md
 doc/ChargeResponseRefundsAllOf.md
 doc/ChargeResponseRefundsData.md
+doc/ChargeUpdateRequest.md
 doc/ChargesApi.md
 doc/ChargesDataResponse.md
 doc/Checkout.md
@@ -62,7 +63,6 @@ doc/CustomerFiscalEntitiesResponseAllOf.md
 doc/CustomerInfo.md
 doc/CustomerInfoJustCustomerId.md
 doc/CustomerInfoJustCustomerIdResponse.md
-doc/CustomerInfoResponse.md
 doc/CustomerPaymentMethodRequest.md
 doc/CustomerPaymentMethods.md
 doc/CustomerPaymentMethodsData.md
@@ -98,6 +98,7 @@ doc/ErrorAllOf.md
 doc/EventResponse.md
 doc/EventsApi.md
 doc/EventsResendResponse.md
+doc/FiscalEntityAddress.md
 doc/GetApiKeysResponse.md
 doc/GetApiKeysResponseAllOf.md
 doc/GetChargesResponse.md
@@ -127,7 +128,14 @@ doc/LogsApi.md
 doc/LogsResponse.md
 doc/LogsResponseData.md
 doc/OrderCaptureRequest.md
+doc/OrderCustomerInfoResponse.md
 doc/OrderDiscountLinesRequest.md
+doc/OrderFiscalEntityAddressResponse.md
+doc/OrderFiscalEntityAddressResponseAllOf.md
+doc/OrderFiscalEntityRequest.md
+doc/OrderFiscalEntityResponse.md
+doc/OrderNextActionResponse.md
+doc/OrderNextActionResponseRedirectToUrl.md
 doc/OrderRefundRequest.md
 doc/OrderRequest.md
 doc/OrderRequestCustomerInfo.md
@@ -139,14 +147,12 @@ doc/OrderResponseCustomerInfo.md
 doc/OrderResponseCustomerInfoAllOf.md
 doc/OrderResponseDiscountLines.md
 doc/OrderResponseDiscountLinesAllOf.md
-doc/OrderResponseFiscalEntity.md
-doc/OrderResponseFiscalEntityAddress.md
-doc/OrderResponseFiscalEntityAddressAllOf.md
 doc/OrderResponseProducts.md
 doc/OrderResponseProductsAllOf.md
 doc/OrderResponseShippingContact.md
 doc/OrderResponseShippingContactAllOf.md
 doc/OrderTaxRequest.md
+doc/OrderUpdateFiscalEntityRequest.md
 doc/OrderUpdateRequest.md
 doc/OrderUpdateRequestCustomerInfo.md
 doc/OrdersApi.md
@@ -267,6 +273,7 @@ lib/src/model/api_key_create_response.dart
 lib/src/model/api_key_create_response_all_of.dart
 lib/src/model/api_key_request.dart
 lib/src/model/api_key_response.dart
+lib/src/model/api_key_response_on_delete.dart
 lib/src/model/api_key_update_request.dart
 lib/src/model/balance_common_field.dart
 lib/src/model/balance_response.dart
@@ -284,6 +291,7 @@ lib/src/model/charge_response_payment_method.dart
 lib/src/model/charge_response_refunds.dart
 lib/src/model/charge_response_refunds_all_of.dart
 lib/src/model/charge_response_refunds_data.dart
+lib/src/model/charge_update_request.dart
 lib/src/model/charges_data_response.dart
 lib/src/model/checkout.dart
 lib/src/model/checkout_order_template.dart
@@ -313,7 +321,6 @@ lib/src/model/customer_fiscal_entities_response_all_of.dart
 lib/src/model/customer_info.dart
 lib/src/model/customer_info_just_customer_id.dart
 lib/src/model/customer_info_just_customer_id_response.dart
-lib/src/model/customer_info_response.dart
 lib/src/model/customer_payment_method_request.dart
 lib/src/model/customer_payment_methods.dart
 lib/src/model/customer_payment_methods_data.dart
@@ -347,6 +354,7 @@ lib/src/model/error.dart
 lib/src/model/error_all_of.dart
 lib/src/model/event_response.dart
 lib/src/model/events_resend_response.dart
+lib/src/model/fiscal_entity_address.dart
 lib/src/model/get_api_keys_response.dart
 lib/src/model/get_api_keys_response_all_of.dart
 lib/src/model/get_charges_response.dart
@@ -375,7 +383,14 @@ lib/src/model/log_response.dart
 lib/src/model/logs_response.dart
 lib/src/model/logs_response_data.dart
 lib/src/model/order_capture_request.dart
+lib/src/model/order_customer_info_response.dart
 lib/src/model/order_discount_lines_request.dart
+lib/src/model/order_fiscal_entity_address_response.dart
+lib/src/model/order_fiscal_entity_address_response_all_of.dart
+lib/src/model/order_fiscal_entity_request.dart
+lib/src/model/order_fiscal_entity_response.dart
+lib/src/model/order_next_action_response.dart
+lib/src/model/order_next_action_response_redirect_to_url.dart
 lib/src/model/order_refund_request.dart
 lib/src/model/order_request.dart
 lib/src/model/order_request_customer_info.dart
@@ -387,14 +402,12 @@ lib/src/model/order_response_customer_info.dart
 lib/src/model/order_response_customer_info_all_of.dart
 lib/src/model/order_response_discount_lines.dart
 lib/src/model/order_response_discount_lines_all_of.dart
-lib/src/model/order_response_fiscal_entity.dart
-lib/src/model/order_response_fiscal_entity_address.dart
-lib/src/model/order_response_fiscal_entity_address_all_of.dart
 lib/src/model/order_response_products.dart
 lib/src/model/order_response_products_all_of.dart
 lib/src/model/order_response_shipping_contact.dart
 lib/src/model/order_response_shipping_contact_all_of.dart
 lib/src/model/order_tax_request.dart
+lib/src/model/order_update_fiscal_entity_request.dart
 lib/src/model/order_update_request.dart
 lib/src/model/order_update_request_customer_info.dart
 lib/src/model/orders_response.dart

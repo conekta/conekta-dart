@@ -7,6 +7,7 @@ import 'dart:async';
 import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
+import 'package:conekta/src/api_util.dart';
 import 'package:conekta/src/model/blacklist_rule_response.dart';
 import 'package:conekta/src/model/create_risk_rules_data.dart';
 import 'package:conekta/src/model/deleted_blacklist_rule_response.dart';
@@ -38,7 +39,7 @@ class AntifraudApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [BlacklistRuleResponse] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<BlacklistRuleResponse>> createRuleBlacklist({ 
     required CreateRiskRulesData createRiskRulesData,
     String? acceptLanguage = 'es',
@@ -49,7 +50,7 @@ class AntifraudApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    
+    final _path = r'/antifraud/blacklists';
     // to determine the Accept header
     List<String> _contentTypes = [ 
         "application/json"
@@ -61,12 +62,10 @@ class AntifraudApi {
         "application/vnd.conekta-v2.1.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
-
-    final _path = r'/antifraud/blacklists';
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/6.0.0-beta.2',
+        r'User-Agent': r'Conekta/v2 DartBindings/6.0.0',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (localVarAccept != null) r'Accept': localVarAccept,
         if (localVarContentType != null) r'Content-Type': localVarContentType,
@@ -94,12 +93,12 @@ class AntifraudApi {
       _bodyData = _serializers.serialize(createRiskRulesData, specifiedType: _type);
 
     } catch(error, stackTrace) {
-      throw DioError(
+      throw DioException(
          requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -124,10 +123,10 @@ class AntifraudApi {
       ) as BlacklistRuleResponse;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -159,7 +158,7 @@ class AntifraudApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [WhitelistlistRuleResponse] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<WhitelistlistRuleResponse>> createRuleWhitelist({ 
     String? acceptLanguage = 'es',
     CreateRiskRulesData? createRiskRulesData,
@@ -170,7 +169,7 @@ class AntifraudApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    
+    final _path = r'/antifraud/whitelists';
     // to determine the Accept header
     List<String> _contentTypes = [ 
         "application/json"
@@ -182,12 +181,10 @@ class AntifraudApi {
         "application/vnd.conekta-v2.1.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
-
-    final _path = r'/antifraud/whitelists';
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/6.0.0-beta.2',
+        r'User-Agent': r'Conekta/v2 DartBindings/6.0.0',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (localVarAccept != null) r'Accept': localVarAccept,
         if (localVarContentType != null) r'Content-Type': localVarContentType,
@@ -215,12 +212,12 @@ class AntifraudApi {
       _bodyData = createRiskRulesData == null ? null : _serializers.serialize(createRiskRulesData, specifiedType: _type);
 
     } catch(error, stackTrace) {
-      throw DioError(
+      throw DioException(
          requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -245,10 +242,10 @@ class AntifraudApi {
       ) as WhitelistlistRuleResponse;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -281,7 +278,7 @@ class AntifraudApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [DeletedBlacklistRuleResponse] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<DeletedBlacklistRuleResponse>> deleteRuleBlacklist({ 
     required String id,
     String? acceptLanguage = 'es',
@@ -293,7 +290,7 @@ class AntifraudApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    
+    final _path = r'/antifraud/blacklists/{id}'.replaceAll('{' r'id' '}', encodeQueryParameter(_serializers, id, const FullType(String)).toString());
     // to determine the Accept header
     List<String> _contentTypes = [ 
     ];
@@ -304,12 +301,10 @@ class AntifraudApi {
         "application/vnd.conekta-v2.1.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
-
-    final _path = r'/antifraud/blacklists/{id}'.replaceAll('{' r'id' '}', id.toString());
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/6.0.0-beta.2',
+        r'User-Agent': r'Conekta/v2 DartBindings/6.0.0',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
@@ -348,10 +343,10 @@ class AntifraudApi {
       ) as DeletedBlacklistRuleResponse;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -384,7 +379,7 @@ class AntifraudApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [DeletedWhitelistRuleResponse] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<DeletedWhitelistRuleResponse>> deleteRuleWhitelist({ 
     required String id,
     String? acceptLanguage = 'es',
@@ -396,7 +391,7 @@ class AntifraudApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    
+    final _path = r'/antifraud/whitelists/{id}'.replaceAll('{' r'id' '}', encodeQueryParameter(_serializers, id, const FullType(String)).toString());
     // to determine the Accept header
     List<String> _contentTypes = [ 
     ];
@@ -407,12 +402,10 @@ class AntifraudApi {
         "application/vnd.conekta-v2.1.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
-
-    final _path = r'/antifraud/whitelists/{id}'.replaceAll('{' r'id' '}', id.toString());
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/6.0.0-beta.2',
+        r'User-Agent': r'Conekta/v2 DartBindings/6.0.0',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
@@ -451,10 +444,10 @@ class AntifraudApi {
       ) as DeletedWhitelistRuleResponse;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -485,7 +478,7 @@ class AntifraudApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [RiskRulesList] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<RiskRulesList>> getRuleBlacklist({ 
     String? acceptLanguage = 'es',
     CancelToken? cancelToken,
@@ -495,7 +488,7 @@ class AntifraudApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    
+    final _path = r'/antifraud/blacklists';
     // to determine the Accept header
     List<String> _contentTypes = [ 
     ];
@@ -506,12 +499,10 @@ class AntifraudApi {
         "application/vnd.conekta-v2.1.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
-
-    final _path = r'/antifraud/blacklists';
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/6.0.0-beta.2',
+        r'User-Agent': r'Conekta/v2 DartBindings/6.0.0',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (localVarAccept != null) r'Accept': localVarAccept,
         if (localVarContentType != null) r'Content-Type': localVarContentType,
@@ -549,10 +540,10 @@ class AntifraudApi {
       ) as RiskRulesList;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -583,7 +574,7 @@ class AntifraudApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [RiskRulesList] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<RiskRulesList>> getRuleWhitelist({ 
     String? acceptLanguage = 'es',
     CancelToken? cancelToken,
@@ -593,7 +584,7 @@ class AntifraudApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    
+    final _path = r'/antifraud/whitelists';
     // to determine the Accept header
     List<String> _contentTypes = [ 
     ];
@@ -604,12 +595,10 @@ class AntifraudApi {
         "application/vnd.conekta-v2.1.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
-
-    final _path = r'/antifraud/whitelists';
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/6.0.0-beta.2',
+        r'User-Agent': r'Conekta/v2 DartBindings/6.0.0',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (localVarAccept != null) r'Accept': localVarAccept,
         if (localVarContentType != null) r'Content-Type': localVarContentType,
@@ -647,10 +636,10 @@ class AntifraudApi {
       ) as RiskRulesList;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );

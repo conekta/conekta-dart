@@ -3,7 +3,9 @@
 //
 
 // ignore_for_file: unused_element
+import 'package:built_collection/built_collection.dart';
 import 'package:conekta/src/model/customer_shipping_contacts_response_address.dart';
+import 'package:built_value/json_object.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -20,6 +22,7 @@ part 'customer_shipping_contacts_response.g.dart';
 /// * [default_] 
 /// * [id] 
 /// * [createdAt] 
+/// * [metadata] - Metadata associated with the shipping contact
 /// * [object] 
 /// * [deleted] 
 @BuiltValue(instantiable: false)
@@ -47,6 +50,10 @@ abstract class CustomerShippingContactsResponse  {
 
   @BuiltValueField(wireName: r'created_at')
   int? get createdAt;
+
+  /// Metadata associated with the shipping contact
+  @BuiltValueField(wireName: r'metadata')
+  BuiltMap<String, JsonObject?>? get metadata;
 
   @BuiltValueField(wireName: r'object')
   String? get object;
@@ -124,6 +131,13 @@ class _$CustomerShippingContactsResponseSerializer implements PrimitiveSerialize
       yield serializers.serialize(
         object.createdAt,
         specifiedType: const FullType(int),
+      );
+    }
+    if (object.metadata != null) {
+      yield r'metadata';
+      yield serializers.serialize(
+        object.metadata,
+        specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
       );
     }
     if (object.object != null) {
@@ -259,6 +273,13 @@ class _$$CustomerShippingContactsResponseSerializer implements PrimitiveSerializ
             specifiedType: const FullType(int),
           ) as int;
           result.createdAt = valueDes;
+          break;
+        case r'metadata':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
+          ) as BuiltMap<String, JsonObject?>;
+          result.metadata.replace(valueDes);
           break;
         case r'object':
           final valueDes = serializers.deserialize(

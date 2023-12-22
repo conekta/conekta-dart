@@ -9,20 +9,21 @@ import 'package:conekta/api.dart';
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **antifraudInfo** | [**CustomerAntifraudInfoResponse**](CustomerAntifraudInfoResponse.md) |  | [optional] 
-**corporate** | **bool** |  | [optional] 
-**createdAt** | **int** |  | 
-**customReference** | **String** |  | [optional] 
+**corporate** | **bool** | true if the customer is a company | [optional] 
+**createdAt** | **int** | Creation date of the object | 
+**customReference** | **String** | Custom reference | [optional] 
 **defaultFiscalEntityId** | **String** |  | [optional] 
 **defaultShippingContactId** | **String** |  | [optional] 
 **defaultPaymentSourceId** | **String** |  | [optional] 
 **email** | **String** |  | [optional] 
 **fiscalEntities** | [**CustomerFiscalEntitiesResponse**](CustomerFiscalEntitiesResponse.md) |  | [optional] 
-**id** | **String** |  | 
-**livemode** | **bool** |  | 
-**name** | **String** |  | [optional] 
+**id** | **String** | Customer's ID | 
+**livemode** | **bool** | true if the object exists in live mode or the value false if the object exists in test mode | 
+**name** | **String** | Customer's name | 
+**metadata** | [**BuiltMap&lt;String, JsonObject&gt;**](JsonObject.md) |  | [optional] 
 **object** | **String** |  | 
 **paymentSources** | [**CustomerPaymentMethodsResponse**](CustomerPaymentMethodsResponse.md) |  | [optional] 
-**phone** | **String** |  | [optional] 
+**phone** | **String** | Customer's phone number | [optional] 
 **shippingContacts** | [**CustomerResponseShippingContacts**](CustomerResponseShippingContacts.md) |  | [optional] 
 **subscription** | [**SubscriptionResponse**](SubscriptionResponse.md) |  | [optional] 
 

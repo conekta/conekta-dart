@@ -28,9 +28,6 @@ You can cancel the subscription to stop the plans that your customers consume
 ### Example
 ```dart
 import 'package:conekta/api.dart';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 
 final api = Conekta().getSubscriptionsApi();
 final String id = 6307a60c41de27127515a575; // String | Identifier of the resource
@@ -40,7 +37,7 @@ final String xChildCompanyId = 6441b6376b60c3a638da80af; // String | In the case
 try {
     final response = api.cancelSubscription(id, acceptLanguage, xChildCompanyId);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling SubscriptionsApi->cancelSubscription: $e\n');
 }
 ```
@@ -78,9 +75,6 @@ You can create the subscription to include the plans that your customers consume
 ### Example
 ```dart
 import 'package:conekta/api.dart';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 
 final api = Conekta().getSubscriptionsApi();
 final String id = 6307a60c41de27127515a575; // String | Identifier of the resource
@@ -91,7 +85,7 @@ final String xChildCompanyId = 6441b6376b60c3a638da80af; // String | In the case
 try {
     final response = api.createSubscription(id, subscriptionRequest, acceptLanguage, xChildCompanyId);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling SubscriptionsApi->createSubscription: $e\n');
 }
 ```
@@ -130,9 +124,6 @@ You can get the events of the subscription(s) of a client, with the customer id
 ### Example
 ```dart
 import 'package:conekta/api.dart';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 
 final api = Conekta().getSubscriptionsApi();
 final String id = 6307a60c41de27127515a575; // String | Identifier of the resource
@@ -142,7 +133,7 @@ final String xChildCompanyId = 6441b6376b60c3a638da80af; // String | In the case
 try {
     final response = api.getAllEventsFromSubscription(id, acceptLanguage, xChildCompanyId);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling SubscriptionsApi->getAllEventsFromSubscription: $e\n');
 }
 ```
@@ -178,9 +169,6 @@ Get Subscription
 ### Example
 ```dart
 import 'package:conekta/api.dart';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 
 final api = Conekta().getSubscriptionsApi();
 final String id = 6307a60c41de27127515a575; // String | Identifier of the resource
@@ -189,7 +177,7 @@ final String acceptLanguage = es; // String | Use for knowing which language to 
 try {
     final response = api.getSubscription(id, acceptLanguage);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling SubscriptionsApi->getSubscription: $e\n');
 }
 ```
@@ -226,9 +214,6 @@ You can pause the subscription to stop the plans that your customers consume
 ### Example
 ```dart
 import 'package:conekta/api.dart';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 
 final api = Conekta().getSubscriptionsApi();
 final String id = 6307a60c41de27127515a575; // String | Identifier of the resource
@@ -238,7 +223,7 @@ final String xChildCompanyId = 6441b6376b60c3a638da80af; // String | In the case
 try {
     final response = api.pauseSubscription(id, acceptLanguage, xChildCompanyId);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling SubscriptionsApi->pauseSubscription: $e\n');
 }
 ```
@@ -276,9 +261,6 @@ You can resume the subscription to start the plans that your customers consume
 ### Example
 ```dart
 import 'package:conekta/api.dart';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 
 final api = Conekta().getSubscriptionsApi();
 final String id = 6307a60c41de27127515a575; // String | Identifier of the resource
@@ -288,7 +270,7 @@ final String xChildCompanyId = 6441b6376b60c3a638da80af; // String | In the case
 try {
     final response = api.resumeSubscription(id, acceptLanguage, xChildCompanyId);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling SubscriptionsApi->resumeSubscription: $e\n');
 }
 ```
@@ -326,9 +308,6 @@ You can modify the subscription to change the plans that your customers consume
 ### Example
 ```dart
 import 'package:conekta/api.dart';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 
 final api = Conekta().getSubscriptionsApi();
 final String id = 6307a60c41de27127515a575; // String | Identifier of the resource
@@ -339,7 +318,7 @@ final String xChildCompanyId = 6441b6376b60c3a638da80af; // String | In the case
 try {
     final response = api.updateSubscription(id, subscriptionUpdateRequest, acceptLanguage, xChildCompanyId);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling SubscriptionsApi->updateSubscription: $e\n');
 }
 ```

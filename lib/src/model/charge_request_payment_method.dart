@@ -12,14 +12,20 @@ part 'charge_request_payment_method.g.dart';
 ///
 /// Properties:
 /// * [expiresAt] - Method expiration date as unix timestamp
+/// * [monthlyInstallments] - How many months without interest to apply, it can be 3, 6, 9, 12 or 18
 /// * [type] 
 /// * [tokenId] 
 /// * [paymentSourceId] 
+/// * [contractId] - Optional id sent to indicate the bank contract for recurrent card charges.
 @BuiltValue()
 abstract class ChargeRequestPaymentMethod implements Built<ChargeRequestPaymentMethod, ChargeRequestPaymentMethodBuilder> {
   /// Method expiration date as unix timestamp
   @BuiltValueField(wireName: r'expires_at')
   int? get expiresAt;
+
+  /// How many months without interest to apply, it can be 3, 6, 9, 12 or 18
+  @BuiltValueField(wireName: r'monthly_installments')
+  int? get monthlyInstallments;
 
   @BuiltValueField(wireName: r'type')
   String get type;
@@ -29,6 +35,10 @@ abstract class ChargeRequestPaymentMethod implements Built<ChargeRequestPaymentM
 
   @BuiltValueField(wireName: r'payment_source_id')
   String? get paymentSourceId;
+
+  /// Optional id sent to indicate the bank contract for recurrent card charges.
+  @BuiltValueField(wireName: r'contract_id')
+  String? get contractId;
 
   ChargeRequestPaymentMethod._();
 
@@ -60,6 +70,13 @@ class _$ChargeRequestPaymentMethodSerializer implements PrimitiveSerializer<Char
         specifiedType: const FullType(int),
       );
     }
+    if (object.monthlyInstallments != null) {
+      yield r'monthly_installments';
+      yield serializers.serialize(
+        object.monthlyInstallments,
+        specifiedType: const FullType(int),
+      );
+    }
     yield r'type';
     yield serializers.serialize(
       object.type,
@@ -76,6 +93,13 @@ class _$ChargeRequestPaymentMethodSerializer implements PrimitiveSerializer<Char
       yield r'payment_source_id';
       yield serializers.serialize(
         object.paymentSourceId,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.contractId != null) {
+      yield r'contract_id';
+      yield serializers.serialize(
+        object.contractId,
         specifiedType: const FullType(String),
       );
     }
@@ -109,6 +133,13 @@ class _$ChargeRequestPaymentMethodSerializer implements PrimitiveSerializer<Char
           ) as int;
           result.expiresAt = valueDes;
           break;
+        case r'monthly_installments':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int;
+          result.monthlyInstallments = valueDes;
+          break;
         case r'type':
           final valueDes = serializers.deserialize(
             value,
@@ -129,6 +160,13 @@ class _$ChargeRequestPaymentMethodSerializer implements PrimitiveSerializer<Char
             specifiedType: const FullType(String),
           ) as String;
           result.paymentSourceId = valueDes;
+          break;
+        case r'contract_id':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.contractId = valueDes;
           break;
         default:
           unhandled.add(key);

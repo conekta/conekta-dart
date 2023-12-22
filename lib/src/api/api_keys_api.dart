@@ -40,7 +40,7 @@ class ApiKeysApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [ApiKeyCreateResponse] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<ApiKeyCreateResponse>> createApiKey({ 
     required ApiKeyRequest apiKeyRequest,
     String? acceptLanguage = 'es',
@@ -52,7 +52,7 @@ class ApiKeysApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    
+    final _path = r'/api_keys';
     // to determine the Accept header
     List<String> _contentTypes = [ 
         "application/json"
@@ -64,12 +64,10 @@ class ApiKeysApi {
         "application/vnd.conekta-v2.1.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
-
-    final _path = r'/api_keys';
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/6.0.0-beta.2',
+        r'User-Agent': r'Conekta/v2 DartBindings/6.0.0',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
@@ -98,12 +96,12 @@ class ApiKeysApi {
       _bodyData = _serializers.serialize(apiKeyRequest, specifiedType: _type);
 
     } catch(error, stackTrace) {
-      throw DioError(
+      throw DioException(
          requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -128,10 +126,10 @@ class ApiKeysApi {
       ) as ApiKeyCreateResponse;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -163,7 +161,7 @@ class ApiKeysApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [DeleteApiKeysResponse] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<DeleteApiKeysResponse>> deleteApiKey({ 
     required String id,
     String? acceptLanguage = 'es',
@@ -174,7 +172,7 @@ class ApiKeysApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    
+    final _path = r'/api_keys/{id}'.replaceAll('{' r'id' '}', encodeQueryParameter(_serializers, id, const FullType(String)).toString());
     // to determine the Accept header
     List<String> _contentTypes = [ 
     ];
@@ -185,12 +183,10 @@ class ApiKeysApi {
         "application/vnd.conekta-v2.1.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
-
-    final _path = r'/api_keys/{id}'.replaceAll('{' r'id' '}', id.toString());
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/6.0.0-beta.2',
+        r'User-Agent': r'Conekta/v2 DartBindings/6.0.0',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (localVarAccept != null) r'Accept': localVarAccept,
         if (localVarContentType != null) r'Content-Type': localVarContentType,
@@ -228,10 +224,10 @@ class ApiKeysApi {
       ) as DeleteApiKeysResponse;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -264,7 +260,7 @@ class ApiKeysApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [ApiKeyResponse] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<ApiKeyResponse>> getApiKey({ 
     required String id,
     String? acceptLanguage = 'es',
@@ -276,7 +272,7 @@ class ApiKeysApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    
+    final _path = r'/api_keys/{id}'.replaceAll('{' r'id' '}', encodeQueryParameter(_serializers, id, const FullType(String)).toString());
     // to determine the Accept header
     List<String> _contentTypes = [ 
     ];
@@ -287,12 +283,10 @@ class ApiKeysApi {
         "application/vnd.conekta-v2.1.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
-
-    final _path = r'/api_keys/{id}'.replaceAll('{' r'id' '}', id.toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/6.0.0-beta.2',
+        r'User-Agent': r'Conekta/v2 DartBindings/6.0.0',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
@@ -331,10 +325,10 @@ class ApiKeysApi {
       ) as ApiKeyResponse;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -359,9 +353,9 @@ class ApiKeysApi {
   /// * [acceptLanguage] - Use for knowing which language to use
   /// * [xChildCompanyId] - In the case of a holding company, the company id of the child company to which will process the request.
   /// * [limit] - The numbers of items to return, the maximum value is 250
-  /// * [search] - General order search, e.g. by mail, reference etc.
   /// * [next] - next page
   /// * [previous] - previous page
+  /// * [search] - General search, e.g. by id, description, prefix
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -370,14 +364,14 @@ class ApiKeysApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [GetApiKeysResponse] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<GetApiKeysResponse>> getApiKeys({ 
     String? acceptLanguage = 'es',
     String? xChildCompanyId,
     int? limit = 20,
-    String? search,
     String? next,
     String? previous,
+    String? search,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -385,7 +379,7 @@ class ApiKeysApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    
+    final _path = r'/api_keys';
     // to determine the Accept header
     List<String> _contentTypes = [ 
     ];
@@ -396,12 +390,10 @@ class ApiKeysApi {
         "application/vnd.conekta-v2.1.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
-
-    final _path = r'/api_keys';
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/6.0.0-beta.2',
+        r'User-Agent': r'Conekta/v2 DartBindings/6.0.0',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
@@ -424,9 +416,9 @@ class ApiKeysApi {
 
     final _queryParameters = <String, dynamic>{
       if (limit != null) r'limit': encodeQueryParameter(_serializers, limit, const FullType(int)),
-      if (search != null) r'search': encodeQueryParameter(_serializers, search, const FullType(String)),
       if (next != null) r'next': encodeQueryParameter(_serializers, next, const FullType(String)),
       if (previous != null) r'previous': encodeQueryParameter(_serializers, previous, const FullType(String)),
+      if (search != null) r'search': encodeQueryParameter(_serializers, search, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(
@@ -448,10 +440,10 @@ class ApiKeysApi {
       ) as GetApiKeysResponse;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -484,7 +476,7 @@ class ApiKeysApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [ApiKeyResponse] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<ApiKeyResponse>> updateApiKey({ 
     required String id,
     String? acceptLanguage = 'es',
@@ -496,7 +488,7 @@ class ApiKeysApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    
+    final _path = r'/api_keys/{id}'.replaceAll('{' r'id' '}', encodeQueryParameter(_serializers, id, const FullType(String)).toString());
     // to determine the Accept header
     List<String> _contentTypes = [ 
         "application/json"
@@ -508,12 +500,10 @@ class ApiKeysApi {
         "application/vnd.conekta-v2.1.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
-
-    final _path = r'/api_keys/{id}'.replaceAll('{' r'id' '}', id.toString());
     final _options = Options(
       method: r'PUT',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/6.0.0-beta.2',
+        r'User-Agent': r'Conekta/v2 DartBindings/6.0.0',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (localVarAccept != null) r'Accept': localVarAccept,
         if (localVarContentType != null) r'Content-Type': localVarContentType,
@@ -541,12 +531,12 @@ class ApiKeysApi {
       _bodyData = apiKeyUpdateRequest == null ? null : _serializers.serialize(apiKeyUpdateRequest, specifiedType: _type);
 
     } catch(error, stackTrace) {
-      throw DioError(
+      throw DioException(
          requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -571,10 +561,10 @@ class ApiKeysApi {
       ) as ApiKeyResponse;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );

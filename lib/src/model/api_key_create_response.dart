@@ -13,15 +13,18 @@ part 'api_key_create_response.g.dart';
 /// ApiKeyCreateResponse
 ///
 /// Properties:
-/// * [authenticationToken] - It is occupied as a user when authenticated with basic authentication, with a blank password. This value will only appear once, in the request to create a new key
+/// * [authenticationToken] - It is occupied as a user when authenticated with basic authentication, with a blank password. This value will only appear once, in the request to create a new key. Copy and save it in a safe place.
 /// * [active] - Indicates if the api key is active
-/// * [createdAt] - Unix timestamp in seconds with the creation date of the api key
-/// * [description] - Detail of the use that will be given to the api key
+/// * [createdAt] - Unix timestamp in seconds of when the api key was created
+/// * [updatedAt] - Unix timestamp in seconds of when the api key was last updated
+/// * [deactivatedAt] - Unix timestamp in seconds of when the api key was deleted
+/// * [description] - A name or brief explanation of what this api key is used for
 /// * [id] - Unique identifier of the api key
-/// * [livemode] - Indicates if the api key is in live mode
-/// * [object] - Object name, value is api_key
+/// * [livemode] - Indicates if the api key is in production
+/// * [deleted] - Indicates if the api key was deleted
+/// * [object] - Object name, value is 'api_key'
 /// * [prefix] - The first few characters of the authentication_token
-/// * [role] - Indicates the user account private=owner or public=public
+/// * [role] - Indicates if the api key is private or public
 @BuiltValue()
 abstract class ApiKeyCreateResponse implements ApiKeyCreateResponseAllOf, ApiKeyResponse, Built<ApiKeyCreateResponse, ApiKeyCreateResponseBuilder> {
   ApiKeyCreateResponse._();
@@ -47,13 +50,6 @@ class _$ApiKeyCreateResponseSerializer implements PrimitiveSerializer<ApiKeyCrea
     ApiKeyCreateResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    if (object.createdAt != null) {
-      yield r'created_at';
-      yield serializers.serialize(
-        object.createdAt,
-        specifiedType: const FullType(int),
-      );
-    }
     if (object.role != null) {
       yield r'role';
       yield serializers.serialize(
@@ -89,6 +85,34 @@ class _$ApiKeyCreateResponseSerializer implements PrimitiveSerializer<ApiKeyCrea
         specifiedType: const FullType(String),
       );
     }
+    if (object.deactivatedAt != null) {
+      yield r'deactivated_at';
+      yield serializers.serialize(
+        object.deactivatedAt,
+        specifiedType: const FullType.nullable(int),
+      );
+    }
+    if (object.authenticationToken != null) {
+      yield r'authentication_token';
+      yield serializers.serialize(
+        object.authenticationToken,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.createdAt != null) {
+      yield r'created_at';
+      yield serializers.serialize(
+        object.createdAt,
+        specifiedType: const FullType(int),
+      );
+    }
+    if (object.deleted != null) {
+      yield r'deleted';
+      yield serializers.serialize(
+        object.deleted,
+        specifiedType: const FullType(bool),
+      );
+    }
     if (object.id != null) {
       yield r'id';
       yield serializers.serialize(
@@ -96,17 +120,17 @@ class _$ApiKeyCreateResponseSerializer implements PrimitiveSerializer<ApiKeyCrea
         specifiedType: const FullType(String),
       );
     }
+    if (object.updatedAt != null) {
+      yield r'updated_at';
+      yield serializers.serialize(
+        object.updatedAt,
+        specifiedType: const FullType(int),
+      );
+    }
     if (object.object != null) {
       yield r'object';
       yield serializers.serialize(
         object.object,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.authenticationToken != null) {
-      yield r'authentication_token';
-      yield serializers.serialize(
-        object.authenticationToken,
         specifiedType: const FullType(String),
       );
     }
@@ -133,13 +157,6 @@ class _$ApiKeyCreateResponseSerializer implements PrimitiveSerializer<ApiKeyCrea
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
-        case r'created_at':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.createdAt = valueDes;
-          break;
         case r'role':
           final valueDes = serializers.deserialize(
             value,
@@ -175,19 +192,13 @@ class _$ApiKeyCreateResponseSerializer implements PrimitiveSerializer<ApiKeyCrea
           ) as String;
           result.description = valueDes;
           break;
-        case r'id':
+        case r'deactivated_at':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.id = valueDes;
-          break;
-        case r'object':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.object = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.deactivatedAt = valueDes;
           break;
         case r'authentication_token':
           final valueDes = serializers.deserialize(
@@ -195,6 +206,41 @@ class _$ApiKeyCreateResponseSerializer implements PrimitiveSerializer<ApiKeyCrea
             specifiedType: const FullType(String),
           ) as String;
           result.authenticationToken = valueDes;
+          break;
+        case r'created_at':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int;
+          result.createdAt = valueDes;
+          break;
+        case r'deleted':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(bool),
+          ) as bool;
+          result.deleted = valueDes;
+          break;
+        case r'id':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.id = valueDes;
+          break;
+        case r'updated_at':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int;
+          result.updatedAt = valueDes;
+          break;
+        case r'object':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.object = valueDes;
           break;
         default:
           unhandled.add(key);

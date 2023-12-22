@@ -14,7 +14,7 @@ part 'webhook_update_request.g.dart';
 /// Properties:
 /// * [url] - Here you must place the URL of your Webhook remember that you must program what you will do with the events received. Also do not forget to handle the HTTPS protocol for greater security.
 /// * [synchronous] - It is a value that allows to decide if the events will be synchronous or asynchronous. We recommend asynchronous = false
-/// * [subscribedEvents] 
+/// * [events] 
 @BuiltValue()
 abstract class WebhookUpdateRequest implements Built<WebhookUpdateRequest, WebhookUpdateRequestBuilder> {
   /// Here you must place the URL of your Webhook remember that you must program what you will do with the events received. Also do not forget to handle the HTTPS protocol for greater security.
@@ -25,8 +25,8 @@ abstract class WebhookUpdateRequest implements Built<WebhookUpdateRequest, Webho
   @BuiltValueField(wireName: r'synchronous')
   bool? get synchronous;
 
-  @BuiltValueField(wireName: r'subscribed_events')
-  BuiltList<String>? get subscribedEvents;
+  @BuiltValueField(wireName: r'events')
+  BuiltList<String>? get events;
 
   WebhookUpdateRequest._();
 
@@ -64,10 +64,10 @@ class _$WebhookUpdateRequestSerializer implements PrimitiveSerializer<WebhookUpd
         specifiedType: const FullType(bool),
       );
     }
-    if (object.subscribedEvents != null) {
-      yield r'subscribed_events';
+    if (object.events != null) {
+      yield r'events';
       yield serializers.serialize(
-        object.subscribedEvents,
+        object.events,
         specifiedType: const FullType(BuiltList, [FullType(String)]),
       );
     }
@@ -108,12 +108,12 @@ class _$WebhookUpdateRequestSerializer implements PrimitiveSerializer<WebhookUpd
           ) as bool;
           result.synchronous = valueDes;
           break;
-        case r'subscribed_events':
+        case r'events':
           final valueDes = serializers.deserialize(
             value,
             specifiedType: const FullType(BuiltList, [FullType(String)]),
           ) as BuiltList<String>;
-          result.subscribedEvents.replace(valueDes);
+          result.events.replace(valueDes);
           break;
         default:
           unhandled.add(key);

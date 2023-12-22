@@ -12,24 +12,35 @@ part 'api_key_response.g.dart';
 ///
 /// Properties:
 /// * [active] - Indicates if the api key is active
-/// * [createdAt] - Unix timestamp in seconds with the creation date of the api key
-/// * [description] - Detail of the use that will be given to the api key
+/// * [createdAt] - Unix timestamp in seconds of when the api key was created
+/// * [updatedAt] - Unix timestamp in seconds of when the api key was last updated
+/// * [deactivatedAt] - Unix timestamp in seconds of when the api key was deleted
+/// * [description] - A name or brief explanation of what this api key is used for
 /// * [id] - Unique identifier of the api key
-/// * [livemode] - Indicates if the api key is in live mode
-/// * [object] - Object name, value is api_key
+/// * [livemode] - Indicates if the api key is in production
+/// * [deleted] - Indicates if the api key was deleted
+/// * [object] - Object name, value is 'api_key'
 /// * [prefix] - The first few characters of the authentication_token
-/// * [role] - Indicates the user account private=owner or public=public
+/// * [role] - Indicates if the api key is private or public
 @BuiltValue(instantiable: false)
 abstract class ApiKeyResponse  {
   /// Indicates if the api key is active
   @BuiltValueField(wireName: r'active')
   bool? get active;
 
-  /// Unix timestamp in seconds with the creation date of the api key
+  /// Unix timestamp in seconds of when the api key was created
   @BuiltValueField(wireName: r'created_at')
   int? get createdAt;
 
-  /// Detail of the use that will be given to the api key
+  /// Unix timestamp in seconds of when the api key was last updated
+  @BuiltValueField(wireName: r'updated_at')
+  int? get updatedAt;
+
+  /// Unix timestamp in seconds of when the api key was deleted
+  @BuiltValueField(wireName: r'deactivated_at')
+  int? get deactivatedAt;
+
+  /// A name or brief explanation of what this api key is used for
   @BuiltValueField(wireName: r'description')
   String? get description;
 
@@ -37,11 +48,15 @@ abstract class ApiKeyResponse  {
   @BuiltValueField(wireName: r'id')
   String? get id;
 
-  /// Indicates if the api key is in live mode
+  /// Indicates if the api key is in production
   @BuiltValueField(wireName: r'livemode')
   bool? get livemode;
 
-  /// Object name, value is api_key
+  /// Indicates if the api key was deleted
+  @BuiltValueField(wireName: r'deleted')
+  bool? get deleted;
+
+  /// Object name, value is 'api_key'
   @BuiltValueField(wireName: r'object')
   String? get object;
 
@@ -49,7 +64,7 @@ abstract class ApiKeyResponse  {
   @BuiltValueField(wireName: r'prefix')
   String? get prefix;
 
-  /// Indicates the user account private=owner or public=public
+  /// Indicates if the api key is private or public
   @BuiltValueField(wireName: r'role')
   String? get role;
 
@@ -83,6 +98,20 @@ class _$ApiKeyResponseSerializer implements PrimitiveSerializer<ApiKeyResponse> 
         specifiedType: const FullType(int),
       );
     }
+    if (object.updatedAt != null) {
+      yield r'updated_at';
+      yield serializers.serialize(
+        object.updatedAt,
+        specifiedType: const FullType(int),
+      );
+    }
+    if (object.deactivatedAt != null) {
+      yield r'deactivated_at';
+      yield serializers.serialize(
+        object.deactivatedAt,
+        specifiedType: const FullType.nullable(int),
+      );
+    }
     if (object.description != null) {
       yield r'description';
       yield serializers.serialize(
@@ -101,6 +130,13 @@ class _$ApiKeyResponseSerializer implements PrimitiveSerializer<ApiKeyResponse> 
       yield r'livemode';
       yield serializers.serialize(
         object.livemode,
+        specifiedType: const FullType(bool),
+      );
+    }
+    if (object.deleted != null) {
+      yield r'deleted';
+      yield serializers.serialize(
+        object.deleted,
         specifiedType: const FullType(bool),
       );
     }
@@ -202,6 +238,21 @@ class _$$ApiKeyResponseSerializer implements PrimitiveSerializer<$ApiKeyResponse
           ) as int;
           result.createdAt = valueDes;
           break;
+        case r'updated_at':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int;
+          result.updatedAt = valueDes;
+          break;
+        case r'deactivated_at':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.deactivatedAt = valueDes;
+          break;
         case r'description':
           final valueDes = serializers.deserialize(
             value,
@@ -222,6 +273,13 @@ class _$$ApiKeyResponseSerializer implements PrimitiveSerializer<$ApiKeyResponse
             specifiedType: const FullType(bool),
           ) as bool;
           result.livemode = valueDes;
+          break;
+        case r'deleted':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(bool),
+          ) as bool;
+          result.deleted = valueDes;
           break;
         case r'object':
           final valueDes = serializers.deserialize(

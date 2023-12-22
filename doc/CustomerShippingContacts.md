@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **parentId** | **String** |  | [optional] 
 **default_** | **bool** |  | [optional] 
 **deleted** | **bool** |  | [optional] 
+**metadata** | [**BuiltMap&lt;String, JsonObject&gt;**](JsonObject.md) | Metadata associated with the shipping contact | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

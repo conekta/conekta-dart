@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **address** | [**CustomerShippingContactsResponseAddress**](CustomerShippingContactsResponseAddress.md) |  | [optional] 
 **parentId** | **String** |  | [optional] 
 **default_** | **bool** |  | [optional] 
+**metadata** | [**BuiltMap&lt;String, JsonObject&gt;**](JsonObject.md) | Metadata associated with the shipping contact | [optional] 
 **deleted** | **bool** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

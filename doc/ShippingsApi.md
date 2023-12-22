@@ -24,9 +24,6 @@ Create new shipping for an existing orden
 ### Example
 ```dart
 import 'package:conekta/api.dart';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 
 final api = Conekta().getShippingsApi();
 final String id = 6307a60c41de27127515a575; // String | Identifier of the resource
@@ -37,7 +34,7 @@ final String xChildCompanyId = 6441b6376b60c3a638da80af; // String | In the case
 try {
     final response = api.ordersCreateShipping(id, shippingRequest, acceptLanguage, xChildCompanyId);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling ShippingsApi->ordersCreateShipping: $e\n');
 }
 ```
@@ -76,9 +73,6 @@ Delete shipping
 ### Example
 ```dart
 import 'package:conekta/api.dart';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 
 final api = Conekta().getShippingsApi();
 final String id = 6307a60c41de27127515a575; // String | Identifier of the resource
@@ -89,7 +83,7 @@ final String xChildCompanyId = 6441b6376b60c3a638da80af; // String | In the case
 try {
     final response = api.ordersDeleteShipping(id, shippingId, acceptLanguage, xChildCompanyId);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling ShippingsApi->ordersDeleteShipping: $e\n');
 }
 ```
@@ -128,9 +122,6 @@ Update existing shipping for an existing orden
 ### Example
 ```dart
 import 'package:conekta/api.dart';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 
 final api = Conekta().getShippingsApi();
 final String id = 6307a60c41de27127515a575; // String | Identifier of the resource
@@ -142,7 +133,7 @@ final String xChildCompanyId = 6441b6376b60c3a638da80af; // String | In the case
 try {
     final response = api.ordersUpdateShipping(id, shippingId, shippingRequest, acceptLanguage, xChildCompanyId);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling ShippingsApi->ordersUpdateShipping: $e\n');
 }
 ```

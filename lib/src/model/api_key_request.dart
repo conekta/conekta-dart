@@ -11,18 +11,13 @@ part 'api_key_request.g.dart';
 /// ApiKeyRequest
 ///
 /// Properties:
-/// * [active] - Indicates if the api key is active
-/// * [description] - Detail of the use that will be given to the api key
+/// * [description] - A name or brief explanation of what this api key is used for
 /// * [role] 
 @BuiltValue()
 abstract class ApiKeyRequest implements Built<ApiKeyRequest, ApiKeyRequestBuilder> {
-  /// Indicates if the api key is active
-  @BuiltValueField(wireName: r'active')
-  bool get active;
-
-  /// Detail of the use that will be given to the api key
+  /// A name or brief explanation of what this api key is used for
   @BuiltValueField(wireName: r'description')
-  String get description;
+  String? get description;
 
   @BuiltValueField(wireName: r'role')
   String get role;
@@ -50,16 +45,13 @@ class _$ApiKeyRequestSerializer implements PrimitiveSerializer<ApiKeyRequest> {
     ApiKeyRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    yield r'active';
-    yield serializers.serialize(
-      object.active,
-      specifiedType: const FullType(bool),
-    );
-    yield r'description';
-    yield serializers.serialize(
-      object.description,
-      specifiedType: const FullType(String),
-    );
+    if (object.description != null) {
+      yield r'description';
+      yield serializers.serialize(
+        object.description,
+        specifiedType: const FullType(String),
+      );
+    }
     yield r'role';
     yield serializers.serialize(
       object.role,
@@ -88,13 +80,6 @@ class _$ApiKeyRequestSerializer implements PrimitiveSerializer<ApiKeyRequest> {
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
-        case r'active':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(bool),
-          ) as bool;
-          result.active = valueDes;
-          break;
         case r'description':
           final valueDes = serializers.deserialize(
             value,

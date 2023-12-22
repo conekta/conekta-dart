@@ -23,9 +23,6 @@ Consume the list of child companies.  This is used for holding companies with se
 ### Example
 ```dart
 import 'package:conekta/api.dart';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 
 final api = Conekta().getCompaniesApi();
 final String acceptLanguage = es; // String | Use for knowing which language to use
@@ -37,7 +34,7 @@ final String previous = previous_example; // String | previous page
 try {
     final response = api.getCompanies(acceptLanguage, limit, search, next, previous);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling CompaniesApi->getCompanies: $e\n');
 }
 ```
@@ -75,9 +72,6 @@ Get Company
 ### Example
 ```dart
 import 'package:conekta/api.dart';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 
 final api = Conekta().getCompaniesApi();
 final String id = 6307a60c41de27127515a575; // String | Identifier of the resource
@@ -86,7 +80,7 @@ final String acceptLanguage = es; // String | Use for knowing which language to 
 try {
     final response = api.getCompany(id, acceptLanguage);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling CompaniesApi->getCompany: $e\n');
 }
 ```

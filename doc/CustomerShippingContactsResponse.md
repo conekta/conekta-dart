@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **default_** | **bool** |  | [optional] 
 **id** | **String** |  | [optional] 
 **createdAt** | **int** |  | [optional] 
+**metadata** | [**BuiltMap&lt;String, JsonObject&gt;**](JsonObject.md) | Metadata associated with the shipping contact | [optional] 
 **object** | **String** |  | [optional] 
 **deleted** | **bool** |  | [optional] 
 

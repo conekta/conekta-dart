@@ -26,9 +26,6 @@ Create a api key
 ### Example
 ```dart
 import 'package:conekta/api.dart';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 
 final api = Conekta().getApiKeysApi();
 final ApiKeyRequest apiKeyRequest = ; // ApiKeyRequest | requested field for a api keys
@@ -38,7 +35,7 @@ final String xChildCompanyId = 6441b6376b60c3a638da80af; // String | In the case
 try {
     final response = api.createApiKey(apiKeyRequest, acceptLanguage, xChildCompanyId);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling ApiKeysApi->createApiKey: $e\n');
 }
 ```
@@ -76,9 +73,6 @@ Deletes a api key that corresponds to a api key ID
 ### Example
 ```dart
 import 'package:conekta/api.dart';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 
 final api = Conekta().getApiKeysApi();
 final String id = 6307a60c41de27127515a575; // String | Identifier of the resource
@@ -87,7 +81,7 @@ final String acceptLanguage = es; // String | Use for knowing which language to 
 try {
     final response = api.deleteApiKey(id, acceptLanguage);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling ApiKeysApi->deleteApiKey: $e\n');
 }
 ```
@@ -124,9 +118,6 @@ Gets a api key that corresponds to a api key ID
 ### Example
 ```dart
 import 'package:conekta/api.dart';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 
 final api = Conekta().getApiKeysApi();
 final String id = 6307a60c41de27127515a575; // String | Identifier of the resource
@@ -136,7 +127,7 @@ final String xChildCompanyId = 6441b6376b60c3a638da80af; // String | In the case
 try {
     final response = api.getApiKey(id, acceptLanguage, xChildCompanyId);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling ApiKeysApi->getApiKey: $e\n');
 }
 ```
@@ -165,7 +156,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getApiKeys**
-> GetApiKeysResponse getApiKeys(acceptLanguage, xChildCompanyId, limit, search, next, previous)
+> GetApiKeysResponse getApiKeys(acceptLanguage, xChildCompanyId, limit, next, previous, search)
 
 Get list of Api Keys
 
@@ -174,22 +165,19 @@ Consume the list of api keys you have
 ### Example
 ```dart
 import 'package:conekta/api.dart';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 
 final api = Conekta().getApiKeysApi();
 final String acceptLanguage = es; // String | Use for knowing which language to use
 final String xChildCompanyId = 6441b6376b60c3a638da80af; // String | In the case of a holding company, the company id of the child company to which will process the request.
 final int limit = 56; // int | The numbers of items to return, the maximum value is 250
-final String search = search_example; // String | General order search, e.g. by mail, reference etc.
 final String next = next_example; // String | next page
 final String previous = previous_example; // String | previous page
+final String search = search_example; // String | General search, e.g. by id, description, prefix
 
 try {
-    final response = api.getApiKeys(acceptLanguage, xChildCompanyId, limit, search, next, previous);
+    final response = api.getApiKeys(acceptLanguage, xChildCompanyId, limit, next, previous, search);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling ApiKeysApi->getApiKeys: $e\n');
 }
 ```
@@ -201,9 +189,9 @@ Name | Type | Description  | Notes
  **acceptLanguage** | **String**| Use for knowing which language to use | [optional] [default to 'es']
  **xChildCompanyId** | **String**| In the case of a holding company, the company id of the child company to which will process the request. | [optional] 
  **limit** | **int**| The numbers of items to return, the maximum value is 250 | [optional] [default to 20]
- **search** | **String**| General order search, e.g. by mail, reference etc. | [optional] 
  **next** | **String**| next page | [optional] 
  **previous** | **String**| previous page | [optional] 
+ **search** | **String**| General search, e.g. by id, description, prefix | [optional] 
 
 ### Return type
 
@@ -230,9 +218,6 @@ Update an existing api key
 ### Example
 ```dart
 import 'package:conekta/api.dart';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 
 final api = Conekta().getApiKeysApi();
 final String id = 6307a60c41de27127515a575; // String | Identifier of the resource
@@ -242,7 +227,7 @@ final ApiKeyUpdateRequest apiKeyUpdateRequest = ; // ApiKeyUpdateRequest |
 try {
     final response = api.updateApiKey(id, acceptLanguage, apiKeyUpdateRequest);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling ApiKeysApi->updateApiKey: $e\n');
 }
 ```

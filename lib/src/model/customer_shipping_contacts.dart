@@ -3,7 +3,9 @@
 //
 
 // ignore_for_file: unused_element
+import 'package:built_collection/built_collection.dart';
 import 'package:conekta/src/model/customer_shipping_contacts_address.dart';
+import 'package:built_value/json_object.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -19,6 +21,7 @@ part 'customer_shipping_contacts.g.dart';
 /// * [parentId] 
 /// * [default_] 
 /// * [deleted] 
+/// * [metadata] - Metadata associated with the shipping contact
 @BuiltValue(instantiable: false)
 abstract class CustomerShippingContacts  {
   /// Phone contact
@@ -44,6 +47,10 @@ abstract class CustomerShippingContacts  {
 
   @BuiltValueField(wireName: r'deleted')
   bool? get deleted;
+
+  /// Metadata associated with the shipping contact
+  @BuiltValueField(wireName: r'metadata')
+  BuiltMap<String, JsonObject?>? get metadata;
 
   @BuiltValueSerializer(custom: true)
   static Serializer<CustomerShippingContacts> get serializer => _$CustomerShippingContactsSerializer();
@@ -106,6 +113,13 @@ class _$CustomerShippingContactsSerializer implements PrimitiveSerializer<Custom
       yield serializers.serialize(
         object.deleted,
         specifiedType: const FullType.nullable(bool),
+      );
+    }
+    if (object.metadata != null) {
+      yield r'metadata';
+      yield serializers.serialize(
+        object.metadata,
+        specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
       );
     }
   }
@@ -221,6 +235,13 @@ class _$$CustomerShippingContactsSerializer implements PrimitiveSerializer<$Cust
           ) as bool?;
           if (valueDes == null) continue;
           result.deleted = valueDes;
+          break;
+        case r'metadata':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
+          ) as BuiltMap<String, JsonObject?>;
+          result.metadata.replace(valueDes);
           break;
         default:
           unhandled.add(key);

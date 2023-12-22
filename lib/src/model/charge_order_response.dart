@@ -24,7 +24,6 @@ part 'charge_order_response.g.dart';
 /// * [deviceFingerprint] 
 /// * [failureCode] 
 /// * [failureMessage] 
-/// * [fee] 
 /// * [id] 
 /// * [livemode] 
 /// * [monthlyInstallments] 
@@ -63,9 +62,6 @@ abstract class ChargeOrderResponse implements Built<ChargeOrderResponse, ChargeO
 
   @BuiltValueField(wireName: r'failure_message')
   String? get failureMessage;
-
-  @BuiltValueField(wireName: r'fee')
-  int? get fee;
 
   @BuiltValueField(wireName: r'id')
   String? get id;
@@ -182,13 +178,6 @@ class _$ChargeOrderResponseSerializer implements PrimitiveSerializer<ChargeOrder
       yield serializers.serialize(
         object.failureMessage,
         specifiedType: const FullType(String),
-      );
-    }
-    if (object.fee != null) {
-      yield r'fee';
-      yield serializers.serialize(
-        object.fee,
-        specifiedType: const FullType(int),
       );
     }
     if (object.id != null) {
@@ -347,13 +336,6 @@ class _$ChargeOrderResponseSerializer implements PrimitiveSerializer<ChargeOrder
             specifiedType: const FullType(String),
           ) as String;
           result.failureMessage = valueDes;
-          break;
-        case r'fee':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.fee = valueDes;
           break;
         case r'id':
           final valueDes = serializers.deserialize(

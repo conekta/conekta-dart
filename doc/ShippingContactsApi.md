@@ -24,9 +24,6 @@ Create a shipping contacts for a customer.
 ### Example
 ```dart
 import 'package:conekta/api.dart';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 
 final api = Conekta().getShippingContactsApi();
 final String id = 6307a60c41de27127515a575; // String | Identifier of the resource
@@ -37,7 +34,7 @@ final String xChildCompanyId = 6441b6376b60c3a638da80af; // String | In the case
 try {
     final response = api.createCustomerShippingContacts(id, customerShippingContacts, acceptLanguage, xChildCompanyId);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling ShippingContactsApi->createCustomerShippingContacts: $e\n');
 }
 ```
@@ -76,9 +73,6 @@ Delete shipping contact that corresponds to a customer ID.
 ### Example
 ```dart
 import 'package:conekta/api.dart';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 
 final api = Conekta().getShippingContactsApi();
 final String id = 6307a60c41de27127515a575; // String | Identifier of the resource
@@ -89,7 +83,7 @@ final String xChildCompanyId = 6441b6376b60c3a638da80af; // String | In the case
 try {
     final response = api.deleteCustomerShippingContacts(id, shippingContactsId, acceptLanguage, xChildCompanyId);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling ShippingContactsApi->deleteCustomerShippingContacts: $e\n');
 }
 ```
@@ -128,9 +122,6 @@ Update shipping contact that corresponds to a customer ID.
 ### Example
 ```dart
 import 'package:conekta/api.dart';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 
 final api = Conekta().getShippingContactsApi();
 final String id = 6307a60c41de27127515a575; // String | Identifier of the resource
@@ -142,7 +133,7 @@ final String xChildCompanyId = 6441b6376b60c3a638da80af; // String | In the case
 try {
     final response = api.updateCustomerShippingContacts(id, shippingContactsId, customerUpdateShippingContacts, acceptLanguage, xChildCompanyId);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling ShippingContactsApi->updateCustomerShippingContacts: $e\n');
 }
 ```

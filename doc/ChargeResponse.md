@@ -17,7 +17,6 @@ Name | Type | Description | Notes
 **deviceFingerprint** | **String** |  | [optional] 
 **failureCode** | **String** |  | [optional] 
 **failureMessage** | **String** |  | [optional] 
-**fee** | **int** |  | [optional] 
 **id** | **String** |  | [optional] 
 **livemode** | **bool** |  | [optional] 
 **object** | **String** |  | [optional] 

@@ -18,6 +18,7 @@ import 'package:conekta/src/model/api_key_create_response.dart';
 import 'package:conekta/src/model/api_key_create_response_all_of.dart';
 import 'package:conekta/src/model/api_key_request.dart';
 import 'package:conekta/src/model/api_key_response.dart';
+import 'package:conekta/src/model/api_key_response_on_delete.dart';
 import 'package:conekta/src/model/api_key_update_request.dart';
 import 'package:conekta/src/model/balance_common_field.dart';
 import 'package:conekta/src/model/balance_response.dart';
@@ -35,6 +36,7 @@ import 'package:conekta/src/model/charge_response_payment_method.dart';
 import 'package:conekta/src/model/charge_response_refunds.dart';
 import 'package:conekta/src/model/charge_response_refunds_all_of.dart';
 import 'package:conekta/src/model/charge_response_refunds_data.dart';
+import 'package:conekta/src/model/charge_update_request.dart';
 import 'package:conekta/src/model/charges_data_response.dart';
 import 'package:conekta/src/model/checkout.dart';
 import 'package:conekta/src/model/checkout_order_template.dart';
@@ -64,7 +66,6 @@ import 'package:conekta/src/model/customer_fiscal_entities_response_all_of.dart'
 import 'package:conekta/src/model/customer_info.dart';
 import 'package:conekta/src/model/customer_info_just_customer_id.dart';
 import 'package:conekta/src/model/customer_info_just_customer_id_response.dart';
-import 'package:conekta/src/model/customer_info_response.dart';
 import 'package:conekta/src/model/customer_payment_method_request.dart';
 import 'package:conekta/src/model/customer_payment_methods.dart';
 import 'package:conekta/src/model/customer_payment_methods_data.dart';
@@ -97,6 +98,7 @@ import 'package:conekta/src/model/error.dart';
 import 'package:conekta/src/model/error_all_of.dart';
 import 'package:conekta/src/model/event_response.dart';
 import 'package:conekta/src/model/events_resend_response.dart';
+import 'package:conekta/src/model/fiscal_entity_address.dart';
 import 'package:conekta/src/model/get_api_keys_response.dart';
 import 'package:conekta/src/model/get_api_keys_response_all_of.dart';
 import 'package:conekta/src/model/get_charges_response.dart';
@@ -125,7 +127,14 @@ import 'package:conekta/src/model/log_response.dart';
 import 'package:conekta/src/model/logs_response.dart';
 import 'package:conekta/src/model/logs_response_data.dart';
 import 'package:conekta/src/model/order_capture_request.dart';
+import 'package:conekta/src/model/order_customer_info_response.dart';
 import 'package:conekta/src/model/order_discount_lines_request.dart';
+import 'package:conekta/src/model/order_fiscal_entity_address_response.dart';
+import 'package:conekta/src/model/order_fiscal_entity_address_response_all_of.dart';
+import 'package:conekta/src/model/order_fiscal_entity_request.dart';
+import 'package:conekta/src/model/order_fiscal_entity_response.dart';
+import 'package:conekta/src/model/order_next_action_response.dart';
+import 'package:conekta/src/model/order_next_action_response_redirect_to_url.dart';
 import 'package:conekta/src/model/order_refund_request.dart';
 import 'package:conekta/src/model/order_request.dart';
 import 'package:conekta/src/model/order_request_customer_info.dart';
@@ -137,14 +146,12 @@ import 'package:conekta/src/model/order_response_customer_info.dart';
 import 'package:conekta/src/model/order_response_customer_info_all_of.dart';
 import 'package:conekta/src/model/order_response_discount_lines.dart';
 import 'package:conekta/src/model/order_response_discount_lines_all_of.dart';
-import 'package:conekta/src/model/order_response_fiscal_entity.dart';
-import 'package:conekta/src/model/order_response_fiscal_entity_address.dart';
-import 'package:conekta/src/model/order_response_fiscal_entity_address_all_of.dart';
 import 'package:conekta/src/model/order_response_products.dart';
 import 'package:conekta/src/model/order_response_products_all_of.dart';
 import 'package:conekta/src/model/order_response_shipping_contact.dart';
 import 'package:conekta/src/model/order_response_shipping_contact_all_of.dart';
 import 'package:conekta/src/model/order_tax_request.dart';
+import 'package:conekta/src/model/order_update_fiscal_entity_request.dart';
 import 'package:conekta/src/model/order_update_request.dart';
 import 'package:conekta/src/model/order_update_request_customer_info.dart';
 import 'package:conekta/src/model/orders_response.dart';
@@ -223,6 +230,7 @@ part 'serializers.g.dart';
   ApiKeyCreateResponseAllOf,$ApiKeyCreateResponseAllOf,
   ApiKeyRequest,
   ApiKeyResponse,$ApiKeyResponse,
+  ApiKeyResponseOnDelete,$ApiKeyResponseOnDelete,
   ApiKeyUpdateRequest,
   BalanceCommonField,
   BalanceResponse,
@@ -240,6 +248,7 @@ part 'serializers.g.dart';
   ChargeResponseRefunds,
   ChargeResponseRefundsAllOf,$ChargeResponseRefundsAllOf,
   ChargeResponseRefundsData,
+  ChargeUpdateRequest,
   ChargesDataResponse,
   Checkout,
   CheckoutOrderTemplate,
@@ -269,7 +278,6 @@ part 'serializers.g.dart';
   CustomerInfo,
   CustomerInfoJustCustomerId,
   CustomerInfoJustCustomerIdResponse,$CustomerInfoJustCustomerIdResponse,
-  CustomerInfoResponse,$CustomerInfoResponse,
   CustomerPaymentMethodRequest,$CustomerPaymentMethodRequest,
   CustomerPaymentMethods,$CustomerPaymentMethods,
   CustomerPaymentMethodsData,
@@ -302,6 +310,7 @@ part 'serializers.g.dart';
   ErrorAllOf,$ErrorAllOf,
   EventResponse,
   EventsResendResponse,
+  FiscalEntityAddress,$FiscalEntityAddress,
   GetApiKeysResponse,
   GetApiKeysResponseAllOf,$GetApiKeysResponseAllOf,
   GetChargesResponse,
@@ -330,7 +339,14 @@ part 'serializers.g.dart';
   LogsResponse,
   LogsResponseData,
   OrderCaptureRequest,
+  OrderCustomerInfoResponse,$OrderCustomerInfoResponse,
   OrderDiscountLinesRequest,$OrderDiscountLinesRequest,
+  OrderFiscalEntityAddressResponse,
+  OrderFiscalEntityAddressResponseAllOf,$OrderFiscalEntityAddressResponseAllOf,
+  OrderFiscalEntityRequest,
+  OrderFiscalEntityResponse,
+  OrderNextActionResponse,
+  OrderNextActionResponseRedirectToUrl,
   OrderRefundRequest,
   OrderRequest,
   OrderRequestCustomerInfo,
@@ -342,14 +358,12 @@ part 'serializers.g.dart';
   OrderResponseCustomerInfoAllOf,$OrderResponseCustomerInfoAllOf,
   OrderResponseDiscountLines,
   OrderResponseDiscountLinesAllOf,$OrderResponseDiscountLinesAllOf,
-  OrderResponseFiscalEntity,
-  OrderResponseFiscalEntityAddress,
-  OrderResponseFiscalEntityAddressAllOf,$OrderResponseFiscalEntityAddressAllOf,
   OrderResponseProducts,
   OrderResponseProductsAllOf,$OrderResponseProductsAllOf,
   OrderResponseShippingContact,
   OrderResponseShippingContactAllOf,$OrderResponseShippingContactAllOf,
   OrderTaxRequest,$OrderTaxRequest,
+  OrderUpdateFiscalEntityRequest,
   OrderUpdateRequest,
   OrderUpdateRequestCustomerInfo,
   OrdersResponse,$OrdersResponse,
@@ -424,6 +438,7 @@ part 'serializers.g.dart';
 Serializers serializers = (_$serializers.toBuilder()
       ..add(ApiKeyCreateResponseAllOf.serializer)
       ..add(ApiKeyResponse.serializer)
+      ..add(ApiKeyResponseOnDelete.serializer)
       ..add(ChargeDataPaymentMethodBankTransferResponse.serializer)
       ..add(ChargeDataPaymentMethodCardResponse.serializer)
       ..add(ChargeDataPaymentMethodCashResponse.serializer)
@@ -435,7 +450,6 @@ Serializers serializers = (_$serializers.toBuilder()
       ..add(CustomerFiscalEntitiesRequest.serializer)
       ..add(CustomerFiscalEntitiesResponseAllOf.serializer)
       ..add(CustomerInfoJustCustomerIdResponse.serializer)
-      ..add(CustomerInfoResponse.serializer)
       ..add(CustomerPaymentMethodRequest.serializer)
       ..add(CustomerPaymentMethods.serializer)
       ..add(CustomerResponseShippingContactsAllOf.serializer)
@@ -448,6 +462,7 @@ Serializers serializers = (_$serializers.toBuilder()
       ..add(DiscountLinesResponse.serializer)
       ..add(DiscountLinesResponseAllOf.serializer)
       ..add(ErrorAllOf.serializer)
+      ..add(FiscalEntityAddress.serializer)
       ..add(GetApiKeysResponseAllOf.serializer)
       ..add(GetChargesResponseAllOf.serializer)
       ..add(GetCompaniesResponseAllOf.serializer)
@@ -459,11 +474,12 @@ Serializers serializers = (_$serializers.toBuilder()
       ..add(GetTransfersResponseAllOf.serializer)
       ..add(GetWebhookKeysResponseAllOf.serializer)
       ..add(GetWebhooksResponseAllOf.serializer)
+      ..add(OrderCustomerInfoResponse.serializer)
       ..add(OrderDiscountLinesRequest.serializer)
+      ..add(OrderFiscalEntityAddressResponseAllOf.serializer)
       ..add(OrderResponseChargesAllOf.serializer)
       ..add(OrderResponseCustomerInfoAllOf.serializer)
       ..add(OrderResponseDiscountLinesAllOf.serializer)
-      ..add(OrderResponseFiscalEntityAddressAllOf.serializer)
       ..add(OrderResponseProductsAllOf.serializer)
       ..add(OrderResponseShippingContactAllOf.serializer)
       ..add(OrderTaxRequest.serializer)

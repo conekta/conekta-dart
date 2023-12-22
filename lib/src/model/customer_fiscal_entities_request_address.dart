@@ -27,7 +27,8 @@ abstract class CustomerFiscalEntitiesRequestAddress implements CustomerAddress, 
   factory CustomerFiscalEntitiesRequestAddress([void updates(CustomerFiscalEntitiesRequestAddressBuilder b)]) = _$CustomerFiscalEntitiesRequestAddress;
 
   @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(CustomerFiscalEntitiesRequestAddressBuilder b) => b;
+  static void _defaults(CustomerFiscalEntitiesRequestAddressBuilder b) => b
+      ..residential = false;
 
   @BuiltValueSerializer(custom: true)
   static Serializer<CustomerFiscalEntitiesRequestAddress> get serializer => _$CustomerFiscalEntitiesRequestAddressSerializer();
