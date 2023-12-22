@@ -18,7 +18,7 @@ For more information, please visit [https://github.com/conekta/openapi/issues](h
 To use the package from [pub.dev](https://pub.dev), please include the following in pubspec.yaml
 ```yaml
 dependencies:
-  conekta: 6.0.0
+  conekta: 6.0.0-beta.2
 ```
 
 ### Github
@@ -54,7 +54,7 @@ final String acceptLanguage = es; // String | Use for knowing which language to 
 try {
     final response = await api.createRuleBlacklist(createRiskRulesData, acceptLanguage);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print("Exception when calling AntifraudApi->createRuleBlacklist: $e\n");
 }
 
@@ -378,7 +378,7 @@ Class | Method | HTTP request | Description
 Authentication schemes defined for the API:
 ### bearerAuth
 
-- **Type**: HTTP basic authentication
+- **Type**: HTTP Bearer Token authentication
 
 
 ## Author

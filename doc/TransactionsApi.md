@@ -23,9 +23,6 @@ Get the details of a transaction
 ### Example
 ```dart
 import 'package:conekta/api.dart';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 
 final api = Conekta().getTransactionsApi();
 final String id = 6307a60c41de27127515a575; // String | Identifier of the resource
@@ -35,7 +32,7 @@ final String xChildCompanyId = 6441b6376b60c3a638da80af; // String | In the case
 try {
     final response = api.getTransaction(id, acceptLanguage, xChildCompanyId);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling TransactionsApi->getTransaction: $e\n');
 }
 ```
@@ -73,9 +70,6 @@ Get transaction details in the form of a list
 ### Example
 ```dart
 import 'package:conekta/api.dart';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 
 final api = Conekta().getTransactionsApi();
 final String acceptLanguage = es; // String | Use for knowing which language to use
@@ -91,7 +85,7 @@ final String currency = MXN; // String | currency of the object to be retrieved
 try {
     final response = api.getTransactions(acceptLanguage, xChildCompanyId, limit, next, previous, id, chargeId, type, currency);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling TransactionsApi->getTransactions: $e\n');
 }
 ```

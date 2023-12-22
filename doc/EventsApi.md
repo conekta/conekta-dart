@@ -24,9 +24,6 @@ Returns a single event
 ### Example
 ```dart
 import 'package:conekta/api.dart';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 
 final api = Conekta().getEventsApi();
 final String id = 6307a60c41de27127515a575; // String | Identifier of the resource
@@ -36,7 +33,7 @@ final String xChildCompanyId = 6441b6376b60c3a638da80af; // String | In the case
 try {
     final response = api.getEvent(id, acceptLanguage, xChildCompanyId);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling EventsApi->getEvent: $e\n');
 }
 ```
@@ -72,9 +69,6 @@ Get list of Events
 ### Example
 ```dart
 import 'package:conekta/api.dart';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 
 final api = Conekta().getEventsApi();
 final String acceptLanguage = es; // String | Use for knowing which language to use
@@ -87,7 +81,7 @@ final String previous = previous_example; // String | previous page
 try {
     final response = api.getEvents(acceptLanguage, xChildCompanyId, limit, search, next, previous);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling EventsApi->getEvents: $e\n');
 }
 ```
@@ -128,9 +122,6 @@ Try to send an event
 ### Example
 ```dart
 import 'package:conekta/api.dart';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 
 final api = Conekta().getEventsApi();
 final String eventId = 6463d6e35a4c3e001819e760; // String | event identifier
@@ -140,7 +131,7 @@ final String acceptLanguage = es; // String | Use for knowing which language to 
 try {
     final response = api.resendEvent(eventId, webhookLogId, acceptLanguage);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling EventsApi->resendEvent: $e\n');
 }
 ```

@@ -27,9 +27,6 @@ What we do at Conekta translates into events. For example, an event of interest 
 ### Example
 ```dart
 import 'package:conekta/api.dart';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 
 final api = Conekta().getWebhooksApi();
 final WebhookRequest webhookRequest = ; // WebhookRequest | requested field for webhook
@@ -38,7 +35,7 @@ final String acceptLanguage = es; // String | Use for knowing which language to 
 try {
     final response = api.createWebhook(webhookRequest, acceptLanguage);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling WebhooksApi->createWebhook: $e\n');
 }
 ```
@@ -73,9 +70,6 @@ Delete Webhook
 ### Example
 ```dart
 import 'package:conekta/api.dart';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 
 final api = Conekta().getWebhooksApi();
 final String id = 6307a60c41de27127515a575; // String | Identifier of the resource
@@ -84,7 +78,7 @@ final String acceptLanguage = es; // String | Use for knowing which language to 
 try {
     final response = api.deleteWebhook(id, acceptLanguage);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling WebhooksApi->deleteWebhook: $e\n');
 }
 ```
@@ -119,9 +113,6 @@ Get Webhook
 ### Example
 ```dart
 import 'package:conekta/api.dart';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 
 final api = Conekta().getWebhooksApi();
 final String id = 6307a60c41de27127515a575; // String | Identifier of the resource
@@ -131,7 +122,7 @@ final String xChildCompanyId = 6441b6376b60c3a638da80af; // String | In the case
 try {
     final response = api.getWebhook(id, acceptLanguage, xChildCompanyId);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling WebhooksApi->getWebhook: $e\n');
 }
 ```
@@ -169,9 +160,6 @@ Consume the list of webhooks you have, each environment supports 10 webhooks (Fo
 ### Example
 ```dart
 import 'package:conekta/api.dart';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 
 final api = Conekta().getWebhooksApi();
 final String acceptLanguage = es; // String | Use for knowing which language to use
@@ -184,7 +172,7 @@ final String previous = previous_example; // String | previous page
 try {
     final response = api.getWebhooks(acceptLanguage, xChildCompanyId, limit, search, next, previous);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling WebhooksApi->getWebhooks: $e\n');
 }
 ```
@@ -225,9 +213,6 @@ Send a webhook.ping event
 ### Example
 ```dart
 import 'package:conekta/api.dart';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 
 final api = Conekta().getWebhooksApi();
 final String id = 6307a60c41de27127515a575; // String | Identifier of the resource
@@ -236,7 +221,7 @@ final String acceptLanguage = es; // String | Use for knowing which language to 
 try {
     final response = api.testWebhook(id, acceptLanguage);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling WebhooksApi->testWebhook: $e\n');
 }
 ```
@@ -273,9 +258,6 @@ updates an existing webhook
 ### Example
 ```dart
 import 'package:conekta/api.dart';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 
 final api = Conekta().getWebhooksApi();
 final String id = 6307a60c41de27127515a575; // String | Identifier of the resource
@@ -286,7 +268,7 @@ final String xChildCompanyId = 6441b6376b60c3a638da80af; // String | In the case
 try {
     final response = api.updateWebhook(id, webhookUpdateRequest, acceptLanguage, xChildCompanyId);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling WebhooksApi->updateWebhook: $e\n');
 }
 ```

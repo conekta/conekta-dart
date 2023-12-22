@@ -50,20 +50,6 @@ class _$ApiKeyCreateResponseSerializer implements PrimitiveSerializer<ApiKeyCrea
     ApiKeyCreateResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    if (object.createdAt != null) {
-      yield r'created_at';
-      yield serializers.serialize(
-        object.createdAt,
-        specifiedType: const FullType(int),
-      );
-    }
-    if (object.deleted != null) {
-      yield r'deleted';
-      yield serializers.serialize(
-        object.deleted,
-        specifiedType: const FullType(bool),
-      );
-    }
     if (object.role != null) {
       yield r'role';
       yield serializers.serialize(
@@ -106,6 +92,27 @@ class _$ApiKeyCreateResponseSerializer implements PrimitiveSerializer<ApiKeyCrea
         specifiedType: const FullType.nullable(int),
       );
     }
+    if (object.authenticationToken != null) {
+      yield r'authentication_token';
+      yield serializers.serialize(
+        object.authenticationToken,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.createdAt != null) {
+      yield r'created_at';
+      yield serializers.serialize(
+        object.createdAt,
+        specifiedType: const FullType(int),
+      );
+    }
+    if (object.deleted != null) {
+      yield r'deleted';
+      yield serializers.serialize(
+        object.deleted,
+        specifiedType: const FullType(bool),
+      );
+    }
     if (object.id != null) {
       yield r'id';
       yield serializers.serialize(
@@ -124,13 +131,6 @@ class _$ApiKeyCreateResponseSerializer implements PrimitiveSerializer<ApiKeyCrea
       yield r'object';
       yield serializers.serialize(
         object.object,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.authenticationToken != null) {
-      yield r'authentication_token';
-      yield serializers.serialize(
-        object.authenticationToken,
         specifiedType: const FullType(String),
       );
     }
@@ -157,20 +157,6 @@ class _$ApiKeyCreateResponseSerializer implements PrimitiveSerializer<ApiKeyCrea
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
-        case r'created_at':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.createdAt = valueDes;
-          break;
-        case r'deleted':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(bool),
-          ) as bool;
-          result.deleted = valueDes;
-          break;
         case r'role':
           final valueDes = serializers.deserialize(
             value,
@@ -214,6 +200,27 @@ class _$ApiKeyCreateResponseSerializer implements PrimitiveSerializer<ApiKeyCrea
           if (valueDes == null) continue;
           result.deactivatedAt = valueDes;
           break;
+        case r'authentication_token':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.authenticationToken = valueDes;
+          break;
+        case r'created_at':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int;
+          result.createdAt = valueDes;
+          break;
+        case r'deleted':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(bool),
+          ) as bool;
+          result.deleted = valueDes;
+          break;
         case r'id':
           final valueDes = serializers.deserialize(
             value,
@@ -234,13 +241,6 @@ class _$ApiKeyCreateResponseSerializer implements PrimitiveSerializer<ApiKeyCrea
             specifiedType: const FullType(String),
           ) as String;
           result.object = valueDes;
-          break;
-        case r'authentication_token':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.authenticationToken = valueDes;
           break;
         default:
           unhandled.add(key);

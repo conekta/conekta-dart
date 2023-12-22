@@ -29,9 +29,6 @@ Cancel an order that has been previously created.
 ### Example
 ```dart
 import 'package:conekta/api.dart';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 
 final api = Conekta().getOrdersApi();
 final String id = 6307a60c41de27127515a575; // String | Identifier of the resource
@@ -41,7 +38,7 @@ final String xChildCompanyId = 6441b6376b60c3a638da80af; // String | In the case
 try {
     final response = api.cancelOrder(id, acceptLanguage, xChildCompanyId);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling OrdersApi->cancelOrder: $e\n');
 }
 ```
@@ -79,9 +76,6 @@ Create a new order.
 ### Example
 ```dart
 import 'package:conekta/api.dart';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 
 final api = Conekta().getOrdersApi();
 final OrderRequest orderRequest = ; // OrderRequest | requested field for order
@@ -91,7 +85,7 @@ final String xChildCompanyId = 6441b6376b60c3a638da80af; // String | In the case
 try {
     final response = api.createOrder(orderRequest, acceptLanguage, xChildCompanyId);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling OrdersApi->createOrder: $e\n');
 }
 ```
@@ -129,9 +123,6 @@ Info for a specific order
 ### Example
 ```dart
 import 'package:conekta/api.dart';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 
 final api = Conekta().getOrdersApi();
 final String id = 6307a60c41de27127515a575; // String | Identifier of the resource
@@ -141,7 +132,7 @@ final String xChildCompanyId = 6441b6376b60c3a638da80af; // String | In the case
 try {
     final response = api.getOrderById(id, acceptLanguage, xChildCompanyId);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling OrdersApi->getOrderById: $e\n');
 }
 ```
@@ -179,9 +170,6 @@ Get order details in the form of a list
 ### Example
 ```dart
 import 'package:conekta/api.dart';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 
 final api = Conekta().getOrdersApi();
 final String acceptLanguage = es; // String | Use for knowing which language to use
@@ -194,7 +182,7 @@ final String previous = previous_example; // String | previous page
 try {
     final response = api.getOrders(acceptLanguage, xChildCompanyId, limit, search, next, previous);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling OrdersApi->getOrders: $e\n');
 }
 ```
@@ -235,9 +223,6 @@ A refunded order describes the items, amount, and reason an order is being refun
 ### Example
 ```dart
 import 'package:conekta/api.dart';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 
 final api = Conekta().getOrdersApi();
 final String id = 6307a60c41de27127515a575; // String | Identifier of the resource
@@ -248,7 +233,7 @@ final String xChildCompanyId = 6441b6376b60c3a638da80af; // String | In the case
 try {
     final response = api.orderCancelRefund(id, refundId, acceptLanguage, xChildCompanyId);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling OrdersApi->orderCancelRefund: $e\n');
 }
 ```
@@ -287,9 +272,6 @@ A refunded order describes the items, amount, and reason an order is being refun
 ### Example
 ```dart
 import 'package:conekta/api.dart';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 
 final api = Conekta().getOrdersApi();
 final String id = 6307a60c41de27127515a575; // String | Identifier of the resource
@@ -300,7 +282,7 @@ final String xChildCompanyId = 6441b6376b60c3a638da80af; // String | In the case
 try {
     final response = api.orderRefund(id, orderRefundRequest, acceptLanguage, xChildCompanyId);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling OrdersApi->orderRefund: $e\n');
 }
 ```
@@ -339,9 +321,6 @@ Processes an order that has been previously authorized.
 ### Example
 ```dart
 import 'package:conekta/api.dart';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 
 final api = Conekta().getOrdersApi();
 final String id = 6307a60c41de27127515a575; // String | Identifier of the resource
@@ -352,7 +331,7 @@ final OrderCaptureRequest orderCaptureRequest = ; // OrderCaptureRequest | reque
 try {
     final response = api.ordersCreateCapture(id, acceptLanguage, xChildCompanyId, orderCaptureRequest);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling OrdersApi->ordersCreateCapture: $e\n');
 }
 ```
@@ -391,9 +370,6 @@ Update an existing Order.
 ### Example
 ```dart
 import 'package:conekta/api.dart';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 
 final api = Conekta().getOrdersApi();
 final String id = 6307a60c41de27127515a575; // String | Identifier of the resource
@@ -403,7 +379,7 @@ final String acceptLanguage = es; // String | Use for knowing which language to 
 try {
     final response = api.updateOrder(id, orderUpdateRequest, acceptLanguage);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling OrdersApi->updateOrder: $e\n');
 }
 ```

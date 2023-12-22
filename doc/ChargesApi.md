@@ -22,9 +22,6 @@ Get A List of Charges
 ### Example
 ```dart
 import 'package:conekta/api.dart';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 
 final api = Conekta().getChargesApi();
 final String acceptLanguage = es; // String | Use for knowing which language to use
@@ -37,7 +34,7 @@ final String previous = previous_example; // String | previous page
 try {
     final response = api.getCharges(acceptLanguage, xChildCompanyId, limit, search, next, previous);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling ChargesApi->getCharges: $e\n');
 }
 ```
@@ -78,9 +75,6 @@ Create charge for an existing orden
 ### Example
 ```dart
 import 'package:conekta/api.dart';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 
 final api = Conekta().getChargesApi();
 final String id = 6307a60c41de27127515a575; // String | Identifier of the resource
@@ -91,7 +85,7 @@ final String xChildCompanyId = 6441b6376b60c3a638da80af; // String | In the case
 try {
     final response = api.ordersCreateCharge(id, chargeRequest, acceptLanguage, xChildCompanyId);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling ChargesApi->ordersCreateCharge: $e\n');
 }
 ```
@@ -128,9 +122,6 @@ Update a charge
 ### Example
 ```dart
 import 'package:conekta/api.dart';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 
 final api = Conekta().getChargesApi();
 final String id = 6307a60c41de27127515a575; // String | Identifier of the resource
@@ -141,7 +132,7 @@ final String xChildCompanyId = 6441b6376b60c3a638da80af; // String | In the case
 try {
     final response = api.updateCharge(id, chargeUpdateRequest, acceptLanguage, xChildCompanyId);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling ChargesApi->updateCharge: $e\n');
 }
 ```

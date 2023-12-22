@@ -7,6 +7,7 @@ import 'dart:async';
 import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
+import 'package:conekta/src/api_util.dart';
 import 'package:conekta/src/model/error.dart';
 import 'package:conekta/src/model/subscription_events_response.dart';
 import 'package:conekta/src/model/subscription_request.dart';
@@ -65,7 +66,7 @@ class SubscriptionsApi {
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/6.0.0/6.0.0',
+        r'User-Agent': r'Conekta/v2 DartBindings/6.0.0-beta.2',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
@@ -171,7 +172,7 @@ class SubscriptionsApi {
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/6.0.0/6.0.0',
+        r'User-Agent': r'Conekta/v2 DartBindings/6.0.0-beta.2',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
@@ -294,7 +295,7 @@ class SubscriptionsApi {
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/6.0.0/6.0.0',
+        r'User-Agent': r'Conekta/v2 DartBindings/6.0.0-beta.2',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
@@ -395,7 +396,7 @@ class SubscriptionsApi {
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/6.0.0/6.0.0',
+        r'User-Agent': r'Conekta/v2 DartBindings/6.0.0-beta.2',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (localVarAccept != null) r'Accept': localVarAccept,
         if (localVarContentType != null) r'Content-Type': localVarContentType,
@@ -497,7 +498,7 @@ class SubscriptionsApi {
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/6.0.0/6.0.0',
+        r'User-Agent': r'Conekta/v2 DartBindings/6.0.0-beta.2',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
@@ -600,7 +601,7 @@ class SubscriptionsApi {
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/6.0.0/6.0.0',
+        r'User-Agent': r'Conekta/v2 DartBindings/6.0.0-beta.2',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
@@ -706,7 +707,7 @@ class SubscriptionsApi {
     final _options = Options(
       method: r'PUT',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/6.0.0/6.0.0',
+        r'User-Agent': r'Conekta/v2 DartBindings/6.0.0-beta.2',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,

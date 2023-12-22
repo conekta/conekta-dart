@@ -26,9 +26,6 @@ Create discount lines for an existing orden
 ### Example
 ```dart
 import 'package:conekta/api.dart';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 
 final api = Conekta().getDiscountsApi();
 final String id = 6307a60c41de27127515a575; // String | Identifier of the resource
@@ -39,7 +36,7 @@ final String xChildCompanyId = 6441b6376b60c3a638da80af; // String | In the case
 try {
     final response = api.ordersCreateDiscountLine(id, orderDiscountLinesRequest, acceptLanguage, xChildCompanyId);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling DiscountsApi->ordersCreateDiscountLine: $e\n');
 }
 ```
@@ -78,9 +75,6 @@ Delete an existing discount lines for an existing orden
 ### Example
 ```dart
 import 'package:conekta/api.dart';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 
 final api = Conekta().getDiscountsApi();
 final String id = 6307a60c41de27127515a575; // String | Identifier of the resource
@@ -91,7 +85,7 @@ final String xChildCompanyId = 6441b6376b60c3a638da80af; // String | In the case
 try {
     final response = api.ordersDeleteDiscountLines(id, discountLinesId, acceptLanguage, xChildCompanyId);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling DiscountsApi->ordersDeleteDiscountLines: $e\n');
 }
 ```
@@ -130,9 +124,6 @@ Get an existing discount lines for an existing orden
 ### Example
 ```dart
 import 'package:conekta/api.dart';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 
 final api = Conekta().getDiscountsApi();
 final String id = 6307a60c41de27127515a575; // String | Identifier of the resource
@@ -143,7 +134,7 @@ final String xChildCompanyId = 6441b6376b60c3a638da80af; // String | In the case
 try {
     final response = api.ordersGetDiscountLine(id, discountLinesId, acceptLanguage, xChildCompanyId);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling DiscountsApi->ordersGetDiscountLine: $e\n');
 }
 ```
@@ -182,9 +173,6 @@ Get discount lines for an existing orden
 ### Example
 ```dart
 import 'package:conekta/api.dart';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 
 final api = Conekta().getDiscountsApi();
 final String id = 6307a60c41de27127515a575; // String | Identifier of the resource
@@ -198,7 +186,7 @@ final String previous = previous_example; // String | previous page
 try {
     final response = api.ordersGetDiscountLines(id, acceptLanguage, xChildCompanyId, limit, search, next, previous);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling DiscountsApi->ordersGetDiscountLines: $e\n');
 }
 ```
@@ -240,9 +228,6 @@ Update an existing discount lines for an existing orden
 ### Example
 ```dart
 import 'package:conekta/api.dart';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 
 final api = Conekta().getDiscountsApi();
 final String id = 6307a60c41de27127515a575; // String | Identifier of the resource
@@ -254,7 +239,7 @@ final String xChildCompanyId = 6441b6376b60c3a638da80af; // String | In the case
 try {
     final response = api.ordersUpdateDiscountLines(id, discountLinesId, updateOrderDiscountLinesRequest, acceptLanguage, xChildCompanyId);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling DiscountsApi->ordersUpdateDiscountLines: $e\n');
 }
 ```

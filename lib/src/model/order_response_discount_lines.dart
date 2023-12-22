@@ -43,6 +43,11 @@ class _$OrderResponseDiscountLinesSerializer implements PrimitiveSerializer<Orde
     OrderResponseDiscountLines object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
+    yield r'has_more';
+    yield serializers.serialize(
+      object.hasMore,
+      specifiedType: const FullType(bool),
+    );
     if (object.data != null) {
       yield r'data';
       yield serializers.serialize(
@@ -50,11 +55,6 @@ class _$OrderResponseDiscountLinesSerializer implements PrimitiveSerializer<Orde
         specifiedType: const FullType(BuiltList, [FullType(DiscountLinesDataResponse)]),
       );
     }
-    yield r'has_more';
-    yield serializers.serialize(
-      object.hasMore,
-      specifiedType: const FullType(bool),
-    );
     yield r'object';
     yield serializers.serialize(
       object.object,
@@ -83,19 +83,19 @@ class _$OrderResponseDiscountLinesSerializer implements PrimitiveSerializer<Orde
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
-        case r'data':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(BuiltList, [FullType(DiscountLinesDataResponse)]),
-          ) as BuiltList<DiscountLinesDataResponse>;
-          result.data.replace(valueDes);
-          break;
         case r'has_more':
           final valueDes = serializers.deserialize(
             value,
             specifiedType: const FullType(bool),
           ) as bool;
           result.hasMore = valueDes;
+          break;
+        case r'data':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(BuiltList, [FullType(DiscountLinesDataResponse)]),
+          ) as BuiltList<DiscountLinesDataResponse>;
+          result.data.replace(valueDes);
           break;
         case r'object':
           final valueDes = serializers.deserialize(

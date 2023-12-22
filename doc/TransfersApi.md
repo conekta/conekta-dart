@@ -23,9 +23,6 @@ Get the details of a Transfer
 ### Example
 ```dart
 import 'package:conekta/api.dart';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 
 final api = Conekta().getTransfersApi();
 final String id = 6307a60c41de27127515a575; // String | Identifier of the resource
@@ -35,7 +32,7 @@ final String xChildCompanyId = 6441b6376b60c3a638da80af; // String | In the case
 try {
     final response = api.getTransfer(id, acceptLanguage, xChildCompanyId);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling TransfersApi->getTransfer: $e\n');
 }
 ```
@@ -73,9 +70,6 @@ Get transfers details in the form of a list
 ### Example
 ```dart
 import 'package:conekta/api.dart';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 
 final api = Conekta().getTransfersApi();
 final String acceptLanguage = es; // String | Use for knowing which language to use
@@ -88,7 +82,7 @@ final String previous = previous_example; // String | previous page
 try {
     final response = api.getTransfers(acceptLanguage, xChildCompanyId, limit, search, next, previous);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling TransfersApi->getTransfers: $e\n');
 }
 ```

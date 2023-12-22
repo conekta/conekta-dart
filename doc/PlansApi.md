@@ -26,9 +26,6 @@ Create a new plan for an existing order
 ### Example
 ```dart
 import 'package:conekta/api.dart';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 
 final api = Conekta().getPlansApi();
 final PlanRequest planRequest = ; // PlanRequest | requested field for plan
@@ -38,7 +35,7 @@ final String xChildCompanyId = 6441b6376b60c3a638da80af; // String | In the case
 try {
     final response = api.createPlan(planRequest, acceptLanguage, xChildCompanyId);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling PlansApi->createPlan: $e\n');
 }
 ```
@@ -74,9 +71,6 @@ Delete Plan
 ### Example
 ```dart
 import 'package:conekta/api.dart';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 
 final api = Conekta().getPlansApi();
 final String id = 6307a60c41de27127515a575; // String | Identifier of the resource
@@ -85,7 +79,7 @@ final String acceptLanguage = es; // String | Use for knowing which language to 
 try {
     final response = api.deletePlan(id, acceptLanguage);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling PlansApi->deletePlan: $e\n');
 }
 ```
@@ -120,9 +114,6 @@ Get Plan
 ### Example
 ```dart
 import 'package:conekta/api.dart';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 
 final api = Conekta().getPlansApi();
 final String id = 6307a60c41de27127515a575; // String | Identifier of the resource
@@ -132,7 +123,7 @@ final String xChildCompanyId = 6441b6376b60c3a638da80af; // String | In the case
 try {
     final response = api.getPlan(id, acceptLanguage, xChildCompanyId);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling PlansApi->getPlan: $e\n');
 }
 ```
@@ -168,9 +159,6 @@ Get A List of Plans
 ### Example
 ```dart
 import 'package:conekta/api.dart';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 
 final api = Conekta().getPlansApi();
 final String acceptLanguage = es; // String | Use for knowing which language to use
@@ -183,7 +171,7 @@ final String previous = previous_example; // String | previous page
 try {
     final response = api.getPlans(acceptLanguage, xChildCompanyId, limit, search, next, previous);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling PlansApi->getPlans: $e\n');
 }
 ```
@@ -222,9 +210,6 @@ Update Plan
 ### Example
 ```dart
 import 'package:conekta/api.dart';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 
 final api = Conekta().getPlansApi();
 final String id = 6307a60c41de27127515a575; // String | Identifier of the resource
@@ -235,7 +220,7 @@ final String xChildCompanyId = 6441b6376b60c3a638da80af; // String | In the case
 try {
     final response = api.updatePlan(id, planUpdateRequest, acceptLanguage, xChildCompanyId);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling PlansApi->updatePlan: $e\n');
 }
 ```

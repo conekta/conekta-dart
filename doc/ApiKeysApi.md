@@ -26,9 +26,6 @@ Create a api key
 ### Example
 ```dart
 import 'package:conekta/api.dart';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 
 final api = Conekta().getApiKeysApi();
 final ApiKeyRequest apiKeyRequest = ; // ApiKeyRequest | requested field for a api keys
@@ -38,7 +35,7 @@ final String xChildCompanyId = 6441b6376b60c3a638da80af; // String | In the case
 try {
     final response = api.createApiKey(apiKeyRequest, acceptLanguage, xChildCompanyId);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling ApiKeysApi->createApiKey: $e\n');
 }
 ```
@@ -76,9 +73,6 @@ Deletes a api key that corresponds to a api key ID
 ### Example
 ```dart
 import 'package:conekta/api.dart';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 
 final api = Conekta().getApiKeysApi();
 final String id = 6307a60c41de27127515a575; // String | Identifier of the resource
@@ -87,7 +81,7 @@ final String acceptLanguage = es; // String | Use for knowing which language to 
 try {
     final response = api.deleteApiKey(id, acceptLanguage);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling ApiKeysApi->deleteApiKey: $e\n');
 }
 ```
@@ -124,9 +118,6 @@ Gets a api key that corresponds to a api key ID
 ### Example
 ```dart
 import 'package:conekta/api.dart';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 
 final api = Conekta().getApiKeysApi();
 final String id = 6307a60c41de27127515a575; // String | Identifier of the resource
@@ -136,7 +127,7 @@ final String xChildCompanyId = 6441b6376b60c3a638da80af; // String | In the case
 try {
     final response = api.getApiKey(id, acceptLanguage, xChildCompanyId);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling ApiKeysApi->getApiKey: $e\n');
 }
 ```
@@ -174,9 +165,6 @@ Consume the list of api keys you have
 ### Example
 ```dart
 import 'package:conekta/api.dart';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 
 final api = Conekta().getApiKeysApi();
 final String acceptLanguage = es; // String | Use for knowing which language to use
@@ -189,7 +177,7 @@ final String search = search_example; // String | General search, e.g. by id, de
 try {
     final response = api.getApiKeys(acceptLanguage, xChildCompanyId, limit, next, previous, search);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling ApiKeysApi->getApiKeys: $e\n');
 }
 ```
@@ -230,9 +218,6 @@ Update an existing api key
 ### Example
 ```dart
 import 'package:conekta/api.dart';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 
 final api = Conekta().getApiKeysApi();
 final String id = 6307a60c41de27127515a575; // String | Identifier of the resource
@@ -242,7 +227,7 @@ final ApiKeyUpdateRequest apiKeyUpdateRequest = ; // ApiKeyUpdateRequest |
 try {
     final response = api.updateApiKey(id, acceptLanguage, apiKeyUpdateRequest);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling ApiKeysApi->updateApiKey: $e\n');
 }
 ```

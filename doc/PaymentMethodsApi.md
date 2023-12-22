@@ -25,20 +25,17 @@ Create a payment method for a customer.
 ### Example
 ```dart
 import 'package:conekta/api.dart';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 
 final api = Conekta().getPaymentMethodsApi();
 final String id = 6307a60c41de27127515a575; // String | Identifier of the resource
-final CreateCustomerPaymentMethodsRequest createCustomerPaymentMethodsRequest = {type=card, token_id=tok_test_visa_4242}; // CreateCustomerPaymentMethodsRequest | requested field for customer payment methods
+final CreateCustomerPaymentMethodsRequest createCustomerPaymentMethodsRequest = {"type":"card","token_id":"tok_test_visa_4242"}; // CreateCustomerPaymentMethodsRequest | requested field for customer payment methods
 final String acceptLanguage = es; // String | Use for knowing which language to use
 final String xChildCompanyId = 6441b6376b60c3a638da80af; // String | In the case of a holding company, the company id of the child company to which will process the request.
 
 try {
     final response = api.createCustomerPaymentMethods(id, createCustomerPaymentMethodsRequest, acceptLanguage, xChildCompanyId);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling PaymentMethodsApi->createCustomerPaymentMethods: $e\n');
 }
 ```
@@ -77,9 +74,6 @@ Delete an existing payment method
 ### Example
 ```dart
 import 'package:conekta/api.dart';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 
 final api = Conekta().getPaymentMethodsApi();
 final String id = 6307a60c41de27127515a575; // String | Identifier of the resource
@@ -90,7 +84,7 @@ final String xChildCompanyId = 6441b6376b60c3a638da80af; // String | In the case
 try {
     final response = api.deleteCustomerPaymentMethods(id, paymentMethodId, acceptLanguage, xChildCompanyId);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling PaymentMethodsApi->deleteCustomerPaymentMethods: $e\n');
 }
 ```
@@ -129,9 +123,6 @@ Get a list of Payment Methods
 ### Example
 ```dart
 import 'package:conekta/api.dart';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 
 final api = Conekta().getPaymentMethodsApi();
 final String id = 6307a60c41de27127515a575; // String | Identifier of the resource
@@ -145,7 +136,7 @@ final String search = search_example; // String | General order search, e.g. by 
 try {
     final response = api.getCustomerPaymentMethods(id, acceptLanguage, xChildCompanyId, limit, next, previous, search);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling PaymentMethodsApi->getCustomerPaymentMethods: $e\n');
 }
 ```
@@ -187,9 +178,6 @@ Gets a payment Method that corresponds to a customer ID.
 ### Example
 ```dart
 import 'package:conekta/api.dart';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 
 final api = Conekta().getPaymentMethodsApi();
 final String id = 6307a60c41de27127515a575; // String | Identifier of the resource
@@ -201,7 +189,7 @@ final String xChildCompanyId = 6441b6376b60c3a638da80af; // String | In the case
 try {
     final response = api.updateCustomerPaymentMethods(id, paymentMethodId, updatePaymentMethods, acceptLanguage, xChildCompanyId);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling PaymentMethodsApi->updateCustomerPaymentMethods: $e\n');
 }
 ```

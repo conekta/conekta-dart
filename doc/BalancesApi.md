@@ -22,9 +22,6 @@ Get a company's balance
 ### Example
 ```dart
 import 'package:conekta/api.dart';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 
 final api = Conekta().getBalancesApi();
 final String acceptLanguage = es; // String | Use for knowing which language to use
@@ -32,7 +29,7 @@ final String acceptLanguage = es; // String | Use for knowing which language to 
 try {
     final response = api.getBalance(acceptLanguage);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling BalancesApi->getBalance: $e\n');
 }
 ```
