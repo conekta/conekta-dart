@@ -6,18 +6,23 @@
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
-part 'customer_info_response.g.dart';
+part 'order_customer_info_response.g.dart';
 
-/// CustomerInfoResponse
+/// OrderCustomerInfoResponse
 ///
 /// Properties:
+/// * [customerCustomReference] - Custom reference
 /// * [name] 
 /// * [email] 
 /// * [phone] 
 /// * [corporate] 
 /// * [object] 
 @BuiltValue(instantiable: false)
-abstract class CustomerInfoResponse  {
+abstract class OrderCustomerInfoResponse  {
+  /// Custom reference
+  @BuiltValueField(wireName: r'customer_custom_reference')
+  String? get customerCustomReference;
+
   @BuiltValueField(wireName: r'name')
   String? get name;
 
@@ -34,21 +39,28 @@ abstract class CustomerInfoResponse  {
   String? get object;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<CustomerInfoResponse> get serializer => _$CustomerInfoResponseSerializer();
+  static Serializer<OrderCustomerInfoResponse> get serializer => _$OrderCustomerInfoResponseSerializer();
 }
 
-class _$CustomerInfoResponseSerializer implements PrimitiveSerializer<CustomerInfoResponse> {
+class _$OrderCustomerInfoResponseSerializer implements PrimitiveSerializer<OrderCustomerInfoResponse> {
   @override
-  final Iterable<Type> types = const [CustomerInfoResponse];
+  final Iterable<Type> types = const [OrderCustomerInfoResponse];
 
   @override
-  final String wireName = r'CustomerInfoResponse';
+  final String wireName = r'OrderCustomerInfoResponse';
 
   Iterable<Object?> _serializeProperties(
     Serializers serializers,
-    CustomerInfoResponse object, {
+    OrderCustomerInfoResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
+    if (object.customerCustomReference != null) {
+      yield r'customer_custom_reference';
+      yield serializers.serialize(
+        object.customerCustomReference,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
     if (object.name != null) {
       yield r'name';
       yield serializers.serialize(
@@ -89,50 +101,50 @@ class _$CustomerInfoResponseSerializer implements PrimitiveSerializer<CustomerIn
   @override
   Object serialize(
     Serializers serializers,
-    CustomerInfoResponse object, {
+    OrderCustomerInfoResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
     return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
   }
 
   @override
-  CustomerInfoResponse deserialize(
+  OrderCustomerInfoResponse deserialize(
     Serializers serializers,
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return serializers.deserialize(serialized, specifiedType: FullType($CustomerInfoResponse)) as $CustomerInfoResponse;
+    return serializers.deserialize(serialized, specifiedType: FullType($OrderCustomerInfoResponse)) as $OrderCustomerInfoResponse;
   }
 }
 
-/// a concrete implementation of [CustomerInfoResponse], since [CustomerInfoResponse] is not instantiable
+/// a concrete implementation of [OrderCustomerInfoResponse], since [OrderCustomerInfoResponse] is not instantiable
 @BuiltValue(instantiable: true)
-abstract class $CustomerInfoResponse implements CustomerInfoResponse, Built<$CustomerInfoResponse, $CustomerInfoResponseBuilder> {
-  $CustomerInfoResponse._();
+abstract class $OrderCustomerInfoResponse implements OrderCustomerInfoResponse, Built<$OrderCustomerInfoResponse, $OrderCustomerInfoResponseBuilder> {
+  $OrderCustomerInfoResponse._();
 
-  factory $CustomerInfoResponse([void Function($CustomerInfoResponseBuilder)? updates]) = _$$CustomerInfoResponse;
+  factory $OrderCustomerInfoResponse([void Function($OrderCustomerInfoResponseBuilder)? updates]) = _$$OrderCustomerInfoResponse;
 
   @BuiltValueHook(initializeBuilder: true)
-  static void _defaults($CustomerInfoResponseBuilder b) => b;
+  static void _defaults($OrderCustomerInfoResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<$CustomerInfoResponse> get serializer => _$$CustomerInfoResponseSerializer();
+  static Serializer<$OrderCustomerInfoResponse> get serializer => _$$OrderCustomerInfoResponseSerializer();
 }
 
-class _$$CustomerInfoResponseSerializer implements PrimitiveSerializer<$CustomerInfoResponse> {
+class _$$OrderCustomerInfoResponseSerializer implements PrimitiveSerializer<$OrderCustomerInfoResponse> {
   @override
-  final Iterable<Type> types = const [$CustomerInfoResponse, _$$CustomerInfoResponse];
+  final Iterable<Type> types = const [$OrderCustomerInfoResponse, _$$OrderCustomerInfoResponse];
 
   @override
-  final String wireName = r'$CustomerInfoResponse';
+  final String wireName = r'$OrderCustomerInfoResponse';
 
   @override
   Object serialize(
     Serializers serializers,
-    $CustomerInfoResponse object, {
+    $OrderCustomerInfoResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return serializers.serialize(object, specifiedType: FullType(CustomerInfoResponse))!;
+    return serializers.serialize(object, specifiedType: FullType(OrderCustomerInfoResponse))!;
   }
 
   void _deserializeProperties(
@@ -140,13 +152,21 @@ class _$$CustomerInfoResponseSerializer implements PrimitiveSerializer<$Customer
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
     required List<Object?> serializedList,
-    required CustomerInfoResponseBuilder result,
+    required OrderCustomerInfoResponseBuilder result,
     required List<Object?> unhandled,
   }) {
     for (var i = 0; i < serializedList.length; i += 2) {
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
+        case r'customer_custom_reference':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.customerCustomReference = valueDes;
+          break;
         case r'name':
           final valueDes = serializers.deserialize(
             value,
@@ -191,12 +211,12 @@ class _$$CustomerInfoResponseSerializer implements PrimitiveSerializer<$Customer
   }
 
   @override
-  $CustomerInfoResponse deserialize(
+  $OrderCustomerInfoResponse deserialize(
     Serializers serializers,
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final result = $CustomerInfoResponseBuilder();
+    final result = $OrderCustomerInfoResponseBuilder();
     final serializedList = (serialized as Iterable<Object?>).toList();
     final unhandled = <Object?>[];
     _deserializeProperties(

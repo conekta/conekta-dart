@@ -26,7 +26,7 @@ class _$OrderResponse extends OrderResponse {
   @override
   final OrderResponseDiscountLines? discountLines;
   @override
-  final OrderResponseFiscalEntity? fiscalEntity;
+  final OrderFiscalEntityResponse? fiscalEntity;
   @override
   final String? id;
   @override
@@ -38,9 +38,13 @@ class _$OrderResponse extends OrderResponse {
   @override
   final BuiltMap<String, JsonObject?>? metadata;
   @override
+  final OrderNextActionResponse? nextAction;
+  @override
   final String? object;
   @override
   final String? paymentStatus;
+  @override
+  final String? processingMode;
   @override
   final OrderResponseShippingContact? shippingContact;
   @override
@@ -65,8 +69,10 @@ class _$OrderResponse extends OrderResponse {
       this.lineItems,
       this.livemode,
       this.metadata,
+      this.nextAction,
       this.object,
       this.paymentStatus,
+      this.processingMode,
       this.shippingContact,
       this.updatedAt})
       : super._();
@@ -97,58 +103,40 @@ class _$OrderResponse extends OrderResponse {
         lineItems == other.lineItems &&
         livemode == other.livemode &&
         metadata == other.metadata &&
+        nextAction == other.nextAction &&
         object == other.object &&
         paymentStatus == other.paymentStatus &&
+        processingMode == other.processingMode &&
         shippingContact == other.shippingContact &&
         updatedAt == other.updatedAt;
   }
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc(
-            $jc(
-                $jc(
-                    $jc(
-                        $jc(
-                            $jc(
-                                $jc(
-                                    $jc(
-                                        $jc(
-                                            $jc(
-                                                $jc(
-                                                    $jc(
-                                                        $jc(
-                                                            $jc(
-                                                                $jc(
-                                                                    $jc(
-                                                                        $jc(
-                                                                            $jc(
-                                                                                0,
-                                                                                amount
-                                                                                    .hashCode),
-                                                                            amountRefunded
-                                                                                .hashCode),
-                                                                        channel
-                                                                            .hashCode),
-                                                                    charges
-                                                                        .hashCode),
-                                                                checkout
-                                                                    .hashCode),
-                                                            createdAt.hashCode),
-                                                        currency.hashCode),
-                                                    customerInfo.hashCode),
-                                                discountLines.hashCode),
-                                            fiscalEntity.hashCode),
-                                        id.hashCode),
-                                    isRefundable.hashCode),
-                                lineItems.hashCode),
-                            livemode.hashCode),
-                        metadata.hashCode),
-                    object.hashCode),
-                paymentStatus.hashCode),
-            shippingContact.hashCode),
-        updatedAt.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, amount.hashCode);
+    _$hash = $jc(_$hash, amountRefunded.hashCode);
+    _$hash = $jc(_$hash, channel.hashCode);
+    _$hash = $jc(_$hash, charges.hashCode);
+    _$hash = $jc(_$hash, checkout.hashCode);
+    _$hash = $jc(_$hash, createdAt.hashCode);
+    _$hash = $jc(_$hash, currency.hashCode);
+    _$hash = $jc(_$hash, customerInfo.hashCode);
+    _$hash = $jc(_$hash, discountLines.hashCode);
+    _$hash = $jc(_$hash, fiscalEntity.hashCode);
+    _$hash = $jc(_$hash, id.hashCode);
+    _$hash = $jc(_$hash, isRefundable.hashCode);
+    _$hash = $jc(_$hash, lineItems.hashCode);
+    _$hash = $jc(_$hash, livemode.hashCode);
+    _$hash = $jc(_$hash, metadata.hashCode);
+    _$hash = $jc(_$hash, nextAction.hashCode);
+    _$hash = $jc(_$hash, object.hashCode);
+    _$hash = $jc(_$hash, paymentStatus.hashCode);
+    _$hash = $jc(_$hash, processingMode.hashCode);
+    _$hash = $jc(_$hash, shippingContact.hashCode);
+    _$hash = $jc(_$hash, updatedAt.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -169,8 +157,10 @@ class _$OrderResponse extends OrderResponse {
           ..add('lineItems', lineItems)
           ..add('livemode', livemode)
           ..add('metadata', metadata)
+          ..add('nextAction', nextAction)
           ..add('object', object)
           ..add('paymentStatus', paymentStatus)
+          ..add('processingMode', processingMode)
           ..add('shippingContact', shippingContact)
           ..add('updatedAt', updatedAt))
         .toString();
@@ -228,10 +218,10 @@ class OrderResponseBuilder
   set discountLines(OrderResponseDiscountLinesBuilder? discountLines) =>
       _$this._discountLines = discountLines;
 
-  OrderResponseFiscalEntityBuilder? _fiscalEntity;
-  OrderResponseFiscalEntityBuilder get fiscalEntity =>
-      _$this._fiscalEntity ??= new OrderResponseFiscalEntityBuilder();
-  set fiscalEntity(OrderResponseFiscalEntityBuilder? fiscalEntity) =>
+  OrderFiscalEntityResponseBuilder? _fiscalEntity;
+  OrderFiscalEntityResponseBuilder get fiscalEntity =>
+      _$this._fiscalEntity ??= new OrderFiscalEntityResponseBuilder();
+  set fiscalEntity(OrderFiscalEntityResponseBuilder? fiscalEntity) =>
       _$this._fiscalEntity = fiscalEntity;
 
   String? _id;
@@ -258,6 +248,12 @@ class OrderResponseBuilder
   set metadata(MapBuilder<String, JsonObject?>? metadata) =>
       _$this._metadata = metadata;
 
+  OrderNextActionResponseBuilder? _nextAction;
+  OrderNextActionResponseBuilder get nextAction =>
+      _$this._nextAction ??= new OrderNextActionResponseBuilder();
+  set nextAction(OrderNextActionResponseBuilder? nextAction) =>
+      _$this._nextAction = nextAction;
+
   String? _object;
   String? get object => _$this._object;
   set object(String? object) => _$this._object = object;
@@ -266,6 +262,11 @@ class OrderResponseBuilder
   String? get paymentStatus => _$this._paymentStatus;
   set paymentStatus(String? paymentStatus) =>
       _$this._paymentStatus = paymentStatus;
+
+  String? _processingMode;
+  String? get processingMode => _$this._processingMode;
+  set processingMode(String? processingMode) =>
+      _$this._processingMode = processingMode;
 
   OrderResponseShippingContactBuilder? _shippingContact;
   OrderResponseShippingContactBuilder get shippingContact =>
@@ -299,8 +300,10 @@ class OrderResponseBuilder
       _lineItems = $v.lineItems?.toBuilder();
       _livemode = $v.livemode;
       _metadata = $v.metadata?.toBuilder();
+      _nextAction = $v.nextAction?.toBuilder();
       _object = $v.object;
       _paymentStatus = $v.paymentStatus;
+      _processingMode = $v.processingMode;
       _shippingContact = $v.shippingContact?.toBuilder();
       _updatedAt = $v.updatedAt;
       _$v = null;
@@ -342,8 +345,10 @@ class OrderResponseBuilder
               lineItems: _lineItems?.build(),
               livemode: livemode,
               metadata: _metadata?.build(),
+              nextAction: _nextAction?.build(),
               object: object,
               paymentStatus: paymentStatus,
+              processingMode: processingMode,
               shippingContact: _shippingContact?.build(),
               updatedAt: updatedAt);
     } catch (_) {
@@ -368,6 +373,8 @@ class OrderResponseBuilder
 
         _$failedField = 'metadata';
         _metadata?.build();
+        _$failedField = 'nextAction';
+        _nextAction?.build();
 
         _$failedField = 'shippingContact';
         _shippingContact?.build();
@@ -382,4 +389,4 @@ class OrderResponseBuilder
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint

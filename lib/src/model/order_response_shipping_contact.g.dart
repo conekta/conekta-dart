@@ -24,6 +24,8 @@ class _$OrderResponseShippingContact extends OrderResponseShippingContact {
   @override
   final int? createdAt;
   @override
+  final BuiltMap<String, JsonObject?>? metadata;
+  @override
   final String? object;
   @override
   final bool? deleted;
@@ -41,6 +43,7 @@ class _$OrderResponseShippingContact extends OrderResponseShippingContact {
       this.default_,
       this.id,
       this.createdAt,
+      this.metadata,
       this.object,
       this.deleted})
       : super._();
@@ -66,30 +69,27 @@ class _$OrderResponseShippingContact extends OrderResponseShippingContact {
         default_ == other.default_ &&
         id == other.id &&
         createdAt == other.createdAt &&
+        metadata == other.metadata &&
         object == other.object &&
         deleted == other.deleted;
   }
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc(
-            $jc(
-                $jc(
-                    $jc(
-                        $jc(
-                            $jc(
-                                $jc(
-                                    $jc($jc(0, phone.hashCode),
-                                        receiver.hashCode),
-                                    betweenStreets.hashCode),
-                                address.hashCode),
-                            parentId.hashCode),
-                        default_.hashCode),
-                    id.hashCode),
-                createdAt.hashCode),
-            object.hashCode),
-        deleted.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, phone.hashCode);
+    _$hash = $jc(_$hash, receiver.hashCode);
+    _$hash = $jc(_$hash, betweenStreets.hashCode);
+    _$hash = $jc(_$hash, address.hashCode);
+    _$hash = $jc(_$hash, parentId.hashCode);
+    _$hash = $jc(_$hash, default_.hashCode);
+    _$hash = $jc(_$hash, id.hashCode);
+    _$hash = $jc(_$hash, createdAt.hashCode);
+    _$hash = $jc(_$hash, metadata.hashCode);
+    _$hash = $jc(_$hash, object.hashCode);
+    _$hash = $jc(_$hash, deleted.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -103,6 +103,7 @@ class _$OrderResponseShippingContact extends OrderResponseShippingContact {
           ..add('default_', default_)
           ..add('id', id)
           ..add('createdAt', createdAt)
+          ..add('metadata', metadata)
           ..add('object', object)
           ..add('deleted', deleted))
         .toString();
@@ -153,6 +154,12 @@ class OrderResponseShippingContactBuilder
   int? get createdAt => _$this._createdAt;
   set createdAt(covariant int? createdAt) => _$this._createdAt = createdAt;
 
+  MapBuilder<String, JsonObject?>? _metadata;
+  MapBuilder<String, JsonObject?> get metadata =>
+      _$this._metadata ??= new MapBuilder<String, JsonObject?>();
+  set metadata(covariant MapBuilder<String, JsonObject?>? metadata) =>
+      _$this._metadata = metadata;
+
   String? _object;
   String? get object => _$this._object;
   set object(covariant String? object) => _$this._object = object;
@@ -176,6 +183,7 @@ class OrderResponseShippingContactBuilder
       _default_ = $v.default_;
       _id = $v.id;
       _createdAt = $v.createdAt;
+      _metadata = $v.metadata?.toBuilder();
       _object = $v.object;
       _deleted = $v.deleted;
       _$v = null;
@@ -211,6 +219,7 @@ class OrderResponseShippingContactBuilder
               default_: default_,
               id: id,
               createdAt: createdAt,
+              metadata: _metadata?.build(),
               object: object,
               deleted: deleted);
     } catch (_) {
@@ -218,6 +227,9 @@ class OrderResponseShippingContactBuilder
       try {
         _$failedField = 'address';
         _address?.build();
+
+        _$failedField = 'metadata';
+        _metadata?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             r'OrderResponseShippingContact', _$failedField, e.toString());
@@ -229,4 +241,4 @@ class OrderResponseShippingContactBuilder
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint

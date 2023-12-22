@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'order_response_fiscal_entity_address.dart';
+part of 'order_fiscal_entity_address_response.dart';
 
 // **************************************************************************
 // BuiltValueGenerator
 // **************************************************************************
 
-class _$OrderResponseFiscalEntityAddress
-    extends OrderResponseFiscalEntityAddress {
+class _$OrderFiscalEntityAddressResponse
+    extends OrderFiscalEntityAddressResponse {
   @override
   final String street1;
   @override
@@ -19,102 +19,98 @@ class _$OrderResponseFiscalEntityAddress
   @override
   final String? state;
   @override
-  final String? country;
+  final String country;
   @override
-  final bool? residential;
-  @override
-  final String? externalNumber;
+  final String externalNumber;
   @override
   final String? object;
 
-  factory _$OrderResponseFiscalEntityAddress(
-          [void Function(OrderResponseFiscalEntityAddressBuilder)? updates]) =>
-      (new OrderResponseFiscalEntityAddressBuilder()..update(updates))._build();
+  factory _$OrderFiscalEntityAddressResponse(
+          [void Function(OrderFiscalEntityAddressResponseBuilder)? updates]) =>
+      (new OrderFiscalEntityAddressResponseBuilder()..update(updates))._build();
 
-  _$OrderResponseFiscalEntityAddress._(
+  _$OrderFiscalEntityAddressResponse._(
       {required this.street1,
       this.street2,
       required this.postalCode,
       required this.city,
       this.state,
-      this.country,
-      this.residential,
-      this.externalNumber,
+      required this.country,
+      required this.externalNumber,
       this.object})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        street1, r'OrderResponseFiscalEntityAddress', 'street1');
+        street1, r'OrderFiscalEntityAddressResponse', 'street1');
     BuiltValueNullFieldError.checkNotNull(
-        postalCode, r'OrderResponseFiscalEntityAddress', 'postalCode');
+        postalCode, r'OrderFiscalEntityAddressResponse', 'postalCode');
     BuiltValueNullFieldError.checkNotNull(
-        city, r'OrderResponseFiscalEntityAddress', 'city');
+        city, r'OrderFiscalEntityAddressResponse', 'city');
+    BuiltValueNullFieldError.checkNotNull(
+        country, r'OrderFiscalEntityAddressResponse', 'country');
+    BuiltValueNullFieldError.checkNotNull(
+        externalNumber, r'OrderFiscalEntityAddressResponse', 'externalNumber');
   }
 
   @override
-  OrderResponseFiscalEntityAddress rebuild(
-          void Function(OrderResponseFiscalEntityAddressBuilder) updates) =>
+  OrderFiscalEntityAddressResponse rebuild(
+          void Function(OrderFiscalEntityAddressResponseBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  OrderResponseFiscalEntityAddressBuilder toBuilder() =>
-      new OrderResponseFiscalEntityAddressBuilder()..replace(this);
+  OrderFiscalEntityAddressResponseBuilder toBuilder() =>
+      new OrderFiscalEntityAddressResponseBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is OrderResponseFiscalEntityAddress &&
+    return other is OrderFiscalEntityAddressResponse &&
         street1 == other.street1 &&
         street2 == other.street2 &&
         postalCode == other.postalCode &&
         city == other.city &&
         state == other.state &&
         country == other.country &&
-        residential == other.residential &&
         externalNumber == other.externalNumber &&
         object == other.object;
   }
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc(
-            $jc(
-                $jc(
-                    $jc(
-                        $jc(
-                            $jc($jc($jc(0, street1.hashCode), street2.hashCode),
-                                postalCode.hashCode),
-                            city.hashCode),
-                        state.hashCode),
-                    country.hashCode),
-                residential.hashCode),
-            externalNumber.hashCode),
-        object.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, street1.hashCode);
+    _$hash = $jc(_$hash, street2.hashCode);
+    _$hash = $jc(_$hash, postalCode.hashCode);
+    _$hash = $jc(_$hash, city.hashCode);
+    _$hash = $jc(_$hash, state.hashCode);
+    _$hash = $jc(_$hash, country.hashCode);
+    _$hash = $jc(_$hash, externalNumber.hashCode);
+    _$hash = $jc(_$hash, object.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper(r'OrderResponseFiscalEntityAddress')
+    return (newBuiltValueToStringHelper(r'OrderFiscalEntityAddressResponse')
           ..add('street1', street1)
           ..add('street2', street2)
           ..add('postalCode', postalCode)
           ..add('city', city)
           ..add('state', state)
           ..add('country', country)
-          ..add('residential', residential)
           ..add('externalNumber', externalNumber)
           ..add('object', object))
         .toString();
   }
 }
 
-class OrderResponseFiscalEntityAddressBuilder
+class OrderFiscalEntityAddressResponseBuilder
     implements
-        Builder<OrderResponseFiscalEntityAddress,
-            OrderResponseFiscalEntityAddressBuilder>,
-        CustomerAddressBuilder,
-        OrderResponseFiscalEntityAddressAllOfBuilder {
-  _$OrderResponseFiscalEntityAddress? _$v;
+        Builder<OrderFiscalEntityAddressResponse,
+            OrderFiscalEntityAddressResponseBuilder>,
+        FiscalEntityAddressBuilder,
+        OrderFiscalEntityAddressResponseAllOfBuilder {
+  _$OrderFiscalEntityAddressResponse? _$v;
 
   String? _street1;
   String? get street1 => _$this._street1;
@@ -141,11 +137,6 @@ class OrderResponseFiscalEntityAddressBuilder
   String? get country => _$this._country;
   set country(covariant String? country) => _$this._country = country;
 
-  bool? _residential;
-  bool? get residential => _$this._residential;
-  set residential(covariant bool? residential) =>
-      _$this._residential = residential;
-
   String? _externalNumber;
   String? get externalNumber => _$this._externalNumber;
   set externalNumber(covariant String? externalNumber) =>
@@ -155,11 +146,11 @@ class OrderResponseFiscalEntityAddressBuilder
   String? get object => _$this._object;
   set object(covariant String? object) => _$this._object = object;
 
-  OrderResponseFiscalEntityAddressBuilder() {
-    OrderResponseFiscalEntityAddress._defaults(this);
+  OrderFiscalEntityAddressResponseBuilder() {
+    OrderFiscalEntityAddressResponse._defaults(this);
   }
 
-  OrderResponseFiscalEntityAddressBuilder get _$this {
+  OrderFiscalEntityAddressResponseBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _street1 = $v.street1;
@@ -168,7 +159,6 @@ class OrderResponseFiscalEntityAddressBuilder
       _city = $v.city;
       _state = $v.state;
       _country = $v.country;
-      _residential = $v.residential;
       _externalNumber = $v.externalNumber;
       _object = $v.object;
       _$v = null;
@@ -178,37 +168,40 @@ class OrderResponseFiscalEntityAddressBuilder
 
   @override
 // ignore: override_on_non_overriding_method
-  void replace(covariant OrderResponseFiscalEntityAddress other) {
+  void replace(covariant OrderFiscalEntityAddressResponse other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$OrderResponseFiscalEntityAddress;
+    _$v = other as _$OrderFiscalEntityAddressResponse;
   }
 
   @override
-  void update(void Function(OrderResponseFiscalEntityAddressBuilder)? updates) {
+  void update(void Function(OrderFiscalEntityAddressResponseBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  OrderResponseFiscalEntityAddress build() => _build();
+  OrderFiscalEntityAddressResponse build() => _build();
 
-  _$OrderResponseFiscalEntityAddress _build() {
+  _$OrderFiscalEntityAddressResponse _build() {
     final _$result = _$v ??
-        new _$OrderResponseFiscalEntityAddress._(
+        new _$OrderFiscalEntityAddressResponse._(
             street1: BuiltValueNullFieldError.checkNotNull(
-                street1, r'OrderResponseFiscalEntityAddress', 'street1'),
+                street1, r'OrderFiscalEntityAddressResponse', 'street1'),
             street2: street2,
             postalCode: BuiltValueNullFieldError.checkNotNull(
-                postalCode, r'OrderResponseFiscalEntityAddress', 'postalCode'),
+                postalCode, r'OrderFiscalEntityAddressResponse', 'postalCode'),
             city: BuiltValueNullFieldError.checkNotNull(
-                city, r'OrderResponseFiscalEntityAddress', 'city'),
+                city, r'OrderFiscalEntityAddressResponse', 'city'),
             state: state,
-            country: country,
-            residential: residential,
-            externalNumber: externalNumber,
+            country: BuiltValueNullFieldError.checkNotNull(
+                country, r'OrderFiscalEntityAddressResponse', 'country'),
+            externalNumber: BuiltValueNullFieldError.checkNotNull(
+                externalNumber,
+                r'OrderFiscalEntityAddressResponse',
+                'externalNumber'),
             object: object);
     replace(_$result);
     return _$result;
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint

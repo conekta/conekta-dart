@@ -26,8 +26,6 @@ class _$ChargesDataResponse extends ChargesDataResponse {
   @override
   final String? failureMessage;
   @override
-  final int? fee;
-  @override
   final String? id;
   @override
   final bool? livemode;
@@ -60,7 +58,6 @@ class _$ChargesDataResponse extends ChargesDataResponse {
       this.deviceFingerprint,
       this.failureCode,
       this.failureMessage,
-      this.fee,
       this.id,
       this.livemode,
       this.object,
@@ -94,7 +91,6 @@ class _$ChargesDataResponse extends ChargesDataResponse {
         deviceFingerprint == other.deviceFingerprint &&
         failureCode == other.failureCode &&
         failureMessage == other.failureMessage &&
-        fee == other.fee &&
         id == other.id &&
         livemode == other.livemode &&
         object == other.object &&
@@ -108,52 +104,27 @@ class _$ChargesDataResponse extends ChargesDataResponse {
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc(
-            $jc(
-                $jc(
-                    $jc(
-                        $jc(
-                            $jc(
-                                $jc(
-                                    $jc(
-                                        $jc(
-                                            $jc(
-                                                $jc(
-                                                    $jc(
-                                                        $jc(
-                                                            $jc(
-                                                                $jc(
-                                                                    $jc(
-                                                                        $jc(
-                                                                            $jc(
-                                                                                0,
-                                                                                amount
-                                                                                    .hashCode),
-                                                                            channel
-                                                                                .hashCode),
-                                                                        createdAt
-                                                                            .hashCode),
-                                                                    currency
-                                                                        .hashCode),
-                                                                customerId
-                                                                    .hashCode),
-                                                            description
-                                                                .hashCode),
-                                                        deviceFingerprint
-                                                            .hashCode),
-                                                    failureCode.hashCode),
-                                                failureMessage.hashCode),
-                                            fee.hashCode),
-                                        id.hashCode),
-                                    livemode.hashCode),
-                                object.hashCode),
-                            orderId.hashCode),
-                        paidAt.hashCode),
-                    paymentMethod.hashCode),
-                referenceId.hashCode),
-            refunds.hashCode),
-        status.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, amount.hashCode);
+    _$hash = $jc(_$hash, channel.hashCode);
+    _$hash = $jc(_$hash, createdAt.hashCode);
+    _$hash = $jc(_$hash, currency.hashCode);
+    _$hash = $jc(_$hash, customerId.hashCode);
+    _$hash = $jc(_$hash, description.hashCode);
+    _$hash = $jc(_$hash, deviceFingerprint.hashCode);
+    _$hash = $jc(_$hash, failureCode.hashCode);
+    _$hash = $jc(_$hash, failureMessage.hashCode);
+    _$hash = $jc(_$hash, id.hashCode);
+    _$hash = $jc(_$hash, livemode.hashCode);
+    _$hash = $jc(_$hash, object.hashCode);
+    _$hash = $jc(_$hash, orderId.hashCode);
+    _$hash = $jc(_$hash, paidAt.hashCode);
+    _$hash = $jc(_$hash, paymentMethod.hashCode);
+    _$hash = $jc(_$hash, referenceId.hashCode);
+    _$hash = $jc(_$hash, refunds.hashCode);
+    _$hash = $jc(_$hash, status.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -168,7 +139,6 @@ class _$ChargesDataResponse extends ChargesDataResponse {
           ..add('deviceFingerprint', deviceFingerprint)
           ..add('failureCode', failureCode)
           ..add('failureMessage', failureMessage)
-          ..add('fee', fee)
           ..add('id', id)
           ..add('livemode', livemode)
           ..add('object', object)
@@ -231,10 +201,6 @@ class ChargesDataResponseBuilder
   set failureMessage(covariant String? failureMessage) =>
       _$this._failureMessage = failureMessage;
 
-  int? _fee;
-  int? get fee => _$this._fee;
-  set fee(covariant int? fee) => _$this._fee = fee;
-
   String? _id;
   String? get id => _$this._id;
   set id(covariant String? id) => _$this._id = id;
@@ -293,7 +259,6 @@ class ChargesDataResponseBuilder
       _deviceFingerprint = $v.deviceFingerprint;
       _failureCode = $v.failureCode;
       _failureMessage = $v.failureMessage;
-      _fee = $v.fee;
       _id = $v.id;
       _livemode = $v.livemode;
       _object = $v.object;
@@ -336,7 +301,6 @@ class ChargesDataResponseBuilder
               deviceFingerprint: deviceFingerprint,
               failureCode: failureCode,
               failureMessage: failureMessage,
-              fee: fee,
               id: id,
               livemode: livemode,
               object: object,
@@ -368,4 +332,4 @@ class ChargesDataResponseBuilder
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint

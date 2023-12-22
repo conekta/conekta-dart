@@ -9,6 +9,7 @@ import 'package:built_collection/built_collection.dart';
 import 'package:conekta/src/model/checkout_request.dart';
 import 'package:conekta/src/model/order_discount_lines_request.dart';
 import 'package:conekta/src/model/charge_request.dart';
+import 'package:conekta/src/model/order_fiscal_entity_request.dart';
 import 'package:conekta/src/model/product.dart';
 import 'package:conekta/src/model/customer_shipping_contacts.dart';
 import 'package:conekta/src/model/order_tax_request.dart';
@@ -26,13 +27,17 @@ part 'order_request.g.dart';
 /// * [currency] - Currency with which the payment will be made. It uses the 3-letter code of the [International Standard ISO 4217.](https://es.wikipedia.org/wiki/ISO_4217)
 /// * [customerInfo] 
 /// * [discountLines] - List of [discounts](https://developers.conekta.com/v2.1.0/reference/orderscreatediscountline) that are applied to the order. You must have at least one discount.
+/// * [fiscalEntity] 
 /// * [lineItems] - List of [products](https://developers.conekta.com/v2.1.0/reference/orderscreateproduct) that are sold in the order. You must have at least one product.
 /// * [metadata] - Metadata associated with the order
 /// * [needsShippingContact] - Allows you to fill out the shipping information at checkout
 /// * [preAuthorize] - Indicates whether the order charges must be preauthorized
+/// * [processingMode] - Indicates the processing mode for the order, either ecommerce, recurrent or validation.
+/// * [returnUrl] - Indicates the redirection callback upon completion of the 3DS2 flow.
 /// * [shippingContact] 
 /// * [shippingLines] - List of [shipping costs](https://developers.conekta.com/v2.1.0/reference/orderscreateshipping). If the online store offers digital products.
 /// * [taxLines] - List of [taxes](https://developers.conekta.com/v2.1.0/reference/orderscreatetaxes) that are applied to the order.
+/// * [threeDsMode] - Indicates the 3DS2 mode for the order, either smart or strict.
 @BuiltValue()
 abstract class OrderRequest implements Built<OrderRequest, OrderRequestBuilder> {
   /// List of [charges](https://developers.conekta.com/v2.1.0/reference/orderscreatecharge) that are applied to the order
@@ -53,6 +58,9 @@ abstract class OrderRequest implements Built<OrderRequest, OrderRequestBuilder> 
   @BuiltValueField(wireName: r'discount_lines')
   BuiltList<OrderDiscountLinesRequest>? get discountLines;
 
+  @BuiltValueField(wireName: r'fiscal_entity')
+  OrderFiscalEntityRequest? get fiscalEntity;
+
   /// List of [products](https://developers.conekta.com/v2.1.0/reference/orderscreateproduct) that are sold in the order. You must have at least one product.
   @BuiltValueField(wireName: r'line_items')
   BuiltList<Product> get lineItems;
@@ -69,6 +77,14 @@ abstract class OrderRequest implements Built<OrderRequest, OrderRequestBuilder> 
   @BuiltValueField(wireName: r'pre_authorize')
   bool? get preAuthorize;
 
+  /// Indicates the processing mode for the order, either ecommerce, recurrent or validation.
+  @BuiltValueField(wireName: r'processing_mode')
+  String? get processingMode;
+
+  /// Indicates the redirection callback upon completion of the 3DS2 flow.
+  @BuiltValueField(wireName: r'return_url')
+  String? get returnUrl;
+
   @BuiltValueField(wireName: r'shipping_contact')
   CustomerShippingContacts? get shippingContact;
 
@@ -79,6 +95,10 @@ abstract class OrderRequest implements Built<OrderRequest, OrderRequestBuilder> 
   /// List of [taxes](https://developers.conekta.com/v2.1.0/reference/orderscreatetaxes) that are applied to the order.
   @BuiltValueField(wireName: r'tax_lines')
   BuiltList<OrderTaxRequest>? get taxLines;
+
+  /// Indicates the 3DS2 mode for the order, either smart or strict.
+  @BuiltValueField(wireName: r'three_ds_mode')
+  String? get threeDsMode;
 
   OrderRequest._();
 
@@ -135,6 +155,13 @@ class _$OrderRequestSerializer implements PrimitiveSerializer<OrderRequest> {
         specifiedType: const FullType(BuiltList, [FullType(OrderDiscountLinesRequest)]),
       );
     }
+    if (object.fiscalEntity != null) {
+      yield r'fiscal_entity';
+      yield serializers.serialize(
+        object.fiscalEntity,
+        specifiedType: const FullType(OrderFiscalEntityRequest),
+      );
+    }
     yield r'line_items';
     yield serializers.serialize(
       object.lineItems,
@@ -161,6 +188,20 @@ class _$OrderRequestSerializer implements PrimitiveSerializer<OrderRequest> {
         specifiedType: const FullType(bool),
       );
     }
+    if (object.processingMode != null) {
+      yield r'processing_mode';
+      yield serializers.serialize(
+        object.processingMode,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.returnUrl != null) {
+      yield r'return_url';
+      yield serializers.serialize(
+        object.returnUrl,
+        specifiedType: const FullType(String),
+      );
+    }
     if (object.shippingContact != null) {
       yield r'shipping_contact';
       yield serializers.serialize(
@@ -180,6 +221,13 @@ class _$OrderRequestSerializer implements PrimitiveSerializer<OrderRequest> {
       yield serializers.serialize(
         object.taxLines,
         specifiedType: const FullType(BuiltList, [FullType(OrderTaxRequest)]),
+      );
+    }
+    if (object.threeDsMode != null) {
+      yield r'three_ds_mode';
+      yield serializers.serialize(
+        object.threeDsMode,
+        specifiedType: const FullType(String),
       );
     }
   }
@@ -240,6 +288,13 @@ class _$OrderRequestSerializer implements PrimitiveSerializer<OrderRequest> {
           ) as BuiltList<OrderDiscountLinesRequest>;
           result.discountLines.replace(valueDes);
           break;
+        case r'fiscal_entity':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(OrderFiscalEntityRequest),
+          ) as OrderFiscalEntityRequest;
+          result.fiscalEntity.replace(valueDes);
+          break;
         case r'line_items':
           final valueDes = serializers.deserialize(
             value,
@@ -268,6 +323,20 @@ class _$OrderRequestSerializer implements PrimitiveSerializer<OrderRequest> {
           ) as bool;
           result.preAuthorize = valueDes;
           break;
+        case r'processing_mode':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.processingMode = valueDes;
+          break;
+        case r'return_url':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.returnUrl = valueDes;
+          break;
         case r'shipping_contact':
           final valueDes = serializers.deserialize(
             value,
@@ -288,6 +357,13 @@ class _$OrderRequestSerializer implements PrimitiveSerializer<OrderRequest> {
             specifiedType: const FullType(BuiltList, [FullType(OrderTaxRequest)]),
           ) as BuiltList<OrderTaxRequest>;
           result.taxLines.replace(valueDes);
+          break;
+        case r'three_ds_mode':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.threeDsMode = valueDes;
           break;
         default:
           unhandled.add(key);

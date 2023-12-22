@@ -9,6 +9,7 @@ part of 'serializers.dart';
 Serializers _$serializers = (new Serializers().toBuilder()
       ..add($ApiKeyCreateResponseAllOf.serializer)
       ..add($ApiKeyResponse.serializer)
+      ..add($ApiKeyResponseOnDelete.serializer)
       ..add($ChargeDataPaymentMethodBankTransferResponse.serializer)
       ..add($ChargeDataPaymentMethodCardResponse.serializer)
       ..add($ChargeDataPaymentMethodCashResponse.serializer)
@@ -20,7 +21,6 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add($CustomerFiscalEntitiesRequest.serializer)
       ..add($CustomerFiscalEntitiesResponseAllOf.serializer)
       ..add($CustomerInfoJustCustomerIdResponse.serializer)
-      ..add($CustomerInfoResponse.serializer)
       ..add($CustomerPaymentMethodRequest.serializer)
       ..add($CustomerPaymentMethods.serializer)
       ..add($CustomerResponseShippingContactsAllOf.serializer)
@@ -33,6 +33,7 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add($DiscountLinesResponse.serializer)
       ..add($DiscountLinesResponseAllOf.serializer)
       ..add($ErrorAllOf.serializer)
+      ..add($FiscalEntityAddress.serializer)
       ..add($GetApiKeysResponseAllOf.serializer)
       ..add($GetChargesResponseAllOf.serializer)
       ..add($GetCompaniesResponseAllOf.serializer)
@@ -44,11 +45,12 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add($GetTransfersResponseAllOf.serializer)
       ..add($GetWebhookKeysResponseAllOf.serializer)
       ..add($GetWebhooksResponseAllOf.serializer)
+      ..add($OrderCustomerInfoResponse.serializer)
       ..add($OrderDiscountLinesRequest.serializer)
+      ..add($OrderFiscalEntityAddressResponseAllOf.serializer)
       ..add($OrderResponseChargesAllOf.serializer)
       ..add($OrderResponseCustomerInfoAllOf.serializer)
       ..add($OrderResponseDiscountLinesAllOf.serializer)
-      ..add($OrderResponseFiscalEntityAddressAllOf.serializer)
       ..add($OrderResponseProductsAllOf.serializer)
       ..add($OrderResponseShippingContactAllOf.serializer)
       ..add($OrderTaxRequest.serializer)
@@ -83,6 +85,7 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(ChargeResponsePaymentMethod.serializer)
       ..add(ChargeResponseRefunds.serializer)
       ..add(ChargeResponseRefundsData.serializer)
+      ..add(ChargeUpdateRequest.serializer)
       ..add(ChargesDataResponse.serializer)
       ..add(Checkout.serializer)
       ..add(CheckoutOrderTemplate.serializer)
@@ -148,6 +151,11 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(LogsResponse.serializer)
       ..add(LogsResponseData.serializer)
       ..add(OrderCaptureRequest.serializer)
+      ..add(OrderFiscalEntityAddressResponse.serializer)
+      ..add(OrderFiscalEntityRequest.serializer)
+      ..add(OrderFiscalEntityResponse.serializer)
+      ..add(OrderNextActionResponse.serializer)
+      ..add(OrderNextActionResponseRedirectToUrl.serializer)
       ..add(OrderRefundRequest.serializer)
       ..add(OrderRequest.serializer)
       ..add(OrderRequestCustomerInfo.serializer)
@@ -156,10 +164,9 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(OrderResponseCheckout.serializer)
       ..add(OrderResponseCustomerInfo.serializer)
       ..add(OrderResponseDiscountLines.serializer)
-      ..add(OrderResponseFiscalEntity.serializer)
-      ..add(OrderResponseFiscalEntityAddress.serializer)
       ..add(OrderResponseProducts.serializer)
       ..add(OrderResponseShippingContact.serializer)
+      ..add(OrderUpdateFiscalEntityRequest.serializer)
       ..add(OrderUpdateRequest.serializer)
       ..add(OrderUpdateRequestCustomerInfo.serializer)
       ..add(PaymentMethodBankTransfer.serializer)
@@ -658,6 +665,54 @@ Serializers _$serializers = (new Serializers().toBuilder()
           ]),
           () => new MapBuilder<String, JsonObject?>())
       ..addBuilderFactory(
+          const FullType(BuiltMap, const [
+            const FullType(String),
+            const FullType.nullable(JsonObject)
+          ]),
+          () => new MapBuilder<String, JsonObject?>())
+      ..addBuilderFactory(
+          const FullType(BuiltMap, const [
+            const FullType(String),
+            const FullType.nullable(JsonObject)
+          ]),
+          () => new MapBuilder<String, JsonObject?>())
+      ..addBuilderFactory(
+          const FullType(BuiltMap, const [
+            const FullType(String),
+            const FullType.nullable(JsonObject)
+          ]),
+          () => new MapBuilder<String, JsonObject?>())
+      ..addBuilderFactory(
+          const FullType(BuiltMap, const [
+            const FullType(String),
+            const FullType.nullable(JsonObject)
+          ]),
+          () => new MapBuilder<String, JsonObject?>())
+      ..addBuilderFactory(
+          const FullType(BuiltMap, const [
+            const FullType(String),
+            const FullType.nullable(JsonObject)
+          ]),
+          () => new MapBuilder<String, JsonObject?>())
+      ..addBuilderFactory(
+          const FullType(BuiltMap, const [
+            const FullType(String),
+            const FullType.nullable(JsonObject)
+          ]),
+          () => new MapBuilder<String, JsonObject?>())
+      ..addBuilderFactory(
+          const FullType(BuiltMap, const [
+            const FullType(String),
+            const FullType.nullable(JsonObject)
+          ]),
+          () => new MapBuilder<String, JsonObject?>())
+      ..addBuilderFactory(
+          const FullType(BuiltMap, const [
+            const FullType(String),
+            const FullType.nullable(JsonObject)
+          ]),
+          () => new MapBuilder<String, JsonObject?>())
+      ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(WebhookLog)]),
           () => new ListBuilder<WebhookLog>())
       ..addBuilderFactory(
@@ -735,4 +790,4 @@ Serializers _$serializers = (new Serializers().toBuilder()
           () => new ListBuilder<String>()))
     .build();
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint

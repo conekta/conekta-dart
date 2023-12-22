@@ -3,9 +3,11 @@
 //
 
 // ignore_for_file: unused_element
+import 'package:built_collection/built_collection.dart';
 import 'package:conekta/src/model/customer_shipping_contacts_data_response_all_of.dart';
 import 'package:conekta/src/model/customer_shipping_contacts.dart';
 import 'package:conekta/src/model/customer_shipping_contacts_address.dart';
+import 'package:built_value/json_object.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -21,6 +23,7 @@ part 'customer_shipping_contacts_data_response.g.dart';
 /// * [parentId] 
 /// * [default_] 
 /// * [deleted] 
+/// * [metadata] - Metadata associated with the shipping contact
 /// * [id] 
 /// * [object] 
 /// * [createdAt] 
@@ -54,6 +57,13 @@ class _$CustomerShippingContactsDataResponseSerializer implements PrimitiveSeria
       object.createdAt,
       specifiedType: const FullType(int),
     );
+    if (object.metadata != null) {
+      yield r'metadata';
+      yield serializers.serialize(
+        object.metadata,
+        specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
+      );
+    }
     yield r'address';
     yield serializers.serialize(
       object.address,
@@ -140,6 +150,13 @@ class _$CustomerShippingContactsDataResponseSerializer implements PrimitiveSeria
             specifiedType: const FullType(int),
           ) as int;
           result.createdAt = valueDes;
+          break;
+        case r'metadata':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
+          ) as BuiltMap<String, JsonObject?>;
+          result.metadata.replace(valueDes);
           break;
         case r'address':
           final valueDes = serializers.deserialize(

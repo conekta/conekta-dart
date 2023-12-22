@@ -121,7 +121,7 @@ class _$CustomerShippingContactsResponseAddressSerializer implements PrimitiveSe
       yield r'residential';
       yield serializers.serialize(
         object.residential,
-        specifiedType: const FullType(bool),
+        specifiedType: const FullType.nullable(bool),
       );
     }
   }
@@ -199,8 +199,9 @@ class _$CustomerShippingContactsResponseAddressSerializer implements PrimitiveSe
         case r'residential':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(bool),
-          ) as bool;
+            specifiedType: const FullType.nullable(bool),
+          ) as bool?;
+          if (valueDes == null) continue;
           result.residential = valueDes;
           break;
         default:

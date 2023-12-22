@@ -13,17 +13,12 @@ part 'charge_request.g.dart';
 ///
 /// Properties:
 /// * [amount] 
-/// * [monthlyInstallments] - How many months without interest to apply, it can be 3, 6, 9, 12 or 18
 /// * [paymentMethod] 
 /// * [referenceId] - Custom reference to add to the charge
 @BuiltValue()
 abstract class ChargeRequest implements Built<ChargeRequest, ChargeRequestBuilder> {
   @BuiltValueField(wireName: r'amount')
   int? get amount;
-
-  /// How many months without interest to apply, it can be 3, 6, 9, 12 or 18
-  @BuiltValueField(wireName: r'monthly_installments')
-  int? get monthlyInstallments;
 
   @BuiltValueField(wireName: r'payment_method')
   ChargeRequestPaymentMethod get paymentMethod;
@@ -59,13 +54,6 @@ class _$ChargeRequestSerializer implements PrimitiveSerializer<ChargeRequest> {
       yield r'amount';
       yield serializers.serialize(
         object.amount,
-        specifiedType: const FullType(int),
-      );
-    }
-    if (object.monthlyInstallments != null) {
-      yield r'monthly_installments';
-      yield serializers.serialize(
-        object.monthlyInstallments,
         specifiedType: const FullType(int),
       );
     }
@@ -110,13 +98,6 @@ class _$ChargeRequestSerializer implements PrimitiveSerializer<ChargeRequest> {
             specifiedType: const FullType(int),
           ) as int;
           result.amount = valueDes;
-          break;
-        case r'monthly_installments':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.monthlyInstallments = valueDes;
           break;
         case r'payment_method':
           final valueDes = serializers.deserialize(

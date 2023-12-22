@@ -8,21 +8,14 @@ part of 'api_key_request.dart';
 
 class _$ApiKeyRequest extends ApiKeyRequest {
   @override
-  final bool active;
-  @override
-  final String description;
+  final String? description;
   @override
   final String role;
 
   factory _$ApiKeyRequest([void Function(ApiKeyRequestBuilder)? updates]) =>
       (new ApiKeyRequestBuilder()..update(updates))._build();
 
-  _$ApiKeyRequest._(
-      {required this.active, required this.description, required this.role})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(active, r'ApiKeyRequest', 'active');
-    BuiltValueNullFieldError.checkNotNull(
-        description, r'ApiKeyRequest', 'description');
+  _$ApiKeyRequest._({this.description, required this.role}) : super._() {
     BuiltValueNullFieldError.checkNotNull(role, r'ApiKeyRequest', 'role');
   }
 
@@ -37,21 +30,22 @@ class _$ApiKeyRequest extends ApiKeyRequest {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is ApiKeyRequest &&
-        active == other.active &&
         description == other.description &&
         role == other.role;
   }
 
   @override
   int get hashCode {
-    return $jf(
-        $jc($jc($jc(0, active.hashCode), description.hashCode), role.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, description.hashCode);
+    _$hash = $jc(_$hash, role.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'ApiKeyRequest')
-          ..add('active', active)
           ..add('description', description)
           ..add('role', role))
         .toString();
@@ -61,10 +55,6 @@ class _$ApiKeyRequest extends ApiKeyRequest {
 class ApiKeyRequestBuilder
     implements Builder<ApiKeyRequest, ApiKeyRequestBuilder> {
   _$ApiKeyRequest? _$v;
-
-  bool? _active;
-  bool? get active => _$this._active;
-  set active(bool? active) => _$this._active = active;
 
   String? _description;
   String? get description => _$this._description;
@@ -81,7 +71,6 @@ class ApiKeyRequestBuilder
   ApiKeyRequestBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _active = $v.active;
       _description = $v.description;
       _role = $v.role;
       _$v = null;
@@ -106,10 +95,7 @@ class ApiKeyRequestBuilder
   _$ApiKeyRequest _build() {
     final _$result = _$v ??
         new _$ApiKeyRequest._(
-            active: BuiltValueNullFieldError.checkNotNull(
-                active, r'ApiKeyRequest', 'active'),
-            description: BuiltValueNullFieldError.checkNotNull(
-                description, r'ApiKeyRequest', 'description'),
+            description: description,
             role: BuiltValueNullFieldError.checkNotNull(
                 role, r'ApiKeyRequest', 'role'));
     replace(_$result);
@@ -117,4 +103,4 @@ class ApiKeyRequestBuilder
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint

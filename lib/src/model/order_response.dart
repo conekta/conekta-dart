@@ -4,13 +4,14 @@
 
 // ignore_for_file: unused_element
 import 'package:conekta/src/model/order_response_discount_lines.dart';
+import 'package:conekta/src/model/order_next_action_response.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:conekta/src/model/order_response_customer_info.dart';
 import 'package:conekta/src/model/order_response_charges.dart';
 import 'package:conekta/src/model/order_response_checkout.dart';
 import 'package:conekta/src/model/order_response_products.dart';
 import 'package:conekta/src/model/order_response_shipping_contact.dart';
-import 'package:conekta/src/model/order_response_fiscal_entity.dart';
+import 'package:conekta/src/model/order_fiscal_entity_response.dart';
 import 'package:conekta/src/model/charge_response_channel.dart';
 import 'package:built_value/json_object.dart';
 import 'package:built_value/built_value.dart';
@@ -36,8 +37,10 @@ part 'order_response.g.dart';
 /// * [lineItems] 
 /// * [livemode] - Whether the object exists in live mode or test mode
 /// * [metadata] - Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+/// * [nextAction] 
 /// * [object] - String representing the object’s type. Objects of the same type share the same value.
 /// * [paymentStatus] - The payment status of the order.
+/// * [processingMode] - Indicates the processing mode for the order, either ecommerce, recurrent or validation.
 /// * [shippingContact] 
 /// * [updatedAt] - The time at which the object was last updated in seconds since the Unix epoch
 @BuiltValue()
@@ -74,7 +77,7 @@ abstract class OrderResponse implements Built<OrderResponse, OrderResponseBuilde
   OrderResponseDiscountLines? get discountLines;
 
   @BuiltValueField(wireName: r'fiscal_entity')
-  OrderResponseFiscalEntity? get fiscalEntity;
+  OrderFiscalEntityResponse? get fiscalEntity;
 
   @BuiltValueField(wireName: r'id')
   String? get id;
@@ -93,6 +96,9 @@ abstract class OrderResponse implements Built<OrderResponse, OrderResponseBuilde
   @BuiltValueField(wireName: r'metadata')
   BuiltMap<String, JsonObject?>? get metadata;
 
+  @BuiltValueField(wireName: r'next_action')
+  OrderNextActionResponse? get nextAction;
+
   /// String representing the object’s type. Objects of the same type share the same value.
   @BuiltValueField(wireName: r'object')
   String? get object;
@@ -100,6 +106,10 @@ abstract class OrderResponse implements Built<OrderResponse, OrderResponseBuilde
   /// The payment status of the order.
   @BuiltValueField(wireName: r'payment_status')
   String? get paymentStatus;
+
+  /// Indicates the processing mode for the order, either ecommerce, recurrent or validation.
+  @BuiltValueField(wireName: r'processing_mode')
+  String? get processingMode;
 
   @BuiltValueField(wireName: r'shipping_contact')
   OrderResponseShippingContact? get shippingContact;
@@ -198,7 +208,7 @@ class _$OrderResponseSerializer implements PrimitiveSerializer<OrderResponse> {
       yield r'fiscal_entity';
       yield serializers.serialize(
         object.fiscalEntity,
-        specifiedType: const FullType(OrderResponseFiscalEntity),
+        specifiedType: const FullType.nullable(OrderFiscalEntityResponse),
       );
     }
     if (object.id != null) {
@@ -236,6 +246,13 @@ class _$OrderResponseSerializer implements PrimitiveSerializer<OrderResponse> {
         specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
       );
     }
+    if (object.nextAction != null) {
+      yield r'next_action';
+      yield serializers.serialize(
+        object.nextAction,
+        specifiedType: const FullType(OrderNextActionResponse),
+      );
+    }
     if (object.object != null) {
       yield r'object';
       yield serializers.serialize(
@@ -247,6 +264,13 @@ class _$OrderResponseSerializer implements PrimitiveSerializer<OrderResponse> {
       yield r'payment_status';
       yield serializers.serialize(
         object.paymentStatus,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.processingMode != null) {
+      yield r'processing_mode';
+      yield serializers.serialize(
+        object.processingMode,
         specifiedType: const FullType(String),
       );
     }
@@ -353,8 +377,9 @@ class _$OrderResponseSerializer implements PrimitiveSerializer<OrderResponse> {
         case r'fiscal_entity':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(OrderResponseFiscalEntity),
-          ) as OrderResponseFiscalEntity;
+            specifiedType: const FullType.nullable(OrderFiscalEntityResponse),
+          ) as OrderFiscalEntityResponse?;
+          if (valueDes == null) continue;
           result.fiscalEntity.replace(valueDes);
           break;
         case r'id':
@@ -392,6 +417,13 @@ class _$OrderResponseSerializer implements PrimitiveSerializer<OrderResponse> {
           ) as BuiltMap<String, JsonObject?>;
           result.metadata.replace(valueDes);
           break;
+        case r'next_action':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(OrderNextActionResponse),
+          ) as OrderNextActionResponse;
+          result.nextAction.replace(valueDes);
+          break;
         case r'object':
           final valueDes = serializers.deserialize(
             value,
@@ -405,6 +437,13 @@ class _$OrderResponseSerializer implements PrimitiveSerializer<OrderResponse> {
             specifiedType: const FullType(String),
           ) as String;
           result.paymentStatus = valueDes;
+          break;
+        case r'processing_mode':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.processingMode = valueDes;
           break;
         case r'shipping_contact':
           final valueDes = serializers.deserialize(

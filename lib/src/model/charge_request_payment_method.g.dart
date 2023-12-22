@@ -10,18 +10,27 @@ class _$ChargeRequestPaymentMethod extends ChargeRequestPaymentMethod {
   @override
   final int? expiresAt;
   @override
+  final int? monthlyInstallments;
+  @override
   final String type;
   @override
   final String? tokenId;
   @override
   final String? paymentSourceId;
+  @override
+  final String? contractId;
 
   factory _$ChargeRequestPaymentMethod(
           [void Function(ChargeRequestPaymentMethodBuilder)? updates]) =>
       (new ChargeRequestPaymentMethodBuilder()..update(updates))._build();
 
   _$ChargeRequestPaymentMethod._(
-      {this.expiresAt, required this.type, this.tokenId, this.paymentSourceId})
+      {this.expiresAt,
+      this.monthlyInstallments,
+      required this.type,
+      this.tokenId,
+      this.paymentSourceId,
+      this.contractId})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         type, r'ChargeRequestPaymentMethod', 'type');
@@ -41,25 +50,35 @@ class _$ChargeRequestPaymentMethod extends ChargeRequestPaymentMethod {
     if (identical(other, this)) return true;
     return other is ChargeRequestPaymentMethod &&
         expiresAt == other.expiresAt &&
+        monthlyInstallments == other.monthlyInstallments &&
         type == other.type &&
         tokenId == other.tokenId &&
-        paymentSourceId == other.paymentSourceId;
+        paymentSourceId == other.paymentSourceId &&
+        contractId == other.contractId;
   }
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc($jc($jc(0, expiresAt.hashCode), type.hashCode), tokenId.hashCode),
-        paymentSourceId.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, expiresAt.hashCode);
+    _$hash = $jc(_$hash, monthlyInstallments.hashCode);
+    _$hash = $jc(_$hash, type.hashCode);
+    _$hash = $jc(_$hash, tokenId.hashCode);
+    _$hash = $jc(_$hash, paymentSourceId.hashCode);
+    _$hash = $jc(_$hash, contractId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'ChargeRequestPaymentMethod')
           ..add('expiresAt', expiresAt)
+          ..add('monthlyInstallments', monthlyInstallments)
           ..add('type', type)
           ..add('tokenId', tokenId)
-          ..add('paymentSourceId', paymentSourceId))
+          ..add('paymentSourceId', paymentSourceId)
+          ..add('contractId', contractId))
         .toString();
   }
 }
@@ -72,6 +91,11 @@ class ChargeRequestPaymentMethodBuilder
   int? _expiresAt;
   int? get expiresAt => _$this._expiresAt;
   set expiresAt(int? expiresAt) => _$this._expiresAt = expiresAt;
+
+  int? _monthlyInstallments;
+  int? get monthlyInstallments => _$this._monthlyInstallments;
+  set monthlyInstallments(int? monthlyInstallments) =>
+      _$this._monthlyInstallments = monthlyInstallments;
 
   String? _type;
   String? get type => _$this._type;
@@ -86,6 +110,10 @@ class ChargeRequestPaymentMethodBuilder
   set paymentSourceId(String? paymentSourceId) =>
       _$this._paymentSourceId = paymentSourceId;
 
+  String? _contractId;
+  String? get contractId => _$this._contractId;
+  set contractId(String? contractId) => _$this._contractId = contractId;
+
   ChargeRequestPaymentMethodBuilder() {
     ChargeRequestPaymentMethod._defaults(this);
   }
@@ -94,9 +122,11 @@ class ChargeRequestPaymentMethodBuilder
     final $v = _$v;
     if ($v != null) {
       _expiresAt = $v.expiresAt;
+      _monthlyInstallments = $v.monthlyInstallments;
       _type = $v.type;
       _tokenId = $v.tokenId;
       _paymentSourceId = $v.paymentSourceId;
+      _contractId = $v.contractId;
       _$v = null;
     }
     return this;
@@ -120,13 +150,15 @@ class ChargeRequestPaymentMethodBuilder
     final _$result = _$v ??
         new _$ChargeRequestPaymentMethod._(
             expiresAt: expiresAt,
+            monthlyInstallments: monthlyInstallments,
             type: BuiltValueNullFieldError.checkNotNull(
                 type, r'ChargeRequestPaymentMethod', 'type'),
             tokenId: tokenId,
-            paymentSourceId: paymentSourceId);
+            paymentSourceId: paymentSourceId,
+            contractId: contractId);
     replace(_$result);
     return _$result;
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint

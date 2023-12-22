@@ -14,17 +14,17 @@ class _$DeleteApiKeysResponse extends DeleteApiKeysResponse {
   @override
   final String? description;
   @override
-  final String? id;
-  @override
   final bool? livemode;
-  @override
-  final String? object;
   @override
   final String? prefix;
   @override
-  final String? role;
+  final String? id;
+  @override
+  final String? object;
   @override
   final bool? deleted;
+  @override
+  final String? role;
 
   factory _$DeleteApiKeysResponse(
           [void Function(DeleteApiKeysResponseBuilder)? updates]) =>
@@ -34,12 +34,12 @@ class _$DeleteApiKeysResponse extends DeleteApiKeysResponse {
       {this.active,
       this.createdAt,
       this.description,
-      this.id,
       this.livemode,
-      this.object,
       this.prefix,
-      this.role,
-      this.deleted})
+      this.id,
+      this.object,
+      this.deleted,
+      this.role})
       : super._();
 
   @override
@@ -58,32 +58,28 @@ class _$DeleteApiKeysResponse extends DeleteApiKeysResponse {
         active == other.active &&
         createdAt == other.createdAt &&
         description == other.description &&
-        id == other.id &&
         livemode == other.livemode &&
-        object == other.object &&
         prefix == other.prefix &&
-        role == other.role &&
-        deleted == other.deleted;
+        id == other.id &&
+        object == other.object &&
+        deleted == other.deleted &&
+        role == other.role;
   }
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc(
-            $jc(
-                $jc(
-                    $jc(
-                        $jc(
-                            $jc(
-                                $jc($jc(0, active.hashCode),
-                                    createdAt.hashCode),
-                                description.hashCode),
-                            id.hashCode),
-                        livemode.hashCode),
-                    object.hashCode),
-                prefix.hashCode),
-            role.hashCode),
-        deleted.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, active.hashCode);
+    _$hash = $jc(_$hash, createdAt.hashCode);
+    _$hash = $jc(_$hash, description.hashCode);
+    _$hash = $jc(_$hash, livemode.hashCode);
+    _$hash = $jc(_$hash, prefix.hashCode);
+    _$hash = $jc(_$hash, id.hashCode);
+    _$hash = $jc(_$hash, object.hashCode);
+    _$hash = $jc(_$hash, deleted.hashCode);
+    _$hash = $jc(_$hash, role.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -92,12 +88,12 @@ class _$DeleteApiKeysResponse extends DeleteApiKeysResponse {
           ..add('active', active)
           ..add('createdAt', createdAt)
           ..add('description', description)
-          ..add('id', id)
           ..add('livemode', livemode)
-          ..add('object', object)
           ..add('prefix', prefix)
-          ..add('role', role)
-          ..add('deleted', deleted))
+          ..add('id', id)
+          ..add('object', object)
+          ..add('deleted', deleted)
+          ..add('role', role))
         .toString();
   }
 }
@@ -105,7 +101,7 @@ class _$DeleteApiKeysResponse extends DeleteApiKeysResponse {
 class DeleteApiKeysResponseBuilder
     implements
         Builder<DeleteApiKeysResponse, DeleteApiKeysResponseBuilder>,
-        ApiKeyResponseBuilder,
+        ApiKeyResponseOnDeleteBuilder,
         DeleteApiKeysResponseAllOfBuilder {
   _$DeleteApiKeysResponse? _$v;
 
@@ -122,29 +118,29 @@ class DeleteApiKeysResponseBuilder
   set description(covariant String? description) =>
       _$this._description = description;
 
-  String? _id;
-  String? get id => _$this._id;
-  set id(covariant String? id) => _$this._id = id;
-
   bool? _livemode;
   bool? get livemode => _$this._livemode;
   set livemode(covariant bool? livemode) => _$this._livemode = livemode;
-
-  String? _object;
-  String? get object => _$this._object;
-  set object(covariant String? object) => _$this._object = object;
 
   String? _prefix;
   String? get prefix => _$this._prefix;
   set prefix(covariant String? prefix) => _$this._prefix = prefix;
 
-  String? _role;
-  String? get role => _$this._role;
-  set role(covariant String? role) => _$this._role = role;
+  String? _id;
+  String? get id => _$this._id;
+  set id(covariant String? id) => _$this._id = id;
+
+  String? _object;
+  String? get object => _$this._object;
+  set object(covariant String? object) => _$this._object = object;
 
   bool? _deleted;
   bool? get deleted => _$this._deleted;
   set deleted(covariant bool? deleted) => _$this._deleted = deleted;
+
+  String? _role;
+  String? get role => _$this._role;
+  set role(covariant String? role) => _$this._role = role;
 
   DeleteApiKeysResponseBuilder() {
     DeleteApiKeysResponse._defaults(this);
@@ -156,12 +152,12 @@ class DeleteApiKeysResponseBuilder
       _active = $v.active;
       _createdAt = $v.createdAt;
       _description = $v.description;
-      _id = $v.id;
       _livemode = $v.livemode;
-      _object = $v.object;
       _prefix = $v.prefix;
-      _role = $v.role;
+      _id = $v.id;
+      _object = $v.object;
       _deleted = $v.deleted;
+      _role = $v.role;
       _$v = null;
     }
     return this;
@@ -188,15 +184,15 @@ class DeleteApiKeysResponseBuilder
             active: active,
             createdAt: createdAt,
             description: description,
-            id: id,
             livemode: livemode,
-            object: object,
             prefix: prefix,
-            role: role,
-            deleted: deleted);
+            id: id,
+            object: object,
+            deleted: deleted,
+            role: role);
     replace(_$result);
     return _$result;
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint

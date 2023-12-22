@@ -30,7 +30,9 @@ class _$CustomerResponse extends CustomerResponse {
   @override
   final bool livemode;
   @override
-  final String? name;
+  final String name;
+  @override
+  final BuiltMap<String, JsonObject?>? metadata;
   @override
   final String object;
   @override
@@ -58,7 +60,8 @@ class _$CustomerResponse extends CustomerResponse {
       this.fiscalEntities,
       required this.id,
       required this.livemode,
-      this.name,
+      required this.name,
+      this.metadata,
       required this.object,
       this.paymentSources,
       this.phone,
@@ -70,6 +73,7 @@ class _$CustomerResponse extends CustomerResponse {
     BuiltValueNullFieldError.checkNotNull(id, r'CustomerResponse', 'id');
     BuiltValueNullFieldError.checkNotNull(
         livemode, r'CustomerResponse', 'livemode');
+    BuiltValueNullFieldError.checkNotNull(name, r'CustomerResponse', 'name');
     BuiltValueNullFieldError.checkNotNull(
         object, r'CustomerResponse', 'object');
   }
@@ -98,6 +102,7 @@ class _$CustomerResponse extends CustomerResponse {
         id == other.id &&
         livemode == other.livemode &&
         name == other.name &&
+        metadata == other.metadata &&
         object == other.object &&
         paymentSources == other.paymentSources &&
         phone == other.phone &&
@@ -107,48 +112,27 @@ class _$CustomerResponse extends CustomerResponse {
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc(
-            $jc(
-                $jc(
-                    $jc(
-                        $jc(
-                            $jc(
-                                $jc(
-                                    $jc(
-                                        $jc(
-                                            $jc(
-                                                $jc(
-                                                    $jc(
-                                                        $jc(
-                                                            $jc(
-                                                                $jc(
-                                                                    $jc(
-                                                                        0,
-                                                                        antifraudInfo
-                                                                            .hashCode),
-                                                                    corporate
-                                                                        .hashCode),
-                                                                createdAt
-                                                                    .hashCode),
-                                                            customReference
-                                                                .hashCode),
-                                                        defaultFiscalEntityId
-                                                            .hashCode),
-                                                    defaultShippingContactId
-                                                        .hashCode),
-                                                defaultPaymentSourceId
-                                                    .hashCode),
-                                            email.hashCode),
-                                        fiscalEntities.hashCode),
-                                    id.hashCode),
-                                livemode.hashCode),
-                            name.hashCode),
-                        object.hashCode),
-                    paymentSources.hashCode),
-                phone.hashCode),
-            shippingContacts.hashCode),
-        subscription.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, antifraudInfo.hashCode);
+    _$hash = $jc(_$hash, corporate.hashCode);
+    _$hash = $jc(_$hash, createdAt.hashCode);
+    _$hash = $jc(_$hash, customReference.hashCode);
+    _$hash = $jc(_$hash, defaultFiscalEntityId.hashCode);
+    _$hash = $jc(_$hash, defaultShippingContactId.hashCode);
+    _$hash = $jc(_$hash, defaultPaymentSourceId.hashCode);
+    _$hash = $jc(_$hash, email.hashCode);
+    _$hash = $jc(_$hash, fiscalEntities.hashCode);
+    _$hash = $jc(_$hash, id.hashCode);
+    _$hash = $jc(_$hash, livemode.hashCode);
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, metadata.hashCode);
+    _$hash = $jc(_$hash, object.hashCode);
+    _$hash = $jc(_$hash, paymentSources.hashCode);
+    _$hash = $jc(_$hash, phone.hashCode);
+    _$hash = $jc(_$hash, shippingContacts.hashCode);
+    _$hash = $jc(_$hash, subscription.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -166,6 +150,7 @@ class _$CustomerResponse extends CustomerResponse {
           ..add('id', id)
           ..add('livemode', livemode)
           ..add('name', name)
+          ..add('metadata', metadata)
           ..add('object', object)
           ..add('paymentSources', paymentSources)
           ..add('phone', phone)
@@ -235,6 +220,12 @@ class CustomerResponseBuilder
   String? get name => _$this._name;
   set name(String? name) => _$this._name = name;
 
+  MapBuilder<String, JsonObject?>? _metadata;
+  MapBuilder<String, JsonObject?> get metadata =>
+      _$this._metadata ??= new MapBuilder<String, JsonObject?>();
+  set metadata(MapBuilder<String, JsonObject?>? metadata) =>
+      _$this._metadata = metadata;
+
   String? _object;
   String? get object => _$this._object;
   set object(String? object) => _$this._object = object;
@@ -282,6 +273,7 @@ class CustomerResponseBuilder
       _id = $v.id;
       _livemode = $v.livemode;
       _name = $v.name;
+      _metadata = $v.metadata?.toBuilder();
       _object = $v.object;
       _paymentSources = $v.paymentSources?.toBuilder();
       _phone = $v.phone;
@@ -325,7 +317,9 @@ class CustomerResponseBuilder
                   id, r'CustomerResponse', 'id'),
               livemode: BuiltValueNullFieldError.checkNotNull(
                   livemode, r'CustomerResponse', 'livemode'),
-              name: name,
+              name: BuiltValueNullFieldError.checkNotNull(
+                  name, r'CustomerResponse', 'name'),
+              metadata: _metadata?.build(),
               object: BuiltValueNullFieldError.checkNotNull(
                   object, r'CustomerResponse', 'object'),
               paymentSources: _paymentSources?.build(),
@@ -340,6 +334,9 @@ class CustomerResponseBuilder
 
         _$failedField = 'fiscalEntities';
         _fiscalEntities?.build();
+
+        _$failedField = 'metadata';
+        _metadata?.build();
 
         _$failedField = 'paymentSources';
         _paymentSources?.build();
@@ -359,4 +356,4 @@ class CustomerResponseBuilder
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint

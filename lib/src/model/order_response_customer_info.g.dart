@@ -10,6 +10,8 @@ class _$OrderResponseCustomerInfo extends OrderResponseCustomerInfo {
   @override
   final String? customerId;
   @override
+  final String? customerCustomReference;
+  @override
   final String? name;
   @override
   final String? email;
@@ -26,6 +28,7 @@ class _$OrderResponseCustomerInfo extends OrderResponseCustomerInfo {
 
   _$OrderResponseCustomerInfo._(
       {this.customerId,
+      this.customerCustomReference,
       this.name,
       this.email,
       this.phone,
@@ -47,6 +50,7 @@ class _$OrderResponseCustomerInfo extends OrderResponseCustomerInfo {
     if (identical(other, this)) return true;
     return other is OrderResponseCustomerInfo &&
         customerId == other.customerId &&
+        customerCustomReference == other.customerCustomReference &&
         name == other.name &&
         email == other.email &&
         phone == other.phone &&
@@ -56,20 +60,23 @@ class _$OrderResponseCustomerInfo extends OrderResponseCustomerInfo {
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc(
-            $jc(
-                $jc($jc($jc(0, customerId.hashCode), name.hashCode),
-                    email.hashCode),
-                phone.hashCode),
-            corporate.hashCode),
-        object.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, customerId.hashCode);
+    _$hash = $jc(_$hash, customerCustomReference.hashCode);
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, email.hashCode);
+    _$hash = $jc(_$hash, phone.hashCode);
+    _$hash = $jc(_$hash, corporate.hashCode);
+    _$hash = $jc(_$hash, object.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'OrderResponseCustomerInfo')
           ..add('customerId', customerId)
+          ..add('customerCustomReference', customerCustomReference)
           ..add('name', name)
           ..add('email', email)
           ..add('phone', phone)
@@ -83,7 +90,7 @@ class OrderResponseCustomerInfoBuilder
     implements
         Builder<OrderResponseCustomerInfo, OrderResponseCustomerInfoBuilder>,
         CustomerInfoJustCustomerIdResponseBuilder,
-        CustomerInfoResponseBuilder,
+        OrderCustomerInfoResponseBuilder,
         OrderResponseCustomerInfoAllOfBuilder {
   _$OrderResponseCustomerInfo? _$v;
 
@@ -91,6 +98,11 @@ class OrderResponseCustomerInfoBuilder
   String? get customerId => _$this._customerId;
   set customerId(covariant String? customerId) =>
       _$this._customerId = customerId;
+
+  String? _customerCustomReference;
+  String? get customerCustomReference => _$this._customerCustomReference;
+  set customerCustomReference(covariant String? customerCustomReference) =>
+      _$this._customerCustomReference = customerCustomReference;
 
   String? _name;
   String? get name => _$this._name;
@@ -120,6 +132,7 @@ class OrderResponseCustomerInfoBuilder
     final $v = _$v;
     if ($v != null) {
       _customerId = $v.customerId;
+      _customerCustomReference = $v.customerCustomReference;
       _name = $v.name;
       _email = $v.email;
       _phone = $v.phone;
@@ -149,6 +162,7 @@ class OrderResponseCustomerInfoBuilder
     final _$result = _$v ??
         new _$OrderResponseCustomerInfo._(
             customerId: customerId,
+            customerCustomReference: customerCustomReference,
             name: name,
             email: email,
             phone: phone,
@@ -159,4 +173,4 @@ class OrderResponseCustomerInfoBuilder
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint

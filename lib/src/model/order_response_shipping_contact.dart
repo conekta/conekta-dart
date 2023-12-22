@@ -4,8 +4,10 @@
 
 // ignore_for_file: unused_element
 import 'package:conekta/src/model/customer_shipping_contacts_response.dart';
+import 'package:built_collection/built_collection.dart';
 import 'package:conekta/src/model/order_response_shipping_contact_all_of.dart';
 import 'package:conekta/src/model/customer_shipping_contacts_response_address.dart';
+import 'package:built_value/json_object.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -23,6 +25,7 @@ part 'order_response_shipping_contact.g.dart';
 /// * [address] 
 /// * [parentId] 
 /// * [default_] 
+/// * [metadata] - Metadata associated with the shipping contact
 /// * [deleted] 
 @BuiltValue()
 abstract class OrderResponseShippingContact implements CustomerShippingContactsResponse, OrderResponseShippingContactAllOf, Built<OrderResponseShippingContact, OrderResponseShippingContactBuilder> {
@@ -54,6 +57,13 @@ class _$OrderResponseShippingContactSerializer implements PrimitiveSerializer<Or
       yield serializers.serialize(
         object.createdAt,
         specifiedType: const FullType(int),
+      );
+    }
+    if (object.metadata != null) {
+      yield r'metadata';
+      yield serializers.serialize(
+        object.metadata,
+        specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
       );
     }
     if (object.address != null) {
@@ -148,6 +158,13 @@ class _$OrderResponseShippingContactSerializer implements PrimitiveSerializer<Or
             specifiedType: const FullType(int),
           ) as int;
           result.createdAt = valueDes;
+          break;
+        case r'metadata':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
+          ) as BuiltMap<String, JsonObject?>;
+          result.metadata.replace(valueDes);
           break;
         case r'address':
           final valueDes = serializers.deserialize(

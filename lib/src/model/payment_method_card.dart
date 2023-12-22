@@ -20,6 +20,7 @@ part 'payment_method_card.g.dart';
 /// * [accountType] 
 /// * [authCode] 
 /// * [brand] 
+/// * [contractId] - Id sent for recurrent charges.
 /// * [country] 
 /// * [expMonth] 
 /// * [expYear] 
@@ -105,6 +106,13 @@ class _$PaymentMethodCardSerializer implements PrimitiveSerializer<PaymentMethod
       yield r'exp_year';
       yield serializers.serialize(
         object.expYear,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.contractId != null) {
+      yield r'contract_id';
+      yield serializers.serialize(
+        object.contractId,
         specifiedType: const FullType(String),
       );
     }
@@ -212,6 +220,13 @@ class _$PaymentMethodCardSerializer implements PrimitiveSerializer<PaymentMethod
             specifiedType: const FullType(String),
           ) as String;
           result.expYear = valueDes;
+          break;
+        case r'contract_id':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.contractId = valueDes;
           break;
         case r'name':
           final valueDes = serializers.deserialize(

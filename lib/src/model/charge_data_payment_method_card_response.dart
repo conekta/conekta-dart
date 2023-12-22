@@ -16,6 +16,7 @@ part 'charge_data_payment_method_card_response.g.dart';
 /// * [accountType] 
 /// * [authCode] 
 /// * [brand] 
+/// * [contractId] - Id sent for recurrent charges.
 /// * [country] 
 /// * [expMonth] 
 /// * [expYear] 
@@ -33,6 +34,10 @@ abstract class ChargeDataPaymentMethodCardResponse  {
 
   @BuiltValueField(wireName: r'brand')
   String? get brand;
+
+  /// Id sent for recurrent charges.
+  @BuiltValueField(wireName: r'contract_id')
+  String? get contractId;
 
   @BuiltValueField(wireName: r'country')
   String? get country;
@@ -89,6 +94,13 @@ class _$ChargeDataPaymentMethodCardResponseSerializer implements PrimitiveSerial
       yield r'brand';
       yield serializers.serialize(
         object.brand,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.contractId != null) {
+      yield r'contract_id';
+      yield serializers.serialize(
+        object.contractId,
         specifiedType: const FullType(String),
       );
     }
@@ -224,6 +236,13 @@ class _$$ChargeDataPaymentMethodCardResponseSerializer implements PrimitiveSeria
             specifiedType: const FullType(String),
           ) as String;
           result.brand = valueDes;
+          break;
+        case r'contract_id':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.contractId = valueDes;
           break;
         case r'country':
           final valueDes = serializers.deserialize(

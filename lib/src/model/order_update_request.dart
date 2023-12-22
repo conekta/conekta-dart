@@ -4,6 +4,7 @@
 
 // ignore_for_file: unused_element
 import 'package:conekta/src/model/order_update_request_customer_info.dart';
+import 'package:conekta/src/model/order_update_fiscal_entity_request.dart';
 import 'package:conekta/src/model/shipping_request.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:conekta/src/model/checkout_request.dart';
@@ -25,6 +26,7 @@ part 'order_update_request.g.dart';
 /// * [currency] - Currency with which the payment will be made. It uses the 3-letter code of the [International Standard ISO 4217.](https://es.wikipedia.org/wiki/ISO_4217)
 /// * [customerInfo] 
 /// * [discountLines] - List of [discounts](https://developers.conekta.com/v2.1.0/reference/orderscreatediscountline) that are applied to the order. You must have at least one discount.
+/// * [fiscalEntity] 
 /// * [lineItems] - List of [products](https://developers.conekta.com/v2.1.0/reference/orderscreateproduct) that are sold in the order. You must have at least one product.
 /// * [metadata] 
 /// * [preAuthorize] - Indicates whether the order charges must be preauthorized
@@ -49,6 +51,9 @@ abstract class OrderUpdateRequest implements Built<OrderUpdateRequest, OrderUpda
   /// List of [discounts](https://developers.conekta.com/v2.1.0/reference/orderscreatediscountline) that are applied to the order. You must have at least one discount.
   @BuiltValueField(wireName: r'discount_lines')
   BuiltList<OrderDiscountLinesRequest>? get discountLines;
+
+  @BuiltValueField(wireName: r'fiscal_entity')
+  OrderUpdateFiscalEntityRequest? get fiscalEntity;
 
   /// List of [products](https://developers.conekta.com/v2.1.0/reference/orderscreateproduct) that are sold in the order. You must have at least one product.
   @BuiltValueField(wireName: r'line_items')
@@ -128,6 +133,13 @@ class _$OrderUpdateRequestSerializer implements PrimitiveSerializer<OrderUpdateR
       yield serializers.serialize(
         object.discountLines,
         specifiedType: const FullType(BuiltList, [FullType(OrderDiscountLinesRequest)]),
+      );
+    }
+    if (object.fiscalEntity != null) {
+      yield r'fiscal_entity';
+      yield serializers.serialize(
+        object.fiscalEntity,
+        specifiedType: const FullType(OrderUpdateFiscalEntityRequest),
       );
     }
     if (object.lineItems != null) {
@@ -229,6 +241,13 @@ class _$OrderUpdateRequestSerializer implements PrimitiveSerializer<OrderUpdateR
             specifiedType: const FullType(BuiltList, [FullType(OrderDiscountLinesRequest)]),
           ) as BuiltList<OrderDiscountLinesRequest>;
           result.discountLines.replace(valueDes);
+          break;
+        case r'fiscal_entity':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(OrderUpdateFiscalEntityRequest),
+          ) as OrderUpdateFiscalEntityRequest;
+          result.fiscalEntity.replace(valueDes);
           break;
         case r'line_items':
           final valueDes = serializers.deserialize(

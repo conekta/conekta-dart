@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **city** | **String** |  | 
 **state** | **String** |  | [optional] 
 **country** | **String** | this field follows the [ISO 3166-1 alpha-2 standard](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) | [optional] 
-**residential** | **bool** |  | [optional] 
+**residential** | **bool** |  | [optional] [default to false]
 **externalNumber** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -64,7 +64,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getTransactions**
-> GetTransactionsResponse getTransactions(acceptLanguage, xChildCompanyId, limit, search, next, previous)
+> GetTransactionsResponse getTransactions(acceptLanguage, xChildCompanyId, limit, next, previous, id, chargeId, type, currency)
 
 Get List transactions
 
@@ -81,12 +81,15 @@ final api = Conekta().getTransactionsApi();
 final String acceptLanguage = es; // String | Use for knowing which language to use
 final String xChildCompanyId = 6441b6376b60c3a638da80af; // String | In the case of a holding company, the company id of the child company to which will process the request.
 final int limit = 56; // int | The numbers of items to return, the maximum value is 250
-final String search = search_example; // String | General order search, e.g. by mail, reference etc.
 final String next = next_example; // String | next page
 final String previous = previous_example; // String | previous page
+final String id = 65412a893cd69a0001c25892; // String | id of the object to be retrieved
+final String chargeId = 65412a893cd69a0001c25892; // String | id of the charge used for filtering
+final String type = capture; // String | type of the object to be retrieved
+final String currency = MXN; // String | currency of the object to be retrieved
 
 try {
-    final response = api.getTransactions(acceptLanguage, xChildCompanyId, limit, search, next, previous);
+    final response = api.getTransactions(acceptLanguage, xChildCompanyId, limit, next, previous, id, chargeId, type, currency);
     print(response);
 } catch on DioError (e) {
     print('Exception when calling TransactionsApi->getTransactions: $e\n');
@@ -100,9 +103,12 @@ Name | Type | Description  | Notes
  **acceptLanguage** | **String**| Use for knowing which language to use | [optional] [default to 'es']
  **xChildCompanyId** | **String**| In the case of a holding company, the company id of the child company to which will process the request. | [optional] 
  **limit** | **int**| The numbers of items to return, the maximum value is 250 | [optional] [default to 20]
- **search** | **String**| General order search, e.g. by mail, reference etc. | [optional] 
  **next** | **String**| next page | [optional] 
  **previous** | **String**| previous page | [optional] 
+ **id** | **String**| id of the object to be retrieved | [optional] 
+ **chargeId** | **String**| id of the charge used for filtering | [optional] 
+ **type** | **String**| type of the object to be retrieved | [optional] 
+ **currency** | **String**| currency of the object to be retrieved | [optional] 
 
 ### Return type
 

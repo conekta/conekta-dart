@@ -29,6 +29,9 @@ abstract class CustomerShippingContactsBuilder {
 
   bool? get deleted;
   set deleted(bool? deleted);
+
+  MapBuilder<String, JsonObject?> get metadata;
+  set metadata(MapBuilder<String, JsonObject?>? metadata);
 }
 
 class _$$CustomerShippingContacts extends $CustomerShippingContacts {
@@ -46,6 +49,8 @@ class _$$CustomerShippingContacts extends $CustomerShippingContacts {
   final bool? default_;
   @override
   final bool? deleted;
+  @override
+  final BuiltMap<String, JsonObject?>? metadata;
 
   factory _$$CustomerShippingContacts(
           [void Function($CustomerShippingContactsBuilder)? updates]) =>
@@ -58,7 +63,8 @@ class _$$CustomerShippingContacts extends $CustomerShippingContacts {
       required this.address,
       this.parentId,
       this.default_,
-      this.deleted})
+      this.deleted,
+      this.metadata})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         address, r'$CustomerShippingContacts', 'address');
@@ -83,21 +89,23 @@ class _$$CustomerShippingContacts extends $CustomerShippingContacts {
         address == other.address &&
         parentId == other.parentId &&
         default_ == other.default_ &&
-        deleted == other.deleted;
+        deleted == other.deleted &&
+        metadata == other.metadata;
   }
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc(
-            $jc(
-                $jc(
-                    $jc($jc($jc(0, phone.hashCode), receiver.hashCode),
-                        betweenStreets.hashCode),
-                    address.hashCode),
-                parentId.hashCode),
-            default_.hashCode),
-        deleted.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, phone.hashCode);
+    _$hash = $jc(_$hash, receiver.hashCode);
+    _$hash = $jc(_$hash, betweenStreets.hashCode);
+    _$hash = $jc(_$hash, address.hashCode);
+    _$hash = $jc(_$hash, parentId.hashCode);
+    _$hash = $jc(_$hash, default_.hashCode);
+    _$hash = $jc(_$hash, deleted.hashCode);
+    _$hash = $jc(_$hash, metadata.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -109,7 +117,8 @@ class _$$CustomerShippingContacts extends $CustomerShippingContacts {
           ..add('address', address)
           ..add('parentId', parentId)
           ..add('default_', default_)
-          ..add('deleted', deleted))
+          ..add('deleted', deleted)
+          ..add('metadata', metadata))
         .toString();
   }
 }
@@ -151,6 +160,12 @@ class $CustomerShippingContactsBuilder
   bool? get deleted => _$this._deleted;
   set deleted(covariant bool? deleted) => _$this._deleted = deleted;
 
+  MapBuilder<String, JsonObject?>? _metadata;
+  MapBuilder<String, JsonObject?> get metadata =>
+      _$this._metadata ??= new MapBuilder<String, JsonObject?>();
+  set metadata(covariant MapBuilder<String, JsonObject?>? metadata) =>
+      _$this._metadata = metadata;
+
   $CustomerShippingContactsBuilder() {
     $CustomerShippingContacts._defaults(this);
   }
@@ -165,6 +180,7 @@ class $CustomerShippingContactsBuilder
       _parentId = $v.parentId;
       _default_ = $v.default_;
       _deleted = $v.deleted;
+      _metadata = $v.metadata?.toBuilder();
       _$v = null;
     }
     return this;
@@ -195,12 +211,16 @@ class $CustomerShippingContactsBuilder
               address: address.build(),
               parentId: parentId,
               default_: default_,
-              deleted: deleted);
+              deleted: deleted,
+              metadata: _metadata?.build());
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'address';
         address.build();
+
+        _$failedField = 'metadata';
+        _metadata?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             r'$CustomerShippingContacts', _$failedField, e.toString());
@@ -212,4 +232,4 @@ class $CustomerShippingContactsBuilder
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint

@@ -19,6 +19,9 @@ abstract class ChargeDataPaymentMethodCardResponseBuilder {
   String? get brand;
   set brand(String? brand);
 
+  String? get contractId;
+  set contractId(String? contractId);
+
   String? get country;
   set country(String? country);
 
@@ -50,6 +53,8 @@ class _$$ChargeDataPaymentMethodCardResponse
   @override
   final String? brand;
   @override
+  final String? contractId;
+  @override
   final String? country;
   @override
   final String? expMonth;
@@ -74,6 +79,7 @@ class _$$ChargeDataPaymentMethodCardResponse
       {this.accountType,
       this.authCode,
       this.brand,
+      this.contractId,
       this.country,
       this.expMonth,
       this.expYear,
@@ -99,6 +105,7 @@ class _$$ChargeDataPaymentMethodCardResponse
         accountType == other.accountType &&
         authCode == other.authCode &&
         brand == other.brand &&
+        contractId == other.contractId &&
         country == other.country &&
         expMonth == other.expMonth &&
         expYear == other.expYear &&
@@ -110,24 +117,20 @@ class _$$ChargeDataPaymentMethodCardResponse
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc(
-            $jc(
-                $jc(
-                    $jc(
-                        $jc(
-                            $jc(
-                                $jc(
-                                    $jc($jc(0, accountType.hashCode),
-                                        authCode.hashCode),
-                                    brand.hashCode),
-                                country.hashCode),
-                            expMonth.hashCode),
-                        expYear.hashCode),
-                    fraudIndicators.hashCode),
-                issuer.hashCode),
-            last4.hashCode),
-        name.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, accountType.hashCode);
+    _$hash = $jc(_$hash, authCode.hashCode);
+    _$hash = $jc(_$hash, brand.hashCode);
+    _$hash = $jc(_$hash, contractId.hashCode);
+    _$hash = $jc(_$hash, country.hashCode);
+    _$hash = $jc(_$hash, expMonth.hashCode);
+    _$hash = $jc(_$hash, expYear.hashCode);
+    _$hash = $jc(_$hash, fraudIndicators.hashCode);
+    _$hash = $jc(_$hash, issuer.hashCode);
+    _$hash = $jc(_$hash, last4.hashCode);
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -136,6 +139,7 @@ class _$$ChargeDataPaymentMethodCardResponse
           ..add('accountType', accountType)
           ..add('authCode', authCode)
           ..add('brand', brand)
+          ..add('contractId', contractId)
           ..add('country', country)
           ..add('expMonth', expMonth)
           ..add('expYear', expYear)
@@ -166,6 +170,11 @@ class $ChargeDataPaymentMethodCardResponseBuilder
   String? _brand;
   String? get brand => _$this._brand;
   set brand(covariant String? brand) => _$this._brand = brand;
+
+  String? _contractId;
+  String? get contractId => _$this._contractId;
+  set contractId(covariant String? contractId) =>
+      _$this._contractId = contractId;
 
   String? _country;
   String? get country => _$this._country;
@@ -207,6 +216,7 @@ class $ChargeDataPaymentMethodCardResponseBuilder
       _accountType = $v.accountType;
       _authCode = $v.authCode;
       _brand = $v.brand;
+      _contractId = $v.contractId;
       _country = $v.country;
       _expMonth = $v.expMonth;
       _expYear = $v.expYear;
@@ -242,6 +252,7 @@ class $ChargeDataPaymentMethodCardResponseBuilder
               accountType: accountType,
               authCode: authCode,
               brand: brand,
+              contractId: contractId,
               country: country,
               expMonth: expMonth,
               expYear: expYear,
@@ -267,4 +278,4 @@ class $ChargeDataPaymentMethodCardResponseBuilder
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint

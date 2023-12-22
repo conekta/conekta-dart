@@ -3,76 +3,64 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:conekta/src/model/customer_address.dart';
-import 'package:conekta/src/model/order_response_fiscal_entity_address_all_of.dart';
+import 'package:conekta/src/model/order_fiscal_entity_address_response_all_of.dart';
+import 'package:conekta/src/model/fiscal_entity_address.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
-part 'order_response_fiscal_entity_address.g.dart';
+part 'order_fiscal_entity_address_response.g.dart';
 
-/// OrderResponseFiscalEntityAddress
+/// Address of the fiscal entity
 ///
 /// Properties:
-/// * [street1] 
-/// * [street2] 
-/// * [postalCode] 
-/// * [city] 
-/// * [state] 
+/// * [street1] - Street name and number
+/// * [street2] - Street name and number
+/// * [postalCode] - Postal code
+/// * [city] - City
+/// * [state] - State
 /// * [country] - this field follows the [ISO 3166-1 alpha-2 standard](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
-/// * [residential] 
-/// * [externalNumber] 
+/// * [externalNumber] - External number
 /// * [object] 
 @BuiltValue()
-abstract class OrderResponseFiscalEntityAddress implements CustomerAddress, OrderResponseFiscalEntityAddressAllOf, Built<OrderResponseFiscalEntityAddress, OrderResponseFiscalEntityAddressBuilder> {
-  OrderResponseFiscalEntityAddress._();
+abstract class OrderFiscalEntityAddressResponse implements FiscalEntityAddress, OrderFiscalEntityAddressResponseAllOf, Built<OrderFiscalEntityAddressResponse, OrderFiscalEntityAddressResponseBuilder> {
+  OrderFiscalEntityAddressResponse._();
 
-  factory OrderResponseFiscalEntityAddress([void updates(OrderResponseFiscalEntityAddressBuilder b)]) = _$OrderResponseFiscalEntityAddress;
+  factory OrderFiscalEntityAddressResponse([void updates(OrderFiscalEntityAddressResponseBuilder b)]) = _$OrderFiscalEntityAddressResponse;
 
   @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(OrderResponseFiscalEntityAddressBuilder b) => b;
+  static void _defaults(OrderFiscalEntityAddressResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<OrderResponseFiscalEntityAddress> get serializer => _$OrderResponseFiscalEntityAddressSerializer();
+  static Serializer<OrderFiscalEntityAddressResponse> get serializer => _$OrderFiscalEntityAddressResponseSerializer();
 }
 
-class _$OrderResponseFiscalEntityAddressSerializer implements PrimitiveSerializer<OrderResponseFiscalEntityAddress> {
+class _$OrderFiscalEntityAddressResponseSerializer implements PrimitiveSerializer<OrderFiscalEntityAddressResponse> {
   @override
-  final Iterable<Type> types = const [OrderResponseFiscalEntityAddress, _$OrderResponseFiscalEntityAddress];
+  final Iterable<Type> types = const [OrderFiscalEntityAddressResponse, _$OrderFiscalEntityAddressResponse];
 
   @override
-  final String wireName = r'OrderResponseFiscalEntityAddress';
+  final String wireName = r'OrderFiscalEntityAddressResponse';
 
   Iterable<Object?> _serializeProperties(
     Serializers serializers,
-    OrderResponseFiscalEntityAddress object, {
+    OrderFiscalEntityAddressResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    if (object.country != null) {
-      yield r'country';
-      yield serializers.serialize(
-        object.country,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.residential != null) {
-      yield r'residential';
-      yield serializers.serialize(
-        object.residential,
-        specifiedType: const FullType(bool),
-      );
-    }
+    yield r'country';
+    yield serializers.serialize(
+      object.country,
+      specifiedType: const FullType(String),
+    );
     yield r'city';
     yield serializers.serialize(
       object.city,
       specifiedType: const FullType(String),
     );
-    if (object.externalNumber != null) {
-      yield r'external_number';
-      yield serializers.serialize(
-        object.externalNumber,
-        specifiedType: const FullType(String),
-      );
-    }
+    yield r'external_number';
+    yield serializers.serialize(
+      object.externalNumber,
+      specifiedType: const FullType(String),
+    );
     yield r'postal_code';
     yield serializers.serialize(
       object.postalCode,
@@ -87,7 +75,7 @@ class _$OrderResponseFiscalEntityAddressSerializer implements PrimitiveSerialize
       yield r'street2';
       yield serializers.serialize(
         object.street2,
-        specifiedType: const FullType(String),
+        specifiedType: const FullType.nullable(String),
       );
     }
     if (object.state != null) {
@@ -109,7 +97,7 @@ class _$OrderResponseFiscalEntityAddressSerializer implements PrimitiveSerialize
   @override
   Object serialize(
     Serializers serializers,
-    OrderResponseFiscalEntityAddress object, {
+    OrderFiscalEntityAddressResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
     return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
@@ -120,7 +108,7 @@ class _$OrderResponseFiscalEntityAddressSerializer implements PrimitiveSerialize
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
     required List<Object?> serializedList,
-    required OrderResponseFiscalEntityAddressBuilder result,
+    required OrderFiscalEntityAddressResponseBuilder result,
     required List<Object?> unhandled,
   }) {
     for (var i = 0; i < serializedList.length; i += 2) {
@@ -133,13 +121,6 @@ class _$OrderResponseFiscalEntityAddressSerializer implements PrimitiveSerialize
             specifiedType: const FullType(String),
           ) as String;
           result.country = valueDes;
-          break;
-        case r'residential':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(bool),
-          ) as bool;
-          result.residential = valueDes;
           break;
         case r'city':
           final valueDes = serializers.deserialize(
@@ -172,8 +153,9 @@ class _$OrderResponseFiscalEntityAddressSerializer implements PrimitiveSerialize
         case r'street2':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.street2 = valueDes;
           break;
         case r'state':
@@ -199,12 +181,12 @@ class _$OrderResponseFiscalEntityAddressSerializer implements PrimitiveSerialize
   }
 
   @override
-  OrderResponseFiscalEntityAddress deserialize(
+  OrderFiscalEntityAddressResponse deserialize(
     Serializers serializers,
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final result = OrderResponseFiscalEntityAddressBuilder();
+    final result = OrderFiscalEntityAddressResponseBuilder();
     final serializedList = (serialized as Iterable<Object?>).toList();
     final unhandled = <Object?>[];
     _deserializeProperties(

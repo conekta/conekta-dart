@@ -12,14 +12,14 @@ part 'api_key_update_request.g.dart';
 ///
 /// Properties:
 /// * [active] - Indicates if the webhook key is active
-/// * [description] - Detail of the use that will be given to the api key
+/// * [description] - A name or brief explanation of what this api key is used for
 @BuiltValue()
 abstract class ApiKeyUpdateRequest implements Built<ApiKeyUpdateRequest, ApiKeyUpdateRequestBuilder> {
   /// Indicates if the webhook key is active
   @BuiltValueField(wireName: r'active')
   bool? get active;
 
-  /// Detail of the use that will be given to the api key
+  /// A name or brief explanation of what this api key is used for
   @BuiltValueField(wireName: r'description')
   String? get description;
 

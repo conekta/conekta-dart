@@ -6,31 +6,31 @@
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
-part 'order_response_fiscal_entity_address_all_of.g.dart';
+part 'order_fiscal_entity_address_response_all_of.g.dart';
 
-/// OrderResponseFiscalEntityAddressAllOf
+/// OrderFiscalEntityAddressResponseAllOf
 ///
 /// Properties:
 /// * [object] 
 @BuiltValue(instantiable: false)
-abstract class OrderResponseFiscalEntityAddressAllOf  {
+abstract class OrderFiscalEntityAddressResponseAllOf  {
   @BuiltValueField(wireName: r'object')
   String? get object;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<OrderResponseFiscalEntityAddressAllOf> get serializer => _$OrderResponseFiscalEntityAddressAllOfSerializer();
+  static Serializer<OrderFiscalEntityAddressResponseAllOf> get serializer => _$OrderFiscalEntityAddressResponseAllOfSerializer();
 }
 
-class _$OrderResponseFiscalEntityAddressAllOfSerializer implements PrimitiveSerializer<OrderResponseFiscalEntityAddressAllOf> {
+class _$OrderFiscalEntityAddressResponseAllOfSerializer implements PrimitiveSerializer<OrderFiscalEntityAddressResponseAllOf> {
   @override
-  final Iterable<Type> types = const [OrderResponseFiscalEntityAddressAllOf];
+  final Iterable<Type> types = const [OrderFiscalEntityAddressResponseAllOf];
 
   @override
-  final String wireName = r'OrderResponseFiscalEntityAddressAllOf';
+  final String wireName = r'OrderFiscalEntityAddressResponseAllOf';
 
   Iterable<Object?> _serializeProperties(
     Serializers serializers,
-    OrderResponseFiscalEntityAddressAllOf object, {
+    OrderFiscalEntityAddressResponseAllOf object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
     if (object.object != null) {
@@ -45,50 +45,50 @@ class _$OrderResponseFiscalEntityAddressAllOfSerializer implements PrimitiveSeri
   @override
   Object serialize(
     Serializers serializers,
-    OrderResponseFiscalEntityAddressAllOf object, {
+    OrderFiscalEntityAddressResponseAllOf object, {
     FullType specifiedType = FullType.unspecified,
   }) {
     return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
   }
 
   @override
-  OrderResponseFiscalEntityAddressAllOf deserialize(
+  OrderFiscalEntityAddressResponseAllOf deserialize(
     Serializers serializers,
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return serializers.deserialize(serialized, specifiedType: FullType($OrderResponseFiscalEntityAddressAllOf)) as $OrderResponseFiscalEntityAddressAllOf;
+    return serializers.deserialize(serialized, specifiedType: FullType($OrderFiscalEntityAddressResponseAllOf)) as $OrderFiscalEntityAddressResponseAllOf;
   }
 }
 
-/// a concrete implementation of [OrderResponseFiscalEntityAddressAllOf], since [OrderResponseFiscalEntityAddressAllOf] is not instantiable
+/// a concrete implementation of [OrderFiscalEntityAddressResponseAllOf], since [OrderFiscalEntityAddressResponseAllOf] is not instantiable
 @BuiltValue(instantiable: true)
-abstract class $OrderResponseFiscalEntityAddressAllOf implements OrderResponseFiscalEntityAddressAllOf, Built<$OrderResponseFiscalEntityAddressAllOf, $OrderResponseFiscalEntityAddressAllOfBuilder> {
-  $OrderResponseFiscalEntityAddressAllOf._();
+abstract class $OrderFiscalEntityAddressResponseAllOf implements OrderFiscalEntityAddressResponseAllOf, Built<$OrderFiscalEntityAddressResponseAllOf, $OrderFiscalEntityAddressResponseAllOfBuilder> {
+  $OrderFiscalEntityAddressResponseAllOf._();
 
-  factory $OrderResponseFiscalEntityAddressAllOf([void Function($OrderResponseFiscalEntityAddressAllOfBuilder)? updates]) = _$$OrderResponseFiscalEntityAddressAllOf;
+  factory $OrderFiscalEntityAddressResponseAllOf([void Function($OrderFiscalEntityAddressResponseAllOfBuilder)? updates]) = _$$OrderFiscalEntityAddressResponseAllOf;
 
   @BuiltValueHook(initializeBuilder: true)
-  static void _defaults($OrderResponseFiscalEntityAddressAllOfBuilder b) => b;
+  static void _defaults($OrderFiscalEntityAddressResponseAllOfBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<$OrderResponseFiscalEntityAddressAllOf> get serializer => _$$OrderResponseFiscalEntityAddressAllOfSerializer();
+  static Serializer<$OrderFiscalEntityAddressResponseAllOf> get serializer => _$$OrderFiscalEntityAddressResponseAllOfSerializer();
 }
 
-class _$$OrderResponseFiscalEntityAddressAllOfSerializer implements PrimitiveSerializer<$OrderResponseFiscalEntityAddressAllOf> {
+class _$$OrderFiscalEntityAddressResponseAllOfSerializer implements PrimitiveSerializer<$OrderFiscalEntityAddressResponseAllOf> {
   @override
-  final Iterable<Type> types = const [$OrderResponseFiscalEntityAddressAllOf, _$$OrderResponseFiscalEntityAddressAllOf];
+  final Iterable<Type> types = const [$OrderFiscalEntityAddressResponseAllOf, _$$OrderFiscalEntityAddressResponseAllOf];
 
   @override
-  final String wireName = r'$OrderResponseFiscalEntityAddressAllOf';
+  final String wireName = r'$OrderFiscalEntityAddressResponseAllOf';
 
   @override
   Object serialize(
     Serializers serializers,
-    $OrderResponseFiscalEntityAddressAllOf object, {
+    $OrderFiscalEntityAddressResponseAllOf object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return serializers.serialize(object, specifiedType: FullType(OrderResponseFiscalEntityAddressAllOf))!;
+    return serializers.serialize(object, specifiedType: FullType(OrderFiscalEntityAddressResponseAllOf))!;
   }
 
   void _deserializeProperties(
@@ -96,7 +96,7 @@ class _$$OrderResponseFiscalEntityAddressAllOfSerializer implements PrimitiveSer
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
     required List<Object?> serializedList,
-    required OrderResponseFiscalEntityAddressAllOfBuilder result,
+    required OrderFiscalEntityAddressResponseAllOfBuilder result,
     required List<Object?> unhandled,
   }) {
     for (var i = 0; i < serializedList.length; i += 2) {
@@ -119,12 +119,12 @@ class _$$OrderResponseFiscalEntityAddressAllOfSerializer implements PrimitiveSer
   }
 
   @override
-  $OrderResponseFiscalEntityAddressAllOf deserialize(
+  $OrderFiscalEntityAddressResponseAllOf deserialize(
     Serializers serializers,
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final result = $OrderResponseFiscalEntityAddressAllOfBuilder();
+    final result = $OrderFiscalEntityAddressResponseAllOfBuilder();
     final serializedList = (serialized as Iterable<Object?>).toList();
     final unhandled = <Object?>[];
     _deserializeProperties(

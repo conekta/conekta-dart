@@ -29,6 +29,7 @@ part 'charge_order_response_payment_method.g.dart';
 /// * [storeName] 
 /// * [accountType] 
 /// * [brand] 
+/// * [contractId] - Id sent for recurrent charges.
 /// * [country] 
 /// * [expMonth] 
 /// * [expYear] 

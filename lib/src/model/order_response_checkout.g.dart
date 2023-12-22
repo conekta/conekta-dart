@@ -136,44 +136,35 @@ class _$OrderResponseCheckout extends OrderResponseCheckout {
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc(
-            $jc(
-                $jc(
-                    $jc(
-                        $jc(
-                            $jc(
-                                $jc(
-                                    $jc(
-                                        $jc(
-                                            $jc(
-                                                $jc(
-                                                    $jc(
-                                                        $jc(
-                                                            $jc(
-                                                                $jc(
-                                                                    $jc(
-                                                                        $jc(
-                                                                            $jc($jc($jc($jc($jc($jc($jc($jc(0, allowedPaymentMethods.hashCode), canNotExpire.hashCode), emailsSent.hashCode), excludeCardNetworks.hashCode), expiresAt.hashCode), failureUrl.hashCode), force3dsFlow.hashCode),
-                                                                                id.hashCode),
-                                                                            isRedirectOnFailure.hashCode),
-                                                                        livemode.hashCode),
-                                                                    metadata.hashCode),
-                                                                monthlyInstallmentsEnabled.hashCode),
-                                                            monthlyInstallmentsOptions.hashCode),
-                                                        name.hashCode),
-                                                    needsShippingContact.hashCode),
-                                                object.hashCode),
-                                            onDemandEnabled.hashCode),
-                                        paidPaymentsCount.hashCode),
-                                    recurrent.hashCode),
-                                slug.hashCode),
-                            smsSent.hashCode),
-                        successUrl.hashCode),
-                    startsAt.hashCode),
-                status.hashCode),
-            type.hashCode),
-        url.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, allowedPaymentMethods.hashCode);
+    _$hash = $jc(_$hash, canNotExpire.hashCode);
+    _$hash = $jc(_$hash, emailsSent.hashCode);
+    _$hash = $jc(_$hash, excludeCardNetworks.hashCode);
+    _$hash = $jc(_$hash, expiresAt.hashCode);
+    _$hash = $jc(_$hash, failureUrl.hashCode);
+    _$hash = $jc(_$hash, force3dsFlow.hashCode);
+    _$hash = $jc(_$hash, id.hashCode);
+    _$hash = $jc(_$hash, isRedirectOnFailure.hashCode);
+    _$hash = $jc(_$hash, livemode.hashCode);
+    _$hash = $jc(_$hash, metadata.hashCode);
+    _$hash = $jc(_$hash, monthlyInstallmentsEnabled.hashCode);
+    _$hash = $jc(_$hash, monthlyInstallmentsOptions.hashCode);
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, needsShippingContact.hashCode);
+    _$hash = $jc(_$hash, object.hashCode);
+    _$hash = $jc(_$hash, onDemandEnabled.hashCode);
+    _$hash = $jc(_$hash, paidPaymentsCount.hashCode);
+    _$hash = $jc(_$hash, recurrent.hashCode);
+    _$hash = $jc(_$hash, slug.hashCode);
+    _$hash = $jc(_$hash, smsSent.hashCode);
+    _$hash = $jc(_$hash, successUrl.hashCode);
+    _$hash = $jc(_$hash, startsAt.hashCode);
+    _$hash = $jc(_$hash, status.hashCode);
+    _$hash = $jc(_$hash, type.hashCode);
+    _$hash = $jc(_$hash, url.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -439,4 +430,4 @@ class OrderResponseCheckoutBuilder
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint

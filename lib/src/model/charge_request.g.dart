@@ -10,8 +10,6 @@ class _$ChargeRequest extends ChargeRequest {
   @override
   final int? amount;
   @override
-  final int? monthlyInstallments;
-  @override
   final ChargeRequestPaymentMethod paymentMethod;
   @override
   final String? referenceId;
@@ -20,10 +18,7 @@ class _$ChargeRequest extends ChargeRequest {
       (new ChargeRequestBuilder()..update(updates))._build();
 
   _$ChargeRequest._(
-      {this.amount,
-      this.monthlyInstallments,
-      required this.paymentMethod,
-      this.referenceId})
+      {this.amount, required this.paymentMethod, this.referenceId})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         paymentMethod, r'ChargeRequest', 'paymentMethod');
@@ -41,24 +36,24 @@ class _$ChargeRequest extends ChargeRequest {
     if (identical(other, this)) return true;
     return other is ChargeRequest &&
         amount == other.amount &&
-        monthlyInstallments == other.monthlyInstallments &&
         paymentMethod == other.paymentMethod &&
         referenceId == other.referenceId;
   }
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc($jc($jc(0, amount.hashCode), monthlyInstallments.hashCode),
-            paymentMethod.hashCode),
-        referenceId.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, amount.hashCode);
+    _$hash = $jc(_$hash, paymentMethod.hashCode);
+    _$hash = $jc(_$hash, referenceId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'ChargeRequest')
           ..add('amount', amount)
-          ..add('monthlyInstallments', monthlyInstallments)
           ..add('paymentMethod', paymentMethod)
           ..add('referenceId', referenceId))
         .toString();
@@ -72,11 +67,6 @@ class ChargeRequestBuilder
   int? _amount;
   int? get amount => _$this._amount;
   set amount(int? amount) => _$this._amount = amount;
-
-  int? _monthlyInstallments;
-  int? get monthlyInstallments => _$this._monthlyInstallments;
-  set monthlyInstallments(int? monthlyInstallments) =>
-      _$this._monthlyInstallments = monthlyInstallments;
 
   ChargeRequestPaymentMethodBuilder? _paymentMethod;
   ChargeRequestPaymentMethodBuilder get paymentMethod =>
@@ -96,7 +86,6 @@ class ChargeRequestBuilder
     final $v = _$v;
     if ($v != null) {
       _amount = $v.amount;
-      _monthlyInstallments = $v.monthlyInstallments;
       _paymentMethod = $v.paymentMethod.toBuilder();
       _referenceId = $v.referenceId;
       _$v = null;
@@ -124,7 +113,6 @@ class ChargeRequestBuilder
       _$result = _$v ??
           new _$ChargeRequest._(
               amount: amount,
-              monthlyInstallments: monthlyInstallments,
               paymentMethod: paymentMethod.build(),
               referenceId: referenceId);
     } catch (_) {
@@ -143,4 +131,4 @@ class ChargeRequestBuilder
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint

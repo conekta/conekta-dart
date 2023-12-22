@@ -3,11 +3,13 @@
 //
 
 // ignore_for_file: unused_element
+import 'package:built_collection/built_collection.dart';
 import 'package:conekta/src/model/customer_fiscal_entities_response.dart';
 import 'package:conekta/src/model/customer_antifraud_info_response.dart';
 import 'package:conekta/src/model/subscription_response.dart';
 import 'package:conekta/src/model/customer_payment_methods_response.dart';
 import 'package:conekta/src/model/customer_response_shipping_contacts.dart';
+import 'package:built_value/json_object.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -17,20 +19,21 @@ part 'customer_response.g.dart';
 ///
 /// Properties:
 /// * [antifraudInfo] 
-/// * [corporate] 
-/// * [createdAt] 
-/// * [customReference] 
+/// * [corporate] - true if the customer is a company
+/// * [createdAt] - Creation date of the object
+/// * [customReference] - Custom reference
 /// * [defaultFiscalEntityId] 
 /// * [defaultShippingContactId] 
 /// * [defaultPaymentSourceId] 
 /// * [email] 
 /// * [fiscalEntities] 
-/// * [id] 
-/// * [livemode] 
-/// * [name] 
+/// * [id] - Customer's ID
+/// * [livemode] - true if the object exists in live mode or the value false if the object exists in test mode
+/// * [name] - Customer's name
+/// * [metadata] 
 /// * [object] 
 /// * [paymentSources] 
-/// * [phone] 
+/// * [phone] - Customer's phone number
 /// * [shippingContacts] 
 /// * [subscription] 
 @BuiltValue()
@@ -38,12 +41,15 @@ abstract class CustomerResponse implements Built<CustomerResponse, CustomerRespo
   @BuiltValueField(wireName: r'antifraud_info')
   CustomerAntifraudInfoResponse? get antifraudInfo;
 
+  /// true if the customer is a company
   @BuiltValueField(wireName: r'corporate')
   bool? get corporate;
 
+  /// Creation date of the object
   @BuiltValueField(wireName: r'created_at')
   int get createdAt;
 
+  /// Custom reference
   @BuiltValueField(wireName: r'custom_reference')
   String? get customReference;
 
@@ -62,14 +68,20 @@ abstract class CustomerResponse implements Built<CustomerResponse, CustomerRespo
   @BuiltValueField(wireName: r'fiscal_entities')
   CustomerFiscalEntitiesResponse? get fiscalEntities;
 
+  /// Customer's ID
   @BuiltValueField(wireName: r'id')
   String get id;
 
+  /// true if the object exists in live mode or the value false if the object exists in test mode
   @BuiltValueField(wireName: r'livemode')
   bool get livemode;
 
+  /// Customer's name
   @BuiltValueField(wireName: r'name')
-  String? get name;
+  String get name;
+
+  @BuiltValueField(wireName: r'metadata')
+  BuiltMap<String, JsonObject?>? get metadata;
 
   @BuiltValueField(wireName: r'object')
   String get object;
@@ -77,6 +89,7 @@ abstract class CustomerResponse implements Built<CustomerResponse, CustomerRespo
   @BuiltValueField(wireName: r'payment_sources')
   CustomerPaymentMethodsResponse? get paymentSources;
 
+  /// Customer's phone number
   @BuiltValueField(wireName: r'phone')
   String? get phone;
 
@@ -180,11 +193,16 @@ class _$CustomerResponseSerializer implements PrimitiveSerializer<CustomerRespon
       object.livemode,
       specifiedType: const FullType(bool),
     );
-    if (object.name != null) {
-      yield r'name';
+    yield r'name';
+    yield serializers.serialize(
+      object.name,
+      specifiedType: const FullType(String),
+    );
+    if (object.metadata != null) {
+      yield r'metadata';
       yield serializers.serialize(
-        object.name,
-        specifiedType: const FullType(String),
+        object.metadata,
+        specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
       );
     }
     yield r'object';
@@ -329,6 +347,13 @@ class _$CustomerResponseSerializer implements PrimitiveSerializer<CustomerRespon
             specifiedType: const FullType(String),
           ) as String;
           result.name = valueDes;
+          break;
+        case r'metadata':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
+          ) as BuiltMap<String, JsonObject?>;
+          result.metadata.replace(valueDes);
           break;
         case r'object':
           final valueDes = serializers.deserialize(

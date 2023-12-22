@@ -11,10 +11,10 @@ part 'api_key_create_response_all_of.g.dart';
 /// ApiKeyCreateResponseAllOf
 ///
 /// Properties:
-/// * [authenticationToken] - It is occupied as a user when authenticated with basic authentication, with a blank password. This value will only appear once, in the request to create a new key
+/// * [authenticationToken] - It is occupied as a user when authenticated with basic authentication, with a blank password. This value will only appear once, in the request to create a new key. Copy and save it in a safe place.
 @BuiltValue(instantiable: false)
 abstract class ApiKeyCreateResponseAllOf  {
-  /// It is occupied as a user when authenticated with basic authentication, with a blank password. This value will only appear once, in the request to create a new key
+  /// It is occupied as a user when authenticated with basic authentication, with a blank password. This value will only appear once, in the request to create a new key. Copy and save it in a safe place.
   @BuiltValueField(wireName: r'authentication_token')
   String? get authenticationToken;
 

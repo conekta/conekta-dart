@@ -12,14 +12,13 @@ class _$WebhookUpdateRequest extends WebhookUpdateRequest {
   @override
   final bool? synchronous;
   @override
-  final BuiltList<String>? subscribedEvents;
+  final BuiltList<String>? events;
 
   factory _$WebhookUpdateRequest(
           [void Function(WebhookUpdateRequestBuilder)? updates]) =>
       (new WebhookUpdateRequestBuilder()..update(updates))._build();
 
-  _$WebhookUpdateRequest._(
-      {required this.url, this.synchronous, this.subscribedEvents})
+  _$WebhookUpdateRequest._({required this.url, this.synchronous, this.events})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(url, r'WebhookUpdateRequest', 'url');
   }
@@ -39,13 +38,17 @@ class _$WebhookUpdateRequest extends WebhookUpdateRequest {
     return other is WebhookUpdateRequest &&
         url == other.url &&
         synchronous == other.synchronous &&
-        subscribedEvents == other.subscribedEvents;
+        events == other.events;
   }
 
   @override
   int get hashCode {
-    return $jf($jc($jc($jc(0, url.hashCode), synchronous.hashCode),
-        subscribedEvents.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, url.hashCode);
+    _$hash = $jc(_$hash, synchronous.hashCode);
+    _$hash = $jc(_$hash, events.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -53,7 +56,7 @@ class _$WebhookUpdateRequest extends WebhookUpdateRequest {
     return (newBuiltValueToStringHelper(r'WebhookUpdateRequest')
           ..add('url', url)
           ..add('synchronous', synchronous)
-          ..add('subscribedEvents', subscribedEvents))
+          ..add('events', events))
         .toString();
   }
 }
@@ -70,11 +73,10 @@ class WebhookUpdateRequestBuilder
   bool? get synchronous => _$this._synchronous;
   set synchronous(bool? synchronous) => _$this._synchronous = synchronous;
 
-  ListBuilder<String>? _subscribedEvents;
-  ListBuilder<String> get subscribedEvents =>
-      _$this._subscribedEvents ??= new ListBuilder<String>();
-  set subscribedEvents(ListBuilder<String>? subscribedEvents) =>
-      _$this._subscribedEvents = subscribedEvents;
+  ListBuilder<String>? _events;
+  ListBuilder<String> get events =>
+      _$this._events ??= new ListBuilder<String>();
+  set events(ListBuilder<String>? events) => _$this._events = events;
 
   WebhookUpdateRequestBuilder() {
     WebhookUpdateRequest._defaults(this);
@@ -85,7 +87,7 @@ class WebhookUpdateRequestBuilder
     if ($v != null) {
       _url = $v.url;
       _synchronous = $v.synchronous;
-      _subscribedEvents = $v.subscribedEvents?.toBuilder();
+      _events = $v.events?.toBuilder();
       _$v = null;
     }
     return this;
@@ -113,12 +115,12 @@ class WebhookUpdateRequestBuilder
               url: BuiltValueNullFieldError.checkNotNull(
                   url, r'WebhookUpdateRequest', 'url'),
               synchronous: synchronous,
-              subscribedEvents: _subscribedEvents?.build());
+              events: _events?.build());
     } catch (_) {
       late String _$failedField;
       try {
-        _$failedField = 'subscribedEvents';
-        _subscribedEvents?.build();
+        _$failedField = 'events';
+        _events?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             r'WebhookUpdateRequest', _$failedField, e.toString());
@@ -130,4 +132,4 @@ class WebhookUpdateRequestBuilder
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint
