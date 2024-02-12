@@ -81,7 +81,6 @@ class CustomerPaymentMethodsResponseBuilder
     implements
         Builder<CustomerPaymentMethodsResponse,
             CustomerPaymentMethodsResponseBuilder>,
-        CustomerPaymentMethodsBuilder,
         PageBuilder,
         PaginationBuilder {
   _$CustomerPaymentMethodsResponse? _$v;

@@ -80,7 +80,6 @@ class _$GetCompaniesResponse extends GetCompaniesResponse {
 class GetCompaniesResponseBuilder
     implements
         Builder<GetCompaniesResponse, GetCompaniesResponseBuilder>,
-        GetCompaniesResponseAllOfBuilder,
         PageBuilder,
         PaginationBuilder {
   _$GetCompaniesResponse? _$v;

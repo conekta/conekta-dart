@@ -6,7 +6,6 @@
 import 'package:conekta/src/model/pagination.dart';
 import 'package:conekta/src/model/api_key_response.dart';
 import 'package:built_collection/built_collection.dart';
-import 'package:conekta/src/model/get_api_keys_response_all_of.dart';
 import 'package:conekta/src/model/page.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -22,7 +21,10 @@ part 'get_api_keys_response.g.dart';
 /// * [object] - Object type, in this case is list
 /// * [data] 
 @BuiltValue()
-abstract class GetApiKeysResponse implements GetApiKeysResponseAllOf, Page, Pagination, Built<GetApiKeysResponse, GetApiKeysResponseBuilder> {
+abstract class GetApiKeysResponse implements Page, Pagination, Built<GetApiKeysResponse, GetApiKeysResponseBuilder> {
+  @BuiltValueField(wireName: r'data')
+  BuiltList<ApiKeyResponse>? get data;
+
   GetApiKeysResponse._();
 
   factory GetApiKeysResponse([void updates(GetApiKeysResponseBuilder b)]) = _$GetApiKeysResponse;

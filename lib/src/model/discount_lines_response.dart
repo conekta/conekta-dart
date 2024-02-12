@@ -3,7 +3,6 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:conekta/src/model/discount_lines_response_all_of.dart';
 import 'package:conekta/src/model/order_discount_lines_request.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -20,7 +19,19 @@ part 'discount_lines_response.g.dart';
 /// * [object] - The object name
 /// * [parentId] - The order id
 @BuiltValue(instantiable: false)
-abstract class DiscountLinesResponse implements DiscountLinesResponseAllOf, OrderDiscountLinesRequest {
+abstract class DiscountLinesResponse implements OrderDiscountLinesRequest {
+  /// The discount line id
+  @BuiltValueField(wireName: r'id')
+  String get id;
+
+  /// The order id
+  @BuiltValueField(wireName: r'parent_id')
+  String get parentId;
+
+  /// The object name
+  @BuiltValueField(wireName: r'object')
+  String get object;
+
   @BuiltValueSerializer(custom: true)
   static Serializer<DiscountLinesResponse> get serializer => _$DiscountLinesResponseSerializer();
 }
@@ -42,14 +53,14 @@ class _$DiscountLinesResponseSerializer implements PrimitiveSerializer<DiscountL
       object.amount,
       specifiedType: const FullType(int),
     );
-    yield r'code';
-    yield serializers.serialize(
-      object.code,
-      specifiedType: const FullType(String),
-    );
     yield r'id';
     yield serializers.serialize(
       object.id,
+      specifiedType: const FullType(String),
+    );
+    yield r'code';
+    yield serializers.serialize(
+      object.code,
       specifiedType: const FullType(String),
     );
     yield r'type';
@@ -137,19 +148,19 @@ class _$$DiscountLinesResponseSerializer implements PrimitiveSerializer<$Discoun
           ) as int;
           result.amount = valueDes;
           break;
-        case r'code':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.code = valueDes;
-          break;
         case r'id':
           final valueDes = serializers.deserialize(
             value,
             specifiedType: const FullType(String),
           ) as String;
           result.id = valueDes;
+          break;
+        case r'code':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.code = valueDes;
           break;
         case r'type':
           final valueDes = serializers.deserialize(

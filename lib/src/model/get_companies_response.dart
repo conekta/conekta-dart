@@ -5,7 +5,6 @@
 // ignore_for_file: unused_element
 import 'package:conekta/src/model/pagination.dart';
 import 'package:built_collection/built_collection.dart';
-import 'package:conekta/src/model/get_companies_response_all_of.dart';
 import 'package:conekta/src/model/company_response.dart';
 import 'package:conekta/src/model/page.dart';
 import 'package:built_value/built_value.dart';
@@ -22,7 +21,10 @@ part 'get_companies_response.g.dart';
 /// * [previousPageUrl] - Url of the previous page.
 /// * [data] 
 @BuiltValue()
-abstract class GetCompaniesResponse implements GetCompaniesResponseAllOf, Page, Pagination, Built<GetCompaniesResponse, GetCompaniesResponseBuilder> {
+abstract class GetCompaniesResponse implements Page, Pagination, Built<GetCompaniesResponse, GetCompaniesResponseBuilder> {
+  @BuiltValueField(wireName: r'data')
+  BuiltList<CompanyResponse>? get data;
+
   GetCompaniesResponse._();
 
   factory GetCompaniesResponse([void updates(GetCompaniesResponseBuilder b)]) = _$GetCompaniesResponse;

@@ -10,9 +10,9 @@ class _$DiscountLinesDataResponse extends DiscountLinesDataResponse {
   @override
   final String id;
   @override
-  final String object;
-  @override
   final String parentId;
+  @override
+  final String object;
   @override
   final int amount;
   @override
@@ -26,8 +26,8 @@ class _$DiscountLinesDataResponse extends DiscountLinesDataResponse {
 
   _$DiscountLinesDataResponse._(
       {required this.id,
-      required this.object,
       required this.parentId,
+      required this.object,
       required this.amount,
       required this.code,
       required this.type})
@@ -35,9 +35,9 @@ class _$DiscountLinesDataResponse extends DiscountLinesDataResponse {
     BuiltValueNullFieldError.checkNotNull(
         id, r'DiscountLinesDataResponse', 'id');
     BuiltValueNullFieldError.checkNotNull(
-        object, r'DiscountLinesDataResponse', 'object');
-    BuiltValueNullFieldError.checkNotNull(
         parentId, r'DiscountLinesDataResponse', 'parentId');
+    BuiltValueNullFieldError.checkNotNull(
+        object, r'DiscountLinesDataResponse', 'object');
     BuiltValueNullFieldError.checkNotNull(
         amount, r'DiscountLinesDataResponse', 'amount');
     BuiltValueNullFieldError.checkNotNull(
@@ -60,8 +60,8 @@ class _$DiscountLinesDataResponse extends DiscountLinesDataResponse {
     if (identical(other, this)) return true;
     return other is DiscountLinesDataResponse &&
         id == other.id &&
-        object == other.object &&
         parentId == other.parentId &&
+        object == other.object &&
         amount == other.amount &&
         code == other.code &&
         type == other.type;
@@ -72,8 +72,8 @@ class _$DiscountLinesDataResponse extends DiscountLinesDataResponse {
     return $jf($jc(
         $jc(
             $jc(
-                $jc($jc($jc(0, id.hashCode), object.hashCode),
-                    parentId.hashCode),
+                $jc($jc($jc(0, id.hashCode), parentId.hashCode),
+                    object.hashCode),
                 amount.hashCode),
             code.hashCode),
         type.hashCode));
@@ -83,8 +83,8 @@ class _$DiscountLinesDataResponse extends DiscountLinesDataResponse {
   String toString() {
     return (newBuiltValueToStringHelper(r'DiscountLinesDataResponse')
           ..add('id', id)
-          ..add('object', object)
           ..add('parentId', parentId)
+          ..add('object', object)
           ..add('amount', amount)
           ..add('code', code)
           ..add('type', type))
@@ -102,13 +102,13 @@ class DiscountLinesDataResponseBuilder
   String? get id => _$this._id;
   set id(covariant String? id) => _$this._id = id;
 
-  String? _object;
-  String? get object => _$this._object;
-  set object(covariant String? object) => _$this._object = object;
-
   String? _parentId;
   String? get parentId => _$this._parentId;
   set parentId(covariant String? parentId) => _$this._parentId = parentId;
+
+  String? _object;
+  String? get object => _$this._object;
+  set object(covariant String? object) => _$this._object = object;
 
   int? _amount;
   int? get amount => _$this._amount;
@@ -130,8 +130,8 @@ class DiscountLinesDataResponseBuilder
     final $v = _$v;
     if ($v != null) {
       _id = $v.id;
-      _object = $v.object;
       _parentId = $v.parentId;
+      _object = $v.object;
       _amount = $v.amount;
       _code = $v.code;
       _type = $v.type;
@@ -159,10 +159,10 @@ class DiscountLinesDataResponseBuilder
         new _$DiscountLinesDataResponse._(
             id: BuiltValueNullFieldError.checkNotNull(
                 id, r'DiscountLinesDataResponse', 'id'),
-            object: BuiltValueNullFieldError.checkNotNull(
-                object, r'DiscountLinesDataResponse', 'object'),
             parentId: BuiltValueNullFieldError.checkNotNull(
                 parentId, r'DiscountLinesDataResponse', 'parentId'),
+            object: BuiltValueNullFieldError.checkNotNull(
+                object, r'DiscountLinesDataResponse', 'object'),
             amount: BuiltValueNullFieldError.checkNotNull(
                 amount, r'DiscountLinesDataResponse', 'amount'),
             code: BuiltValueNullFieldError.checkNotNull(

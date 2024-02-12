@@ -3,7 +3,6 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:conekta/src/model/order_fiscal_entity_address_response_all_of.dart';
 import 'package:conekta/src/model/fiscal_entity_address.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -22,7 +21,10 @@ part 'order_fiscal_entity_address_response.g.dart';
 /// * [externalNumber] - External number
 /// * [object] 
 @BuiltValue()
-abstract class OrderFiscalEntityAddressResponse implements FiscalEntityAddress, OrderFiscalEntityAddressResponseAllOf, Built<OrderFiscalEntityAddressResponse, OrderFiscalEntityAddressResponseBuilder> {
+abstract class OrderFiscalEntityAddressResponse implements FiscalEntityAddress, Built<OrderFiscalEntityAddressResponse, OrderFiscalEntityAddressResponseBuilder> {
+  @BuiltValueField(wireName: r'object')
+  String? get object;
+
   OrderFiscalEntityAddressResponse._();
 
   factory OrderFiscalEntityAddressResponse([void updates(OrderFiscalEntityAddressResponseBuilder b)]) = _$OrderFiscalEntityAddressResponse;

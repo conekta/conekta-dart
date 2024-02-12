@@ -8,6 +8,12 @@ part of 'product_order_response.dart';
 
 class _$ProductOrderResponse extends ProductOrderResponse {
   @override
+  final String? id;
+  @override
+  final String? parentId;
+  @override
+  final String? object;
+  @override
   final BuiltMap<String, JsonObject?>? antifraudInfo;
   @override
   final String? brand;
@@ -25,19 +31,16 @@ class _$ProductOrderResponse extends ProductOrderResponse {
   final BuiltList<String>? tags;
   @override
   final int unitPrice;
-  @override
-  final String? id;
-  @override
-  final String? object;
-  @override
-  final String? parentId;
 
   factory _$ProductOrderResponse(
           [void Function(ProductOrderResponseBuilder)? updates]) =>
       (new ProductOrderResponseBuilder()..update(updates))._build();
 
   _$ProductOrderResponse._(
-      {this.antifraudInfo,
+      {this.id,
+      this.parentId,
+      this.object,
+      this.antifraudInfo,
       this.brand,
       this.description,
       this.metadata,
@@ -45,10 +48,7 @@ class _$ProductOrderResponse extends ProductOrderResponse {
       required this.quantity,
       this.sku,
       this.tags,
-      required this.unitPrice,
-      this.id,
-      this.object,
-      this.parentId})
+      required this.unitPrice})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         name, r'ProductOrderResponse', 'name');
@@ -71,6 +71,9 @@ class _$ProductOrderResponse extends ProductOrderResponse {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is ProductOrderResponse &&
+        id == other.id &&
+        parentId == other.parentId &&
+        object == other.object &&
         antifraudInfo == other.antifraudInfo &&
         brand == other.brand &&
         description == other.description &&
@@ -79,10 +82,7 @@ class _$ProductOrderResponse extends ProductOrderResponse {
         quantity == other.quantity &&
         sku == other.sku &&
         tags == other.tags &&
-        unitPrice == other.unitPrice &&
-        id == other.id &&
-        object == other.object &&
-        parentId == other.parentId;
+        unitPrice == other.unitPrice;
   }
 
   @override
@@ -97,23 +97,26 @@ class _$ProductOrderResponse extends ProductOrderResponse {
                                 $jc(
                                     $jc(
                                         $jc(
-                                            $jc($jc(0, antifraudInfo.hashCode),
-                                                brand.hashCode),
-                                            description.hashCode),
-                                        metadata.hashCode),
-                                    name.hashCode),
-                                quantity.hashCode),
-                            sku.hashCode),
-                        tags.hashCode),
-                    unitPrice.hashCode),
-                id.hashCode),
-            object.hashCode),
-        parentId.hashCode));
+                                            $jc($jc(0, id.hashCode),
+                                                parentId.hashCode),
+                                            object.hashCode),
+                                        antifraudInfo.hashCode),
+                                    brand.hashCode),
+                                description.hashCode),
+                            metadata.hashCode),
+                        name.hashCode),
+                    quantity.hashCode),
+                sku.hashCode),
+            tags.hashCode),
+        unitPrice.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'ProductOrderResponse')
+          ..add('id', id)
+          ..add('parentId', parentId)
+          ..add('object', object)
           ..add('antifraudInfo', antifraudInfo)
           ..add('brand', brand)
           ..add('description', description)
@@ -122,10 +125,7 @@ class _$ProductOrderResponse extends ProductOrderResponse {
           ..add('quantity', quantity)
           ..add('sku', sku)
           ..add('tags', tags)
-          ..add('unitPrice', unitPrice)
-          ..add('id', id)
-          ..add('object', object)
-          ..add('parentId', parentId))
+          ..add('unitPrice', unitPrice))
         .toString();
   }
 }
@@ -133,9 +133,20 @@ class _$ProductOrderResponse extends ProductOrderResponse {
 class ProductOrderResponseBuilder
     implements
         Builder<ProductOrderResponse, ProductOrderResponseBuilder>,
-        ProductBuilder,
-        ProductOrderResponseAllOfBuilder {
+        ProductBuilder {
   _$ProductOrderResponse? _$v;
+
+  String? _id;
+  String? get id => _$this._id;
+  set id(covariant String? id) => _$this._id = id;
+
+  String? _parentId;
+  String? get parentId => _$this._parentId;
+  set parentId(covariant String? parentId) => _$this._parentId = parentId;
+
+  String? _object;
+  String? get object => _$this._object;
+  set object(covariant String? object) => _$this._object = object;
 
   MapBuilder<String, JsonObject?>? _antifraudInfo;
   MapBuilder<String, JsonObject?> get antifraudInfo =>
@@ -178,18 +189,6 @@ class ProductOrderResponseBuilder
   int? get unitPrice => _$this._unitPrice;
   set unitPrice(covariant int? unitPrice) => _$this._unitPrice = unitPrice;
 
-  String? _id;
-  String? get id => _$this._id;
-  set id(covariant String? id) => _$this._id = id;
-
-  String? _object;
-  String? get object => _$this._object;
-  set object(covariant String? object) => _$this._object = object;
-
-  String? _parentId;
-  String? get parentId => _$this._parentId;
-  set parentId(covariant String? parentId) => _$this._parentId = parentId;
-
   ProductOrderResponseBuilder() {
     ProductOrderResponse._defaults(this);
   }
@@ -197,6 +196,9 @@ class ProductOrderResponseBuilder
   ProductOrderResponseBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
+      _id = $v.id;
+      _parentId = $v.parentId;
+      _object = $v.object;
       _antifraudInfo = $v.antifraudInfo?.toBuilder();
       _brand = $v.brand;
       _description = $v.description;
@@ -206,16 +208,12 @@ class ProductOrderResponseBuilder
       _sku = $v.sku;
       _tags = $v.tags?.toBuilder();
       _unitPrice = $v.unitPrice;
-      _id = $v.id;
-      _object = $v.object;
-      _parentId = $v.parentId;
       _$v = null;
     }
     return this;
   }
 
   @override
-// ignore: override_on_non_overriding_method
   void replace(covariant ProductOrderResponse other) {
     ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ProductOrderResponse;
@@ -234,6 +232,9 @@ class ProductOrderResponseBuilder
     try {
       _$result = _$v ??
           new _$ProductOrderResponse._(
+              id: id,
+              parentId: parentId,
+              object: object,
               antifraudInfo: _antifraudInfo?.build(),
               brand: brand,
               description: description,
@@ -245,10 +246,7 @@ class ProductOrderResponseBuilder
               sku: sku,
               tags: _tags?.build(),
               unitPrice: BuiltValueNullFieldError.checkNotNull(
-                  unitPrice, r'ProductOrderResponse', 'unitPrice'),
-              id: id,
-              object: object,
-              parentId: parentId);
+                  unitPrice, r'ProductOrderResponse', 'unitPrice'));
     } catch (_) {
       late String _$failedField;
       try {

@@ -6,7 +6,6 @@
 import 'package:conekta/src/model/pagination.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:conekta/src/model/page.dart';
-import 'package:conekta/src/model/get_order_discount_lines_response_all_of.dart';
 import 'package:conekta/src/model/discount_lines_response.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -22,7 +21,10 @@ part 'get_order_discount_lines_response.g.dart';
 /// * [previousPageUrl] - Url of the previous page.
 /// * [data] 
 @BuiltValue()
-abstract class GetOrderDiscountLinesResponse implements GetOrderDiscountLinesResponseAllOf, Page, Pagination, Built<GetOrderDiscountLinesResponse, GetOrderDiscountLinesResponseBuilder> {
+abstract class GetOrderDiscountLinesResponse implements Page, Pagination, Built<GetOrderDiscountLinesResponse, GetOrderDiscountLinesResponseBuilder> {
+  @BuiltValueField(wireName: r'data')
+  BuiltList<DiscountLinesResponse>? get data;
+
   GetOrderDiscountLinesResponse._();
 
   factory GetOrderDiscountLinesResponse([void updates(GetOrderDiscountLinesResponseBuilder b)]) = _$GetOrderDiscountLinesResponse;

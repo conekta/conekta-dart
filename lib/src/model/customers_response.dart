@@ -7,7 +7,6 @@ import 'package:conekta/src/model/pagination.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:conekta/src/model/customer_response.dart';
 import 'package:conekta/src/model/page.dart';
-import 'package:conekta/src/model/customers_response_all_of.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -16,13 +15,16 @@ part 'customers_response.g.dart';
 /// CustomersResponse
 ///
 /// Properties:
-/// * [data] 
 /// * [hasMore] - Indicates if there are more pages to be requested
 /// * [object] - Object type, in this case is list
 /// * [nextPageUrl] - URL of the next page.
 /// * [previousPageUrl] - Url of the previous page.
+/// * [data] 
 @BuiltValue()
-abstract class CustomersResponse implements CustomersResponseAllOf, Page, Pagination, Built<CustomersResponse, CustomersResponseBuilder> {
+abstract class CustomersResponse implements Page, Pagination, Built<CustomersResponse, CustomersResponseBuilder> {
+  @BuiltValueField(wireName: r'data')
+  BuiltList<CustomerResponse>? get data;
+
   CustomersResponse._();
 
   factory CustomersResponse([void updates(CustomersResponseBuilder b)]) = _$CustomersResponse;

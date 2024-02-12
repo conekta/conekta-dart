@@ -92,8 +92,7 @@ class OrderResponseCustomerInfoBuilder
     implements
         Builder<OrderResponseCustomerInfo, OrderResponseCustomerInfoBuilder>,
         CustomerInfoJustCustomerIdResponseBuilder,
-        OrderCustomerInfoResponseBuilder,
-        OrderResponseCustomerInfoAllOfBuilder {
+        OrderCustomerInfoResponseBuilder {
   _$OrderResponseCustomerInfo? _$v;
 
   String? _customerId;

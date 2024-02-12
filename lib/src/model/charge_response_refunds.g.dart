@@ -80,7 +80,6 @@ class _$ChargeResponseRefunds extends ChargeResponseRefunds {
 class ChargeResponseRefundsBuilder
     implements
         Builder<ChargeResponseRefunds, ChargeResponseRefundsBuilder>,
-        ChargeResponseRefundsAllOfBuilder,
         PageBuilder,
         PaginationBuilder {
   _$ChargeResponseRefunds? _$v;

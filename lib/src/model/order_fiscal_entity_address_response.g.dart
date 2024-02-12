@@ -9,6 +9,8 @@ part of 'order_fiscal_entity_address_response.dart';
 class _$OrderFiscalEntityAddressResponse
     extends OrderFiscalEntityAddressResponse {
   @override
+  final String? object;
+  @override
   final String street1;
   @override
   final String? street2;
@@ -22,22 +24,20 @@ class _$OrderFiscalEntityAddressResponse
   final String country;
   @override
   final String externalNumber;
-  @override
-  final String? object;
 
   factory _$OrderFiscalEntityAddressResponse(
           [void Function(OrderFiscalEntityAddressResponseBuilder)? updates]) =>
       (new OrderFiscalEntityAddressResponseBuilder()..update(updates))._build();
 
   _$OrderFiscalEntityAddressResponse._(
-      {required this.street1,
+      {this.object,
+      required this.street1,
       this.street2,
       required this.postalCode,
       required this.city,
       this.state,
       required this.country,
-      required this.externalNumber,
-      this.object})
+      required this.externalNumber})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         street1, r'OrderFiscalEntityAddressResponse', 'street1');
@@ -64,14 +64,14 @@ class _$OrderFiscalEntityAddressResponse
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is OrderFiscalEntityAddressResponse &&
+        object == other.object &&
         street1 == other.street1 &&
         street2 == other.street2 &&
         postalCode == other.postalCode &&
         city == other.city &&
         state == other.state &&
         country == other.country &&
-        externalNumber == other.externalNumber &&
-        object == other.object;
+        externalNumber == other.externalNumber;
   }
 
   @override
@@ -81,26 +81,26 @@ class _$OrderFiscalEntityAddressResponse
             $jc(
                 $jc(
                     $jc(
-                        $jc($jc($jc(0, street1.hashCode), street2.hashCode),
-                            postalCode.hashCode),
-                        city.hashCode),
-                    state.hashCode),
-                country.hashCode),
-            externalNumber.hashCode),
-        object.hashCode));
+                        $jc($jc($jc(0, object.hashCode), street1.hashCode),
+                            street2.hashCode),
+                        postalCode.hashCode),
+                    city.hashCode),
+                state.hashCode),
+            country.hashCode),
+        externalNumber.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'OrderFiscalEntityAddressResponse')
+          ..add('object', object)
           ..add('street1', street1)
           ..add('street2', street2)
           ..add('postalCode', postalCode)
           ..add('city', city)
           ..add('state', state)
           ..add('country', country)
-          ..add('externalNumber', externalNumber)
-          ..add('object', object))
+          ..add('externalNumber', externalNumber))
         .toString();
   }
 }
@@ -109,9 +109,12 @@ class OrderFiscalEntityAddressResponseBuilder
     implements
         Builder<OrderFiscalEntityAddressResponse,
             OrderFiscalEntityAddressResponseBuilder>,
-        FiscalEntityAddressBuilder,
-        OrderFiscalEntityAddressResponseAllOfBuilder {
+        FiscalEntityAddressBuilder {
   _$OrderFiscalEntityAddressResponse? _$v;
+
+  String? _object;
+  String? get object => _$this._object;
+  set object(covariant String? object) => _$this._object = object;
 
   String? _street1;
   String? get street1 => _$this._street1;
@@ -143,10 +146,6 @@ class OrderFiscalEntityAddressResponseBuilder
   set externalNumber(covariant String? externalNumber) =>
       _$this._externalNumber = externalNumber;
 
-  String? _object;
-  String? get object => _$this._object;
-  set object(covariant String? object) => _$this._object = object;
-
   OrderFiscalEntityAddressResponseBuilder() {
     OrderFiscalEntityAddressResponse._defaults(this);
   }
@@ -154,6 +153,7 @@ class OrderFiscalEntityAddressResponseBuilder
   OrderFiscalEntityAddressResponseBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
+      _object = $v.object;
       _street1 = $v.street1;
       _street2 = $v.street2;
       _postalCode = $v.postalCode;
@@ -161,14 +161,12 @@ class OrderFiscalEntityAddressResponseBuilder
       _state = $v.state;
       _country = $v.country;
       _externalNumber = $v.externalNumber;
-      _object = $v.object;
       _$v = null;
     }
     return this;
   }
 
   @override
-// ignore: override_on_non_overriding_method
   void replace(covariant OrderFiscalEntityAddressResponse other) {
     ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$OrderFiscalEntityAddressResponse;
@@ -185,6 +183,7 @@ class OrderFiscalEntityAddressResponseBuilder
   _$OrderFiscalEntityAddressResponse _build() {
     final _$result = _$v ??
         new _$OrderFiscalEntityAddressResponse._(
+            object: object,
             street1: BuiltValueNullFieldError.checkNotNull(
                 street1, r'OrderFiscalEntityAddressResponse', 'street1'),
             street2: street2,
@@ -198,8 +197,7 @@ class OrderFiscalEntityAddressResponseBuilder
             externalNumber: BuiltValueNullFieldError.checkNotNull(
                 externalNumber,
                 r'OrderFiscalEntityAddressResponse',
-                'externalNumber'),
-            object: object);
+                'externalNumber'));
     replace(_$result);
     return _$result;
   }

@@ -66,7 +66,6 @@ class CustomerResponseShippingContactsBuilder
     implements
         Builder<CustomerResponseShippingContacts,
             CustomerResponseShippingContactsBuilder>,
-        CustomerResponseShippingContactsAllOfBuilder,
         PaginationBuilder {
   _$CustomerResponseShippingContacts? _$v;
 
@@ -100,7 +99,6 @@ class CustomerResponseShippingContactsBuilder
   }
 
   @override
-// ignore: override_on_non_overriding_method
   void replace(covariant CustomerResponseShippingContacts other) {
     ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CustomerResponseShippingContacts;

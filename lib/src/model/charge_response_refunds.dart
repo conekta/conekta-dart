@@ -4,7 +4,6 @@
 
 // ignore_for_file: unused_element
 import 'package:conekta/src/model/pagination.dart';
-import 'package:conekta/src/model/charge_response_refunds_all_of.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:conekta/src/model/charge_response_refunds_data.dart';
 import 'package:conekta/src/model/page.dart';
@@ -22,7 +21,11 @@ part 'charge_response_refunds.g.dart';
 /// * [previousPageUrl] - Url of the previous page.
 /// * [data] - refunds
 @BuiltValue()
-abstract class ChargeResponseRefunds implements ChargeResponseRefundsAllOf, Page, Pagination, Built<ChargeResponseRefunds, ChargeResponseRefundsBuilder> {
+abstract class ChargeResponseRefunds implements Page, Pagination, Built<ChargeResponseRefunds, ChargeResponseRefundsBuilder> {
+  /// refunds
+  @BuiltValueField(wireName: r'data')
+  BuiltList<ChargeResponseRefundsData>? get data;
+
   ChargeResponseRefunds._();
 
   factory ChargeResponseRefunds([void updates(ChargeResponseRefundsBuilder b)]) = _$ChargeResponseRefunds;

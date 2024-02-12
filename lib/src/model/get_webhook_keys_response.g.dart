@@ -80,7 +80,6 @@ class _$GetWebhookKeysResponse extends GetWebhookKeysResponse {
 class GetWebhookKeysResponseBuilder
     implements
         Builder<GetWebhookKeysResponse, GetWebhookKeysResponseBuilder>,
-        GetWebhookKeysResponseAllOfBuilder,
         PageBuilder,
         PaginationBuilder {
   _$GetWebhookKeysResponse? _$v;

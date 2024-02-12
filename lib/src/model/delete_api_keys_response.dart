@@ -3,7 +3,6 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:conekta/src/model/delete_api_keys_response_all_of.dart';
 import 'package:conekta/src/model/api_key_response_on_delete.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -23,7 +22,7 @@ part 'delete_api_keys_response.g.dart';
 /// * [deleted] 
 /// * [role] - Indicates if the api key is private or public
 @BuiltValue()
-abstract class DeleteApiKeysResponse implements ApiKeyResponseOnDelete, DeleteApiKeysResponseAllOf, Built<DeleteApiKeysResponse, DeleteApiKeysResponseBuilder> {
+abstract class DeleteApiKeysResponse implements ApiKeyResponseOnDelete, Built<DeleteApiKeysResponse, DeleteApiKeysResponseBuilder> {
   DeleteApiKeysResponse._();
 
   factory DeleteApiKeysResponse([void updates(DeleteApiKeysResponseBuilder b)]) = _$DeleteApiKeysResponse;

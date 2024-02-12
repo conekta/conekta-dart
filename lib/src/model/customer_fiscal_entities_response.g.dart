@@ -65,7 +65,6 @@ class CustomerFiscalEntitiesResponseBuilder
     implements
         Builder<CustomerFiscalEntitiesResponse,
             CustomerFiscalEntitiesResponseBuilder>,
-        CustomerFiscalEntitiesResponseAllOfBuilder,
         PaginationBuilder {
   _$CustomerFiscalEntitiesResponse? _$v;
 
@@ -99,7 +98,6 @@ class CustomerFiscalEntitiesResponseBuilder
   }
 
   @override
-// ignore: override_on_non_overriding_method
   void replace(covariant CustomerFiscalEntitiesResponse other) {
     ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CustomerFiscalEntitiesResponse;

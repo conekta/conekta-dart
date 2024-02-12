@@ -80,7 +80,6 @@ class _$GetChargesResponse extends GetChargesResponse {
 class GetChargesResponseBuilder
     implements
         Builder<GetChargesResponse, GetChargesResponseBuilder>,
-        GetChargesResponseAllOfBuilder,
         PageBuilder,
         PaginationBuilder {
   _$GetChargesResponse? _$v;

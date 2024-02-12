@@ -5,7 +5,6 @@
 // ignore_for_file: unused_element
 import 'package:conekta/src/model/shipping_request.dart';
 import 'package:built_collection/built_collection.dart';
-import 'package:conekta/src/model/product_order_response_all_of.dart';
 import 'package:built_value/json_object.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -24,7 +23,16 @@ part 'shipping_order_response.g.dart';
 /// * [object] 
 /// * [parentId] 
 @BuiltValue()
-abstract class ShippingOrderResponse implements ProductOrderResponseAllOf, ShippingRequest, Built<ShippingOrderResponse, ShippingOrderResponseBuilder> {
+abstract class ShippingOrderResponse implements ShippingRequest, Built<ShippingOrderResponse, ShippingOrderResponseBuilder> {
+  @BuiltValueField(wireName: r'id')
+  String? get id;
+
+  @BuiltValueField(wireName: r'parent_id')
+  String? get parentId;
+
+  @BuiltValueField(wireName: r'object')
+  String? get object;
+
   ShippingOrderResponse._();
 
   factory ShippingOrderResponse([void updates(ShippingOrderResponseBuilder b)]) = _$ShippingOrderResponse;

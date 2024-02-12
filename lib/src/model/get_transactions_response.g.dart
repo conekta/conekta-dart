@@ -80,7 +80,6 @@ class _$GetTransactionsResponse extends GetTransactionsResponse {
 class GetTransactionsResponseBuilder
     implements
         Builder<GetTransactionsResponse, GetTransactionsResponseBuilder>,
-        GetTransactionsResponseAllOfBuilder,
         PageBuilder,
         PaginationBuilder {
   _$GetTransactionsResponse? _$v;

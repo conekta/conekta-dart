@@ -7,7 +7,6 @@ import 'package:conekta/src/model/pagination.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:conekta/src/model/page.dart';
 import 'package:conekta/src/model/product_data_response.dart';
-import 'package:conekta/src/model/order_response_products_all_of.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -22,7 +21,10 @@ part 'order_response_products.g.dart';
 /// * [previousPageUrl] - Url of the previous page.
 /// * [data] 
 @BuiltValue()
-abstract class OrderResponseProducts implements OrderResponseProductsAllOf, Page, Pagination, Built<OrderResponseProducts, OrderResponseProductsBuilder> {
+abstract class OrderResponseProducts implements Page, Pagination, Built<OrderResponseProducts, OrderResponseProductsBuilder> {
+  @BuiltValueField(wireName: r'data')
+  BuiltList<ProductDataResponse>? get data;
+
   OrderResponseProducts._();
 
   factory OrderResponseProducts([void updates(OrderResponseProductsBuilder b)]) = _$OrderResponseProducts;

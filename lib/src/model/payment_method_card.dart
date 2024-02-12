@@ -5,7 +5,6 @@
 // ignore_for_file: unused_element
 import 'package:conekta/src/model/payment_method.dart';
 import 'package:built_collection/built_collection.dart';
-import 'package:conekta/src/model/charge_data_payment_method_card_response.dart';
 import 'package:built_value/json_object.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -29,7 +28,41 @@ part 'payment_method_card.g.dart';
 /// * [last4] 
 /// * [name] 
 @BuiltValue()
-abstract class PaymentMethodCard implements ChargeDataPaymentMethodCardResponse, PaymentMethod, Built<PaymentMethodCard, PaymentMethodCardBuilder> {
+abstract class PaymentMethodCard implements PaymentMethod, Built<PaymentMethodCard, PaymentMethodCardBuilder> {
+  @BuiltValueField(wireName: r'country')
+  String? get country;
+
+  @BuiltValueField(wireName: r'exp_month')
+  String? get expMonth;
+
+  @BuiltValueField(wireName: r'last4')
+  String? get last4;
+
+  @BuiltValueField(wireName: r'auth_code')
+  String? get authCode;
+
+  @BuiltValueField(wireName: r'exp_year')
+  String? get expYear;
+
+  @BuiltValueField(wireName: r'account_type')
+  String? get accountType;
+
+  /// Id sent for recurrent charges.
+  @BuiltValueField(wireName: r'contract_id')
+  String? get contractId;
+
+  @BuiltValueField(wireName: r'name')
+  String? get name;
+
+  @BuiltValueField(wireName: r'brand')
+  String? get brand;
+
+  @BuiltValueField(wireName: r'fraud_indicators')
+  BuiltList<JsonObject?>? get fraudIndicators;
+
+  @BuiltValueField(wireName: r'issuer')
+  String? get issuer;
+
   PaymentMethodCard._();
 
   factory PaymentMethodCard([void updates(PaymentMethodCardBuilder b)]) = _$PaymentMethodCard;

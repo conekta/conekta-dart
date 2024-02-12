@@ -5,7 +5,6 @@
 // ignore_for_file: unused_element
 import 'package:conekta/src/model/details_error.dart';
 import 'package:built_collection/built_collection.dart';
-import 'package:conekta/src/model/error_all_of.dart';
 import 'package:conekta/src/model/details.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -20,7 +19,17 @@ part 'error.g.dart';
 /// * [type] 
 /// * [object] 
 @BuiltValue()
-abstract class Error implements Details, ErrorAllOf, Built<Error, ErrorBuilder> {
+abstract class Error implements Details, Built<Error, ErrorBuilder> {
+  /// log id
+  @BuiltValueField(wireName: r'log_id')
+  String? get logId;
+
+  @BuiltValueField(wireName: r'type')
+  String? get type;
+
+  @BuiltValueField(wireName: r'object')
+  String? get object;
+
   Error._();
 
   factory Error([void updates(ErrorBuilder b)]) = _$Error;
@@ -44,18 +53,18 @@ class _$ErrorSerializer implements PrimitiveSerializer<Error> {
     Error object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    if (object.details != null) {
-      yield r'details';
-      yield serializers.serialize(
-        object.details,
-        specifiedType: const FullType(BuiltList, [FullType(DetailsError)]),
-      );
-    }
     if (object.logId != null) {
       yield r'log_id';
       yield serializers.serialize(
         object.logId,
         specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.details != null) {
+      yield r'details';
+      yield serializers.serialize(
+        object.details,
+        specifiedType: const FullType(BuiltList, [FullType(DetailsError)]),
       );
     }
     if (object.type != null) {
@@ -95,13 +104,6 @@ class _$ErrorSerializer implements PrimitiveSerializer<Error> {
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
-        case r'details':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(BuiltList, [FullType(DetailsError)]),
-          ) as BuiltList<DetailsError>;
-          result.details.replace(valueDes);
-          break;
         case r'log_id':
           final valueDes = serializers.deserialize(
             value,
@@ -109,6 +111,13 @@ class _$ErrorSerializer implements PrimitiveSerializer<Error> {
           ) as String?;
           if (valueDes == null) continue;
           result.logId = valueDes;
+          break;
+        case r'details':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(BuiltList, [FullType(DetailsError)]),
+          ) as BuiltList<DetailsError>;
+          result.details.replace(valueDes);
           break;
         case r'type':
           final valueDes = serializers.deserialize(

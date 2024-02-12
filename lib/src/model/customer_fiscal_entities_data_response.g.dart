@@ -9,17 +9,17 @@ part of 'customer_fiscal_entities_data_response.dart';
 class _$CustomerFiscalEntitiesDataResponse
     extends CustomerFiscalEntitiesDataResponse {
   @override
-  final String id;
-  @override
-  final String object;
-  @override
   final int createdAt;
-  @override
-  final String? parentId;
   @override
   final bool? default_;
   @override
-  final CustomerFiscalEntitiesRequestAddress address;
+  final String id;
+  @override
+  final String? parentId;
+  @override
+  final String object;
+  @override
+  final CustomerAddress address;
   @override
   final String? taxId;
   @override
@@ -38,11 +38,11 @@ class _$CustomerFiscalEntitiesDataResponse
           ._build();
 
   _$CustomerFiscalEntitiesDataResponse._(
-      {required this.id,
-      required this.object,
-      required this.createdAt,
-      this.parentId,
+      {required this.createdAt,
       this.default_,
+      required this.id,
+      this.parentId,
+      required this.object,
       required this.address,
       this.taxId,
       this.email,
@@ -51,11 +51,11 @@ class _$CustomerFiscalEntitiesDataResponse
       this.companyName})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
+        createdAt, r'CustomerFiscalEntitiesDataResponse', 'createdAt');
+    BuiltValueNullFieldError.checkNotNull(
         id, r'CustomerFiscalEntitiesDataResponse', 'id');
     BuiltValueNullFieldError.checkNotNull(
         object, r'CustomerFiscalEntitiesDataResponse', 'object');
-    BuiltValueNullFieldError.checkNotNull(
-        createdAt, r'CustomerFiscalEntitiesDataResponse', 'createdAt');
     BuiltValueNullFieldError.checkNotNull(
         address, r'CustomerFiscalEntitiesDataResponse', 'address');
   }
@@ -73,11 +73,11 @@ class _$CustomerFiscalEntitiesDataResponse
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is CustomerFiscalEntitiesDataResponse &&
-        id == other.id &&
-        object == other.object &&
         createdAt == other.createdAt &&
-        parentId == other.parentId &&
         default_ == other.default_ &&
+        id == other.id &&
+        parentId == other.parentId &&
+        object == other.object &&
         address == other.address &&
         taxId == other.taxId &&
         email == other.email &&
@@ -97,11 +97,11 @@ class _$CustomerFiscalEntitiesDataResponse
                             $jc(
                                 $jc(
                                     $jc(
-                                        $jc($jc(0, id.hashCode),
-                                            object.hashCode),
-                                        createdAt.hashCode),
+                                        $jc($jc(0, createdAt.hashCode),
+                                            default_.hashCode),
+                                        id.hashCode),
                                     parentId.hashCode),
-                                default_.hashCode),
+                                object.hashCode),
                             address.hashCode),
                         taxId.hashCode),
                     email.hashCode),
@@ -113,11 +113,11 @@ class _$CustomerFiscalEntitiesDataResponse
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'CustomerFiscalEntitiesDataResponse')
-          ..add('id', id)
-          ..add('object', object)
           ..add('createdAt', createdAt)
-          ..add('parentId', parentId)
           ..add('default_', default_)
+          ..add('id', id)
+          ..add('parentId', parentId)
+          ..add('object', object)
           ..add('address', address)
           ..add('taxId', taxId)
           ..add('email', email)
@@ -132,34 +132,33 @@ class CustomerFiscalEntitiesDataResponseBuilder
     implements
         Builder<CustomerFiscalEntitiesDataResponse,
             CustomerFiscalEntitiesDataResponseBuilder>,
-        CreateCustomerFiscalEntitiesResponseAllOfBuilder,
         CustomerFiscalEntitiesRequestBuilder {
   _$CustomerFiscalEntitiesDataResponse? _$v;
-
-  String? _id;
-  String? get id => _$this._id;
-  set id(covariant String? id) => _$this._id = id;
-
-  String? _object;
-  String? get object => _$this._object;
-  set object(covariant String? object) => _$this._object = object;
 
   int? _createdAt;
   int? get createdAt => _$this._createdAt;
   set createdAt(covariant int? createdAt) => _$this._createdAt = createdAt;
 
-  String? _parentId;
-  String? get parentId => _$this._parentId;
-  set parentId(covariant String? parentId) => _$this._parentId = parentId;
-
   bool? _default_;
   bool? get default_ => _$this._default_;
   set default_(covariant bool? default_) => _$this._default_ = default_;
 
-  CustomerFiscalEntitiesRequestAddressBuilder? _address;
-  CustomerFiscalEntitiesRequestAddressBuilder get address =>
-      _$this._address ??= new CustomerFiscalEntitiesRequestAddressBuilder();
-  set address(covariant CustomerFiscalEntitiesRequestAddressBuilder? address) =>
+  String? _id;
+  String? get id => _$this._id;
+  set id(covariant String? id) => _$this._id = id;
+
+  String? _parentId;
+  String? get parentId => _$this._parentId;
+  set parentId(covariant String? parentId) => _$this._parentId = parentId;
+
+  String? _object;
+  String? get object => _$this._object;
+  set object(covariant String? object) => _$this._object = object;
+
+  CustomerAddressBuilder? _address;
+  CustomerAddressBuilder get address =>
+      _$this._address ??= new CustomerAddressBuilder();
+  set address(covariant CustomerAddressBuilder? address) =>
       _$this._address = address;
 
   String? _taxId;
@@ -192,11 +191,11 @@ class CustomerFiscalEntitiesDataResponseBuilder
   CustomerFiscalEntitiesDataResponseBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _id = $v.id;
-      _object = $v.object;
       _createdAt = $v.createdAt;
-      _parentId = $v.parentId;
       _default_ = $v.default_;
+      _id = $v.id;
+      _parentId = $v.parentId;
+      _object = $v.object;
       _address = $v.address.toBuilder();
       _taxId = $v.taxId;
       _email = $v.email;
@@ -209,7 +208,6 @@ class CustomerFiscalEntitiesDataResponseBuilder
   }
 
   @override
-// ignore: override_on_non_overriding_method
   void replace(covariant CustomerFiscalEntitiesDataResponse other) {
     ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CustomerFiscalEntitiesDataResponse;
@@ -229,14 +227,14 @@ class CustomerFiscalEntitiesDataResponseBuilder
     try {
       _$result = _$v ??
           new _$CustomerFiscalEntitiesDataResponse._(
-              id: BuiltValueNullFieldError.checkNotNull(
-                  id, r'CustomerFiscalEntitiesDataResponse', 'id'),
-              object: BuiltValueNullFieldError.checkNotNull(
-                  object, r'CustomerFiscalEntitiesDataResponse', 'object'),
               createdAt: BuiltValueNullFieldError.checkNotNull(createdAt,
                   r'CustomerFiscalEntitiesDataResponse', 'createdAt'),
-              parentId: parentId,
               default_: default_,
+              id: BuiltValueNullFieldError.checkNotNull(
+                  id, r'CustomerFiscalEntitiesDataResponse', 'id'),
+              parentId: parentId,
+              object: BuiltValueNullFieldError.checkNotNull(
+                  object, r'CustomerFiscalEntitiesDataResponse', 'object'),
               address: address.build(),
               taxId: taxId,
               email: email,

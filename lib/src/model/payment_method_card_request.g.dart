@@ -8,15 +8,18 @@ part of 'payment_method_card_request.dart';
 
 class _$PaymentMethodCardRequest extends PaymentMethodCardRequest {
   @override
-  final String type;
+  final String tokenId;
   @override
-  final String? tokenId;
+  final String type;
 
   factory _$PaymentMethodCardRequest(
           [void Function(PaymentMethodCardRequestBuilder)? updates]) =>
       (new PaymentMethodCardRequestBuilder()..update(updates))._build();
 
-  _$PaymentMethodCardRequest._({required this.type, this.tokenId}) : super._() {
+  _$PaymentMethodCardRequest._({required this.tokenId, required this.type})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        tokenId, r'PaymentMethodCardRequest', 'tokenId');
     BuiltValueNullFieldError.checkNotNull(
         type, r'PaymentMethodCardRequest', 'type');
   }
@@ -34,20 +37,20 @@ class _$PaymentMethodCardRequest extends PaymentMethodCardRequest {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is PaymentMethodCardRequest &&
-        type == other.type &&
-        tokenId == other.tokenId;
+        tokenId == other.tokenId &&
+        type == other.type;
   }
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, type.hashCode), tokenId.hashCode));
+    return $jf($jc($jc(0, tokenId.hashCode), type.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'PaymentMethodCardRequest')
-          ..add('type', type)
-          ..add('tokenId', tokenId))
+          ..add('tokenId', tokenId)
+          ..add('type', type))
         .toString();
   }
 }
@@ -55,17 +58,16 @@ class _$PaymentMethodCardRequest extends PaymentMethodCardRequest {
 class PaymentMethodCardRequestBuilder
     implements
         Builder<PaymentMethodCardRequest, PaymentMethodCardRequestBuilder>,
-        CustomerPaymentMethodRequestBuilder,
-        PaymentMethodCardRequestAllOfBuilder {
+        CustomerPaymentMethodRequestBuilder {
   _$PaymentMethodCardRequest? _$v;
-
-  String? _type;
-  String? get type => _$this._type;
-  set type(covariant String? type) => _$this._type = type;
 
   String? _tokenId;
   String? get tokenId => _$this._tokenId;
   set tokenId(covariant String? tokenId) => _$this._tokenId = tokenId;
+
+  String? _type;
+  String? get type => _$this._type;
+  set type(covariant String? type) => _$this._type = type;
 
   PaymentMethodCardRequestBuilder() {
     PaymentMethodCardRequest._defaults(this);
@@ -74,15 +76,14 @@ class PaymentMethodCardRequestBuilder
   PaymentMethodCardRequestBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _type = $v.type;
       _tokenId = $v.tokenId;
+      _type = $v.type;
       _$v = null;
     }
     return this;
   }
 
   @override
-// ignore: override_on_non_overriding_method
   void replace(covariant PaymentMethodCardRequest other) {
     ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$PaymentMethodCardRequest;
@@ -99,9 +100,10 @@ class PaymentMethodCardRequestBuilder
   _$PaymentMethodCardRequest _build() {
     final _$result = _$v ??
         new _$PaymentMethodCardRequest._(
+            tokenId: BuiltValueNullFieldError.checkNotNull(
+                tokenId, r'PaymentMethodCardRequest', 'tokenId'),
             type: BuiltValueNullFieldError.checkNotNull(
-                type, r'PaymentMethodCardRequest', 'type'),
-            tokenId: tokenId);
+                type, r'PaymentMethodCardRequest', 'type'));
     replace(_$result);
     return _$result;
   }

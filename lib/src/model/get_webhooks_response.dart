@@ -7,7 +7,6 @@ import 'package:conekta/src/model/pagination.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:conekta/src/model/page.dart';
 import 'package:conekta/src/model/webhook_response.dart';
-import 'package:conekta/src/model/get_webhooks_response_all_of.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -22,7 +21,10 @@ part 'get_webhooks_response.g.dart';
 /// * [previousPageUrl] - Url of the previous page.
 /// * [data] 
 @BuiltValue()
-abstract class GetWebhooksResponse implements GetWebhooksResponseAllOf, Page, Pagination, Built<GetWebhooksResponse, GetWebhooksResponseBuilder> {
+abstract class GetWebhooksResponse implements Page, Pagination, Built<GetWebhooksResponse, GetWebhooksResponseBuilder> {
+  @BuiltValueField(wireName: r'data')
+  BuiltList<WebhookResponse>? get data;
+
   GetWebhooksResponse._();
 
   factory GetWebhooksResponse([void updates(GetWebhooksResponseBuilder b)]) = _$GetWebhooksResponse;

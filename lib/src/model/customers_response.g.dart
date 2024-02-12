@@ -79,7 +79,6 @@ class _$CustomersResponse extends CustomersResponse {
 class CustomersResponseBuilder
     implements
         Builder<CustomersResponse, CustomersResponseBuilder>,
-        CustomersResponseAllOfBuilder,
         PageBuilder,
         PaginationBuilder {
   _$CustomersResponse? _$v;

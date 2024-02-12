@@ -80,7 +80,6 @@ class _$SubscriptionEventsResponse extends SubscriptionEventsResponse {
 class SubscriptionEventsResponseBuilder
     implements
         Builder<SubscriptionEventsResponse, SubscriptionEventsResponseBuilder>,
-        GetEventsResponseAllOfBuilder,
         PageBuilder,
         PaginationBuilder {
   _$SubscriptionEventsResponse? _$v;

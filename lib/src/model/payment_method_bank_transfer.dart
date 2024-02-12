@@ -5,7 +5,6 @@
 // ignore_for_file: unused_element
 import 'package:conekta/src/model/payment_method.dart';
 import 'package:built_collection/built_collection.dart';
-import 'package:conekta/src/model/charge_data_payment_method_bank_transfer_response.dart';
 import 'package:built_value/json_object.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -34,7 +33,55 @@ part 'payment_method_bank_transfer.g.dart';
 /// * [referenceNumber] 
 /// * [trackingCode] 
 @BuiltValue()
-abstract class PaymentMethodBankTransfer implements ChargeDataPaymentMethodBankTransferResponse, PaymentMethod, Built<PaymentMethodBankTransfer, PaymentMethodBankTransferBuilder> {
+abstract class PaymentMethodBankTransfer implements PaymentMethod, Built<PaymentMethodBankTransfer, PaymentMethodBankTransferBuilder> {
+  @BuiltValueField(wireName: r'issuing_account_bank')
+  String? get issuingAccountBank;
+
+  @BuiltValueField(wireName: r'executed_at')
+  int? get executedAt;
+
+  @BuiltValueField(wireName: r'receiving_account_bank')
+  String? get receivingAccountBank;
+
+  @BuiltValueField(wireName: r'issuing_account_number')
+  String? get issuingAccountNumber;
+
+  @BuiltValueField(wireName: r'description')
+  String? get description;
+
+  @BuiltValueField(wireName: r'tracking_code')
+  String? get trackingCode;
+
+  @BuiltValueField(wireName: r'expires_at')
+  int? get expiresAt;
+
+  @BuiltValueField(wireName: r'receiving_account_tax_id')
+  String? get receivingAccountTaxId;
+
+  @BuiltValueField(wireName: r'receiving_account_number')
+  String? get receivingAccountNumber;
+
+  @BuiltValueField(wireName: r'bank')
+  String? get bank;
+
+  @BuiltValueField(wireName: r'issuing_account_holder_name')
+  String? get issuingAccountHolderName;
+
+  @BuiltValueField(wireName: r'issuing_account_tax_id')
+  String? get issuingAccountTaxId;
+
+  @BuiltValueField(wireName: r'payment_attempts')
+  BuiltList<JsonObject?>? get paymentAttempts;
+
+  @BuiltValueField(wireName: r'reference_number')
+  String? get referenceNumber;
+
+  @BuiltValueField(wireName: r'receiving_account_holder_name')
+  String? get receivingAccountHolderName;
+
+  @BuiltValueField(wireName: r'clabe')
+  String? get clabe;
+
   PaymentMethodBankTransfer._();
 
   factory PaymentMethodBankTransfer([void updates(PaymentMethodBankTransferBuilder b)]) = _$PaymentMethodBankTransfer;

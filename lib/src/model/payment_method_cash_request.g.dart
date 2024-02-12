@@ -8,15 +8,15 @@ part of 'payment_method_cash_request.dart';
 
 class _$PaymentMethodCashRequest extends PaymentMethodCashRequest {
   @override
-  final String type;
-  @override
   final int? expiresAt;
+  @override
+  final String type;
 
   factory _$PaymentMethodCashRequest(
           [void Function(PaymentMethodCashRequestBuilder)? updates]) =>
       (new PaymentMethodCashRequestBuilder()..update(updates))._build();
 
-  _$PaymentMethodCashRequest._({required this.type, this.expiresAt})
+  _$PaymentMethodCashRequest._({this.expiresAt, required this.type})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         type, r'PaymentMethodCashRequest', 'type');
@@ -35,20 +35,20 @@ class _$PaymentMethodCashRequest extends PaymentMethodCashRequest {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is PaymentMethodCashRequest &&
-        type == other.type &&
-        expiresAt == other.expiresAt;
+        expiresAt == other.expiresAt &&
+        type == other.type;
   }
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, type.hashCode), expiresAt.hashCode));
+    return $jf($jc($jc(0, expiresAt.hashCode), type.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'PaymentMethodCashRequest')
-          ..add('type', type)
-          ..add('expiresAt', expiresAt))
+          ..add('expiresAt', expiresAt)
+          ..add('type', type))
         .toString();
   }
 }
@@ -56,17 +56,16 @@ class _$PaymentMethodCashRequest extends PaymentMethodCashRequest {
 class PaymentMethodCashRequestBuilder
     implements
         Builder<PaymentMethodCashRequest, PaymentMethodCashRequestBuilder>,
-        CustomerPaymentMethodRequestBuilder,
-        PaymentMethodCashRequestAllOfBuilder {
+        CustomerPaymentMethodRequestBuilder {
   _$PaymentMethodCashRequest? _$v;
-
-  String? _type;
-  String? get type => _$this._type;
-  set type(covariant String? type) => _$this._type = type;
 
   int? _expiresAt;
   int? get expiresAt => _$this._expiresAt;
   set expiresAt(covariant int? expiresAt) => _$this._expiresAt = expiresAt;
+
+  String? _type;
+  String? get type => _$this._type;
+  set type(covariant String? type) => _$this._type = type;
 
   PaymentMethodCashRequestBuilder() {
     PaymentMethodCashRequest._defaults(this);
@@ -75,15 +74,14 @@ class PaymentMethodCashRequestBuilder
   PaymentMethodCashRequestBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _type = $v.type;
       _expiresAt = $v.expiresAt;
+      _type = $v.type;
       _$v = null;
     }
     return this;
   }
 
   @override
-// ignore: override_on_non_overriding_method
   void replace(covariant PaymentMethodCashRequest other) {
     ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$PaymentMethodCashRequest;
@@ -100,9 +98,9 @@ class PaymentMethodCashRequestBuilder
   _$PaymentMethodCashRequest _build() {
     final _$result = _$v ??
         new _$PaymentMethodCashRequest._(
+            expiresAt: expiresAt,
             type: BuiltValueNullFieldError.checkNotNull(
-                type, r'PaymentMethodCashRequest', 'type'),
-            expiresAt: expiresAt);
+                type, r'PaymentMethodCashRequest', 'type'));
     replace(_$result);
     return _$result;
   }

@@ -80,7 +80,6 @@ class _$GetPaymentMethodResponse extends GetPaymentMethodResponse {
 class GetPaymentMethodResponseBuilder
     implements
         Builder<GetPaymentMethodResponse, GetPaymentMethodResponseBuilder>,
-        GetPaymentMethodResponseAllOfBuilder,
         PageBuilder,
         PaginationBuilder {
   _$GetPaymentMethodResponse? _$v;

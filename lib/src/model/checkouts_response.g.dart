@@ -79,7 +79,6 @@ class _$CheckoutsResponse extends CheckoutsResponse {
 class CheckoutsResponseBuilder
     implements
         Builder<CheckoutsResponse, CheckoutsResponseBuilder>,
-        CheckoutsResponseAllOfBuilder,
         PageBuilder,
         PaginationBuilder {
   _$CheckoutsResponse? _$v;

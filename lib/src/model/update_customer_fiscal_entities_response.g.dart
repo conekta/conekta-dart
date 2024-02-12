@@ -9,7 +9,17 @@ part of 'update_customer_fiscal_entities_response.dart';
 class _$UpdateCustomerFiscalEntitiesResponse
     extends UpdateCustomerFiscalEntitiesResponse {
   @override
-  final CustomerFiscalEntitiesRequestAddress address;
+  final int createdAt;
+  @override
+  final bool? default_;
+  @override
+  final String id;
+  @override
+  final String? parentId;
+  @override
+  final String object;
+  @override
+  final CustomerAddress address;
   @override
   final String? taxId;
   @override
@@ -20,16 +30,6 @@ class _$UpdateCustomerFiscalEntitiesResponse
   final BuiltMap<String, JsonObject>? metadata;
   @override
   final String? companyName;
-  @override
-  final String id;
-  @override
-  final String object;
-  @override
-  final int createdAt;
-  @override
-  final String? parentId;
-  @override
-  final bool? default_;
 
   factory _$UpdateCustomerFiscalEntitiesResponse(
           [void Function(UpdateCustomerFiscalEntitiesResponseBuilder)?
@@ -38,26 +38,26 @@ class _$UpdateCustomerFiscalEntitiesResponse
           ._build();
 
   _$UpdateCustomerFiscalEntitiesResponse._(
-      {required this.address,
+      {required this.createdAt,
+      this.default_,
+      required this.id,
+      this.parentId,
+      required this.object,
+      required this.address,
       this.taxId,
       this.email,
       this.phone,
       this.metadata,
-      this.companyName,
-      required this.id,
-      required this.object,
-      required this.createdAt,
-      this.parentId,
-      this.default_})
+      this.companyName})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        address, r'UpdateCustomerFiscalEntitiesResponse', 'address');
+        createdAt, r'UpdateCustomerFiscalEntitiesResponse', 'createdAt');
     BuiltValueNullFieldError.checkNotNull(
         id, r'UpdateCustomerFiscalEntitiesResponse', 'id');
     BuiltValueNullFieldError.checkNotNull(
         object, r'UpdateCustomerFiscalEntitiesResponse', 'object');
     BuiltValueNullFieldError.checkNotNull(
-        createdAt, r'UpdateCustomerFiscalEntitiesResponse', 'createdAt');
+        address, r'UpdateCustomerFiscalEntitiesResponse', 'address');
   }
 
   @override
@@ -73,17 +73,17 @@ class _$UpdateCustomerFiscalEntitiesResponse
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is UpdateCustomerFiscalEntitiesResponse &&
+        createdAt == other.createdAt &&
+        default_ == other.default_ &&
+        id == other.id &&
+        parentId == other.parentId &&
+        object == other.object &&
         address == other.address &&
         taxId == other.taxId &&
         email == other.email &&
         phone == other.phone &&
         metadata == other.metadata &&
-        companyName == other.companyName &&
-        id == other.id &&
-        object == other.object &&
-        createdAt == other.createdAt &&
-        parentId == other.parentId &&
-        default_ == other.default_;
+        companyName == other.companyName;
   }
 
   @override
@@ -97,33 +97,33 @@ class _$UpdateCustomerFiscalEntitiesResponse
                             $jc(
                                 $jc(
                                     $jc(
-                                        $jc($jc(0, address.hashCode),
-                                            taxId.hashCode),
-                                        email.hashCode),
-                                    phone.hashCode),
-                                metadata.hashCode),
-                            companyName.hashCode),
-                        id.hashCode),
-                    object.hashCode),
-                createdAt.hashCode),
-            parentId.hashCode),
-        default_.hashCode));
+                                        $jc($jc(0, createdAt.hashCode),
+                                            default_.hashCode),
+                                        id.hashCode),
+                                    parentId.hashCode),
+                                object.hashCode),
+                            address.hashCode),
+                        taxId.hashCode),
+                    email.hashCode),
+                phone.hashCode),
+            metadata.hashCode),
+        companyName.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'UpdateCustomerFiscalEntitiesResponse')
+          ..add('createdAt', createdAt)
+          ..add('default_', default_)
+          ..add('id', id)
+          ..add('parentId', parentId)
+          ..add('object', object)
           ..add('address', address)
           ..add('taxId', taxId)
           ..add('email', email)
           ..add('phone', phone)
           ..add('metadata', metadata)
-          ..add('companyName', companyName)
-          ..add('id', id)
-          ..add('object', object)
-          ..add('createdAt', createdAt)
-          ..add('parentId', parentId)
-          ..add('default_', default_))
+          ..add('companyName', companyName))
         .toString();
   }
 }
@@ -132,14 +132,33 @@ class UpdateCustomerFiscalEntitiesResponseBuilder
     implements
         Builder<UpdateCustomerFiscalEntitiesResponse,
             UpdateCustomerFiscalEntitiesResponseBuilder>,
-        CustomerFiscalEntitiesRequestBuilder,
-        UpdateCustomerFiscalEntitiesResponseAllOfBuilder {
+        CustomerFiscalEntitiesRequestBuilder {
   _$UpdateCustomerFiscalEntitiesResponse? _$v;
 
-  CustomerFiscalEntitiesRequestAddressBuilder? _address;
-  CustomerFiscalEntitiesRequestAddressBuilder get address =>
-      _$this._address ??= new CustomerFiscalEntitiesRequestAddressBuilder();
-  set address(covariant CustomerFiscalEntitiesRequestAddressBuilder? address) =>
+  int? _createdAt;
+  int? get createdAt => _$this._createdAt;
+  set createdAt(covariant int? createdAt) => _$this._createdAt = createdAt;
+
+  bool? _default_;
+  bool? get default_ => _$this._default_;
+  set default_(covariant bool? default_) => _$this._default_ = default_;
+
+  String? _id;
+  String? get id => _$this._id;
+  set id(covariant String? id) => _$this._id = id;
+
+  String? _parentId;
+  String? get parentId => _$this._parentId;
+  set parentId(covariant String? parentId) => _$this._parentId = parentId;
+
+  String? _object;
+  String? get object => _$this._object;
+  set object(covariant String? object) => _$this._object = object;
+
+  CustomerAddressBuilder? _address;
+  CustomerAddressBuilder get address =>
+      _$this._address ??= new CustomerAddressBuilder();
+  set address(covariant CustomerAddressBuilder? address) =>
       _$this._address = address;
 
   String? _taxId;
@@ -165,26 +184,6 @@ class UpdateCustomerFiscalEntitiesResponseBuilder
   set companyName(covariant String? companyName) =>
       _$this._companyName = companyName;
 
-  String? _id;
-  String? get id => _$this._id;
-  set id(covariant String? id) => _$this._id = id;
-
-  String? _object;
-  String? get object => _$this._object;
-  set object(covariant String? object) => _$this._object = object;
-
-  int? _createdAt;
-  int? get createdAt => _$this._createdAt;
-  set createdAt(covariant int? createdAt) => _$this._createdAt = createdAt;
-
-  String? _parentId;
-  String? get parentId => _$this._parentId;
-  set parentId(covariant String? parentId) => _$this._parentId = parentId;
-
-  bool? _default_;
-  bool? get default_ => _$this._default_;
-  set default_(covariant bool? default_) => _$this._default_ = default_;
-
   UpdateCustomerFiscalEntitiesResponseBuilder() {
     UpdateCustomerFiscalEntitiesResponse._defaults(this);
   }
@@ -192,24 +191,23 @@ class UpdateCustomerFiscalEntitiesResponseBuilder
   UpdateCustomerFiscalEntitiesResponseBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
+      _createdAt = $v.createdAt;
+      _default_ = $v.default_;
+      _id = $v.id;
+      _parentId = $v.parentId;
+      _object = $v.object;
       _address = $v.address.toBuilder();
       _taxId = $v.taxId;
       _email = $v.email;
       _phone = $v.phone;
       _metadata = $v.metadata?.toBuilder();
       _companyName = $v.companyName;
-      _id = $v.id;
-      _object = $v.object;
-      _createdAt = $v.createdAt;
-      _parentId = $v.parentId;
-      _default_ = $v.default_;
       _$v = null;
     }
     return this;
   }
 
   @override
-// ignore: override_on_non_overriding_method
   void replace(covariant UpdateCustomerFiscalEntitiesResponse other) {
     ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$UpdateCustomerFiscalEntitiesResponse;
@@ -229,20 +227,20 @@ class UpdateCustomerFiscalEntitiesResponseBuilder
     try {
       _$result = _$v ??
           new _$UpdateCustomerFiscalEntitiesResponse._(
+              createdAt: BuiltValueNullFieldError.checkNotNull(createdAt,
+                  r'UpdateCustomerFiscalEntitiesResponse', 'createdAt'),
+              default_: default_,
+              id: BuiltValueNullFieldError.checkNotNull(
+                  id, r'UpdateCustomerFiscalEntitiesResponse', 'id'),
+              parentId: parentId,
+              object: BuiltValueNullFieldError.checkNotNull(
+                  object, r'UpdateCustomerFiscalEntitiesResponse', 'object'),
               address: address.build(),
               taxId: taxId,
               email: email,
               phone: phone,
               metadata: _metadata?.build(),
-              companyName: companyName,
-              id: BuiltValueNullFieldError.checkNotNull(
-                  id, r'UpdateCustomerFiscalEntitiesResponse', 'id'),
-              object: BuiltValueNullFieldError.checkNotNull(
-                  object, r'UpdateCustomerFiscalEntitiesResponse', 'object'),
-              createdAt: BuiltValueNullFieldError.checkNotNull(createdAt,
-                  r'UpdateCustomerFiscalEntitiesResponse', 'createdAt'),
-              parentId: parentId,
-              default_: default_);
+              companyName: companyName);
     } catch (_) {
       late String _$failedField;
       try {

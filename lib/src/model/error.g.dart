@@ -8,18 +8,18 @@ part of 'error.dart';
 
 class _$Error extends Error {
   @override
-  final BuiltList<DetailsError>? details;
-  @override
   final String? logId;
   @override
   final String? type;
   @override
   final String? object;
+  @override
+  final BuiltList<DetailsError>? details;
 
   factory _$Error([void Function(ErrorBuilder)? updates]) =>
       (new ErrorBuilder()..update(updates))._build();
 
-  _$Error._({this.details, this.logId, this.type, this.object}) : super._();
+  _$Error._({this.logId, this.type, this.object, this.details}) : super._();
 
   @override
   Error rebuild(void Function(ErrorBuilder) updates) =>
@@ -32,39 +32,32 @@ class _$Error extends Error {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is Error &&
-        details == other.details &&
         logId == other.logId &&
         type == other.type &&
-        object == other.object;
+        object == other.object &&
+        details == other.details;
   }
 
   @override
   int get hashCode {
     return $jf($jc(
-        $jc($jc($jc(0, details.hashCode), logId.hashCode), type.hashCode),
-        object.hashCode));
+        $jc($jc($jc(0, logId.hashCode), type.hashCode), object.hashCode),
+        details.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'Error')
-          ..add('details', details)
           ..add('logId', logId)
           ..add('type', type)
-          ..add('object', object))
+          ..add('object', object)
+          ..add('details', details))
         .toString();
   }
 }
 
-class ErrorBuilder
-    implements Builder<Error, ErrorBuilder>, DetailsBuilder, ErrorAllOfBuilder {
+class ErrorBuilder implements Builder<Error, ErrorBuilder>, DetailsBuilder {
   _$Error? _$v;
-
-  ListBuilder<DetailsError>? _details;
-  ListBuilder<DetailsError> get details =>
-      _$this._details ??= new ListBuilder<DetailsError>();
-  set details(covariant ListBuilder<DetailsError>? details) =>
-      _$this._details = details;
 
   String? _logId;
   String? get logId => _$this._logId;
@@ -78,6 +71,12 @@ class ErrorBuilder
   String? get object => _$this._object;
   set object(covariant String? object) => _$this._object = object;
 
+  ListBuilder<DetailsError>? _details;
+  ListBuilder<DetailsError> get details =>
+      _$this._details ??= new ListBuilder<DetailsError>();
+  set details(covariant ListBuilder<DetailsError>? details) =>
+      _$this._details = details;
+
   ErrorBuilder() {
     Error._defaults(this);
   }
@@ -85,17 +84,16 @@ class ErrorBuilder
   ErrorBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _details = $v.details?.toBuilder();
       _logId = $v.logId;
       _type = $v.type;
       _object = $v.object;
+      _details = $v.details?.toBuilder();
       _$v = null;
     }
     return this;
   }
 
   @override
-// ignore: override_on_non_overriding_method
   void replace(covariant Error other) {
     ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$Error;
@@ -114,10 +112,10 @@ class ErrorBuilder
     try {
       _$result = _$v ??
           new _$Error._(
-              details: _details?.build(),
               logId: logId,
               type: type,
-              object: object);
+              object: object,
+              details: _details?.build());
     } catch (_) {
       late String _$failedField;
       try {

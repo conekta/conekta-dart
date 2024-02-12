@@ -4,7 +4,6 @@
 
 // ignore_for_file: unused_element
 import 'package:conekta/src/model/customer_payment_method_request.dart';
-import 'package:conekta/src/model/payment_method_cash_request_all_of.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -16,7 +15,10 @@ part 'payment_method_spei_request.g.dart';
 /// * [type] - Type of payment method
 /// * [expiresAt] 
 @BuiltValue()
-abstract class PaymentMethodSpeiRequest implements CustomerPaymentMethodRequest, PaymentMethodCashRequestAllOf, Built<PaymentMethodSpeiRequest, PaymentMethodSpeiRequestBuilder> {
+abstract class PaymentMethodSpeiRequest implements CustomerPaymentMethodRequest, Built<PaymentMethodSpeiRequest, PaymentMethodSpeiRequestBuilder> {
+  @BuiltValueField(wireName: r'expires_at')
+  int? get expiresAt;
+
   PaymentMethodSpeiRequest._();
 
   factory PaymentMethodSpeiRequest([void updates(PaymentMethodSpeiRequestBuilder b)]) = _$PaymentMethodSpeiRequest;

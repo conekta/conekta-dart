@@ -8,7 +8,6 @@ import 'package:conekta/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**authenticationToken** | **String** | It is occupied as a user when authenticated with basic authentication, with a blank password. This value will only appear once, in the request to create a new key. Copy and save it in a safe place. | [optional] 
 **active** | **bool** | Indicates if the api key is active | [optional] 
 **createdAt** | **int** | Unix timestamp in seconds of when the api key was created | [optional] 
 **updatedAt** | **int** | Unix timestamp in seconds of when the api key was last updated | [optional] 
@@ -20,6 +19,7 @@ Name | Type | Description | Notes
 **object** | **String** | Object name, value is 'api_key' | [optional] 
 **prefix** | **String** | The first few characters of the authentication_token | [optional] 
 **role** | **String** | Indicates if the api key is private or public | [optional] 
+**authenticationToken** | **String** | It is occupied as a user when authenticated with basic authentication, with a blank password. This value will only appear once, in the request to create a new key. Copy and save it in a safe place. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

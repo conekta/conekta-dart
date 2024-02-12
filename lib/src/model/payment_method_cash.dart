@@ -4,7 +4,6 @@
 
 // ignore_for_file: unused_element
 import 'package:conekta/src/model/payment_method.dart';
-import 'package:conekta/src/model/charge_data_payment_method_cash_response.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -24,7 +23,31 @@ part 'payment_method_cash.g.dart';
 /// * [store] 
 /// * [storeName] 
 @BuiltValue()
-abstract class PaymentMethodCash implements ChargeDataPaymentMethodCashResponse, PaymentMethod, Built<PaymentMethodCash, PaymentMethodCashBuilder> {
+abstract class PaymentMethodCash implements PaymentMethod, Built<PaymentMethodCash, PaymentMethodCashBuilder> {
+  @BuiltValueField(wireName: r'reference')
+  String? get reference;
+
+  @BuiltValueField(wireName: r'auth_code')
+  int? get authCode;
+
+  @BuiltValueField(wireName: r'cashier_id')
+  String? get cashierId;
+
+  @BuiltValueField(wireName: r'store_name')
+  String? get storeName;
+
+  @BuiltValueField(wireName: r'barcode_url')
+  String? get barcodeUrl;
+
+  @BuiltValueField(wireName: r'store')
+  String? get store;
+
+  @BuiltValueField(wireName: r'service_name')
+  String? get serviceName;
+
+  @BuiltValueField(wireName: r'expires_at')
+  int? get expiresAt;
+
   PaymentMethodCash._();
 
   factory PaymentMethodCash([void updates(PaymentMethodCashBuilder b)]) = _$PaymentMethodCash;

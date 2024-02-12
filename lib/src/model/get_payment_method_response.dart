@@ -6,7 +6,6 @@
 import 'package:conekta/src/model/pagination.dart';
 import 'package:conekta/src/model/get_customer_payment_method_data_response.dart';
 import 'package:built_collection/built_collection.dart';
-import 'package:conekta/src/model/get_payment_method_response_all_of.dart';
 import 'package:conekta/src/model/page.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -22,7 +21,10 @@ part 'get_payment_method_response.g.dart';
 /// * [previousPageUrl] - Url of the previous page.
 /// * [data] 
 @BuiltValue()
-abstract class GetPaymentMethodResponse implements GetPaymentMethodResponseAllOf, Page, Pagination, Built<GetPaymentMethodResponse, GetPaymentMethodResponseBuilder> {
+abstract class GetPaymentMethodResponse implements Page, Pagination, Built<GetPaymentMethodResponse, GetPaymentMethodResponseBuilder> {
+  @BuiltValueField(wireName: r'data')
+  BuiltList<GetCustomerPaymentMethodDataResponse>? get data;
+
   GetPaymentMethodResponse._();
 
   factory GetPaymentMethodResponse([void updates(GetPaymentMethodResponseBuilder b)]) = _$GetPaymentMethodResponse;

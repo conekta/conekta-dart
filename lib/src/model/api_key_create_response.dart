@@ -4,7 +4,6 @@
 
 // ignore_for_file: unused_element
 import 'package:conekta/src/model/api_key_response.dart';
-import 'package:conekta/src/model/api_key_create_response_all_of.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -13,7 +12,6 @@ part 'api_key_create_response.g.dart';
 /// ApiKeyCreateResponse
 ///
 /// Properties:
-/// * [authenticationToken] - It is occupied as a user when authenticated with basic authentication, with a blank password. This value will only appear once, in the request to create a new key. Copy and save it in a safe place.
 /// * [active] - Indicates if the api key is active
 /// * [createdAt] - Unix timestamp in seconds of when the api key was created
 /// * [updatedAt] - Unix timestamp in seconds of when the api key was last updated
@@ -25,8 +23,13 @@ part 'api_key_create_response.g.dart';
 /// * [object] - Object name, value is 'api_key'
 /// * [prefix] - The first few characters of the authentication_token
 /// * [role] - Indicates if the api key is private or public
+/// * [authenticationToken] - It is occupied as a user when authenticated with basic authentication, with a blank password. This value will only appear once, in the request to create a new key. Copy and save it in a safe place.
 @BuiltValue()
-abstract class ApiKeyCreateResponse implements ApiKeyCreateResponseAllOf, ApiKeyResponse, Built<ApiKeyCreateResponse, ApiKeyCreateResponseBuilder> {
+abstract class ApiKeyCreateResponse implements ApiKeyResponse, Built<ApiKeyCreateResponse, ApiKeyCreateResponseBuilder> {
+  /// It is occupied as a user when authenticated with basic authentication, with a blank password. This value will only appear once, in the request to create a new key. Copy and save it in a safe place.
+  @BuiltValueField(wireName: r'authentication_token')
+  String? get authenticationToken;
+
   ApiKeyCreateResponse._();
 
   factory ApiKeyCreateResponse([void updates(ApiKeyCreateResponseBuilder b)]) = _$ApiKeyCreateResponse;
@@ -50,6 +53,20 @@ class _$ApiKeyCreateResponseSerializer implements PrimitiveSerializer<ApiKeyCrea
     ApiKeyCreateResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
+    if (object.createdAt != null) {
+      yield r'created_at';
+      yield serializers.serialize(
+        object.createdAt,
+        specifiedType: const FullType(int),
+      );
+    }
+    if (object.deleted != null) {
+      yield r'deleted';
+      yield serializers.serialize(
+        object.deleted,
+        specifiedType: const FullType(bool),
+      );
+    }
     if (object.role != null) {
       yield r'role';
       yield serializers.serialize(
@@ -92,31 +109,17 @@ class _$ApiKeyCreateResponseSerializer implements PrimitiveSerializer<ApiKeyCrea
         specifiedType: const FullType.nullable(int),
       );
     }
-    if (object.authenticationToken != null) {
-      yield r'authentication_token';
-      yield serializers.serialize(
-        object.authenticationToken,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.createdAt != null) {
-      yield r'created_at';
-      yield serializers.serialize(
-        object.createdAt,
-        specifiedType: const FullType(int),
-      );
-    }
-    if (object.deleted != null) {
-      yield r'deleted';
-      yield serializers.serialize(
-        object.deleted,
-        specifiedType: const FullType(bool),
-      );
-    }
     if (object.id != null) {
       yield r'id';
       yield serializers.serialize(
         object.id,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.authenticationToken != null) {
+      yield r'authentication_token';
+      yield serializers.serialize(
+        object.authenticationToken,
         specifiedType: const FullType(String),
       );
     }
@@ -157,6 +160,20 @@ class _$ApiKeyCreateResponseSerializer implements PrimitiveSerializer<ApiKeyCrea
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
+        case r'created_at':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int;
+          result.createdAt = valueDes;
+          break;
+        case r'deleted':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(bool),
+          ) as bool;
+          result.deleted = valueDes;
+          break;
         case r'role':
           final valueDes = serializers.deserialize(
             value,
@@ -200,33 +217,19 @@ class _$ApiKeyCreateResponseSerializer implements PrimitiveSerializer<ApiKeyCrea
           if (valueDes == null) continue;
           result.deactivatedAt = valueDes;
           break;
-        case r'authentication_token':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.authenticationToken = valueDes;
-          break;
-        case r'created_at':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.createdAt = valueDes;
-          break;
-        case r'deleted':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(bool),
-          ) as bool;
-          result.deleted = valueDes;
-          break;
         case r'id':
           final valueDes = serializers.deserialize(
             value,
             specifiedType: const FullType(String),
           ) as String;
           result.id = valueDes;
+          break;
+        case r'authentication_token':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.authenticationToken = valueDes;
           break;
         case r'updated_at':
           final valueDes = serializers.deserialize(

@@ -1,3 +1,15 @@
+## 6.0.2 -2024-12-02
+* [#3](https://github.com/conekta/conekta-dart/pull/2) update documentation
+  * update documentation
+  * Fix regex issue
+  * Update openapi version to 7.3.0
+## 6.0.1 - 2023-12-26
+* [#2](https://github.com/conekta/conekta-dart/pull/2) update documentation
+  * update documentation
+  * add generated models
+  * add changelog
+  * add example
+
 ## 6.0.0 - 2023-12-22
 * [#1](https://github.com/conekta/conekta-dart/pull/1) Initial Release
   * AntifraudApi
@@ -22,9 +34,3 @@
   * TransfersApi
   * WebhookKeysApi
   * WebhooksApi
-## 6.0.1 - 2023-12-26
-* [#2](https://github.com/conekta/conekta-dart/pull/2) update documentation
-  * update documentation
-  * add generated models
-  * add changelog
-  * add example

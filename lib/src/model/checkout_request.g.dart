@@ -22,6 +22,8 @@ class _$CheckoutRequest extends CheckoutRequest {
   @override
   final bool? onDemandEnabled;
   @override
+  final int? redirectionTime;
+  @override
   final String? successUrl;
   @override
   final String? type;
@@ -37,6 +39,7 @@ class _$CheckoutRequest extends CheckoutRequest {
       this.monthlyInstallmentsOptions,
       this.name,
       this.onDemandEnabled,
+      this.redirectionTime,
       this.successUrl,
       this.type})
       : super._() {
@@ -63,6 +66,7 @@ class _$CheckoutRequest extends CheckoutRequest {
         monthlyInstallmentsOptions == other.monthlyInstallmentsOptions &&
         name == other.name &&
         onDemandEnabled == other.onDemandEnabled &&
+        redirectionTime == other.redirectionTime &&
         successUrl == other.successUrl &&
         type == other.type;
   }
@@ -76,13 +80,15 @@ class _$CheckoutRequest extends CheckoutRequest {
                     $jc(
                         $jc(
                             $jc(
-                                $jc($jc(0, allowedPaymentMethods.hashCode),
-                                    expiresAt.hashCode),
-                                failureUrl.hashCode),
-                            monthlyInstallmentsEnabled.hashCode),
-                        monthlyInstallmentsOptions.hashCode),
-                    name.hashCode),
-                onDemandEnabled.hashCode),
+                                $jc(
+                                    $jc($jc(0, allowedPaymentMethods.hashCode),
+                                        expiresAt.hashCode),
+                                    failureUrl.hashCode),
+                                monthlyInstallmentsEnabled.hashCode),
+                            monthlyInstallmentsOptions.hashCode),
+                        name.hashCode),
+                    onDemandEnabled.hashCode),
+                redirectionTime.hashCode),
             successUrl.hashCode),
         type.hashCode));
   }
@@ -97,6 +103,7 @@ class _$CheckoutRequest extends CheckoutRequest {
           ..add('monthlyInstallmentsOptions', monthlyInstallmentsOptions)
           ..add('name', name)
           ..add('onDemandEnabled', onDemandEnabled)
+          ..add('redirectionTime', redirectionTime)
           ..add('successUrl', successUrl)
           ..add('type', type))
         .toString();
@@ -142,6 +149,11 @@ class CheckoutRequestBuilder
   set onDemandEnabled(bool? onDemandEnabled) =>
       _$this._onDemandEnabled = onDemandEnabled;
 
+  int? _redirectionTime;
+  int? get redirectionTime => _$this._redirectionTime;
+  set redirectionTime(int? redirectionTime) =>
+      _$this._redirectionTime = redirectionTime;
+
   String? _successUrl;
   String? get successUrl => _$this._successUrl;
   set successUrl(String? successUrl) => _$this._successUrl = successUrl;
@@ -164,6 +176,7 @@ class CheckoutRequestBuilder
       _monthlyInstallmentsOptions = $v.monthlyInstallmentsOptions?.toBuilder();
       _name = $v.name;
       _onDemandEnabled = $v.onDemandEnabled;
+      _redirectionTime = $v.redirectionTime;
       _successUrl = $v.successUrl;
       _type = $v.type;
       _$v = null;
@@ -197,6 +210,7 @@ class CheckoutRequestBuilder
               monthlyInstallmentsOptions: _monthlyInstallmentsOptions?.build(),
               name: name,
               onDemandEnabled: onDemandEnabled,
+              redirectionTime: redirectionTime,
               successUrl: successUrl,
               type: type);
     } catch (_) {

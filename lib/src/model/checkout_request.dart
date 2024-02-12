@@ -19,6 +19,7 @@ part 'checkout_request.g.dart';
 /// * [monthlyInstallmentsOptions] 
 /// * [name] - Reason for payment
 /// * [onDemandEnabled] 
+/// * [redirectionTime] - number of seconds to wait before redirecting to the success_url
 /// * [successUrl] - Redirection url back to the site in case of successful payment, applies only to HostedPayment
 /// * [type] - This field represents the type of checkout
 @BuiltValue()
@@ -47,6 +48,10 @@ abstract class CheckoutRequest implements Built<CheckoutRequest, CheckoutRequest
 
   @BuiltValueField(wireName: r'on_demand_enabled')
   bool? get onDemandEnabled;
+
+  /// number of seconds to wait before redirecting to the success_url
+  @BuiltValueField(wireName: r'redirection_time')
+  int? get redirectionTime;
 
   /// Redirection url back to the site in case of successful payment, applies only to HostedPayment
   @BuiltValueField(wireName: r'success_url')
@@ -124,6 +129,13 @@ class _$CheckoutRequestSerializer implements PrimitiveSerializer<CheckoutRequest
       yield serializers.serialize(
         object.onDemandEnabled,
         specifiedType: const FullType(bool),
+      );
+    }
+    if (object.redirectionTime != null) {
+      yield r'redirection_time';
+      yield serializers.serialize(
+        object.redirectionTime,
+        specifiedType: const FullType(int),
       );
     }
     if (object.successUrl != null) {
@@ -211,6 +223,13 @@ class _$CheckoutRequestSerializer implements PrimitiveSerializer<CheckoutRequest
             specifiedType: const FullType(bool),
           ) as bool;
           result.onDemandEnabled = valueDes;
+          break;
+        case r'redirection_time':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int;
+          result.redirectionTime = valueDes;
           break;
         case r'success_url':
           final valueDes = serializers.deserialize(

@@ -9,6 +9,12 @@ part of 'customer_shipping_contacts_data_response.dart';
 class _$CustomerShippingContactsDataResponse
     extends CustomerShippingContactsDataResponse {
   @override
+  final int createdAt;
+  @override
+  final String id;
+  @override
+  final String object;
+  @override
   final String? phone;
   @override
   final String? receiver;
@@ -24,12 +30,6 @@ class _$CustomerShippingContactsDataResponse
   final bool? deleted;
   @override
   final BuiltMap<String, JsonObject?>? metadata;
-  @override
-  final String id;
-  @override
-  final String object;
-  @override
-  final int createdAt;
 
   factory _$CustomerShippingContactsDataResponse(
           [void Function(CustomerShippingContactsDataResponseBuilder)?
@@ -38,26 +38,26 @@ class _$CustomerShippingContactsDataResponse
           ._build();
 
   _$CustomerShippingContactsDataResponse._(
-      {this.phone,
+      {required this.createdAt,
+      required this.id,
+      required this.object,
+      this.phone,
       this.receiver,
       this.betweenStreets,
       required this.address,
       this.parentId,
       this.default_,
       this.deleted,
-      this.metadata,
-      required this.id,
-      required this.object,
-      required this.createdAt})
+      this.metadata})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        address, r'CustomerShippingContactsDataResponse', 'address');
+        createdAt, r'CustomerShippingContactsDataResponse', 'createdAt');
     BuiltValueNullFieldError.checkNotNull(
         id, r'CustomerShippingContactsDataResponse', 'id');
     BuiltValueNullFieldError.checkNotNull(
         object, r'CustomerShippingContactsDataResponse', 'object');
     BuiltValueNullFieldError.checkNotNull(
-        createdAt, r'CustomerShippingContactsDataResponse', 'createdAt');
+        address, r'CustomerShippingContactsDataResponse', 'address');
   }
 
   @override
@@ -73,6 +73,9 @@ class _$CustomerShippingContactsDataResponse
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is CustomerShippingContactsDataResponse &&
+        createdAt == other.createdAt &&
+        id == other.id &&
+        object == other.object &&
         phone == other.phone &&
         receiver == other.receiver &&
         betweenStreets == other.betweenStreets &&
@@ -80,10 +83,7 @@ class _$CustomerShippingContactsDataResponse
         parentId == other.parentId &&
         default_ == other.default_ &&
         deleted == other.deleted &&
-        metadata == other.metadata &&
-        id == other.id &&
-        object == other.object &&
-        createdAt == other.createdAt;
+        metadata == other.metadata;
   }
 
   @override
@@ -97,22 +97,25 @@ class _$CustomerShippingContactsDataResponse
                             $jc(
                                 $jc(
                                     $jc(
-                                        $jc($jc(0, phone.hashCode),
-                                            receiver.hashCode),
-                                        betweenStreets.hashCode),
-                                    address.hashCode),
-                                parentId.hashCode),
-                            default_.hashCode),
-                        deleted.hashCode),
-                    metadata.hashCode),
-                id.hashCode),
-            object.hashCode),
-        createdAt.hashCode));
+                                        $jc($jc(0, createdAt.hashCode),
+                                            id.hashCode),
+                                        object.hashCode),
+                                    phone.hashCode),
+                                receiver.hashCode),
+                            betweenStreets.hashCode),
+                        address.hashCode),
+                    parentId.hashCode),
+                default_.hashCode),
+            deleted.hashCode),
+        metadata.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'CustomerShippingContactsDataResponse')
+          ..add('createdAt', createdAt)
+          ..add('id', id)
+          ..add('object', object)
           ..add('phone', phone)
           ..add('receiver', receiver)
           ..add('betweenStreets', betweenStreets)
@@ -120,10 +123,7 @@ class _$CustomerShippingContactsDataResponse
           ..add('parentId', parentId)
           ..add('default_', default_)
           ..add('deleted', deleted)
-          ..add('metadata', metadata)
-          ..add('id', id)
-          ..add('object', object)
-          ..add('createdAt', createdAt))
+          ..add('metadata', metadata))
         .toString();
   }
 }
@@ -132,9 +132,20 @@ class CustomerShippingContactsDataResponseBuilder
     implements
         Builder<CustomerShippingContactsDataResponse,
             CustomerShippingContactsDataResponseBuilder>,
-        CustomerShippingContactsBuilder,
-        CustomerShippingContactsDataResponseAllOfBuilder {
+        CustomerShippingContactsBuilder {
   _$CustomerShippingContactsDataResponse? _$v;
+
+  int? _createdAt;
+  int? get createdAt => _$this._createdAt;
+  set createdAt(covariant int? createdAt) => _$this._createdAt = createdAt;
+
+  String? _id;
+  String? get id => _$this._id;
+  set id(covariant String? id) => _$this._id = id;
+
+  String? _object;
+  String? get object => _$this._object;
+  set object(covariant String? object) => _$this._object = object;
 
   String? _phone;
   String? get phone => _$this._phone;
@@ -173,18 +184,6 @@ class CustomerShippingContactsDataResponseBuilder
   set metadata(covariant MapBuilder<String, JsonObject?>? metadata) =>
       _$this._metadata = metadata;
 
-  String? _id;
-  String? get id => _$this._id;
-  set id(covariant String? id) => _$this._id = id;
-
-  String? _object;
-  String? get object => _$this._object;
-  set object(covariant String? object) => _$this._object = object;
-
-  int? _createdAt;
-  int? get createdAt => _$this._createdAt;
-  set createdAt(covariant int? createdAt) => _$this._createdAt = createdAt;
-
   CustomerShippingContactsDataResponseBuilder() {
     CustomerShippingContactsDataResponse._defaults(this);
   }
@@ -192,6 +191,9 @@ class CustomerShippingContactsDataResponseBuilder
   CustomerShippingContactsDataResponseBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
+      _createdAt = $v.createdAt;
+      _id = $v.id;
+      _object = $v.object;
       _phone = $v.phone;
       _receiver = $v.receiver;
       _betweenStreets = $v.betweenStreets;
@@ -200,16 +202,12 @@ class CustomerShippingContactsDataResponseBuilder
       _default_ = $v.default_;
       _deleted = $v.deleted;
       _metadata = $v.metadata?.toBuilder();
-      _id = $v.id;
-      _object = $v.object;
-      _createdAt = $v.createdAt;
       _$v = null;
     }
     return this;
   }
 
   @override
-// ignore: override_on_non_overriding_method
   void replace(covariant CustomerShippingContactsDataResponse other) {
     ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CustomerShippingContactsDataResponse;
@@ -229,6 +227,12 @@ class CustomerShippingContactsDataResponseBuilder
     try {
       _$result = _$v ??
           new _$CustomerShippingContactsDataResponse._(
+              createdAt: BuiltValueNullFieldError.checkNotNull(createdAt,
+                  r'CustomerShippingContactsDataResponse', 'createdAt'),
+              id: BuiltValueNullFieldError.checkNotNull(
+                  id, r'CustomerShippingContactsDataResponse', 'id'),
+              object: BuiltValueNullFieldError.checkNotNull(
+                  object, r'CustomerShippingContactsDataResponse', 'object'),
               phone: phone,
               receiver: receiver,
               betweenStreets: betweenStreets,
@@ -236,13 +240,7 @@ class CustomerShippingContactsDataResponseBuilder
               parentId: parentId,
               default_: default_,
               deleted: deleted,
-              metadata: _metadata?.build(),
-              id: BuiltValueNullFieldError.checkNotNull(
-                  id, r'CustomerShippingContactsDataResponse', 'id'),
-              object: BuiltValueNullFieldError.checkNotNull(
-                  object, r'CustomerShippingContactsDataResponse', 'object'),
-              createdAt: BuiltValueNullFieldError.checkNotNull(createdAt,
-                  r'CustomerShippingContactsDataResponse', 'createdAt'));
+              metadata: _metadata?.build());
     } catch (_) {
       late String _$failedField;
       try {

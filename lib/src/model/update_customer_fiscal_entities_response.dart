@@ -4,9 +4,8 @@
 
 // ignore_for_file: unused_element
 import 'package:built_collection/built_collection.dart';
+import 'package:conekta/src/model/customer_address.dart';
 import 'package:conekta/src/model/customer_fiscal_entities_request.dart';
-import 'package:conekta/src/model/customer_fiscal_entities_request_address.dart';
-import 'package:conekta/src/model/update_customer_fiscal_entities_response_all_of.dart';
 import 'package:built_value/json_object.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -28,7 +27,22 @@ part 'update_customer_fiscal_entities_response.g.dart';
 /// * [parentId] 
 /// * [default_] 
 @BuiltValue()
-abstract class UpdateCustomerFiscalEntitiesResponse implements CustomerFiscalEntitiesRequest, UpdateCustomerFiscalEntitiesResponseAllOf, Built<UpdateCustomerFiscalEntitiesResponse, UpdateCustomerFiscalEntitiesResponseBuilder> {
+abstract class UpdateCustomerFiscalEntitiesResponse implements CustomerFiscalEntitiesRequest, Built<UpdateCustomerFiscalEntitiesResponse, UpdateCustomerFiscalEntitiesResponseBuilder> {
+  @BuiltValueField(wireName: r'created_at')
+  int get createdAt;
+
+  @BuiltValueField(wireName: r'default')
+  bool? get default_;
+
+  @BuiltValueField(wireName: r'id')
+  String get id;
+
+  @BuiltValueField(wireName: r'parent_id')
+  String? get parentId;
+
+  @BuiltValueField(wireName: r'object')
+  String get object;
+
   UpdateCustomerFiscalEntitiesResponse._();
 
   factory UpdateCustomerFiscalEntitiesResponse([void updates(UpdateCustomerFiscalEntitiesResponseBuilder b)]) = _$UpdateCustomerFiscalEntitiesResponse;
@@ -67,7 +81,7 @@ class _$UpdateCustomerFiscalEntitiesResponseSerializer implements PrimitiveSeria
     yield r'address';
     yield serializers.serialize(
       object.address,
-      specifiedType: const FullType(CustomerFiscalEntitiesRequestAddress),
+      specifiedType: const FullType(CustomerAddress),
     );
     if (object.phone != null) {
       yield r'phone';
@@ -102,17 +116,17 @@ class _$UpdateCustomerFiscalEntitiesResponseSerializer implements PrimitiveSeria
       object.id,
       specifiedType: const FullType(String),
     );
-    if (object.email != null) {
-      yield r'email';
-      yield serializers.serialize(
-        object.email,
-        specifiedType: const FullType(String),
-      );
-    }
     if (object.parentId != null) {
       yield r'parent_id';
       yield serializers.serialize(
         object.parentId,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.email != null) {
+      yield r'email';
+      yield serializers.serialize(
+        object.email,
         specifiedType: const FullType(String),
       );
     }
@@ -161,8 +175,8 @@ class _$UpdateCustomerFiscalEntitiesResponseSerializer implements PrimitiveSeria
         case r'address':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CustomerFiscalEntitiesRequestAddress),
-          ) as CustomerFiscalEntitiesRequestAddress;
+            specifiedType: const FullType(CustomerAddress),
+          ) as CustomerAddress;
           result.address.replace(valueDes);
           break;
         case r'phone':
@@ -200,19 +214,19 @@ class _$UpdateCustomerFiscalEntitiesResponseSerializer implements PrimitiveSeria
           ) as String;
           result.id = valueDes;
           break;
-        case r'email':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.email = valueDes;
-          break;
         case r'parent_id':
           final valueDes = serializers.deserialize(
             value,
             specifiedType: const FullType(String),
           ) as String;
           result.parentId = valueDes;
+          break;
+        case r'email':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.email = valueDes;
           break;
         case r'object':
           final valueDes = serializers.deserialize(

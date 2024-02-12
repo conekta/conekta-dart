@@ -130,7 +130,6 @@ class _$ApiKeyCreateResponse extends ApiKeyCreateResponse {
 class ApiKeyCreateResponseBuilder
     implements
         Builder<ApiKeyCreateResponse, ApiKeyCreateResponseBuilder>,
-        ApiKeyCreateResponseAllOfBuilder,
         ApiKeyResponseBuilder {
   _$ApiKeyCreateResponse? _$v;
 
@@ -210,7 +209,6 @@ class ApiKeyCreateResponseBuilder
   }
 
   @override
-// ignore: override_on_non_overriding_method
   void replace(covariant ApiKeyCreateResponse other) {
     ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ApiKeyCreateResponse;

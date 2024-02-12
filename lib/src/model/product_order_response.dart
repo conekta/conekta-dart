@@ -4,7 +4,6 @@
 
 // ignore_for_file: unused_element
 import 'package:built_collection/built_collection.dart';
-import 'package:conekta/src/model/product_order_response_all_of.dart';
 import 'package:conekta/src/model/product.dart';
 import 'package:built_value/json_object.dart';
 import 'package:built_value/built_value.dart';
@@ -28,7 +27,16 @@ part 'product_order_response.g.dart';
 /// * [object] 
 /// * [parentId] 
 @BuiltValue()
-abstract class ProductOrderResponse implements Product, ProductOrderResponseAllOf, Built<ProductOrderResponse, ProductOrderResponseBuilder> {
+abstract class ProductOrderResponse implements Product, Built<ProductOrderResponse, ProductOrderResponseBuilder> {
+  @BuiltValueField(wireName: r'id')
+  String? get id;
+
+  @BuiltValueField(wireName: r'parent_id')
+  String? get parentId;
+
+  @BuiltValueField(wireName: r'object')
+  String? get object;
+
   ProductOrderResponse._();
 
   factory ProductOrderResponse([void updates(ProductOrderResponseBuilder b)]) = _$ProductOrderResponse;
@@ -69,6 +77,11 @@ class _$ProductOrderResponseSerializer implements PrimitiveSerializer<ProductOrd
       object.quantity,
       specifiedType: const FullType(int),
     );
+    yield r'name';
+    yield serializers.serialize(
+      object.name,
+      specifiedType: const FullType(String),
+    );
     if (object.description != null) {
       yield r'description';
       yield serializers.serialize(
@@ -76,25 +89,6 @@ class _$ProductOrderResponseSerializer implements PrimitiveSerializer<ProductOrd
         specifiedType: const FullType(String),
       );
     }
-    if (object.parentId != null) {
-      yield r'parent_id';
-      yield serializers.serialize(
-        object.parentId,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.tags != null) {
-      yield r'tags';
-      yield serializers.serialize(
-        object.tags,
-        specifiedType: const FullType(BuiltList, [FullType(String)]),
-      );
-    }
-    yield r'name';
-    yield serializers.serialize(
-      object.name,
-      specifiedType: const FullType(String),
-    );
     if (object.id != null) {
       yield r'id';
       yield serializers.serialize(
@@ -123,11 +117,25 @@ class _$ProductOrderResponseSerializer implements PrimitiveSerializer<ProductOrd
         specifiedType: const FullType(String),
       );
     }
+    if (object.parentId != null) {
+      yield r'parent_id';
+      yield serializers.serialize(
+        object.parentId,
+        specifiedType: const FullType(String),
+      );
+    }
     if (object.object != null) {
       yield r'object';
       yield serializers.serialize(
         object.object,
         specifiedType: const FullType(String),
+      );
+    }
+    if (object.tags != null) {
+      yield r'tags';
+      yield serializers.serialize(
+        object.tags,
+        specifiedType: const FullType(BuiltList, [FullType(String)]),
       );
     }
   }
@@ -174,33 +182,19 @@ class _$ProductOrderResponseSerializer implements PrimitiveSerializer<ProductOrd
           ) as int;
           result.quantity = valueDes;
           break;
-        case r'description':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.description = valueDes;
-          break;
-        case r'parent_id':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.parentId = valueDes;
-          break;
-        case r'tags':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(BuiltList, [FullType(String)]),
-          ) as BuiltList<String>;
-          result.tags.replace(valueDes);
-          break;
         case r'name':
           final valueDes = serializers.deserialize(
             value,
             specifiedType: const FullType(String),
           ) as String;
           result.name = valueDes;
+          break;
+        case r'description':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.description = valueDes;
           break;
         case r'id':
           final valueDes = serializers.deserialize(
@@ -230,12 +224,26 @@ class _$ProductOrderResponseSerializer implements PrimitiveSerializer<ProductOrd
           ) as String;
           result.brand = valueDes;
           break;
+        case r'parent_id':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.parentId = valueDes;
+          break;
         case r'object':
           final valueDes = serializers.deserialize(
             value,
             specifiedType: const FullType(String),
           ) as String;
           result.object = valueDes;
+          break;
+        case r'tags':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(BuiltList, [FullType(String)]),
+          ) as BuiltList<String>;
+          result.tags.replace(valueDes);
           break;
         default:
           unhandled.add(key);

@@ -5,7 +5,7 @@ final String UnknownPlatform = "unknown platform";
 
 /// Provides a case-insensitive check that a provided content type is a known JSON-like content type.
 final RegExp jsonRegex = RegExp(
-  r'^(application/json|[^;/ \t]+/[^;/ \t]+[+]json)([ \t](;.*)?)?$',
+  r'^(application/json|[^;/ \t]+/[^;/ \t]+[+]json)([ \t](;.*))?$',
   caseSensitive: false,
 );
 
@@ -71,7 +71,7 @@ String getConektaClientUserAgent() {
     return cachedUserClient;
   }
   Map<String, dynamic> cachedData = <String, dynamic>{
-    "bindings_version": "6.0.1",
+    "bindings_version": "6.0.2",
     "lang": "Dart",
     "publisher": "conekta",
     "lang_version": Platform.version.split(' ')[0],

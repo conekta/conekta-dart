@@ -80,7 +80,6 @@ class _$GetTransfersResponse extends GetTransfersResponse {
 class GetTransfersResponseBuilder
     implements
         Builder<GetTransfersResponse, GetTransfersResponseBuilder>,
-        GetTransfersResponseAllOfBuilder,
         PageBuilder,
         PaginationBuilder {
   _$GetTransfersResponse? _$v;

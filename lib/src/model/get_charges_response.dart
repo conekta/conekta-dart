@@ -6,7 +6,6 @@
 import 'package:conekta/src/model/pagination.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:conekta/src/model/charge_response.dart';
-import 'package:conekta/src/model/get_charges_response_all_of.dart';
 import 'package:conekta/src/model/page.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -22,7 +21,10 @@ part 'get_charges_response.g.dart';
 /// * [previousPageUrl] - Url of the previous page.
 /// * [data] 
 @BuiltValue()
-abstract class GetChargesResponse implements GetChargesResponseAllOf, Page, Pagination, Built<GetChargesResponse, GetChargesResponseBuilder> {
+abstract class GetChargesResponse implements Page, Pagination, Built<GetChargesResponse, GetChargesResponseBuilder> {
+  @BuiltValueField(wireName: r'data')
+  BuiltList<ChargeResponse>? get data;
+
   GetChargesResponse._();
 
   factory GetChargesResponse([void updates(GetChargesResponseBuilder b)]) = _$GetChargesResponse;

@@ -7,7 +7,6 @@ import 'package:conekta/src/model/pagination.dart';
 import 'package:conekta/src/model/checkout_response.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:conekta/src/model/page.dart';
-import 'package:conekta/src/model/checkouts_response_all_of.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -22,7 +21,10 @@ part 'checkouts_response.g.dart';
 /// * [previousPageUrl] - Url of the previous page.
 /// * [data] 
 @BuiltValue()
-abstract class CheckoutsResponse implements CheckoutsResponseAllOf, Page, Pagination, Built<CheckoutsResponse, CheckoutsResponseBuilder> {
+abstract class CheckoutsResponse implements Page, Pagination, Built<CheckoutsResponse, CheckoutsResponseBuilder> {
+  @BuiltValueField(wireName: r'data')
+  BuiltList<CheckoutResponse>? get data;
+
   CheckoutsResponse._();
 
   factory CheckoutsResponse([void updates(CheckoutsResponseBuilder b)]) = _$CheckoutsResponse;

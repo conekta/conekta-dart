@@ -4,7 +4,7 @@
 
 // ignore_for_file: unused_element
 import 'package:built_collection/built_collection.dart';
-import 'package:conekta/src/model/customer_fiscal_entities_request_address.dart';
+import 'package:conekta/src/model/customer_address.dart';
 import 'package:built_value/json_object.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -23,7 +23,7 @@ part 'customer_update_fiscal_entities_request.g.dart';
 @BuiltValue()
 abstract class CustomerUpdateFiscalEntitiesRequest implements Built<CustomerUpdateFiscalEntitiesRequest, CustomerUpdateFiscalEntitiesRequestBuilder> {
   @BuiltValueField(wireName: r'address')
-  CustomerFiscalEntitiesRequestAddress? get address;
+  CustomerAddress? get address;
 
   @BuiltValueField(wireName: r'tax_id')
   String? get taxId;
@@ -67,7 +67,7 @@ class _$CustomerUpdateFiscalEntitiesRequestSerializer implements PrimitiveSerial
       yield r'address';
       yield serializers.serialize(
         object.address,
-        specifiedType: const FullType(CustomerFiscalEntitiesRequestAddress),
+        specifiedType: const FullType(CustomerAddress),
       );
     }
     if (object.taxId != null) {
@@ -131,8 +131,8 @@ class _$CustomerUpdateFiscalEntitiesRequestSerializer implements PrimitiveSerial
         case r'address':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CustomerFiscalEntitiesRequestAddress),
-          ) as CustomerFiscalEntitiesRequestAddress;
+            specifiedType: const FullType(CustomerAddress),
+          ) as CustomerAddress;
           result.address.replace(valueDes);
           break;
         case r'tax_id':
