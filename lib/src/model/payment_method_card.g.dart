@@ -8,27 +8,27 @@ part of 'payment_method_card.dart';
 
 class _$PaymentMethodCard extends PaymentMethodCard {
   @override
-  final String? accountType;
-  @override
-  final String? authCode;
-  @override
-  final String? brand;
-  @override
-  final String? contractId;
-  @override
   final String? country;
   @override
   final String? expMonth;
   @override
+  final String? last4;
+  @override
+  final String? authCode;
+  @override
   final String? expYear;
+  @override
+  final String? accountType;
+  @override
+  final String? contractId;
+  @override
+  final String? name;
+  @override
+  final String? brand;
   @override
   final BuiltList<JsonObject?>? fraudIndicators;
   @override
   final String? issuer;
-  @override
-  final String? last4;
-  @override
-  final String? name;
   @override
   final String? type;
   @override
@@ -39,17 +39,17 @@ class _$PaymentMethodCard extends PaymentMethodCard {
       (new PaymentMethodCardBuilder()..update(updates))._build();
 
   _$PaymentMethodCard._(
-      {this.accountType,
-      this.authCode,
-      this.brand,
-      this.contractId,
-      this.country,
+      {this.country,
       this.expMonth,
+      this.last4,
+      this.authCode,
       this.expYear,
+      this.accountType,
+      this.contractId,
+      this.name,
+      this.brand,
       this.fraudIndicators,
       this.issuer,
-      this.last4,
-      this.name,
       this.type,
       required this.object})
       : super._() {
@@ -69,17 +69,17 @@ class _$PaymentMethodCard extends PaymentMethodCard {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is PaymentMethodCard &&
-        accountType == other.accountType &&
-        authCode == other.authCode &&
-        brand == other.brand &&
-        contractId == other.contractId &&
         country == other.country &&
         expMonth == other.expMonth &&
+        last4 == other.last4 &&
+        authCode == other.authCode &&
         expYear == other.expYear &&
+        accountType == other.accountType &&
+        contractId == other.contractId &&
+        name == other.name &&
+        brand == other.brand &&
         fraudIndicators == other.fraudIndicators &&
         issuer == other.issuer &&
-        last4 == other.last4 &&
-        name == other.name &&
         type == other.type &&
         object == other.object;
   }
@@ -97,19 +97,17 @@ class _$PaymentMethodCard extends PaymentMethodCard {
                                     $jc(
                                         $jc(
                                             $jc(
-                                                $jc(
-                                                    $jc(0,
-                                                        accountType.hashCode),
-                                                    authCode.hashCode),
-                                                brand.hashCode),
-                                            contractId.hashCode),
-                                        country.hashCode),
-                                    expMonth.hashCode),
-                                expYear.hashCode),
-                            fraudIndicators.hashCode),
-                        issuer.hashCode),
-                    last4.hashCode),
-                name.hashCode),
+                                                $jc($jc(0, country.hashCode),
+                                                    expMonth.hashCode),
+                                                last4.hashCode),
+                                            authCode.hashCode),
+                                        expYear.hashCode),
+                                    accountType.hashCode),
+                                contractId.hashCode),
+                            name.hashCode),
+                        brand.hashCode),
+                    fraudIndicators.hashCode),
+                issuer.hashCode),
             type.hashCode),
         object.hashCode));
   }
@@ -117,17 +115,17 @@ class _$PaymentMethodCard extends PaymentMethodCard {
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'PaymentMethodCard')
-          ..add('accountType', accountType)
-          ..add('authCode', authCode)
-          ..add('brand', brand)
-          ..add('contractId', contractId)
           ..add('country', country)
           ..add('expMonth', expMonth)
+          ..add('last4', last4)
+          ..add('authCode', authCode)
           ..add('expYear', expYear)
+          ..add('accountType', accountType)
+          ..add('contractId', contractId)
+          ..add('name', name)
+          ..add('brand', brand)
           ..add('fraudIndicators', fraudIndicators)
           ..add('issuer', issuer)
-          ..add('last4', last4)
-          ..add('name', name)
           ..add('type', type)
           ..add('object', object))
         .toString();
@@ -137,27 +135,8 @@ class _$PaymentMethodCard extends PaymentMethodCard {
 class PaymentMethodCardBuilder
     implements
         Builder<PaymentMethodCard, PaymentMethodCardBuilder>,
-        ChargeDataPaymentMethodCardResponseBuilder,
         PaymentMethodBuilder {
   _$PaymentMethodCard? _$v;
-
-  String? _accountType;
-  String? get accountType => _$this._accountType;
-  set accountType(covariant String? accountType) =>
-      _$this._accountType = accountType;
-
-  String? _authCode;
-  String? get authCode => _$this._authCode;
-  set authCode(covariant String? authCode) => _$this._authCode = authCode;
-
-  String? _brand;
-  String? get brand => _$this._brand;
-  set brand(covariant String? brand) => _$this._brand = brand;
-
-  String? _contractId;
-  String? get contractId => _$this._contractId;
-  set contractId(covariant String? contractId) =>
-      _$this._contractId = contractId;
 
   String? _country;
   String? get country => _$this._country;
@@ -167,9 +146,35 @@ class PaymentMethodCardBuilder
   String? get expMonth => _$this._expMonth;
   set expMonth(covariant String? expMonth) => _$this._expMonth = expMonth;
 
+  String? _last4;
+  String? get last4 => _$this._last4;
+  set last4(covariant String? last4) => _$this._last4 = last4;
+
+  String? _authCode;
+  String? get authCode => _$this._authCode;
+  set authCode(covariant String? authCode) => _$this._authCode = authCode;
+
   String? _expYear;
   String? get expYear => _$this._expYear;
   set expYear(covariant String? expYear) => _$this._expYear = expYear;
+
+  String? _accountType;
+  String? get accountType => _$this._accountType;
+  set accountType(covariant String? accountType) =>
+      _$this._accountType = accountType;
+
+  String? _contractId;
+  String? get contractId => _$this._contractId;
+  set contractId(covariant String? contractId) =>
+      _$this._contractId = contractId;
+
+  String? _name;
+  String? get name => _$this._name;
+  set name(covariant String? name) => _$this._name = name;
+
+  String? _brand;
+  String? get brand => _$this._brand;
+  set brand(covariant String? brand) => _$this._brand = brand;
 
   ListBuilder<JsonObject?>? _fraudIndicators;
   ListBuilder<JsonObject?> get fraudIndicators =>
@@ -180,14 +185,6 @@ class PaymentMethodCardBuilder
   String? _issuer;
   String? get issuer => _$this._issuer;
   set issuer(covariant String? issuer) => _$this._issuer = issuer;
-
-  String? _last4;
-  String? get last4 => _$this._last4;
-  set last4(covariant String? last4) => _$this._last4 = last4;
-
-  String? _name;
-  String? get name => _$this._name;
-  set name(covariant String? name) => _$this._name = name;
 
   String? _type;
   String? get type => _$this._type;
@@ -204,17 +201,17 @@ class PaymentMethodCardBuilder
   PaymentMethodCardBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _accountType = $v.accountType;
-      _authCode = $v.authCode;
-      _brand = $v.brand;
-      _contractId = $v.contractId;
       _country = $v.country;
       _expMonth = $v.expMonth;
+      _last4 = $v.last4;
+      _authCode = $v.authCode;
       _expYear = $v.expYear;
+      _accountType = $v.accountType;
+      _contractId = $v.contractId;
+      _name = $v.name;
+      _brand = $v.brand;
       _fraudIndicators = $v.fraudIndicators?.toBuilder();
       _issuer = $v.issuer;
-      _last4 = $v.last4;
-      _name = $v.name;
       _type = $v.type;
       _object = $v.object;
       _$v = null;
@@ -223,7 +220,6 @@ class PaymentMethodCardBuilder
   }
 
   @override
-// ignore: override_on_non_overriding_method
   void replace(covariant PaymentMethodCard other) {
     ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$PaymentMethodCard;
@@ -242,17 +238,17 @@ class PaymentMethodCardBuilder
     try {
       _$result = _$v ??
           new _$PaymentMethodCard._(
-              accountType: accountType,
-              authCode: authCode,
-              brand: brand,
-              contractId: contractId,
               country: country,
               expMonth: expMonth,
+              last4: last4,
+              authCode: authCode,
               expYear: expYear,
+              accountType: accountType,
+              contractId: contractId,
+              name: name,
+              brand: brand,
               fraudIndicators: _fraudIndicators?.build(),
               issuer: issuer,
-              last4: last4,
-              name: name,
               type: type,
               object: BuiltValueNullFieldError.checkNotNull(
                   object, r'PaymentMethodCard', 'object'));

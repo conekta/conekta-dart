@@ -64,7 +64,6 @@ class _$OrderResponseCharges extends OrderResponseCharges {
 class OrderResponseChargesBuilder
     implements
         Builder<OrderResponseCharges, OrderResponseChargesBuilder>,
-        OrderResponseChargesAllOfBuilder,
         PaginationBuilder {
   _$OrderResponseCharges? _$v;
 
@@ -98,7 +97,6 @@ class OrderResponseChargesBuilder
   }
 
   @override
-// ignore: override_on_non_overriding_method
   void replace(covariant OrderResponseCharges other) {
     ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$OrderResponseCharges;

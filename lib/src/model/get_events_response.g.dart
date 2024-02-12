@@ -79,7 +79,6 @@ class _$GetEventsResponse extends GetEventsResponse {
 class GetEventsResponseBuilder
     implements
         Builder<GetEventsResponse, GetEventsResponseBuilder>,
-        GetEventsResponseAllOfBuilder,
         PageBuilder,
         PaginationBuilder {
   _$GetEventsResponse? _$v;

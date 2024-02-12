@@ -3,7 +3,6 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:conekta/src/model/payment_method_cash_response_all_of.dart';
 import 'package:conekta/src/model/payment_method_response.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -24,7 +23,22 @@ part 'payment_method_cash_response.g.dart';
 /// * [expiresAt] 
 /// * [provider] 
 @BuiltValue()
-abstract class PaymentMethodCashResponse implements PaymentMethodCashResponseAllOf, PaymentMethodResponse, Built<PaymentMethodCashResponse, PaymentMethodCashResponseBuilder> {
+abstract class PaymentMethodCashResponse implements PaymentMethodResponse, Built<PaymentMethodCashResponse, PaymentMethodCashResponseBuilder> {
+  @BuiltValueField(wireName: r'reference')
+  String? get reference;
+
+  @BuiltValueField(wireName: r'provider')
+  String? get provider;
+
+  @BuiltValueField(wireName: r'barcode_url')
+  String? get barcodeUrl;
+
+  @BuiltValueField(wireName: r'barcode')
+  String? get barcode;
+
+  @BuiltValueField(wireName: r'expires_at')
+  int? get expiresAt;
+
   PaymentMethodCashResponse._();
 
   factory PaymentMethodCashResponse([void updates(PaymentMethodCashResponseBuilder b)]) = _$PaymentMethodCashResponse;

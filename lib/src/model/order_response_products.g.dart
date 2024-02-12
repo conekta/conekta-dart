@@ -80,7 +80,6 @@ class _$OrderResponseProducts extends OrderResponseProducts {
 class OrderResponseProductsBuilder
     implements
         Builder<OrderResponseProducts, OrderResponseProductsBuilder>,
-        OrderResponseProductsAllOfBuilder,
         PageBuilder,
         PaginationBuilder {
   _$OrderResponseProducts? _$v;

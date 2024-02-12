@@ -79,7 +79,6 @@ class _$GetPlansResponse extends GetPlansResponse {
 class GetPlansResponseBuilder
     implements
         Builder<GetPlansResponse, GetPlansResponseBuilder>,
-        GetPlansResponseAllOfBuilder,
         PageBuilder,
         PaginationBuilder {
   _$GetPlansResponse? _$v;

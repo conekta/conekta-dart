@@ -3,7 +3,6 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:conekta/src/model/update_order_tax_response_all_of.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:conekta/src/model/order_tax_request.dart';
 import 'package:built_value/json_object.dart';
@@ -22,7 +21,16 @@ part 'update_order_tax_response.g.dart';
 /// * [object] 
 /// * [parentId] 
 @BuiltValue()
-abstract class UpdateOrderTaxResponse implements OrderTaxRequest, UpdateOrderTaxResponseAllOf, Built<UpdateOrderTaxResponse, UpdateOrderTaxResponseBuilder> {
+abstract class UpdateOrderTaxResponse implements OrderTaxRequest, Built<UpdateOrderTaxResponse, UpdateOrderTaxResponseBuilder> {
+  @BuiltValueField(wireName: r'id')
+  String get id;
+
+  @BuiltValueField(wireName: r'parent_id')
+  String? get parentId;
+
+  @BuiltValueField(wireName: r'object')
+  String? get object;
+
   UpdateOrderTaxResponse._();
 
   factory UpdateOrderTaxResponse([void updates(UpdateOrderTaxResponseBuilder b)]) = _$UpdateOrderTaxResponse;
@@ -46,6 +54,11 @@ class _$UpdateOrderTaxResponseSerializer implements PrimitiveSerializer<UpdateOr
     UpdateOrderTaxResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
+    yield r'description';
+    yield serializers.serialize(
+      object.description,
+      specifiedType: const FullType(String),
+    );
     yield r'amount';
     yield serializers.serialize(
       object.amount,
@@ -58,18 +71,11 @@ class _$UpdateOrderTaxResponseSerializer implements PrimitiveSerializer<UpdateOr
         specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
       );
     }
-    yield r'description';
+    yield r'id';
     yield serializers.serialize(
-      object.description,
+      object.id,
       specifiedType: const FullType(String),
     );
-    if (object.id != null) {
-      yield r'id';
-      yield serializers.serialize(
-        object.id,
-        specifiedType: const FullType(String),
-      );
-    }
     if (object.parentId != null) {
       yield r'parent_id';
       yield serializers.serialize(
@@ -107,6 +113,13 @@ class _$UpdateOrderTaxResponseSerializer implements PrimitiveSerializer<UpdateOr
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
+        case r'description':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.description = valueDes;
+          break;
         case r'amount':
           final valueDes = serializers.deserialize(
             value,
@@ -120,13 +133,6 @@ class _$UpdateOrderTaxResponseSerializer implements PrimitiveSerializer<UpdateOr
             specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
           ) as BuiltMap<String, JsonObject?>;
           result.metadata.replace(valueDes);
-          break;
-        case r'description':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.description = valueDes;
           break;
         case r'id':
           final valueDes = serializers.deserialize(

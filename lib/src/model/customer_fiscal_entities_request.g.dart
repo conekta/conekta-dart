@@ -9,8 +9,8 @@ part of 'customer_fiscal_entities_request.dart';
 abstract class CustomerFiscalEntitiesRequestBuilder {
   void replace(CustomerFiscalEntitiesRequest other);
   void update(void Function(CustomerFiscalEntitiesRequestBuilder) updates);
-  CustomerFiscalEntitiesRequestAddressBuilder get address;
-  set address(CustomerFiscalEntitiesRequestAddressBuilder? address);
+  CustomerAddressBuilder get address;
+  set address(CustomerAddressBuilder? address);
 
   String? get taxId;
   set taxId(String? taxId);
@@ -30,7 +30,7 @@ abstract class CustomerFiscalEntitiesRequestBuilder {
 
 class _$$CustomerFiscalEntitiesRequest extends $CustomerFiscalEntitiesRequest {
   @override
-  final CustomerFiscalEntitiesRequestAddress address;
+  final CustomerAddress address;
   @override
   final String? taxId;
   @override
@@ -111,10 +111,10 @@ class $CustomerFiscalEntitiesRequestBuilder
         CustomerFiscalEntitiesRequestBuilder {
   _$$CustomerFiscalEntitiesRequest? _$v;
 
-  CustomerFiscalEntitiesRequestAddressBuilder? _address;
-  CustomerFiscalEntitiesRequestAddressBuilder get address =>
-      _$this._address ??= new CustomerFiscalEntitiesRequestAddressBuilder();
-  set address(covariant CustomerFiscalEntitiesRequestAddressBuilder? address) =>
+  CustomerAddressBuilder? _address;
+  CustomerAddressBuilder get address =>
+      _$this._address ??= new CustomerAddressBuilder();
+  set address(covariant CustomerAddressBuilder? address) =>
       _$this._address = address;
 
   String? _taxId;

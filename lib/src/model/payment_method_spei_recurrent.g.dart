@@ -8,6 +8,10 @@ part of 'payment_method_spei_recurrent.dart';
 
 class _$PaymentMethodSpeiRecurrent extends PaymentMethodSpeiRecurrent {
   @override
+  final String? reference;
+  @override
+  final String? expiresAt;
+  @override
   final String type;
   @override
   final String id;
@@ -17,23 +21,19 @@ class _$PaymentMethodSpeiRecurrent extends PaymentMethodSpeiRecurrent {
   final int createdAt;
   @override
   final String? parentId;
-  @override
-  final String? reference;
-  @override
-  final String? expiresAt;
 
   factory _$PaymentMethodSpeiRecurrent(
           [void Function(PaymentMethodSpeiRecurrentBuilder)? updates]) =>
       (new PaymentMethodSpeiRecurrentBuilder()..update(updates))._build();
 
   _$PaymentMethodSpeiRecurrent._(
-      {required this.type,
+      {this.reference,
+      this.expiresAt,
+      required this.type,
       required this.id,
       required this.object,
       required this.createdAt,
-      this.parentId,
-      this.reference,
-      this.expiresAt})
+      this.parentId})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         type, r'PaymentMethodSpeiRecurrent', 'type');
@@ -58,13 +58,13 @@ class _$PaymentMethodSpeiRecurrent extends PaymentMethodSpeiRecurrent {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is PaymentMethodSpeiRecurrent &&
+        reference == other.reference &&
+        expiresAt == other.expiresAt &&
         type == other.type &&
         id == other.id &&
         object == other.object &&
         createdAt == other.createdAt &&
-        parentId == other.parentId &&
-        reference == other.reference &&
-        expiresAt == other.expiresAt;
+        parentId == other.parentId;
   }
 
   @override
@@ -73,24 +73,24 @@ class _$PaymentMethodSpeiRecurrent extends PaymentMethodSpeiRecurrent {
         $jc(
             $jc(
                 $jc(
-                    $jc($jc($jc(0, type.hashCode), id.hashCode),
-                        object.hashCode),
-                    createdAt.hashCode),
-                parentId.hashCode),
-            reference.hashCode),
-        expiresAt.hashCode));
+                    $jc($jc($jc(0, reference.hashCode), expiresAt.hashCode),
+                        type.hashCode),
+                    id.hashCode),
+                object.hashCode),
+            createdAt.hashCode),
+        parentId.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'PaymentMethodSpeiRecurrent')
+          ..add('reference', reference)
+          ..add('expiresAt', expiresAt)
           ..add('type', type)
           ..add('id', id)
           ..add('object', object)
           ..add('createdAt', createdAt)
-          ..add('parentId', parentId)
-          ..add('reference', reference)
-          ..add('expiresAt', expiresAt))
+          ..add('parentId', parentId))
         .toString();
   }
 }
@@ -98,9 +98,16 @@ class _$PaymentMethodSpeiRecurrent extends PaymentMethodSpeiRecurrent {
 class PaymentMethodSpeiRecurrentBuilder
     implements
         Builder<PaymentMethodSpeiRecurrent, PaymentMethodSpeiRecurrentBuilder>,
-        PaymentMethodResponseBuilder,
-        PaymentMethodSpeiRecurrentAllOfBuilder {
+        PaymentMethodResponseBuilder {
   _$PaymentMethodSpeiRecurrent? _$v;
+
+  String? _reference;
+  String? get reference => _$this._reference;
+  set reference(covariant String? reference) => _$this._reference = reference;
+
+  String? _expiresAt;
+  String? get expiresAt => _$this._expiresAt;
+  set expiresAt(covariant String? expiresAt) => _$this._expiresAt = expiresAt;
 
   String? _type;
   String? get type => _$this._type;
@@ -122,14 +129,6 @@ class PaymentMethodSpeiRecurrentBuilder
   String? get parentId => _$this._parentId;
   set parentId(covariant String? parentId) => _$this._parentId = parentId;
 
-  String? _reference;
-  String? get reference => _$this._reference;
-  set reference(covariant String? reference) => _$this._reference = reference;
-
-  String? _expiresAt;
-  String? get expiresAt => _$this._expiresAt;
-  set expiresAt(covariant String? expiresAt) => _$this._expiresAt = expiresAt;
-
   PaymentMethodSpeiRecurrentBuilder() {
     PaymentMethodSpeiRecurrent._defaults(this);
   }
@@ -137,20 +136,19 @@ class PaymentMethodSpeiRecurrentBuilder
   PaymentMethodSpeiRecurrentBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
+      _reference = $v.reference;
+      _expiresAt = $v.expiresAt;
       _type = $v.type;
       _id = $v.id;
       _object = $v.object;
       _createdAt = $v.createdAt;
       _parentId = $v.parentId;
-      _reference = $v.reference;
-      _expiresAt = $v.expiresAt;
       _$v = null;
     }
     return this;
   }
 
   @override
-// ignore: override_on_non_overriding_method
   void replace(covariant PaymentMethodSpeiRecurrent other) {
     ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$PaymentMethodSpeiRecurrent;
@@ -167,6 +165,8 @@ class PaymentMethodSpeiRecurrentBuilder
   _$PaymentMethodSpeiRecurrent _build() {
     final _$result = _$v ??
         new _$PaymentMethodSpeiRecurrent._(
+            reference: reference,
+            expiresAt: expiresAt,
             type: BuiltValueNullFieldError.checkNotNull(
                 type, r'PaymentMethodSpeiRecurrent', 'type'),
             id: BuiltValueNullFieldError.checkNotNull(
@@ -175,9 +175,7 @@ class PaymentMethodSpeiRecurrentBuilder
                 object, r'PaymentMethodSpeiRecurrent', 'object'),
             createdAt: BuiltValueNullFieldError.checkNotNull(
                 createdAt, r'PaymentMethodSpeiRecurrent', 'createdAt'),
-            parentId: parentId,
-            reference: reference,
-            expiresAt: expiresAt);
+            parentId: parentId);
     replace(_$result);
     return _$result;
   }

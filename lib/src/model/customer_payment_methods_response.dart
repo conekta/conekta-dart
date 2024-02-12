@@ -3,7 +3,6 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:conekta/src/model/customer_payment_methods.dart';
 import 'package:conekta/src/model/pagination.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:conekta/src/model/page.dart';
@@ -22,7 +21,10 @@ part 'customer_payment_methods_response.g.dart';
 /// * [previousPageUrl] - Url of the previous page.
 /// * [data] 
 @BuiltValue()
-abstract class CustomerPaymentMethodsResponse implements CustomerPaymentMethods, Page, Pagination, Built<CustomerPaymentMethodsResponse, CustomerPaymentMethodsResponseBuilder> {
+abstract class CustomerPaymentMethodsResponse implements Page, Pagination, Built<CustomerPaymentMethodsResponse, CustomerPaymentMethodsResponseBuilder> {
+  @BuiltValueField(wireName: r'data')
+  BuiltList<CustomerPaymentMethodsData>? get data;
+
   CustomerPaymentMethodsResponse._();
 
   factory CustomerPaymentMethodsResponse([void updates(CustomerPaymentMethodsResponseBuilder b)]) = _$CustomerPaymentMethodsResponse;

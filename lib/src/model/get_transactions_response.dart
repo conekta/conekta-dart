@@ -7,7 +7,6 @@ import 'package:conekta/src/model/pagination.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:conekta/src/model/transaction_response.dart';
 import 'package:conekta/src/model/page.dart';
-import 'package:conekta/src/model/get_transactions_response_all_of.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -22,7 +21,11 @@ part 'get_transactions_response.g.dart';
 /// * [previousPageUrl] - Url of the previous page.
 /// * [data] - Transactions
 @BuiltValue()
-abstract class GetTransactionsResponse implements GetTransactionsResponseAllOf, Page, Pagination, Built<GetTransactionsResponse, GetTransactionsResponseBuilder> {
+abstract class GetTransactionsResponse implements Page, Pagination, Built<GetTransactionsResponse, GetTransactionsResponseBuilder> {
+  /// Transactions
+  @BuiltValueField(wireName: r'data')
+  BuiltList<TransactionResponse>? get data;
+
   GetTransactionsResponse._();
 
   factory GetTransactionsResponse([void updates(GetTransactionsResponseBuilder b)]) = _$GetTransactionsResponse;

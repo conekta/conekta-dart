@@ -5,7 +5,6 @@
 // ignore_for_file: unused_element
 import 'package:conekta/src/model/pagination.dart';
 import 'package:built_collection/built_collection.dart';
-import 'package:conekta/src/model/customer_fiscal_entities_response_all_of.dart';
 import 'package:conekta/src/model/customer_fiscal_entities_data_response.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -19,7 +18,10 @@ part 'customer_fiscal_entities_response.g.dart';
 /// * [object] - Object type, in this case is list
 /// * [data] 
 @BuiltValue()
-abstract class CustomerFiscalEntitiesResponse implements CustomerFiscalEntitiesResponseAllOf, Pagination, Built<CustomerFiscalEntitiesResponse, CustomerFiscalEntitiesResponseBuilder> {
+abstract class CustomerFiscalEntitiesResponse implements Pagination, Built<CustomerFiscalEntitiesResponse, CustomerFiscalEntitiesResponseBuilder> {
+  @BuiltValueField(wireName: r'data')
+  BuiltList<CustomerFiscalEntitiesDataResponse>? get data;
+
   CustomerFiscalEntitiesResponse._();
 
   factory CustomerFiscalEntitiesResponse([void updates(CustomerFiscalEntitiesResponseBuilder b)]) = _$CustomerFiscalEntitiesResponse;
@@ -43,11 +45,6 @@ class _$CustomerFiscalEntitiesResponseSerializer implements PrimitiveSerializer<
     CustomerFiscalEntitiesResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    yield r'has_more';
-    yield serializers.serialize(
-      object.hasMore,
-      specifiedType: const FullType(bool),
-    );
     if (object.data != null) {
       yield r'data';
       yield serializers.serialize(
@@ -55,6 +52,11 @@ class _$CustomerFiscalEntitiesResponseSerializer implements PrimitiveSerializer<
         specifiedType: const FullType(BuiltList, [FullType(CustomerFiscalEntitiesDataResponse)]),
       );
     }
+    yield r'has_more';
+    yield serializers.serialize(
+      object.hasMore,
+      specifiedType: const FullType(bool),
+    );
     yield r'object';
     yield serializers.serialize(
       object.object,
@@ -83,19 +85,19 @@ class _$CustomerFiscalEntitiesResponseSerializer implements PrimitiveSerializer<
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
-        case r'has_more':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(bool),
-          ) as bool;
-          result.hasMore = valueDes;
-          break;
         case r'data':
           final valueDes = serializers.deserialize(
             value,
             specifiedType: const FullType(BuiltList, [FullType(CustomerFiscalEntitiesDataResponse)]),
           ) as BuiltList<CustomerFiscalEntitiesDataResponse>;
           result.data.replace(valueDes);
+          break;
+        case r'has_more':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(bool),
+          ) as bool;
+          result.hasMore = valueDes;
           break;
         case r'object':
           final valueDes = serializers.deserialize(

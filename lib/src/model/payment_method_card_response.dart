@@ -3,7 +3,6 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:conekta/src/model/payment_method_card_response_all_of.dart';
 import 'package:conekta/src/model/payment_method_response.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -29,7 +28,37 @@ part 'payment_method_card_response.g.dart';
 /// * [visibleOnCheckout] 
 /// * [paymentSourceStatus] 
 @BuiltValue()
-abstract class PaymentMethodCardResponse implements PaymentMethodCardResponseAllOf, PaymentMethodResponse, Built<PaymentMethodCardResponse, PaymentMethodCardResponseBuilder> {
+abstract class PaymentMethodCardResponse implements PaymentMethodResponse, Built<PaymentMethodCardResponse, PaymentMethodCardResponseBuilder> {
+  @BuiltValueField(wireName: r'last4')
+  String? get last4;
+
+  @BuiltValueField(wireName: r'exp_month')
+  String? get expMonth;
+
+  @BuiltValueField(wireName: r'visible_on_checkout')
+  bool? get visibleOnCheckout;
+
+  @BuiltValueField(wireName: r'exp_year')
+  String? get expYear;
+
+  @BuiltValueField(wireName: r'bin')
+  String? get bin;
+
+  @BuiltValueField(wireName: r'card_type')
+  String? get cardType;
+
+  @BuiltValueField(wireName: r'name')
+  String? get name;
+
+  @BuiltValueField(wireName: r'default')
+  bool? get default_;
+
+  @BuiltValueField(wireName: r'brand')
+  String? get brand;
+
+  @BuiltValueField(wireName: r'payment_source_status')
+  String? get paymentSourceStatus;
+
   PaymentMethodCardResponse._();
 
   factory PaymentMethodCardResponse([void updates(PaymentMethodCardResponseBuilder b)]) = _$PaymentMethodCardResponse;

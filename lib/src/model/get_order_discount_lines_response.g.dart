@@ -81,7 +81,6 @@ class GetOrderDiscountLinesResponseBuilder
     implements
         Builder<GetOrderDiscountLinesResponse,
             GetOrderDiscountLinesResponseBuilder>,
-        GetOrderDiscountLinesResponseAllOfBuilder,
         PageBuilder,
         PaginationBuilder {
   _$GetOrderDiscountLinesResponse? _$v;

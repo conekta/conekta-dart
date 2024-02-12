@@ -19,8 +19,8 @@ part 'customer_address.g.dart';
 /// * [country] - this field follows the [ISO 3166-1 alpha-2 standard](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
 /// * [residential] 
 /// * [externalNumber] 
-@BuiltValue(instantiable: false)
-abstract class CustomerAddress  {
+@BuiltValue()
+abstract class CustomerAddress implements Built<CustomerAddress, CustomerAddressBuilder> {
   @BuiltValueField(wireName: r'street1')
   String get street1;
 
@@ -46,13 +46,21 @@ abstract class CustomerAddress  {
   @BuiltValueField(wireName: r'external_number')
   String? get externalNumber;
 
+  CustomerAddress._();
+
+  factory CustomerAddress([void updates(CustomerAddressBuilder b)]) = _$CustomerAddress;
+
+  @BuiltValueHook(initializeBuilder: true)
+  static void _defaults(CustomerAddressBuilder b) => b
+      ..residential = false;
+
   @BuiltValueSerializer(custom: true)
   static Serializer<CustomerAddress> get serializer => _$CustomerAddressSerializer();
 }
 
 class _$CustomerAddressSerializer implements PrimitiveSerializer<CustomerAddress> {
   @override
-  final Iterable<Type> types = const [CustomerAddress];
+  final Iterable<Type> types = const [CustomerAddress, _$CustomerAddress];
 
   @override
   final String wireName = r'CustomerAddress';
@@ -121,46 +129,6 @@ class _$CustomerAddressSerializer implements PrimitiveSerializer<CustomerAddress
     FullType specifiedType = FullType.unspecified,
   }) {
     return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
-  }
-
-  @override
-  CustomerAddress deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return serializers.deserialize(serialized, specifiedType: FullType($CustomerAddress)) as $CustomerAddress;
-  }
-}
-
-/// a concrete implementation of [CustomerAddress], since [CustomerAddress] is not instantiable
-@BuiltValue(instantiable: true)
-abstract class $CustomerAddress implements CustomerAddress, Built<$CustomerAddress, $CustomerAddressBuilder> {
-  $CustomerAddress._();
-
-  factory $CustomerAddress([void Function($CustomerAddressBuilder)? updates]) = _$$CustomerAddress;
-
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults($CustomerAddressBuilder b) => b;
-
-  @BuiltValueSerializer(custom: true)
-  static Serializer<$CustomerAddress> get serializer => _$$CustomerAddressSerializer();
-}
-
-class _$$CustomerAddressSerializer implements PrimitiveSerializer<$CustomerAddress> {
-  @override
-  final Iterable<Type> types = const [$CustomerAddress, _$$CustomerAddress];
-
-  @override
-  final String wireName = r'$CustomerAddress';
-
-  @override
-  Object serialize(
-    Serializers serializers,
-    $CustomerAddress object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return serializers.serialize(object, specifiedType: FullType(CustomerAddress))!;
   }
 
   void _deserializeProperties(
@@ -240,12 +208,12 @@ class _$$CustomerAddressSerializer implements PrimitiveSerializer<$CustomerAddre
   }
 
   @override
-  $CustomerAddress deserialize(
+  CustomerAddress deserialize(
     Serializers serializers,
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final result = $CustomerAddressBuilder();
+    final result = CustomerAddressBuilder();
     final serializedList = (serialized as Iterable<Object?>).toList();
     final unhandled = <Object?>[];
     _deserializeProperties(

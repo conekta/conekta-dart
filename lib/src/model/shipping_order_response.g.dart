@@ -10,9 +10,9 @@ class _$ShippingOrderResponse extends ShippingOrderResponse {
   @override
   final String? id;
   @override
-  final String? object;
-  @override
   final String? parentId;
+  @override
+  final String? object;
   @override
   final int amount;
   @override
@@ -30,8 +30,8 @@ class _$ShippingOrderResponse extends ShippingOrderResponse {
 
   _$ShippingOrderResponse._(
       {this.id,
-      this.object,
       this.parentId,
+      this.object,
       required this.amount,
       this.carrier,
       this.trackingNumber,
@@ -56,8 +56,8 @@ class _$ShippingOrderResponse extends ShippingOrderResponse {
     if (identical(other, this)) return true;
     return other is ShippingOrderResponse &&
         id == other.id &&
-        object == other.object &&
         parentId == other.parentId &&
+        object == other.object &&
         amount == other.amount &&
         carrier == other.carrier &&
         trackingNumber == other.trackingNumber &&
@@ -72,8 +72,8 @@ class _$ShippingOrderResponse extends ShippingOrderResponse {
             $jc(
                 $jc(
                     $jc(
-                        $jc($jc($jc(0, id.hashCode), object.hashCode),
-                            parentId.hashCode),
+                        $jc($jc($jc(0, id.hashCode), parentId.hashCode),
+                            object.hashCode),
                         amount.hashCode),
                     carrier.hashCode),
                 trackingNumber.hashCode),
@@ -85,8 +85,8 @@ class _$ShippingOrderResponse extends ShippingOrderResponse {
   String toString() {
     return (newBuiltValueToStringHelper(r'ShippingOrderResponse')
           ..add('id', id)
-          ..add('object', object)
           ..add('parentId', parentId)
+          ..add('object', object)
           ..add('amount', amount)
           ..add('carrier', carrier)
           ..add('trackingNumber', trackingNumber)
@@ -99,7 +99,6 @@ class _$ShippingOrderResponse extends ShippingOrderResponse {
 class ShippingOrderResponseBuilder
     implements
         Builder<ShippingOrderResponse, ShippingOrderResponseBuilder>,
-        ProductOrderResponseAllOfBuilder,
         ShippingRequestBuilder {
   _$ShippingOrderResponse? _$v;
 
@@ -107,13 +106,13 @@ class ShippingOrderResponseBuilder
   String? get id => _$this._id;
   set id(covariant String? id) => _$this._id = id;
 
-  String? _object;
-  String? get object => _$this._object;
-  set object(covariant String? object) => _$this._object = object;
-
   String? _parentId;
   String? get parentId => _$this._parentId;
   set parentId(covariant String? parentId) => _$this._parentId = parentId;
+
+  String? _object;
+  String? get object => _$this._object;
+  set object(covariant String? object) => _$this._object = object;
 
   int? _amount;
   int? get amount => _$this._amount;
@@ -146,8 +145,8 @@ class ShippingOrderResponseBuilder
     final $v = _$v;
     if ($v != null) {
       _id = $v.id;
-      _object = $v.object;
       _parentId = $v.parentId;
+      _object = $v.object;
       _amount = $v.amount;
       _carrier = $v.carrier;
       _trackingNumber = $v.trackingNumber;
@@ -159,7 +158,6 @@ class ShippingOrderResponseBuilder
   }
 
   @override
-// ignore: override_on_non_overriding_method
   void replace(covariant ShippingOrderResponse other) {
     ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ShippingOrderResponse;
@@ -179,8 +177,8 @@ class ShippingOrderResponseBuilder
       _$result = _$v ??
           new _$ShippingOrderResponse._(
               id: id,
-              object: object,
               parentId: parentId,
+              object: object,
               amount: BuiltValueNullFieldError.checkNotNull(
                   amount, r'ShippingOrderResponse', 'amount'),
               carrier: carrier,

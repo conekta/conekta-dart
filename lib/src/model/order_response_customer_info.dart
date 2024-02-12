@@ -3,7 +3,6 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:conekta/src/model/order_response_customer_info_all_of.dart';
 import 'package:conekta/src/model/customer_info_just_customer_id_response.dart';
 import 'package:conekta/src/model/order_customer_info_response.dart';
 import 'package:built_value/built_value.dart';
@@ -14,15 +13,15 @@ part 'order_response_customer_info.g.dart';
 /// OrderResponseCustomerInfo
 ///
 /// Properties:
-/// * [object] 
 /// * [customerCustomReference] - Custom reference
 /// * [name] 
 /// * [email] 
 /// * [phone] 
 /// * [corporate] 
+/// * [object] 
 /// * [customerId] 
 @BuiltValue()
-abstract class OrderResponseCustomerInfo implements CustomerInfoJustCustomerIdResponse, OrderCustomerInfoResponse, OrderResponseCustomerInfoAllOf, Built<OrderResponseCustomerInfo, OrderResponseCustomerInfoBuilder> {
+abstract class OrderResponseCustomerInfo implements CustomerInfoJustCustomerIdResponse, OrderCustomerInfoResponse, Built<OrderResponseCustomerInfo, OrderResponseCustomerInfoBuilder> {
   OrderResponseCustomerInfo._();
 
   factory OrderResponseCustomerInfo([void updates(OrderResponseCustomerInfoBuilder b)]) = _$OrderResponseCustomerInfo;

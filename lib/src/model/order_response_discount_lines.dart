@@ -4,7 +4,6 @@
 
 // ignore_for_file: unused_element
 import 'package:conekta/src/model/pagination.dart';
-import 'package:conekta/src/model/order_response_discount_lines_all_of.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:conekta/src/model/discount_lines_data_response.dart';
 import 'package:built_value/built_value.dart';
@@ -19,7 +18,10 @@ part 'order_response_discount_lines.g.dart';
 /// * [object] - Object type, in this case is list
 /// * [data] 
 @BuiltValue()
-abstract class OrderResponseDiscountLines implements OrderResponseDiscountLinesAllOf, Pagination, Built<OrderResponseDiscountLines, OrderResponseDiscountLinesBuilder> {
+abstract class OrderResponseDiscountLines implements Pagination, Built<OrderResponseDiscountLines, OrderResponseDiscountLinesBuilder> {
+  @BuiltValueField(wireName: r'data')
+  BuiltList<DiscountLinesDataResponse>? get data;
+
   OrderResponseDiscountLines._();
 
   factory OrderResponseDiscountLines([void updates(OrderResponseDiscountLinesBuilder b)]) = _$OrderResponseDiscountLines;
@@ -43,11 +45,6 @@ class _$OrderResponseDiscountLinesSerializer implements PrimitiveSerializer<Orde
     OrderResponseDiscountLines object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    yield r'has_more';
-    yield serializers.serialize(
-      object.hasMore,
-      specifiedType: const FullType(bool),
-    );
     if (object.data != null) {
       yield r'data';
       yield serializers.serialize(
@@ -55,6 +52,11 @@ class _$OrderResponseDiscountLinesSerializer implements PrimitiveSerializer<Orde
         specifiedType: const FullType(BuiltList, [FullType(DiscountLinesDataResponse)]),
       );
     }
+    yield r'has_more';
+    yield serializers.serialize(
+      object.hasMore,
+      specifiedType: const FullType(bool),
+    );
     yield r'object';
     yield serializers.serialize(
       object.object,
@@ -83,19 +85,19 @@ class _$OrderResponseDiscountLinesSerializer implements PrimitiveSerializer<Orde
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
-        case r'has_more':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(bool),
-          ) as bool;
-          result.hasMore = valueDes;
-          break;
         case r'data':
           final valueDes = serializers.deserialize(
             value,
             specifiedType: const FullType(BuiltList, [FullType(DiscountLinesDataResponse)]),
           ) as BuiltList<DiscountLinesDataResponse>;
           result.data.replace(valueDes);
+          break;
+        case r'has_more':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(bool),
+          ) as bool;
+          result.hasMore = valueDes;
           break;
         case r'object':
           final valueDes = serializers.deserialize(

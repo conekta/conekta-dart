@@ -7,7 +7,6 @@ import 'package:conekta/src/model/pagination.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:conekta/src/model/risk_rules_data.dart';
 import 'package:conekta/src/model/page.dart';
-import 'package:conekta/src/model/risk_rules.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -22,7 +21,10 @@ part 'risk_rules_list.g.dart';
 /// * [previousPageUrl] - Url of the previous page.
 /// * [data] 
 @BuiltValue()
-abstract class RiskRulesList implements Page, Pagination, RiskRules, Built<RiskRulesList, RiskRulesListBuilder> {
+abstract class RiskRulesList implements Page, Pagination, Built<RiskRulesList, RiskRulesListBuilder> {
+  @BuiltValueField(wireName: r'data')
+  BuiltList<RiskRulesData>? get data;
+
   RiskRulesList._();
 
   factory RiskRulesList([void updates(RiskRulesListBuilder b)]) = _$RiskRulesList;

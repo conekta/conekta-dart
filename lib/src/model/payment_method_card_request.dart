@@ -3,7 +3,6 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:conekta/src/model/payment_method_card_request_all_of.dart';
 import 'package:conekta/src/model/customer_payment_method_request.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -16,7 +15,11 @@ part 'payment_method_card_request.g.dart';
 /// * [type] - Type of payment method
 /// * [tokenId] - Token id that will be used to create a \"card\" type payment method. See the (subscriptions)[https://developers.conekta.com/v2.1.0/reference/createsubscription] tutorial for more information on how to tokenize cards.
 @BuiltValue()
-abstract class PaymentMethodCardRequest implements CustomerPaymentMethodRequest, PaymentMethodCardRequestAllOf, Built<PaymentMethodCardRequest, PaymentMethodCardRequestBuilder> {
+abstract class PaymentMethodCardRequest implements CustomerPaymentMethodRequest, Built<PaymentMethodCardRequest, PaymentMethodCardRequestBuilder> {
+  /// Token id that will be used to create a \"card\" type payment method. See the (subscriptions)[https://developers.conekta.com/v2.1.0/reference/createsubscription] tutorial for more information on how to tokenize cards.
+  @BuiltValueField(wireName: r'token_id')
+  String get tokenId;
+
   PaymentMethodCardRequest._();
 
   factory PaymentMethodCardRequest([void updates(PaymentMethodCardRequestBuilder b)]) = _$PaymentMethodCardRequest;
@@ -40,13 +43,11 @@ class _$PaymentMethodCardRequestSerializer implements PrimitiveSerializer<Paymen
     PaymentMethodCardRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    if (object.tokenId != null) {
-      yield r'token_id';
-      yield serializers.serialize(
-        object.tokenId,
-        specifiedType: const FullType(String),
-      );
-    }
+    yield r'token_id';
+    yield serializers.serialize(
+      object.tokenId,
+      specifiedType: const FullType(String),
+    );
     yield r'type';
     yield serializers.serialize(
       object.type,

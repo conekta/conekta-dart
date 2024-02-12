@@ -5,7 +5,6 @@
 // ignore_for_file: unused_element
 import 'package:conekta/src/model/pagination.dart';
 import 'package:built_collection/built_collection.dart';
-import 'package:conekta/src/model/get_transfers_response_all_of.dart';
 import 'package:conekta/src/model/page.dart';
 import 'package:conekta/src/model/transfers_response.dart';
 import 'package:built_value/built_value.dart';
@@ -22,7 +21,11 @@ part 'get_transfers_response.g.dart';
 /// * [previousPageUrl] - Url of the previous page.
 /// * [data] - Transfers
 @BuiltValue()
-abstract class GetTransfersResponse implements GetTransfersResponseAllOf, Page, Pagination, Built<GetTransfersResponse, GetTransfersResponseBuilder> {
+abstract class GetTransfersResponse implements Page, Pagination, Built<GetTransfersResponse, GetTransfersResponseBuilder> {
+  /// Transfers
+  @BuiltValueField(wireName: r'data')
+  BuiltList<TransfersResponse>? get data;
+
   GetTransfersResponse._();
 
   factory GetTransfersResponse([void updates(GetTransfersResponseBuilder b)]) = _$GetTransfersResponse;

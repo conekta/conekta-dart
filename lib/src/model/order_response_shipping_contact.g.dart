@@ -120,8 +120,7 @@ class OrderResponseShippingContactBuilder
     implements
         Builder<OrderResponseShippingContact,
             OrderResponseShippingContactBuilder>,
-        CustomerShippingContactsResponseBuilder,
-        OrderResponseShippingContactAllOfBuilder {
+        CustomerShippingContactsResponseBuilder {
   _$OrderResponseShippingContact? _$v;
 
   String? _phone;
@@ -198,7 +197,6 @@ class OrderResponseShippingContactBuilder
   }
 
   @override
-// ignore: override_on_non_overriding_method
   void replace(covariant OrderResponseShippingContact other) {
     ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$OrderResponseShippingContact;

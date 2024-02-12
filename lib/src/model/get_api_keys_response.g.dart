@@ -80,7 +80,6 @@ class _$GetApiKeysResponse extends GetApiKeysResponse {
 class GetApiKeysResponseBuilder
     implements
         Builder<GetApiKeysResponse, GetApiKeysResponseBuilder>,
-        GetApiKeysResponseAllOfBuilder,
         PageBuilder,
         PaginationBuilder {
   _$GetApiKeysResponse? _$v;

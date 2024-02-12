@@ -105,8 +105,7 @@ class _$DeleteApiKeysResponse extends DeleteApiKeysResponse {
 class DeleteApiKeysResponseBuilder
     implements
         Builder<DeleteApiKeysResponse, DeleteApiKeysResponseBuilder>,
-        ApiKeyResponseOnDeleteBuilder,
-        DeleteApiKeysResponseAllOfBuilder {
+        ApiKeyResponseOnDeleteBuilder {
   _$DeleteApiKeysResponse? _$v;
 
   bool? _active;
@@ -168,7 +167,6 @@ class DeleteApiKeysResponseBuilder
   }
 
   @override
-// ignore: override_on_non_overriding_method
   void replace(covariant DeleteApiKeysResponse other) {
     ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$DeleteApiKeysResponse;

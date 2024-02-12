@@ -10,21 +10,21 @@ class _$PaymentMethodCardResponse extends PaymentMethodCardResponse {
   @override
   final String? last4;
   @override
-  final String? bin;
-  @override
-  final String? cardType;
-  @override
   final String? expMonth;
+  @override
+  final bool? visibleOnCheckout;
   @override
   final String? expYear;
   @override
-  final String? brand;
+  final String? bin;
+  @override
+  final String? cardType;
   @override
   final String? name;
   @override
   final bool? default_;
   @override
-  final bool? visibleOnCheckout;
+  final String? brand;
   @override
   final String? paymentSourceStatus;
   @override
@@ -44,14 +44,14 @@ class _$PaymentMethodCardResponse extends PaymentMethodCardResponse {
 
   _$PaymentMethodCardResponse._(
       {this.last4,
+      this.expMonth,
+      this.visibleOnCheckout,
+      this.expYear,
       this.bin,
       this.cardType,
-      this.expMonth,
-      this.expYear,
-      this.brand,
       this.name,
       this.default_,
-      this.visibleOnCheckout,
+      this.brand,
       this.paymentSourceStatus,
       required this.type,
       required this.id,
@@ -83,14 +83,14 @@ class _$PaymentMethodCardResponse extends PaymentMethodCardResponse {
     if (identical(other, this)) return true;
     return other is PaymentMethodCardResponse &&
         last4 == other.last4 &&
+        expMonth == other.expMonth &&
+        visibleOnCheckout == other.visibleOnCheckout &&
+        expYear == other.expYear &&
         bin == other.bin &&
         cardType == other.cardType &&
-        expMonth == other.expMonth &&
-        expYear == other.expYear &&
-        brand == other.brand &&
         name == other.name &&
         default_ == other.default_ &&
-        visibleOnCheckout == other.visibleOnCheckout &&
+        brand == other.brand &&
         paymentSourceStatus == other.paymentSourceStatus &&
         type == other.type &&
         id == other.id &&
@@ -117,14 +117,15 @@ class _$PaymentMethodCardResponse extends PaymentMethodCardResponse {
                                                         $jc(
                                                             $jc(0,
                                                                 last4.hashCode),
-                                                            bin.hashCode),
-                                                        cardType.hashCode),
-                                                    expMonth.hashCode),
-                                                expYear.hashCode),
-                                            brand.hashCode),
+                                                            expMonth.hashCode),
+                                                        visibleOnCheckout
+                                                            .hashCode),
+                                                    expYear.hashCode),
+                                                bin.hashCode),
+                                            cardType.hashCode),
                                         name.hashCode),
                                     default_.hashCode),
-                                visibleOnCheckout.hashCode),
+                                brand.hashCode),
                             paymentSourceStatus.hashCode),
                         type.hashCode),
                     id.hashCode),
@@ -137,14 +138,14 @@ class _$PaymentMethodCardResponse extends PaymentMethodCardResponse {
   String toString() {
     return (newBuiltValueToStringHelper(r'PaymentMethodCardResponse')
           ..add('last4', last4)
+          ..add('expMonth', expMonth)
+          ..add('visibleOnCheckout', visibleOnCheckout)
+          ..add('expYear', expYear)
           ..add('bin', bin)
           ..add('cardType', cardType)
-          ..add('expMonth', expMonth)
-          ..add('expYear', expYear)
-          ..add('brand', brand)
           ..add('name', name)
           ..add('default_', default_)
-          ..add('visibleOnCheckout', visibleOnCheckout)
+          ..add('brand', brand)
           ..add('paymentSourceStatus', paymentSourceStatus)
           ..add('type', type)
           ..add('id', id)
@@ -158,13 +159,25 @@ class _$PaymentMethodCardResponse extends PaymentMethodCardResponse {
 class PaymentMethodCardResponseBuilder
     implements
         Builder<PaymentMethodCardResponse, PaymentMethodCardResponseBuilder>,
-        PaymentMethodCardResponseAllOfBuilder,
         PaymentMethodResponseBuilder {
   _$PaymentMethodCardResponse? _$v;
 
   String? _last4;
   String? get last4 => _$this._last4;
   set last4(covariant String? last4) => _$this._last4 = last4;
+
+  String? _expMonth;
+  String? get expMonth => _$this._expMonth;
+  set expMonth(covariant String? expMonth) => _$this._expMonth = expMonth;
+
+  bool? _visibleOnCheckout;
+  bool? get visibleOnCheckout => _$this._visibleOnCheckout;
+  set visibleOnCheckout(covariant bool? visibleOnCheckout) =>
+      _$this._visibleOnCheckout = visibleOnCheckout;
+
+  String? _expYear;
+  String? get expYear => _$this._expYear;
+  set expYear(covariant String? expYear) => _$this._expYear = expYear;
 
   String? _bin;
   String? get bin => _$this._bin;
@@ -174,18 +187,6 @@ class PaymentMethodCardResponseBuilder
   String? get cardType => _$this._cardType;
   set cardType(covariant String? cardType) => _$this._cardType = cardType;
 
-  String? _expMonth;
-  String? get expMonth => _$this._expMonth;
-  set expMonth(covariant String? expMonth) => _$this._expMonth = expMonth;
-
-  String? _expYear;
-  String? get expYear => _$this._expYear;
-  set expYear(covariant String? expYear) => _$this._expYear = expYear;
-
-  String? _brand;
-  String? get brand => _$this._brand;
-  set brand(covariant String? brand) => _$this._brand = brand;
-
   String? _name;
   String? get name => _$this._name;
   set name(covariant String? name) => _$this._name = name;
@@ -194,10 +195,9 @@ class PaymentMethodCardResponseBuilder
   bool? get default_ => _$this._default_;
   set default_(covariant bool? default_) => _$this._default_ = default_;
 
-  bool? _visibleOnCheckout;
-  bool? get visibleOnCheckout => _$this._visibleOnCheckout;
-  set visibleOnCheckout(covariant bool? visibleOnCheckout) =>
-      _$this._visibleOnCheckout = visibleOnCheckout;
+  String? _brand;
+  String? get brand => _$this._brand;
+  set brand(covariant String? brand) => _$this._brand = brand;
 
   String? _paymentSourceStatus;
   String? get paymentSourceStatus => _$this._paymentSourceStatus;
@@ -232,14 +232,14 @@ class PaymentMethodCardResponseBuilder
     final $v = _$v;
     if ($v != null) {
       _last4 = $v.last4;
+      _expMonth = $v.expMonth;
+      _visibleOnCheckout = $v.visibleOnCheckout;
+      _expYear = $v.expYear;
       _bin = $v.bin;
       _cardType = $v.cardType;
-      _expMonth = $v.expMonth;
-      _expYear = $v.expYear;
-      _brand = $v.brand;
       _name = $v.name;
       _default_ = $v.default_;
-      _visibleOnCheckout = $v.visibleOnCheckout;
+      _brand = $v.brand;
       _paymentSourceStatus = $v.paymentSourceStatus;
       _type = $v.type;
       _id = $v.id;
@@ -252,7 +252,6 @@ class PaymentMethodCardResponseBuilder
   }
 
   @override
-// ignore: override_on_non_overriding_method
   void replace(covariant PaymentMethodCardResponse other) {
     ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$PaymentMethodCardResponse;
@@ -270,14 +269,14 @@ class PaymentMethodCardResponseBuilder
     final _$result = _$v ??
         new _$PaymentMethodCardResponse._(
             last4: last4,
+            expMonth: expMonth,
+            visibleOnCheckout: visibleOnCheckout,
+            expYear: expYear,
             bin: bin,
             cardType: cardType,
-            expMonth: expMonth,
-            expYear: expYear,
-            brand: brand,
             name: name,
             default_: default_,
-            visibleOnCheckout: visibleOnCheckout,
+            brand: brand,
             paymentSourceStatus: paymentSourceStatus,
             type: BuiltValueNullFieldError.checkNotNull(
                 type, r'PaymentMethodCardResponse', 'type'),

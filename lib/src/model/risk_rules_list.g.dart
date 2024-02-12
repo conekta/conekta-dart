@@ -8,6 +8,8 @@ part of 'risk_rules_list.dart';
 
 class _$RiskRulesList extends RiskRulesList {
   @override
+  final BuiltList<RiskRulesData>? data;
+  @override
   final String? nextPageUrl;
   @override
   final String? previousPageUrl;
@@ -15,18 +17,16 @@ class _$RiskRulesList extends RiskRulesList {
   final bool hasMore;
   @override
   final String object;
-  @override
-  final BuiltList<RiskRulesData>? data;
 
   factory _$RiskRulesList([void Function(RiskRulesListBuilder)? updates]) =>
       (new RiskRulesListBuilder()..update(updates))._build();
 
   _$RiskRulesList._(
-      {this.nextPageUrl,
+      {this.data,
+      this.nextPageUrl,
       this.previousPageUrl,
       required this.hasMore,
-      required this.object,
-      this.data})
+      required this.object})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(hasMore, r'RiskRulesList', 'hasMore');
     BuiltValueNullFieldError.checkNotNull(object, r'RiskRulesList', 'object');
@@ -43,31 +43,31 @@ class _$RiskRulesList extends RiskRulesList {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is RiskRulesList &&
+        data == other.data &&
         nextPageUrl == other.nextPageUrl &&
         previousPageUrl == other.previousPageUrl &&
         hasMore == other.hasMore &&
-        object == other.object &&
-        data == other.data;
+        object == other.object;
   }
 
   @override
   int get hashCode {
     return $jf($jc(
         $jc(
-            $jc($jc($jc(0, nextPageUrl.hashCode), previousPageUrl.hashCode),
-                hasMore.hashCode),
-            object.hashCode),
-        data.hashCode));
+            $jc($jc($jc(0, data.hashCode), nextPageUrl.hashCode),
+                previousPageUrl.hashCode),
+            hasMore.hashCode),
+        object.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'RiskRulesList')
+          ..add('data', data)
           ..add('nextPageUrl', nextPageUrl)
           ..add('previousPageUrl', previousPageUrl)
           ..add('hasMore', hasMore)
-          ..add('object', object)
-          ..add('data', data))
+          ..add('object', object))
         .toString();
   }
 }
@@ -76,9 +76,13 @@ class RiskRulesListBuilder
     implements
         Builder<RiskRulesList, RiskRulesListBuilder>,
         PageBuilder,
-        PaginationBuilder,
-        RiskRulesBuilder {
+        PaginationBuilder {
   _$RiskRulesList? _$v;
+
+  ListBuilder<RiskRulesData>? _data;
+  ListBuilder<RiskRulesData> get data =>
+      _$this._data ??= new ListBuilder<RiskRulesData>();
+  set data(covariant ListBuilder<RiskRulesData>? data) => _$this._data = data;
 
   String? _nextPageUrl;
   String? get nextPageUrl => _$this._nextPageUrl;
@@ -98,11 +102,6 @@ class RiskRulesListBuilder
   String? get object => _$this._object;
   set object(covariant String? object) => _$this._object = object;
 
-  ListBuilder<RiskRulesData>? _data;
-  ListBuilder<RiskRulesData> get data =>
-      _$this._data ??= new ListBuilder<RiskRulesData>();
-  set data(covariant ListBuilder<RiskRulesData>? data) => _$this._data = data;
-
   RiskRulesListBuilder() {
     RiskRulesList._defaults(this);
   }
@@ -110,11 +109,11 @@ class RiskRulesListBuilder
   RiskRulesListBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
+      _data = $v.data?.toBuilder();
       _nextPageUrl = $v.nextPageUrl;
       _previousPageUrl = $v.previousPageUrl;
       _hasMore = $v.hasMore;
       _object = $v.object;
-      _data = $v.data?.toBuilder();
       _$v = null;
     }
     return this;
@@ -140,13 +139,13 @@ class RiskRulesListBuilder
     try {
       _$result = _$v ??
           new _$RiskRulesList._(
+              data: _data?.build(),
               nextPageUrl: nextPageUrl,
               previousPageUrl: previousPageUrl,
               hasMore: BuiltValueNullFieldError.checkNotNull(
                   hasMore, r'RiskRulesList', 'hasMore'),
               object: BuiltValueNullFieldError.checkNotNull(
-                  object, r'RiskRulesList', 'object'),
-              data: _data?.build());
+                  object, r'RiskRulesList', 'object'));
     } catch (_) {
       late String _$failedField;
       try {

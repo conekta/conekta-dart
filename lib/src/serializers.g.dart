@@ -7,70 +7,27 @@ part of 'serializers.dart';
 // **************************************************************************
 
 Serializers _$serializers = (new Serializers().toBuilder()
-      ..add($ApiKeyCreateResponseAllOf.serializer)
       ..add($ApiKeyResponse.serializer)
       ..add($ApiKeyResponseOnDelete.serializer)
-      ..add($ChargeDataPaymentMethodBankTransferResponse.serializer)
-      ..add($ChargeDataPaymentMethodCardResponse.serializer)
-      ..add($ChargeDataPaymentMethodCashResponse.serializer)
       ..add($ChargeResponse.serializer)
-      ..add($ChargeResponseRefundsAllOf.serializer)
-      ..add($CheckoutsResponseAllOf.serializer)
-      ..add($CreateCustomerFiscalEntitiesResponseAllOf.serializer)
-      ..add($CustomerAddress.serializer)
       ..add($CustomerFiscalEntitiesRequest.serializer)
-      ..add($CustomerFiscalEntitiesResponseAllOf.serializer)
       ..add($CustomerInfoJustCustomerIdResponse.serializer)
       ..add($CustomerPaymentMethodRequest.serializer)
-      ..add($CustomerPaymentMethods.serializer)
-      ..add($CustomerResponseShippingContactsAllOf.serializer)
       ..add($CustomerShippingContacts.serializer)
-      ..add($CustomerShippingContactsDataResponseAllOf.serializer)
       ..add($CustomerShippingContactsResponse.serializer)
-      ..add($CustomersResponseAllOf.serializer)
-      ..add($DeleteApiKeysResponseAllOf.serializer)
       ..add($Details.serializer)
       ..add($DiscountLinesResponse.serializer)
-      ..add($DiscountLinesResponseAllOf.serializer)
-      ..add($ErrorAllOf.serializer)
       ..add($FiscalEntityAddress.serializer)
-      ..add($GetApiKeysResponseAllOf.serializer)
-      ..add($GetChargesResponseAllOf.serializer)
-      ..add($GetCompaniesResponseAllOf.serializer)
-      ..add($GetEventsResponseAllOf.serializer)
-      ..add($GetOrderDiscountLinesResponseAllOf.serializer)
-      ..add($GetPaymentMethodResponseAllOf.serializer)
-      ..add($GetPlansResponseAllOf.serializer)
-      ..add($GetTransactionsResponseAllOf.serializer)
-      ..add($GetTransfersResponseAllOf.serializer)
-      ..add($GetWebhookKeysResponseAllOf.serializer)
-      ..add($GetWebhooksResponseAllOf.serializer)
       ..add($OrderCustomerInfoResponse.serializer)
       ..add($OrderDiscountLinesRequest.serializer)
-      ..add($OrderFiscalEntityAddressResponseAllOf.serializer)
-      ..add($OrderResponseChargesAllOf.serializer)
-      ..add($OrderResponseCustomerInfoAllOf.serializer)
-      ..add($OrderResponseDiscountLinesAllOf.serializer)
-      ..add($OrderResponseProductsAllOf.serializer)
-      ..add($OrderResponseShippingContactAllOf.serializer)
       ..add($OrderTaxRequest.serializer)
       ..add($OrdersResponse.serializer)
       ..add($Page.serializer)
       ..add($Pagination.serializer)
       ..add($PaymentMethod.serializer)
-      ..add($PaymentMethodCardRequestAllOf.serializer)
-      ..add($PaymentMethodCardResponseAllOf.serializer)
-      ..add($PaymentMethodCashRequestAllOf.serializer)
-      ..add($PaymentMethodCashResponseAllOf.serializer)
       ..add($PaymentMethodResponse.serializer)
-      ..add($PaymentMethodSpeiRecurrentAllOf.serializer)
       ..add($Product.serializer)
-      ..add($ProductDataResponseAllOf.serializer)
-      ..add($ProductOrderResponseAllOf.serializer)
-      ..add($RiskRules.serializer)
       ..add($ShippingRequest.serializer)
-      ..add($UpdateCustomerFiscalEntitiesResponseAllOf.serializer)
-      ..add($UpdateOrderTaxResponseAllOf.serializer)
       ..add(ApiKeyCreateResponse.serializer)
       ..add(ApiKeyRequest.serializer)
       ..add(ApiKeyUpdateRequest.serializer)
@@ -107,10 +64,10 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(CreateCustomerPaymentMethodsResponse.serializer)
       ..add(CreateRiskRulesData.serializer)
       ..add(Customer.serializer)
+      ..add(CustomerAddress.serializer)
       ..add(CustomerAntifraudInfo.serializer)
       ..add(CustomerAntifraudInfoResponse.serializer)
       ..add(CustomerFiscalEntitiesDataResponse.serializer)
-      ..add(CustomerFiscalEntitiesRequestAddress.serializer)
       ..add(CustomerFiscalEntitiesResponse.serializer)
       ..add(CustomerInfo.serializer)
       ..add(CustomerInfoJustCustomerId.serializer)
@@ -133,6 +90,7 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(EmailCheckoutRequest.serializer)
       ..add(Error.serializer)
       ..add(EventResponse.serializer)
+      ..add(EventTypes.serializer)
       ..add(EventsResendResponse.serializer)
       ..add(GetApiKeysResponse.serializer)
       ..add(GetChargesResponse.serializer)
@@ -225,9 +183,6 @@ Serializers _$serializers = (new Serializers().toBuilder()
           const FullType(BuiltList, const [const FullType(ApiKeyResponse)]),
           () => new ListBuilder<ApiKeyResponse>())
       ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(ApiKeyResponse)]),
-          () => new ListBuilder<ApiKeyResponse>())
-      ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(BalanceCommonField)]),
           () => new ListBuilder<BalanceCommonField>())
       ..addBuilderFactory(
@@ -300,13 +255,6 @@ Serializers _$serializers = (new Serializers().toBuilder()
           const FullType(BuiltList, const [const FullType(ChargeResponse)]),
           () => new ListBuilder<ChargeResponse>())
       ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(ChargeResponse)]),
-          () => new ListBuilder<ChargeResponse>())
-      ..addBuilderFactory(
-          const FullType(
-              BuiltList, const [const FullType(ChargeResponseRefundsData)]),
-          () => new ListBuilder<ChargeResponseRefundsData>())
-      ..addBuilderFactory(
           const FullType(
               BuiltList, const [const FullType(ChargeResponseRefundsData)]),
           () => new ListBuilder<ChargeResponseRefundsData>())
@@ -315,25 +263,11 @@ Serializers _$serializers = (new Serializers().toBuilder()
               BuiltList, const [const FullType(ChargesDataResponse)]),
           () => new ListBuilder<ChargesDataResponse>())
       ..addBuilderFactory(
-          const FullType(
-              BuiltList, const [const FullType(ChargesDataResponse)]),
-          () => new ListBuilder<ChargesDataResponse>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(CheckoutResponse)]),
-          () => new ListBuilder<CheckoutResponse>())
-      ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(CheckoutResponse)]),
           () => new ListBuilder<CheckoutResponse>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(CompanyResponse)]),
           () => new ListBuilder<CompanyResponse>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(CompanyResponse)]),
-          () => new ListBuilder<CompanyResponse>())
-      ..addBuilderFactory(
-          const FullType(BuiltList,
-              const [const FullType(CustomerFiscalEntitiesDataResponse)]),
-          () => new ListBuilder<CustomerFiscalEntitiesDataResponse>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(CustomerFiscalEntitiesDataResponse)]),
@@ -379,19 +313,8 @@ Serializers _$serializers = (new Serializers().toBuilder()
               BuiltList, const [const FullType(CustomerPaymentMethodsData)]),
           () => new ListBuilder<CustomerPaymentMethodsData>())
       ..addBuilderFactory(
-          const FullType(
-              BuiltList, const [const FullType(CustomerPaymentMethodsData)]),
-          () => new ListBuilder<CustomerPaymentMethodsData>())
-      ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(CustomerResponse)]),
           () => new ListBuilder<CustomerResponse>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(CustomerResponse)]),
-          () => new ListBuilder<CustomerResponse>())
-      ..addBuilderFactory(
-          const FullType(BuiltList,
-              const [const FullType(CustomerShippingContactsDataResponse)]),
-          () => new ListBuilder<CustomerShippingContactsDataResponse>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(CustomerShippingContactsDataResponse)]),
@@ -408,14 +331,6 @@ Serializers _$serializers = (new Serializers().toBuilder()
           () => new ListBuilder<DiscountLinesDataResponse>())
       ..addBuilderFactory(
           const FullType(
-              BuiltList, const [const FullType(DiscountLinesDataResponse)]),
-          () => new ListBuilder<DiscountLinesDataResponse>())
-      ..addBuilderFactory(
-          const FullType(
-              BuiltList, const [const FullType(DiscountLinesResponse)]),
-          () => new ListBuilder<DiscountLinesResponse>())
-      ..addBuilderFactory(
-          const FullType(
               BuiltList, const [const FullType(DiscountLinesResponse)]),
           () => new ListBuilder<DiscountLinesResponse>())
       ..addBuilderFactory(
@@ -424,13 +339,6 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(EventResponse)]),
           () => new ListBuilder<EventResponse>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(EventResponse)]),
-          () => new ListBuilder<EventResponse>())
-      ..addBuilderFactory(
-          const FullType(BuiltList,
-              const [const FullType(GetCustomerPaymentMethodDataResponse)]),
-          () => new ListBuilder<GetCustomerPaymentMethodDataResponse>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(GetCustomerPaymentMethodDataResponse)]),
@@ -451,9 +359,6 @@ Serializers _$serializers = (new Serializers().toBuilder()
           const FullType(BuiltList, const [const FullType(PlanResponse)]),
           () => new ListBuilder<PlanResponse>())
       ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(PlanResponse)]),
-          () => new ListBuilder<PlanResponse>())
-      ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(Product)]),
           () => new ListBuilder<Product>())
       ..addBuilderFactory(
@@ -467,13 +372,6 @@ Serializers _$serializers = (new Serializers().toBuilder()
               BuiltList, const [const FullType(ProductDataResponse)]),
           () => new ListBuilder<ProductDataResponse>())
       ..addBuilderFactory(
-          const FullType(
-              BuiltList, const [const FullType(ProductDataResponse)]),
-          () => new ListBuilder<ProductDataResponse>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(RiskRulesData)]),
-          () => new ListBuilder<RiskRulesData>())
-      ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(RiskRulesData)]),
           () => new ListBuilder<RiskRulesData>())
       ..addBuilderFactory(
@@ -544,35 +442,14 @@ Serializers _$serializers = (new Serializers().toBuilder()
               BuiltList, const [const FullType(TransactionResponse)]),
           () => new ListBuilder<TransactionResponse>())
       ..addBuilderFactory(
-          const FullType(
-              BuiltList, const [const FullType(TransactionResponse)]),
-          () => new ListBuilder<TransactionResponse>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(TransfersResponse)]),
-          () => new ListBuilder<TransfersResponse>())
-      ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(TransfersResponse)]),
           () => new ListBuilder<TransfersResponse>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(WebhookKeyResponse)]),
           () => new ListBuilder<WebhookKeyResponse>())
       ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(WebhookKeyResponse)]),
-          () => new ListBuilder<WebhookKeyResponse>())
-      ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(WebhookResponse)]),
           () => new ListBuilder<WebhookResponse>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(WebhookResponse)]),
-          () => new ListBuilder<WebhookResponse>())
-      ..addBuilderFactory(
-          const FullType(
-              BuiltList, const [const FullType.nullable(JsonObject)]),
-          () => new ListBuilder<JsonObject?>())
-      ..addBuilderFactory(
-          const FullType(
-              BuiltList, const [const FullType.nullable(JsonObject)]),
-          () => new ListBuilder<JsonObject?>())
       ..addBuilderFactory(
           const FullType(
               BuiltList, const [const FullType.nullable(JsonObject)]),

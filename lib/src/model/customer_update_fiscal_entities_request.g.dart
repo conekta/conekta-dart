@@ -9,7 +9,7 @@ part of 'customer_update_fiscal_entities_request.dart';
 class _$CustomerUpdateFiscalEntitiesRequest
     extends CustomerUpdateFiscalEntitiesRequest {
   @override
-  final CustomerFiscalEntitiesRequestAddress? address;
+  final CustomerAddress? address;
   @override
   final String? taxId;
   @override
@@ -88,11 +88,10 @@ class CustomerUpdateFiscalEntitiesRequestBuilder
             CustomerUpdateFiscalEntitiesRequestBuilder> {
   _$CustomerUpdateFiscalEntitiesRequest? _$v;
 
-  CustomerFiscalEntitiesRequestAddressBuilder? _address;
-  CustomerFiscalEntitiesRequestAddressBuilder get address =>
-      _$this._address ??= new CustomerFiscalEntitiesRequestAddressBuilder();
-  set address(CustomerFiscalEntitiesRequestAddressBuilder? address) =>
-      _$this._address = address;
+  CustomerAddressBuilder? _address;
+  CustomerAddressBuilder get address =>
+      _$this._address ??= new CustomerAddressBuilder();
+  set address(CustomerAddressBuilder? address) => _$this._address = address;
 
   String? _taxId;
   String? get taxId => _$this._taxId;

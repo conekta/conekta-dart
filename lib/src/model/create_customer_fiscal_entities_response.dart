@@ -4,9 +4,8 @@
 
 // ignore_for_file: unused_element
 import 'package:built_collection/built_collection.dart';
-import 'package:conekta/src/model/create_customer_fiscal_entities_response_all_of.dart';
+import 'package:conekta/src/model/customer_address.dart';
 import 'package:conekta/src/model/customer_fiscal_entities_request.dart';
-import 'package:conekta/src/model/customer_fiscal_entities_request_address.dart';
 import 'package:built_value/json_object.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -28,7 +27,22 @@ part 'create_customer_fiscal_entities_response.g.dart';
 /// * [parentId] 
 /// * [default_] 
 @BuiltValue()
-abstract class CreateCustomerFiscalEntitiesResponse implements CreateCustomerFiscalEntitiesResponseAllOf, CustomerFiscalEntitiesRequest, Built<CreateCustomerFiscalEntitiesResponse, CreateCustomerFiscalEntitiesResponseBuilder> {
+abstract class CreateCustomerFiscalEntitiesResponse implements CustomerFiscalEntitiesRequest, Built<CreateCustomerFiscalEntitiesResponse, CreateCustomerFiscalEntitiesResponseBuilder> {
+  @BuiltValueField(wireName: r'created_at')
+  int get createdAt;
+
+  @BuiltValueField(wireName: r'default')
+  bool? get default_;
+
+  @BuiltValueField(wireName: r'id')
+  String get id;
+
+  @BuiltValueField(wireName: r'parent_id')
+  String? get parentId;
+
+  @BuiltValueField(wireName: r'object')
+  String get object;
+
   CreateCustomerFiscalEntitiesResponse._();
 
   factory CreateCustomerFiscalEntitiesResponse([void updates(CreateCustomerFiscalEntitiesResponseBuilder b)]) = _$CreateCustomerFiscalEntitiesResponse;
@@ -67,7 +81,7 @@ class _$CreateCustomerFiscalEntitiesResponseSerializer implements PrimitiveSeria
     yield r'address';
     yield serializers.serialize(
       object.address,
-      specifiedType: const FullType(CustomerFiscalEntitiesRequestAddress),
+      specifiedType: const FullType(CustomerAddress),
     );
     if (object.phone != null) {
       yield r'phone';
@@ -161,8 +175,8 @@ class _$CreateCustomerFiscalEntitiesResponseSerializer implements PrimitiveSeria
         case r'address':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CustomerFiscalEntitiesRequestAddress),
-          ) as CustomerFiscalEntitiesRequestAddress;
+            specifiedType: const FullType(CustomerAddress),
+          ) as CustomerAddress;
           result.address.replace(valueDes);
           break;
         case r'phone':

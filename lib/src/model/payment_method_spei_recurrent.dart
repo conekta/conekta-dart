@@ -3,7 +3,6 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:conekta/src/model/payment_method_spei_recurrent_all_of.dart';
 import 'package:conekta/src/model/payment_method_response.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -21,7 +20,13 @@ part 'payment_method_spei_recurrent.g.dart';
 /// * [reference] 
 /// * [expiresAt] 
 @BuiltValue()
-abstract class PaymentMethodSpeiRecurrent implements PaymentMethodResponse, PaymentMethodSpeiRecurrentAllOf, Built<PaymentMethodSpeiRecurrent, PaymentMethodSpeiRecurrentBuilder> {
+abstract class PaymentMethodSpeiRecurrent implements PaymentMethodResponse, Built<PaymentMethodSpeiRecurrent, PaymentMethodSpeiRecurrentBuilder> {
+  @BuiltValueField(wireName: r'reference')
+  String? get reference;
+
+  @BuiltValueField(wireName: r'expires_at')
+  String? get expiresAt;
+
   PaymentMethodSpeiRecurrent._();
 
   factory PaymentMethodSpeiRecurrent([void updates(PaymentMethodSpeiRecurrentBuilder b)]) = _$PaymentMethodSpeiRecurrent;

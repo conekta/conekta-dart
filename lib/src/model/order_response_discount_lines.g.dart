@@ -64,7 +64,6 @@ class _$OrderResponseDiscountLines extends OrderResponseDiscountLines {
 class OrderResponseDiscountLinesBuilder
     implements
         Builder<OrderResponseDiscountLines, OrderResponseDiscountLinesBuilder>,
-        OrderResponseDiscountLinesAllOfBuilder,
         PaginationBuilder {
   _$OrderResponseDiscountLines? _$v;
 
@@ -98,7 +97,6 @@ class OrderResponseDiscountLinesBuilder
   }
 
   @override
-// ignore: override_on_non_overriding_method
   void replace(covariant OrderResponseDiscountLines other) {
     ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$OrderResponseDiscountLines;

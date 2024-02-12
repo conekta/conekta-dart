@@ -5,7 +5,6 @@
 // ignore_for_file: unused_element
 import 'package:conekta/src/model/customer_shipping_contacts_response.dart';
 import 'package:built_collection/built_collection.dart';
-import 'package:conekta/src/model/order_response_shipping_contact_all_of.dart';
 import 'package:conekta/src/model/customer_shipping_contacts_response_address.dart';
 import 'package:built_value/json_object.dart';
 import 'package:built_value/built_value.dart';
@@ -16,19 +15,19 @@ part 'order_response_shipping_contact.g.dart';
 /// OrderResponseShippingContact
 ///
 /// Properties:
-/// * [createdAt] 
-/// * [id] 
-/// * [object] 
 /// * [phone] 
 /// * [receiver] 
 /// * [betweenStreets] 
 /// * [address] 
 /// * [parentId] 
 /// * [default_] 
+/// * [id] 
+/// * [createdAt] 
 /// * [metadata] - Metadata associated with the shipping contact
+/// * [object] 
 /// * [deleted] 
 @BuiltValue()
-abstract class OrderResponseShippingContact implements CustomerShippingContactsResponse, OrderResponseShippingContactAllOf, Built<OrderResponseShippingContact, OrderResponseShippingContactBuilder> {
+abstract class OrderResponseShippingContact implements CustomerShippingContactsResponse, Built<OrderResponseShippingContact, OrderResponseShippingContactBuilder> {
   OrderResponseShippingContact._();
 
   factory OrderResponseShippingContact([void updates(OrderResponseShippingContactBuilder b)]) = _$OrderResponseShippingContact;

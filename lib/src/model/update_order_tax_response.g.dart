@@ -8,30 +8,31 @@ part of 'update_order_tax_response.dart';
 
 class _$UpdateOrderTaxResponse extends UpdateOrderTaxResponse {
   @override
+  final String id;
+  @override
+  final String? parentId;
+  @override
+  final String? object;
+  @override
   final int amount;
   @override
   final String description;
   @override
   final BuiltMap<String, JsonObject?>? metadata;
-  @override
-  final String? id;
-  @override
-  final String? object;
-  @override
-  final String? parentId;
 
   factory _$UpdateOrderTaxResponse(
           [void Function(UpdateOrderTaxResponseBuilder)? updates]) =>
       (new UpdateOrderTaxResponseBuilder()..update(updates))._build();
 
   _$UpdateOrderTaxResponse._(
-      {required this.amount,
-      required this.description,
-      this.metadata,
-      this.id,
+      {required this.id,
+      this.parentId,
       this.object,
-      this.parentId})
+      required this.amount,
+      required this.description,
+      this.metadata})
       : super._() {
+    BuiltValueNullFieldError.checkNotNull(id, r'UpdateOrderTaxResponse', 'id');
     BuiltValueNullFieldError.checkNotNull(
         amount, r'UpdateOrderTaxResponse', 'amount');
     BuiltValueNullFieldError.checkNotNull(
@@ -51,12 +52,12 @@ class _$UpdateOrderTaxResponse extends UpdateOrderTaxResponse {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is UpdateOrderTaxResponse &&
+        id == other.id &&
+        parentId == other.parentId &&
+        object == other.object &&
         amount == other.amount &&
         description == other.description &&
-        metadata == other.metadata &&
-        id == other.id &&
-        object == other.object &&
-        parentId == other.parentId;
+        metadata == other.metadata;
   }
 
   @override
@@ -64,22 +65,22 @@ class _$UpdateOrderTaxResponse extends UpdateOrderTaxResponse {
     return $jf($jc(
         $jc(
             $jc(
-                $jc($jc($jc(0, amount.hashCode), description.hashCode),
-                    metadata.hashCode),
-                id.hashCode),
-            object.hashCode),
-        parentId.hashCode));
+                $jc($jc($jc(0, id.hashCode), parentId.hashCode),
+                    object.hashCode),
+                amount.hashCode),
+            description.hashCode),
+        metadata.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'UpdateOrderTaxResponse')
+          ..add('id', id)
+          ..add('parentId', parentId)
+          ..add('object', object)
           ..add('amount', amount)
           ..add('description', description)
-          ..add('metadata', metadata)
-          ..add('id', id)
-          ..add('object', object)
-          ..add('parentId', parentId))
+          ..add('metadata', metadata))
         .toString();
   }
 }
@@ -87,9 +88,20 @@ class _$UpdateOrderTaxResponse extends UpdateOrderTaxResponse {
 class UpdateOrderTaxResponseBuilder
     implements
         Builder<UpdateOrderTaxResponse, UpdateOrderTaxResponseBuilder>,
-        OrderTaxRequestBuilder,
-        UpdateOrderTaxResponseAllOfBuilder {
+        OrderTaxRequestBuilder {
   _$UpdateOrderTaxResponse? _$v;
+
+  String? _id;
+  String? get id => _$this._id;
+  set id(covariant String? id) => _$this._id = id;
+
+  String? _parentId;
+  String? get parentId => _$this._parentId;
+  set parentId(covariant String? parentId) => _$this._parentId = parentId;
+
+  String? _object;
+  String? get object => _$this._object;
+  set object(covariant String? object) => _$this._object = object;
 
   int? _amount;
   int? get amount => _$this._amount;
@@ -106,18 +118,6 @@ class UpdateOrderTaxResponseBuilder
   set metadata(covariant MapBuilder<String, JsonObject?>? metadata) =>
       _$this._metadata = metadata;
 
-  String? _id;
-  String? get id => _$this._id;
-  set id(covariant String? id) => _$this._id = id;
-
-  String? _object;
-  String? get object => _$this._object;
-  set object(covariant String? object) => _$this._object = object;
-
-  String? _parentId;
-  String? get parentId => _$this._parentId;
-  set parentId(covariant String? parentId) => _$this._parentId = parentId;
-
   UpdateOrderTaxResponseBuilder() {
     UpdateOrderTaxResponse._defaults(this);
   }
@@ -125,19 +125,18 @@ class UpdateOrderTaxResponseBuilder
   UpdateOrderTaxResponseBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
+      _id = $v.id;
+      _parentId = $v.parentId;
+      _object = $v.object;
       _amount = $v.amount;
       _description = $v.description;
       _metadata = $v.metadata?.toBuilder();
-      _id = $v.id;
-      _object = $v.object;
-      _parentId = $v.parentId;
       _$v = null;
     }
     return this;
   }
 
   @override
-// ignore: override_on_non_overriding_method
   void replace(covariant UpdateOrderTaxResponse other) {
     ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$UpdateOrderTaxResponse;
@@ -156,14 +155,15 @@ class UpdateOrderTaxResponseBuilder
     try {
       _$result = _$v ??
           new _$UpdateOrderTaxResponse._(
+              id: BuiltValueNullFieldError.checkNotNull(
+                  id, r'UpdateOrderTaxResponse', 'id'),
+              parentId: parentId,
+              object: object,
               amount: BuiltValueNullFieldError.checkNotNull(
                   amount, r'UpdateOrderTaxResponse', 'amount'),
               description: BuiltValueNullFieldError.checkNotNull(
                   description, r'UpdateOrderTaxResponse', 'description'),
-              metadata: _metadata?.build(),
-              id: id,
-              object: object,
-              parentId: parentId);
+              metadata: _metadata?.build());
     } catch (_) {
       late String _$failedField;
       try {

@@ -10,13 +10,13 @@ class _$PaymentMethodCashResponse extends PaymentMethodCashResponse {
   @override
   final String? reference;
   @override
-  final String? barcode;
+  final String? provider;
   @override
   final String? barcodeUrl;
   @override
-  final int? expiresAt;
+  final String? barcode;
   @override
-  final String? provider;
+  final int? expiresAt;
   @override
   final String type;
   @override
@@ -34,10 +34,10 @@ class _$PaymentMethodCashResponse extends PaymentMethodCashResponse {
 
   _$PaymentMethodCashResponse._(
       {this.reference,
-      this.barcode,
-      this.barcodeUrl,
-      this.expiresAt,
       this.provider,
+      this.barcodeUrl,
+      this.barcode,
+      this.expiresAt,
       required this.type,
       required this.id,
       required this.object,
@@ -68,10 +68,10 @@ class _$PaymentMethodCashResponse extends PaymentMethodCashResponse {
     if (identical(other, this)) return true;
     return other is PaymentMethodCashResponse &&
         reference == other.reference &&
-        barcode == other.barcode &&
-        barcodeUrl == other.barcodeUrl &&
-        expiresAt == other.expiresAt &&
         provider == other.provider &&
+        barcodeUrl == other.barcodeUrl &&
+        barcode == other.barcode &&
+        expiresAt == other.expiresAt &&
         type == other.type &&
         id == other.id &&
         object == other.object &&
@@ -90,10 +90,10 @@ class _$PaymentMethodCashResponse extends PaymentMethodCashResponse {
                             $jc(
                                 $jc(
                                     $jc($jc(0, reference.hashCode),
-                                        barcode.hashCode),
+                                        provider.hashCode),
                                     barcodeUrl.hashCode),
-                                expiresAt.hashCode),
-                            provider.hashCode),
+                                barcode.hashCode),
+                            expiresAt.hashCode),
                         type.hashCode),
                     id.hashCode),
                 object.hashCode),
@@ -105,10 +105,10 @@ class _$PaymentMethodCashResponse extends PaymentMethodCashResponse {
   String toString() {
     return (newBuiltValueToStringHelper(r'PaymentMethodCashResponse')
           ..add('reference', reference)
-          ..add('barcode', barcode)
-          ..add('barcodeUrl', barcodeUrl)
-          ..add('expiresAt', expiresAt)
           ..add('provider', provider)
+          ..add('barcodeUrl', barcodeUrl)
+          ..add('barcode', barcode)
+          ..add('expiresAt', expiresAt)
           ..add('type', type)
           ..add('id', id)
           ..add('object', object)
@@ -121,7 +121,6 @@ class _$PaymentMethodCashResponse extends PaymentMethodCashResponse {
 class PaymentMethodCashResponseBuilder
     implements
         Builder<PaymentMethodCashResponse, PaymentMethodCashResponseBuilder>,
-        PaymentMethodCashResponseAllOfBuilder,
         PaymentMethodResponseBuilder {
   _$PaymentMethodCashResponse? _$v;
 
@@ -129,22 +128,22 @@ class PaymentMethodCashResponseBuilder
   String? get reference => _$this._reference;
   set reference(covariant String? reference) => _$this._reference = reference;
 
-  String? _barcode;
-  String? get barcode => _$this._barcode;
-  set barcode(covariant String? barcode) => _$this._barcode = barcode;
+  String? _provider;
+  String? get provider => _$this._provider;
+  set provider(covariant String? provider) => _$this._provider = provider;
 
   String? _barcodeUrl;
   String? get barcodeUrl => _$this._barcodeUrl;
   set barcodeUrl(covariant String? barcodeUrl) =>
       _$this._barcodeUrl = barcodeUrl;
 
+  String? _barcode;
+  String? get barcode => _$this._barcode;
+  set barcode(covariant String? barcode) => _$this._barcode = barcode;
+
   int? _expiresAt;
   int? get expiresAt => _$this._expiresAt;
   set expiresAt(covariant int? expiresAt) => _$this._expiresAt = expiresAt;
-
-  String? _provider;
-  String? get provider => _$this._provider;
-  set provider(covariant String? provider) => _$this._provider = provider;
 
   String? _type;
   String? get type => _$this._type;
@@ -174,10 +173,10 @@ class PaymentMethodCashResponseBuilder
     final $v = _$v;
     if ($v != null) {
       _reference = $v.reference;
-      _barcode = $v.barcode;
-      _barcodeUrl = $v.barcodeUrl;
-      _expiresAt = $v.expiresAt;
       _provider = $v.provider;
+      _barcodeUrl = $v.barcodeUrl;
+      _barcode = $v.barcode;
+      _expiresAt = $v.expiresAt;
       _type = $v.type;
       _id = $v.id;
       _object = $v.object;
@@ -189,7 +188,6 @@ class PaymentMethodCashResponseBuilder
   }
 
   @override
-// ignore: override_on_non_overriding_method
   void replace(covariant PaymentMethodCashResponse other) {
     ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$PaymentMethodCashResponse;
@@ -207,10 +205,10 @@ class PaymentMethodCashResponseBuilder
     final _$result = _$v ??
         new _$PaymentMethodCashResponse._(
             reference: reference,
-            barcode: barcode,
-            barcodeUrl: barcodeUrl,
-            expiresAt: expiresAt,
             provider: provider,
+            barcodeUrl: barcodeUrl,
+            barcode: barcode,
+            expiresAt: expiresAt,
             type: BuiltValueNullFieldError.checkNotNull(
                 type, r'PaymentMethodCashResponse', 'type'),
             id: BuiltValueNullFieldError.checkNotNull(

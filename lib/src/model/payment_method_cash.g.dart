@@ -8,21 +8,21 @@ part of 'payment_method_cash.dart';
 
 class _$PaymentMethodCash extends PaymentMethodCash {
   @override
+  final String? reference;
+  @override
   final int? authCode;
   @override
   final String? cashierId;
   @override
-  final String? reference;
+  final String? storeName;
   @override
   final String? barcodeUrl;
   @override
-  final int? expiresAt;
+  final String? store;
   @override
   final String? serviceName;
   @override
-  final String? store;
-  @override
-  final String? storeName;
+  final int? expiresAt;
   @override
   final String? type;
   @override
@@ -33,14 +33,14 @@ class _$PaymentMethodCash extends PaymentMethodCash {
       (new PaymentMethodCashBuilder()..update(updates))._build();
 
   _$PaymentMethodCash._(
-      {this.authCode,
+      {this.reference,
+      this.authCode,
       this.cashierId,
-      this.reference,
-      this.barcodeUrl,
-      this.expiresAt,
-      this.serviceName,
-      this.store,
       this.storeName,
+      this.barcodeUrl,
+      this.store,
+      this.serviceName,
+      this.expiresAt,
       this.type,
       required this.object})
       : super._() {
@@ -60,14 +60,14 @@ class _$PaymentMethodCash extends PaymentMethodCash {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is PaymentMethodCash &&
+        reference == other.reference &&
         authCode == other.authCode &&
         cashierId == other.cashierId &&
-        reference == other.reference &&
-        barcodeUrl == other.barcodeUrl &&
-        expiresAt == other.expiresAt &&
-        serviceName == other.serviceName &&
-        store == other.store &&
         storeName == other.storeName &&
+        barcodeUrl == other.barcodeUrl &&
+        store == other.store &&
+        serviceName == other.serviceName &&
+        expiresAt == other.expiresAt &&
         type == other.type &&
         object == other.object;
   }
@@ -82,14 +82,14 @@ class _$PaymentMethodCash extends PaymentMethodCash {
                         $jc(
                             $jc(
                                 $jc(
-                                    $jc($jc(0, authCode.hashCode),
-                                        cashierId.hashCode),
-                                    reference.hashCode),
-                                barcodeUrl.hashCode),
-                            expiresAt.hashCode),
-                        serviceName.hashCode),
-                    store.hashCode),
-                storeName.hashCode),
+                                    $jc($jc(0, reference.hashCode),
+                                        authCode.hashCode),
+                                    cashierId.hashCode),
+                                storeName.hashCode),
+                            barcodeUrl.hashCode),
+                        store.hashCode),
+                    serviceName.hashCode),
+                expiresAt.hashCode),
             type.hashCode),
         object.hashCode));
   }
@@ -97,14 +97,14 @@ class _$PaymentMethodCash extends PaymentMethodCash {
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'PaymentMethodCash')
+          ..add('reference', reference)
           ..add('authCode', authCode)
           ..add('cashierId', cashierId)
-          ..add('reference', reference)
-          ..add('barcodeUrl', barcodeUrl)
-          ..add('expiresAt', expiresAt)
-          ..add('serviceName', serviceName)
-          ..add('store', store)
           ..add('storeName', storeName)
+          ..add('barcodeUrl', barcodeUrl)
+          ..add('store', store)
+          ..add('serviceName', serviceName)
+          ..add('expiresAt', expiresAt)
           ..add('type', type)
           ..add('object', object))
         .toString();
@@ -114,9 +114,12 @@ class _$PaymentMethodCash extends PaymentMethodCash {
 class PaymentMethodCashBuilder
     implements
         Builder<PaymentMethodCash, PaymentMethodCashBuilder>,
-        ChargeDataPaymentMethodCashResponseBuilder,
         PaymentMethodBuilder {
   _$PaymentMethodCash? _$v;
+
+  String? _reference;
+  String? get reference => _$this._reference;
+  set reference(covariant String? reference) => _$this._reference = reference;
 
   int? _authCode;
   int? get authCode => _$this._authCode;
@@ -126,31 +129,27 @@ class PaymentMethodCashBuilder
   String? get cashierId => _$this._cashierId;
   set cashierId(covariant String? cashierId) => _$this._cashierId = cashierId;
 
-  String? _reference;
-  String? get reference => _$this._reference;
-  set reference(covariant String? reference) => _$this._reference = reference;
+  String? _storeName;
+  String? get storeName => _$this._storeName;
+  set storeName(covariant String? storeName) => _$this._storeName = storeName;
 
   String? _barcodeUrl;
   String? get barcodeUrl => _$this._barcodeUrl;
   set barcodeUrl(covariant String? barcodeUrl) =>
       _$this._barcodeUrl = barcodeUrl;
 
-  int? _expiresAt;
-  int? get expiresAt => _$this._expiresAt;
-  set expiresAt(covariant int? expiresAt) => _$this._expiresAt = expiresAt;
+  String? _store;
+  String? get store => _$this._store;
+  set store(covariant String? store) => _$this._store = store;
 
   String? _serviceName;
   String? get serviceName => _$this._serviceName;
   set serviceName(covariant String? serviceName) =>
       _$this._serviceName = serviceName;
 
-  String? _store;
-  String? get store => _$this._store;
-  set store(covariant String? store) => _$this._store = store;
-
-  String? _storeName;
-  String? get storeName => _$this._storeName;
-  set storeName(covariant String? storeName) => _$this._storeName = storeName;
+  int? _expiresAt;
+  int? get expiresAt => _$this._expiresAt;
+  set expiresAt(covariant int? expiresAt) => _$this._expiresAt = expiresAt;
 
   String? _type;
   String? get type => _$this._type;
@@ -167,14 +166,14 @@ class PaymentMethodCashBuilder
   PaymentMethodCashBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
+      _reference = $v.reference;
       _authCode = $v.authCode;
       _cashierId = $v.cashierId;
-      _reference = $v.reference;
-      _barcodeUrl = $v.barcodeUrl;
-      _expiresAt = $v.expiresAt;
-      _serviceName = $v.serviceName;
-      _store = $v.store;
       _storeName = $v.storeName;
+      _barcodeUrl = $v.barcodeUrl;
+      _store = $v.store;
+      _serviceName = $v.serviceName;
+      _expiresAt = $v.expiresAt;
       _type = $v.type;
       _object = $v.object;
       _$v = null;
@@ -183,7 +182,6 @@ class PaymentMethodCashBuilder
   }
 
   @override
-// ignore: override_on_non_overriding_method
   void replace(covariant PaymentMethodCash other) {
     ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$PaymentMethodCash;
@@ -200,14 +198,14 @@ class PaymentMethodCashBuilder
   _$PaymentMethodCash _build() {
     final _$result = _$v ??
         new _$PaymentMethodCash._(
+            reference: reference,
             authCode: authCode,
             cashierId: cashierId,
-            reference: reference,
-            barcodeUrl: barcodeUrl,
-            expiresAt: expiresAt,
-            serviceName: serviceName,
-            store: store,
             storeName: storeName,
+            barcodeUrl: barcodeUrl,
+            store: store,
+            serviceName: serviceName,
+            expiresAt: expiresAt,
             type: type,
             object: BuiltValueNullFieldError.checkNotNull(
                 object, r'PaymentMethodCash', 'object'));

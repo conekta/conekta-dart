@@ -4,7 +4,6 @@
 
 // ignore_for_file: unused_element
 import 'package:built_collection/built_collection.dart';
-import 'package:conekta/src/model/customer_shipping_contacts_data_response_all_of.dart';
 import 'package:conekta/src/model/customer_shipping_contacts.dart';
 import 'package:conekta/src/model/customer_shipping_contacts_address.dart';
 import 'package:built_value/json_object.dart';
@@ -28,7 +27,16 @@ part 'customer_shipping_contacts_data_response.g.dart';
 /// * [object] 
 /// * [createdAt] 
 @BuiltValue()
-abstract class CustomerShippingContactsDataResponse implements CustomerShippingContacts, CustomerShippingContactsDataResponseAllOf, Built<CustomerShippingContactsDataResponse, CustomerShippingContactsDataResponseBuilder> {
+abstract class CustomerShippingContactsDataResponse implements CustomerShippingContacts, Built<CustomerShippingContactsDataResponse, CustomerShippingContactsDataResponseBuilder> {
+  @BuiltValueField(wireName: r'created_at')
+  int get createdAt;
+
+  @BuiltValueField(wireName: r'id')
+  String get id;
+
+  @BuiltValueField(wireName: r'object')
+  String get object;
+
   CustomerShippingContactsDataResponse._();
 
   factory CustomerShippingContactsDataResponse([void updates(CustomerShippingContactsDataResponseBuilder b)]) = _$CustomerShippingContactsDataResponse;

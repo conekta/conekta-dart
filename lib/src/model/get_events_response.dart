@@ -4,7 +4,6 @@
 
 // ignore_for_file: unused_element
 import 'package:conekta/src/model/pagination.dart';
-import 'package:conekta/src/model/get_events_response_all_of.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:conekta/src/model/page.dart';
 import 'package:conekta/src/model/event_response.dart';
@@ -22,7 +21,10 @@ part 'get_events_response.g.dart';
 /// * [previousPageUrl] - Url of the previous page.
 /// * [data] 
 @BuiltValue()
-abstract class GetEventsResponse implements GetEventsResponseAllOf, Page, Pagination, Built<GetEventsResponse, GetEventsResponseBuilder> {
+abstract class GetEventsResponse implements Page, Pagination, Built<GetEventsResponse, GetEventsResponseBuilder> {
+  @BuiltValueField(wireName: r'data')
+  BuiltList<EventResponse>? get data;
+
   GetEventsResponse._();
 
   factory GetEventsResponse([void updates(GetEventsResponseBuilder b)]) = _$GetEventsResponse;
