@@ -1,3 +1,5 @@
+## 6.0.4 -2024-20-02
+   * Fix generated files
 ## 6.0.3 -2024-20-02
    * Support starts from dart 2.18
    * remove meta dependency
