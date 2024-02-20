@@ -23,6 +23,9 @@ class EventTypes extends EnumClass {
   /// It is a parameter that allows to identify in the response, the type of event that is being generated.
   @BuiltValueEnumConst(wireName: r'order.canceled')
   static const EventTypes orderPeriodCanceled = _$orderPeriodCanceled;
+  /// It is a parameter that allows to identify in the response, the type of event that is being generated.
+  @BuiltValueEnumConst(wireName: r'order.pending_payment')
+  static const EventTypes orderPeriodPendingPayment = _$orderPeriodPendingPayment;
 
   static Serializer<EventTypes> get serializer => _$eventTypesSerializer;
 

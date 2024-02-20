@@ -1,10 +1,14 @@
 import 'package:test/test.dart';
 import 'package:conekta/conekta.dart';
+import 'base.dart';
 
 
 /// tests for CustomersApi
 void main() {
-  final instance = Conekta().getCustomersApi();
+     var instance = Conekta(basePathOverride: Base.basePath);
+     instance.setBearerAuth("bearerAuth", "key_82674782634278364273");
+     final api = instance.getCustomersApi();
+
 
   group(CustomersApi, () {
     // Create customer
@@ -13,8 +17,18 @@ void main() {
     //
     //Future<CustomerResponse> createCustomer(Customer customer, { String acceptLanguage, String xChildCompanyId }) async
     test('test createCustomer', () async {
-      // TODO
+       var customer = Customer((b) => b
+        ..name = 'Fulanito Pérez'
+        ..email = 'fran@gmail.com'
+        ..phone = '3143159054'
+       );
+
+      final response = await api.createCustomer(customer: customer);
+
+      expect(response, isNotNull);
+      expect(response.data?.id, 'cus_2tXyF9BwPG14UMkkg');
     });
+    
 
     // Create Fiscal Entity
     //
