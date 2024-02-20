@@ -9,7 +9,7 @@ For more information, please visit [https://github.com/conekta/openapi/issues](h
 
 ## Requirements
 
-* Dart 2.15.0+ or Flutter 2.8.0+
+* Dart 2.18.0+ or Flutter 2.8.0+
 * Dio 5.0.0+ (https://pub.dev/packages/dio)
 
 ## Installation & Usage
@@ -18,7 +18,7 @@ For more information, please visit [https://github.com/conekta/openapi/issues](h
 To use the package from [pub.dev](https://pub.dev), please include the following in pubspec.yaml
 ```yaml
 dependencies:
-  conekta: 6.0.2
+  conekta: 6.0.3
 ```
 
 ### Github

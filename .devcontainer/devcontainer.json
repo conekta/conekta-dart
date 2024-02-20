@@ -25,7 +25,7 @@
 			"version" : "latest"
 		}
 	}
-	,"postStartCommand": "dart pub get && make build"
+	,"postStartCommand": "rm pubspec.lock && pubdart pub get && make build"
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},

@@ -1,3 +1,6 @@
+## 6.0.3 -2024-20-02
+   * Support starts from dart 2.18
+   * remove meta dependencie
 ## 6.0.2 -2024-12-02
 * [#3](https://github.com/conekta/conekta-dart/pull/2) update documentation
   * update documentation
