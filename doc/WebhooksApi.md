@@ -151,7 +151,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getWebhooks**
-> GetWebhooksResponse getWebhooks(acceptLanguage, xChildCompanyId, limit, search, next, previous)
+> GetWebhooksResponse getWebhooks(acceptLanguage, xChildCompanyId, limit, search, url, next, previous)
 
 Get List of Webhooks
 
@@ -166,11 +166,12 @@ final String acceptLanguage = es; // String | Use for knowing which language to 
 final String xChildCompanyId = 6441b6376b60c3a638da80af; // String | In the case of a holding company, the company id of the child company to which will process the request.
 final int limit = 56; // int | The numbers of items to return, the maximum value is 250
 final String search = search_example; // String | General order search, e.g. by mail, reference etc.
+final String url = url_example; // String | url for webhook filter
 final String next = next_example; // String | next page
 final String previous = previous_example; // String | previous page
 
 try {
-    final response = api.getWebhooks(acceptLanguage, xChildCompanyId, limit, search, next, previous);
+    final response = api.getWebhooks(acceptLanguage, xChildCompanyId, limit, search, url, next, previous);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling WebhooksApi->getWebhooks: $e\n');
@@ -185,6 +186,7 @@ Name | Type | Description  | Notes
  **xChildCompanyId** | **String**| In the case of a holding company, the company id of the child company to which will process the request. | [optional] 
  **limit** | **int**| The numbers of items to return, the maximum value is 250 | [optional] [default to 20]
  **search** | **String**| General order search, e.g. by mail, reference etc. | [optional] 
+ **url** | **String**| url for webhook filter | [optional] 
  **next** | **String**| next page | [optional] 
  **previous** | **String**| previous page | [optional] 
 

@@ -136,6 +136,13 @@ import 'package:conekta/src/model/payment_method_cash_response.dart';
 import 'package:conekta/src/model/payment_method_response.dart';
 import 'package:conekta/src/model/payment_method_spei_recurrent.dart';
 import 'package:conekta/src/model/payment_method_spei_request.dart';
+import 'package:conekta/src/model/payout.dart';
+import 'package:conekta/src/model/payout_method.dart';
+import 'package:conekta/src/model/payout_order.dart';
+import 'package:conekta/src/model/payout_order_payouts_item.dart';
+import 'package:conekta/src/model/payout_order_response.dart';
+import 'package:conekta/src/model/payout_order_response_customer_info.dart';
+import 'package:conekta/src/model/payout_orders_response.dart';
 import 'package:conekta/src/model/plan_request.dart';
 import 'package:conekta/src/model/plan_response.dart';
 import 'package:conekta/src/model/plan_update_request.dart';
@@ -306,6 +313,13 @@ part 'serializers.g.dart';
   PaymentMethodResponse,$PaymentMethodResponse,
   PaymentMethodSpeiRecurrent,
   PaymentMethodSpeiRequest,
+  Payout,
+  PayoutMethod,
+  PayoutOrder,
+  PayoutOrderPayoutsItem,
+  PayoutOrderResponse,
+  PayoutOrderResponseCustomerInfo,
+  PayoutOrdersResponse,
   PlanRequest,
   PlanResponse,
   PlanUpdateRequest,

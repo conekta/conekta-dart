@@ -42,7 +42,8 @@ abstract class ProductOrderResponse implements Product, Built<ProductOrderRespon
   factory ProductOrderResponse([void updates(ProductOrderResponseBuilder b)]) = _$ProductOrderResponse;
 
   @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(ProductOrderResponseBuilder b) => b;
+  static void _defaults(ProductOrderResponseBuilder b) => b
+      ..metadata = MapBuilder();
 
   @BuiltValueSerializer(custom: true)
   static Serializer<ProductOrderResponse> get serializer => _$ProductOrderResponseSerializer();
@@ -69,7 +70,7 @@ class _$ProductOrderResponseSerializer implements PrimitiveSerializer<ProductOrd
       yield r'metadata';
       yield serializers.serialize(
         object.metadata,
-        specifiedType: const FullType(BuiltMap, [FullType(String), FullType(String)]),
+        specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
       );
     }
     yield r'quantity';
@@ -171,8 +172,8 @@ class _$ProductOrderResponseSerializer implements PrimitiveSerializer<ProductOrd
         case r'metadata':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltMap, [FullType(String), FullType(String)]),
-          ) as BuiltMap<String, String>;
+            specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
+          ) as BuiltMap<String, JsonObject?>;
           result.metadata.replace(valueDes);
           break;
         case r'quantity':

@@ -140,6 +140,14 @@ doc/PaymentMethodResponse.md
 doc/PaymentMethodSpeiRecurrent.md
 doc/PaymentMethodSpeiRequest.md
 doc/PaymentMethodsApi.md
+doc/Payout.md
+doc/PayoutMethod.md
+doc/PayoutOrder.md
+doc/PayoutOrderPayoutsItem.md
+doc/PayoutOrderResponse.md
+doc/PayoutOrderResponseCustomerInfo.md
+doc/PayoutOrdersApi.md
+doc/PayoutOrdersResponse.md
 doc/PlanRequest.md
 doc/PlanResponse.md
 doc/PlanUpdateRequest.md
@@ -209,6 +217,7 @@ lib/src/api/logs_api.dart
 lib/src/api/orders_api.dart
 lib/src/api/payment_link_api.dart
 lib/src/api/payment_methods_api.dart
+lib/src/api/payout_orders_api.dart
 lib/src/api/plans_api.dart
 lib/src/api/products_api.dart
 lib/src/api/shipping_contacts_api.dart
@@ -350,6 +359,13 @@ lib/src/model/payment_method_cash_response.dart
 lib/src/model/payment_method_response.dart
 lib/src/model/payment_method_spei_recurrent.dart
 lib/src/model/payment_method_spei_request.dart
+lib/src/model/payout.dart
+lib/src/model/payout_method.dart
+lib/src/model/payout_order.dart
+lib/src/model/payout_order_payouts_item.dart
+lib/src/model/payout_order_response.dart
+lib/src/model/payout_order_response_customer_info.dart
+lib/src/model/payout_orders_response.dart
 lib/src/model/plan_request.dart
 lib/src/model/plan_response.dart
 lib/src/model/plan_update_request.dart

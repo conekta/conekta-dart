@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **antifraudInfo** | [**BuiltMap&lt;String, JsonObject&gt;**](JsonObject.md) |  | [optional] 
 **brand** | **String** | The brand of the item. | [optional] 
 **description** | **String** | Short description of the item | [optional] 
-**metadata** | **BuiltMap&lt;String, String&gt;** | It is a key/value hash that can hold custom fields. Maximum 100 elements and allows special characters. | [optional] 
+**metadata** | [**BuiltMap&lt;String, JsonObject&gt;**](JsonObject.md) | It is a key/value hash that can hold custom fields. Maximum 100 elements and allows special characters. | [optional] [default to MapBuilder()]
 **name** | **String** | The name of the item. It will be displayed in the order. | 
 **quantity** | **int** | The quantity of the item in the order. | 
 **sku** | **String** | The stock keeping unit for the item. It is used to identify the item in the order. | [optional] 

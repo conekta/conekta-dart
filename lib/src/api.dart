@@ -21,6 +21,7 @@ import 'package:conekta/src/api/logs_api.dart';
 import 'package:conekta/src/api/orders_api.dart';
 import 'package:conekta/src/api/payment_link_api.dart';
 import 'package:conekta/src/api/payment_methods_api.dart';
+import 'package:conekta/src/api/payout_orders_api.dart';
 import 'package:conekta/src/api/plans_api.dart';
 import 'package:conekta/src/api/products_api.dart';
 import 'package:conekta/src/api/shipping_contacts_api.dart';
@@ -157,6 +158,12 @@ class Conekta {
   /// by doing that all interceptors will not be executed
   PaymentMethodsApi getPaymentMethodsApi() {
     return PaymentMethodsApi(dio, serializers);
+  }
+
+  /// Get PayoutOrdersApi instance, base route and serializer can be overridden by a given but be careful,
+  /// by doing that all interceptors will not be executed
+  PayoutOrdersApi getPayoutOrdersApi() {
+    return PayoutOrdersApi(dio, serializers);
   }
 
   /// Get PlansApi instance, base route and serializer can be overridden by a given but be careful,

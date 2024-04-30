@@ -20,7 +20,7 @@ class _$ProductOrderResponse extends ProductOrderResponse {
   @override
   final String? description;
   @override
-  final BuiltMap<String, String>? metadata;
+  final BuiltMap<String, JsonObject?>? metadata;
   @override
   final String name;
   @override
@@ -156,10 +156,10 @@ class ProductOrderResponseBuilder
   set description(covariant String? description) =>
       _$this._description = description;
 
-  MapBuilder<String, String>? _metadata;
-  MapBuilder<String, String> get metadata =>
-      _$this._metadata ??= new MapBuilder<String, String>();
-  set metadata(covariant MapBuilder<String, String>? metadata) =>
+  MapBuilder<String, JsonObject?>? _metadata;
+  MapBuilder<String, JsonObject?> get metadata =>
+      _$this._metadata ??= new MapBuilder<String, JsonObject?>();
+  set metadata(covariant MapBuilder<String, JsonObject?>? metadata) =>
       _$this._metadata = metadata;
 
   String? _name;

@@ -136,6 +136,13 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(PaymentMethodCashResponse.serializer)
       ..add(PaymentMethodSpeiRecurrent.serializer)
       ..add(PaymentMethodSpeiRequest.serializer)
+      ..add(Payout.serializer)
+      ..add(PayoutMethod.serializer)
+      ..add(PayoutOrder.serializer)
+      ..add(PayoutOrderPayoutsItem.serializer)
+      ..add(PayoutOrderResponse.serializer)
+      ..add(PayoutOrderResponseCustomerInfo.serializer)
+      ..add(PayoutOrdersResponse.serializer)
       ..add(PlanRequest.serializer)
       ..add(PlanRequestIntervalEnum.serializer)
       ..add(PlanResponse.serializer)
@@ -356,6 +363,10 @@ Serializers _$serializers = (new Serializers().toBuilder()
           const FullType(BuiltList, const [const FullType(OrderResponse)]),
           () => new ListBuilder<OrderResponse>())
       ..addBuilderFactory(
+          const FullType(
+              BuiltList, const [const FullType(PayoutOrderResponse)]),
+          () => new ListBuilder<PayoutOrderResponse>())
+      ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(PlanResponse)]),
           () => new ListBuilder<PlanResponse>())
       ..addBuilderFactory(
@@ -437,6 +448,28 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(int)]),
           () => new ListBuilder<int>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => new ListBuilder<String>())
+      ..addBuilderFactory(
+          const FullType(BuiltMap, const [
+            const FullType(String),
+            const FullType.nullable(JsonObject)
+          ]),
+          () => new MapBuilder<String, JsonObject?>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => new ListBuilder<String>())
+      ..addBuilderFactory(
+          const FullType(BuiltMap, const [
+            const FullType(String),
+            const FullType.nullable(JsonObject)
+          ]),
+          () => new MapBuilder<String, JsonObject?>())
+      ..addBuilderFactory(
+          const FullType(
+              BuiltList, const [const FullType(PayoutOrderPayoutsItem)]),
+          () => new ListBuilder<PayoutOrderPayoutsItem>())
       ..addBuilderFactory(
           const FullType(
               BuiltList, const [const FullType(TransactionResponse)]),
@@ -603,28 +636,6 @@ Serializers _$serializers = (new Serializers().toBuilder()
               BuiltMap, const [const FullType(String), const FullType(String)]),
           () => new MapBuilder<String, String>())
       ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
-      ..addBuilderFactory(
-          const FullType(BuiltMap, const [
-            const FullType(String),
-            const FullType.nullable(JsonObject)
-          ]),
-          () => new MapBuilder<String, JsonObject?>())
-      ..addBuilderFactory(
-          const FullType(
-              BuiltMap, const [const FullType(String), const FullType(String)]),
-          () => new MapBuilder<String, String>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
-      ..addBuilderFactory(
-          const FullType(BuiltMap, const [
-            const FullType(String),
-            const FullType.nullable(JsonObject)
-          ]),
-          () => new MapBuilder<String, JsonObject?>())
-      ..addBuilderFactory(
           const FullType(
               BuiltMap, const [const FullType(String), const FullType(String)]),
           () => new MapBuilder<String, String>())
@@ -655,13 +666,41 @@ Serializers _$serializers = (new Serializers().toBuilder()
           ]),
           () => new MapBuilder<String, JsonObject?>())
       ..addBuilderFactory(
-          const FullType(
-              BuiltMap, const [const FullType(String), const FullType(String)]),
-          () => new MapBuilder<String, String>())
+          const FullType(BuiltMap, const [
+            const FullType(String),
+            const FullType.nullable(JsonObject)
+          ]),
+          () => new MapBuilder<String, JsonObject?>())
       ..addBuilderFactory(
-          const FullType(
-              BuiltMap, const [const FullType(String), const FullType(String)]),
-          () => new MapBuilder<String, String>())
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => new ListBuilder<String>())
+      ..addBuilderFactory(
+          const FullType(BuiltMap, const [
+            const FullType(String),
+            const FullType.nullable(JsonObject)
+          ]),
+          () => new MapBuilder<String, JsonObject?>())
+      ..addBuilderFactory(
+          const FullType(BuiltMap, const [
+            const FullType(String),
+            const FullType.nullable(JsonObject)
+          ]),
+          () => new MapBuilder<String, JsonObject?>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => new ListBuilder<String>())
+      ..addBuilderFactory(
+          const FullType(BuiltMap, const [
+            const FullType(String),
+            const FullType.nullable(JsonObject)
+          ]),
+          () => new MapBuilder<String, JsonObject?>())
+      ..addBuilderFactory(
+          const FullType(BuiltMap, const [
+            const FullType(String),
+            const FullType.nullable(JsonObject)
+          ]),
+          () => new MapBuilder<String, JsonObject?>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
           () => new ListBuilder<String>()))
