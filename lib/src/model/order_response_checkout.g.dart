@@ -46,6 +46,8 @@ class _$OrderResponseCheckout extends OrderResponseCheckout {
   @override
   final bool? recurrent;
   @override
+  final int? redirectionTime;
+  @override
   final String? slug;
   @override
   final int? smsSent;
@@ -84,6 +86,7 @@ class _$OrderResponseCheckout extends OrderResponseCheckout {
       this.onDemandEnabled,
       this.paidPaymentsCount,
       this.recurrent,
+      this.redirectionTime,
       this.slug,
       this.smsSent,
       this.successUrl,
@@ -125,6 +128,7 @@ class _$OrderResponseCheckout extends OrderResponseCheckout {
         onDemandEnabled == other.onDemandEnabled &&
         paidPaymentsCount == other.paidPaymentsCount &&
         recurrent == other.recurrent &&
+        redirectionTime == other.redirectionTime &&
         slug == other.slug &&
         smsSent == other.smsSent &&
         successUrl == other.successUrl &&
@@ -156,6 +160,7 @@ class _$OrderResponseCheckout extends OrderResponseCheckout {
     _$hash = $jc(_$hash, onDemandEnabled.hashCode);
     _$hash = $jc(_$hash, paidPaymentsCount.hashCode);
     _$hash = $jc(_$hash, recurrent.hashCode);
+    _$hash = $jc(_$hash, redirectionTime.hashCode);
     _$hash = $jc(_$hash, slug.hashCode);
     _$hash = $jc(_$hash, smsSent.hashCode);
     _$hash = $jc(_$hash, successUrl.hashCode);
@@ -189,6 +194,7 @@ class _$OrderResponseCheckout extends OrderResponseCheckout {
           ..add('onDemandEnabled', onDemandEnabled)
           ..add('paidPaymentsCount', paidPaymentsCount)
           ..add('recurrent', recurrent)
+          ..add('redirectionTime', redirectionTime)
           ..add('slug', slug)
           ..add('smsSent', smsSent)
           ..add('successUrl', successUrl)
@@ -294,6 +300,11 @@ class OrderResponseCheckoutBuilder
   bool? get recurrent => _$this._recurrent;
   set recurrent(bool? recurrent) => _$this._recurrent = recurrent;
 
+  int? _redirectionTime;
+  int? get redirectionTime => _$this._redirectionTime;
+  set redirectionTime(int? redirectionTime) =>
+      _$this._redirectionTime = redirectionTime;
+
   String? _slug;
   String? get slug => _$this._slug;
   set slug(String? slug) => _$this._slug = slug;
@@ -348,6 +359,7 @@ class OrderResponseCheckoutBuilder
       _onDemandEnabled = $v.onDemandEnabled;
       _paidPaymentsCount = $v.paidPaymentsCount;
       _recurrent = $v.recurrent;
+      _redirectionTime = $v.redirectionTime;
       _slug = $v.slug;
       _smsSent = $v.smsSent;
       _successUrl = $v.successUrl;
@@ -398,6 +410,7 @@ class OrderResponseCheckoutBuilder
               onDemandEnabled: onDemandEnabled,
               paidPaymentsCount: paidPaymentsCount,
               recurrent: recurrent,
+              redirectionTime: redirectionTime,
               slug: slug,
               smsSent: smsSent,
               successUrl: successUrl,

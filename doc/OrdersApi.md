@@ -161,7 +161,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getOrders**
-> GetOrdersResponse getOrders(acceptLanguage, xChildCompanyId, limit, search, next, previous)
+> GetOrdersResponse getOrders(acceptLanguage, xChildCompanyId, limit, search, next, previous, paymentStatus, lastPaymentInfoPeriodStatus, createdAt, createdAtPeriodGte, createdAtPeriodLte, updatedAtPeriodGte, updatedAtPeriodLte)
 
 Get a list of Orders
 
@@ -178,9 +178,16 @@ final int limit = 56; // int | The numbers of items to return, the maximum value
 final String search = search_example; // String | General order search, e.g. by mail, reference etc.
 final String next = next_example; // String | next page
 final String previous = previous_example; // String | previous page
+final String paymentStatus = paid; // String | Filters by order status
+final String lastPaymentInfoPeriodStatus = pending_payment; // String | Filters by last payment info status
+final int createdAt = 1612137600; // int | created equal to
+final int createdAtPeriodGte = 1612137600; // int | created at greater than or equal to
+final int createdAtPeriodLte = 1612137600; // int | created at less than or equal to
+final int updatedAtPeriodGte = 1612137600; // int | updated at greater than or equal to
+final int updatedAtPeriodLte = 1612137600; // int | updated at less than or equal to
 
 try {
-    final response = api.getOrders(acceptLanguage, xChildCompanyId, limit, search, next, previous);
+    final response = api.getOrders(acceptLanguage, xChildCompanyId, limit, search, next, previous, paymentStatus, lastPaymentInfoPeriodStatus, createdAt, createdAtPeriodGte, createdAtPeriodLte, updatedAtPeriodGte, updatedAtPeriodLte);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling OrdersApi->getOrders: $e\n');
@@ -197,6 +204,13 @@ Name | Type | Description  | Notes
  **search** | **String**| General order search, e.g. by mail, reference etc. | [optional] 
  **next** | **String**| next page | [optional] 
  **previous** | **String**| previous page | [optional] 
+ **paymentStatus** | **String**| Filters by order status | [optional] 
+ **lastPaymentInfoPeriodStatus** | **String**| Filters by last payment info status | [optional] 
+ **createdAt** | **int**| created equal to | [optional] 
+ **createdAtPeriodGte** | **int**| created at greater than or equal to | [optional] 
+ **createdAtPeriodLte** | **int**| created at less than or equal to | [optional] 
+ **updatedAtPeriodGte** | **int**| updated at greater than or equal to | [optional] 
+ **updatedAtPeriodLte** | **int**| updated at less than or equal to | [optional] 
 
 ### Return type
 

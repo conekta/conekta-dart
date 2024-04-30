@@ -18,8 +18,8 @@ abstract class ProductBuilder {
   String? get description;
   set description(String? description);
 
-  MapBuilder<String, String> get metadata;
-  set metadata(MapBuilder<String, String>? metadata);
+  MapBuilder<String, JsonObject?> get metadata;
+  set metadata(MapBuilder<String, JsonObject?>? metadata);
 
   String? get name;
   set name(String? name);
@@ -45,7 +45,7 @@ class _$$Product extends $Product {
   @override
   final String? description;
   @override
-  final BuiltMap<String, String>? metadata;
+  final BuiltMap<String, JsonObject?>? metadata;
   @override
   final String name;
   @override
@@ -149,10 +149,10 @@ class $ProductBuilder
   set description(covariant String? description) =>
       _$this._description = description;
 
-  MapBuilder<String, String>? _metadata;
-  MapBuilder<String, String> get metadata =>
-      _$this._metadata ??= new MapBuilder<String, String>();
-  set metadata(covariant MapBuilder<String, String>? metadata) =>
+  MapBuilder<String, JsonObject?>? _metadata;
+  MapBuilder<String, JsonObject?> get metadata =>
+      _$this._metadata ??= new MapBuilder<String, JsonObject?>();
+  set metadata(covariant MapBuilder<String, JsonObject?>? metadata) =>
       _$this._metadata = metadata;
 
   String? _name;

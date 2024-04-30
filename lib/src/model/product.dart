@@ -37,7 +37,7 @@ abstract class Product  {
 
   /// It is a key/value hash that can hold custom fields. Maximum 100 elements and allows special characters.
   @BuiltValueField(wireName: r'metadata')
-  BuiltMap<String, String>? get metadata;
+  BuiltMap<String, JsonObject?>? get metadata;
 
   /// The name of the item. It will be displayed in the order.
   @BuiltValueField(wireName: r'name')
@@ -100,7 +100,7 @@ class _$ProductSerializer implements PrimitiveSerializer<Product> {
       yield r'metadata';
       yield serializers.serialize(
         object.metadata,
-        specifiedType: const FullType(BuiltMap, [FullType(String), FullType(String)]),
+        specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
       );
     }
     yield r'name';
@@ -219,8 +219,8 @@ class _$$ProductSerializer implements PrimitiveSerializer<$Product> {
         case r'metadata':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltMap, [FullType(String), FullType(String)]),
-          ) as BuiltMap<String, String>;
+            specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
+          ) as BuiltMap<String, JsonObject?>;
           result.metadata.replace(valueDes);
           break;
         case r'name':

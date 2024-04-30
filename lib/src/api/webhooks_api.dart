@@ -63,7 +63,7 @@ class WebhooksApi {
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/6.0.4',
+        r'User-Agent': r'Conekta/v2 DartBindings/6.0.5',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (localVarAccept != null) r'Accept': localVarAccept,
         if (localVarContentType != null) r'Content-Type': localVarContentType,
@@ -181,7 +181,7 @@ class WebhooksApi {
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/6.0.4',
+        r'User-Agent': r'Conekta/v2 DartBindings/6.0.5',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (localVarAccept != null) r'Accept': localVarAccept,
         if (localVarContentType != null) r'Content-Type': localVarContentType,
@@ -281,7 +281,7 @@ class WebhooksApi {
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/6.0.4',
+        r'User-Agent': r'Conekta/v2 DartBindings/6.0.5',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
@@ -349,6 +349,7 @@ class WebhooksApi {
   /// * [xChildCompanyId] - In the case of a holding company, the company id of the child company to which will process the request.
   /// * [limit] - The numbers of items to return, the maximum value is 250
   /// * [search] - General order search, e.g. by mail, reference etc.
+  /// * [url] - url for webhook filter
   /// * [next] - next page
   /// * [previous] - previous page
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
@@ -365,6 +366,7 @@ class WebhooksApi {
     String? xChildCompanyId,
     int? limit = 20,
     String? search,
+    String? url,
     String? next,
     String? previous,
     CancelToken? cancelToken,
@@ -388,7 +390,7 @@ class WebhooksApi {
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/6.0.4',
+        r'User-Agent': r'Conekta/v2 DartBindings/6.0.5',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
@@ -412,6 +414,7 @@ class WebhooksApi {
     final _queryParameters = <String, dynamic>{
       if (limit != null) r'limit': encodeQueryParameter(_serializers, limit, const FullType(int)),
       if (search != null) r'search': encodeQueryParameter(_serializers, search, const FullType(String)),
+      if (url != null) r'url': encodeQueryParameter(_serializers, url, const FullType(String)),
       if (next != null) r'next': encodeQueryParameter(_serializers, next, const FullType(String)),
       if (previous != null) r'previous': encodeQueryParameter(_serializers, previous, const FullType(String)),
     };
@@ -495,7 +498,7 @@ class WebhooksApi {
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/6.0.4',
+        r'User-Agent': r'Conekta/v2 DartBindings/6.0.5',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (localVarAccept != null) r'Accept': localVarAccept,
         if (localVarContentType != null) r'Content-Type': localVarContentType,
@@ -598,7 +601,7 @@ class WebhooksApi {
     final _options = Options(
       method: r'PUT',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/6.0.4',
+        r'User-Agent': r'Conekta/v2 DartBindings/6.0.5',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,

@@ -66,7 +66,7 @@ class OrdersApi {
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/6.0.4',
+        r'User-Agent': r'Conekta/v2 DartBindings/6.0.5',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
@@ -168,7 +168,7 @@ class OrdersApi {
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/6.0.4',
+        r'User-Agent': r'Conekta/v2 DartBindings/6.0.5',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
@@ -289,7 +289,7 @@ class OrdersApi {
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/6.0.4',
+        r'User-Agent': r'Conekta/v2 DartBindings/6.0.5',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
@@ -359,6 +359,13 @@ class OrdersApi {
   /// * [search] - General order search, e.g. by mail, reference etc.
   /// * [next] - next page
   /// * [previous] - previous page
+  /// * [paymentStatus] - Filters by order status
+  /// * [lastPaymentInfoPeriodStatus] - Filters by last payment info status
+  /// * [createdAt] - created equal to
+  /// * [createdAtPeriodGte] - created at greater than or equal to
+  /// * [createdAtPeriodLte] - created at less than or equal to
+  /// * [updatedAtPeriodGte] - updated at greater than or equal to
+  /// * [updatedAtPeriodLte] - updated at less than or equal to
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -375,6 +382,13 @@ class OrdersApi {
     String? search,
     String? next,
     String? previous,
+    String? paymentStatus,
+    String? lastPaymentInfoPeriodStatus,
+    int? createdAt,
+    int? createdAtPeriodGte,
+    int? createdAtPeriodLte,
+    int? updatedAtPeriodGte,
+    int? updatedAtPeriodLte,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -396,7 +410,7 @@ class OrdersApi {
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/6.0.4',
+        r'User-Agent': r'Conekta/v2 DartBindings/6.0.5',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
@@ -422,6 +436,13 @@ class OrdersApi {
       if (search != null) r'search': encodeQueryParameter(_serializers, search, const FullType(String)),
       if (next != null) r'next': encodeQueryParameter(_serializers, next, const FullType(String)),
       if (previous != null) r'previous': encodeQueryParameter(_serializers, previous, const FullType(String)),
+      if (paymentStatus != null) r'payment_status': encodeQueryParameter(_serializers, paymentStatus, const FullType(String)),
+      if (lastPaymentInfoPeriodStatus != null) r'last_payment_info.status': encodeQueryParameter(_serializers, lastPaymentInfoPeriodStatus, const FullType(String)),
+      if (createdAt != null) r'created_at': encodeQueryParameter(_serializers, createdAt, const FullType(int)),
+      if (createdAtPeriodGte != null) r'created_at.gte': encodeQueryParameter(_serializers, createdAtPeriodGte, const FullType(int)),
+      if (createdAtPeriodLte != null) r'created_at.lte': encodeQueryParameter(_serializers, createdAtPeriodLte, const FullType(int)),
+      if (updatedAtPeriodGte != null) r'updated_at.gte': encodeQueryParameter(_serializers, updatedAtPeriodGte, const FullType(int)),
+      if (updatedAtPeriodLte != null) r'updated_at.lte': encodeQueryParameter(_serializers, updatedAtPeriodLte, const FullType(int)),
     };
 
     final _response = await _dio.request<Object>(
@@ -507,7 +528,7 @@ class OrdersApi {
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/6.0.4',
+        r'User-Agent': r'Conekta/v2 DartBindings/6.0.5',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
@@ -611,7 +632,7 @@ class OrdersApi {
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/6.0.4',
+        r'User-Agent': r'Conekta/v2 DartBindings/6.0.5',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
@@ -735,7 +756,7 @@ class OrdersApi {
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/6.0.4',
+        r'User-Agent': r'Conekta/v2 DartBindings/6.0.5',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
@@ -857,7 +878,7 @@ class OrdersApi {
     final _options = Options(
       method: r'PUT',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/6.0.4',
+        r'User-Agent': r'Conekta/v2 DartBindings/6.0.5',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (localVarAccept != null) r'Accept': localVarAccept,
         if (localVarContentType != null) r'Content-Type': localVarContentType,

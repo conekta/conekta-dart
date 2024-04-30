@@ -18,7 +18,7 @@ For more information, please visit [https://github.com/conekta/openapi/issues](h
 To use the package from [pub.dev](https://pub.dev), please include the following in pubspec.yaml
 ```yaml
 dependencies:
-  conekta: 6.0.4
+  conekta: 6.0.5
 ```
 
 ### Github
@@ -120,6 +120,9 @@ Class | Method | HTTP request | Description
 [*PaymentMethodsApi*](doc/PaymentMethodsApi.md) | [**deleteCustomerPaymentMethods**](doc/PaymentMethodsApi.md#deletecustomerpaymentmethods) | **DELETE** /customers/{id}/payment_sources/{payment_method_id} | Delete Payment Method
 [*PaymentMethodsApi*](doc/PaymentMethodsApi.md) | [**getCustomerPaymentMethods**](doc/PaymentMethodsApi.md#getcustomerpaymentmethods) | **GET** /customers/{id}/payment_sources | Get Payment Methods
 [*PaymentMethodsApi*](doc/PaymentMethodsApi.md) | [**updateCustomerPaymentMethods**](doc/PaymentMethodsApi.md#updatecustomerpaymentmethods) | **PUT** /customers/{id}/payment_sources/{payment_method_id} | Update Payment Method
+[*PayoutOrdersApi*](doc/PayoutOrdersApi.md) | [**createPayoutOrder**](doc/PayoutOrdersApi.md#createpayoutorder) | **POST** /payout_orders | Create payout order
+[*PayoutOrdersApi*](doc/PayoutOrdersApi.md) | [**getPayoutOrderById**](doc/PayoutOrdersApi.md#getpayoutorderbyid) | **GET** /payout_orders/{id} | Get Payout Order
+[*PayoutOrdersApi*](doc/PayoutOrdersApi.md) | [**getPayoutOrders**](doc/PayoutOrdersApi.md#getpayoutorders) | **GET** /payout_orders | Get a list of Payout Orders
 [*PlansApi*](doc/PlansApi.md) | [**createPlan**](doc/PlansApi.md#createplan) | **POST** /plans | Create Plan
 [*PlansApi*](doc/PlansApi.md) | [**deletePlan**](doc/PlansApi.md#deleteplan) | **DELETE** /plans/{id} | Delete Plan
 [*PlansApi*](doc/PlansApi.md) | [**getPlan**](doc/PlansApi.md#getplan) | **GET** /plans/{id} | Get Plan
@@ -286,6 +289,13 @@ Class | Method | HTTP request | Description
  - [PaymentMethodResponse](doc/PaymentMethodResponse.md)
  - [PaymentMethodSpeiRecurrent](doc/PaymentMethodSpeiRecurrent.md)
  - [PaymentMethodSpeiRequest](doc/PaymentMethodSpeiRequest.md)
+ - [Payout](doc/Payout.md)
+ - [PayoutMethod](doc/PayoutMethod.md)
+ - [PayoutOrder](doc/PayoutOrder.md)
+ - [PayoutOrderPayoutsItem](doc/PayoutOrderPayoutsItem.md)
+ - [PayoutOrderResponse](doc/PayoutOrderResponse.md)
+ - [PayoutOrderResponseCustomerInfo](doc/PayoutOrderResponseCustomerInfo.md)
+ - [PayoutOrdersResponse](doc/PayoutOrdersResponse.md)
  - [PlanRequest](doc/PlanRequest.md)
  - [PlanResponse](doc/PlanResponse.md)
  - [PlanUpdateRequest](doc/PlanUpdateRequest.md)

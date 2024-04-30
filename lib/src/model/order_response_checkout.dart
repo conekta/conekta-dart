@@ -32,6 +32,7 @@ part 'order_response_checkout.g.dart';
 /// * [onDemandEnabled] 
 /// * [paidPaymentsCount] 
 /// * [recurrent] 
+/// * [redirectionTime] - number of seconds to wait before redirecting to the success_url
 /// * [slug] 
 /// * [smsSent] 
 /// * [successUrl] 
@@ -97,6 +98,10 @@ abstract class OrderResponseCheckout implements Built<OrderResponseCheckout, Ord
 
   @BuiltValueField(wireName: r'recurrent')
   bool? get recurrent;
+
+  /// number of seconds to wait before redirecting to the success_url
+  @BuiltValueField(wireName: r'redirection_time')
+  int? get redirectionTime;
 
   @BuiltValueField(wireName: r'slug')
   String? get slug;
@@ -273,6 +278,13 @@ class _$OrderResponseCheckoutSerializer implements PrimitiveSerializer<OrderResp
       yield serializers.serialize(
         object.recurrent,
         specifiedType: const FullType(bool),
+      );
+    }
+    if (object.redirectionTime != null) {
+      yield r'redirection_time';
+      yield serializers.serialize(
+        object.redirectionTime,
+        specifiedType: const FullType.nullable(int),
       );
     }
     if (object.slug != null) {
@@ -480,6 +492,14 @@ class _$OrderResponseCheckoutSerializer implements PrimitiveSerializer<OrderResp
             specifiedType: const FullType(bool),
           ) as bool;
           result.recurrent = valueDes;
+          break;
+        case r'redirection_time':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.redirectionTime = valueDes;
           break;
         case r'slug':
           final valueDes = serializers.deserialize(
