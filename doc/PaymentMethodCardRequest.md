@@ -9,7 +9,12 @@ import 'package:conekta/api.dart';
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **String** | Type of payment method | 
-**tokenId** | **String** | Token id that will be used to create a \"card\" type payment method. See the (subscriptions)[https://developers.conekta.com/v2.1.0/reference/createsubscription] tutorial for more information on how to tokenize cards. | 
+**cvc** | **String** | Card security code | 
+**expMonth** | **String** | Card expiration month | 
+**expYear** | **String** | Card expiration year | 
+**name** | **String** | Cardholder name | 
+**number** | **String** | Card number | 
+**customerIpAddress** | **String** | Optional field used to capture the customer's IP address for fraud prevention and security monitoring purposes | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

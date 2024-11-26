@@ -22,6 +22,7 @@ part 'customer_response.g.dart';
 /// * [corporate] - true if the customer is a company
 /// * [createdAt] - Creation date of the object
 /// * [customReference] - Custom reference
+/// * [dateOfBirth] - It is a parameter that allows to identify the date of birth of the client.
 /// * [defaultFiscalEntityId] 
 /// * [defaultShippingContactId] 
 /// * [defaultPaymentSourceId] 
@@ -30,6 +31,7 @@ part 'customer_response.g.dart';
 /// * [id] - Customer's ID
 /// * [livemode] - true if the object exists in live mode or the value false if the object exists in test mode
 /// * [name] - Customer's name
+/// * [nationalId] - It is a parameter that allows to identify the national identification number of the client.
 /// * [metadata] 
 /// * [object] 
 /// * [paymentSources] 
@@ -52,6 +54,10 @@ abstract class CustomerResponse implements Built<CustomerResponse, CustomerRespo
   /// Custom reference
   @BuiltValueField(wireName: r'custom_reference')
   String? get customReference;
+
+  /// It is a parameter that allows to identify the date of birth of the client.
+  @BuiltValueField(wireName: r'date_of_birth')
+  String? get dateOfBirth;
 
   @BuiltValueField(wireName: r'default_fiscal_entity_id')
   String? get defaultFiscalEntityId;
@@ -79,6 +85,10 @@ abstract class CustomerResponse implements Built<CustomerResponse, CustomerRespo
   /// Customer's name
   @BuiltValueField(wireName: r'name')
   String get name;
+
+  /// It is a parameter that allows to identify the national identification number of the client.
+  @BuiltValueField(wireName: r'national_id')
+  String? get nationalId;
 
   @BuiltValueField(wireName: r'metadata')
   BuiltMap<String, JsonObject?>? get metadata;
@@ -148,6 +158,13 @@ class _$CustomerResponseSerializer implements PrimitiveSerializer<CustomerRespon
         specifiedType: const FullType(String),
       );
     }
+    if (object.dateOfBirth != null) {
+      yield r'date_of_birth';
+      yield serializers.serialize(
+        object.dateOfBirth,
+        specifiedType: const FullType(String),
+      );
+    }
     if (object.defaultFiscalEntityId != null) {
       yield r'default_fiscal_entity_id';
       yield serializers.serialize(
@@ -198,6 +215,13 @@ class _$CustomerResponseSerializer implements PrimitiveSerializer<CustomerRespon
       object.name,
       specifiedType: const FullType(String),
     );
+    if (object.nationalId != null) {
+      yield r'national_id';
+      yield serializers.serialize(
+        object.nationalId,
+        specifiedType: const FullType(String),
+      );
+    }
     if (object.metadata != null) {
       yield r'metadata';
       yield serializers.serialize(
@@ -290,6 +314,13 @@ class _$CustomerResponseSerializer implements PrimitiveSerializer<CustomerRespon
           ) as String;
           result.customReference = valueDes;
           break;
+        case r'date_of_birth':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.dateOfBirth = valueDes;
+          break;
         case r'default_fiscal_entity_id':
           final valueDes = serializers.deserialize(
             value,
@@ -347,6 +378,13 @@ class _$CustomerResponseSerializer implements PrimitiveSerializer<CustomerRespon
             specifiedType: const FullType(String),
           ) as String;
           result.name = valueDes;
+          break;
+        case r'national_id':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.nationalId = valueDes;
           break;
         case r'metadata':
           final valueDes = serializers.deserialize(

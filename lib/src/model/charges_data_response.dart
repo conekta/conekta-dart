@@ -24,11 +24,11 @@ part 'charges_data_response.g.dart';
 /// * [deviceFingerprint] 
 /// * [failureCode] 
 /// * [failureMessage] 
-/// * [id] 
-/// * [livemode] 
+/// * [id] - Charge ID
+/// * [livemode] - Whether the charge was made in live mode or not
 /// * [object] 
-/// * [orderId] 
-/// * [paidAt] 
+/// * [orderId] - Order ID
+/// * [paidAt] - Payment date
 /// * [paymentMethod] 
 /// * [referenceId] - Reference ID of the charge
 /// * [refunds] 

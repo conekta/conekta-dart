@@ -18,7 +18,7 @@ For more information, please visit [https://github.com/conekta/openapi/issues](h
 To use the package from [pub.dev](https://pub.dev), please include the following in pubspec.yaml
 ```yaml
 dependencies:
-  conekta: 6.0.5
+  conekta: 6.0.6
 ```
 
 ### Github
@@ -82,6 +82,7 @@ Class | Method | HTTP request | Description
 [*BalancesApi*](doc/BalancesApi.md) | [**getBalance**](doc/BalancesApi.md#getbalance) | **GET** /balance | Get a company&#39;s balance
 [*ChargesApi*](doc/ChargesApi.md) | [**getCharges**](doc/ChargesApi.md#getcharges) | **GET** /charges | Get A List of Charges
 [*ChargesApi*](doc/ChargesApi.md) | [**ordersCreateCharge**](doc/ChargesApi.md#orderscreatecharge) | **POST** /orders/{id}/charges | Create charge
+[*ChargesApi*](doc/ChargesApi.md) | [**ordersCreateCharges**](doc/ChargesApi.md#orderscreatecharges) | **POST** /orders/{id}/add_charges | Create charges
 [*ChargesApi*](doc/ChargesApi.md) | [**updateCharge**](doc/ChargesApi.md#updatecharge) | **PUT** /charges/{id} | Update a charge
 [*CompaniesApi*](doc/CompaniesApi.md) | [**getCompanies**](doc/CompaniesApi.md#getcompanies) | **GET** /companies | Get List of Companies
 [*CompaniesApi*](doc/CompaniesApi.md) | [**getCompany**](doc/CompaniesApi.md#getcompany) | **GET** /companies/{id} | Get Company
@@ -120,6 +121,7 @@ Class | Method | HTTP request | Description
 [*PaymentMethodsApi*](doc/PaymentMethodsApi.md) | [**deleteCustomerPaymentMethods**](doc/PaymentMethodsApi.md#deletecustomerpaymentmethods) | **DELETE** /customers/{id}/payment_sources/{payment_method_id} | Delete Payment Method
 [*PaymentMethodsApi*](doc/PaymentMethodsApi.md) | [**getCustomerPaymentMethods**](doc/PaymentMethodsApi.md#getcustomerpaymentmethods) | **GET** /customers/{id}/payment_sources | Get Payment Methods
 [*PaymentMethodsApi*](doc/PaymentMethodsApi.md) | [**updateCustomerPaymentMethods**](doc/PaymentMethodsApi.md#updatecustomerpaymentmethods) | **PUT** /customers/{id}/payment_sources/{payment_method_id} | Update Payment Method
+[*PayoutOrdersApi*](doc/PayoutOrdersApi.md) | [**cancelPayoutOrderById**](doc/PayoutOrdersApi.md#cancelpayoutorderbyid) | **PUT** /payout_orders/{id}/cancel | Cancel Payout Order
 [*PayoutOrdersApi*](doc/PayoutOrdersApi.md) | [**createPayoutOrder**](doc/PayoutOrdersApi.md#createpayoutorder) | **POST** /payout_orders | Create payout order
 [*PayoutOrdersApi*](doc/PayoutOrdersApi.md) | [**getPayoutOrderById**](doc/PayoutOrdersApi.md#getpayoutorderbyid) | **GET** /payout_orders/{id} | Get Payout Order
 [*PayoutOrdersApi*](doc/PayoutOrdersApi.md) | [**getPayoutOrders**](doc/PayoutOrdersApi.md#getpayoutorders) | **GET** /payout_orders | Get a list of Payout Orders
@@ -186,6 +188,8 @@ Class | Method | HTTP request | Description
  - [ChargeResponseRefundsData](doc/ChargeResponseRefundsData.md)
  - [ChargeUpdateRequest](doc/ChargeUpdateRequest.md)
  - [ChargesDataResponse](doc/ChargesDataResponse.md)
+ - [ChargesOrderResponse](doc/ChargesOrderResponse.md)
+ - [ChargesOrderResponseAllOfData](doc/ChargesOrderResponseAllOfData.md)
  - [Checkout](doc/Checkout.md)
  - [CheckoutOrderTemplate](doc/CheckoutOrderTemplate.md)
  - [CheckoutOrderTemplateCustomerInfo](doc/CheckoutOrderTemplateCustomerInfo.md)
@@ -286,9 +290,11 @@ Class | Method | HTTP request | Description
  - [PaymentMethodCash](doc/PaymentMethodCash.md)
  - [PaymentMethodCashRequest](doc/PaymentMethodCashRequest.md)
  - [PaymentMethodCashResponse](doc/PaymentMethodCashResponse.md)
+ - [PaymentMethodGeneralRequest](doc/PaymentMethodGeneralRequest.md)
  - [PaymentMethodResponse](doc/PaymentMethodResponse.md)
  - [PaymentMethodSpeiRecurrent](doc/PaymentMethodSpeiRecurrent.md)
  - [PaymentMethodSpeiRequest](doc/PaymentMethodSpeiRequest.md)
+ - [PaymentMethodTokenRequest](doc/PaymentMethodTokenRequest.md)
  - [Payout](doc/Payout.md)
  - [PayoutMethod](doc/PayoutMethod.md)
  - [PayoutOrder](doc/PayoutOrder.md)

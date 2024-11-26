@@ -19,24 +19,27 @@ part 'charge_response_payment_method.g.dart';
 /// Properties:
 /// * [type] 
 /// * [object] 
+/// * [agreement] - Agreement ID
 /// * [authCode] 
 /// * [cashierId] 
 /// * [reference] 
 /// * [barcodeUrl] 
 /// * [expiresAt] 
+/// * [productType] - Product type, e.g. bbva_cash_in, cash_in, pespay_cash_in, etc.
 /// * [serviceName] 
 /// * [store] 
 /// * [storeName] 
-/// * [accountType] 
-/// * [brand] 
+/// * [customerIpAddress] 
+/// * [accountType] - Account type of the card
+/// * [brand] - Brand of the card
 /// * [contractId] - Id sent for recurrent charges.
-/// * [country] 
-/// * [expMonth] 
-/// * [expYear] 
+/// * [country] - Country of the card
+/// * [expMonth] - Expiration month of the card
+/// * [expYear] - Expiration year of the card
 /// * [fraudIndicators] 
-/// * [issuer] 
-/// * [last4] 
-/// * [name] 
+/// * [issuer] - Issuer of the card
+/// * [last4] - Last 4 digits of the card
+/// * [name] - Name of the cardholder
 /// * [bank] 
 /// * [clabe] 
 /// * [description] 

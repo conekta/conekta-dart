@@ -17,6 +17,7 @@ part 'checkout_request.g.dart';
 /// * [failureUrl] - Redirection url back to the site in case of failed payment, applies only to HostedPayment.
 /// * [monthlyInstallmentsEnabled] 
 /// * [monthlyInstallmentsOptions] 
+/// * [maxFailedRetries] - Number of retries allowed before the checkout is marked as failed
 /// * [name] - Reason for payment
 /// * [onDemandEnabled] 
 /// * [redirectionTime] - number of seconds to wait before redirecting to the success_url
@@ -41,6 +42,10 @@ abstract class CheckoutRequest implements Built<CheckoutRequest, CheckoutRequest
 
   @BuiltValueField(wireName: r'monthly_installments_options')
   BuiltList<int>? get monthlyInstallmentsOptions;
+
+  /// Number of retries allowed before the checkout is marked as failed
+  @BuiltValueField(wireName: r'max_failed_retries')
+  int? get maxFailedRetries;
 
   /// Reason for payment
   @BuiltValueField(wireName: r'name')
@@ -115,6 +120,13 @@ class _$CheckoutRequestSerializer implements PrimitiveSerializer<CheckoutRequest
       yield serializers.serialize(
         object.monthlyInstallmentsOptions,
         specifiedType: const FullType(BuiltList, [FullType(int)]),
+      );
+    }
+    if (object.maxFailedRetries != null) {
+      yield r'max_failed_retries';
+      yield serializers.serialize(
+        object.maxFailedRetries,
+        specifiedType: const FullType(int),
       );
     }
     if (object.name != null) {
@@ -209,6 +221,13 @@ class _$CheckoutRequestSerializer implements PrimitiveSerializer<CheckoutRequest
             specifiedType: const FullType(BuiltList, [FullType(int)]),
           ) as BuiltList<int>;
           result.monthlyInstallmentsOptions.replace(valueDes);
+          break;
+        case r'max_failed_retries':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int;
+          result.maxFailedRetries = valueDes;
           break;
         case r'name':
           final valueDes = serializers.deserialize(

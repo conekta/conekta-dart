@@ -16,6 +16,8 @@ class _$CustomerResponse extends CustomerResponse {
   @override
   final String? customReference;
   @override
+  final String? dateOfBirth;
+  @override
   final String? defaultFiscalEntityId;
   @override
   final String? defaultShippingContactId;
@@ -31,6 +33,8 @@ class _$CustomerResponse extends CustomerResponse {
   final bool livemode;
   @override
   final String name;
+  @override
+  final String? nationalId;
   @override
   final BuiltMap<String, JsonObject?>? metadata;
   @override
@@ -53,6 +57,7 @@ class _$CustomerResponse extends CustomerResponse {
       this.corporate,
       required this.createdAt,
       this.customReference,
+      this.dateOfBirth,
       this.defaultFiscalEntityId,
       this.defaultShippingContactId,
       this.defaultPaymentSourceId,
@@ -61,6 +66,7 @@ class _$CustomerResponse extends CustomerResponse {
       required this.id,
       required this.livemode,
       required this.name,
+      this.nationalId,
       this.metadata,
       required this.object,
       this.paymentSources,
@@ -94,6 +100,7 @@ class _$CustomerResponse extends CustomerResponse {
         corporate == other.corporate &&
         createdAt == other.createdAt &&
         customReference == other.customReference &&
+        dateOfBirth == other.dateOfBirth &&
         defaultFiscalEntityId == other.defaultFiscalEntityId &&
         defaultShippingContactId == other.defaultShippingContactId &&
         defaultPaymentSourceId == other.defaultPaymentSourceId &&
@@ -102,6 +109,7 @@ class _$CustomerResponse extends CustomerResponse {
         id == other.id &&
         livemode == other.livemode &&
         name == other.name &&
+        nationalId == other.nationalId &&
         metadata == other.metadata &&
         object == other.object &&
         paymentSources == other.paymentSources &&
@@ -117,6 +125,7 @@ class _$CustomerResponse extends CustomerResponse {
     _$hash = $jc(_$hash, corporate.hashCode);
     _$hash = $jc(_$hash, createdAt.hashCode);
     _$hash = $jc(_$hash, customReference.hashCode);
+    _$hash = $jc(_$hash, dateOfBirth.hashCode);
     _$hash = $jc(_$hash, defaultFiscalEntityId.hashCode);
     _$hash = $jc(_$hash, defaultShippingContactId.hashCode);
     _$hash = $jc(_$hash, defaultPaymentSourceId.hashCode);
@@ -125,6 +134,7 @@ class _$CustomerResponse extends CustomerResponse {
     _$hash = $jc(_$hash, id.hashCode);
     _$hash = $jc(_$hash, livemode.hashCode);
     _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, nationalId.hashCode);
     _$hash = $jc(_$hash, metadata.hashCode);
     _$hash = $jc(_$hash, object.hashCode);
     _$hash = $jc(_$hash, paymentSources.hashCode);
@@ -142,6 +152,7 @@ class _$CustomerResponse extends CustomerResponse {
           ..add('corporate', corporate)
           ..add('createdAt', createdAt)
           ..add('customReference', customReference)
+          ..add('dateOfBirth', dateOfBirth)
           ..add('defaultFiscalEntityId', defaultFiscalEntityId)
           ..add('defaultShippingContactId', defaultShippingContactId)
           ..add('defaultPaymentSourceId', defaultPaymentSourceId)
@@ -150,6 +161,7 @@ class _$CustomerResponse extends CustomerResponse {
           ..add('id', id)
           ..add('livemode', livemode)
           ..add('name', name)
+          ..add('nationalId', nationalId)
           ..add('metadata', metadata)
           ..add('object', object)
           ..add('paymentSources', paymentSources)
@@ -182,6 +194,10 @@ class CustomerResponseBuilder
   String? get customReference => _$this._customReference;
   set customReference(String? customReference) =>
       _$this._customReference = customReference;
+
+  String? _dateOfBirth;
+  String? get dateOfBirth => _$this._dateOfBirth;
+  set dateOfBirth(String? dateOfBirth) => _$this._dateOfBirth = dateOfBirth;
 
   String? _defaultFiscalEntityId;
   String? get defaultFiscalEntityId => _$this._defaultFiscalEntityId;
@@ -219,6 +235,10 @@ class CustomerResponseBuilder
   String? _name;
   String? get name => _$this._name;
   set name(String? name) => _$this._name = name;
+
+  String? _nationalId;
+  String? get nationalId => _$this._nationalId;
+  set nationalId(String? nationalId) => _$this._nationalId = nationalId;
 
   MapBuilder<String, JsonObject?>? _metadata;
   MapBuilder<String, JsonObject?> get metadata =>
@@ -265,6 +285,7 @@ class CustomerResponseBuilder
       _corporate = $v.corporate;
       _createdAt = $v.createdAt;
       _customReference = $v.customReference;
+      _dateOfBirth = $v.dateOfBirth;
       _defaultFiscalEntityId = $v.defaultFiscalEntityId;
       _defaultShippingContactId = $v.defaultShippingContactId;
       _defaultPaymentSourceId = $v.defaultPaymentSourceId;
@@ -273,6 +294,7 @@ class CustomerResponseBuilder
       _id = $v.id;
       _livemode = $v.livemode;
       _name = $v.name;
+      _nationalId = $v.nationalId;
       _metadata = $v.metadata?.toBuilder();
       _object = $v.object;
       _paymentSources = $v.paymentSources?.toBuilder();
@@ -308,6 +330,7 @@ class CustomerResponseBuilder
               createdAt: BuiltValueNullFieldError.checkNotNull(
                   createdAt, r'CustomerResponse', 'createdAt'),
               customReference: customReference,
+              dateOfBirth: dateOfBirth,
               defaultFiscalEntityId: defaultFiscalEntityId,
               defaultShippingContactId: defaultShippingContactId,
               defaultPaymentSourceId: defaultPaymentSourceId,
@@ -319,6 +342,7 @@ class CustomerResponseBuilder
                   livemode, r'CustomerResponse', 'livemode'),
               name: BuiltValueNullFieldError.checkNotNull(
                   name, r'CustomerResponse', 'name'),
+              nationalId: nationalId,
               metadata: _metadata?.build(),
               object: BuiltValueNullFieldError.checkNotNull(
                   object, r'CustomerResponse', 'object'),

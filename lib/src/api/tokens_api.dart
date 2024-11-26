@@ -4,6 +4,7 @@
 
 import 'dart:async';
 
+import 'package:built_value/json_object.dart';
 import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
@@ -60,7 +61,7 @@ class TokensApi {
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/6.0.5',
+        r'User-Agent': r'Conekta/v2 DartBindings/6.0.6',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (localVarAccept != null) r'Accept': localVarAccept,
         if (localVarContentType != null) r'Content-Type': localVarContentType,

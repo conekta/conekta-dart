@@ -33,7 +33,7 @@ part 'order_request.g.dart';
 /// * [needsShippingContact] - Allows you to fill out the shipping information at checkout
 /// * [preAuthorize] - Indicates whether the order charges must be preauthorized
 /// * [processingMode] - Indicates the processing mode for the order, either ecommerce, recurrent or validation.
-/// * [returnUrl] - Indicates the redirection callback upon completion of the 3DS2 flow.
+/// * [returnUrl] - Indicates the redirection callback upon completion of the 3DS2 flow. Do not use this parameter if your order has a checkout parameter
 /// * [shippingContact] 
 /// * [shippingLines] - List of [shipping costs](https://developers.conekta.com/v2.1.0/reference/orderscreateshipping). If the online store offers digital products.
 /// * [taxLines] - List of [taxes](https://developers.conekta.com/v2.1.0/reference/orderscreatetaxes) that are applied to the order.
@@ -81,7 +81,7 @@ abstract class OrderRequest implements Built<OrderRequest, OrderRequestBuilder> 
   @BuiltValueField(wireName: r'processing_mode')
   String? get processingMode;
 
-  /// Indicates the redirection callback upon completion of the 3DS2 flow.
+  /// Indicates the redirection callback upon completion of the 3DS2 flow. Do not use this parameter if your order has a checkout parameter
   @BuiltValueField(wireName: r'return_url')
   String? get returnUrl;
 

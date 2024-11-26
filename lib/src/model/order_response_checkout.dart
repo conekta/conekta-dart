@@ -23,6 +23,7 @@ part 'order_response_checkout.g.dart';
 /// * [id] 
 /// * [isRedirectOnFailure] 
 /// * [livemode] 
+/// * [maxFailedRetries] - Number of retries allowed before the checkout is marked as failed
 /// * [metadata] 
 /// * [monthlyInstallmentsEnabled] 
 /// * [monthlyInstallmentsOptions] 
@@ -71,6 +72,10 @@ abstract class OrderResponseCheckout implements Built<OrderResponseCheckout, Ord
 
   @BuiltValueField(wireName: r'livemode')
   bool? get livemode;
+
+  /// Number of retries allowed before the checkout is marked as failed
+  @BuiltValueField(wireName: r'max_failed_retries')
+  int? get maxFailedRetries;
 
   @BuiltValueField(wireName: r'metadata')
   BuiltMap<String, JsonObject?>? get metadata;
@@ -215,6 +220,13 @@ class _$OrderResponseCheckoutSerializer implements PrimitiveSerializer<OrderResp
       yield serializers.serialize(
         object.livemode,
         specifiedType: const FullType(bool),
+      );
+    }
+    if (object.maxFailedRetries != null) {
+      yield r'max_failed_retries';
+      yield serializers.serialize(
+        object.maxFailedRetries,
+        specifiedType: const FullType.nullable(int),
       );
     }
     if (object.metadata != null) {
@@ -428,6 +440,14 @@ class _$OrderResponseCheckoutSerializer implements PrimitiveSerializer<OrderResp
             specifiedType: const FullType(bool),
           ) as bool;
           result.livemode = valueDes;
+          break;
+        case r'max_failed_retries':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.maxFailedRetries = valueDes;
           break;
         case r'metadata':
           final valueDes = serializers.deserialize(

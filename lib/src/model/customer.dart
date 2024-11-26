@@ -21,12 +21,14 @@ part 'customer.g.dart';
 /// * [antifraudInfo] 
 /// * [corporate] - It is a value that allows identifying if the email is corporate or not.
 /// * [customReference] - It is an undefined value.
+/// * [dateOfBirth] - It is a parameter that allows to identify the date of birth of the client.
 /// * [email] - An email address is a series of customizable characters followed by a universal Internet symbol, the at symbol (@), the name of a host server, and a web domain ending (.mx, .com, .org, . net, etc).
 /// * [defaultPaymentSourceId] - It is a parameter that allows to identify in the response, the Conekta ID of a payment method (payment_id)
 /// * [defaultShippingContactId] - It is a parameter that allows to identify in the response, the Conekta ID of the shipping address (shipping_contact)
 /// * [fiscalEntities] 
 /// * [metadata] 
 /// * [name] - Client's name
+/// * [nationalId] - It is a parameter that allows to identify the national identification number of the client.
 /// * [paymentSources] - Contains details of the payment methods that the customer has active or has used in Conekta
 /// * [phone] - Is the customer's phone number
 /// * [planId] - Contains the ID of a plan, which could together with name, email and phone create a client directly to a subscription
@@ -44,6 +46,10 @@ abstract class Customer implements Built<Customer, CustomerBuilder> {
   /// It is an undefined value.
   @BuiltValueField(wireName: r'custom_reference')
   String? get customReference;
+
+  /// It is a parameter that allows to identify the date of birth of the client.
+  @BuiltValueField(wireName: r'date_of_birth')
+  String? get dateOfBirth;
 
   /// An email address is a series of customizable characters followed by a universal Internet symbol, the at symbol (@), the name of a host server, and a web domain ending (.mx, .com, .org, . net, etc).
   @BuiltValueField(wireName: r'email')
@@ -66,6 +72,10 @@ abstract class Customer implements Built<Customer, CustomerBuilder> {
   /// Client's name
   @BuiltValueField(wireName: r'name')
   String get name;
+
+  /// It is a parameter that allows to identify the national identification number of the client.
+  @BuiltValueField(wireName: r'national_id')
+  String? get nationalId;
 
   /// Contains details of the payment methods that the customer has active or has used in Conekta
   @BuiltValueField(wireName: r'payment_sources')
@@ -131,6 +141,13 @@ class _$CustomerSerializer implements PrimitiveSerializer<Customer> {
         specifiedType: const FullType(String),
       );
     }
+    if (object.dateOfBirth != null) {
+      yield r'date_of_birth';
+      yield serializers.serialize(
+        object.dateOfBirth,
+        specifiedType: const FullType(String),
+      );
+    }
     yield r'email';
     yield serializers.serialize(
       object.email,
@@ -169,6 +186,13 @@ class _$CustomerSerializer implements PrimitiveSerializer<Customer> {
       object.name,
       specifiedType: const FullType(String),
     );
+    if (object.nationalId != null) {
+      yield r'national_id';
+      yield serializers.serialize(
+        object.nationalId,
+        specifiedType: const FullType(String),
+      );
+    }
     if (object.paymentSources != null) {
       yield r'payment_sources';
       yield serializers.serialize(
@@ -247,6 +271,13 @@ class _$CustomerSerializer implements PrimitiveSerializer<Customer> {
           ) as String;
           result.customReference = valueDes;
           break;
+        case r'date_of_birth':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.dateOfBirth = valueDes;
+          break;
         case r'email':
           final valueDes = serializers.deserialize(
             value,
@@ -288,6 +319,13 @@ class _$CustomerSerializer implements PrimitiveSerializer<Customer> {
             specifiedType: const FullType(String),
           ) as String;
           result.name = valueDes;
+          break;
+        case r'national_id':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.nationalId = valueDes;
           break;
         case r'payment_sources':
           final valueDes = serializers.deserialize(

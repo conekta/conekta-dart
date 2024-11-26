@@ -9,10 +9,56 @@ All URIs are relative to *https://api.conekta.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**cancelPayoutOrderById**](PayoutOrdersApi.md#cancelpayoutorderbyid) | **PUT** /payout_orders/{id}/cancel | Cancel Payout Order
 [**createPayoutOrder**](PayoutOrdersApi.md#createpayoutorder) | **POST** /payout_orders | Create payout order
 [**getPayoutOrderById**](PayoutOrdersApi.md#getpayoutorderbyid) | **GET** /payout_orders/{id} | Get Payout Order
 [**getPayoutOrders**](PayoutOrdersApi.md#getpayoutorders) | **GET** /payout_orders | Get a list of Payout Orders
 
+
+# **cancelPayoutOrderById**
+> PayoutOrderResponse cancelPayoutOrderById(id, acceptLanguage)
+
+Cancel Payout Order
+
+Cancel a payout Order resource that corresponds to a payout order ID.
+
+### Example
+```dart
+import 'package:conekta/api.dart';
+
+final api = Conekta().getPayoutOrdersApi();
+final String id = 6307a60c41de27127515a575; // String | Identifier of the resource
+final String acceptLanguage = es; // String | Use for knowing which language to use
+
+try {
+    final response = api.cancelPayoutOrderById(id, acceptLanguage);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling PayoutOrdersApi->cancelPayoutOrderById: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| Identifier of the resource | 
+ **acceptLanguage** | **String**| Use for knowing which language to use | [optional] [default to 'es']
+
+### Return type
+
+[**PayoutOrderResponse**](PayoutOrderResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/vnd.conekta-v2.1.0+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **createPayoutOrder**
 > PayoutOrderResponse createPayoutOrder(payoutOrder, acceptLanguage)

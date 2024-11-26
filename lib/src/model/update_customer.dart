@@ -19,6 +19,7 @@ part 'update_customer.g.dart';
 ///
 /// Properties:
 /// * [antifraudInfo] 
+/// * [dateOfBirth] - It is a parameter that allows to identify the date of birth of the client.
 /// * [defaultPaymentSourceId] - It is a parameter that allows to identify in the response, the Conekta ID of a payment method (payment_id)
 /// * [email] - An email address is a series of customizable characters followed by a universal Internet symbol, the at symbol (@), the name of a host server, and a web domain ending (.mx, .com, .org, . net, etc).
 /// * [name] - Client's name
@@ -29,6 +30,7 @@ part 'update_customer.g.dart';
 /// * [customReference] - It is an undefined value.
 /// * [fiscalEntities] 
 /// * [metadata] 
+/// * [nationalId] - It is a parameter that allows to identify the national identification number of the client.
 /// * [paymentSources] - Contains details of the payment methods that the customer has active or has used in Conekta
 /// * [shippingContacts] - Contains the detail of the shipping addresses that the client has active or has used in Conekta
 /// * [subscription] 
@@ -36,6 +38,10 @@ part 'update_customer.g.dart';
 abstract class UpdateCustomer implements Built<UpdateCustomer, UpdateCustomerBuilder> {
   @BuiltValueField(wireName: r'antifraud_info')
   UpdateCustomerAntifraudInfo? get antifraudInfo;
+
+  /// It is a parameter that allows to identify the date of birth of the client.
+  @BuiltValueField(wireName: r'date_of_birth')
+  String? get dateOfBirth;
 
   /// It is a parameter that allows to identify in the response, the Conekta ID of a payment method (payment_id)
   @BuiltValueField(wireName: r'default_payment_source_id')
@@ -74,6 +80,10 @@ abstract class UpdateCustomer implements Built<UpdateCustomer, UpdateCustomerBui
 
   @BuiltValueField(wireName: r'metadata')
   BuiltMap<String, JsonObject?>? get metadata;
+
+  /// It is a parameter that allows to identify the national identification number of the client.
+  @BuiltValueField(wireName: r'national_id')
+  String? get nationalId;
 
   /// Contains details of the payment methods that the customer has active or has used in Conekta
   @BuiltValueField(wireName: r'payment_sources')
@@ -115,6 +125,13 @@ class _$UpdateCustomerSerializer implements PrimitiveSerializer<UpdateCustomer> 
       yield serializers.serialize(
         object.antifraudInfo,
         specifiedType: const FullType.nullable(UpdateCustomerAntifraudInfo),
+      );
+    }
+    if (object.dateOfBirth != null) {
+      yield r'date_of_birth';
+      yield serializers.serialize(
+        object.dateOfBirth,
+        specifiedType: const FullType(String),
       );
     }
     if (object.defaultPaymentSourceId != null) {
@@ -187,6 +204,13 @@ class _$UpdateCustomerSerializer implements PrimitiveSerializer<UpdateCustomer> 
         specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
       );
     }
+    if (object.nationalId != null) {
+      yield r'national_id';
+      yield serializers.serialize(
+        object.nationalId,
+        specifiedType: const FullType(String),
+      );
+    }
     if (object.paymentSources != null) {
       yield r'payment_sources';
       yield serializers.serialize(
@@ -238,6 +262,13 @@ class _$UpdateCustomerSerializer implements PrimitiveSerializer<UpdateCustomer> 
           ) as UpdateCustomerAntifraudInfo?;
           if (valueDes == null) continue;
           result.antifraudInfo.replace(valueDes);
+          break;
+        case r'date_of_birth':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.dateOfBirth = valueDes;
           break;
         case r'default_payment_source_id':
           final valueDes = serializers.deserialize(
@@ -308,6 +339,13 @@ class _$UpdateCustomerSerializer implements PrimitiveSerializer<UpdateCustomer> 
             specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
           ) as BuiltMap<String, JsonObject?>;
           result.metadata.replace(valueDes);
+          break;
+        case r'national_id':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.nationalId = valueDes;
           break;
         case r'payment_sources':
           final valueDes = serializers.deserialize(

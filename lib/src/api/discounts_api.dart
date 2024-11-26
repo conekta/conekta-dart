@@ -4,6 +4,7 @@
 
 import 'dart:async';
 
+import 'package:built_value/json_object.dart';
 import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
@@ -67,7 +68,7 @@ class DiscountsApi {
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/6.0.5',
+        r'User-Agent': r'Conekta/v2 DartBindings/6.0.6',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
@@ -190,7 +191,7 @@ class DiscountsApi {
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/6.0.5',
+        r'User-Agent': r'Conekta/v2 DartBindings/6.0.6',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
@@ -293,7 +294,7 @@ class DiscountsApi {
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/6.0.5',
+        r'User-Agent': r'Conekta/v2 DartBindings/6.0.6',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
@@ -402,7 +403,7 @@ class DiscountsApi {
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/6.0.5',
+        r'User-Agent': r'Conekta/v2 DartBindings/6.0.6',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
@@ -516,7 +517,7 @@ class DiscountsApi {
     final _options = Options(
       method: r'PUT',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/6.0.5',
+        r'User-Agent': r'Conekta/v2 DartBindings/6.0.6',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,

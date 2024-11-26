@@ -8,7 +8,7 @@ import 'package:conekta/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**amount** | **int** |  | [optional] 
+**amount** | **int** | Amount to be charged in cents | [optional] 
 **paymentMethod** | [**ChargeRequestPaymentMethod**](ChargeRequestPaymentMethod.md) |  | 
 **referenceId** | **String** | Custom reference to add to the charge | [optional] 
 

@@ -24,6 +24,8 @@ class _$PaymentMethodCard extends PaymentMethodCard {
   @override
   final String? name;
   @override
+  final String? customerIpAddress;
+  @override
   final String? brand;
   @override
   final BuiltList<JsonObject?>? fraudIndicators;
@@ -47,6 +49,7 @@ class _$PaymentMethodCard extends PaymentMethodCard {
       this.accountType,
       this.contractId,
       this.name,
+      this.customerIpAddress,
       this.brand,
       this.fraudIndicators,
       this.issuer,
@@ -77,6 +80,7 @@ class _$PaymentMethodCard extends PaymentMethodCard {
         accountType == other.accountType &&
         contractId == other.contractId &&
         name == other.name &&
+        customerIpAddress == other.customerIpAddress &&
         brand == other.brand &&
         fraudIndicators == other.fraudIndicators &&
         issuer == other.issuer &&
@@ -95,6 +99,7 @@ class _$PaymentMethodCard extends PaymentMethodCard {
     _$hash = $jc(_$hash, accountType.hashCode);
     _$hash = $jc(_$hash, contractId.hashCode);
     _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, customerIpAddress.hashCode);
     _$hash = $jc(_$hash, brand.hashCode);
     _$hash = $jc(_$hash, fraudIndicators.hashCode);
     _$hash = $jc(_$hash, issuer.hashCode);
@@ -115,6 +120,7 @@ class _$PaymentMethodCard extends PaymentMethodCard {
           ..add('accountType', accountType)
           ..add('contractId', contractId)
           ..add('name', name)
+          ..add('customerIpAddress', customerIpAddress)
           ..add('brand', brand)
           ..add('fraudIndicators', fraudIndicators)
           ..add('issuer', issuer)
@@ -164,6 +170,11 @@ class PaymentMethodCardBuilder
   String? get name => _$this._name;
   set name(covariant String? name) => _$this._name = name;
 
+  String? _customerIpAddress;
+  String? get customerIpAddress => _$this._customerIpAddress;
+  set customerIpAddress(covariant String? customerIpAddress) =>
+      _$this._customerIpAddress = customerIpAddress;
+
   String? _brand;
   String? get brand => _$this._brand;
   set brand(covariant String? brand) => _$this._brand = brand;
@@ -201,6 +212,7 @@ class PaymentMethodCardBuilder
       _accountType = $v.accountType;
       _contractId = $v.contractId;
       _name = $v.name;
+      _customerIpAddress = $v.customerIpAddress;
       _brand = $v.brand;
       _fraudIndicators = $v.fraudIndicators?.toBuilder();
       _issuer = $v.issuer;
@@ -238,6 +250,7 @@ class PaymentMethodCardBuilder
               accountType: accountType,
               contractId: contractId,
               name: name,
+              customerIpAddress: customerIpAddress,
               brand: brand,
               fraudIndicators: _fraudIndicators?.build(),
               issuer: issuer,

@@ -1,4 +1,6 @@
 ## 6.0.5 -2024-30-04
+   * Fix entities
+## 6.0.5 -2024-30-04
    * Update entities and methods
 ## 6.0.4 -2024-20-02
    * Fix generated files

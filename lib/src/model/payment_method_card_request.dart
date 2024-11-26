@@ -13,12 +13,37 @@ part 'payment_method_card_request.g.dart';
 ///
 /// Properties:
 /// * [type] - Type of payment method
-/// * [tokenId] - Token id that will be used to create a \"card\" type payment method. See the (subscriptions)[https://developers.conekta.com/v2.1.0/reference/createsubscription] tutorial for more information on how to tokenize cards.
+/// * [cvc] - Card security code
+/// * [expMonth] - Card expiration month
+/// * [expYear] - Card expiration year
+/// * [name] - Cardholder name
+/// * [number] - Card number
+/// * [customerIpAddress] - Optional field used to capture the customer's IP address for fraud prevention and security monitoring purposes
 @BuiltValue()
 abstract class PaymentMethodCardRequest implements CustomerPaymentMethodRequest, Built<PaymentMethodCardRequest, PaymentMethodCardRequestBuilder> {
-  /// Token id that will be used to create a \"card\" type payment method. See the (subscriptions)[https://developers.conekta.com/v2.1.0/reference/createsubscription] tutorial for more information on how to tokenize cards.
-  @BuiltValueField(wireName: r'token_id')
-  String get tokenId;
+  /// Card security code
+  @BuiltValueField(wireName: r'cvc')
+  String get cvc;
+
+  /// Card expiration month
+  @BuiltValueField(wireName: r'exp_month')
+  String get expMonth;
+
+  /// Card number
+  @BuiltValueField(wireName: r'number')
+  String get number;
+
+  /// Card expiration year
+  @BuiltValueField(wireName: r'exp_year')
+  String get expYear;
+
+  /// Cardholder name
+  @BuiltValueField(wireName: r'name')
+  String get name;
+
+  /// Optional field used to capture the customer's IP address for fraud prevention and security monitoring purposes
+  @BuiltValueField(wireName: r'customer_ip_address')
+  String? get customerIpAddress;
 
   PaymentMethodCardRequest._();
 
@@ -43,11 +68,38 @@ class _$PaymentMethodCardRequestSerializer implements PrimitiveSerializer<Paymen
     PaymentMethodCardRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    yield r'token_id';
+    yield r'cvc';
     yield serializers.serialize(
-      object.tokenId,
+      object.cvc,
       specifiedType: const FullType(String),
     );
+    yield r'exp_month';
+    yield serializers.serialize(
+      object.expMonth,
+      specifiedType: const FullType(String),
+    );
+    yield r'number';
+    yield serializers.serialize(
+      object.number,
+      specifiedType: const FullType(String),
+    );
+    yield r'exp_year';
+    yield serializers.serialize(
+      object.expYear,
+      specifiedType: const FullType(String),
+    );
+    yield r'name';
+    yield serializers.serialize(
+      object.name,
+      specifiedType: const FullType(String),
+    );
+    if (object.customerIpAddress != null) {
+      yield r'customer_ip_address';
+      yield serializers.serialize(
+        object.customerIpAddress,
+        specifiedType: const FullType(String),
+      );
+    }
     yield r'type';
     yield serializers.serialize(
       object.type,
@@ -76,12 +128,47 @@ class _$PaymentMethodCardRequestSerializer implements PrimitiveSerializer<Paymen
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
-        case r'token_id':
+        case r'cvc':
           final valueDes = serializers.deserialize(
             value,
             specifiedType: const FullType(String),
           ) as String;
-          result.tokenId = valueDes;
+          result.cvc = valueDes;
+          break;
+        case r'exp_month':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.expMonth = valueDes;
+          break;
+        case r'number':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.number = valueDes;
+          break;
+        case r'exp_year':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.expYear = valueDes;
+          break;
+        case r'name':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.name = valueDes;
+          break;
+        case r'customer_ip_address':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.customerIpAddress = valueDes;
           break;
         case r'type':
           final valueDes = serializers.deserialize(

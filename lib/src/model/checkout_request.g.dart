@@ -18,6 +18,8 @@ class _$CheckoutRequest extends CheckoutRequest {
   @override
   final BuiltList<int>? monthlyInstallmentsOptions;
   @override
+  final int? maxFailedRetries;
+  @override
   final String? name;
   @override
   final bool? onDemandEnabled;
@@ -37,6 +39,7 @@ class _$CheckoutRequest extends CheckoutRequest {
       this.failureUrl,
       this.monthlyInstallmentsEnabled,
       this.monthlyInstallmentsOptions,
+      this.maxFailedRetries,
       this.name,
       this.onDemandEnabled,
       this.redirectionTime,
@@ -64,6 +67,7 @@ class _$CheckoutRequest extends CheckoutRequest {
         failureUrl == other.failureUrl &&
         monthlyInstallmentsEnabled == other.monthlyInstallmentsEnabled &&
         monthlyInstallmentsOptions == other.monthlyInstallmentsOptions &&
+        maxFailedRetries == other.maxFailedRetries &&
         name == other.name &&
         onDemandEnabled == other.onDemandEnabled &&
         redirectionTime == other.redirectionTime &&
@@ -79,6 +83,7 @@ class _$CheckoutRequest extends CheckoutRequest {
     _$hash = $jc(_$hash, failureUrl.hashCode);
     _$hash = $jc(_$hash, monthlyInstallmentsEnabled.hashCode);
     _$hash = $jc(_$hash, monthlyInstallmentsOptions.hashCode);
+    _$hash = $jc(_$hash, maxFailedRetries.hashCode);
     _$hash = $jc(_$hash, name.hashCode);
     _$hash = $jc(_$hash, onDemandEnabled.hashCode);
     _$hash = $jc(_$hash, redirectionTime.hashCode);
@@ -96,6 +101,7 @@ class _$CheckoutRequest extends CheckoutRequest {
           ..add('failureUrl', failureUrl)
           ..add('monthlyInstallmentsEnabled', monthlyInstallmentsEnabled)
           ..add('monthlyInstallmentsOptions', monthlyInstallmentsOptions)
+          ..add('maxFailedRetries', maxFailedRetries)
           ..add('name', name)
           ..add('onDemandEnabled', onDemandEnabled)
           ..add('redirectionTime', redirectionTime)
@@ -135,6 +141,11 @@ class CheckoutRequestBuilder
           ListBuilder<int>? monthlyInstallmentsOptions) =>
       _$this._monthlyInstallmentsOptions = monthlyInstallmentsOptions;
 
+  int? _maxFailedRetries;
+  int? get maxFailedRetries => _$this._maxFailedRetries;
+  set maxFailedRetries(int? maxFailedRetries) =>
+      _$this._maxFailedRetries = maxFailedRetries;
+
   String? _name;
   String? get name => _$this._name;
   set name(String? name) => _$this._name = name;
@@ -169,6 +180,7 @@ class CheckoutRequestBuilder
       _failureUrl = $v.failureUrl;
       _monthlyInstallmentsEnabled = $v.monthlyInstallmentsEnabled;
       _monthlyInstallmentsOptions = $v.monthlyInstallmentsOptions?.toBuilder();
+      _maxFailedRetries = $v.maxFailedRetries;
       _name = $v.name;
       _onDemandEnabled = $v.onDemandEnabled;
       _redirectionTime = $v.redirectionTime;
@@ -203,6 +215,7 @@ class CheckoutRequestBuilder
               failureUrl: failureUrl,
               monthlyInstallmentsEnabled: monthlyInstallmentsEnabled,
               monthlyInstallmentsOptions: _monthlyInstallmentsOptions?.build(),
+              maxFailedRetries: maxFailedRetries,
               name: name,
               onDemandEnabled: onDemandEnabled,
               redirectionTime: redirectionTime,

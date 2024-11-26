@@ -3,7 +3,7 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:conekta/src/model/payment_method_card_request.dart';
+import 'package:conekta/src/model/payment_method_token_request.dart';
 import 'package:conekta/src/model/payment_method_cash_request.dart';
 import 'package:conekta/src/model/payment_method_spei_request.dart';
 import 'package:built_value/built_value.dart';
@@ -20,7 +20,7 @@ part 'create_customer_payment_methods_request.g.dart';
 /// * [expiresAt] 
 @BuiltValue()
 abstract class CreateCustomerPaymentMethodsRequest implements Built<CreateCustomerPaymentMethodsRequest, CreateCustomerPaymentMethodsRequestBuilder> {
-  /// One Of [PaymentMethodCardRequest], [PaymentMethodCashRequest], [PaymentMethodSpeiRequest]
+  /// One Of [PaymentMethodCashRequest], [PaymentMethodSpeiRequest], [PaymentMethodTokenRequest]
   OneOf get oneOf;
 
   CreateCustomerPaymentMethodsRequest._();
@@ -66,7 +66,7 @@ class _$CreateCustomerPaymentMethodsRequestSerializer implements PrimitiveSerial
   }) {
     final result = CreateCustomerPaymentMethodsRequestBuilder();
     Object? oneOfDataSrc;
-    final targetType = const FullType(OneOf, [FullType(PaymentMethodCardRequest), FullType(PaymentMethodCashRequest), FullType(PaymentMethodSpeiRequest), ]);
+    final targetType = const FullType(OneOf, [FullType(PaymentMethodTokenRequest), FullType(PaymentMethodCashRequest), FullType(PaymentMethodSpeiRequest), ]);
     oneOfDataSrc = serialized;
     result.oneOf = serializers.deserialize(oneOfDataSrc, specifiedType: targetType) as OneOf;
     return result.build();

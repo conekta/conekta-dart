@@ -10,6 +10,8 @@ class _$UpdateCustomer extends UpdateCustomer {
   @override
   final UpdateCustomerAntifraudInfo? antifraudInfo;
   @override
+  final String? dateOfBirth;
+  @override
   final String? defaultPaymentSourceId;
   @override
   final String? email;
@@ -30,6 +32,8 @@ class _$UpdateCustomer extends UpdateCustomer {
   @override
   final BuiltMap<String, JsonObject?>? metadata;
   @override
+  final String? nationalId;
+  @override
   final BuiltList<CustomerPaymentMethodsRequest>? paymentSources;
   @override
   final BuiltList<CustomerShippingContacts>? shippingContacts;
@@ -41,6 +45,7 @@ class _$UpdateCustomer extends UpdateCustomer {
 
   _$UpdateCustomer._(
       {this.antifraudInfo,
+      this.dateOfBirth,
       this.defaultPaymentSourceId,
       this.email,
       this.name,
@@ -51,6 +56,7 @@ class _$UpdateCustomer extends UpdateCustomer {
       this.customReference,
       this.fiscalEntities,
       this.metadata,
+      this.nationalId,
       this.paymentSources,
       this.shippingContacts,
       this.subscription})
@@ -69,6 +75,7 @@ class _$UpdateCustomer extends UpdateCustomer {
     if (identical(other, this)) return true;
     return other is UpdateCustomer &&
         antifraudInfo == other.antifraudInfo &&
+        dateOfBirth == other.dateOfBirth &&
         defaultPaymentSourceId == other.defaultPaymentSourceId &&
         email == other.email &&
         name == other.name &&
@@ -79,6 +86,7 @@ class _$UpdateCustomer extends UpdateCustomer {
         customReference == other.customReference &&
         fiscalEntities == other.fiscalEntities &&
         metadata == other.metadata &&
+        nationalId == other.nationalId &&
         paymentSources == other.paymentSources &&
         shippingContacts == other.shippingContacts &&
         subscription == other.subscription;
@@ -88,6 +96,7 @@ class _$UpdateCustomer extends UpdateCustomer {
   int get hashCode {
     var _$hash = 0;
     _$hash = $jc(_$hash, antifraudInfo.hashCode);
+    _$hash = $jc(_$hash, dateOfBirth.hashCode);
     _$hash = $jc(_$hash, defaultPaymentSourceId.hashCode);
     _$hash = $jc(_$hash, email.hashCode);
     _$hash = $jc(_$hash, name.hashCode);
@@ -98,6 +107,7 @@ class _$UpdateCustomer extends UpdateCustomer {
     _$hash = $jc(_$hash, customReference.hashCode);
     _$hash = $jc(_$hash, fiscalEntities.hashCode);
     _$hash = $jc(_$hash, metadata.hashCode);
+    _$hash = $jc(_$hash, nationalId.hashCode);
     _$hash = $jc(_$hash, paymentSources.hashCode);
     _$hash = $jc(_$hash, shippingContacts.hashCode);
     _$hash = $jc(_$hash, subscription.hashCode);
@@ -109,6 +119,7 @@ class _$UpdateCustomer extends UpdateCustomer {
   String toString() {
     return (newBuiltValueToStringHelper(r'UpdateCustomer')
           ..add('antifraudInfo', antifraudInfo)
+          ..add('dateOfBirth', dateOfBirth)
           ..add('defaultPaymentSourceId', defaultPaymentSourceId)
           ..add('email', email)
           ..add('name', name)
@@ -119,6 +130,7 @@ class _$UpdateCustomer extends UpdateCustomer {
           ..add('customReference', customReference)
           ..add('fiscalEntities', fiscalEntities)
           ..add('metadata', metadata)
+          ..add('nationalId', nationalId)
           ..add('paymentSources', paymentSources)
           ..add('shippingContacts', shippingContacts)
           ..add('subscription', subscription))
@@ -135,6 +147,10 @@ class UpdateCustomerBuilder
       _$this._antifraudInfo ??= new UpdateCustomerAntifraudInfoBuilder();
   set antifraudInfo(UpdateCustomerAntifraudInfoBuilder? antifraudInfo) =>
       _$this._antifraudInfo = antifraudInfo;
+
+  String? _dateOfBirth;
+  String? get dateOfBirth => _$this._dateOfBirth;
+  set dateOfBirth(String? dateOfBirth) => _$this._dateOfBirth = dateOfBirth;
 
   String? _defaultPaymentSourceId;
   String? get defaultPaymentSourceId => _$this._defaultPaymentSourceId;
@@ -185,6 +201,10 @@ class UpdateCustomerBuilder
   set metadata(MapBuilder<String, JsonObject?>? metadata) =>
       _$this._metadata = metadata;
 
+  String? _nationalId;
+  String? get nationalId => _$this._nationalId;
+  set nationalId(String? nationalId) => _$this._nationalId = nationalId;
+
   ListBuilder<CustomerPaymentMethodsRequest>? _paymentSources;
   ListBuilder<CustomerPaymentMethodsRequest> get paymentSources =>
       _$this._paymentSources ??=
@@ -214,6 +234,7 @@ class UpdateCustomerBuilder
     final $v = _$v;
     if ($v != null) {
       _antifraudInfo = $v.antifraudInfo?.toBuilder();
+      _dateOfBirth = $v.dateOfBirth;
       _defaultPaymentSourceId = $v.defaultPaymentSourceId;
       _email = $v.email;
       _name = $v.name;
@@ -224,6 +245,7 @@ class UpdateCustomerBuilder
       _customReference = $v.customReference;
       _fiscalEntities = $v.fiscalEntities?.toBuilder();
       _metadata = $v.metadata?.toBuilder();
+      _nationalId = $v.nationalId;
       _paymentSources = $v.paymentSources?.toBuilder();
       _shippingContacts = $v.shippingContacts?.toBuilder();
       _subscription = $v.subscription?.toBuilder();
@@ -252,6 +274,7 @@ class UpdateCustomerBuilder
       _$result = _$v ??
           new _$UpdateCustomer._(
               antifraudInfo: _antifraudInfo?.build(),
+              dateOfBirth: dateOfBirth,
               defaultPaymentSourceId: defaultPaymentSourceId,
               email: email,
               name: name,
@@ -262,6 +285,7 @@ class UpdateCustomerBuilder
               customReference: customReference,
               fiscalEntities: _fiscalEntities?.build(),
               metadata: _metadata?.build(),
+              nationalId: nationalId,
               paymentSources: _paymentSources?.build(),
               shippingContacts: _shippingContacts?.build(),
               subscription: _subscription?.build());
@@ -275,6 +299,7 @@ class UpdateCustomerBuilder
         _fiscalEntities?.build();
         _$failedField = 'metadata';
         _metadata?.build();
+
         _$failedField = 'paymentSources';
         _paymentSources?.build();
         _$failedField = 'shippingContacts';

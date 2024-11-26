@@ -32,6 +32,7 @@ part 'payment_method_bank_transfer.g.dart';
 /// * [receivingAccountTaxId] 
 /// * [referenceNumber] 
 /// * [trackingCode] 
+/// * [customerIpAddress] 
 @BuiltValue()
 abstract class PaymentMethodBankTransfer implements PaymentMethod, Built<PaymentMethodBankTransfer, PaymentMethodBankTransferBuilder> {
   @BuiltValueField(wireName: r'issuing_account_bank')
@@ -51,6 +52,9 @@ abstract class PaymentMethodBankTransfer implements PaymentMethod, Built<Payment
 
   @BuiltValueField(wireName: r'tracking_code')
   String? get trackingCode;
+
+  @BuiltValueField(wireName: r'customer_ip_address')
+  String? get customerIpAddress;
 
   @BuiltValueField(wireName: r'expires_at')
   int? get expiresAt;
@@ -145,6 +149,13 @@ class _$PaymentMethodBankTransferSerializer implements PrimitiveSerializer<Payme
       yield serializers.serialize(
         object.trackingCode,
         specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.customerIpAddress != null) {
+      yield r'customer_ip_address';
+      yield serializers.serialize(
+        object.customerIpAddress,
+        specifiedType: const FullType(String),
       );
     }
     if (object.type != null) {
@@ -298,6 +309,13 @@ class _$PaymentMethodBankTransferSerializer implements PrimitiveSerializer<Payme
           ) as String?;
           if (valueDes == null) continue;
           result.trackingCode = valueDes;
+          break;
+        case r'customer_ip_address':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.customerIpAddress = valueDes;
           break;
         case r'type':
           final valueDes = serializers.deserialize(
