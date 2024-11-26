@@ -14,6 +14,8 @@ class _$SubscriptionResponse extends SubscriptionResponse {
   @override
   final int? canceledAt;
   @override
+  final String? canceledReason;
+  @override
   final String? cardId;
   @override
   final String? chargeId;
@@ -50,6 +52,7 @@ class _$SubscriptionResponse extends SubscriptionResponse {
       {this.billingCycleStart,
       this.billingCycleEnd,
       this.canceledAt,
+      this.canceledReason,
       this.cardId,
       this.chargeId,
       this.createdAt,
@@ -82,6 +85,7 @@ class _$SubscriptionResponse extends SubscriptionResponse {
         billingCycleStart == other.billingCycleStart &&
         billingCycleEnd == other.billingCycleEnd &&
         canceledAt == other.canceledAt &&
+        canceledReason == other.canceledReason &&
         cardId == other.cardId &&
         chargeId == other.chargeId &&
         createdAt == other.createdAt &&
@@ -104,6 +108,7 @@ class _$SubscriptionResponse extends SubscriptionResponse {
     _$hash = $jc(_$hash, billingCycleStart.hashCode);
     _$hash = $jc(_$hash, billingCycleEnd.hashCode);
     _$hash = $jc(_$hash, canceledAt.hashCode);
+    _$hash = $jc(_$hash, canceledReason.hashCode);
     _$hash = $jc(_$hash, cardId.hashCode);
     _$hash = $jc(_$hash, chargeId.hashCode);
     _$hash = $jc(_$hash, createdAt.hashCode);
@@ -128,6 +133,7 @@ class _$SubscriptionResponse extends SubscriptionResponse {
           ..add('billingCycleStart', billingCycleStart)
           ..add('billingCycleEnd', billingCycleEnd)
           ..add('canceledAt', canceledAt)
+          ..add('canceledReason', canceledReason)
           ..add('cardId', cardId)
           ..add('chargeId', chargeId)
           ..add('createdAt', createdAt)
@@ -163,6 +169,11 @@ class SubscriptionResponseBuilder
   int? _canceledAt;
   int? get canceledAt => _$this._canceledAt;
   set canceledAt(int? canceledAt) => _$this._canceledAt = canceledAt;
+
+  String? _canceledReason;
+  String? get canceledReason => _$this._canceledReason;
+  set canceledReason(String? canceledReason) =>
+      _$this._canceledReason = canceledReason;
 
   String? _cardId;
   String? get cardId => _$this._cardId;
@@ -233,6 +244,7 @@ class SubscriptionResponseBuilder
       _billingCycleStart = $v.billingCycleStart;
       _billingCycleEnd = $v.billingCycleEnd;
       _canceledAt = $v.canceledAt;
+      _canceledReason = $v.canceledReason;
       _cardId = $v.cardId;
       _chargeId = $v.chargeId;
       _createdAt = $v.createdAt;
@@ -272,6 +284,7 @@ class SubscriptionResponseBuilder
             billingCycleStart: billingCycleStart,
             billingCycleEnd: billingCycleEnd,
             canceledAt: canceledAt,
+            canceledReason: canceledReason,
             cardId: cardId,
             chargeId: chargeId,
             createdAt: createdAt,

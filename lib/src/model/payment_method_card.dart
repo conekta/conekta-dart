@@ -16,34 +16,40 @@ part 'payment_method_card.g.dart';
 /// Properties:
 /// * [type] 
 /// * [object] 
-/// * [accountType] 
+/// * [accountType] - Account type of the card
 /// * [authCode] 
-/// * [brand] 
+/// * [brand] - Brand of the card
 /// * [contractId] - Id sent for recurrent charges.
-/// * [country] 
-/// * [expMonth] 
-/// * [expYear] 
+/// * [country] - Country of the card
+/// * [expMonth] - Expiration month of the card
+/// * [expYear] - Expiration year of the card
 /// * [fraudIndicators] 
-/// * [issuer] 
-/// * [last4] 
-/// * [name] 
+/// * [issuer] - Issuer of the card
+/// * [last4] - Last 4 digits of the card
+/// * [name] - Name of the cardholder
+/// * [customerIpAddress] - Optional field used to capture the customer's IP address for fraud prevention and security monitoring purposes
 @BuiltValue()
 abstract class PaymentMethodCard implements PaymentMethod, Built<PaymentMethodCard, PaymentMethodCardBuilder> {
+  /// Country of the card
   @BuiltValueField(wireName: r'country')
   String? get country;
 
+  /// Expiration month of the card
   @BuiltValueField(wireName: r'exp_month')
   String? get expMonth;
 
+  /// Last 4 digits of the card
   @BuiltValueField(wireName: r'last4')
   String? get last4;
 
   @BuiltValueField(wireName: r'auth_code')
   String? get authCode;
 
+  /// Expiration year of the card
   @BuiltValueField(wireName: r'exp_year')
   String? get expYear;
 
+  /// Account type of the card
   @BuiltValueField(wireName: r'account_type')
   String? get accountType;
 
@@ -51,15 +57,22 @@ abstract class PaymentMethodCard implements PaymentMethod, Built<PaymentMethodCa
   @BuiltValueField(wireName: r'contract_id')
   String? get contractId;
 
+  /// Name of the cardholder
   @BuiltValueField(wireName: r'name')
   String? get name;
 
+  /// Optional field used to capture the customer's IP address for fraud prevention and security monitoring purposes
+  @BuiltValueField(wireName: r'customer_ip_address')
+  String? get customerIpAddress;
+
+  /// Brand of the card
   @BuiltValueField(wireName: r'brand')
   String? get brand;
 
   @BuiltValueField(wireName: r'fraud_indicators')
   BuiltList<JsonObject?>? get fraudIndicators;
 
+  /// Issuer of the card
   @BuiltValueField(wireName: r'issuer')
   String? get issuer;
 
@@ -111,6 +124,13 @@ class _$PaymentMethodCardSerializer implements PrimitiveSerializer<PaymentMethod
       yield r'account_type';
       yield serializers.serialize(
         object.accountType,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.customerIpAddress != null) {
+      yield r'customer_ip_address';
+      yield serializers.serialize(
+        object.customerIpAddress,
         specifiedType: const FullType(String),
       );
     }
@@ -225,6 +245,13 @@ class _$PaymentMethodCardSerializer implements PrimitiveSerializer<PaymentMethod
             specifiedType: const FullType(String),
           ) as String;
           result.accountType = valueDes;
+          break;
+        case r'customer_ip_address':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.customerIpAddress = valueDes;
           break;
         case r'type':
           final valueDes = serializers.deserialize(

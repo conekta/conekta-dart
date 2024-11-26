@@ -4,6 +4,7 @@
 
 import 'dart:async';
 
+import 'package:built_value/json_object.dart';
 import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
@@ -12,6 +13,7 @@ import 'package:conekta/src/model/charge_order_response.dart';
 import 'package:conekta/src/model/charge_request.dart';
 import 'package:conekta/src/model/charge_response.dart';
 import 'package:conekta/src/model/charge_update_request.dart';
+import 'package:conekta/src/model/charges_order_response.dart';
 import 'package:conekta/src/model/error.dart';
 import 'package:conekta/src/model/get_charges_response.dart';
 import 'package:conekta/src/utils/utils.dart';
@@ -71,7 +73,7 @@ class ChargesApi {
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/6.0.5',
+        r'User-Agent': r'Conekta/v2 DartBindings/6.0.6',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
@@ -183,7 +185,7 @@ class ChargesApi {
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/6.0.5',
+        r'User-Agent': r'Conekta/v2 DartBindings/6.0.6',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
@@ -263,6 +265,130 @@ class ChargesApi {
     );
   }
 
+  /// Create charges
+  /// Create charges for an existing orden
+  ///
+  /// Parameters:
+  /// * [id] - Identifier of the resource
+  /// * [chargeRequest] - requested field for a charge
+  /// * [acceptLanguage] - Use for knowing which language to use
+  /// * [xChildCompanyId] - In the case of a holding company, the company id of the child company to which will process the request.
+  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
+  /// * [headers] - Can be used to add additional headers to the request
+  /// * [extras] - Can be used to add flags to the request
+  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
+  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
+  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
+  ///
+  /// Returns a [Future] containing a [Response] with a [ChargesOrderResponse] as data
+  /// Throws [DioException] if API call or serialization fails
+  Future<Response<ChargesOrderResponse>> ordersCreateCharges({ 
+    required String id,
+    required ChargeRequest chargeRequest,
+    String? acceptLanguage = 'es',
+    String? xChildCompanyId,
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/orders/{id}/add_charges'.replaceAll('{' r'id' '}', encodeQueryParameter(_serializers, id, const FullType(String)).toString());
+    // to determine the Accept header
+    List<String> _contentTypes = [ 
+        "application/json"
+    ];
+    var localVarContentType = selectHeaderContentType(_contentTypes);
+
+    // to determine the Accept header
+    List<String> _accepts = [ 
+        "application/vnd.conekta-v2.1.0+json"
+    ];
+    final localVarAccept = selectHeaderAccept(_accepts);
+    final _options = Options(
+      method: r'POST',
+      headers: <String, dynamic>{
+        r'User-Agent': r'Conekta/v2 DartBindings/6.0.6',
+        if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
+        if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
+        if (localVarAccept != null) r'Accept': localVarAccept,
+        if (localVarContentType != null) r'Content-Type': localVarContentType,
+        r'X-Conekta-Client-User-Agent' : getConektaClientUserAgent(),
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'http',
+            'scheme': 'bearer',
+            'name': 'bearerAuth',
+          },
+        ],
+        ...?extra,
+      },
+      contentType: 'application/json',
+      validateStatus: validateStatus,
+    );
+
+    dynamic _bodyData;
+
+    try {
+      const _type = FullType(ChargeRequest);
+      _bodyData = _serializers.serialize(chargeRequest, specifiedType: _type);
+
+    } catch(error, stackTrace) {
+      throw DioException(
+         requestOptions: _options.compose(
+          _dio.options,
+          _path,
+        ),
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    final _response = await _dio.request<Object>(
+      _path,
+      data: _bodyData,
+      options: _options,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    ChargesOrderResponse? _responseData;
+
+    try {
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(ChargesOrderResponse),
+      ) as ChargesOrderResponse;
+
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    return Response<ChargesOrderResponse>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
+  }
+
   /// Update a charge
   /// 
   ///
@@ -307,7 +433,7 @@ class ChargesApi {
     final _options = Options(
       method: r'PUT',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/6.0.5',
+        r'User-Agent': r'Conekta/v2 DartBindings/6.0.6',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,

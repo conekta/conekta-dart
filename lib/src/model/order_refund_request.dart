@@ -11,17 +11,19 @@ part 'order_refund_request.g.dart';
 /// OrderRefundRequest
 ///
 /// Properties:
-/// * [amount] 
+/// * [amount] - Amount to be refunded in cents
 /// * [expiresAt] 
-/// * [reason] 
+/// * [reason] - Reason for the refund
 @BuiltValue()
 abstract class OrderRefundRequest implements Built<OrderRefundRequest, OrderRefundRequestBuilder> {
+  /// Amount to be refunded in cents
   @BuiltValueField(wireName: r'amount')
   int get amount;
 
   @BuiltValueField(wireName: r'expires_at')
   int? get expiresAt;
 
+  /// Reason for the refund
   @BuiltValueField(wireName: r'reason')
   String get reason;
 

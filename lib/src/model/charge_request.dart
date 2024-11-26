@@ -12,11 +12,12 @@ part 'charge_request.g.dart';
 /// The charges to be made
 ///
 /// Properties:
-/// * [amount] 
+/// * [amount] - Amount to be charged in cents
 /// * [paymentMethod] 
 /// * [referenceId] - Custom reference to add to the charge
 @BuiltValue()
 abstract class ChargeRequest implements Built<ChargeRequest, ChargeRequestBuilder> {
+  /// Amount to be charged in cents
   @BuiltValueField(wireName: r'amount')
   int? get amount;
 

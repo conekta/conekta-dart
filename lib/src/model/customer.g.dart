@@ -14,6 +14,8 @@ class _$Customer extends Customer {
   @override
   final String? customReference;
   @override
+  final String? dateOfBirth;
+  @override
   final String email;
   @override
   final String? defaultPaymentSourceId;
@@ -25,6 +27,8 @@ class _$Customer extends Customer {
   final BuiltMap<String, JsonObject?>? metadata;
   @override
   final String name;
+  @override
+  final String? nationalId;
   @override
   final BuiltList<CustomerPaymentMethodsRequest>? paymentSources;
   @override
@@ -43,12 +47,14 @@ class _$Customer extends Customer {
       {this.antifraudInfo,
       this.corporate,
       this.customReference,
+      this.dateOfBirth,
       required this.email,
       this.defaultPaymentSourceId,
       this.defaultShippingContactId,
       this.fiscalEntities,
       this.metadata,
       required this.name,
+      this.nationalId,
       this.paymentSources,
       required this.phone,
       this.planId,
@@ -74,12 +80,14 @@ class _$Customer extends Customer {
         antifraudInfo == other.antifraudInfo &&
         corporate == other.corporate &&
         customReference == other.customReference &&
+        dateOfBirth == other.dateOfBirth &&
         email == other.email &&
         defaultPaymentSourceId == other.defaultPaymentSourceId &&
         defaultShippingContactId == other.defaultShippingContactId &&
         fiscalEntities == other.fiscalEntities &&
         metadata == other.metadata &&
         name == other.name &&
+        nationalId == other.nationalId &&
         paymentSources == other.paymentSources &&
         phone == other.phone &&
         planId == other.planId &&
@@ -93,12 +101,14 @@ class _$Customer extends Customer {
     _$hash = $jc(_$hash, antifraudInfo.hashCode);
     _$hash = $jc(_$hash, corporate.hashCode);
     _$hash = $jc(_$hash, customReference.hashCode);
+    _$hash = $jc(_$hash, dateOfBirth.hashCode);
     _$hash = $jc(_$hash, email.hashCode);
     _$hash = $jc(_$hash, defaultPaymentSourceId.hashCode);
     _$hash = $jc(_$hash, defaultShippingContactId.hashCode);
     _$hash = $jc(_$hash, fiscalEntities.hashCode);
     _$hash = $jc(_$hash, metadata.hashCode);
     _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, nationalId.hashCode);
     _$hash = $jc(_$hash, paymentSources.hashCode);
     _$hash = $jc(_$hash, phone.hashCode);
     _$hash = $jc(_$hash, planId.hashCode);
@@ -114,12 +124,14 @@ class _$Customer extends Customer {
           ..add('antifraudInfo', antifraudInfo)
           ..add('corporate', corporate)
           ..add('customReference', customReference)
+          ..add('dateOfBirth', dateOfBirth)
           ..add('email', email)
           ..add('defaultPaymentSourceId', defaultPaymentSourceId)
           ..add('defaultShippingContactId', defaultShippingContactId)
           ..add('fiscalEntities', fiscalEntities)
           ..add('metadata', metadata)
           ..add('name', name)
+          ..add('nationalId', nationalId)
           ..add('paymentSources', paymentSources)
           ..add('phone', phone)
           ..add('planId', planId)
@@ -146,6 +158,10 @@ class CustomerBuilder implements Builder<Customer, CustomerBuilder> {
   String? get customReference => _$this._customReference;
   set customReference(String? customReference) =>
       _$this._customReference = customReference;
+
+  String? _dateOfBirth;
+  String? get dateOfBirth => _$this._dateOfBirth;
+  set dateOfBirth(String? dateOfBirth) => _$this._dateOfBirth = dateOfBirth;
 
   String? _email;
   String? get email => _$this._email;
@@ -178,6 +194,10 @@ class CustomerBuilder implements Builder<Customer, CustomerBuilder> {
   String? _name;
   String? get name => _$this._name;
   set name(String? name) => _$this._name = name;
+
+  String? _nationalId;
+  String? get nationalId => _$this._nationalId;
+  set nationalId(String? nationalId) => _$this._nationalId = nationalId;
 
   ListBuilder<CustomerPaymentMethodsRequest>? _paymentSources;
   ListBuilder<CustomerPaymentMethodsRequest> get paymentSources =>
@@ -218,12 +238,14 @@ class CustomerBuilder implements Builder<Customer, CustomerBuilder> {
       _antifraudInfo = $v.antifraudInfo?.toBuilder();
       _corporate = $v.corporate;
       _customReference = $v.customReference;
+      _dateOfBirth = $v.dateOfBirth;
       _email = $v.email;
       _defaultPaymentSourceId = $v.defaultPaymentSourceId;
       _defaultShippingContactId = $v.defaultShippingContactId;
       _fiscalEntities = $v.fiscalEntities?.toBuilder();
       _metadata = $v.metadata?.toBuilder();
       _name = $v.name;
+      _nationalId = $v.nationalId;
       _paymentSources = $v.paymentSources?.toBuilder();
       _phone = $v.phone;
       _planId = $v.planId;
@@ -256,6 +278,7 @@ class CustomerBuilder implements Builder<Customer, CustomerBuilder> {
               antifraudInfo: _antifraudInfo?.build(),
               corporate: corporate,
               customReference: customReference,
+              dateOfBirth: dateOfBirth,
               email: BuiltValueNullFieldError.checkNotNull(
                   email, r'Customer', 'email'),
               defaultPaymentSourceId: defaultPaymentSourceId,
@@ -264,6 +287,7 @@ class CustomerBuilder implements Builder<Customer, CustomerBuilder> {
               metadata: _metadata?.build(),
               name: BuiltValueNullFieldError.checkNotNull(
                   name, r'Customer', 'name'),
+              nationalId: nationalId,
               paymentSources: _paymentSources?.build(),
               phone: BuiltValueNullFieldError.checkNotNull(
                   phone, r'Customer', 'phone'),

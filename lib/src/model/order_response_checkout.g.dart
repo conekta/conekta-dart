@@ -28,6 +28,8 @@ class _$OrderResponseCheckout extends OrderResponseCheckout {
   @override
   final bool? livemode;
   @override
+  final int? maxFailedRetries;
+  @override
   final BuiltMap<String, JsonObject?>? metadata;
   @override
   final bool? monthlyInstallmentsEnabled;
@@ -77,6 +79,7 @@ class _$OrderResponseCheckout extends OrderResponseCheckout {
       this.id,
       this.isRedirectOnFailure,
       this.livemode,
+      this.maxFailedRetries,
       this.metadata,
       this.monthlyInstallmentsEnabled,
       this.monthlyInstallmentsOptions,
@@ -119,6 +122,7 @@ class _$OrderResponseCheckout extends OrderResponseCheckout {
         id == other.id &&
         isRedirectOnFailure == other.isRedirectOnFailure &&
         livemode == other.livemode &&
+        maxFailedRetries == other.maxFailedRetries &&
         metadata == other.metadata &&
         monthlyInstallmentsEnabled == other.monthlyInstallmentsEnabled &&
         monthlyInstallmentsOptions == other.monthlyInstallmentsOptions &&
@@ -151,6 +155,7 @@ class _$OrderResponseCheckout extends OrderResponseCheckout {
     _$hash = $jc(_$hash, id.hashCode);
     _$hash = $jc(_$hash, isRedirectOnFailure.hashCode);
     _$hash = $jc(_$hash, livemode.hashCode);
+    _$hash = $jc(_$hash, maxFailedRetries.hashCode);
     _$hash = $jc(_$hash, metadata.hashCode);
     _$hash = $jc(_$hash, monthlyInstallmentsEnabled.hashCode);
     _$hash = $jc(_$hash, monthlyInstallmentsOptions.hashCode);
@@ -185,6 +190,7 @@ class _$OrderResponseCheckout extends OrderResponseCheckout {
           ..add('id', id)
           ..add('isRedirectOnFailure', isRedirectOnFailure)
           ..add('livemode', livemode)
+          ..add('maxFailedRetries', maxFailedRetries)
           ..add('metadata', metadata)
           ..add('monthlyInstallmentsEnabled', monthlyInstallmentsEnabled)
           ..add('monthlyInstallmentsOptions', monthlyInstallmentsOptions)
@@ -254,6 +260,11 @@ class OrderResponseCheckoutBuilder
   bool? _livemode;
   bool? get livemode => _$this._livemode;
   set livemode(bool? livemode) => _$this._livemode = livemode;
+
+  int? _maxFailedRetries;
+  int? get maxFailedRetries => _$this._maxFailedRetries;
+  set maxFailedRetries(int? maxFailedRetries) =>
+      _$this._maxFailedRetries = maxFailedRetries;
 
   MapBuilder<String, JsonObject?>? _metadata;
   MapBuilder<String, JsonObject?> get metadata =>
@@ -350,6 +361,7 @@ class OrderResponseCheckoutBuilder
       _id = $v.id;
       _isRedirectOnFailure = $v.isRedirectOnFailure;
       _livemode = $v.livemode;
+      _maxFailedRetries = $v.maxFailedRetries;
       _metadata = $v.metadata?.toBuilder();
       _monthlyInstallmentsEnabled = $v.monthlyInstallmentsEnabled;
       _monthlyInstallmentsOptions = $v.monthlyInstallmentsOptions?.toBuilder();
@@ -401,6 +413,7 @@ class OrderResponseCheckoutBuilder
               id: id,
               isRedirectOnFailure: isRedirectOnFailure,
               livemode: livemode,
+              maxFailedRetries: maxFailedRetries,
               metadata: _metadata?.build(),
               monthlyInstallmentsEnabled: monthlyInstallmentsEnabled,
               monthlyInstallmentsOptions: _monthlyInstallmentsOptions?.build(),

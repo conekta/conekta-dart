@@ -23,11 +23,11 @@ part 'charge_response.g.dart';
 /// * [deviceFingerprint] 
 /// * [failureCode] 
 /// * [failureMessage] 
-/// * [id] 
-/// * [livemode] 
+/// * [id] - Charge ID
+/// * [livemode] - Whether the charge was made in live mode or not
 /// * [object] 
-/// * [orderId] 
-/// * [paidAt] 
+/// * [orderId] - Order ID
+/// * [paidAt] - Payment date
 /// * [paymentMethod] 
 /// * [referenceId] - Reference ID of the charge
 /// * [refunds] 
@@ -61,18 +61,22 @@ abstract class ChargeResponse  {
   @BuiltValueField(wireName: r'failure_message')
   String? get failureMessage;
 
+  /// Charge ID
   @BuiltValueField(wireName: r'id')
   String? get id;
 
+  /// Whether the charge was made in live mode or not
   @BuiltValueField(wireName: r'livemode')
   bool? get livemode;
 
   @BuiltValueField(wireName: r'object')
   String? get object;
 
+  /// Order ID
   @BuiltValueField(wireName: r'order_id')
   String? get orderId;
 
+  /// Payment date
   @BuiltValueField(wireName: r'paid_at')
   int? get paidAt;
 

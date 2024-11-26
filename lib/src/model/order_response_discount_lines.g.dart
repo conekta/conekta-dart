@@ -8,7 +8,7 @@ part of 'order_response_discount_lines.dart';
 
 class _$OrderResponseDiscountLines extends OrderResponseDiscountLines {
   @override
-  final BuiltList<DiscountLinesDataResponse>? data;
+  final BuiltList<DiscountLinesResponse>? data;
   @override
   final bool hasMore;
   @override
@@ -71,10 +71,10 @@ class OrderResponseDiscountLinesBuilder
         PaginationBuilder {
   _$OrderResponseDiscountLines? _$v;
 
-  ListBuilder<DiscountLinesDataResponse>? _data;
-  ListBuilder<DiscountLinesDataResponse> get data =>
-      _$this._data ??= new ListBuilder<DiscountLinesDataResponse>();
-  set data(covariant ListBuilder<DiscountLinesDataResponse>? data) =>
+  ListBuilder<DiscountLinesResponse>? _data;
+  ListBuilder<DiscountLinesResponse> get data =>
+      _$this._data ??= new ListBuilder<DiscountLinesResponse>();
+  set data(covariant ListBuilder<DiscountLinesResponse>? data) =>
       _$this._data = data;
 
   bool? _hasMore;

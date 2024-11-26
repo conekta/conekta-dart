@@ -44,6 +44,8 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(ChargeResponseRefundsData.serializer)
       ..add(ChargeUpdateRequest.serializer)
       ..add(ChargesDataResponse.serializer)
+      ..add(ChargesOrderResponse.serializer)
+      ..add(ChargesOrderResponseAllOfData.serializer)
       ..add(Checkout.serializer)
       ..add(CheckoutOrderTemplate.serializer)
       ..add(CheckoutOrderTemplateCustomerInfo.serializer)
@@ -134,8 +136,10 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(PaymentMethodCash.serializer)
       ..add(PaymentMethodCashRequest.serializer)
       ..add(PaymentMethodCashResponse.serializer)
+      ..add(PaymentMethodGeneralRequest.serializer)
       ..add(PaymentMethodSpeiRecurrent.serializer)
       ..add(PaymentMethodSpeiRequest.serializer)
+      ..add(PaymentMethodTokenRequest.serializer)
       ..add(Payout.serializer)
       ..add(PayoutMethod.serializer)
       ..add(PayoutOrder.serializer)
@@ -262,13 +266,16 @@ Serializers _$serializers = (new Serializers().toBuilder()
           const FullType(BuiltList, const [const FullType(ChargeResponse)]),
           () => new ListBuilder<ChargeResponse>())
       ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(ChargeResponse)]),
+          () => new ListBuilder<ChargeResponse>())
+      ..addBuilderFactory(
           const FullType(
               BuiltList, const [const FullType(ChargeResponseRefundsData)]),
           () => new ListBuilder<ChargeResponseRefundsData>())
       ..addBuilderFactory(
           const FullType(
-              BuiltList, const [const FullType(ChargesDataResponse)]),
-          () => new ListBuilder<ChargesDataResponse>())
+              BuiltList, const [const FullType(ChargesOrderResponseAllOfData)]),
+          () => new ListBuilder<ChargesOrderResponseAllOfData>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(CheckoutResponse)]),
           () => new ListBuilder<CheckoutResponse>())
@@ -334,8 +341,8 @@ Serializers _$serializers = (new Serializers().toBuilder()
           () => new ListBuilder<DetailsError>())
       ..addBuilderFactory(
           const FullType(
-              BuiltList, const [const FullType(DiscountLinesDataResponse)]),
-          () => new ListBuilder<DiscountLinesDataResponse>())
+              BuiltList, const [const FullType(DiscountLinesResponse)]),
+          () => new ListBuilder<DiscountLinesResponse>())
       ..addBuilderFactory(
           const FullType(
               BuiltList, const [const FullType(DiscountLinesResponse)]),

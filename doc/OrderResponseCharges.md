@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **hasMore** | **bool** | Indicates if there are more pages to be requested | 
 **object** | **String** | Object type, in this case is list | 
-**data** | [**BuiltList&lt;ChargesDataResponse&gt;**](ChargesDataResponse.md) |  | [optional] 
+**data** | [**BuiltList&lt;ChargesDataResponse&gt;**](ChargeResponse.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

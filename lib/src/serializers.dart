@@ -33,6 +33,8 @@ import 'package:conekta/src/model/charge_response_refunds.dart';
 import 'package:conekta/src/model/charge_response_refunds_data.dart';
 import 'package:conekta/src/model/charge_update_request.dart';
 import 'package:conekta/src/model/charges_data_response.dart';
+import 'package:conekta/src/model/charges_order_response.dart';
+import 'package:conekta/src/model/charges_order_response_all_of_data.dart';
 import 'package:conekta/src/model/checkout.dart';
 import 'package:conekta/src/model/checkout_order_template.dart';
 import 'package:conekta/src/model/checkout_order_template_customer_info.dart';
@@ -133,9 +135,11 @@ import 'package:conekta/src/model/payment_method_card_response.dart';
 import 'package:conekta/src/model/payment_method_cash.dart';
 import 'package:conekta/src/model/payment_method_cash_request.dart';
 import 'package:conekta/src/model/payment_method_cash_response.dart';
+import 'package:conekta/src/model/payment_method_general_request.dart';
 import 'package:conekta/src/model/payment_method_response.dart';
 import 'package:conekta/src/model/payment_method_spei_recurrent.dart';
 import 'package:conekta/src/model/payment_method_spei_request.dart';
+import 'package:conekta/src/model/payment_method_token_request.dart';
 import 'package:conekta/src/model/payout.dart';
 import 'package:conekta/src/model/payout_method.dart';
 import 'package:conekta/src/model/payout_order.dart';
@@ -210,6 +214,8 @@ part 'serializers.g.dart';
   ChargeResponseRefundsData,
   ChargeUpdateRequest,
   ChargesDataResponse,
+  ChargesOrderResponse,
+  ChargesOrderResponseAllOfData,
   Checkout,
   CheckoutOrderTemplate,
   CheckoutOrderTemplateCustomerInfo,
@@ -310,9 +316,11 @@ part 'serializers.g.dart';
   PaymentMethodCash,
   PaymentMethodCashRequest,
   PaymentMethodCashResponse,
+  PaymentMethodGeneralRequest,
   PaymentMethodResponse,$PaymentMethodResponse,
   PaymentMethodSpeiRecurrent,
   PaymentMethodSpeiRequest,
+  PaymentMethodTokenRequest,
   Payout,
   PayoutMethod,
   PayoutOrder,

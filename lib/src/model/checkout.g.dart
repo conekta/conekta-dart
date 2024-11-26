@@ -16,6 +16,8 @@ class _$Checkout extends Checkout {
   @override
   final BuiltList<int>? monthlyInstallmentsOptions;
   @override
+  final String? threeDsMode;
+  @override
   final String name;
   @override
   final bool? needsShippingContact;
@@ -38,6 +40,7 @@ class _$Checkout extends Checkout {
       required this.expiresAt,
       this.monthlyInstallmentsEnabled,
       this.monthlyInstallmentsOptions,
+      this.threeDsMode,
       required this.name,
       this.needsShippingContact,
       this.onDemandEnabled,
@@ -71,6 +74,7 @@ class _$Checkout extends Checkout {
         expiresAt == other.expiresAt &&
         monthlyInstallmentsEnabled == other.monthlyInstallmentsEnabled &&
         monthlyInstallmentsOptions == other.monthlyInstallmentsOptions &&
+        threeDsMode == other.threeDsMode &&
         name == other.name &&
         needsShippingContact == other.needsShippingContact &&
         onDemandEnabled == other.onDemandEnabled &&
@@ -87,6 +91,7 @@ class _$Checkout extends Checkout {
     _$hash = $jc(_$hash, expiresAt.hashCode);
     _$hash = $jc(_$hash, monthlyInstallmentsEnabled.hashCode);
     _$hash = $jc(_$hash, monthlyInstallmentsOptions.hashCode);
+    _$hash = $jc(_$hash, threeDsMode.hashCode);
     _$hash = $jc(_$hash, name.hashCode);
     _$hash = $jc(_$hash, needsShippingContact.hashCode);
     _$hash = $jc(_$hash, onDemandEnabled.hashCode);
@@ -105,6 +110,7 @@ class _$Checkout extends Checkout {
           ..add('expiresAt', expiresAt)
           ..add('monthlyInstallmentsEnabled', monthlyInstallmentsEnabled)
           ..add('monthlyInstallmentsOptions', monthlyInstallmentsOptions)
+          ..add('threeDsMode', threeDsMode)
           ..add('name', name)
           ..add('needsShippingContact', needsShippingContact)
           ..add('onDemandEnabled', onDemandEnabled)
@@ -140,6 +146,10 @@ class CheckoutBuilder implements Builder<Checkout, CheckoutBuilder> {
   set monthlyInstallmentsOptions(
           ListBuilder<int>? monthlyInstallmentsOptions) =>
       _$this._monthlyInstallmentsOptions = monthlyInstallmentsOptions;
+
+  String? _threeDsMode;
+  String? get threeDsMode => _$this._threeDsMode;
+  set threeDsMode(String? threeDsMode) => _$this._threeDsMode = threeDsMode;
 
   String? _name;
   String? get name => _$this._name;
@@ -185,6 +195,7 @@ class CheckoutBuilder implements Builder<Checkout, CheckoutBuilder> {
       _expiresAt = $v.expiresAt;
       _monthlyInstallmentsEnabled = $v.monthlyInstallmentsEnabled;
       _monthlyInstallmentsOptions = $v.monthlyInstallmentsOptions?.toBuilder();
+      _threeDsMode = $v.threeDsMode;
       _name = $v.name;
       _needsShippingContact = $v.needsShippingContact;
       _onDemandEnabled = $v.onDemandEnabled;
@@ -221,6 +232,7 @@ class CheckoutBuilder implements Builder<Checkout, CheckoutBuilder> {
                   expiresAt, r'Checkout', 'expiresAt'),
               monthlyInstallmentsEnabled: monthlyInstallmentsEnabled,
               monthlyInstallmentsOptions: _monthlyInstallmentsOptions?.build(),
+              threeDsMode: threeDsMode,
               name: BuiltValueNullFieldError.checkNotNull(
                   name, r'Checkout', 'name'),
               needsShippingContact: needsShippingContact,

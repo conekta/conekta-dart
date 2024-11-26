@@ -17,6 +17,7 @@ part 'checkout.g.dart';
 /// * [expiresAt] - It is the time when the link will expire. It is expressed in seconds since the Unix epoch. The valid range is from 2 to 365 days (the valid range will be taken from the next day of the creation date at 00:01 hrs) 
 /// * [monthlyInstallmentsEnabled] - This flag allows you to specify if months without interest will be active.
 /// * [monthlyInstallmentsOptions] - This field allows you to specify the number of months without interest.
+/// * [threeDsMode] - Indicates the 3DS2 mode for the order, either smart or strict.
 /// * [name] - Reason for charge
 /// * [needsShippingContact] - This flag allows you to fill in the shipping information at checkout.
 /// * [onDemandEnabled] - This flag allows you to specify if the link will be on demand.
@@ -41,6 +42,10 @@ abstract class Checkout implements Built<Checkout, CheckoutBuilder> {
   /// This field allows you to specify the number of months without interest.
   @BuiltValueField(wireName: r'monthly_installments_options')
   BuiltList<int>? get monthlyInstallmentsOptions;
+
+  /// Indicates the 3DS2 mode for the order, either smart or strict.
+  @BuiltValueField(wireName: r'three_ds_mode')
+  String? get threeDsMode;
 
   /// Reason for charge
   @BuiltValueField(wireName: r'name')
@@ -114,6 +119,13 @@ class _$CheckoutSerializer implements PrimitiveSerializer<Checkout> {
       yield serializers.serialize(
         object.monthlyInstallmentsOptions,
         specifiedType: const FullType(BuiltList, [FullType(int)]),
+      );
+    }
+    if (object.threeDsMode != null) {
+      yield r'three_ds_mode';
+      yield serializers.serialize(
+        object.threeDsMode,
+        specifiedType: const FullType(String),
       );
     }
     yield r'name';
@@ -207,6 +219,13 @@ class _$CheckoutSerializer implements PrimitiveSerializer<Checkout> {
             specifiedType: const FullType(BuiltList, [FullType(int)]),
           ) as BuiltList<int>;
           result.monthlyInstallmentsOptions.replace(valueDes);
+          break;
+        case r'three_ds_mode':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.threeDsMode = valueDes;
           break;
         case r'name':
           final valueDes = serializers.deserialize(

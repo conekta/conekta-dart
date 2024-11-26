@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **billingCycleStart** | **int** |  | [optional] 
 **billingCycleEnd** | **int** |  | [optional] 
 **canceledAt** | **int** |  | [optional] 
+**canceledReason** | **String** | Reason for cancellation. This field appears when the subscription status is 'canceled'. | [optional] 
 **cardId** | **String** |  | [optional] 
 **chargeId** | **String** |  | [optional] 
 **createdAt** | **int** |  | [optional] 

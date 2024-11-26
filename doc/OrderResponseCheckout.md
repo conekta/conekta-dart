@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **id** | **String** |  | [optional] 
 **isRedirectOnFailure** | **bool** |  | [optional] 
 **livemode** | **bool** |  | [optional] 
+**maxFailedRetries** | **int** | Number of retries allowed before the checkout is marked as failed | [optional] 
 **metadata** | [**BuiltMap&lt;String, JsonObject&gt;**](JsonObject.md) |  | [optional] 
 **monthlyInstallmentsEnabled** | **bool** |  | [optional] 
 **monthlyInstallmentsOptions** | **BuiltList&lt;int&gt;** |  | [optional] 

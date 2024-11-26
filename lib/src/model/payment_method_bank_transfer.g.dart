@@ -20,6 +20,8 @@ class _$PaymentMethodBankTransfer extends PaymentMethodBankTransfer {
   @override
   final String? trackingCode;
   @override
+  final String? customerIpAddress;
+  @override
   final int? expiresAt;
   @override
   final String? receivingAccountTaxId;
@@ -55,6 +57,7 @@ class _$PaymentMethodBankTransfer extends PaymentMethodBankTransfer {
       this.issuingAccountNumber,
       this.description,
       this.trackingCode,
+      this.customerIpAddress,
       this.expiresAt,
       this.receivingAccountTaxId,
       this.receivingAccountNumber,
@@ -91,6 +94,7 @@ class _$PaymentMethodBankTransfer extends PaymentMethodBankTransfer {
         issuingAccountNumber == other.issuingAccountNumber &&
         description == other.description &&
         trackingCode == other.trackingCode &&
+        customerIpAddress == other.customerIpAddress &&
         expiresAt == other.expiresAt &&
         receivingAccountTaxId == other.receivingAccountTaxId &&
         receivingAccountNumber == other.receivingAccountNumber &&
@@ -114,6 +118,7 @@ class _$PaymentMethodBankTransfer extends PaymentMethodBankTransfer {
     _$hash = $jc(_$hash, issuingAccountNumber.hashCode);
     _$hash = $jc(_$hash, description.hashCode);
     _$hash = $jc(_$hash, trackingCode.hashCode);
+    _$hash = $jc(_$hash, customerIpAddress.hashCode);
     _$hash = $jc(_$hash, expiresAt.hashCode);
     _$hash = $jc(_$hash, receivingAccountTaxId.hashCode);
     _$hash = $jc(_$hash, receivingAccountNumber.hashCode);
@@ -139,6 +144,7 @@ class _$PaymentMethodBankTransfer extends PaymentMethodBankTransfer {
           ..add('issuingAccountNumber', issuingAccountNumber)
           ..add('description', description)
           ..add('trackingCode', trackingCode)
+          ..add('customerIpAddress', customerIpAddress)
           ..add('expiresAt', expiresAt)
           ..add('receivingAccountTaxId', receivingAccountTaxId)
           ..add('receivingAccountNumber', receivingAccountNumber)
@@ -189,6 +195,11 @@ class PaymentMethodBankTransferBuilder
   String? get trackingCode => _$this._trackingCode;
   set trackingCode(covariant String? trackingCode) =>
       _$this._trackingCode = trackingCode;
+
+  String? _customerIpAddress;
+  String? get customerIpAddress => _$this._customerIpAddress;
+  set customerIpAddress(covariant String? customerIpAddress) =>
+      _$this._customerIpAddress = customerIpAddress;
 
   int? _expiresAt;
   int? get expiresAt => _$this._expiresAt;
@@ -260,6 +271,7 @@ class PaymentMethodBankTransferBuilder
       _issuingAccountNumber = $v.issuingAccountNumber;
       _description = $v.description;
       _trackingCode = $v.trackingCode;
+      _customerIpAddress = $v.customerIpAddress;
       _expiresAt = $v.expiresAt;
       _receivingAccountTaxId = $v.receivingAccountTaxId;
       _receivingAccountNumber = $v.receivingAccountNumber;
@@ -302,6 +314,7 @@ class PaymentMethodBankTransferBuilder
               issuingAccountNumber: issuingAccountNumber,
               description: description,
               trackingCode: trackingCode,
+              customerIpAddress: customerIpAddress,
               expiresAt: expiresAt,
               receivingAccountTaxId: receivingAccountTaxId,
               receivingAccountNumber: receivingAccountNumber,

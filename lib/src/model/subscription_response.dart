@@ -14,6 +14,7 @@ part 'subscription_response.g.dart';
 /// * [billingCycleStart] 
 /// * [billingCycleEnd] 
 /// * [canceledAt] 
+/// * [canceledReason] - Reason for cancellation. This field appears when the subscription status is 'canceled'.
 /// * [cardId] 
 /// * [chargeId] 
 /// * [createdAt] 
@@ -38,6 +39,10 @@ abstract class SubscriptionResponse implements Built<SubscriptionResponse, Subsc
 
   @BuiltValueField(wireName: r'canceled_at')
   int? get canceledAt;
+
+  /// Reason for cancellation. This field appears when the subscription status is 'canceled'.
+  @BuiltValueField(wireName: r'canceled_reason')
+  String? get canceledReason;
 
   @BuiltValueField(wireName: r'card_id')
   String? get cardId;
@@ -123,6 +128,13 @@ class _$SubscriptionResponseSerializer implements PrimitiveSerializer<Subscripti
       yield serializers.serialize(
         object.canceledAt,
         specifiedType: const FullType.nullable(int),
+      );
+    }
+    if (object.canceledReason != null) {
+      yield r'canceled_reason';
+      yield serializers.serialize(
+        object.canceledReason,
+        specifiedType: const FullType(String),
       );
     }
     if (object.cardId != null) {
@@ -269,6 +281,13 @@ class _$SubscriptionResponseSerializer implements PrimitiveSerializer<Subscripti
           ) as int?;
           if (valueDes == null) continue;
           result.canceledAt = valueDes;
+          break;
+        case r'canceled_reason':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.canceledReason = valueDes;
           break;
         case r'card_id':
           final valueDes = serializers.deserialize(
