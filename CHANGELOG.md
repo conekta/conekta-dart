@@ -1,4 +1,4 @@
-## 6.0.5 -2024-30-04
+## 6.0.6 -2024-26-11
    * Fix entities
 ## 6.0.5 -2024-30-04
    * Update entities and methods
