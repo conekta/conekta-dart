@@ -13,9 +13,10 @@ Name | Type | Description | Notes
 **object** | **String** |  | 
 **createdAt** | **int** |  | 
 **parentId** | **String** |  | [optional] 
+**agreements** | [**BuiltList&lt;PaymentMethodCashResponseAllOfAgreements&gt;**](PaymentMethodCashResponseAllOfAgreements.md) |  | [optional] 
 **reference** | **String** |  | [optional] 
 **barcode** | **String** |  | [optional] 
-**barcodeUrl** | **String** |  | [optional] 
+**barcodeUrl** | **String** | URL to the barcode image, reference is the same as barcode | [optional] 
 **expiresAt** | **String** |  | [optional] 
 **provider** | **String** |  | [optional] 
 **last4** | **String** |  | [optional] 

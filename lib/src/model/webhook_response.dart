@@ -12,45 +12,45 @@ part 'webhook_response.g.dart';
 /// webhooks model
 ///
 /// Properties:
-/// * [deleted] 
-/// * [developmentEnabled] 
-/// * [id] 
-/// * [livemode] 
-/// * [object] 
-/// * [productionEnabled] 
-/// * [status] 
-/// * [subscribedEvents] 
-/// * [synchronous] 
-/// * [url] 
+/// * [id] - id of the webhook
+/// * [description] - A name or brief explanation of what this webhook is used for
+/// * [livemode] - Indicates if the webhook is in production
+/// * [active] - Indicates if the webhook is actived or not
+/// * [object] - Object name, value is 'webhook'
+/// * [status] - Indicates if the webhook is ready to receive events or failing
+/// * [subscribedEvents] - lists the events that will be sent to the webhook
+/// * [url] - url or endpoint of the webhook
 @BuiltValue()
 abstract class WebhookResponse implements Built<WebhookResponse, WebhookResponseBuilder> {
-  @BuiltValueField(wireName: r'deleted')
-  bool? get deleted;
-
-  @BuiltValueField(wireName: r'development_enabled')
-  bool? get developmentEnabled;
-
+  /// id of the webhook
   @BuiltValueField(wireName: r'id')
   String? get id;
 
+  /// A name or brief explanation of what this webhook is used for
+  @BuiltValueField(wireName: r'description')
+  String? get description;
+
+  /// Indicates if the webhook is in production
   @BuiltValueField(wireName: r'livemode')
   bool? get livemode;
 
+  /// Indicates if the webhook is actived or not
+  @BuiltValueField(wireName: r'active')
+  bool? get active;
+
+  /// Object name, value is 'webhook'
   @BuiltValueField(wireName: r'object')
   String? get object;
 
-  @BuiltValueField(wireName: r'production_enabled')
-  bool? get productionEnabled;
-
+  /// Indicates if the webhook is ready to receive events or failing
   @BuiltValueField(wireName: r'status')
   String? get status;
 
+  /// lists the events that will be sent to the webhook
   @BuiltValueField(wireName: r'subscribed_events')
   BuiltList<String>? get subscribedEvents;
 
-  @BuiltValueField(wireName: r'synchronous')
-  bool? get synchronous;
-
+  /// url or endpoint of the webhook
   @BuiltValueField(wireName: r'url')
   String? get url;
 
@@ -77,24 +77,17 @@ class _$WebhookResponseSerializer implements PrimitiveSerializer<WebhookResponse
     WebhookResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    if (object.deleted != null) {
-      yield r'deleted';
-      yield serializers.serialize(
-        object.deleted,
-        specifiedType: const FullType.nullable(bool),
-      );
-    }
-    if (object.developmentEnabled != null) {
-      yield r'development_enabled';
-      yield serializers.serialize(
-        object.developmentEnabled,
-        specifiedType: const FullType(bool),
-      );
-    }
     if (object.id != null) {
       yield r'id';
       yield serializers.serialize(
         object.id,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.description != null) {
+      yield r'description';
+      yield serializers.serialize(
+        object.description,
         specifiedType: const FullType(String),
       );
     }
@@ -105,18 +98,18 @@ class _$WebhookResponseSerializer implements PrimitiveSerializer<WebhookResponse
         specifiedType: const FullType(bool),
       );
     }
+    if (object.active != null) {
+      yield r'active';
+      yield serializers.serialize(
+        object.active,
+        specifiedType: const FullType(bool),
+      );
+    }
     if (object.object != null) {
       yield r'object';
       yield serializers.serialize(
         object.object,
         specifiedType: const FullType(String),
-      );
-    }
-    if (object.productionEnabled != null) {
-      yield r'production_enabled';
-      yield serializers.serialize(
-        object.productionEnabled,
-        specifiedType: const FullType(bool),
       );
     }
     if (object.status != null) {
@@ -131,13 +124,6 @@ class _$WebhookResponseSerializer implements PrimitiveSerializer<WebhookResponse
       yield serializers.serialize(
         object.subscribedEvents,
         specifiedType: const FullType(BuiltList, [FullType(String)]),
-      );
-    }
-    if (object.synchronous != null) {
-      yield r'synchronous';
-      yield serializers.serialize(
-        object.synchronous,
-        specifiedType: const FullType(bool),
       );
     }
     if (object.url != null) {
@@ -170,27 +156,19 @@ class _$WebhookResponseSerializer implements PrimitiveSerializer<WebhookResponse
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
-        case r'deleted':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(bool),
-          ) as bool?;
-          if (valueDes == null) continue;
-          result.deleted = valueDes;
-          break;
-        case r'development_enabled':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(bool),
-          ) as bool;
-          result.developmentEnabled = valueDes;
-          break;
         case r'id':
           final valueDes = serializers.deserialize(
             value,
             specifiedType: const FullType(String),
           ) as String;
           result.id = valueDes;
+          break;
+        case r'description':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.description = valueDes;
           break;
         case r'livemode':
           final valueDes = serializers.deserialize(
@@ -199,19 +177,19 @@ class _$WebhookResponseSerializer implements PrimitiveSerializer<WebhookResponse
           ) as bool;
           result.livemode = valueDes;
           break;
+        case r'active':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(bool),
+          ) as bool;
+          result.active = valueDes;
+          break;
         case r'object':
           final valueDes = serializers.deserialize(
             value,
             specifiedType: const FullType(String),
           ) as String;
           result.object = valueDes;
-          break;
-        case r'production_enabled':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(bool),
-          ) as bool;
-          result.productionEnabled = valueDes;
           break;
         case r'status':
           final valueDes = serializers.deserialize(
@@ -226,13 +204,6 @@ class _$WebhookResponseSerializer implements PrimitiveSerializer<WebhookResponse
             specifiedType: const FullType(BuiltList, [FullType(String)]),
           ) as BuiltList<String>;
           result.subscribedEvents.replace(valueDes);
-          break;
-        case r'synchronous':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(bool),
-          ) as bool;
-          result.synchronous = valueDes;
           break;
         case r'url':
           final valueDes = serializers.deserialize(

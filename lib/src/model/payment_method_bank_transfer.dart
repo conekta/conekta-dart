@@ -39,7 +39,7 @@ abstract class PaymentMethodBankTransfer implements PaymentMethod, Built<Payment
   String? get issuingAccountBank;
 
   @BuiltValueField(wireName: r'executed_at')
-  int? get executedAt;
+  String? get executedAt;
 
   @BuiltValueField(wireName: r'receiving_account_bank')
   String? get receivingAccountBank;
@@ -120,7 +120,7 @@ class _$PaymentMethodBankTransferSerializer implements PrimitiveSerializer<Payme
       yield r'executed_at';
       yield serializers.serialize(
         object.executedAt,
-        specifiedType: const FullType.nullable(int),
+        specifiedType: const FullType.nullable(String),
       );
     }
     if (object.receivingAccountBank != null) {
@@ -274,8 +274,8 @@ class _$PaymentMethodBankTransferSerializer implements PrimitiveSerializer<Payme
         case r'executed_at':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(int),
-          ) as int?;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
           if (valueDes == null) continue;
           result.executedAt = valueDes;
           break;

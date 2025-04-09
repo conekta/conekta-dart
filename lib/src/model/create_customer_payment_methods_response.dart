@@ -5,6 +5,8 @@
 // ignore_for_file: unused_element
 import 'package:conekta/src/model/payment_method_cash_response.dart';
 import 'package:conekta/src/model/payment_method_card_response.dart';
+import 'package:conekta/src/model/payment_method_cash_response_all_of_agreements.dart';
+import 'package:built_collection/built_collection.dart';
 import 'package:conekta/src/model/payment_method_spei_recurrent.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -20,9 +22,10 @@ part 'create_customer_payment_methods_response.g.dart';
 /// * [object] 
 /// * [createdAt] 
 /// * [parentId] 
+/// * [agreements] 
 /// * [reference] 
 /// * [barcode] 
-/// * [barcodeUrl] 
+/// * [barcodeUrl] - URL to the barcode image, reference is the same as barcode
 /// * [expiresAt] 
 /// * [provider] 
 /// * [last4] 
@@ -45,6 +48,7 @@ abstract class CreateCustomerPaymentMethodsResponse implements Built<CreateCusto
   static const Map<String, Type> discriminatorMapping = {
     r'card': PaymentMethodCardResponse,
     r'cash': PaymentMethodCashResponse,
+    r'cash_recurrent': PaymentMethodCashResponse,
     r'oxxo_recurrent': PaymentMethodCashResponse,
     r'spei_recurrent': PaymentMethodSpeiRecurrent,
   };
@@ -69,6 +73,9 @@ extension CreateCustomerPaymentMethodsResponseDiscriminatorExt on CreateCustomer
             return r'cash';
         }
         if (this is PaymentMethodCashResponse) {
+            return r'cash_recurrent';
+        }
+        if (this is PaymentMethodCashResponse) {
             return r'oxxo_recurrent';
         }
         if (this is PaymentMethodSpeiRecurrent) {
@@ -84,6 +91,9 @@ extension CreateCustomerPaymentMethodsResponseBuilderDiscriminatorExt on CreateC
         }
         if (this is PaymentMethodCashResponseBuilder) {
             return r'cash';
+        }
+        if (this is PaymentMethodCashResponseBuilder) {
+            return r'cash_recurrent';
         }
         if (this is PaymentMethodCashResponseBuilder) {
             return r'oxxo_recurrent';
@@ -131,7 +141,7 @@ class _$CreateCustomerPaymentMethodsResponseSerializer implements PrimitiveSeria
     final discIndex = serializedList.indexOf(CreateCustomerPaymentMethodsResponse.discriminatorFieldName) + 1;
     final discValue = serializers.deserialize(serializedList[discIndex], specifiedType: FullType(String)) as String;
     oneOfDataSrc = serialized;
-    final oneOfTypes = [PaymentMethodCardResponse, PaymentMethodCashResponse, PaymentMethodCashResponse, PaymentMethodSpeiRecurrent, ];
+    final oneOfTypes = [PaymentMethodCardResponse, PaymentMethodCashResponse, PaymentMethodCashResponse, PaymentMethodCashResponse, PaymentMethodSpeiRecurrent, ];
     Object oneOfResult;
     Type oneOfType;
     switch (discValue) {
@@ -143,6 +153,13 @@ class _$CreateCustomerPaymentMethodsResponseSerializer implements PrimitiveSeria
         oneOfType = PaymentMethodCardResponse;
         break;
       case r'cash':
+        oneOfResult = serializers.deserialize(
+          oneOfDataSrc,
+          specifiedType: FullType(PaymentMethodCashResponse),
+        ) as PaymentMethodCashResponse;
+        oneOfType = PaymentMethodCashResponse;
+        break;
+      case r'cash_recurrent':
         oneOfResult = serializers.deserialize(
           oneOfDataSrc,
           specifiedType: FullType(PaymentMethodCashResponse),

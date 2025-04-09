@@ -16,6 +16,8 @@ Name | Type | Description | Notes
 **interval** | **String** | The interval of time between each charge. | 
 **name** | **String** | The name of the plan. | 
 **trialPeriodDays** | **int** | The number of days the customer will have a free trial. | [optional] 
+**maxRetries** | **int** | (optional) Specifies the maximum number of retry attempts for a subscription payment before it is canceled. | [optional] 
+**retryDelayHours** | **int** | (optional)  Defines the number of hours between subscription payment retry attempts. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

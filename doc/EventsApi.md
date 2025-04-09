@@ -11,7 +11,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**getEvent**](EventsApi.md#getevent) | **GET** /events/{id} | Get Event
 [**getEvents**](EventsApi.md#getevents) | **GET** /events | Get list of Events
-[**resendEvent**](EventsApi.md#resendevent) | **POST** /events/{event_id}/webhook_logs/{webhook_log_id}/resend | Resend Event
+[**resendEvent**](EventsApi.md#resendevent) | **POST** /events/{event_id}/resend | Resend Event
 
 
 # **getEvent**
@@ -57,7 +57,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/vnd.conekta-v2.1.0+json
+ - **Accept**: application/vnd.conekta-v2.2.0+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -108,16 +108,16 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/vnd.conekta-v2.1.0+json
+ - **Accept**: application/vnd.conekta-v2.2.0+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **resendEvent**
-> EventsResendResponse resendEvent(eventId, webhookLogId, acceptLanguage)
+> EventsResendResponse resendEvent(eventId, resendRequest, acceptLanguage)
 
 Resend Event
 
-Try to send an event
+Resend event to selected webhooks
 
 ### Example
 ```dart
@@ -125,11 +125,11 @@ import 'package:conekta/api.dart';
 
 final api = Conekta().getEventsApi();
 final String eventId = 6463d6e35a4c3e001819e760; // String | event identifier
-final String webhookLogId = webhl_2tsv6NzWJHBWCkqGt; // String | webhook log identifier
+final ResendRequest resendRequest = ; // ResendRequest | requested fields for resend an event
 final String acceptLanguage = es; // String | Use for knowing which language to use
 
 try {
-    final response = api.resendEvent(eventId, webhookLogId, acceptLanguage);
+    final response = api.resendEvent(eventId, resendRequest, acceptLanguage);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling EventsApi->resendEvent: $e\n');
@@ -141,7 +141,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **eventId** | **String**| event identifier | 
- **webhookLogId** | **String**| webhook log identifier | 
+ **resendRequest** | [**ResendRequest**](ResendRequest.md)| requested fields for resend an event | 
  **acceptLanguage** | **String**| Use for knowing which language to use | [optional] [default to 'es']
 
 ### Return type
@@ -154,8 +154,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/vnd.conekta-v2.1.0+json
+ - **Content-Type**: application/json
+ - **Accept**: application/vnd.conekta-v2.2.0+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

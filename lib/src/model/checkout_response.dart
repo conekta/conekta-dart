@@ -13,7 +13,7 @@ part 'checkout_response.g.dart';
 /// checkout response
 ///
 /// Properties:
-/// * [allowedPaymentMethods] 
+/// * [allowedPaymentMethods] - Are the payment methods available for this link
 /// * [canNotExpire] 
 /// * [emailsSent] 
 /// * [excludeCardNetworks] 
@@ -40,6 +40,7 @@ part 'checkout_response.g.dart';
 /// * [url] 
 @BuiltValue()
 abstract class CheckoutResponse implements Built<CheckoutResponse, CheckoutResponseBuilder> {
+  /// Are the payment methods available for this link
   @BuiltValueField(wireName: r'allowed_payment_methods')
   BuiltList<String>? get allowedPaymentMethods;
 

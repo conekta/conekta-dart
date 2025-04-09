@@ -58,7 +58,7 @@ class WebhooksApi {
 
     // to determine the Accept header
     List<String> _accepts = [ 
-        "application/vnd.conekta-v2.1.0+json"
+        "application/vnd.conekta-v2.2.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
     final _options = Options(
@@ -176,7 +176,7 @@ class WebhooksApi {
 
     // to determine the Accept header
     List<String> _accepts = [ 
-        "application/vnd.conekta-v2.1.0+json"
+        "application/vnd.conekta-v2.2.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
     final _options = Options(
@@ -276,7 +276,7 @@ class WebhooksApi {
 
     // to determine the Accept header
     List<String> _accepts = [ 
-        "application/vnd.conekta-v2.1.0+json"
+        "application/vnd.conekta-v2.2.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
     final _options = Options(
@@ -385,7 +385,7 @@ class WebhooksApi {
 
     // to determine the Accept header
     List<String> _accepts = [ 
-        "application/vnd.conekta-v2.1.0+json"
+        "application/vnd.conekta-v2.2.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
     final _options = Options(
@@ -493,7 +493,7 @@ class WebhooksApi {
 
     // to determine the Accept header
     List<String> _accepts = [ 
-        "application/vnd.conekta-v2.1.0+json"
+        "application/vnd.conekta-v2.2.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
     final _options = Options(
@@ -596,7 +596,7 @@ class WebhooksApi {
 
     // to determine the Accept header
     List<String> _accepts = [ 
-        "application/vnd.conekta-v2.1.0+json"
+        "application/vnd.conekta-v2.2.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
     final _options = Options(

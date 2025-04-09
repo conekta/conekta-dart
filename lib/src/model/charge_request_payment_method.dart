@@ -4,6 +4,8 @@
 
 // ignore_for_file: unused_element
 import 'package:conekta/src/model/payment_method_card_request.dart';
+import 'package:built_collection/built_collection.dart';
+import 'package:conekta/src/model/payment_method_bnpl_request.dart';
 import 'package:conekta/src/model/payment_method_general_request.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -15,6 +17,11 @@ part 'charge_request_payment_method.g.dart';
 ///
 /// Properties:
 /// * [type] - Type of payment method
+/// * [cancelUrl] - URL to redirect the customer after a canceled payment
+/// * [canNotExpire] - Indicates if the payment method can not expire
+/// * [failureUrl] - URL to redirect the customer after a failed payment
+/// * [productType] - Product type of the payment method, use for the payment method to know the product type
+/// * [successUrl] - URL to redirect the customer after a successful payment
 /// * [cvc] - Optional, It is a value that allows identifying the security code of the card. Only for PCI merchants
 /// * [expMonth] - Card expiration month
 /// * [expYear] - Card expiration year
@@ -28,7 +35,7 @@ part 'charge_request_payment_method.g.dart';
 /// * [contractId] - Optional id sent to indicate the bank contract for recurrent card charges.
 @BuiltValue()
 abstract class ChargeRequestPaymentMethod implements Built<ChargeRequestPaymentMethod, ChargeRequestPaymentMethodBuilder> {
-  /// One Of [PaymentMethodCardRequest], [PaymentMethodGeneralRequest]
+  /// One Of [PaymentMethodBnplRequest], [PaymentMethodCardRequest], [PaymentMethodGeneralRequest]
   OneOf get oneOf;
 
   ChargeRequestPaymentMethod._();
@@ -74,10 +81,27 @@ class _$ChargeRequestPaymentMethodSerializer implements PrimitiveSerializer<Char
   }) {
     final result = ChargeRequestPaymentMethodBuilder();
     Object? oneOfDataSrc;
-    final targetType = const FullType(OneOf, [FullType(PaymentMethodCardRequest), FullType(PaymentMethodGeneralRequest), ]);
+    final targetType = const FullType(OneOf, [FullType(PaymentMethodBnplRequest), FullType(PaymentMethodCardRequest), FullType(PaymentMethodGeneralRequest), ]);
     oneOfDataSrc = serialized;
     result.oneOf = serializers.deserialize(oneOfDataSrc, specifiedType: targetType) as OneOf;
     return result.build();
   }
+}
+
+class ChargeRequestPaymentMethodProductTypeEnum extends EnumClass {
+
+  /// Product type of the payment method, use for the payment method to know the product type
+  @BuiltValueEnumConst(wireName: r'klarna_bnpl')
+  static const ChargeRequestPaymentMethodProductTypeEnum klarnaBnpl = _$chargeRequestPaymentMethodProductTypeEnum_klarnaBnpl;
+  /// Product type of the payment method, use for the payment method to know the product type
+  @BuiltValueEnumConst(wireName: r'creditea_bnpl')
+  static const ChargeRequestPaymentMethodProductTypeEnum crediteaBnpl = _$chargeRequestPaymentMethodProductTypeEnum_crediteaBnpl;
+
+  static Serializer<ChargeRequestPaymentMethodProductTypeEnum> get serializer => _$chargeRequestPaymentMethodProductTypeEnumSerializer;
+
+  const ChargeRequestPaymentMethodProductTypeEnum._(String name): super(name);
+
+  static BuiltSet<ChargeRequestPaymentMethodProductTypeEnum> get values => _$chargeRequestPaymentMethodProductTypeEnumValues;
+  static ChargeRequestPaymentMethodProductTypeEnum valueOf(String name) => _$chargeRequestPaymentMethodProductTypeEnumValueOf(name);
 }
 

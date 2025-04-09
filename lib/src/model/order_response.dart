@@ -3,16 +3,16 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:conekta/src/model/order_response_discount_lines.dart';
+import 'package:conekta/src/model/order_charges_response.dart';
+import 'package:conekta/src/model/order_discount_lines_response.dart';
 import 'package:conekta/src/model/order_next_action_response.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:conekta/src/model/order_response_customer_info.dart';
-import 'package:conekta/src/model/order_response_charges.dart';
 import 'package:conekta/src/model/order_response_checkout.dart';
 import 'package:conekta/src/model/order_response_products.dart';
 import 'package:conekta/src/model/order_response_shipping_contact.dart';
+import 'package:conekta/src/model/order_channel_response.dart';
 import 'package:conekta/src/model/order_fiscal_entity_response.dart';
-import 'package:conekta/src/model/charge_response_channel.dart';
 import 'package:built_value/json_object.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -54,10 +54,10 @@ abstract class OrderResponse implements Built<OrderResponse, OrderResponseBuilde
   int? get amountRefunded;
 
   @BuiltValueField(wireName: r'channel')
-  ChargeResponseChannel? get channel;
+  OrderChannelResponse? get channel;
 
   @BuiltValueField(wireName: r'charges')
-  OrderResponseCharges? get charges;
+  OrderChargesResponse? get charges;
 
   @BuiltValueField(wireName: r'checkout')
   OrderResponseCheckout? get checkout;
@@ -74,7 +74,7 @@ abstract class OrderResponse implements Built<OrderResponse, OrderResponseBuilde
   OrderResponseCustomerInfo? get customerInfo;
 
   @BuiltValueField(wireName: r'discount_lines')
-  OrderResponseDiscountLines? get discountLines;
+  OrderDiscountLinesResponse? get discountLines;
 
   @BuiltValueField(wireName: r'fiscal_entity')
   OrderFiscalEntityResponse? get fiscalEntity;
@@ -159,14 +159,14 @@ class _$OrderResponseSerializer implements PrimitiveSerializer<OrderResponse> {
       yield r'channel';
       yield serializers.serialize(
         object.channel,
-        specifiedType: const FullType(ChargeResponseChannel),
+        specifiedType: const FullType(OrderChannelResponse),
       );
     }
     if (object.charges != null) {
       yield r'charges';
       yield serializers.serialize(
         object.charges,
-        specifiedType: const FullType(OrderResponseCharges),
+        specifiedType: const FullType(OrderChargesResponse),
       );
     }
     if (object.checkout != null) {
@@ -201,7 +201,7 @@ class _$OrderResponseSerializer implements PrimitiveSerializer<OrderResponse> {
       yield r'discount_lines';
       yield serializers.serialize(
         object.discountLines,
-        specifiedType: const FullType(OrderResponseDiscountLines),
+        specifiedType: const FullType(OrderDiscountLinesResponse),
       );
     }
     if (object.fiscalEntity != null) {
@@ -328,15 +328,15 @@ class _$OrderResponseSerializer implements PrimitiveSerializer<OrderResponse> {
         case r'channel':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(ChargeResponseChannel),
-          ) as ChargeResponseChannel;
+            specifiedType: const FullType(OrderChannelResponse),
+          ) as OrderChannelResponse;
           result.channel.replace(valueDes);
           break;
         case r'charges':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(OrderResponseCharges),
-          ) as OrderResponseCharges;
+            specifiedType: const FullType(OrderChargesResponse),
+          ) as OrderChargesResponse;
           result.charges.replace(valueDes);
           break;
         case r'checkout':
@@ -370,8 +370,8 @@ class _$OrderResponseSerializer implements PrimitiveSerializer<OrderResponse> {
         case r'discount_lines':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(OrderResponseDiscountLines),
-          ) as OrderResponseDiscountLines;
+            specifiedType: const FullType(OrderDiscountLinesResponse),
+          ) as OrderDiscountLinesResponse;
           result.discountLines.replace(valueDes);
           break;
         case r'fiscal_entity':

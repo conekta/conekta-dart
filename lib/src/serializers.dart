@@ -103,8 +103,11 @@ import 'package:conekta/src/model/log_response.dart';
 import 'package:conekta/src/model/logs_response.dart';
 import 'package:conekta/src/model/logs_response_data.dart';
 import 'package:conekta/src/model/order_capture_request.dart';
+import 'package:conekta/src/model/order_channel_response.dart';
+import 'package:conekta/src/model/order_charges_response.dart';
 import 'package:conekta/src/model/order_customer_info_response.dart';
 import 'package:conekta/src/model/order_discount_lines_request.dart';
+import 'package:conekta/src/model/order_discount_lines_response.dart';
 import 'package:conekta/src/model/order_fiscal_entity_address_response.dart';
 import 'package:conekta/src/model/order_fiscal_entity_request.dart';
 import 'package:conekta/src/model/order_fiscal_entity_response.dart';
@@ -114,10 +117,8 @@ import 'package:conekta/src/model/order_refund_request.dart';
 import 'package:conekta/src/model/order_request.dart';
 import 'package:conekta/src/model/order_request_customer_info.dart';
 import 'package:conekta/src/model/order_response.dart';
-import 'package:conekta/src/model/order_response_charges.dart';
 import 'package:conekta/src/model/order_response_checkout.dart';
 import 'package:conekta/src/model/order_response_customer_info.dart';
-import 'package:conekta/src/model/order_response_discount_lines.dart';
 import 'package:conekta/src/model/order_response_products.dart';
 import 'package:conekta/src/model/order_response_shipping_contact.dart';
 import 'package:conekta/src/model/order_tax_request.dart';
@@ -129,12 +130,15 @@ import 'package:conekta/src/model/page.dart';
 import 'package:conekta/src/model/pagination.dart';
 import 'package:conekta/src/model/payment_method.dart';
 import 'package:conekta/src/model/payment_method_bank_transfer.dart';
+import 'package:conekta/src/model/payment_method_bnpl_payment.dart';
+import 'package:conekta/src/model/payment_method_bnpl_request.dart';
 import 'package:conekta/src/model/payment_method_card.dart';
 import 'package:conekta/src/model/payment_method_card_request.dart';
 import 'package:conekta/src/model/payment_method_card_response.dart';
 import 'package:conekta/src/model/payment_method_cash.dart';
 import 'package:conekta/src/model/payment_method_cash_request.dart';
 import 'package:conekta/src/model/payment_method_cash_response.dart';
+import 'package:conekta/src/model/payment_method_cash_response_all_of_agreements.dart';
 import 'package:conekta/src/model/payment_method_general_request.dart';
 import 'package:conekta/src/model/payment_method_response.dart';
 import 'package:conekta/src/model/payment_method_spei_recurrent.dart';
@@ -153,6 +157,7 @@ import 'package:conekta/src/model/plan_update_request.dart';
 import 'package:conekta/src/model/product.dart';
 import 'package:conekta/src/model/product_data_response.dart';
 import 'package:conekta/src/model/product_order_response.dart';
+import 'package:conekta/src/model/resend_request.dart';
 import 'package:conekta/src/model/risk_rules_data.dart';
 import 'package:conekta/src/model/risk_rules_list.dart';
 import 'package:conekta/src/model/shipping_order_response.dart';
@@ -284,8 +289,11 @@ part 'serializers.g.dart';
   LogsResponse,
   LogsResponseData,
   OrderCaptureRequest,
+  OrderChannelResponse,
+  OrderChargesResponse,
   OrderCustomerInfoResponse,$OrderCustomerInfoResponse,
   OrderDiscountLinesRequest,$OrderDiscountLinesRequest,
+  OrderDiscountLinesResponse,
   OrderFiscalEntityAddressResponse,
   OrderFiscalEntityRequest,
   OrderFiscalEntityResponse,
@@ -295,10 +303,8 @@ part 'serializers.g.dart';
   OrderRequest,
   OrderRequestCustomerInfo,
   OrderResponse,
-  OrderResponseCharges,
   OrderResponseCheckout,
   OrderResponseCustomerInfo,
-  OrderResponseDiscountLines,
   OrderResponseProducts,
   OrderResponseShippingContact,
   OrderTaxRequest,$OrderTaxRequest,
@@ -310,12 +316,15 @@ part 'serializers.g.dart';
   Pagination,$Pagination,
   PaymentMethod,$PaymentMethod,
   PaymentMethodBankTransfer,
+  PaymentMethodBnplPayment,
+  PaymentMethodBnplRequest,
   PaymentMethodCard,
   PaymentMethodCardRequest,
   PaymentMethodCardResponse,
   PaymentMethodCash,
   PaymentMethodCashRequest,
   PaymentMethodCashResponse,
+  PaymentMethodCashResponseAllOfAgreements,
   PaymentMethodGeneralRequest,
   PaymentMethodResponse,$PaymentMethodResponse,
   PaymentMethodSpeiRecurrent,
@@ -334,6 +343,7 @@ part 'serializers.g.dart';
   Product,$Product,
   ProductDataResponse,
   ProductOrderResponse,
+  ResendRequest,
   RiskRulesData,
   RiskRulesList,
   ShippingOrderResponse,

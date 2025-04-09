@@ -13,10 +13,10 @@ part 'payment_method_token_request.g.dart';
 ///
 /// Properties:
 /// * [type] - Type of payment method
-/// * [tokenId] - Token id that will be used to create a \"card\" type payment method. See the (subscriptions)[https://developers.conekta.com/v2.1.0/reference/createsubscription] tutorial for more information on how to tokenize cards.
+/// * [tokenId] - Token id that will be used to create a \"card\" type payment method. See the (subscriptions)[https://developers.conekta.com/v2.2.0/reference/createsubscription] tutorial for more information on how to tokenize cards.
 @BuiltValue()
 abstract class PaymentMethodTokenRequest implements CustomerPaymentMethodRequest, Built<PaymentMethodTokenRequest, PaymentMethodTokenRequestBuilder> {
-  /// Token id that will be used to create a \"card\" type payment method. See the (subscriptions)[https://developers.conekta.com/v2.1.0/reference/createsubscription] tutorial for more information on how to tokenize cards.
+  /// Token id that will be used to create a \"card\" type payment method. See the (subscriptions)[https://developers.conekta.com/v2.2.0/reference/createsubscription] tutorial for more information on how to tokenize cards.
   @BuiltValueField(wireName: r'token_id')
   String get tokenId;
 

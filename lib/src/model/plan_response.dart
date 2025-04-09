@@ -22,6 +22,8 @@ part 'plan_response.g.dart';
 /// * [name] 
 /// * [object] 
 /// * [trialPeriodDays] 
+/// * [maxRetries] 
+/// * [retryDelayHours] 
 @BuiltValue()
 abstract class PlanResponse implements Built<PlanResponse, PlanResponseBuilder> {
   @BuiltValueField(wireName: r'amount')
@@ -56,6 +58,12 @@ abstract class PlanResponse implements Built<PlanResponse, PlanResponseBuilder> 
 
   @BuiltValueField(wireName: r'trial_period_days')
   int? get trialPeriodDays;
+
+  @BuiltValueField(wireName: r'max_retries')
+  int? get maxRetries;
+
+  @BuiltValueField(wireName: r'retry_delay_hours')
+  int? get retryDelayHours;
 
   PlanResponse._();
 
@@ -155,6 +163,20 @@ class _$PlanResponseSerializer implements PrimitiveSerializer<PlanResponse> {
       yield serializers.serialize(
         object.trialPeriodDays,
         specifiedType: const FullType.nullable(int),
+      );
+    }
+    if (object.maxRetries != null) {
+      yield r'max_retries';
+      yield serializers.serialize(
+        object.maxRetries,
+        specifiedType: const FullType(int),
+      );
+    }
+    if (object.retryDelayHours != null) {
+      yield r'retry_delay_hours';
+      yield serializers.serialize(
+        object.retryDelayHours,
+        specifiedType: const FullType(int),
       );
     }
   }
@@ -258,6 +280,20 @@ class _$PlanResponseSerializer implements PrimitiveSerializer<PlanResponse> {
           ) as int?;
           if (valueDes == null) continue;
           result.trialPeriodDays = valueDes;
+          break;
+        case r'max_retries':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int;
+          result.maxRetries = valueDes;
+          break;
+        case r'retry_delay_hours':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int;
+          result.retryDelayHours = valueDes;
           break;
         default:
           unhandled.add(key);

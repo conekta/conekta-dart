@@ -13,6 +13,7 @@ import 'package:conekta/src/model/error.dart';
 import 'package:conekta/src/model/event_response.dart';
 import 'package:conekta/src/model/events_resend_response.dart';
 import 'package:conekta/src/model/get_events_response.dart';
+import 'package:conekta/src/model/resend_request.dart';
 import 'package:conekta/src/utils/utils.dart';
 
 class EventsApi {
@@ -58,7 +59,7 @@ class EventsApi {
 
     // to determine the Accept header
     List<String> _accepts = [ 
-        "application/vnd.conekta-v2.1.0+json"
+        "application/vnd.conekta-v2.2.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
     final _options = Options(
@@ -165,7 +166,7 @@ class EventsApi {
 
     // to determine the Accept header
     List<String> _accepts = [ 
-        "application/vnd.conekta-v2.1.0+json"
+        "application/vnd.conekta-v2.2.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
     final _options = Options(
@@ -240,11 +241,11 @@ class EventsApi {
   }
 
   /// Resend Event
-  /// Try to send an event
+  /// Resend event to selected webhooks
   ///
   /// Parameters:
   /// * [eventId] - event identifier
-  /// * [webhookLogId] - webhook log identifier
+  /// * [resendRequest] - requested fields for resend an event
   /// * [acceptLanguage] - Use for knowing which language to use
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
@@ -257,7 +258,7 @@ class EventsApi {
   /// Throws [DioException] if API call or serialization fails
   Future<Response<EventsResendResponse>> resendEvent({ 
     required String eventId,
-    required String webhookLogId,
+    required ResendRequest resendRequest,
     String? acceptLanguage = 'es',
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -266,15 +267,16 @@ class EventsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/events/{event_id}/webhook_logs/{webhook_log_id}/resend'.replaceAll('{' r'event_id' '}', encodeQueryParameter(_serializers, eventId, const FullType(String)).toString()).replaceAll('{' r'webhook_log_id' '}', encodeQueryParameter(_serializers, webhookLogId, const FullType(String)).toString());
+    final _path = r'/events/{event_id}/resend'.replaceAll('{' r'event_id' '}', encodeQueryParameter(_serializers, eventId, const FullType(String)).toString());
     // to determine the Accept header
     List<String> _contentTypes = [ 
+        "application/json"
     ];
     var localVarContentType = selectHeaderContentType(_contentTypes);
 
     // to determine the Accept header
     List<String> _accepts = [ 
-        "application/vnd.conekta-v2.1.0+json"
+        "application/vnd.conekta-v2.2.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
     final _options = Options(
@@ -297,11 +299,31 @@ class EventsApi {
         ],
         ...?extra,
       },
+      contentType: 'application/json',
       validateStatus: validateStatus,
     );
 
+    dynamic _bodyData;
+
+    try {
+      const _type = FullType(ResendRequest);
+      _bodyData = _serializers.serialize(resendRequest, specifiedType: _type);
+
+    } catch(error, stackTrace) {
+      throw DioException(
+         requestOptions: _options.compose(
+          _dio.options,
+          _path,
+        ),
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
     final _response = await _dio.request<Object>(
       _path,
+      data: _bodyData,
       options: _options,
       cancelToken: cancelToken,
       onSendProgress: onSendProgress,

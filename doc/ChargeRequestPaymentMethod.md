@@ -9,6 +9,11 @@ import 'package:conekta/api.dart';
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **String** | Type of payment method | 
+**cancelUrl** | **String** | URL to redirect the customer after a canceled payment | 
+**canNotExpire** | **bool** | Indicates if the payment method can not expire | 
+**failureUrl** | **String** | URL to redirect the customer after a failed payment | 
+**productType** | **String** | Product type of the payment method, use for the payment method to know the product type | 
+**successUrl** | **String** | URL to redirect the customer after a successful payment | 
 **cvc** | **String** | Optional, It is a value that allows identifying the security code of the card. Only for PCI merchants | 
 **expMonth** | **String** | Card expiration month | 
 **expYear** | **String** | Card expiration year | 

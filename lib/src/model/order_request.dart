@@ -22,25 +22,25 @@ part 'order_request.g.dart';
 /// a order
 ///
 /// Properties:
-/// * [charges] - List of [charges](https://developers.conekta.com/v2.1.0/reference/orderscreatecharge) that are applied to the order
+/// * [charges] - List of [charges](https://developers.conekta.com/v2.2.0/reference/orderscreatecharge) that are applied to the order
 /// * [checkout] 
 /// * [currency] - Currency with which the payment will be made. It uses the 3-letter code of the [International Standard ISO 4217.](https://es.wikipedia.org/wiki/ISO_4217)
 /// * [customerInfo] 
-/// * [discountLines] - List of [discounts](https://developers.conekta.com/v2.1.0/reference/orderscreatediscountline) that are applied to the order. You must have at least one discount.
+/// * [discountLines] - List of [discounts](https://developers.conekta.com/v2.2.0/reference/orderscreatediscountline) that are applied to the order. You must have at least one discount.
 /// * [fiscalEntity] 
-/// * [lineItems] - List of [products](https://developers.conekta.com/v2.1.0/reference/orderscreateproduct) that are sold in the order. You must have at least one product.
+/// * [lineItems] - List of [products](https://developers.conekta.com/v2.2.0/reference/orderscreateproduct) that are sold in the order. You must have at least one product.
 /// * [metadata] - Metadata associated with the order
 /// * [needsShippingContact] - Allows you to fill out the shipping information at checkout
 /// * [preAuthorize] - Indicates whether the order charges must be preauthorized
 /// * [processingMode] - Indicates the processing mode for the order, either ecommerce, recurrent or validation.
 /// * [returnUrl] - Indicates the redirection callback upon completion of the 3DS2 flow. Do not use this parameter if your order has a checkout parameter
 /// * [shippingContact] 
-/// * [shippingLines] - List of [shipping costs](https://developers.conekta.com/v2.1.0/reference/orderscreateshipping). If the online store offers digital products.
-/// * [taxLines] - List of [taxes](https://developers.conekta.com/v2.1.0/reference/orderscreatetaxes) that are applied to the order.
+/// * [shippingLines] - List of [shipping costs](https://developers.conekta.com/v2.2.0/reference/orderscreateshipping). If the online store offers digital products.
+/// * [taxLines] - List of [taxes](https://developers.conekta.com/v2.2.0/reference/orderscreatetaxes) that are applied to the order.
 /// * [threeDsMode] - Indicates the 3DS2 mode for the order, either smart or strict.
 @BuiltValue()
 abstract class OrderRequest implements Built<OrderRequest, OrderRequestBuilder> {
-  /// List of [charges](https://developers.conekta.com/v2.1.0/reference/orderscreatecharge) that are applied to the order
+  /// List of [charges](https://developers.conekta.com/v2.2.0/reference/orderscreatecharge) that are applied to the order
   @BuiltValueField(wireName: r'charges')
   BuiltList<ChargeRequest>? get charges;
 
@@ -54,14 +54,14 @@ abstract class OrderRequest implements Built<OrderRequest, OrderRequestBuilder> 
   @BuiltValueField(wireName: r'customer_info')
   OrderRequestCustomerInfo get customerInfo;
 
-  /// List of [discounts](https://developers.conekta.com/v2.1.0/reference/orderscreatediscountline) that are applied to the order. You must have at least one discount.
+  /// List of [discounts](https://developers.conekta.com/v2.2.0/reference/orderscreatediscountline) that are applied to the order. You must have at least one discount.
   @BuiltValueField(wireName: r'discount_lines')
   BuiltList<OrderDiscountLinesRequest>? get discountLines;
 
   @BuiltValueField(wireName: r'fiscal_entity')
   OrderFiscalEntityRequest? get fiscalEntity;
 
-  /// List of [products](https://developers.conekta.com/v2.1.0/reference/orderscreateproduct) that are sold in the order. You must have at least one product.
+  /// List of [products](https://developers.conekta.com/v2.2.0/reference/orderscreateproduct) that are sold in the order. You must have at least one product.
   @BuiltValueField(wireName: r'line_items')
   BuiltList<Product> get lineItems;
 
@@ -88,11 +88,11 @@ abstract class OrderRequest implements Built<OrderRequest, OrderRequestBuilder> 
   @BuiltValueField(wireName: r'shipping_contact')
   CustomerShippingContacts? get shippingContact;
 
-  /// List of [shipping costs](https://developers.conekta.com/v2.1.0/reference/orderscreateshipping). If the online store offers digital products.
+  /// List of [shipping costs](https://developers.conekta.com/v2.2.0/reference/orderscreateshipping). If the online store offers digital products.
   @BuiltValueField(wireName: r'shipping_lines')
   BuiltList<ShippingRequest>? get shippingLines;
 
-  /// List of [taxes](https://developers.conekta.com/v2.1.0/reference/orderscreatetaxes) that are applied to the order.
+  /// List of [taxes](https://developers.conekta.com/v2.2.0/reference/orderscreatetaxes) that are applied to the order.
   @BuiltValueField(wireName: r'tax_lines')
   BuiltList<OrderTaxRequest>? get taxLines;
 

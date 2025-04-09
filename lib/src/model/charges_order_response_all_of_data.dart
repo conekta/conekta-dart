@@ -32,7 +32,7 @@ part 'charges_order_response_all_of_data.g.dart';
 /// * [paymentMethod] 
 /// * [referenceId] - Reference ID of the charge
 /// * [refunds] 
-/// * [status] 
+/// * [status] - Charge status
 @BuiltValue()
 abstract class ChargesOrderResponseAllOfData implements ChargeResponse, Built<ChargesOrderResponseAllOfData, ChargesOrderResponseAllOfDataBuilder> {
   ChargesOrderResponseAllOfData._();
@@ -58,13 +58,11 @@ class _$ChargesOrderResponseAllOfDataSerializer implements PrimitiveSerializer<C
     ChargesOrderResponseAllOfData object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    if (object.amount != null) {
-      yield r'amount';
-      yield serializers.serialize(
-        object.amount,
-        specifiedType: const FullType(int),
-      );
-    }
+    yield r'amount';
+    yield serializers.serialize(
+      object.amount,
+      specifiedType: const FullType(int),
+    );
     if (object.failureCode != null) {
       yield r'failure_code';
       yield serializers.serialize(
@@ -79,20 +77,16 @@ class _$ChargesOrderResponseAllOfDataSerializer implements PrimitiveSerializer<C
         specifiedType: const FullType(String),
       );
     }
-    if (object.livemode != null) {
-      yield r'livemode';
-      yield serializers.serialize(
-        object.livemode,
-        specifiedType: const FullType(bool),
-      );
-    }
-    if (object.orderId != null) {
-      yield r'order_id';
-      yield serializers.serialize(
-        object.orderId,
-        specifiedType: const FullType(String),
-      );
-    }
+    yield r'livemode';
+    yield serializers.serialize(
+      object.livemode,
+      specifiedType: const FullType(bool),
+    );
+    yield r'order_id';
+    yield serializers.serialize(
+      object.orderId,
+      specifiedType: const FullType(String),
+    );
     if (object.channel != null) {
       yield r'channel';
       yield serializers.serialize(
@@ -121,13 +115,11 @@ class _$ChargesOrderResponseAllOfDataSerializer implements PrimitiveSerializer<C
         specifiedType: const FullType.nullable(ChargeResponseRefunds),
       );
     }
-    if (object.createdAt != null) {
-      yield r'created_at';
-      yield serializers.serialize(
-        object.createdAt,
-        specifiedType: const FullType(int),
-      );
-    }
+    yield r'created_at';
+    yield serializers.serialize(
+      object.createdAt,
+      specifiedType: const FullType(int),
+    );
     if (object.customerId != null) {
       yield r'customer_id';
       yield serializers.serialize(
@@ -149,20 +141,16 @@ class _$ChargesOrderResponseAllOfDataSerializer implements PrimitiveSerializer<C
         specifiedType: const FullType(ChargeResponsePaymentMethod),
       );
     }
-    if (object.currency != null) {
-      yield r'currency';
-      yield serializers.serialize(
-        object.currency,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.id != null) {
-      yield r'id';
-      yield serializers.serialize(
-        object.id,
-        specifiedType: const FullType(String),
-      );
-    }
+    yield r'currency';
+    yield serializers.serialize(
+      object.currency,
+      specifiedType: const FullType(String),
+    );
+    yield r'id';
+    yield serializers.serialize(
+      object.id,
+      specifiedType: const FullType(String),
+    );
     if (object.failureMessage != null) {
       yield r'failure_message';
       yield serializers.serialize(
@@ -170,20 +158,16 @@ class _$ChargesOrderResponseAllOfDataSerializer implements PrimitiveSerializer<C
         specifiedType: const FullType(String),
       );
     }
-    if (object.object != null) {
-      yield r'object';
-      yield serializers.serialize(
-        object.object,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.status != null) {
-      yield r'status';
-      yield serializers.serialize(
-        object.status,
-        specifiedType: const FullType(String),
-      );
-    }
+    yield r'object';
+    yield serializers.serialize(
+      object.object,
+      specifiedType: const FullType(String),
+    );
+    yield r'status';
+    yield serializers.serialize(
+      object.status,
+      specifiedType: const FullType(String),
+    );
   }
 
   @override

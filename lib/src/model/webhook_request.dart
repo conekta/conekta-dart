@@ -3,6 +3,7 @@
 //
 
 // ignore_for_file: unused_element
+import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -12,24 +13,23 @@ part 'webhook_request.g.dart';
 ///
 /// Properties:
 /// * [url] - Here you must place the URL of your Webhook remember that you must program what you will do with the events received. Also do not forget to handle the HTTPS protocol for greater security.
-/// * [synchronous] - It is a value that allows to decide if the events will be synchronous or asynchronous. We recommend asynchronous = false
+/// * [subscribedEvents] - events that will be sent to the webhook
 @BuiltValue()
 abstract class WebhookRequest implements Built<WebhookRequest, WebhookRequestBuilder> {
   /// Here you must place the URL of your Webhook remember that you must program what you will do with the events received. Also do not forget to handle the HTTPS protocol for greater security.
   @BuiltValueField(wireName: r'url')
   String get url;
 
-  /// It is a value that allows to decide if the events will be synchronous or asynchronous. We recommend asynchronous = false
-  @BuiltValueField(wireName: r'synchronous')
-  bool get synchronous;
+  /// events that will be sent to the webhook
+  @BuiltValueField(wireName: r'subscribed_events')
+  BuiltList<String>? get subscribedEvents;
 
   WebhookRequest._();
 
   factory WebhookRequest([void updates(WebhookRequestBuilder b)]) = _$WebhookRequest;
 
   @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(WebhookRequestBuilder b) => b
-      ..synchronous = false;
+  static void _defaults(WebhookRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
   static Serializer<WebhookRequest> get serializer => _$WebhookRequestSerializer();
@@ -52,11 +52,13 @@ class _$WebhookRequestSerializer implements PrimitiveSerializer<WebhookRequest> 
       object.url,
       specifiedType: const FullType(String),
     );
-    yield r'synchronous';
-    yield serializers.serialize(
-      object.synchronous,
-      specifiedType: const FullType(bool),
-    );
+    if (object.subscribedEvents != null) {
+      yield r'subscribed_events';
+      yield serializers.serialize(
+        object.subscribedEvents,
+        specifiedType: const FullType(BuiltList, [FullType(String)]),
+      );
+    }
   }
 
   @override
@@ -87,12 +89,12 @@ class _$WebhookRequestSerializer implements PrimitiveSerializer<WebhookRequest> 
           ) as String;
           result.url = valueDes;
           break;
-        case r'synchronous':
+        case r'subscribed_events':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(bool),
-          ) as bool;
-          result.synchronous = valueDes;
+            specifiedType: const FullType(BuiltList, [FullType(String)]),
+          ) as BuiltList<String>;
+          result.subscribedEvents.replace(valueDes);
           break;
         default:
           unhandled.add(key);

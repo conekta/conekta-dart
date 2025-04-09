@@ -31,20 +31,20 @@ part 'charge_response.g.dart';
 /// * [paymentMethod] 
 /// * [referenceId] - Reference ID of the charge
 /// * [refunds] 
-/// * [status] 
+/// * [status] - Charge status
 @BuiltValue(instantiable: false)
 abstract class ChargeResponse  {
   @BuiltValueField(wireName: r'amount')
-  int? get amount;
+  int get amount;
 
   @BuiltValueField(wireName: r'channel')
   ChargeResponseChannel? get channel;
 
   @BuiltValueField(wireName: r'created_at')
-  int? get createdAt;
+  int get createdAt;
 
   @BuiltValueField(wireName: r'currency')
-  String? get currency;
+  String get currency;
 
   @BuiltValueField(wireName: r'customer_id')
   String? get customerId;
@@ -63,18 +63,18 @@ abstract class ChargeResponse  {
 
   /// Charge ID
   @BuiltValueField(wireName: r'id')
-  String? get id;
+  String get id;
 
   /// Whether the charge was made in live mode or not
   @BuiltValueField(wireName: r'livemode')
-  bool? get livemode;
+  bool get livemode;
 
   @BuiltValueField(wireName: r'object')
-  String? get object;
+  String get object;
 
   /// Order ID
   @BuiltValueField(wireName: r'order_id')
-  String? get orderId;
+  String get orderId;
 
   /// Payment date
   @BuiltValueField(wireName: r'paid_at')
@@ -90,8 +90,9 @@ abstract class ChargeResponse  {
   @BuiltValueField(wireName: r'refunds')
   ChargeResponseRefunds? get refunds;
 
+  /// Charge status
   @BuiltValueField(wireName: r'status')
-  String? get status;
+  String get status;
 
   @BuiltValueSerializer(custom: true)
   static Serializer<ChargeResponse> get serializer => _$ChargeResponseSerializer();
@@ -109,13 +110,11 @@ class _$ChargeResponseSerializer implements PrimitiveSerializer<ChargeResponse> 
     ChargeResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    if (object.amount != null) {
-      yield r'amount';
-      yield serializers.serialize(
-        object.amount,
-        specifiedType: const FullType(int),
-      );
-    }
+    yield r'amount';
+    yield serializers.serialize(
+      object.amount,
+      specifiedType: const FullType(int),
+    );
     if (object.channel != null) {
       yield r'channel';
       yield serializers.serialize(
@@ -123,20 +122,16 @@ class _$ChargeResponseSerializer implements PrimitiveSerializer<ChargeResponse> 
         specifiedType: const FullType(ChargeResponseChannel),
       );
     }
-    if (object.createdAt != null) {
-      yield r'created_at';
-      yield serializers.serialize(
-        object.createdAt,
-        specifiedType: const FullType(int),
-      );
-    }
-    if (object.currency != null) {
-      yield r'currency';
-      yield serializers.serialize(
-        object.currency,
-        specifiedType: const FullType(String),
-      );
-    }
+    yield r'created_at';
+    yield serializers.serialize(
+      object.createdAt,
+      specifiedType: const FullType(int),
+    );
+    yield r'currency';
+    yield serializers.serialize(
+      object.currency,
+      specifiedType: const FullType(String),
+    );
     if (object.customerId != null) {
       yield r'customer_id';
       yield serializers.serialize(
@@ -172,34 +167,26 @@ class _$ChargeResponseSerializer implements PrimitiveSerializer<ChargeResponse> 
         specifiedType: const FullType(String),
       );
     }
-    if (object.id != null) {
-      yield r'id';
-      yield serializers.serialize(
-        object.id,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.livemode != null) {
-      yield r'livemode';
-      yield serializers.serialize(
-        object.livemode,
-        specifiedType: const FullType(bool),
-      );
-    }
-    if (object.object != null) {
-      yield r'object';
-      yield serializers.serialize(
-        object.object,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.orderId != null) {
-      yield r'order_id';
-      yield serializers.serialize(
-        object.orderId,
-        specifiedType: const FullType(String),
-      );
-    }
+    yield r'id';
+    yield serializers.serialize(
+      object.id,
+      specifiedType: const FullType(String),
+    );
+    yield r'livemode';
+    yield serializers.serialize(
+      object.livemode,
+      specifiedType: const FullType(bool),
+    );
+    yield r'object';
+    yield serializers.serialize(
+      object.object,
+      specifiedType: const FullType(String),
+    );
+    yield r'order_id';
+    yield serializers.serialize(
+      object.orderId,
+      specifiedType: const FullType(String),
+    );
     if (object.paidAt != null) {
       yield r'paid_at';
       yield serializers.serialize(
@@ -228,13 +215,11 @@ class _$ChargeResponseSerializer implements PrimitiveSerializer<ChargeResponse> 
         specifiedType: const FullType.nullable(ChargeResponseRefunds),
       );
     }
-    if (object.status != null) {
-      yield r'status';
-      yield serializers.serialize(
-        object.status,
-        specifiedType: const FullType(String),
-      );
-    }
+    yield r'status';
+    yield serializers.serialize(
+      object.status,
+      specifiedType: const FullType(String),
+    );
   }
 
   @override
