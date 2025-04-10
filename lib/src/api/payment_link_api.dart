@@ -66,7 +66,7 @@ class PaymentLinkApi {
     final _options = Options(
       method: r'PUT',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/6.0.6',
+        r'User-Agent': r'Conekta/v2 DartBindings/6.0.7',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
@@ -168,7 +168,7 @@ class PaymentLinkApi {
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/6.0.6',
+        r'User-Agent': r'Conekta/v2 DartBindings/6.0.7',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
@@ -292,7 +292,7 @@ class PaymentLinkApi {
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/6.0.6',
+        r'User-Agent': r'Conekta/v2 DartBindings/6.0.7',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
@@ -413,7 +413,7 @@ class PaymentLinkApi {
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/6.0.6',
+        r'User-Agent': r'Conekta/v2 DartBindings/6.0.7',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
@@ -520,7 +520,7 @@ class PaymentLinkApi {
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/6.0.6',
+        r'User-Agent': r'Conekta/v2 DartBindings/6.0.7',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
@@ -632,7 +632,7 @@ class PaymentLinkApi {
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/6.0.6',
+        r'User-Agent': r'Conekta/v2 DartBindings/6.0.7',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,

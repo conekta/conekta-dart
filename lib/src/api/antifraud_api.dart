@@ -66,7 +66,7 @@ class AntifraudApi {
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/6.0.6',
+        r'User-Agent': r'Conekta/v2 DartBindings/6.0.7',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (localVarAccept != null) r'Accept': localVarAccept,
         if (localVarContentType != null) r'Content-Type': localVarContentType,
@@ -185,7 +185,7 @@ class AntifraudApi {
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/6.0.6',
+        r'User-Agent': r'Conekta/v2 DartBindings/6.0.7',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (localVarAccept != null) r'Accept': localVarAccept,
         if (localVarContentType != null) r'Content-Type': localVarContentType,
@@ -305,7 +305,7 @@ class AntifraudApi {
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/6.0.6',
+        r'User-Agent': r'Conekta/v2 DartBindings/6.0.7',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
@@ -406,7 +406,7 @@ class AntifraudApi {
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/6.0.6',
+        r'User-Agent': r'Conekta/v2 DartBindings/6.0.7',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
@@ -503,7 +503,7 @@ class AntifraudApi {
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/6.0.6',
+        r'User-Agent': r'Conekta/v2 DartBindings/6.0.7',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (localVarAccept != null) r'Accept': localVarAccept,
         if (localVarContentType != null) r'Content-Type': localVarContentType,
@@ -599,7 +599,7 @@ class AntifraudApi {
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/6.0.6',
+        r'User-Agent': r'Conekta/v2 DartBindings/6.0.7',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (localVarAccept != null) r'Accept': localVarAccept,
         if (localVarContentType != null) r'Content-Type': localVarContentType,

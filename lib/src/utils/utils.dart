@@ -71,7 +71,7 @@ String getConektaClientUserAgent() {
     return cachedUserClient;
   }
   Map<String, dynamic> cachedData = <String, dynamic>{
-    "bindings_version": "6.0.6",
+    "bindings_version": "6.0.7",
     "lang": "Dart",
     "publisher": "conekta",
     "lang_version": Platform.version.split(' ')[0],
