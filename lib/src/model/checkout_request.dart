@@ -9,7 +9,7 @@ import 'package:built_value/serializer.dart';
 
 part 'checkout_request.g.dart';
 
-/// [Checkout](https://developers.conekta.com/v2.1.0/reference/payment-link) details 
+/// [Checkout](https://developers.conekta.com/v2.2.0/reference/payment-link) details 
 ///
 /// Properties:
 /// * [allowedPaymentMethods] - Are the payment methods available for this link

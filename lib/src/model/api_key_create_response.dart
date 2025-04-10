@@ -16,10 +16,10 @@ part 'api_key_create_response.g.dart';
 /// * [createdAt] - Unix timestamp in seconds of when the api key was created
 /// * [updatedAt] - Unix timestamp in seconds of when the api key was last updated
 /// * [deactivatedAt] - Unix timestamp in seconds of when the api key was deleted
+/// * [lastUsedAt] - Unix timestamp in seconds with the api key was used
 /// * [description] - A name or brief explanation of what this api key is used for
 /// * [id] - Unique identifier of the api key
 /// * [livemode] - Indicates if the api key is in production
-/// * [deleted] - Indicates if the api key was deleted
 /// * [object] - Object name, value is 'api_key'
 /// * [prefix] - The first few characters of the authentication_token
 /// * [role] - Indicates if the api key is private or public
@@ -60,13 +60,6 @@ class _$ApiKeyCreateResponseSerializer implements PrimitiveSerializer<ApiKeyCrea
         specifiedType: const FullType(int),
       );
     }
-    if (object.deleted != null) {
-      yield r'deleted';
-      yield serializers.serialize(
-        object.deleted,
-        specifiedType: const FullType(bool),
-      );
-    }
     if (object.role != null) {
       yield r'role';
       yield serializers.serialize(
@@ -79,6 +72,13 @@ class _$ApiKeyCreateResponseSerializer implements PrimitiveSerializer<ApiKeyCrea
       yield serializers.serialize(
         object.livemode,
         specifiedType: const FullType(bool),
+      );
+    }
+    if (object.lastUsedAt != null) {
+      yield r'last_used_at';
+      yield serializers.serialize(
+        object.lastUsedAt,
+        specifiedType: const FullType.nullable(int),
       );
     }
     if (object.prefix != null) {
@@ -167,13 +167,6 @@ class _$ApiKeyCreateResponseSerializer implements PrimitiveSerializer<ApiKeyCrea
           ) as int;
           result.createdAt = valueDes;
           break;
-        case r'deleted':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(bool),
-          ) as bool;
-          result.deleted = valueDes;
-          break;
         case r'role':
           final valueDes = serializers.deserialize(
             value,
@@ -187,6 +180,14 @@ class _$ApiKeyCreateResponseSerializer implements PrimitiveSerializer<ApiKeyCrea
             specifiedType: const FullType(bool),
           ) as bool;
           result.livemode = valueDes;
+          break;
+        case r'last_used_at':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.lastUsedAt = valueDes;
           break;
         case r'prefix':
           final valueDes = serializers.deserialize(

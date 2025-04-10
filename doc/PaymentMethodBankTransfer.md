@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **bank** | **String** |  | [optional] 
 **clabe** | **String** |  | [optional] 
 **description** | **String** |  | [optional] 
-**executedAt** | **int** |  | [optional] 
+**executedAt** | **String** |  | [optional] 
 **expiresAt** | **int** |  | [optional] 
 **issuingAccountBank** | **String** |  | [optional] 
 **issuingAccountNumber** | **String** |  | [optional] 

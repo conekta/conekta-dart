@@ -25,13 +25,13 @@ part 'order_update_request.g.dart';
 /// * [checkout] 
 /// * [currency] - Currency with which the payment will be made. It uses the 3-letter code of the [International Standard ISO 4217.](https://es.wikipedia.org/wiki/ISO_4217)
 /// * [customerInfo] 
-/// * [discountLines] - List of [discounts](https://developers.conekta.com/v2.1.0/reference/orderscreatediscountline) that are applied to the order. You must have at least one discount.
+/// * [discountLines] - List of [discounts](https://developers.conekta.com/v2.2.0/reference/orderscreatediscountline) that are applied to the order. You must have at least one discount.
 /// * [fiscalEntity] 
-/// * [lineItems] - List of [products](https://developers.conekta.com/v2.1.0/reference/orderscreateproduct) that are sold in the order. You must have at least one product.
+/// * [lineItems] - List of [products](https://developers.conekta.com/v2.2.0/reference/orderscreateproduct) that are sold in the order. You must have at least one product.
 /// * [metadata] 
 /// * [preAuthorize] - Indicates whether the order charges must be preauthorized
 /// * [shippingContact] 
-/// * [shippingLines] - List of [shipping costs](https://developers.conekta.com/v2.1.0/reference/orderscreateshipping). If the online store offers digital products.
+/// * [shippingLines] - List of [shipping costs](https://developers.conekta.com/v2.2.0/reference/orderscreateshipping). If the online store offers digital products.
 /// * [taxLines] 
 @BuiltValue()
 abstract class OrderUpdateRequest implements Built<OrderUpdateRequest, OrderUpdateRequestBuilder> {
@@ -48,14 +48,14 @@ abstract class OrderUpdateRequest implements Built<OrderUpdateRequest, OrderUpda
   @BuiltValueField(wireName: r'customer_info')
   OrderUpdateRequestCustomerInfo? get customerInfo;
 
-  /// List of [discounts](https://developers.conekta.com/v2.1.0/reference/orderscreatediscountline) that are applied to the order. You must have at least one discount.
+  /// List of [discounts](https://developers.conekta.com/v2.2.0/reference/orderscreatediscountline) that are applied to the order. You must have at least one discount.
   @BuiltValueField(wireName: r'discount_lines')
   BuiltList<OrderDiscountLinesRequest>? get discountLines;
 
   @BuiltValueField(wireName: r'fiscal_entity')
   OrderUpdateFiscalEntityRequest? get fiscalEntity;
 
-  /// List of [products](https://developers.conekta.com/v2.1.0/reference/orderscreateproduct) that are sold in the order. You must have at least one product.
+  /// List of [products](https://developers.conekta.com/v2.2.0/reference/orderscreateproduct) that are sold in the order. You must have at least one product.
   @BuiltValueField(wireName: r'line_items')
   BuiltList<Product>? get lineItems;
 
@@ -69,7 +69,7 @@ abstract class OrderUpdateRequest implements Built<OrderUpdateRequest, OrderUpda
   @BuiltValueField(wireName: r'shipping_contact')
   CustomerShippingContacts? get shippingContact;
 
-  /// List of [shipping costs](https://developers.conekta.com/v2.1.0/reference/orderscreateshipping). If the online store offers digital products.
+  /// List of [shipping costs](https://developers.conekta.com/v2.2.0/reference/orderscreateshipping). If the online store offers digital products.
   @BuiltValueField(wireName: r'shipping_lines')
   BuiltList<ShippingRequest>? get shippingLines;
 

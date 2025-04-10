@@ -9,7 +9,7 @@ import 'package:built_value/serializer.dart';
 
 part 'customer_update_shipping_contacts.g.dart';
 
-/// [Shipping](https://developers.conekta.com/v2.1.0/reference/createcustomershippingcontacts) details, required in case of sending a shipping. If we do not receive a shipping_contact on the order, the default shipping_contact of the customer will be used.
+/// [Shipping](https://developers.conekta.com/v2.2.0/reference/createcustomershippingcontacts) details, required in case of sending a shipping. If we do not receive a shipping_contact on the order, the default shipping_contact of the customer will be used.
 ///
 /// Properties:
 /// * [phone] - Phone contact

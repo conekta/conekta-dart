@@ -15,10 +15,10 @@ part 'api_key_response.g.dart';
 /// * [createdAt] - Unix timestamp in seconds of when the api key was created
 /// * [updatedAt] - Unix timestamp in seconds of when the api key was last updated
 /// * [deactivatedAt] - Unix timestamp in seconds of when the api key was deleted
+/// * [lastUsedAt] - Unix timestamp in seconds with the api key was used
 /// * [description] - A name or brief explanation of what this api key is used for
 /// * [id] - Unique identifier of the api key
 /// * [livemode] - Indicates if the api key is in production
-/// * [deleted] - Indicates if the api key was deleted
 /// * [object] - Object name, value is 'api_key'
 /// * [prefix] - The first few characters of the authentication_token
 /// * [role] - Indicates if the api key is private or public
@@ -40,6 +40,10 @@ abstract class ApiKeyResponse  {
   @BuiltValueField(wireName: r'deactivated_at')
   int? get deactivatedAt;
 
+  /// Unix timestamp in seconds with the api key was used
+  @BuiltValueField(wireName: r'last_used_at')
+  int? get lastUsedAt;
+
   /// A name or brief explanation of what this api key is used for
   @BuiltValueField(wireName: r'description')
   String? get description;
@@ -51,10 +55,6 @@ abstract class ApiKeyResponse  {
   /// Indicates if the api key is in production
   @BuiltValueField(wireName: r'livemode')
   bool? get livemode;
-
-  /// Indicates if the api key was deleted
-  @BuiltValueField(wireName: r'deleted')
-  bool? get deleted;
 
   /// Object name, value is 'api_key'
   @BuiltValueField(wireName: r'object')
@@ -112,6 +112,13 @@ class _$ApiKeyResponseSerializer implements PrimitiveSerializer<ApiKeyResponse> 
         specifiedType: const FullType.nullable(int),
       );
     }
+    if (object.lastUsedAt != null) {
+      yield r'last_used_at';
+      yield serializers.serialize(
+        object.lastUsedAt,
+        specifiedType: const FullType.nullable(int),
+      );
+    }
     if (object.description != null) {
       yield r'description';
       yield serializers.serialize(
@@ -130,13 +137,6 @@ class _$ApiKeyResponseSerializer implements PrimitiveSerializer<ApiKeyResponse> 
       yield r'livemode';
       yield serializers.serialize(
         object.livemode,
-        specifiedType: const FullType(bool),
-      );
-    }
-    if (object.deleted != null) {
-      yield r'deleted';
-      yield serializers.serialize(
-        object.deleted,
         specifiedType: const FullType(bool),
       );
     }
@@ -253,6 +253,14 @@ class _$$ApiKeyResponseSerializer implements PrimitiveSerializer<$ApiKeyResponse
           if (valueDes == null) continue;
           result.deactivatedAt = valueDes;
           break;
+        case r'last_used_at':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.lastUsedAt = valueDes;
+          break;
         case r'description':
           final valueDes = serializers.deserialize(
             value,
@@ -273,13 +281,6 @@ class _$$ApiKeyResponseSerializer implements PrimitiveSerializer<$ApiKeyResponse
             specifiedType: const FullType(bool),
           ) as bool;
           result.livemode = valueDes;
-          break;
-        case r'deleted':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(bool),
-          ) as bool;
-          result.deleted = valueDes;
           break;
         case r'object':
           final valueDes = serializers.deserialize(

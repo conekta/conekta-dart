@@ -20,6 +20,8 @@ part 'plan_request.g.dart';
 /// * [interval] - The interval of time between each charge.
 /// * [name] - The name of the plan.
 /// * [trialPeriodDays] - The number of days the customer will have a free trial.
+/// * [maxRetries] - (optional) Specifies the maximum number of retry attempts for a subscription payment before it is canceled.
+/// * [retryDelayHours] - (optional)  Defines the number of hours between subscription payment retry attempts.
 @BuiltValue()
 abstract class PlanRequest implements Built<PlanRequest, PlanRequestBuilder> {
   /// The amount in cents that will be charged on the interval specified.
@@ -54,6 +56,14 @@ abstract class PlanRequest implements Built<PlanRequest, PlanRequestBuilder> {
   /// The number of days the customer will have a free trial.
   @BuiltValueField(wireName: r'trial_period_days')
   int? get trialPeriodDays;
+
+  /// (optional) Specifies the maximum number of retry attempts for a subscription payment before it is canceled.
+  @BuiltValueField(wireName: r'max_retries')
+  int? get maxRetries;
+
+  /// (optional)  Defines the number of hours between subscription payment retry attempts.
+  @BuiltValueField(wireName: r'retry_delay_hours')
+  int? get retryDelayHours;
 
   PlanRequest._();
 
@@ -123,6 +133,20 @@ class _$PlanRequestSerializer implements PrimitiveSerializer<PlanRequest> {
       yield r'trial_period_days';
       yield serializers.serialize(
         object.trialPeriodDays,
+        specifiedType: const FullType(int),
+      );
+    }
+    if (object.maxRetries != null) {
+      yield r'max_retries';
+      yield serializers.serialize(
+        object.maxRetries,
+        specifiedType: const FullType(int),
+      );
+    }
+    if (object.retryDelayHours != null) {
+      yield r'retry_delay_hours';
+      yield serializers.serialize(
+        object.retryDelayHours,
         specifiedType: const FullType(int),
       );
     }
@@ -204,6 +228,20 @@ class _$PlanRequestSerializer implements PrimitiveSerializer<PlanRequest> {
             specifiedType: const FullType(int),
           ) as int;
           result.trialPeriodDays = valueDes;
+          break;
+        case r'max_retries':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int;
+          result.maxRetries = valueDes;
+          break;
+        case r'retry_delay_hours':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int;
+          result.retryDelayHours = valueDes;
           break;
         default:
           unhandled.add(key);

@@ -18,7 +18,7 @@ part 'api_key_response_on_delete.g.dart';
 /// * [prefix] - The first few characters of the authentication_token
 /// * [id] - Unique identifier of the api key
 /// * [object] - Object name, value is 'api_key'
-/// * [deleted] - Indicates if the api key was deleted
+/// * [lastUsedAt] - Unix timestamp in seconds with the api key was used
 /// * [role] - Indicates if the api key is private or public
 @BuiltValue(instantiable: false)
 abstract class ApiKeyResponseOnDelete  {
@@ -50,9 +50,9 @@ abstract class ApiKeyResponseOnDelete  {
   @BuiltValueField(wireName: r'object')
   String? get object;
 
-  /// Indicates if the api key was deleted
-  @BuiltValueField(wireName: r'deleted')
-  bool? get deleted;
+  /// Unix timestamp in seconds with the api key was used
+  @BuiltValueField(wireName: r'last_used_at')
+  int? get lastUsedAt;
 
   /// Indicates if the api key is private or public
   @BuiltValueField(wireName: r'role')
@@ -123,11 +123,11 @@ class _$ApiKeyResponseOnDeleteSerializer implements PrimitiveSerializer<ApiKeyRe
         specifiedType: const FullType(String),
       );
     }
-    if (object.deleted != null) {
-      yield r'deleted';
+    if (object.lastUsedAt != null) {
+      yield r'last_used_at';
       yield serializers.serialize(
-        object.deleted,
-        specifiedType: const FullType(bool),
+        object.lastUsedAt,
+        specifiedType: const FullType.nullable(int),
       );
     }
     if (object.role != null) {
@@ -249,12 +249,13 @@ class _$$ApiKeyResponseOnDeleteSerializer implements PrimitiveSerializer<$ApiKey
           ) as String;
           result.object = valueDes;
           break;
-        case r'deleted':
+        case r'last_used_at':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(bool),
-          ) as bool;
-          result.deleted = valueDes;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.lastUsedAt = valueDes;
           break;
         case r'role':
           final valueDes = serializers.deserialize(

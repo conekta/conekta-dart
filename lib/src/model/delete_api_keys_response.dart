@@ -19,10 +19,14 @@ part 'delete_api_keys_response.g.dart';
 /// * [prefix] - The first few characters of the authentication_token
 /// * [id] - Unique identifier of the api key
 /// * [object] - Object name, value is 'api_key'
-/// * [deleted] 
+/// * [lastUsedAt] - Unix timestamp in seconds with the api key was used
 /// * [role] - Indicates if the api key is private or public
+/// * [deleted] 
 @BuiltValue()
 abstract class DeleteApiKeysResponse implements ApiKeyResponseOnDelete, Built<DeleteApiKeysResponse, DeleteApiKeysResponseBuilder> {
+  @BuiltValueField(wireName: r'deleted')
+  bool? get deleted;
+
   DeleteApiKeysResponse._();
 
   factory DeleteApiKeysResponse([void updates(DeleteApiKeysResponseBuilder b)]) = _$DeleteApiKeysResponse;
@@ -72,6 +76,13 @@ class _$DeleteApiKeysResponseSerializer implements PrimitiveSerializer<DeleteApi
       yield serializers.serialize(
         object.livemode,
         specifiedType: const FullType(bool),
+      );
+    }
+    if (object.lastUsedAt != null) {
+      yield r'last_used_at';
+      yield serializers.serialize(
+        object.lastUsedAt,
+        specifiedType: const FullType.nullable(int),
       );
     }
     if (object.prefix != null) {
@@ -159,6 +170,14 @@ class _$DeleteApiKeysResponseSerializer implements PrimitiveSerializer<DeleteApi
             specifiedType: const FullType(bool),
           ) as bool;
           result.livemode = valueDes;
+          break;
+        case r'last_used_at':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.lastUsedAt = valueDes;
           break;
         case r'prefix':
           final valueDes = serializers.deserialize(
