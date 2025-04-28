@@ -14,6 +14,7 @@ part 'checkout_response.g.dart';
 ///
 /// Properties:
 /// * [allowedPaymentMethods] - Are the payment methods available for this link
+/// * [planIds] - List of plan IDs that are available for subscription
 /// * [canNotExpire] 
 /// * [emailsSent] 
 /// * [excludeCardNetworks] 
@@ -43,6 +44,10 @@ abstract class CheckoutResponse implements Built<CheckoutResponse, CheckoutRespo
   /// Are the payment methods available for this link
   @BuiltValueField(wireName: r'allowed_payment_methods')
   BuiltList<String>? get allowedPaymentMethods;
+
+  /// List of plan IDs that are available for subscription
+  @BuiltValueField(wireName: r'plan_ids')
+  BuiltList<String>? get planIds;
 
   @BuiltValueField(wireName: r'can_not_expire')
   bool? get canNotExpire;
@@ -144,6 +149,13 @@ class _$CheckoutResponseSerializer implements PrimitiveSerializer<CheckoutRespon
       yield r'allowed_payment_methods';
       yield serializers.serialize(
         object.allowedPaymentMethods,
+        specifiedType: const FullType(BuiltList, [FullType(String)]),
+      );
+    }
+    if (object.planIds != null) {
+      yield r'plan_ids';
+      yield serializers.serialize(
+        object.planIds,
         specifiedType: const FullType(BuiltList, [FullType(String)]),
       );
     }
@@ -336,6 +348,13 @@ class _$CheckoutResponseSerializer implements PrimitiveSerializer<CheckoutRespon
             specifiedType: const FullType(BuiltList, [FullType(String)]),
           ) as BuiltList<String>;
           result.allowedPaymentMethods.replace(valueDes);
+          break;
+        case r'plan_ids':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(BuiltList, [FullType(String)]),
+          ) as BuiltList<String>;
+          result.planIds.replace(valueDes);
           break;
         case r'can_not_expire':
           final valueDes = serializers.deserialize(
