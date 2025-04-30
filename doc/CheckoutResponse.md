@@ -9,6 +9,7 @@ import 'package:conekta/api.dart';
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **allowedPaymentMethods** | **BuiltList&lt;String&gt;** | Are the payment methods available for this link | [optional] 
+**planIds** | **BuiltList&lt;String&gt;** | List of plan IDs that are available for subscription | [optional] 
 **canNotExpire** | **bool** |  | [optional] 
 **emailsSent** | **int** |  | [optional] 
 **excludeCardNetworks** | [**BuiltList&lt;JsonObject&gt;**](JsonObject.md) |  | [optional] 

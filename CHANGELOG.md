@@ -1,3 +1,5 @@
+## 7.0.1 -2025-04-28
+   * Regenerate SDK
 ## 7.0.0 -2025-04-10
    * Build v2.2.0 SDK
    * Regenerate SDK

@@ -18,6 +18,7 @@ part 'checkout_order_template.g.dart';
 /// * [currency] - It is the currency in which the order will be created. It must be a valid ISO 4217 currency code.
 /// * [customerInfo] 
 /// * [lineItems] - They are the products to buy. Each contains the \"unit price\" and \"quantity\" parameters that are used to calculate the total amount of the order.
+/// * [planIds] - It is a list of plan IDs that will be associated with the order.
 /// * [metadata] - It is a set of key-value pairs that you can attach to the order. It can be used to store additional information about the order in a structured format.
 @BuiltValue()
 abstract class CheckoutOrderTemplate implements Built<CheckoutOrderTemplate, CheckoutOrderTemplateBuilder> {
@@ -31,6 +32,10 @@ abstract class CheckoutOrderTemplate implements Built<CheckoutOrderTemplate, Che
   /// They are the products to buy. Each contains the \"unit price\" and \"quantity\" parameters that are used to calculate the total amount of the order.
   @BuiltValueField(wireName: r'line_items')
   BuiltList<Product> get lineItems;
+
+  /// It is a list of plan IDs that will be associated with the order.
+  @BuiltValueField(wireName: r'plan_ids')
+  BuiltList<String>? get planIds;
 
   /// It is a set of key-value pairs that you can attach to the order. It can be used to store additional information about the order in a structured format.
   @BuiltValueField(wireName: r'metadata')
@@ -76,6 +81,13 @@ class _$CheckoutOrderTemplateSerializer implements PrimitiveSerializer<CheckoutO
       object.lineItems,
       specifiedType: const FullType(BuiltList, [FullType(Product)]),
     );
+    if (object.planIds != null) {
+      yield r'plan_ids';
+      yield serializers.serialize(
+        object.planIds,
+        specifiedType: const FullType(BuiltList, [FullType(String)]),
+      );
+    }
     if (object.metadata != null) {
       yield r'metadata';
       yield serializers.serialize(
@@ -126,6 +138,13 @@ class _$CheckoutOrderTemplateSerializer implements PrimitiveSerializer<CheckoutO
             specifiedType: const FullType(BuiltList, [FullType(Product)]),
           ) as BuiltList<Product>;
           result.lineItems.replace(valueDes);
+          break;
+        case r'plan_ids':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(BuiltList, [FullType(String)]),
+          ) as BuiltList<String>;
+          result.planIds.replace(valueDes);
           break;
         case r'metadata':
           final valueDes = serializers.deserialize(

@@ -12,7 +12,8 @@ part 'checkout_request.g.dart';
 /// [Checkout](https://developers.conekta.com/v2.2.0/reference/payment-link) details 
 ///
 /// Properties:
-/// * [allowedPaymentMethods] - Are the payment methods available for this link
+/// * [allowedPaymentMethods] - Are the payment methods available for this link. For subscriptions, only 'card' is allowed due to the recurring nature of the payments.
+/// * [planIds] - List of plan IDs that will be available for subscription. This field is required for subscription payments.
 /// * [expiresAt] - Unix timestamp of checkout expiration
 /// * [failureUrl] - Redirection url back to the site in case of failed payment, applies only to HostedPayment.
 /// * [monthlyInstallmentsEnabled] 
@@ -25,9 +26,14 @@ part 'checkout_request.g.dart';
 /// * [type] - This field represents the type of checkout
 @BuiltValue()
 abstract class CheckoutRequest implements Built<CheckoutRequest, CheckoutRequestBuilder> {
-  /// Are the payment methods available for this link
+  /// Are the payment methods available for this link. For subscriptions, only 'card' is allowed due to the recurring nature of the payments.
   @BuiltValueField(wireName: r'allowed_payment_methods')
-  BuiltList<String> get allowedPaymentMethods;
+  BuiltList<CheckoutRequestAllowedPaymentMethodsEnum> get allowedPaymentMethods;
+  // enum allowedPaymentMethodsEnum {  cash,  card,  bank_transfer,  bnpl,  };
+
+  /// List of plan IDs that will be available for subscription. This field is required for subscription payments.
+  @BuiltValueField(wireName: r'plan_ids')
+  BuiltList<String>? get planIds;
 
   /// Unix timestamp of checkout expiration
   @BuiltValueField(wireName: r'expires_at')
@@ -92,8 +98,15 @@ class _$CheckoutRequestSerializer implements PrimitiveSerializer<CheckoutRequest
     yield r'allowed_payment_methods';
     yield serializers.serialize(
       object.allowedPaymentMethods,
-      specifiedType: const FullType(BuiltList, [FullType(String)]),
+      specifiedType: const FullType(BuiltList, [FullType(CheckoutRequestAllowedPaymentMethodsEnum)]),
     );
+    if (object.planIds != null) {
+      yield r'plan_ids';
+      yield serializers.serialize(
+        object.planIds,
+        specifiedType: const FullType(BuiltList, [FullType(String)]),
+      );
+    }
     if (object.expiresAt != null) {
       yield r'expires_at';
       yield serializers.serialize(
@@ -190,9 +203,16 @@ class _$CheckoutRequestSerializer implements PrimitiveSerializer<CheckoutRequest
         case r'allowed_payment_methods':
           final valueDes = serializers.deserialize(
             value,
+            specifiedType: const FullType(BuiltList, [FullType(CheckoutRequestAllowedPaymentMethodsEnum)]),
+          ) as BuiltList<CheckoutRequestAllowedPaymentMethodsEnum>;
+          result.allowedPaymentMethods.replace(valueDes);
+          break;
+        case r'plan_ids':
+          final valueDes = serializers.deserialize(
+            value,
             specifiedType: const FullType(BuiltList, [FullType(String)]),
           ) as BuiltList<String>;
-          result.allowedPaymentMethods.replace(valueDes);
+          result.planIds.replace(valueDes);
           break;
         case r'expires_at':
           final valueDes = serializers.deserialize(
@@ -291,5 +311,24 @@ class _$CheckoutRequestSerializer implements PrimitiveSerializer<CheckoutRequest
     );
     return result.build();
   }
+}
+
+class CheckoutRequestAllowedPaymentMethodsEnum extends EnumClass {
+
+  @BuiltValueEnumConst(wireName: r'cash')
+  static const CheckoutRequestAllowedPaymentMethodsEnum cash = _$checkoutRequestAllowedPaymentMethodsEnum_cash;
+  @BuiltValueEnumConst(wireName: r'card')
+  static const CheckoutRequestAllowedPaymentMethodsEnum card = _$checkoutRequestAllowedPaymentMethodsEnum_card;
+  @BuiltValueEnumConst(wireName: r'bank_transfer')
+  static const CheckoutRequestAllowedPaymentMethodsEnum bankTransfer = _$checkoutRequestAllowedPaymentMethodsEnum_bankTransfer;
+  @BuiltValueEnumConst(wireName: r'bnpl')
+  static const CheckoutRequestAllowedPaymentMethodsEnum bnpl = _$checkoutRequestAllowedPaymentMethodsEnum_bnpl;
+
+  static Serializer<CheckoutRequestAllowedPaymentMethodsEnum> get serializer => _$checkoutRequestAllowedPaymentMethodsEnumSerializer;
+
+  const CheckoutRequestAllowedPaymentMethodsEnum._(String name): super(name);
+
+  static BuiltSet<CheckoutRequestAllowedPaymentMethodsEnum> get values => _$checkoutRequestAllowedPaymentMethodsEnumValues;
+  static CheckoutRequestAllowedPaymentMethodsEnum valueOf(String name) => _$checkoutRequestAllowedPaymentMethodsEnumValueOf(name);
 }
 
