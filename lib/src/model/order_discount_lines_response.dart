@@ -5,7 +5,7 @@
 // ignore_for_file: unused_element
 import 'package:conekta/src/model/pagination.dart';
 import 'package:built_collection/built_collection.dart';
-import 'package:conekta/src/model/discount_lines_response.dart';
+import 'package:conekta/src/model/discount_lines_data_response.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -20,7 +20,7 @@ part 'order_discount_lines_response.g.dart';
 @BuiltValue()
 abstract class OrderDiscountLinesResponse implements Pagination, Built<OrderDiscountLinesResponse, OrderDiscountLinesResponseBuilder> {
   @BuiltValueField(wireName: r'data')
-  BuiltList<DiscountLinesResponse>? get data;
+  BuiltList<DiscountLinesDataResponse>? get data;
 
   OrderDiscountLinesResponse._();
 
@@ -49,7 +49,7 @@ class _$OrderDiscountLinesResponseSerializer implements PrimitiveSerializer<Orde
       yield r'data';
       yield serializers.serialize(
         object.data,
-        specifiedType: const FullType(BuiltList, [FullType(DiscountLinesResponse)]),
+        specifiedType: const FullType(BuiltList, [FullType(DiscountLinesDataResponse)]),
       );
     }
     yield r'has_more';
@@ -88,8 +88,8 @@ class _$OrderDiscountLinesResponseSerializer implements PrimitiveSerializer<Orde
         case r'data':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(DiscountLinesResponse)]),
-          ) as BuiltList<DiscountLinesResponse>;
+            specifiedType: const FullType(BuiltList, [FullType(DiscountLinesDataResponse)]),
+          ) as BuiltList<DiscountLinesDataResponse>;
           result.data.replace(valueDes);
           break;
         case r'has_more':

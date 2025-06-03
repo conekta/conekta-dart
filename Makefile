@@ -8,7 +8,7 @@ dart:
 	rm -rf ../conekta-dart/doc && \
 	rm -rf ../conekta-dart/lib/src/model && \
 	docker run --rm \
-    -v ${PWD}:/local openapitools/openapi-generator-cli:v7.10.0 generate \
+    -v ${PWD}:/local openapitools/openapi-generator-cli:v7.13.0 generate \
 	 -i https://raw.githubusercontent.com/conekta/openapi/main/_build/api.yaml \
 	 -g dart-dio \
 	 -o /local \

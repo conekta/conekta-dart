@@ -18,7 +18,7 @@ For more information, please visit [https://github.com/conekta/openapi/issues](h
 To use the package from [pub.dev](https://pub.dev), please include the following in pubspec.yaml
 ```yaml
 dependencies:
-  conekta: 7.0.1
+  conekta: 7.0.2
 ```
 
 ### Github

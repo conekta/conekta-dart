@@ -1,5 +1,5 @@
 name: conekta
-version: 7.0.1
+version: 7.0.2
 description: A simple Conekta API wrapper, that is meant to be used on the server.
 homepage: https://www.github.com/conekta/conekta-dart
 repository: https://www.github.com/conekta/conekta-dart

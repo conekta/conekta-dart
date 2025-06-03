@@ -273,12 +273,13 @@ Serializers _$serializers = (new Serializers().toBuilder()
           const FullType(BuiltList, const [const FullType(ChargeResponse)]),
           () => new ListBuilder<ChargeResponse>())
       ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(ChargeResponse)]),
-          () => new ListBuilder<ChargeResponse>())
-      ..addBuilderFactory(
           const FullType(
               BuiltList, const [const FullType(ChargeResponseRefundsData)]),
           () => new ListBuilder<ChargeResponseRefundsData>())
+      ..addBuilderFactory(
+          const FullType(
+              BuiltList, const [const FullType(ChargesDataResponse)]),
+          () => new ListBuilder<ChargesDataResponse>())
       ..addBuilderFactory(
           const FullType(
               BuiltList, const [const FullType(ChargesOrderResponseAllOfData)]),
@@ -358,8 +359,8 @@ Serializers _$serializers = (new Serializers().toBuilder()
           () => new ListBuilder<DetailsError>())
       ..addBuilderFactory(
           const FullType(
-              BuiltList, const [const FullType(DiscountLinesResponse)]),
-          () => new ListBuilder<DiscountLinesResponse>())
+              BuiltList, const [const FullType(DiscountLinesDataResponse)]),
+          () => new ListBuilder<DiscountLinesDataResponse>())
       ..addBuilderFactory(
           const FullType(
               BuiltList, const [const FullType(DiscountLinesResponse)]),

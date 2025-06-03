@@ -1,3 +1,5 @@
+## 7.0.2 -2025-04-28
+   * Fix missing entities
 ## 7.0.1 -2025-04-28
    * Regenerate SDK
 ## 7.0.0 -2025-04-10

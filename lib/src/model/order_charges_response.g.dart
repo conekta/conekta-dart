@@ -8,7 +8,7 @@ part of 'order_charges_response.dart';
 
 class _$OrderChargesResponse extends OrderChargesResponse {
   @override
-  final BuiltList<ChargeResponse>? data;
+  final BuiltList<ChargesDataResponse>? data;
   @override
   final bool hasMore;
   @override
@@ -71,10 +71,11 @@ class OrderChargesResponseBuilder
         PaginationBuilder {
   _$OrderChargesResponse? _$v;
 
-  ListBuilder<ChargeResponse>? _data;
-  ListBuilder<ChargeResponse> get data =>
-      _$this._data ??= new ListBuilder<ChargeResponse>();
-  set data(covariant ListBuilder<ChargeResponse>? data) => _$this._data = data;
+  ListBuilder<ChargesDataResponse>? _data;
+  ListBuilder<ChargesDataResponse> get data =>
+      _$this._data ??= new ListBuilder<ChargesDataResponse>();
+  set data(covariant ListBuilder<ChargesDataResponse>? data) =>
+      _$this._data = data;
 
   bool? _hasMore;
   bool? get hasMore => _$this._hasMore;
