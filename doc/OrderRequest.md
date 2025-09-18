@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 **shippingContact** | [**CustomerShippingContacts**](CustomerShippingContacts.md) |  | [optional] 
 **shippingLines** | [**BuiltList&lt;ShippingRequest&gt;**](ShippingRequest.md) | List of [shipping costs](https://developers.conekta.com/v2.2.0/reference/orderscreateshipping). If the online store offers digital products. | [optional] 
 **taxLines** | [**BuiltList&lt;OrderTaxRequest&gt;**](OrderTaxRequest.md) | List of [taxes](https://developers.conekta.com/v2.2.0/reference/orderscreatetaxes) that are applied to the order. | [optional] 
-**threeDsMode** | **String** | Indicates the 3DS2 mode for the order, either smart or strict. | [optional] 
+**threeDsMode** | **String** | Indicates the 3DS2 mode for the order, either smart or strict. This property is only applicable when 3DS is enabled. When 3DS is disabled, this field should be null. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

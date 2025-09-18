@@ -36,7 +36,7 @@ abstract class PaymentMethodBnplRequest implements CustomerPaymentMethodRequest,
   /// Product type of the payment method, use for the payment method to know the product type
   @BuiltValueField(wireName: r'product_type')
   PaymentMethodBnplRequestProductTypeEnum get productType;
-  // enum productTypeEnum {  klarna_bnpl,  creditea_bnpl,  };
+  // enum productTypeEnum {  aplazo_bnpl,  creditea_bnpl,  };
 
   /// URL to redirect the customer after a failed payment
   @BuiltValueField(wireName: r'failure_url')
@@ -192,8 +192,8 @@ class _$PaymentMethodBnplRequestSerializer implements PrimitiveSerializer<Paymen
 class PaymentMethodBnplRequestProductTypeEnum extends EnumClass {
 
   /// Product type of the payment method, use for the payment method to know the product type
-  @BuiltValueEnumConst(wireName: r'klarna_bnpl')
-  static const PaymentMethodBnplRequestProductTypeEnum klarnaBnpl = _$paymentMethodBnplRequestProductTypeEnum_klarnaBnpl;
+  @BuiltValueEnumConst(wireName: r'aplazo_bnpl')
+  static const PaymentMethodBnplRequestProductTypeEnum aplazoBnpl = _$paymentMethodBnplRequestProductTypeEnum_aplazoBnpl;
   /// Product type of the payment method, use for the payment method to know the product type
   @BuiltValueEnumConst(wireName: r'creditea_bnpl')
   static const PaymentMethodBnplRequestProductTypeEnum crediteaBnpl = _$paymentMethodBnplRequestProductTypeEnum_crediteaBnpl;

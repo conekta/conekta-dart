@@ -84,8 +84,13 @@ Class | Method | HTTP request | Description
 [*ChargesApi*](doc/ChargesApi.md) | [**ordersCreateCharge**](doc/ChargesApi.md#orderscreatecharge) | **POST** /orders/{id}/charges | Create charge
 [*ChargesApi*](doc/ChargesApi.md) | [**ordersCreateCharges**](doc/ChargesApi.md#orderscreatecharges) | **POST** /orders/{id}/add_charges | Create charges
 [*ChargesApi*](doc/ChargesApi.md) | [**updateCharge**](doc/ChargesApi.md#updatecharge) | **PUT** /charges/{id} | Update a charge
+[*CompaniesApi*](doc/CompaniesApi.md) | [**createCompany**](doc/CompaniesApi.md#createcompany) | **POST** /companies | Create Company
 [*CompaniesApi*](doc/CompaniesApi.md) | [**getCompanies**](doc/CompaniesApi.md#getcompanies) | **GET** /companies | Get List of Companies
 [*CompaniesApi*](doc/CompaniesApi.md) | [**getCompany**](doc/CompaniesApi.md#getcompany) | **GET** /companies/{id} | Get Company
+[*CompaniesApi*](doc/CompaniesApi.md) | [**getCompanyDocuments**](doc/CompaniesApi.md#getcompanydocuments) | **GET** /companies/{company_id}/documents | Get Company Documents
+[*CompaniesApi*](doc/CompaniesApi.md) | [**getCurrentCompany**](doc/CompaniesApi.md#getcurrentcompany) | **GET** /companies/current | Get Current Company
+[*CompaniesApi*](doc/CompaniesApi.md) | [**updateCompanyDocument**](doc/CompaniesApi.md#updatecompanydocument) | **PATCH** /companies/{company_id}/document | Update Company Document
+[*CompaniesApi*](doc/CompaniesApi.md) | [**uploadCompanyDocument**](doc/CompaniesApi.md#uploadcompanydocument) | **POST** /companies/{company_id}/document | Upload Company Document
 [*CustomersApi*](doc/CustomersApi.md) | [**createCustomer**](doc/CustomersApi.md#createcustomer) | **POST** /customers | Create customer
 [*CustomersApi*](doc/CustomersApi.md) | [**createCustomerFiscalEntities**](doc/CustomersApi.md#createcustomerfiscalentities) | **POST** /customers/{id}/fiscal_entities | Create Fiscal Entity
 [*CustomersApi*](doc/CustomersApi.md) | [**deleteCustomerById**](doc/CustomersApi.md#deletecustomerbyid) | **DELETE** /customers/{id} | Delete Customer
@@ -205,10 +210,14 @@ Class | Method | HTTP request | Description
  - [CheckoutRequest](doc/CheckoutRequest.md)
  - [CheckoutResponse](doc/CheckoutResponse.md)
  - [CheckoutsResponse](doc/CheckoutsResponse.md)
- - [CompanyFiscalInfoAddressResponse](doc/CompanyFiscalInfoAddressResponse.md)
- - [CompanyFiscalInfoResponse](doc/CompanyFiscalInfoResponse.md)
- - [CompanyPayoutDestinationResponse](doc/CompanyPayoutDestinationResponse.md)
+ - [CompanyDocumentRequest](doc/CompanyDocumentRequest.md)
+ - [CompanyDocumentResponse](doc/CompanyDocumentResponse.md)
  - [CompanyResponse](doc/CompanyResponse.md)
+ - [CompanyResponseDocumentsInner](doc/CompanyResponseDocumentsInner.md)
+ - [CreateCompanyRequest](doc/CreateCompanyRequest.md)
+ - [CreateCompanyRequestBankAccountInfo](doc/CreateCompanyRequestBankAccountInfo.md)
+ - [CreateCompanyRequestComercialInfo](doc/CreateCompanyRequestComercialInfo.md)
+ - [CreateCompanyRequestFiscalInfo](doc/CreateCompanyRequestFiscalInfo.md)
  - [CreateCustomerFiscalEntitiesResponse](doc/CreateCustomerFiscalEntitiesResponse.md)
  - [CreateCustomerPaymentMethodsRequest](doc/CreateCustomerPaymentMethodsRequest.md)
  - [CreateCustomerPaymentMethodsResponse](doc/CreateCustomerPaymentMethodsResponse.md)
@@ -300,10 +309,13 @@ Class | Method | HTTP request | Description
  - [PaymentMethodCardRequest](doc/PaymentMethodCardRequest.md)
  - [PaymentMethodCardResponse](doc/PaymentMethodCardResponse.md)
  - [PaymentMethodCash](doc/PaymentMethodCash.md)
+ - [PaymentMethodCashRecurrentResponse](doc/PaymentMethodCashRecurrentResponse.md)
  - [PaymentMethodCashRequest](doc/PaymentMethodCashRequest.md)
  - [PaymentMethodCashResponse](doc/PaymentMethodCashResponse.md)
  - [PaymentMethodCashResponseAllOfAgreements](doc/PaymentMethodCashResponseAllOfAgreements.md)
  - [PaymentMethodGeneralRequest](doc/PaymentMethodGeneralRequest.md)
+ - [PaymentMethodPbbPayment](doc/PaymentMethodPbbPayment.md)
+ - [PaymentMethodPbbRequest](doc/PaymentMethodPbbRequest.md)
  - [PaymentMethodResponse](doc/PaymentMethodResponse.md)
  - [PaymentMethodSpeiRecurrent](doc/PaymentMethodSpeiRecurrent.md)
  - [PaymentMethodSpeiRequest](doc/PaymentMethodSpeiRequest.md)

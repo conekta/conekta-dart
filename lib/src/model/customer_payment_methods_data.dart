@@ -8,6 +8,7 @@ import 'package:conekta/src/model/payment_method_card_response.dart';
 import 'package:conekta/src/model/payment_method_cash_response_all_of_agreements.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:conekta/src/model/payment_method_spei_recurrent.dart';
+import 'package:conekta/src/model/payment_method_cash_recurrent_response.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:one_of/one_of.dart';
@@ -38,9 +39,10 @@ part 'customer_payment_methods_data.g.dart';
 /// * [default_] 
 /// * [visibleOnCheckout] 
 /// * [paymentSourceStatus] 
+/// * [bank] - Bank name for the SPEI payment method
 @BuiltValue()
 abstract class CustomerPaymentMethodsData implements Built<CustomerPaymentMethodsData, CustomerPaymentMethodsDataBuilder> {
-  /// One Of [PaymentMethodCardResponse], [PaymentMethodCashResponse], [PaymentMethodSpeiRecurrent]
+  /// One Of [PaymentMethodCardResponse], [PaymentMethodCashRecurrentResponse], [PaymentMethodCashResponse], [PaymentMethodSpeiRecurrent]
   OneOf get oneOf;
 
   static const String discriminatorFieldName = r'type';
@@ -48,8 +50,7 @@ abstract class CustomerPaymentMethodsData implements Built<CustomerPaymentMethod
   static const Map<String, Type> discriminatorMapping = {
     r'card': PaymentMethodCardResponse,
     r'cash': PaymentMethodCashResponse,
-    r'cash_recurrent': PaymentMethodCashResponse,
-    r'oxxo_recurrent': PaymentMethodCashResponse,
+    r'cash_recurrent': PaymentMethodCashRecurrentResponse,
     r'spei_recurrent': PaymentMethodSpeiRecurrent,
   };
 
@@ -72,11 +73,8 @@ extension CustomerPaymentMethodsDataDiscriminatorExt on CustomerPaymentMethodsDa
         if (this is PaymentMethodCashResponse) {
             return r'cash';
         }
-        if (this is PaymentMethodCashResponse) {
+        if (this is PaymentMethodCashRecurrentResponse) {
             return r'cash_recurrent';
-        }
-        if (this is PaymentMethodCashResponse) {
-            return r'oxxo_recurrent';
         }
         if (this is PaymentMethodSpeiRecurrent) {
             return r'spei_recurrent';
@@ -92,11 +90,8 @@ extension CustomerPaymentMethodsDataBuilderDiscriminatorExt on CustomerPaymentMe
         if (this is PaymentMethodCashResponseBuilder) {
             return r'cash';
         }
-        if (this is PaymentMethodCashResponseBuilder) {
+        if (this is PaymentMethodCashRecurrentResponseBuilder) {
             return r'cash_recurrent';
-        }
-        if (this is PaymentMethodCashResponseBuilder) {
-            return r'oxxo_recurrent';
         }
         if (this is PaymentMethodSpeiRecurrentBuilder) {
             return r'spei_recurrent';
@@ -141,7 +136,7 @@ class _$CustomerPaymentMethodsDataSerializer implements PrimitiveSerializer<Cust
     final discIndex = serializedList.indexOf(CustomerPaymentMethodsData.discriminatorFieldName) + 1;
     final discValue = serializers.deserialize(serializedList[discIndex], specifiedType: FullType(String)) as String;
     oneOfDataSrc = serialized;
-    final oneOfTypes = [PaymentMethodCardResponse, PaymentMethodCashResponse, PaymentMethodCashResponse, PaymentMethodCashResponse, PaymentMethodSpeiRecurrent, ];
+    final oneOfTypes = [PaymentMethodCardResponse, PaymentMethodCashResponse, PaymentMethodCashRecurrentResponse, PaymentMethodSpeiRecurrent, ];
     Object oneOfResult;
     Type oneOfType;
     switch (discValue) {
@@ -162,16 +157,9 @@ class _$CustomerPaymentMethodsDataSerializer implements PrimitiveSerializer<Cust
       case r'cash_recurrent':
         oneOfResult = serializers.deserialize(
           oneOfDataSrc,
-          specifiedType: FullType(PaymentMethodCashResponse),
-        ) as PaymentMethodCashResponse;
-        oneOfType = PaymentMethodCashResponse;
-        break;
-      case r'oxxo_recurrent':
-        oneOfResult = serializers.deserialize(
-          oneOfDataSrc,
-          specifiedType: FullType(PaymentMethodCashResponse),
-        ) as PaymentMethodCashResponse;
-        oneOfType = PaymentMethodCashResponse;
+          specifiedType: FullType(PaymentMethodCashRecurrentResponse),
+        ) as PaymentMethodCashRecurrentResponse;
+        oneOfType = PaymentMethodCashRecurrentResponse;
         break;
       case r'spei_recurrent':
         oneOfResult = serializers.deserialize(

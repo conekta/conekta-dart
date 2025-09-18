@@ -6,58 +6,58 @@
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
-part 'update_payment_methods.g.dart';
+part 'create_company_request_fiscal_info.g.dart';
 
-/// UpdatePaymentMethods
+/// Fiscal information for the company.
 ///
 /// Properties:
-/// * [name] - The name of the payment method holder
-/// * [expiresAt] - The expiration date of the payment method in Unix timestamp format
+/// * [businessPhone] - The business phone number for fiscal purposes.
+/// * [fiscalType] - The fiscal type of the company (e.g., 'moral', 'persona_fisica').
 @BuiltValue()
-abstract class UpdatePaymentMethods implements Built<UpdatePaymentMethods, UpdatePaymentMethodsBuilder> {
-  /// The name of the payment method holder
-  @BuiltValueField(wireName: r'name')
-  String? get name;
+abstract class CreateCompanyRequestFiscalInfo implements Built<CreateCompanyRequestFiscalInfo, CreateCompanyRequestFiscalInfoBuilder> {
+  /// The business phone number for fiscal purposes.
+  @BuiltValueField(wireName: r'business_phone')
+  String? get businessPhone;
 
-  /// The expiration date of the payment method in Unix timestamp format
-  @BuiltValueField(wireName: r'expires_at')
-  int? get expiresAt;
+  /// The fiscal type of the company (e.g., 'moral', 'persona_fisica').
+  @BuiltValueField(wireName: r'fiscal_type')
+  String? get fiscalType;
 
-  UpdatePaymentMethods._();
+  CreateCompanyRequestFiscalInfo._();
 
-  factory UpdatePaymentMethods([void updates(UpdatePaymentMethodsBuilder b)]) = _$UpdatePaymentMethods;
+  factory CreateCompanyRequestFiscalInfo([void updates(CreateCompanyRequestFiscalInfoBuilder b)]) = _$CreateCompanyRequestFiscalInfo;
 
   @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(UpdatePaymentMethodsBuilder b) => b;
+  static void _defaults(CreateCompanyRequestFiscalInfoBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<UpdatePaymentMethods> get serializer => _$UpdatePaymentMethodsSerializer();
+  static Serializer<CreateCompanyRequestFiscalInfo> get serializer => _$CreateCompanyRequestFiscalInfoSerializer();
 }
 
-class _$UpdatePaymentMethodsSerializer implements PrimitiveSerializer<UpdatePaymentMethods> {
+class _$CreateCompanyRequestFiscalInfoSerializer implements PrimitiveSerializer<CreateCompanyRequestFiscalInfo> {
   @override
-  final Iterable<Type> types = const [UpdatePaymentMethods, _$UpdatePaymentMethods];
+  final Iterable<Type> types = const [CreateCompanyRequestFiscalInfo, _$CreateCompanyRequestFiscalInfo];
 
   @override
-  final String wireName = r'UpdatePaymentMethods';
+  final String wireName = r'CreateCompanyRequestFiscalInfo';
 
   Iterable<Object?> _serializeProperties(
     Serializers serializers,
-    UpdatePaymentMethods object, {
+    CreateCompanyRequestFiscalInfo object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    if (object.name != null) {
-      yield r'name';
+    if (object.businessPhone != null) {
+      yield r'business_phone';
       yield serializers.serialize(
-        object.name,
+        object.businessPhone,
         specifiedType: const FullType(String),
       );
     }
-    if (object.expiresAt != null) {
-      yield r'expires_at';
+    if (object.fiscalType != null) {
+      yield r'fiscal_type';
       yield serializers.serialize(
-        object.expiresAt,
-        specifiedType: const FullType(int),
+        object.fiscalType,
+        specifiedType: const FullType(String),
       );
     }
   }
@@ -65,7 +65,7 @@ class _$UpdatePaymentMethodsSerializer implements PrimitiveSerializer<UpdatePaym
   @override
   Object serialize(
     Serializers serializers,
-    UpdatePaymentMethods object, {
+    CreateCompanyRequestFiscalInfo object, {
     FullType specifiedType = FullType.unspecified,
   }) {
     return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
@@ -76,26 +76,26 @@ class _$UpdatePaymentMethodsSerializer implements PrimitiveSerializer<UpdatePaym
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
     required List<Object?> serializedList,
-    required UpdatePaymentMethodsBuilder result,
+    required CreateCompanyRequestFiscalInfoBuilder result,
     required List<Object?> unhandled,
   }) {
     for (var i = 0; i < serializedList.length; i += 2) {
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
-        case r'name':
+        case r'business_phone':
           final valueDes = serializers.deserialize(
             value,
             specifiedType: const FullType(String),
           ) as String;
-          result.name = valueDes;
+          result.businessPhone = valueDes;
           break;
-        case r'expires_at':
+        case r'fiscal_type':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.expiresAt = valueDes;
+            specifiedType: const FullType(String),
+          ) as String;
+          result.fiscalType = valueDes;
           break;
         default:
           unhandled.add(key);
@@ -106,12 +106,12 @@ class _$UpdatePaymentMethodsSerializer implements PrimitiveSerializer<UpdatePaym
   }
 
   @override
-  UpdatePaymentMethods deserialize(
+  CreateCompanyRequestFiscalInfo deserialize(
     Serializers serializers,
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final result = UpdatePaymentMethodsBuilder();
+    final result = CreateCompanyRequestFiscalInfoBuilder();
     final serializedList = (serialized as Iterable<Object?>).toList();
     final unhandled = <Object?>[];
     _deserializeProperties(

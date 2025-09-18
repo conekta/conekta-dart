@@ -3,101 +3,99 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:conekta/src/model/payment_method_response.dart';
+import 'package:conekta/src/model/payment_method.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
-part 'payment_method_spei_recurrent.g.dart';
+part 'payment_method_pbb_payment.g.dart';
 
-/// PaymentMethodSpeiRecurrent
+/// PaymentMethodPbbPayment
 ///
 /// Properties:
 /// * [type] 
-/// * [id] 
 /// * [object] 
-/// * [createdAt] 
-/// * [parentId] 
-/// * [bank] - Bank name for the SPEI payment method
-/// * [reference] 
-/// * [expiresAt] 
+/// * [deepLink] - Deep link for the payment, use for mobile apps/flows
+/// * [expiresAt] - Expiration date of the charge
+/// * [productType] - Product type of the charge
+/// * [redirectUrl] - URL to redirect the customer to complete the payment
+/// * [reference] - Reference for the payment
 @BuiltValue()
-abstract class PaymentMethodSpeiRecurrent implements PaymentMethodResponse, Built<PaymentMethodSpeiRecurrent, PaymentMethodSpeiRecurrentBuilder> {
+abstract class PaymentMethodPbbPayment implements PaymentMethod, Built<PaymentMethodPbbPayment, PaymentMethodPbbPaymentBuilder> {
+  /// Reference for the payment
   @BuiltValueField(wireName: r'reference')
-  String? get reference;
+  String get reference;
 
-  /// Bank name for the SPEI payment method
-  @BuiltValueField(wireName: r'bank')
-  String? get bank;
+  /// URL to redirect the customer to complete the payment
+  @BuiltValueField(wireName: r'redirect_url')
+  String get redirectUrl;
 
+  /// Deep link for the payment, use for mobile apps/flows
+  @BuiltValueField(wireName: r'deep_link')
+  String get deepLink;
+
+  /// Expiration date of the charge
   @BuiltValueField(wireName: r'expires_at')
-  String? get expiresAt;
+  int get expiresAt;
 
-  PaymentMethodSpeiRecurrent._();
+  /// Product type of the charge
+  @BuiltValueField(wireName: r'product_type')
+  String get productType;
 
-  factory PaymentMethodSpeiRecurrent([void updates(PaymentMethodSpeiRecurrentBuilder b)]) = _$PaymentMethodSpeiRecurrent;
+  PaymentMethodPbbPayment._();
+
+  factory PaymentMethodPbbPayment([void updates(PaymentMethodPbbPaymentBuilder b)]) = _$PaymentMethodPbbPayment;
 
   @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(PaymentMethodSpeiRecurrentBuilder b) => b;
+  static void _defaults(PaymentMethodPbbPaymentBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<PaymentMethodSpeiRecurrent> get serializer => _$PaymentMethodSpeiRecurrentSerializer();
+  static Serializer<PaymentMethodPbbPayment> get serializer => _$PaymentMethodPbbPaymentSerializer();
 }
 
-class _$PaymentMethodSpeiRecurrentSerializer implements PrimitiveSerializer<PaymentMethodSpeiRecurrent> {
+class _$PaymentMethodPbbPaymentSerializer implements PrimitiveSerializer<PaymentMethodPbbPayment> {
   @override
-  final Iterable<Type> types = const [PaymentMethodSpeiRecurrent, _$PaymentMethodSpeiRecurrent];
+  final Iterable<Type> types = const [PaymentMethodPbbPayment, _$PaymentMethodPbbPayment];
 
   @override
-  final String wireName = r'PaymentMethodSpeiRecurrent';
+  final String wireName = r'PaymentMethodPbbPayment';
 
   Iterable<Object?> _serializeProperties(
     Serializers serializers,
-    PaymentMethodSpeiRecurrent object, {
+    PaymentMethodPbbPayment object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    if (object.reference != null) {
-      yield r'reference';
+    yield r'reference';
+    yield serializers.serialize(
+      object.reference,
+      specifiedType: const FullType(String),
+    );
+    yield r'redirect_url';
+    yield serializers.serialize(
+      object.redirectUrl,
+      specifiedType: const FullType(String),
+    );
+    yield r'deep_link';
+    yield serializers.serialize(
+      object.deepLink,
+      specifiedType: const FullType(String),
+    );
+    if (object.type != null) {
+      yield r'type';
       yield serializers.serialize(
-        object.reference,
+        object.type,
         specifiedType: const FullType(String),
       );
     }
-    yield r'created_at';
+    yield r'expires_at';
     yield serializers.serialize(
-      object.createdAt,
+      object.expiresAt,
       specifiedType: const FullType(int),
     );
-    if (object.bank != null) {
-      yield r'bank';
-      yield serializers.serialize(
-        object.bank,
-        specifiedType: const FullType(String),
-      );
-    }
-    yield r'id';
+    yield r'product_type';
     yield serializers.serialize(
-      object.id,
+      object.productType,
       specifiedType: const FullType(String),
     );
-    yield r'type';
-    yield serializers.serialize(
-      object.type,
-      specifiedType: const FullType(String),
-    );
-    if (object.expiresAt != null) {
-      yield r'expires_at';
-      yield serializers.serialize(
-        object.expiresAt,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.parentId != null) {
-      yield r'parent_id';
-      yield serializers.serialize(
-        object.parentId,
-        specifiedType: const FullType(String),
-      );
-    }
     yield r'object';
     yield serializers.serialize(
       object.object,
@@ -108,7 +106,7 @@ class _$PaymentMethodSpeiRecurrentSerializer implements PrimitiveSerializer<Paym
   @override
   Object serialize(
     Serializers serializers,
-    PaymentMethodSpeiRecurrent object, {
+    PaymentMethodPbbPayment object, {
     FullType specifiedType = FullType.unspecified,
   }) {
     return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
@@ -119,7 +117,7 @@ class _$PaymentMethodSpeiRecurrentSerializer implements PrimitiveSerializer<Paym
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
     required List<Object?> serializedList,
-    required PaymentMethodSpeiRecurrentBuilder result,
+    required PaymentMethodPbbPaymentBuilder result,
     required List<Object?> unhandled,
   }) {
     for (var i = 0; i < serializedList.length; i += 2) {
@@ -133,26 +131,19 @@ class _$PaymentMethodSpeiRecurrentSerializer implements PrimitiveSerializer<Paym
           ) as String;
           result.reference = valueDes;
           break;
-        case r'created_at':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.createdAt = valueDes;
-          break;
-        case r'bank':
+        case r'redirect_url':
           final valueDes = serializers.deserialize(
             value,
             specifiedType: const FullType(String),
           ) as String;
-          result.bank = valueDes;
+          result.redirectUrl = valueDes;
           break;
-        case r'id':
+        case r'deep_link':
           final valueDes = serializers.deserialize(
             value,
             specifiedType: const FullType(String),
           ) as String;
-          result.id = valueDes;
+          result.deepLink = valueDes;
           break;
         case r'type':
           final valueDes = serializers.deserialize(
@@ -164,16 +155,16 @@ class _$PaymentMethodSpeiRecurrentSerializer implements PrimitiveSerializer<Paym
         case r'expires_at':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType(int),
+          ) as int;
           result.expiresAt = valueDes;
           break;
-        case r'parent_id':
+        case r'product_type':
           final valueDes = serializers.deserialize(
             value,
             specifiedType: const FullType(String),
           ) as String;
-          result.parentId = valueDes;
+          result.productType = valueDes;
           break;
         case r'object':
           final valueDes = serializers.deserialize(
@@ -191,12 +182,12 @@ class _$PaymentMethodSpeiRecurrentSerializer implements PrimitiveSerializer<Paym
   }
 
   @override
-  PaymentMethodSpeiRecurrent deserialize(
+  PaymentMethodPbbPayment deserialize(
     Serializers serializers,
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final result = PaymentMethodSpeiRecurrentBuilder();
+    final result = PaymentMethodPbbPaymentBuilder();
     final serializedList = (serialized as Iterable<Object?>).toList();
     final unhandled = <Object?>[];
     _deserializeProperties(

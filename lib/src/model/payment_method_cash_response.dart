@@ -25,8 +25,8 @@ part 'payment_method_cash_response.g.dart';
 /// * [barcodeUrl] - URL to the barcode image, reference is the same as barcode
 /// * [expiresAt] 
 /// * [provider] 
-@BuiltValue()
-abstract class PaymentMethodCashResponse implements PaymentMethodResponse, Built<PaymentMethodCashResponse, PaymentMethodCashResponseBuilder> {
+@BuiltValue(instantiable: false)
+abstract class PaymentMethodCashResponse implements PaymentMethodResponse {
   @BuiltValueField(wireName: r'reference')
   String? get reference;
 
@@ -46,20 +46,13 @@ abstract class PaymentMethodCashResponse implements PaymentMethodResponse, Built
   @BuiltValueField(wireName: r'expires_at')
   int? get expiresAt;
 
-  PaymentMethodCashResponse._();
-
-  factory PaymentMethodCashResponse([void updates(PaymentMethodCashResponseBuilder b)]) = _$PaymentMethodCashResponse;
-
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(PaymentMethodCashResponseBuilder b) => b;
-
   @BuiltValueSerializer(custom: true)
   static Serializer<PaymentMethodCashResponse> get serializer => _$PaymentMethodCashResponseSerializer();
 }
 
 class _$PaymentMethodCashResponseSerializer implements PrimitiveSerializer<PaymentMethodCashResponse> {
   @override
-  final Iterable<Type> types = const [PaymentMethodCashResponse, _$PaymentMethodCashResponse];
+  final Iterable<Type> types = const [PaymentMethodCashResponse];
 
   @override
   final String wireName = r'PaymentMethodCashResponse';
@@ -147,6 +140,46 @@ class _$PaymentMethodCashResponseSerializer implements PrimitiveSerializer<Payme
     FullType specifiedType = FullType.unspecified,
   }) {
     return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+  }
+
+  @override
+  PaymentMethodCashResponse deserialize(
+    Serializers serializers,
+    Object serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    return serializers.deserialize(serialized, specifiedType: FullType($PaymentMethodCashResponse)) as $PaymentMethodCashResponse;
+  }
+}
+
+/// a concrete implementation of [PaymentMethodCashResponse], since [PaymentMethodCashResponse] is not instantiable
+@BuiltValue(instantiable: true)
+abstract class $PaymentMethodCashResponse implements PaymentMethodCashResponse, Built<$PaymentMethodCashResponse, $PaymentMethodCashResponseBuilder> {
+  $PaymentMethodCashResponse._();
+
+  factory $PaymentMethodCashResponse([void Function($PaymentMethodCashResponseBuilder)? updates]) = _$$PaymentMethodCashResponse;
+
+  @BuiltValueHook(initializeBuilder: true)
+  static void _defaults($PaymentMethodCashResponseBuilder b) => b;
+
+  @BuiltValueSerializer(custom: true)
+  static Serializer<$PaymentMethodCashResponse> get serializer => _$$PaymentMethodCashResponseSerializer();
+}
+
+class _$$PaymentMethodCashResponseSerializer implements PrimitiveSerializer<$PaymentMethodCashResponse> {
+  @override
+  final Iterable<Type> types = const [$PaymentMethodCashResponse, _$$PaymentMethodCashResponse];
+
+  @override
+  final String wireName = r'$PaymentMethodCashResponse';
+
+  @override
+  Object serialize(
+    Serializers serializers,
+    $PaymentMethodCashResponse object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    return serializers.serialize(object, specifiedType: FullType(PaymentMethodCashResponse))!;
   }
 
   void _deserializeProperties(
@@ -247,12 +280,12 @@ class _$PaymentMethodCashResponseSerializer implements PrimitiveSerializer<Payme
   }
 
   @override
-  PaymentMethodCashResponse deserialize(
+  $PaymentMethodCashResponse deserialize(
     Serializers serializers,
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final result = PaymentMethodCashResponseBuilder();
+    final result = $PaymentMethodCashResponseBuilder();
     final serializedList = (serialized as Iterable<Object?>).toList();
     final unhandled = <Object?>[];
     _deserializeProperties(

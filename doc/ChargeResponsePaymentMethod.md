@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **agreement** | **String** | Agreement ID | [optional] 
 **authCode** | **String** |  | [optional] 
 **cashierId** | **String** |  | [optional] 
-**reference** | **String** |  | [optional] 
+**reference** | **String** | Reference for the payment | 
 **barcodeUrl** | **String** |  | [optional] 
 **expiresAt** | **int** | Expiration date of the charge | 
 **productType** | **String** | Product type of the charge | 
@@ -48,8 +48,9 @@ Name | Type | Description | Notes
 **trackingCode** | **String** |  | [optional] 
 **cancelUrl** | **String** | URL to redirect the customer after a canceled payment | [optional] 
 **failureUrl** | **String** | URL to redirect the customer after a failed payment | [optional] 
-**redirectUrl** | **String** | URL to redirect the customer to complete the payment | [optional] 
+**redirectUrl** | **String** | URL to redirect the customer to complete the payment | 
 **successUrl** | **String** | URL to redirect the customer after a successful payment | [optional] 
+**deepLink** | **String** | Deep link for the payment, use for mobile apps/flows | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

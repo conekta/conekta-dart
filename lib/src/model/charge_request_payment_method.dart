@@ -6,6 +6,7 @@
 import 'package:conekta/src/model/payment_method_card_request.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:conekta/src/model/payment_method_bnpl_request.dart';
+import 'package:conekta/src/model/payment_method_pbb_request.dart';
 import 'package:conekta/src/model/payment_method_general_request.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -17,10 +18,11 @@ part 'charge_request_payment_method.g.dart';
 ///
 /// Properties:
 /// * [type] - Type of payment method
+/// * [expiresAt] - Method expiration date as unix timestamp
+/// * [productType] - Product type of the payment method, use for the payment method to know the product type
 /// * [cancelUrl] - URL to redirect the customer after a canceled payment
 /// * [canNotExpire] - Indicates if the payment method can not expire
 /// * [failureUrl] - URL to redirect the customer after a failed payment
-/// * [productType] - Product type of the payment method, use for the payment method to know the product type
 /// * [successUrl] - URL to redirect the customer after a successful payment
 /// * [cvc] - Optional, It is a value that allows identifying the security code of the card. Only for PCI merchants
 /// * [expMonth] - Card expiration month
@@ -28,14 +30,13 @@ part 'charge_request_payment_method.g.dart';
 /// * [name] - Cardholder name
 /// * [number] - Card number
 /// * [customerIpAddress] - Optional field used to capture the customer's IP address for fraud prevention and security monitoring purposes
-/// * [expiresAt] - Method expiration date as unix timestamp
 /// * [monthlyInstallments] - How many months without interest to apply, it can be 3, 6, 9, 12 or 18
 /// * [tokenId] 
 /// * [paymentSourceId] 
 /// * [contractId] - Optional id sent to indicate the bank contract for recurrent card charges.
 @BuiltValue()
 abstract class ChargeRequestPaymentMethod implements Built<ChargeRequestPaymentMethod, ChargeRequestPaymentMethodBuilder> {
-  /// One Of [PaymentMethodBnplRequest], [PaymentMethodCardRequest], [PaymentMethodGeneralRequest]
+  /// One Of [PaymentMethodBnplRequest], [PaymentMethodCardRequest], [PaymentMethodGeneralRequest], [PaymentMethodPbbRequest]
   OneOf get oneOf;
 
   ChargeRequestPaymentMethod._();
@@ -81,7 +82,7 @@ class _$ChargeRequestPaymentMethodSerializer implements PrimitiveSerializer<Char
   }) {
     final result = ChargeRequestPaymentMethodBuilder();
     Object? oneOfDataSrc;
-    final targetType = const FullType(OneOf, [FullType(PaymentMethodBnplRequest), FullType(PaymentMethodCardRequest), FullType(PaymentMethodGeneralRequest), ]);
+    final targetType = const FullType(OneOf, [FullType(PaymentMethodPbbRequest), FullType(PaymentMethodBnplRequest), FullType(PaymentMethodCardRequest), FullType(PaymentMethodGeneralRequest), ]);
     oneOfDataSrc = serialized;
     result.oneOf = serializers.deserialize(oneOfDataSrc, specifiedType: targetType) as OneOf;
     return result.build();
@@ -91,8 +92,8 @@ class _$ChargeRequestPaymentMethodSerializer implements PrimitiveSerializer<Char
 class ChargeRequestPaymentMethodProductTypeEnum extends EnumClass {
 
   /// Product type of the payment method, use for the payment method to know the product type
-  @BuiltValueEnumConst(wireName: r'klarna_bnpl')
-  static const ChargeRequestPaymentMethodProductTypeEnum klarnaBnpl = _$chargeRequestPaymentMethodProductTypeEnum_klarnaBnpl;
+  @BuiltValueEnumConst(wireName: r'aplazo_bnpl')
+  static const ChargeRequestPaymentMethodProductTypeEnum aplazoBnpl = _$chargeRequestPaymentMethodProductTypeEnum_aplazoBnpl;
   /// Product type of the payment method, use for the payment method to know the product type
   @BuiltValueEnumConst(wireName: r'creditea_bnpl')
   static const ChargeRequestPaymentMethodProductTypeEnum crediteaBnpl = _$chargeRequestPaymentMethodProductTypeEnum_crediteaBnpl;

@@ -7,6 +7,7 @@ import 'package:built_collection/built_collection.dart';
 import 'package:conekta/src/model/payment_method_bnpl_payment.dart';
 import 'package:conekta/src/model/payment_method_cash.dart';
 import 'package:conekta/src/model/payment_method_bank_transfer.dart';
+import 'package:conekta/src/model/payment_method_pbb_payment.dart';
 import 'package:conekta/src/model/payment_method_card.dart';
 import 'package:built_value/json_object.dart';
 import 'package:built_value/built_value.dart';
@@ -23,7 +24,7 @@ part 'charge_order_response_payment_method.g.dart';
 /// * [agreement] - Agreement ID
 /// * [authCode] 
 /// * [cashierId] 
-/// * [reference] 
+/// * [reference] - Reference for the payment
 /// * [barcodeUrl] 
 /// * [expiresAt] - Expiration date of the charge
 /// * [productType] - Product type of the charge
@@ -60,9 +61,10 @@ part 'charge_order_response_payment_method.g.dart';
 /// * [failureUrl] - URL to redirect the customer after a failed payment
 /// * [redirectUrl] - URL to redirect the customer to complete the payment
 /// * [successUrl] - URL to redirect the customer after a successful payment
+/// * [deepLink] - Deep link for the payment, use for mobile apps/flows
 @BuiltValue()
 abstract class ChargeOrderResponsePaymentMethod implements Built<ChargeOrderResponsePaymentMethod, ChargeOrderResponsePaymentMethodBuilder> {
-  /// One Of [PaymentMethodBankTransfer], [PaymentMethodBnplPayment], [PaymentMethodCard], [PaymentMethodCash]
+  /// One Of [PaymentMethodBankTransfer], [PaymentMethodBnplPayment], [PaymentMethodCard], [PaymentMethodCash], [PaymentMethodPbbPayment]
   OneOf get oneOf;
 
   static const String discriminatorFieldName = r'object';
@@ -72,6 +74,7 @@ abstract class ChargeOrderResponsePaymentMethod implements Built<ChargeOrderResp
     r'bnpl_payment': PaymentMethodBnplPayment,
     r'card_payment': PaymentMethodCard,
     r'cash_payment': PaymentMethodCash,
+    r'pbb_payment': PaymentMethodPbbPayment,
   };
 
   ChargeOrderResponsePaymentMethod._();
@@ -99,6 +102,9 @@ extension ChargeOrderResponsePaymentMethodDiscriminatorExt on ChargeOrderRespons
         if (this is PaymentMethodCash) {
             return r'cash_payment';
         }
+        if (this is PaymentMethodPbbPayment) {
+            return r'pbb_payment';
+        }
         return null;
     }
 }
@@ -115,6 +121,9 @@ extension ChargeOrderResponsePaymentMethodBuilderDiscriminatorExt on ChargeOrder
         }
         if (this is PaymentMethodCashBuilder) {
             return r'cash_payment';
+        }
+        if (this is PaymentMethodPbbPaymentBuilder) {
+            return r'pbb_payment';
         }
         return null;
     }
@@ -156,7 +165,7 @@ class _$ChargeOrderResponsePaymentMethodSerializer implements PrimitiveSerialize
     final discIndex = serializedList.indexOf(ChargeOrderResponsePaymentMethod.discriminatorFieldName) + 1;
     final discValue = serializers.deserialize(serializedList[discIndex], specifiedType: FullType(String)) as String;
     oneOfDataSrc = serialized;
-    final oneOfTypes = [PaymentMethodBankTransfer, PaymentMethodBnplPayment, PaymentMethodCard, PaymentMethodCash, ];
+    final oneOfTypes = [PaymentMethodBankTransfer, PaymentMethodBnplPayment, PaymentMethodCard, PaymentMethodCash, PaymentMethodPbbPayment, ];
     Object oneOfResult;
     Type oneOfType;
     switch (discValue) {
@@ -187,6 +196,13 @@ class _$ChargeOrderResponsePaymentMethodSerializer implements PrimitiveSerialize
           specifiedType: FullType(PaymentMethodCash),
         ) as PaymentMethodCash;
         oneOfType = PaymentMethodCash;
+        break;
+      case r'pbb_payment':
+        oneOfResult = serializers.deserialize(
+          oneOfDataSrc,
+          specifiedType: FullType(PaymentMethodPbbPayment),
+        ) as PaymentMethodPbbPayment;
+        oneOfType = PaymentMethodPbbPayment;
         break;
       default:
         throw UnsupportedError("Couldn't deserialize oneOf for the discriminator value: ${discValue}");

@@ -1,4 +1,4 @@
-# conekta.model.CreateCustomerPaymentMethodsResponse
+# conekta.model.PaymentMethodCashRecurrentResponse
 
 ## Load the model package
 ```dart
@@ -17,19 +17,8 @@ Name | Type | Description | Notes
 **reference** | **String** |  | [optional] 
 **barcode** | **String** |  | [optional] 
 **barcodeUrl** | **String** | URL to the barcode image, reference is the same as barcode | [optional] 
-**expiresAt** | **String** |  | [optional] 
+**expiresAt** | **int** |  | [optional] 
 **provider** | **String** |  | [optional] 
-**last4** | **String** |  | [optional] 
-**bin** | **String** |  | [optional] 
-**cardType** | **String** |  | [optional] 
-**expMonth** | **String** |  | [optional] 
-**expYear** | **String** |  | [optional] 
-**brand** | **String** |  | [optional] 
-**name** | **String** |  | [optional] 
-**default_** | **bool** |  | [optional] 
-**visibleOnCheckout** | **bool** |  | [optional] 
-**paymentSourceStatus** | **String** |  | [optional] 
-**bank** | **String** | Bank name for the SPEI payment method | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

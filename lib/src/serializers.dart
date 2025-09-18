@@ -41,10 +41,14 @@ import 'package:conekta/src/model/checkout_order_template_customer_info.dart';
 import 'package:conekta/src/model/checkout_request.dart';
 import 'package:conekta/src/model/checkout_response.dart';
 import 'package:conekta/src/model/checkouts_response.dart';
-import 'package:conekta/src/model/company_fiscal_info_address_response.dart';
-import 'package:conekta/src/model/company_fiscal_info_response.dart';
-import 'package:conekta/src/model/company_payout_destination_response.dart';
+import 'package:conekta/src/model/company_document_request.dart';
+import 'package:conekta/src/model/company_document_response.dart';
 import 'package:conekta/src/model/company_response.dart';
+import 'package:conekta/src/model/company_response_documents_inner.dart';
+import 'package:conekta/src/model/create_company_request.dart';
+import 'package:conekta/src/model/create_company_request_bank_account_info.dart';
+import 'package:conekta/src/model/create_company_request_comercial_info.dart';
+import 'package:conekta/src/model/create_company_request_fiscal_info.dart';
 import 'package:conekta/src/model/create_customer_fiscal_entities_response.dart';
 import 'package:conekta/src/model/create_customer_payment_methods_request.dart';
 import 'package:conekta/src/model/create_customer_payment_methods_response.dart';
@@ -136,10 +140,13 @@ import 'package:conekta/src/model/payment_method_card.dart';
 import 'package:conekta/src/model/payment_method_card_request.dart';
 import 'package:conekta/src/model/payment_method_card_response.dart';
 import 'package:conekta/src/model/payment_method_cash.dart';
+import 'package:conekta/src/model/payment_method_cash_recurrent_response.dart';
 import 'package:conekta/src/model/payment_method_cash_request.dart';
 import 'package:conekta/src/model/payment_method_cash_response.dart';
 import 'package:conekta/src/model/payment_method_cash_response_all_of_agreements.dart';
 import 'package:conekta/src/model/payment_method_general_request.dart';
+import 'package:conekta/src/model/payment_method_pbb_payment.dart';
+import 'package:conekta/src/model/payment_method_pbb_request.dart';
 import 'package:conekta/src/model/payment_method_response.dart';
 import 'package:conekta/src/model/payment_method_spei_recurrent.dart';
 import 'package:conekta/src/model/payment_method_spei_request.dart';
@@ -227,10 +234,14 @@ part 'serializers.g.dart';
   CheckoutRequest,
   CheckoutResponse,
   CheckoutsResponse,
-  CompanyFiscalInfoAddressResponse,
-  CompanyFiscalInfoResponse,
-  CompanyPayoutDestinationResponse,
+  CompanyDocumentRequest,
+  CompanyDocumentResponse,
   CompanyResponse,
+  CompanyResponseDocumentsInner,
+  CreateCompanyRequest,
+  CreateCompanyRequestBankAccountInfo,
+  CreateCompanyRequestComercialInfo,
+  CreateCompanyRequestFiscalInfo,
   CreateCustomerFiscalEntitiesResponse,
   CreateCustomerPaymentMethodsRequest,
   CreateCustomerPaymentMethodsResponse,
@@ -322,10 +333,13 @@ part 'serializers.g.dart';
   PaymentMethodCardRequest,
   PaymentMethodCardResponse,
   PaymentMethodCash,
+  PaymentMethodCashRecurrentResponse,
   PaymentMethodCashRequest,
-  PaymentMethodCashResponse,
+  PaymentMethodCashResponse,$PaymentMethodCashResponse,
   PaymentMethodCashResponseAllOfAgreements,
   PaymentMethodGeneralRequest,
+  PaymentMethodPbbPayment,
+  PaymentMethodPbbRequest,
   PaymentMethodResponse,$PaymentMethodResponse,
   PaymentMethodSpeiRecurrent,
   PaymentMethodSpeiRequest,
@@ -384,6 +398,10 @@ part 'serializers.g.dart';
   WhitelistlistRuleResponse,
 ])
 Serializers serializers = (_$serializers.toBuilder()
+      ..addBuilderFactory(
+        const FullType(BuiltList, [FullType(CompanyDocumentResponse)]),
+        () => ListBuilder<CompanyDocumentResponse>(),
+      )
       ..add(ApiKeyResponse.serializer)
       ..add(ApiKeyResponseOnDelete.serializer)
       ..add(ChargeResponse.serializer)
@@ -402,6 +420,7 @@ Serializers serializers = (_$serializers.toBuilder()
       ..add(Page.serializer)
       ..add(Pagination.serializer)
       ..add(PaymentMethod.serializer)
+      ..add(PaymentMethodCashResponse.serializer)
       ..add(PaymentMethodResponse.serializer)
       ..add(Product.serializer)
       ..add(ShippingRequest.serializer)

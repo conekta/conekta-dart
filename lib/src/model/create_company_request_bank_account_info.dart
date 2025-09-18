@@ -6,58 +6,46 @@
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
-part 'update_payment_methods.g.dart';
+part 'create_company_request_bank_account_info.g.dart';
 
-/// UpdatePaymentMethods
+/// Bank account information for the company.
 ///
 /// Properties:
-/// * [name] - The name of the payment method holder
-/// * [expiresAt] - The expiration date of the payment method in Unix timestamp format
+/// * [clabe] - The 18-digit CLABE for the bank account.
 @BuiltValue()
-abstract class UpdatePaymentMethods implements Built<UpdatePaymentMethods, UpdatePaymentMethodsBuilder> {
-  /// The name of the payment method holder
-  @BuiltValueField(wireName: r'name')
-  String? get name;
+abstract class CreateCompanyRequestBankAccountInfo implements Built<CreateCompanyRequestBankAccountInfo, CreateCompanyRequestBankAccountInfoBuilder> {
+  /// The 18-digit CLABE for the bank account.
+  @BuiltValueField(wireName: r'clabe')
+  String? get clabe;
 
-  /// The expiration date of the payment method in Unix timestamp format
-  @BuiltValueField(wireName: r'expires_at')
-  int? get expiresAt;
+  CreateCompanyRequestBankAccountInfo._();
 
-  UpdatePaymentMethods._();
-
-  factory UpdatePaymentMethods([void updates(UpdatePaymentMethodsBuilder b)]) = _$UpdatePaymentMethods;
+  factory CreateCompanyRequestBankAccountInfo([void updates(CreateCompanyRequestBankAccountInfoBuilder b)]) = _$CreateCompanyRequestBankAccountInfo;
 
   @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(UpdatePaymentMethodsBuilder b) => b;
+  static void _defaults(CreateCompanyRequestBankAccountInfoBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<UpdatePaymentMethods> get serializer => _$UpdatePaymentMethodsSerializer();
+  static Serializer<CreateCompanyRequestBankAccountInfo> get serializer => _$CreateCompanyRequestBankAccountInfoSerializer();
 }
 
-class _$UpdatePaymentMethodsSerializer implements PrimitiveSerializer<UpdatePaymentMethods> {
+class _$CreateCompanyRequestBankAccountInfoSerializer implements PrimitiveSerializer<CreateCompanyRequestBankAccountInfo> {
   @override
-  final Iterable<Type> types = const [UpdatePaymentMethods, _$UpdatePaymentMethods];
+  final Iterable<Type> types = const [CreateCompanyRequestBankAccountInfo, _$CreateCompanyRequestBankAccountInfo];
 
   @override
-  final String wireName = r'UpdatePaymentMethods';
+  final String wireName = r'CreateCompanyRequestBankAccountInfo';
 
   Iterable<Object?> _serializeProperties(
     Serializers serializers,
-    UpdatePaymentMethods object, {
+    CreateCompanyRequestBankAccountInfo object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    if (object.name != null) {
-      yield r'name';
+    if (object.clabe != null) {
+      yield r'clabe';
       yield serializers.serialize(
-        object.name,
+        object.clabe,
         specifiedType: const FullType(String),
-      );
-    }
-    if (object.expiresAt != null) {
-      yield r'expires_at';
-      yield serializers.serialize(
-        object.expiresAt,
-        specifiedType: const FullType(int),
       );
     }
   }
@@ -65,7 +53,7 @@ class _$UpdatePaymentMethodsSerializer implements PrimitiveSerializer<UpdatePaym
   @override
   Object serialize(
     Serializers serializers,
-    UpdatePaymentMethods object, {
+    CreateCompanyRequestBankAccountInfo object, {
     FullType specifiedType = FullType.unspecified,
   }) {
     return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
@@ -76,26 +64,19 @@ class _$UpdatePaymentMethodsSerializer implements PrimitiveSerializer<UpdatePaym
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
     required List<Object?> serializedList,
-    required UpdatePaymentMethodsBuilder result,
+    required CreateCompanyRequestBankAccountInfoBuilder result,
     required List<Object?> unhandled,
   }) {
     for (var i = 0; i < serializedList.length; i += 2) {
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
-        case r'name':
+        case r'clabe':
           final valueDes = serializers.deserialize(
             value,
             specifiedType: const FullType(String),
           ) as String;
-          result.name = valueDes;
-          break;
-        case r'expires_at':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.expiresAt = valueDes;
+          result.clabe = valueDes;
           break;
         default:
           unhandled.add(key);
@@ -106,12 +87,12 @@ class _$UpdatePaymentMethodsSerializer implements PrimitiveSerializer<UpdatePaym
   }
 
   @override
-  UpdatePaymentMethods deserialize(
+  CreateCompanyRequestBankAccountInfo deserialize(
     Serializers serializers,
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final result = UpdatePaymentMethodsBuilder();
+    final result = CreateCompanyRequestBankAccountInfoBuilder();
     final serializedList = (serialized as Iterable<Object?>).toList();
     final unhandled = <Object?>[];
     _deserializeProperties(
