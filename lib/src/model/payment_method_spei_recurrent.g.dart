@@ -10,6 +10,8 @@ class _$PaymentMethodSpeiRecurrent extends PaymentMethodSpeiRecurrent {
   @override
   final String? reference;
   @override
+  final String? bank;
+  @override
   final String? expiresAt;
   @override
   final String type;
@@ -28,6 +30,7 @@ class _$PaymentMethodSpeiRecurrent extends PaymentMethodSpeiRecurrent {
 
   _$PaymentMethodSpeiRecurrent._(
       {this.reference,
+      this.bank,
       this.expiresAt,
       required this.type,
       required this.id,
@@ -59,6 +62,7 @@ class _$PaymentMethodSpeiRecurrent extends PaymentMethodSpeiRecurrent {
     if (identical(other, this)) return true;
     return other is PaymentMethodSpeiRecurrent &&
         reference == other.reference &&
+        bank == other.bank &&
         expiresAt == other.expiresAt &&
         type == other.type &&
         id == other.id &&
@@ -71,6 +75,7 @@ class _$PaymentMethodSpeiRecurrent extends PaymentMethodSpeiRecurrent {
   int get hashCode {
     var _$hash = 0;
     _$hash = $jc(_$hash, reference.hashCode);
+    _$hash = $jc(_$hash, bank.hashCode);
     _$hash = $jc(_$hash, expiresAt.hashCode);
     _$hash = $jc(_$hash, type.hashCode);
     _$hash = $jc(_$hash, id.hashCode);
@@ -85,6 +90,7 @@ class _$PaymentMethodSpeiRecurrent extends PaymentMethodSpeiRecurrent {
   String toString() {
     return (newBuiltValueToStringHelper(r'PaymentMethodSpeiRecurrent')
           ..add('reference', reference)
+          ..add('bank', bank)
           ..add('expiresAt', expiresAt)
           ..add('type', type)
           ..add('id', id)
@@ -104,6 +110,10 @@ class PaymentMethodSpeiRecurrentBuilder
   String? _reference;
   String? get reference => _$this._reference;
   set reference(covariant String? reference) => _$this._reference = reference;
+
+  String? _bank;
+  String? get bank => _$this._bank;
+  set bank(covariant String? bank) => _$this._bank = bank;
 
   String? _expiresAt;
   String? get expiresAt => _$this._expiresAt;
@@ -137,6 +147,7 @@ class PaymentMethodSpeiRecurrentBuilder
     final $v = _$v;
     if ($v != null) {
       _reference = $v.reference;
+      _bank = $v.bank;
       _expiresAt = $v.expiresAt;
       _type = $v.type;
       _id = $v.id;
@@ -166,6 +177,7 @@ class PaymentMethodSpeiRecurrentBuilder
     final _$result = _$v ??
         new _$PaymentMethodSpeiRecurrent._(
             reference: reference,
+            bank: bank,
             expiresAt: expiresAt,
             type: BuiltValueNullFieldError.checkNotNull(
                 type, r'PaymentMethodSpeiRecurrent', 'type'),

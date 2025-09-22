@@ -11,11 +11,17 @@ part 'update_payment_methods.g.dart';
 /// UpdatePaymentMethods
 ///
 /// Properties:
-/// * [name] 
+/// * [name] - The name of the payment method holder
+/// * [expiresAt] - The expiration date of the payment method in Unix timestamp format
 @BuiltValue()
 abstract class UpdatePaymentMethods implements Built<UpdatePaymentMethods, UpdatePaymentMethodsBuilder> {
+  /// The name of the payment method holder
   @BuiltValueField(wireName: r'name')
   String? get name;
+
+  /// The expiration date of the payment method in Unix timestamp format
+  @BuiltValueField(wireName: r'expires_at')
+  int? get expiresAt;
 
   UpdatePaymentMethods._();
 
@@ -47,6 +53,13 @@ class _$UpdatePaymentMethodsSerializer implements PrimitiveSerializer<UpdatePaym
         specifiedType: const FullType(String),
       );
     }
+    if (object.expiresAt != null) {
+      yield r'expires_at';
+      yield serializers.serialize(
+        object.expiresAt,
+        specifiedType: const FullType(int),
+      );
+    }
   }
 
   @override
@@ -76,6 +89,13 @@ class _$UpdatePaymentMethodsSerializer implements PrimitiveSerializer<UpdatePaym
             specifiedType: const FullType(String),
           ) as String;
           result.name = valueDes;
+          break;
+        case r'expires_at':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int;
+          result.expiresAt = valueDes;
           break;
         default:
           unhandled.add(key);

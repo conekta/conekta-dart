@@ -9,12 +9,14 @@ part of 'update_payment_methods.dart';
 class _$UpdatePaymentMethods extends UpdatePaymentMethods {
   @override
   final String? name;
+  @override
+  final int? expiresAt;
 
   factory _$UpdatePaymentMethods(
           [void Function(UpdatePaymentMethodsBuilder)? updates]) =>
       (new UpdatePaymentMethodsBuilder()..update(updates))._build();
 
-  _$UpdatePaymentMethods._({this.name}) : super._();
+  _$UpdatePaymentMethods._({this.name, this.expiresAt}) : super._();
 
   @override
   UpdatePaymentMethods rebuild(
@@ -28,13 +30,16 @@ class _$UpdatePaymentMethods extends UpdatePaymentMethods {
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is UpdatePaymentMethods && name == other.name;
+    return other is UpdatePaymentMethods &&
+        name == other.name &&
+        expiresAt == other.expiresAt;
   }
 
   @override
   int get hashCode {
     var _$hash = 0;
     _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, expiresAt.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -42,7 +47,8 @@ class _$UpdatePaymentMethods extends UpdatePaymentMethods {
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'UpdatePaymentMethods')
-          ..add('name', name))
+          ..add('name', name)
+          ..add('expiresAt', expiresAt))
         .toString();
   }
 }
@@ -55,6 +61,10 @@ class UpdatePaymentMethodsBuilder
   String? get name => _$this._name;
   set name(String? name) => _$this._name = name;
 
+  int? _expiresAt;
+  int? get expiresAt => _$this._expiresAt;
+  set expiresAt(int? expiresAt) => _$this._expiresAt = expiresAt;
+
   UpdatePaymentMethodsBuilder() {
     UpdatePaymentMethods._defaults(this);
   }
@@ -63,6 +73,7 @@ class UpdatePaymentMethodsBuilder
     final $v = _$v;
     if ($v != null) {
       _name = $v.name;
+      _expiresAt = $v.expiresAt;
       _$v = null;
     }
     return this;
@@ -83,7 +94,8 @@ class UpdatePaymentMethodsBuilder
   UpdatePaymentMethods build() => _build();
 
   _$UpdatePaymentMethods _build() {
-    final _$result = _$v ?? new _$UpdatePaymentMethods._(name: name);
+    final _$result =
+        _$v ?? new _$UpdatePaymentMethods._(name: name, expiresAt: expiresAt);
     replace(_$result);
     return _$result;
   }

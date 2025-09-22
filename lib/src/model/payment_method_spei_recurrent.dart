@@ -17,12 +17,17 @@ part 'payment_method_spei_recurrent.g.dart';
 /// * [object] 
 /// * [createdAt] 
 /// * [parentId] 
+/// * [bank] - Bank name for the SPEI payment method
 /// * [reference] 
 /// * [expiresAt] 
 @BuiltValue()
 abstract class PaymentMethodSpeiRecurrent implements PaymentMethodResponse, Built<PaymentMethodSpeiRecurrent, PaymentMethodSpeiRecurrentBuilder> {
   @BuiltValueField(wireName: r'reference')
   String? get reference;
+
+  /// Bank name for the SPEI payment method
+  @BuiltValueField(wireName: r'bank')
+  String? get bank;
 
   @BuiltValueField(wireName: r'expires_at')
   String? get expiresAt;
@@ -62,6 +67,13 @@ class _$PaymentMethodSpeiRecurrentSerializer implements PrimitiveSerializer<Paym
       object.createdAt,
       specifiedType: const FullType(int),
     );
+    if (object.bank != null) {
+      yield r'bank';
+      yield serializers.serialize(
+        object.bank,
+        specifiedType: const FullType(String),
+      );
+    }
     yield r'id';
     yield serializers.serialize(
       object.id,
@@ -127,6 +139,13 @@ class _$PaymentMethodSpeiRecurrentSerializer implements PrimitiveSerializer<Paym
             specifiedType: const FullType(int),
           ) as int;
           result.createdAt = valueDes;
+          break;
+        case r'bank':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.bank = valueDes;
           break;
         case r'id':
           final valueDes = serializers.deserialize(

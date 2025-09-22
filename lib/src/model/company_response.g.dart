@@ -6,84 +6,117 @@ part of 'company_response.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
-const CompanyResponseObjectEnum _$companyResponseObjectEnum_company =
-    const CompanyResponseObjectEnum._('company');
+const CompanyResponseThreeDsModeEnum _$companyResponseThreeDsModeEnum_smart =
+    const CompanyResponseThreeDsModeEnum._('smart');
+const CompanyResponseThreeDsModeEnum _$companyResponseThreeDsModeEnum_strict =
+    const CompanyResponseThreeDsModeEnum._('strict');
 
-CompanyResponseObjectEnum _$companyResponseObjectEnumValueOf(String name) {
+CompanyResponseThreeDsModeEnum _$companyResponseThreeDsModeEnumValueOf(
+    String name) {
   switch (name) {
-    case 'company':
-      return _$companyResponseObjectEnum_company;
+    case 'smart':
+      return _$companyResponseThreeDsModeEnum_smart;
+    case 'strict':
+      return _$companyResponseThreeDsModeEnum_strict;
     default:
       throw new ArgumentError(name);
   }
 }
 
-final BuiltSet<CompanyResponseObjectEnum> _$companyResponseObjectEnumValues =
-    new BuiltSet<CompanyResponseObjectEnum>(const <CompanyResponseObjectEnum>[
-  _$companyResponseObjectEnum_company,
+final BuiltSet<CompanyResponseThreeDsModeEnum>
+    _$companyResponseThreeDsModeEnumValues = new BuiltSet<
+        CompanyResponseThreeDsModeEnum>(const <CompanyResponseThreeDsModeEnum>[
+  _$companyResponseThreeDsModeEnum_smart,
+  _$companyResponseThreeDsModeEnum_strict,
 ]);
 
-Serializer<CompanyResponseObjectEnum> _$companyResponseObjectEnumSerializer =
-    new _$CompanyResponseObjectEnumSerializer();
+Serializer<CompanyResponseThreeDsModeEnum>
+    _$companyResponseThreeDsModeEnumSerializer =
+    new _$CompanyResponseThreeDsModeEnumSerializer();
 
-class _$CompanyResponseObjectEnumSerializer
-    implements PrimitiveSerializer<CompanyResponseObjectEnum> {
+class _$CompanyResponseThreeDsModeEnumSerializer
+    implements PrimitiveSerializer<CompanyResponseThreeDsModeEnum> {
   static const Map<String, Object> _toWire = const <String, Object>{
-    'company': 'company',
+    'smart': 'smart',
+    'strict': 'strict',
   };
   static const Map<Object, String> _fromWire = const <Object, String>{
-    'company': 'company',
+    'smart': 'smart',
+    'strict': 'strict',
   };
 
   @override
-  final Iterable<Type> types = const <Type>[CompanyResponseObjectEnum];
+  final Iterable<Type> types = const <Type>[CompanyResponseThreeDsModeEnum];
   @override
-  final String wireName = 'CompanyResponseObjectEnum';
+  final String wireName = 'CompanyResponseThreeDsModeEnum';
 
   @override
-  Object serialize(Serializers serializers, CompanyResponseObjectEnum object,
+  Object serialize(
+          Serializers serializers, CompanyResponseThreeDsModeEnum object,
           {FullType specifiedType = FullType.unspecified}) =>
       _toWire[object.name] ?? object.name;
 
   @override
-  CompanyResponseObjectEnum deserialize(
+  CompanyResponseThreeDsModeEnum deserialize(
           Serializers serializers, Object serialized,
           {FullType specifiedType = FullType.unspecified}) =>
-      CompanyResponseObjectEnum.valueOf(
+      CompanyResponseThreeDsModeEnum.valueOf(
           _fromWire[serialized] ?? (serialized is String ? serialized : ''));
 }
 
 class _$CompanyResponse extends CompanyResponse {
   @override
-  final String? id;
+  final String id;
   @override
-  final int? createdAt;
+  final String name;
   @override
-  final String? name;
+  final bool active;
   @override
-  final CompanyResponseObjectEnum? object;
+  final String accountStatus;
   @override
   final String? parentCompanyId;
   @override
-  final bool? useParentFiscalData;
+  final String onboardingStatus;
   @override
-  final CompanyPayoutDestinationResponse? payoutDestination;
+  final BuiltList<CompanyResponseDocumentsInner> documents;
   @override
-  final CompanyFiscalInfoResponse? fiscalInfo;
+  final int createdAt;
+  @override
+  final String object;
+  @override
+  final bool? threeDsEnabled;
+  @override
+  final CompanyResponseThreeDsModeEnum? threeDsMode;
 
   factory _$CompanyResponse([void Function(CompanyResponseBuilder)? updates]) =>
       (new CompanyResponseBuilder()..update(updates))._build();
 
   _$CompanyResponse._(
-      {this.id,
-      this.createdAt,
-      this.name,
-      this.object,
+      {required this.id,
+      required this.name,
+      required this.active,
+      required this.accountStatus,
       this.parentCompanyId,
-      this.useParentFiscalData,
-      this.payoutDestination,
-      this.fiscalInfo})
-      : super._();
+      required this.onboardingStatus,
+      required this.documents,
+      required this.createdAt,
+      required this.object,
+      this.threeDsEnabled,
+      this.threeDsMode})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(id, r'CompanyResponse', 'id');
+    BuiltValueNullFieldError.checkNotNull(name, r'CompanyResponse', 'name');
+    BuiltValueNullFieldError.checkNotNull(active, r'CompanyResponse', 'active');
+    BuiltValueNullFieldError.checkNotNull(
+        accountStatus, r'CompanyResponse', 'accountStatus');
+    BuiltValueNullFieldError.checkNotNull(
+        onboardingStatus, r'CompanyResponse', 'onboardingStatus');
+    BuiltValueNullFieldError.checkNotNull(
+        documents, r'CompanyResponse', 'documents');
+    BuiltValueNullFieldError.checkNotNull(
+        createdAt, r'CompanyResponse', 'createdAt');
+    BuiltValueNullFieldError.checkNotNull(object, r'CompanyResponse', 'object');
+  }
 
   @override
   CompanyResponse rebuild(void Function(CompanyResponseBuilder) updates) =>
@@ -98,26 +131,32 @@ class _$CompanyResponse extends CompanyResponse {
     if (identical(other, this)) return true;
     return other is CompanyResponse &&
         id == other.id &&
-        createdAt == other.createdAt &&
         name == other.name &&
-        object == other.object &&
+        active == other.active &&
+        accountStatus == other.accountStatus &&
         parentCompanyId == other.parentCompanyId &&
-        useParentFiscalData == other.useParentFiscalData &&
-        payoutDestination == other.payoutDestination &&
-        fiscalInfo == other.fiscalInfo;
+        onboardingStatus == other.onboardingStatus &&
+        documents == other.documents &&
+        createdAt == other.createdAt &&
+        object == other.object &&
+        threeDsEnabled == other.threeDsEnabled &&
+        threeDsMode == other.threeDsMode;
   }
 
   @override
   int get hashCode {
     var _$hash = 0;
     _$hash = $jc(_$hash, id.hashCode);
-    _$hash = $jc(_$hash, createdAt.hashCode);
     _$hash = $jc(_$hash, name.hashCode);
-    _$hash = $jc(_$hash, object.hashCode);
+    _$hash = $jc(_$hash, active.hashCode);
+    _$hash = $jc(_$hash, accountStatus.hashCode);
     _$hash = $jc(_$hash, parentCompanyId.hashCode);
-    _$hash = $jc(_$hash, useParentFiscalData.hashCode);
-    _$hash = $jc(_$hash, payoutDestination.hashCode);
-    _$hash = $jc(_$hash, fiscalInfo.hashCode);
+    _$hash = $jc(_$hash, onboardingStatus.hashCode);
+    _$hash = $jc(_$hash, documents.hashCode);
+    _$hash = $jc(_$hash, createdAt.hashCode);
+    _$hash = $jc(_$hash, object.hashCode);
+    _$hash = $jc(_$hash, threeDsEnabled.hashCode);
+    _$hash = $jc(_$hash, threeDsMode.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -126,13 +165,16 @@ class _$CompanyResponse extends CompanyResponse {
   String toString() {
     return (newBuiltValueToStringHelper(r'CompanyResponse')
           ..add('id', id)
-          ..add('createdAt', createdAt)
           ..add('name', name)
-          ..add('object', object)
+          ..add('active', active)
+          ..add('accountStatus', accountStatus)
           ..add('parentCompanyId', parentCompanyId)
-          ..add('useParentFiscalData', useParentFiscalData)
-          ..add('payoutDestination', payoutDestination)
-          ..add('fiscalInfo', fiscalInfo))
+          ..add('onboardingStatus', onboardingStatus)
+          ..add('documents', documents)
+          ..add('createdAt', createdAt)
+          ..add('object', object)
+          ..add('threeDsEnabled', threeDsEnabled)
+          ..add('threeDsMode', threeDsMode))
         .toString();
   }
 }
@@ -145,41 +187,52 @@ class CompanyResponseBuilder
   String? get id => _$this._id;
   set id(String? id) => _$this._id = id;
 
-  int? _createdAt;
-  int? get createdAt => _$this._createdAt;
-  set createdAt(int? createdAt) => _$this._createdAt = createdAt;
-
   String? _name;
   String? get name => _$this._name;
   set name(String? name) => _$this._name = name;
 
-  CompanyResponseObjectEnum? _object;
-  CompanyResponseObjectEnum? get object => _$this._object;
-  set object(CompanyResponseObjectEnum? object) => _$this._object = object;
+  bool? _active;
+  bool? get active => _$this._active;
+  set active(bool? active) => _$this._active = active;
+
+  String? _accountStatus;
+  String? get accountStatus => _$this._accountStatus;
+  set accountStatus(String? accountStatus) =>
+      _$this._accountStatus = accountStatus;
 
   String? _parentCompanyId;
   String? get parentCompanyId => _$this._parentCompanyId;
   set parentCompanyId(String? parentCompanyId) =>
       _$this._parentCompanyId = parentCompanyId;
 
-  bool? _useParentFiscalData;
-  bool? get useParentFiscalData => _$this._useParentFiscalData;
-  set useParentFiscalData(bool? useParentFiscalData) =>
-      _$this._useParentFiscalData = useParentFiscalData;
+  String? _onboardingStatus;
+  String? get onboardingStatus => _$this._onboardingStatus;
+  set onboardingStatus(String? onboardingStatus) =>
+      _$this._onboardingStatus = onboardingStatus;
 
-  CompanyPayoutDestinationResponseBuilder? _payoutDestination;
-  CompanyPayoutDestinationResponseBuilder get payoutDestination =>
-      _$this._payoutDestination ??=
-          new CompanyPayoutDestinationResponseBuilder();
-  set payoutDestination(
-          CompanyPayoutDestinationResponseBuilder? payoutDestination) =>
-      _$this._payoutDestination = payoutDestination;
+  ListBuilder<CompanyResponseDocumentsInner>? _documents;
+  ListBuilder<CompanyResponseDocumentsInner> get documents =>
+      _$this._documents ??= new ListBuilder<CompanyResponseDocumentsInner>();
+  set documents(ListBuilder<CompanyResponseDocumentsInner>? documents) =>
+      _$this._documents = documents;
 
-  CompanyFiscalInfoResponseBuilder? _fiscalInfo;
-  CompanyFiscalInfoResponseBuilder get fiscalInfo =>
-      _$this._fiscalInfo ??= new CompanyFiscalInfoResponseBuilder();
-  set fiscalInfo(CompanyFiscalInfoResponseBuilder? fiscalInfo) =>
-      _$this._fiscalInfo = fiscalInfo;
+  int? _createdAt;
+  int? get createdAt => _$this._createdAt;
+  set createdAt(int? createdAt) => _$this._createdAt = createdAt;
+
+  String? _object;
+  String? get object => _$this._object;
+  set object(String? object) => _$this._object = object;
+
+  bool? _threeDsEnabled;
+  bool? get threeDsEnabled => _$this._threeDsEnabled;
+  set threeDsEnabled(bool? threeDsEnabled) =>
+      _$this._threeDsEnabled = threeDsEnabled;
+
+  CompanyResponseThreeDsModeEnum? _threeDsMode;
+  CompanyResponseThreeDsModeEnum? get threeDsMode => _$this._threeDsMode;
+  set threeDsMode(CompanyResponseThreeDsModeEnum? threeDsMode) =>
+      _$this._threeDsMode = threeDsMode;
 
   CompanyResponseBuilder() {
     CompanyResponse._defaults(this);
@@ -189,13 +242,16 @@ class CompanyResponseBuilder
     final $v = _$v;
     if ($v != null) {
       _id = $v.id;
-      _createdAt = $v.createdAt;
       _name = $v.name;
-      _object = $v.object;
+      _active = $v.active;
+      _accountStatus = $v.accountStatus;
       _parentCompanyId = $v.parentCompanyId;
-      _useParentFiscalData = $v.useParentFiscalData;
-      _payoutDestination = $v.payoutDestination?.toBuilder();
-      _fiscalInfo = $v.fiscalInfo?.toBuilder();
+      _onboardingStatus = $v.onboardingStatus;
+      _documents = $v.documents.toBuilder();
+      _createdAt = $v.createdAt;
+      _object = $v.object;
+      _threeDsEnabled = $v.threeDsEnabled;
+      _threeDsMode = $v.threeDsMode;
       _$v = null;
     }
     return this;
@@ -220,21 +276,29 @@ class CompanyResponseBuilder
     try {
       _$result = _$v ??
           new _$CompanyResponse._(
-              id: id,
-              createdAt: createdAt,
-              name: name,
-              object: object,
+              id: BuiltValueNullFieldError.checkNotNull(
+                  id, r'CompanyResponse', 'id'),
+              name: BuiltValueNullFieldError.checkNotNull(
+                  name, r'CompanyResponse', 'name'),
+              active: BuiltValueNullFieldError.checkNotNull(
+                  active, r'CompanyResponse', 'active'),
+              accountStatus: BuiltValueNullFieldError.checkNotNull(
+                  accountStatus, r'CompanyResponse', 'accountStatus'),
               parentCompanyId: parentCompanyId,
-              useParentFiscalData: useParentFiscalData,
-              payoutDestination: _payoutDestination?.build(),
-              fiscalInfo: _fiscalInfo?.build());
+              onboardingStatus: BuiltValueNullFieldError.checkNotNull(
+                  onboardingStatus, r'CompanyResponse', 'onboardingStatus'),
+              documents: documents.build(),
+              createdAt: BuiltValueNullFieldError.checkNotNull(
+                  createdAt, r'CompanyResponse', 'createdAt'),
+              object: BuiltValueNullFieldError.checkNotNull(
+                  object, r'CompanyResponse', 'object'),
+              threeDsEnabled: threeDsEnabled,
+              threeDsMode: threeDsMode);
     } catch (_) {
       late String _$failedField;
       try {
-        _$failedField = 'payoutDestination';
-        _payoutDestination?.build();
-        _$failedField = 'fiscalInfo';
-        _fiscalInfo?.build();
+        _$failedField = 'documents';
+        documents.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             r'CompanyResponse', _$failedField, e.toString());

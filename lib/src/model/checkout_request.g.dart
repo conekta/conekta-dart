@@ -18,6 +18,9 @@ const CheckoutRequestAllowedPaymentMethodsEnum
 const CheckoutRequestAllowedPaymentMethodsEnum
     _$checkoutRequestAllowedPaymentMethodsEnum_bnpl =
     const CheckoutRequestAllowedPaymentMethodsEnum._('bnpl');
+const CheckoutRequestAllowedPaymentMethodsEnum
+    _$checkoutRequestAllowedPaymentMethodsEnum_payByBank =
+    const CheckoutRequestAllowedPaymentMethodsEnum._('payByBank');
 
 CheckoutRequestAllowedPaymentMethodsEnum
     _$checkoutRequestAllowedPaymentMethodsEnumValueOf(String name) {
@@ -30,6 +33,8 @@ CheckoutRequestAllowedPaymentMethodsEnum
       return _$checkoutRequestAllowedPaymentMethodsEnum_bankTransfer;
     case 'bnpl':
       return _$checkoutRequestAllowedPaymentMethodsEnum_bnpl;
+    case 'payByBank':
+      return _$checkoutRequestAllowedPaymentMethodsEnum_payByBank;
     default:
       throw new ArgumentError(name);
   }
@@ -43,6 +48,7 @@ final BuiltSet<CheckoutRequestAllowedPaymentMethodsEnum>
   _$checkoutRequestAllowedPaymentMethodsEnum_card,
   _$checkoutRequestAllowedPaymentMethodsEnum_bankTransfer,
   _$checkoutRequestAllowedPaymentMethodsEnum_bnpl,
+  _$checkoutRequestAllowedPaymentMethodsEnum_payByBank,
 ]);
 
 Serializer<CheckoutRequestAllowedPaymentMethodsEnum>
@@ -56,12 +62,14 @@ class _$CheckoutRequestAllowedPaymentMethodsEnumSerializer
     'card': 'card',
     'bankTransfer': 'bank_transfer',
     'bnpl': 'bnpl',
+    'payByBank': 'pay_by_bank',
   };
   static const Map<Object, String> _fromWire = const <Object, String>{
     'cash': 'cash',
     'card': 'card',
     'bank_transfer': 'bankTransfer',
     'bnpl': 'bnpl',
+    'pay_by_bank': 'payByBank',
   };
 
   @override

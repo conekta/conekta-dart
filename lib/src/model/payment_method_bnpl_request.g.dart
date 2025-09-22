@@ -7,8 +7,8 @@ part of 'payment_method_bnpl_request.dart';
 // **************************************************************************
 
 const PaymentMethodBnplRequestProductTypeEnum
-    _$paymentMethodBnplRequestProductTypeEnum_klarnaBnpl =
-    const PaymentMethodBnplRequestProductTypeEnum._('klarnaBnpl');
+    _$paymentMethodBnplRequestProductTypeEnum_aplazoBnpl =
+    const PaymentMethodBnplRequestProductTypeEnum._('aplazoBnpl');
 const PaymentMethodBnplRequestProductTypeEnum
     _$paymentMethodBnplRequestProductTypeEnum_crediteaBnpl =
     const PaymentMethodBnplRequestProductTypeEnum._('crediteaBnpl');
@@ -16,8 +16,8 @@ const PaymentMethodBnplRequestProductTypeEnum
 PaymentMethodBnplRequestProductTypeEnum
     _$paymentMethodBnplRequestProductTypeEnumValueOf(String name) {
   switch (name) {
-    case 'klarnaBnpl':
-      return _$paymentMethodBnplRequestProductTypeEnum_klarnaBnpl;
+    case 'aplazoBnpl':
+      return _$paymentMethodBnplRequestProductTypeEnum_aplazoBnpl;
     case 'crediteaBnpl':
       return _$paymentMethodBnplRequestProductTypeEnum_crediteaBnpl;
     default:
@@ -29,7 +29,7 @@ final BuiltSet<PaymentMethodBnplRequestProductTypeEnum>
     _$paymentMethodBnplRequestProductTypeEnumValues =
     new BuiltSet<PaymentMethodBnplRequestProductTypeEnum>(const <
         PaymentMethodBnplRequestProductTypeEnum>[
-  _$paymentMethodBnplRequestProductTypeEnum_klarnaBnpl,
+  _$paymentMethodBnplRequestProductTypeEnum_aplazoBnpl,
   _$paymentMethodBnplRequestProductTypeEnum_crediteaBnpl,
 ]);
 
@@ -40,11 +40,11 @@ Serializer<PaymentMethodBnplRequestProductTypeEnum>
 class _$PaymentMethodBnplRequestProductTypeEnumSerializer
     implements PrimitiveSerializer<PaymentMethodBnplRequestProductTypeEnum> {
   static const Map<String, Object> _toWire = const <String, Object>{
-    'klarnaBnpl': 'klarna_bnpl',
+    'aplazoBnpl': 'aplazo_bnpl',
     'crediteaBnpl': 'creditea_bnpl',
   };
   static const Map<Object, String> _fromWire = const <Object, String>{
-    'klarna_bnpl': 'klarnaBnpl',
+    'aplazo_bnpl': 'aplazoBnpl',
     'creditea_bnpl': 'crediteaBnpl',
   };
 

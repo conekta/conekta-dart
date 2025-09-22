@@ -37,7 +37,7 @@ part 'order_request.g.dart';
 /// * [shippingContact] 
 /// * [shippingLines] - List of [shipping costs](https://developers.conekta.com/v2.2.0/reference/orderscreateshipping). If the online store offers digital products.
 /// * [taxLines] - List of [taxes](https://developers.conekta.com/v2.2.0/reference/orderscreatetaxes) that are applied to the order.
-/// * [threeDsMode] - Indicates the 3DS2 mode for the order, either smart or strict.
+/// * [threeDsMode] - Indicates the 3DS2 mode for the order, either smart or strict. This property is only applicable when 3DS is enabled. When 3DS is disabled, this field should be null.
 @BuiltValue()
 abstract class OrderRequest implements Built<OrderRequest, OrderRequestBuilder> {
   /// List of [charges](https://developers.conekta.com/v2.2.0/reference/orderscreatecharge) that are applied to the order
@@ -96,7 +96,7 @@ abstract class OrderRequest implements Built<OrderRequest, OrderRequestBuilder> 
   @BuiltValueField(wireName: r'tax_lines')
   BuiltList<OrderTaxRequest>? get taxLines;
 
-  /// Indicates the 3DS2 mode for the order, either smart or strict.
+  /// Indicates the 3DS2 mode for the order, either smart or strict. This property is only applicable when 3DS is enabled. When 3DS is disabled, this field should be null.
   @BuiltValueField(wireName: r'three_ds_mode')
   String? get threeDsMode;
 
@@ -227,7 +227,7 @@ class _$OrderRequestSerializer implements PrimitiveSerializer<OrderRequest> {
       yield r'three_ds_mode';
       yield serializers.serialize(
         object.threeDsMode,
-        specifiedType: const FullType(String),
+        specifiedType: const FullType.nullable(String),
       );
     }
   }
@@ -361,8 +361,9 @@ class _$OrderRequestSerializer implements PrimitiveSerializer<OrderRequest> {
         case r'three_ds_mode':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.threeDsMode = valueDes;
           break;
         default:

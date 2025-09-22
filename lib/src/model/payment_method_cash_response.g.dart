@@ -6,7 +6,47 @@ part of 'payment_method_cash_response.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
-class _$PaymentMethodCashResponse extends PaymentMethodCashResponse {
+abstract class PaymentMethodCashResponseBuilder
+    implements PaymentMethodResponseBuilder {
+  void replace(covariant PaymentMethodCashResponse other);
+  void update(void Function(PaymentMethodCashResponseBuilder) updates);
+  String? get reference;
+  set reference(covariant String? reference);
+
+  String? get provider;
+  set provider(covariant String? provider);
+
+  ListBuilder<PaymentMethodCashResponseAllOfAgreements> get agreements;
+  set agreements(
+      covariant ListBuilder<PaymentMethodCashResponseAllOfAgreements>?
+          agreements);
+
+  String? get barcodeUrl;
+  set barcodeUrl(covariant String? barcodeUrl);
+
+  String? get barcode;
+  set barcode(covariant String? barcode);
+
+  int? get expiresAt;
+  set expiresAt(covariant int? expiresAt);
+
+  String? get type;
+  set type(covariant String? type);
+
+  String? get id;
+  set id(covariant String? id);
+
+  String? get object;
+  set object(covariant String? object);
+
+  int? get createdAt;
+  set createdAt(covariant int? createdAt);
+
+  String? get parentId;
+  set parentId(covariant String? parentId);
+}
+
+class _$$PaymentMethodCashResponse extends $PaymentMethodCashResponse {
   @override
   final String? reference;
   @override
@@ -30,11 +70,11 @@ class _$PaymentMethodCashResponse extends PaymentMethodCashResponse {
   @override
   final String? parentId;
 
-  factory _$PaymentMethodCashResponse(
-          [void Function(PaymentMethodCashResponseBuilder)? updates]) =>
-      (new PaymentMethodCashResponseBuilder()..update(updates))._build();
+  factory _$$PaymentMethodCashResponse(
+          [void Function($PaymentMethodCashResponseBuilder)? updates]) =>
+      (new $PaymentMethodCashResponseBuilder()..update(updates))._build();
 
-  _$PaymentMethodCashResponse._(
+  _$$PaymentMethodCashResponse._(
       {this.reference,
       this.provider,
       this.agreements,
@@ -48,28 +88,28 @@ class _$PaymentMethodCashResponse extends PaymentMethodCashResponse {
       this.parentId})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        type, r'PaymentMethodCashResponse', 'type');
+        type, r'$PaymentMethodCashResponse', 'type');
     BuiltValueNullFieldError.checkNotNull(
-        id, r'PaymentMethodCashResponse', 'id');
+        id, r'$PaymentMethodCashResponse', 'id');
     BuiltValueNullFieldError.checkNotNull(
-        object, r'PaymentMethodCashResponse', 'object');
+        object, r'$PaymentMethodCashResponse', 'object');
     BuiltValueNullFieldError.checkNotNull(
-        createdAt, r'PaymentMethodCashResponse', 'createdAt');
+        createdAt, r'$PaymentMethodCashResponse', 'createdAt');
   }
 
   @override
-  PaymentMethodCashResponse rebuild(
-          void Function(PaymentMethodCashResponseBuilder) updates) =>
+  $PaymentMethodCashResponse rebuild(
+          void Function($PaymentMethodCashResponseBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  PaymentMethodCashResponseBuilder toBuilder() =>
-      new PaymentMethodCashResponseBuilder()..replace(this);
+  $PaymentMethodCashResponseBuilder toBuilder() =>
+      new $PaymentMethodCashResponseBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is PaymentMethodCashResponse &&
+    return other is $PaymentMethodCashResponse &&
         reference == other.reference &&
         provider == other.provider &&
         agreements == other.agreements &&
@@ -103,7 +143,7 @@ class _$PaymentMethodCashResponse extends PaymentMethodCashResponse {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper(r'PaymentMethodCashResponse')
+    return (newBuiltValueToStringHelper(r'$PaymentMethodCashResponse')
           ..add('reference', reference)
           ..add('provider', provider)
           ..add('agreements', agreements)
@@ -119,11 +159,11 @@ class _$PaymentMethodCashResponse extends PaymentMethodCashResponse {
   }
 }
 
-class PaymentMethodCashResponseBuilder
+class $PaymentMethodCashResponseBuilder
     implements
-        Builder<PaymentMethodCashResponse, PaymentMethodCashResponseBuilder>,
-        PaymentMethodResponseBuilder {
-  _$PaymentMethodCashResponse? _$v;
+        Builder<$PaymentMethodCashResponse, $PaymentMethodCashResponseBuilder>,
+        PaymentMethodCashResponseBuilder {
+  _$$PaymentMethodCashResponse? _$v;
 
   String? _reference;
   String? get reference => _$this._reference;
@@ -175,11 +215,11 @@ class PaymentMethodCashResponseBuilder
   String? get parentId => _$this._parentId;
   set parentId(covariant String? parentId) => _$this._parentId = parentId;
 
-  PaymentMethodCashResponseBuilder() {
-    PaymentMethodCashResponse._defaults(this);
+  $PaymentMethodCashResponseBuilder() {
+    $PaymentMethodCashResponse._defaults(this);
   }
 
-  PaymentMethodCashResponseBuilder get _$this {
+  $PaymentMethodCashResponseBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _reference = $v.reference;
@@ -199,24 +239,24 @@ class PaymentMethodCashResponseBuilder
   }
 
   @override
-  void replace(covariant PaymentMethodCashResponse other) {
+  void replace(covariant $PaymentMethodCashResponse other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$PaymentMethodCashResponse;
+    _$v = other as _$$PaymentMethodCashResponse;
   }
 
   @override
-  void update(void Function(PaymentMethodCashResponseBuilder)? updates) {
+  void update(void Function($PaymentMethodCashResponseBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  PaymentMethodCashResponse build() => _build();
+  $PaymentMethodCashResponse build() => _build();
 
-  _$PaymentMethodCashResponse _build() {
-    _$PaymentMethodCashResponse _$result;
+  _$$PaymentMethodCashResponse _build() {
+    _$$PaymentMethodCashResponse _$result;
     try {
       _$result = _$v ??
-          new _$PaymentMethodCashResponse._(
+          new _$$PaymentMethodCashResponse._(
               reference: reference,
               provider: provider,
               agreements: _agreements?.build(),
@@ -224,13 +264,13 @@ class PaymentMethodCashResponseBuilder
               barcode: barcode,
               expiresAt: expiresAt,
               type: BuiltValueNullFieldError.checkNotNull(
-                  type, r'PaymentMethodCashResponse', 'type'),
+                  type, r'$PaymentMethodCashResponse', 'type'),
               id: BuiltValueNullFieldError.checkNotNull(
-                  id, r'PaymentMethodCashResponse', 'id'),
+                  id, r'$PaymentMethodCashResponse', 'id'),
               object: BuiltValueNullFieldError.checkNotNull(
-                  object, r'PaymentMethodCashResponse', 'object'),
+                  object, r'$PaymentMethodCashResponse', 'object'),
               createdAt: BuiltValueNullFieldError.checkNotNull(
-                  createdAt, r'PaymentMethodCashResponse', 'createdAt'),
+                  createdAt, r'$PaymentMethodCashResponse', 'createdAt'),
               parentId: parentId);
     } catch (_) {
       late String _$failedField;
@@ -239,7 +279,7 @@ class PaymentMethodCashResponseBuilder
         _agreements?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            r'PaymentMethodCashResponse', _$failedField, e.toString());
+            r'$PaymentMethodCashResponse', _$failedField, e.toString());
       }
       rethrow;
     }

@@ -8,8 +8,12 @@ import 'package:built_value/json_object.dart';
 import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
+import 'package:built_collection/built_collection.dart';
 import 'package:conekta/src/api_util.dart';
+import 'package:conekta/src/model/company_document_request.dart';
+import 'package:conekta/src/model/company_document_response.dart';
 import 'package:conekta/src/model/company_response.dart';
+import 'package:conekta/src/model/create_company_request.dart';
 import 'package:conekta/src/model/error.dart';
 import 'package:conekta/src/model/get_companies_response.dart';
 import 'package:conekta/src/utils/utils.dart';
@@ -21,6 +25,122 @@ class CompaniesApi {
   final Serializers _serializers;
 
   const CompaniesApi(this._dio, this._serializers);
+
+  /// Create Company
+  /// Create a new company.
+  ///
+  /// Parameters:
+  /// * [createCompanyRequest] - Company data
+  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
+  /// * [headers] - Can be used to add additional headers to the request
+  /// * [extras] - Can be used to add flags to the request
+  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
+  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
+  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
+  ///
+  /// Returns a [Future] containing a [Response] with a [CompanyResponse] as data
+  /// Throws [DioException] if API call or serialization fails
+  Future<Response<CompanyResponse>> createCompany({ 
+    required CreateCompanyRequest createCompanyRequest,
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/companies';
+    // to determine the Accept header
+    List<String> _contentTypes = [ 
+        "application/json"
+    ];
+    var localVarContentType = selectHeaderContentType(_contentTypes);
+
+    // to determine the Accept header
+    List<String> _accepts = [ 
+        "application/vnd.conekta-v2.2.0+json"
+    ];
+    final localVarAccept = selectHeaderAccept(_accepts);
+    final _options = Options(
+      method: r'POST',
+      headers: <String, dynamic>{
+        r'User-Agent': r'Conekta/v2 DartBindings/7.0.5',
+        if (localVarAccept != null) r'Accept': localVarAccept,
+        if (localVarContentType != null) r'Content-Type': localVarContentType,
+        r'X-Conekta-Client-User-Agent' : getConektaClientUserAgent(),
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'http',
+            'scheme': 'bearer',
+            'name': 'bearerAuth',
+          },
+        ],
+        ...?extra,
+      },
+      contentType: 'application/json',
+      validateStatus: validateStatus,
+    );
+
+    dynamic _bodyData;
+
+    try {
+      const _type = FullType(CreateCompanyRequest);
+      _bodyData = _serializers.serialize(createCompanyRequest, specifiedType: _type);
+
+    } catch(error, stackTrace) {
+      throw DioException(
+         requestOptions: _options.compose(
+          _dio.options,
+          _path,
+        ),
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    final _response = await _dio.request<Object>(
+      _path,
+      data: _bodyData,
+      options: _options,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    CompanyResponse? _responseData;
+
+    try {
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(CompanyResponse),
+      ) as CompanyResponse;
+
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    return Response<CompanyResponse>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
+  }
 
   /// Get List of Companies
   /// Consume the list of child companies.  This is used for holding companies with several child entities.
@@ -67,7 +187,7 @@ class CompaniesApi {
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/7.0.2',
+        r'User-Agent': r'Conekta/v2 DartBindings/7.0.5',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (localVarAccept != null) r'Accept': localVarAccept,
         if (localVarContentType != null) r'Content-Type': localVarContentType,
@@ -173,7 +293,7 @@ class CompaniesApi {
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/7.0.2',
+        r'User-Agent': r'Conekta/v2 DartBindings/7.0.5',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (localVarAccept != null) r'Accept': localVarAccept,
         if (localVarContentType != null) r'Content-Type': localVarContentType,
@@ -221,6 +341,442 @@ class CompaniesApi {
     }
 
     return Response<CompanyResponse>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
+  }
+
+  /// Get Company Documents
+  /// Retrieve a list of documents associated with a specific company.
+  ///
+  /// Parameters:
+  /// * [companyId] - The unique identifier of the company.
+  /// * [acceptLanguage] - Use for knowing which language to use
+  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
+  /// * [headers] - Can be used to add additional headers to the request
+  /// * [extras] - Can be used to add flags to the request
+  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
+  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
+  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
+  ///
+  /// Returns a [Future] containing a [Response] with a [BuiltList<CompanyDocumentResponse>] as data
+  /// Throws [DioException] if API call or serialization fails
+  Future<Response<BuiltList<CompanyDocumentResponse>>> getCompanyDocuments({ 
+    required String companyId,
+    String? acceptLanguage = 'es',
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/companies/{company_id}/documents'.replaceAll('{' r'company_id' '}', encodeQueryParameter(_serializers, companyId, const FullType(String)).toString());
+    // to determine the Accept header
+    List<String> _contentTypes = [ 
+    ];
+    var localVarContentType = selectHeaderContentType(_contentTypes);
+
+    // to determine the Accept header
+    List<String> _accepts = [ 
+        "application/vnd.conekta-v2.2.0+json"
+    ];
+    final localVarAccept = selectHeaderAccept(_accepts);
+    final _options = Options(
+      method: r'GET',
+      headers: <String, dynamic>{
+        r'User-Agent': r'Conekta/v2 DartBindings/7.0.5',
+        if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
+        if (localVarAccept != null) r'Accept': localVarAccept,
+        if (localVarContentType != null) r'Content-Type': localVarContentType,
+        r'X-Conekta-Client-User-Agent' : getConektaClientUserAgent(),
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'http',
+            'scheme': 'bearer',
+            'name': 'bearerAuth',
+          },
+        ],
+        ...?extra,
+      },
+      validateStatus: validateStatus,
+    );
+
+    final _response = await _dio.request<Object>(
+      _path,
+      options: _options,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    BuiltList<CompanyDocumentResponse>? _responseData;
+
+    try {
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(BuiltList, [FullType(CompanyDocumentResponse)]),
+      ) as BuiltList<CompanyDocumentResponse>;
+
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    return Response<BuiltList<CompanyDocumentResponse>>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
+  }
+
+  /// Get Current Company
+  /// Retrieves information about the currently authenticated company. This endpoint returns the same data as the standard company endpoint but automatically uses the current company&#39;s context.
+  ///
+  /// Parameters:
+  /// * [acceptLanguage] - Use for knowing which language to use
+  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
+  /// * [headers] - Can be used to add additional headers to the request
+  /// * [extras] - Can be used to add flags to the request
+  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
+  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
+  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
+  ///
+  /// Returns a [Future] containing a [Response] with a [CompanyResponse] as data
+  /// Throws [DioException] if API call or serialization fails
+  Future<Response<CompanyResponse>> getCurrentCompany({ 
+    String? acceptLanguage = 'es',
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/companies/current';
+    // to determine the Accept header
+    List<String> _contentTypes = [ 
+    ];
+    var localVarContentType = selectHeaderContentType(_contentTypes);
+
+    // to determine the Accept header
+    List<String> _accepts = [ 
+        "application/vnd.conekta-v2.2.0+json"
+    ];
+    final localVarAccept = selectHeaderAccept(_accepts);
+    final _options = Options(
+      method: r'GET',
+      headers: <String, dynamic>{
+        r'User-Agent': r'Conekta/v2 DartBindings/7.0.5',
+        if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
+        if (localVarAccept != null) r'Accept': localVarAccept,
+        if (localVarContentType != null) r'Content-Type': localVarContentType,
+        r'X-Conekta-Client-User-Agent' : getConektaClientUserAgent(),
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'http',
+            'scheme': 'bearer',
+            'name': 'bearerAuth',
+          },
+        ],
+        ...?extra,
+      },
+      validateStatus: validateStatus,
+    );
+
+    final _response = await _dio.request<Object>(
+      _path,
+      options: _options,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    CompanyResponse? _responseData;
+
+    try {
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(CompanyResponse),
+      ) as CompanyResponse;
+
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    return Response<CompanyResponse>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
+  }
+
+  /// Update Company Document
+  /// Updates an existing document associated with a specific company.
+  ///
+  /// Parameters:
+  /// * [companyId] - The unique identifier of the company.
+  /// * [companyDocumentRequest] - Document information to update.
+  /// * [acceptLanguage] - Use for knowing which language to use
+  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
+  /// * [headers] - Can be used to add additional headers to the request
+  /// * [extras] - Can be used to add flags to the request
+  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
+  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
+  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
+  ///
+  /// Returns a [Future] containing a [Response] with a [CompanyDocumentResponse] as data
+  /// Throws [DioException] if API call or serialization fails
+  Future<Response<CompanyDocumentResponse>> updateCompanyDocument({ 
+    required String companyId,
+    required CompanyDocumentRequest companyDocumentRequest,
+    String? acceptLanguage = 'es',
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/companies/{company_id}/document'.replaceAll('{' r'company_id' '}', encodeQueryParameter(_serializers, companyId, const FullType(String)).toString());
+    // to determine the Accept header
+    List<String> _contentTypes = [ 
+        "application/json"
+    ];
+    var localVarContentType = selectHeaderContentType(_contentTypes);
+
+    // to determine the Accept header
+    List<String> _accepts = [ 
+        "application/vnd.conekta-v2.2.0+json"
+    ];
+    final localVarAccept = selectHeaderAccept(_accepts);
+    final _options = Options(
+      method: r'PATCH',
+      headers: <String, dynamic>{
+        r'User-Agent': r'Conekta/v2 DartBindings/7.0.5',
+        if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
+        if (localVarAccept != null) r'Accept': localVarAccept,
+        if (localVarContentType != null) r'Content-Type': localVarContentType,
+        r'X-Conekta-Client-User-Agent' : getConektaClientUserAgent(),
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'http',
+            'scheme': 'bearer',
+            'name': 'bearerAuth',
+          },
+        ],
+        ...?extra,
+      },
+      contentType: 'application/json',
+      validateStatus: validateStatus,
+    );
+
+    dynamic _bodyData;
+
+    try {
+      const _type = FullType(CompanyDocumentRequest);
+      _bodyData = _serializers.serialize(companyDocumentRequest, specifiedType: _type);
+
+    } catch(error, stackTrace) {
+      throw DioException(
+         requestOptions: _options.compose(
+          _dio.options,
+          _path,
+        ),
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    final _response = await _dio.request<Object>(
+      _path,
+      data: _bodyData,
+      options: _options,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    CompanyDocumentResponse? _responseData;
+
+    try {
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(CompanyDocumentResponse),
+      ) as CompanyDocumentResponse;
+
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    return Response<CompanyDocumentResponse>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
+  }
+
+  /// Upload Company Document
+  /// Uploads a document associated with a specific company.
+  ///
+  /// Parameters:
+  /// * [companyId] - The unique identifier of the company.
+  /// * [companyDocumentRequest] - Document information to upload.
+  /// * [acceptLanguage] - Use for knowing which language to use
+  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
+  /// * [headers] - Can be used to add additional headers to the request
+  /// * [extras] - Can be used to add flags to the request
+  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
+  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
+  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
+  ///
+  /// Returns a [Future] containing a [Response] with a [CompanyDocumentResponse] as data
+  /// Throws [DioException] if API call or serialization fails
+  Future<Response<CompanyDocumentResponse>> uploadCompanyDocument({ 
+    required String companyId,
+    required CompanyDocumentRequest companyDocumentRequest,
+    String? acceptLanguage = 'es',
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/companies/{company_id}/document'.replaceAll('{' r'company_id' '}', encodeQueryParameter(_serializers, companyId, const FullType(String)).toString());
+    // to determine the Accept header
+    List<String> _contentTypes = [ 
+        "application/json"
+    ];
+    var localVarContentType = selectHeaderContentType(_contentTypes);
+
+    // to determine the Accept header
+    List<String> _accepts = [ 
+        "application/vnd.conekta-v2.2.0+json"
+    ];
+    final localVarAccept = selectHeaderAccept(_accepts);
+    final _options = Options(
+      method: r'POST',
+      headers: <String, dynamic>{
+        r'User-Agent': r'Conekta/v2 DartBindings/7.0.5',
+        if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
+        if (localVarAccept != null) r'Accept': localVarAccept,
+        if (localVarContentType != null) r'Content-Type': localVarContentType,
+        r'X-Conekta-Client-User-Agent' : getConektaClientUserAgent(),
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'http',
+            'scheme': 'bearer',
+            'name': 'bearerAuth',
+          },
+        ],
+        ...?extra,
+      },
+      contentType: 'application/json',
+      validateStatus: validateStatus,
+    );
+
+    dynamic _bodyData;
+
+    try {
+      const _type = FullType(CompanyDocumentRequest);
+      _bodyData = _serializers.serialize(companyDocumentRequest, specifiedType: _type);
+
+    } catch(error, stackTrace) {
+      throw DioException(
+         requestOptions: _options.compose(
+          _dio.options,
+          _path,
+        ),
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    final _response = await _dio.request<Object>(
+      _path,
+      data: _bodyData,
+      options: _options,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    CompanyDocumentResponse? _responseData;
+
+    try {
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(CompanyDocumentResponse),
+      ) as CompanyDocumentResponse;
+
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    return Response<CompanyDocumentResponse>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,

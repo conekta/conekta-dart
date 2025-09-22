@@ -29,6 +29,7 @@ Name | Type | Description | Notes
 **default_** | **bool** |  | [optional] 
 **visibleOnCheckout** | **bool** |  | [optional] 
 **paymentSourceStatus** | **String** |  | [optional] 
+**bank** | **String** | Bank name for the SPEI payment method | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

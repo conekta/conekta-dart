@@ -25,6 +25,7 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add($Page.serializer)
       ..add($Pagination.serializer)
       ..add($PaymentMethod.serializer)
+      ..add($PaymentMethodCashResponse.serializer)
       ..add($PaymentMethodResponse.serializer)
       ..add($Product.serializer)
       ..add($ShippingRequest.serializer)
@@ -53,15 +54,18 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(CheckoutRequestAllowedPaymentMethodsEnum.serializer)
       ..add(CheckoutResponse.serializer)
       ..add(CheckoutsResponse.serializer)
-      ..add(CompanyFiscalInfoAddressResponse.serializer)
-      ..add(CompanyFiscalInfoAddressResponseObjectEnum.serializer)
-      ..add(CompanyFiscalInfoResponse.serializer)
-      ..add(CompanyFiscalInfoResponseObjectEnum.serializer)
-      ..add(CompanyPayoutDestinationResponse.serializer)
-      ..add(CompanyPayoutDestinationResponseObjectEnum.serializer)
-      ..add(CompanyPayoutDestinationResponseTypeEnum.serializer)
+      ..add(CompanyDocumentRequest.serializer)
+      ..add(CompanyDocumentRequestFileClassificationEnum.serializer)
+      ..add(CompanyDocumentResponse.serializer)
+      ..add(CompanyDocumentResponseFileClassificationEnum.serializer)
       ..add(CompanyResponse.serializer)
-      ..add(CompanyResponseObjectEnum.serializer)
+      ..add(CompanyResponseDocumentsInner.serializer)
+      ..add(CompanyResponseDocumentsInnerFileClassificationEnum.serializer)
+      ..add(CompanyResponseThreeDsModeEnum.serializer)
+      ..add(CreateCompanyRequest.serializer)
+      ..add(CreateCompanyRequestBankAccountInfo.serializer)
+      ..add(CreateCompanyRequestComercialInfo.serializer)
+      ..add(CreateCompanyRequestFiscalInfo.serializer)
       ..add(CreateCustomerFiscalEntitiesResponse.serializer)
       ..add(CreateCustomerPaymentMethodsRequest.serializer)
       ..add(CreateCustomerPaymentMethodsResponse.serializer)
@@ -139,10 +143,13 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(PaymentMethodCardRequest.serializer)
       ..add(PaymentMethodCardResponse.serializer)
       ..add(PaymentMethodCash.serializer)
+      ..add(PaymentMethodCashRecurrentResponse.serializer)
       ..add(PaymentMethodCashRequest.serializer)
-      ..add(PaymentMethodCashResponse.serializer)
       ..add(PaymentMethodCashResponseAllOfAgreements.serializer)
       ..add(PaymentMethodGeneralRequest.serializer)
+      ..add(PaymentMethodPbbPayment.serializer)
+      ..add(PaymentMethodPbbRequest.serializer)
+      ..add(PaymentMethodPbbRequestProductTypeEnum.serializer)
       ..add(PaymentMethodSpeiRecurrent.serializer)
       ..add(PaymentMethodSpeiRequest.serializer)
       ..add(PaymentMethodTokenRequest.serializer)
@@ -301,6 +308,10 @@ Serializers _$serializers = (new Serializers().toBuilder()
           const FullType(BuiltList, const [const FullType(CompanyResponse)]),
           () => new ListBuilder<CompanyResponse>())
       ..addBuilderFactory(
+          const FullType(
+              BuiltList, const [const FullType(CompanyResponseDocumentsInner)]),
+          () => new ListBuilder<CompanyResponseDocumentsInner>())
+      ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(CustomerFiscalEntitiesDataResponse)]),
           () => new ListBuilder<CustomerFiscalEntitiesDataResponse>())
@@ -387,6 +398,10 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(OrderResponse)]),
           () => new ListBuilder<OrderResponse>())
+      ..addBuilderFactory(
+          const FullType(BuiltList,
+              const [const FullType(PaymentMethodCashResponseAllOfAgreements)]),
+          () => new ListBuilder<PaymentMethodCashResponseAllOfAgreements>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(PaymentMethodCashResponseAllOfAgreements)]),

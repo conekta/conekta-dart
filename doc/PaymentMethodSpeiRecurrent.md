@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **object** | **String** |  | 
 **createdAt** | **int** |  | 
 **parentId** | **String** |  | [optional] 
+**bank** | **String** | Bank name for the SPEI payment method | [optional] 
 **reference** | **String** |  | [optional] 
 **expiresAt** | **String** |  | [optional] 
 

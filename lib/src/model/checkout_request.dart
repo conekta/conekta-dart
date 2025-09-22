@@ -29,7 +29,7 @@ abstract class CheckoutRequest implements Built<CheckoutRequest, CheckoutRequest
   /// Are the payment methods available for this link. For subscriptions, only 'card' is allowed due to the recurring nature of the payments.
   @BuiltValueField(wireName: r'allowed_payment_methods')
   BuiltList<CheckoutRequestAllowedPaymentMethodsEnum> get allowedPaymentMethods;
-  // enum allowedPaymentMethodsEnum {  cash,  card,  bank_transfer,  bnpl,  };
+  // enum allowedPaymentMethodsEnum {  cash,  card,  bank_transfer,  bnpl,  pay_by_bank,  };
 
   /// List of plan IDs that will be available for subscription. This field is required for subscription payments.
   @BuiltValueField(wireName: r'plan_ids')
@@ -323,6 +323,8 @@ class CheckoutRequestAllowedPaymentMethodsEnum extends EnumClass {
   static const CheckoutRequestAllowedPaymentMethodsEnum bankTransfer = _$checkoutRequestAllowedPaymentMethodsEnum_bankTransfer;
   @BuiltValueEnumConst(wireName: r'bnpl')
   static const CheckoutRequestAllowedPaymentMethodsEnum bnpl = _$checkoutRequestAllowedPaymentMethodsEnum_bnpl;
+  @BuiltValueEnumConst(wireName: r'pay_by_bank')
+  static const CheckoutRequestAllowedPaymentMethodsEnum payByBank = _$checkoutRequestAllowedPaymentMethodsEnum_payByBank;
 
   static Serializer<CheckoutRequestAllowedPaymentMethodsEnum> get serializer => _$checkoutRequestAllowedPaymentMethodsEnumSerializer;
 

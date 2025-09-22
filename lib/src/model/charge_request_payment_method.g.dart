@@ -7,8 +7,8 @@ part of 'charge_request_payment_method.dart';
 // **************************************************************************
 
 const ChargeRequestPaymentMethodProductTypeEnum
-    _$chargeRequestPaymentMethodProductTypeEnum_klarnaBnpl =
-    const ChargeRequestPaymentMethodProductTypeEnum._('klarnaBnpl');
+    _$chargeRequestPaymentMethodProductTypeEnum_aplazoBnpl =
+    const ChargeRequestPaymentMethodProductTypeEnum._('aplazoBnpl');
 const ChargeRequestPaymentMethodProductTypeEnum
     _$chargeRequestPaymentMethodProductTypeEnum_crediteaBnpl =
     const ChargeRequestPaymentMethodProductTypeEnum._('crediteaBnpl');
@@ -16,8 +16,8 @@ const ChargeRequestPaymentMethodProductTypeEnum
 ChargeRequestPaymentMethodProductTypeEnum
     _$chargeRequestPaymentMethodProductTypeEnumValueOf(String name) {
   switch (name) {
-    case 'klarnaBnpl':
-      return _$chargeRequestPaymentMethodProductTypeEnum_klarnaBnpl;
+    case 'aplazoBnpl':
+      return _$chargeRequestPaymentMethodProductTypeEnum_aplazoBnpl;
     case 'crediteaBnpl':
       return _$chargeRequestPaymentMethodProductTypeEnum_crediteaBnpl;
     default:
@@ -29,7 +29,7 @@ final BuiltSet<ChargeRequestPaymentMethodProductTypeEnum>
     _$chargeRequestPaymentMethodProductTypeEnumValues =
     new BuiltSet<ChargeRequestPaymentMethodProductTypeEnum>(const <
         ChargeRequestPaymentMethodProductTypeEnum>[
-  _$chargeRequestPaymentMethodProductTypeEnum_klarnaBnpl,
+  _$chargeRequestPaymentMethodProductTypeEnum_aplazoBnpl,
   _$chargeRequestPaymentMethodProductTypeEnum_crediteaBnpl,
 ]);
 
@@ -40,11 +40,11 @@ Serializer<ChargeRequestPaymentMethodProductTypeEnum>
 class _$ChargeRequestPaymentMethodProductTypeEnumSerializer
     implements PrimitiveSerializer<ChargeRequestPaymentMethodProductTypeEnum> {
   static const Map<String, Object> _toWire = const <String, Object>{
-    'klarnaBnpl': 'klarna_bnpl',
+    'aplazoBnpl': 'aplazo_bnpl',
     'crediteaBnpl': 'creditea_bnpl',
   };
   static const Map<Object, String> _fromWire = const <Object, String>{
-    'klarna_bnpl': 'klarnaBnpl',
+    'aplazo_bnpl': 'aplazoBnpl',
     'creditea_bnpl': 'crediteaBnpl',
   };
 
