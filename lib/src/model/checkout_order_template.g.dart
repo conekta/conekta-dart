@@ -14,8 +14,6 @@ class _$CheckoutOrderTemplate extends CheckoutOrderTemplate {
   @override
   final BuiltList<Product> lineItems;
   @override
-  final BuiltList<String>? planIds;
-  @override
   final BuiltMap<String, JsonObject?>? metadata;
 
   factory _$CheckoutOrderTemplate(
@@ -26,7 +24,6 @@ class _$CheckoutOrderTemplate extends CheckoutOrderTemplate {
       {required this.currency,
       this.customerInfo,
       required this.lineItems,
-      this.planIds,
       this.metadata})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
@@ -51,7 +48,6 @@ class _$CheckoutOrderTemplate extends CheckoutOrderTemplate {
         currency == other.currency &&
         customerInfo == other.customerInfo &&
         lineItems == other.lineItems &&
-        planIds == other.planIds &&
         metadata == other.metadata;
   }
 
@@ -61,7 +57,6 @@ class _$CheckoutOrderTemplate extends CheckoutOrderTemplate {
     _$hash = $jc(_$hash, currency.hashCode);
     _$hash = $jc(_$hash, customerInfo.hashCode);
     _$hash = $jc(_$hash, lineItems.hashCode);
-    _$hash = $jc(_$hash, planIds.hashCode);
     _$hash = $jc(_$hash, metadata.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
@@ -73,7 +68,6 @@ class _$CheckoutOrderTemplate extends CheckoutOrderTemplate {
           ..add('currency', currency)
           ..add('customerInfo', customerInfo)
           ..add('lineItems', lineItems)
-          ..add('planIds', planIds)
           ..add('metadata', metadata))
         .toString();
   }
@@ -99,11 +93,6 @@ class CheckoutOrderTemplateBuilder
   set lineItems(ListBuilder<Product>? lineItems) =>
       _$this._lineItems = lineItems;
 
-  ListBuilder<String>? _planIds;
-  ListBuilder<String> get planIds =>
-      _$this._planIds ??= new ListBuilder<String>();
-  set planIds(ListBuilder<String>? planIds) => _$this._planIds = planIds;
-
   MapBuilder<String, JsonObject?>? _metadata;
   MapBuilder<String, JsonObject?> get metadata =>
       _$this._metadata ??= new MapBuilder<String, JsonObject?>();
@@ -120,7 +109,6 @@ class CheckoutOrderTemplateBuilder
       _currency = $v.currency;
       _customerInfo = $v.customerInfo?.toBuilder();
       _lineItems = $v.lineItems.toBuilder();
-      _planIds = $v.planIds?.toBuilder();
       _metadata = $v.metadata?.toBuilder();
       _$v = null;
     }
@@ -150,7 +138,6 @@ class CheckoutOrderTemplateBuilder
                   currency, r'CheckoutOrderTemplate', 'currency'),
               customerInfo: _customerInfo?.build(),
               lineItems: lineItems.build(),
-              planIds: _planIds?.build(),
               metadata: _metadata?.build());
     } catch (_) {
       late String _$failedField;
@@ -159,8 +146,6 @@ class CheckoutOrderTemplateBuilder
         _customerInfo?.build();
         _$failedField = 'lineItems';
         lineItems.build();
-        _$failedField = 'planIds';
-        _planIds?.build();
         _$failedField = 'metadata';
         _metadata?.build();
       } catch (e) {

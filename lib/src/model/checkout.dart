@@ -21,6 +21,7 @@ part 'checkout.g.dart';
 /// * [name] - Reason for charge
 /// * [needsShippingContact] - This flag allows you to fill in the shipping information at checkout.
 /// * [onDemandEnabled] - This flag allows you to specify if the link will be on demand.
+/// * [planIds] - It is a list of plan IDs that will be associated with the order.
 /// * [orderTemplate] 
 /// * [paymentsLimitCount] - It is the number of payments that can be made through the link.
 /// * [recurrent] - false: single use. true: multiple payments
@@ -58,6 +59,10 @@ abstract class Checkout implements Built<Checkout, CheckoutBuilder> {
   /// This flag allows you to specify if the link will be on demand.
   @BuiltValueField(wireName: r'on_demand_enabled')
   bool? get onDemandEnabled;
+
+  /// It is a list of plan IDs that will be associated with the order.
+  @BuiltValueField(wireName: r'plan_ids')
+  BuiltList<String>? get planIds;
 
   @BuiltValueField(wireName: r'order_template')
   CheckoutOrderTemplate get orderTemplate;
@@ -145,6 +150,13 @@ class _$CheckoutSerializer implements PrimitiveSerializer<Checkout> {
       yield serializers.serialize(
         object.onDemandEnabled,
         specifiedType: const FullType.nullable(bool),
+      );
+    }
+    if (object.planIds != null) {
+      yield r'plan_ids';
+      yield serializers.serialize(
+        object.planIds,
+        specifiedType: const FullType(BuiltList, [FullType(String)]),
       );
     }
     yield r'order_template';
@@ -249,6 +261,13 @@ class _$CheckoutSerializer implements PrimitiveSerializer<Checkout> {
           ) as bool?;
           if (valueDes == null) continue;
           result.onDemandEnabled = valueDes;
+          break;
+        case r'plan_ids':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(BuiltList, [FullType(String)]),
+          ) as BuiltList<String>;
+          result.planIds.replace(valueDes);
           break;
         case r'order_template':
           final valueDes = serializers.deserialize(

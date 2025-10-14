@@ -24,6 +24,8 @@ class _$Checkout extends Checkout {
   @override
   final bool? onDemandEnabled;
   @override
+  final BuiltList<String>? planIds;
+  @override
   final CheckoutOrderTemplate orderTemplate;
   @override
   final int? paymentsLimitCount;
@@ -44,6 +46,7 @@ class _$Checkout extends Checkout {
       required this.name,
       this.needsShippingContact,
       this.onDemandEnabled,
+      this.planIds,
       required this.orderTemplate,
       this.paymentsLimitCount,
       required this.recurrent,
@@ -78,6 +81,7 @@ class _$Checkout extends Checkout {
         name == other.name &&
         needsShippingContact == other.needsShippingContact &&
         onDemandEnabled == other.onDemandEnabled &&
+        planIds == other.planIds &&
         orderTemplate == other.orderTemplate &&
         paymentsLimitCount == other.paymentsLimitCount &&
         recurrent == other.recurrent &&
@@ -95,6 +99,7 @@ class _$Checkout extends Checkout {
     _$hash = $jc(_$hash, name.hashCode);
     _$hash = $jc(_$hash, needsShippingContact.hashCode);
     _$hash = $jc(_$hash, onDemandEnabled.hashCode);
+    _$hash = $jc(_$hash, planIds.hashCode);
     _$hash = $jc(_$hash, orderTemplate.hashCode);
     _$hash = $jc(_$hash, paymentsLimitCount.hashCode);
     _$hash = $jc(_$hash, recurrent.hashCode);
@@ -114,6 +119,7 @@ class _$Checkout extends Checkout {
           ..add('name', name)
           ..add('needsShippingContact', needsShippingContact)
           ..add('onDemandEnabled', onDemandEnabled)
+          ..add('planIds', planIds)
           ..add('orderTemplate', orderTemplate)
           ..add('paymentsLimitCount', paymentsLimitCount)
           ..add('recurrent', recurrent)
@@ -165,6 +171,11 @@ class CheckoutBuilder implements Builder<Checkout, CheckoutBuilder> {
   set onDemandEnabled(bool? onDemandEnabled) =>
       _$this._onDemandEnabled = onDemandEnabled;
 
+  ListBuilder<String>? _planIds;
+  ListBuilder<String> get planIds =>
+      _$this._planIds ??= new ListBuilder<String>();
+  set planIds(ListBuilder<String>? planIds) => _$this._planIds = planIds;
+
   CheckoutOrderTemplateBuilder? _orderTemplate;
   CheckoutOrderTemplateBuilder get orderTemplate =>
       _$this._orderTemplate ??= new CheckoutOrderTemplateBuilder();
@@ -199,6 +210,7 @@ class CheckoutBuilder implements Builder<Checkout, CheckoutBuilder> {
       _name = $v.name;
       _needsShippingContact = $v.needsShippingContact;
       _onDemandEnabled = $v.onDemandEnabled;
+      _planIds = $v.planIds?.toBuilder();
       _orderTemplate = $v.orderTemplate.toBuilder();
       _paymentsLimitCount = $v.paymentsLimitCount;
       _recurrent = $v.recurrent;
@@ -237,6 +249,7 @@ class CheckoutBuilder implements Builder<Checkout, CheckoutBuilder> {
                   name, r'Checkout', 'name'),
               needsShippingContact: needsShippingContact,
               onDemandEnabled: onDemandEnabled,
+              planIds: _planIds?.build(),
               orderTemplate: orderTemplate.build(),
               paymentsLimitCount: paymentsLimitCount,
               recurrent: BuiltValueNullFieldError.checkNotNull(
@@ -252,6 +265,8 @@ class CheckoutBuilder implements Builder<Checkout, CheckoutBuilder> {
         _$failedField = 'monthlyInstallmentsOptions';
         _monthlyInstallmentsOptions?.build();
 
+        _$failedField = 'planIds';
+        _planIds?.build();
         _$failedField = 'orderTemplate';
         orderTemplate.build();
       } catch (e) {
