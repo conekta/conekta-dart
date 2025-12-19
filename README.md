@@ -18,7 +18,7 @@ For more information, please visit [https://github.com/conekta/openapi/issues](h
 To use the package from [pub.dev](https://pub.dev), please include the following in pubspec.yaml
 ```yaml
 dependencies:
-  conekta: 7.0.6
+  conekta: 7.0.7
 ```
 
 ### Github
@@ -160,6 +160,8 @@ Class | Method | HTTP request | Description
 [*SubscriptionsApi*](doc/SubscriptionsApi.md) | [**subscriptionsGet**](doc/SubscriptionsApi.md#subscriptionsget) | **GET** /customers/{customer_id}/subscriptions/{id} | Get Subscription
 [*SubscriptionsApi*](doc/SubscriptionsApi.md) | [**subscriptionsRetry**](doc/SubscriptionsApi.md#subscriptionsretry) | **POST** /customers/{customer_id}/subscriptions/{id}/retry | Retry Failed Payment
 [*SubscriptionsApi*](doc/SubscriptionsApi.md) | [**updateSubscription**](doc/SubscriptionsApi.md#updatesubscription) | **PUT** /customers/{id}/subscription | Update Subscription [Deprecated]
+[*SubscriptionsCustomerPortalApi*](doc/SubscriptionsCustomerPortalApi.md) | [**createCustomerPortal**](doc/SubscriptionsCustomerPortalApi.md#createcustomerportal) | **POST** /subscriptions/{subscription_id}/customer_portal | Create customer portal
+[*SubscriptionsCustomerPortalApi*](doc/SubscriptionsCustomerPortalApi.md) | [**getCustomerPortal**](doc/SubscriptionsCustomerPortalApi.md#getcustomerportal) | **GET** /subscriptions/{subscription_id}/customer_portal | Get customer portal
 [*TaxesApi*](doc/TaxesApi.md) | [**ordersCreateTaxes**](doc/TaxesApi.md#orderscreatetaxes) | **POST** /orders/{id}/tax_lines | Create Tax
 [*TaxesApi*](doc/TaxesApi.md) | [**ordersDeleteTaxes**](doc/TaxesApi.md#ordersdeletetaxes) | **DELETE** /orders/{id}/tax_lines/{tax_id} | Delete Tax
 [*TaxesApi*](doc/TaxesApi.md) | [**ordersUpdateTaxes**](doc/TaxesApi.md#ordersupdatetaxes) | **PUT** /orders/{id}/tax_lines/{tax_id} | Update Tax
@@ -226,6 +228,7 @@ Class | Method | HTTP request | Description
  - [CustomerAddress](doc/CustomerAddress.md)
  - [CustomerAntifraudInfo](doc/CustomerAntifraudInfo.md)
  - [CustomerAntifraudInfoResponse](doc/CustomerAntifraudInfoResponse.md)
+ - [CustomerDetails](doc/CustomerDetails.md)
  - [CustomerFiscalEntitiesDataResponse](doc/CustomerFiscalEntitiesDataResponse.md)
  - [CustomerFiscalEntitiesRequest](doc/CustomerFiscalEntitiesRequest.md)
  - [CustomerFiscalEntitiesResponse](doc/CustomerFiscalEntitiesResponse.md)
@@ -236,6 +239,7 @@ Class | Method | HTTP request | Description
  - [CustomerPaymentMethodsData](doc/CustomerPaymentMethodsData.md)
  - [CustomerPaymentMethodsRequest](doc/CustomerPaymentMethodsRequest.md)
  - [CustomerPaymentMethodsResponse](doc/CustomerPaymentMethodsResponse.md)
+ - [CustomerPortalResponse](doc/CustomerPortalResponse.md)
  - [CustomerResponse](doc/CustomerResponse.md)
  - [CustomerResponseShippingContacts](doc/CustomerResponseShippingContacts.md)
  - [CustomerShippingContacts](doc/CustomerShippingContacts.md)
@@ -339,6 +343,9 @@ Class | Method | HTTP request | Description
  - [ShippingOrderResponse](doc/ShippingOrderResponse.md)
  - [ShippingRequest](doc/ShippingRequest.md)
  - [SmsCheckoutRequest](doc/SmsCheckoutRequest.md)
+ - [SubscriptionDetails](doc/SubscriptionDetails.md)
+ - [SubscriptionDetailsCard](doc/SubscriptionDetailsCard.md)
+ - [SubscriptionDetailsPlan](doc/SubscriptionDetailsPlan.md)
  - [SubscriptionEventsResponse](doc/SubscriptionEventsResponse.md)
  - [SubscriptionRequest](doc/SubscriptionRequest.md)
  - [SubscriptionResponse](doc/SubscriptionResponse.md)

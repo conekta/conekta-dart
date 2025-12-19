@@ -27,6 +27,7 @@ import 'package:conekta/src/api/products_api.dart';
 import 'package:conekta/src/api/shipping_contacts_api.dart';
 import 'package:conekta/src/api/shippings_api.dart';
 import 'package:conekta/src/api/subscriptions_api.dart';
+import 'package:conekta/src/api/subscriptions_customer_portal_api.dart';
 import 'package:conekta/src/api/taxes_api.dart';
 import 'package:conekta/src/api/tokens_api.dart';
 import 'package:conekta/src/api/transactions_api.dart';
@@ -194,6 +195,12 @@ class Conekta {
   /// by doing that all interceptors will not be executed
   SubscriptionsApi getSubscriptionsApi() {
     return SubscriptionsApi(dio, serializers);
+  }
+
+  /// Get SubscriptionsCustomerPortalApi instance, base route and serializer can be overridden by a given but be careful,
+  /// by doing that all interceptors will not be executed
+  SubscriptionsCustomerPortalApi getSubscriptionsCustomerPortalApi() {
+    return SubscriptionsCustomerPortalApi(dio, serializers);
   }
 
   /// Get TaxesApi instance, base route and serializer can be overridden by a given but be careful,

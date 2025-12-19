@@ -13,6 +13,7 @@ part 'checkout_request.g.dart';
 ///
 /// Properties:
 /// * [allowedPaymentMethods] - Are the payment methods available for this link. For subscriptions, only 'card' is allowed due to the recurring nature of the payments.
+/// * [excludeCardNetworks] - List of card networks to exclude from the checkout. This field is only applicable for card payments.
 /// * [planIds] - List of plan IDs that will be available for subscription. This field is required for subscription payments.
 /// * [expiresAt] - Unix timestamp of checkout expiration
 /// * [failureUrl] - Redirection url back to the site in case of failed payment, applies only to HostedPayment.
@@ -30,6 +31,11 @@ abstract class CheckoutRequest implements Built<CheckoutRequest, CheckoutRequest
   @BuiltValueField(wireName: r'allowed_payment_methods')
   BuiltList<CheckoutRequestAllowedPaymentMethodsEnum> get allowedPaymentMethods;
   // enum allowedPaymentMethodsEnum {  cash,  card,  bank_transfer,  bnpl,  pay_by_bank,  };
+
+  /// List of card networks to exclude from the checkout. This field is only applicable for card payments.
+  @BuiltValueField(wireName: r'exclude_card_networks')
+  BuiltList<CheckoutRequestExcludeCardNetworksEnum>? get excludeCardNetworks;
+  // enum excludeCardNetworksEnum {  visa,  mastercard,  amex,  };
 
   /// List of plan IDs that will be available for subscription. This field is required for subscription payments.
   @BuiltValueField(wireName: r'plan_ids')
@@ -100,6 +106,13 @@ class _$CheckoutRequestSerializer implements PrimitiveSerializer<CheckoutRequest
       object.allowedPaymentMethods,
       specifiedType: const FullType(BuiltList, [FullType(CheckoutRequestAllowedPaymentMethodsEnum)]),
     );
+    if (object.excludeCardNetworks != null) {
+      yield r'exclude_card_networks';
+      yield serializers.serialize(
+        object.excludeCardNetworks,
+        specifiedType: const FullType(BuiltList, [FullType(CheckoutRequestExcludeCardNetworksEnum)]),
+      );
+    }
     if (object.planIds != null) {
       yield r'plan_ids';
       yield serializers.serialize(
@@ -206,6 +219,13 @@ class _$CheckoutRequestSerializer implements PrimitiveSerializer<CheckoutRequest
             specifiedType: const FullType(BuiltList, [FullType(CheckoutRequestAllowedPaymentMethodsEnum)]),
           ) as BuiltList<CheckoutRequestAllowedPaymentMethodsEnum>;
           result.allowedPaymentMethods.replace(valueDes);
+          break;
+        case r'exclude_card_networks':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(BuiltList, [FullType(CheckoutRequestExcludeCardNetworksEnum)]),
+          ) as BuiltList<CheckoutRequestExcludeCardNetworksEnum>;
+          result.excludeCardNetworks.replace(valueDes);
           break;
         case r'plan_ids':
           final valueDes = serializers.deserialize(
@@ -332,5 +352,22 @@ class CheckoutRequestAllowedPaymentMethodsEnum extends EnumClass {
 
   static BuiltSet<CheckoutRequestAllowedPaymentMethodsEnum> get values => _$checkoutRequestAllowedPaymentMethodsEnumValues;
   static CheckoutRequestAllowedPaymentMethodsEnum valueOf(String name) => _$checkoutRequestAllowedPaymentMethodsEnumValueOf(name);
+}
+
+class CheckoutRequestExcludeCardNetworksEnum extends EnumClass {
+
+  @BuiltValueEnumConst(wireName: r'visa')
+  static const CheckoutRequestExcludeCardNetworksEnum visa = _$checkoutRequestExcludeCardNetworksEnum_visa;
+  @BuiltValueEnumConst(wireName: r'mastercard')
+  static const CheckoutRequestExcludeCardNetworksEnum mastercard = _$checkoutRequestExcludeCardNetworksEnum_mastercard;
+  @BuiltValueEnumConst(wireName: r'amex')
+  static const CheckoutRequestExcludeCardNetworksEnum amex = _$checkoutRequestExcludeCardNetworksEnum_amex;
+
+  static Serializer<CheckoutRequestExcludeCardNetworksEnum> get serializer => _$checkoutRequestExcludeCardNetworksEnumSerializer;
+
+  const CheckoutRequestExcludeCardNetworksEnum._(String name): super(name);
+
+  static BuiltSet<CheckoutRequestExcludeCardNetworksEnum> get values => _$checkoutRequestExcludeCardNetworksEnumValues;
+  static CheckoutRequestExcludeCardNetworksEnum valueOf(String name) => _$checkoutRequestExcludeCardNetworksEnumValueOf(name);
 }
 

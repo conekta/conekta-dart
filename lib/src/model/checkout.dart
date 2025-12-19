@@ -14,7 +14,8 @@ part 'checkout.g.dart';
 ///
 /// Properties:
 /// * [allowedPaymentMethods] - Those are the payment methods that will be available for the link
-/// * [expiresAt] - It is the time when the link will expire. It is expressed in seconds since the Unix epoch. The valid range is from 2 to 365 days (the valid range will be taken from the next day of the creation date at 00:01 hrs) 
+/// * [excludeCardNetworks] - List of card networks to exclude from the checkout. This field is only applicable for card payments.
+/// * [expiresAt] - It is the time when the link will expire.  It is expressed in seconds since the Unix epoch. The valid range is from 10 minutes to 365 days from the creation date. 
 /// * [monthlyInstallmentsEnabled] - This flag allows you to specify if months without interest will be active.
 /// * [monthlyInstallmentsOptions] - This field allows you to specify the number of months without interest.
 /// * [threeDsMode] - Indicates the 3DS2 mode for the order, either smart or strict. This property is only applicable when 3DS is enabled. When 3DS is disabled, this field should be null.
@@ -32,7 +33,12 @@ abstract class Checkout implements Built<Checkout, CheckoutBuilder> {
   @BuiltValueField(wireName: r'allowed_payment_methods')
   BuiltList<String> get allowedPaymentMethods;
 
-  /// It is the time when the link will expire. It is expressed in seconds since the Unix epoch. The valid range is from 2 to 365 days (the valid range will be taken from the next day of the creation date at 00:01 hrs) 
+  /// List of card networks to exclude from the checkout. This field is only applicable for card payments.
+  @BuiltValueField(wireName: r'exclude_card_networks')
+  BuiltList<CheckoutExcludeCardNetworksEnum>? get excludeCardNetworks;
+  // enum excludeCardNetworksEnum {  visa,  mastercard,  amex,  };
+
+  /// It is the time when the link will expire.  It is expressed in seconds since the Unix epoch. The valid range is from 10 minutes to 365 days from the creation date. 
   @BuiltValueField(wireName: r'expires_at')
   int get expiresAt;
 
@@ -107,6 +113,13 @@ class _$CheckoutSerializer implements PrimitiveSerializer<Checkout> {
       object.allowedPaymentMethods,
       specifiedType: const FullType(BuiltList, [FullType(String)]),
     );
+    if (object.excludeCardNetworks != null) {
+      yield r'exclude_card_networks';
+      yield serializers.serialize(
+        object.excludeCardNetworks,
+        specifiedType: const FullType(BuiltList, [FullType(CheckoutExcludeCardNetworksEnum)]),
+      );
+    }
     yield r'expires_at';
     yield serializers.serialize(
       object.expiresAt,
@@ -210,6 +223,13 @@ class _$CheckoutSerializer implements PrimitiveSerializer<Checkout> {
             specifiedType: const FullType(BuiltList, [FullType(String)]),
           ) as BuiltList<String>;
           result.allowedPaymentMethods.replace(valueDes);
+          break;
+        case r'exclude_card_networks':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(BuiltList, [FullType(CheckoutExcludeCardNetworksEnum)]),
+          ) as BuiltList<CheckoutExcludeCardNetworksEnum>;
+          result.excludeCardNetworks.replace(valueDes);
           break;
         case r'expires_at':
           final valueDes = serializers.deserialize(
@@ -324,5 +344,22 @@ class _$CheckoutSerializer implements PrimitiveSerializer<Checkout> {
     );
     return result.build();
   }
+}
+
+class CheckoutExcludeCardNetworksEnum extends EnumClass {
+
+  @BuiltValueEnumConst(wireName: r'visa')
+  static const CheckoutExcludeCardNetworksEnum visa = _$checkoutExcludeCardNetworksEnum_visa;
+  @BuiltValueEnumConst(wireName: r'mastercard')
+  static const CheckoutExcludeCardNetworksEnum mastercard = _$checkoutExcludeCardNetworksEnum_mastercard;
+  @BuiltValueEnumConst(wireName: r'amex')
+  static const CheckoutExcludeCardNetworksEnum amex = _$checkoutExcludeCardNetworksEnum_amex;
+
+  static Serializer<CheckoutExcludeCardNetworksEnum> get serializer => _$checkoutExcludeCardNetworksEnumSerializer;
+
+  const CheckoutExcludeCardNetworksEnum._(String name): super(name);
+
+  static BuiltSet<CheckoutExcludeCardNetworksEnum> get values => _$checkoutExcludeCardNetworksEnumValues;
+  static CheckoutExcludeCardNetworksEnum valueOf(String name) => _$checkoutExcludeCardNetworksEnumValueOf(name);
 }
 

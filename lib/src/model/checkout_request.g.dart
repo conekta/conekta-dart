@@ -51,9 +51,45 @@ final BuiltSet<CheckoutRequestAllowedPaymentMethodsEnum>
   _$checkoutRequestAllowedPaymentMethodsEnum_payByBank,
 ]);
 
+const CheckoutRequestExcludeCardNetworksEnum
+    _$checkoutRequestExcludeCardNetworksEnum_visa =
+    const CheckoutRequestExcludeCardNetworksEnum._('visa');
+const CheckoutRequestExcludeCardNetworksEnum
+    _$checkoutRequestExcludeCardNetworksEnum_mastercard =
+    const CheckoutRequestExcludeCardNetworksEnum._('mastercard');
+const CheckoutRequestExcludeCardNetworksEnum
+    _$checkoutRequestExcludeCardNetworksEnum_amex =
+    const CheckoutRequestExcludeCardNetworksEnum._('amex');
+
+CheckoutRequestExcludeCardNetworksEnum
+    _$checkoutRequestExcludeCardNetworksEnumValueOf(String name) {
+  switch (name) {
+    case 'visa':
+      return _$checkoutRequestExcludeCardNetworksEnum_visa;
+    case 'mastercard':
+      return _$checkoutRequestExcludeCardNetworksEnum_mastercard;
+    case 'amex':
+      return _$checkoutRequestExcludeCardNetworksEnum_amex;
+    default:
+      throw new ArgumentError(name);
+  }
+}
+
+final BuiltSet<CheckoutRequestExcludeCardNetworksEnum>
+    _$checkoutRequestExcludeCardNetworksEnumValues =
+    new BuiltSet<CheckoutRequestExcludeCardNetworksEnum>(const <
+        CheckoutRequestExcludeCardNetworksEnum>[
+  _$checkoutRequestExcludeCardNetworksEnum_visa,
+  _$checkoutRequestExcludeCardNetworksEnum_mastercard,
+  _$checkoutRequestExcludeCardNetworksEnum_amex,
+]);
+
 Serializer<CheckoutRequestAllowedPaymentMethodsEnum>
     _$checkoutRequestAllowedPaymentMethodsEnumSerializer =
     new _$CheckoutRequestAllowedPaymentMethodsEnumSerializer();
+Serializer<CheckoutRequestExcludeCardNetworksEnum>
+    _$checkoutRequestExcludeCardNetworksEnumSerializer =
+    new _$CheckoutRequestExcludeCardNetworksEnumSerializer();
 
 class _$CheckoutRequestAllowedPaymentMethodsEnumSerializer
     implements PrimitiveSerializer<CheckoutRequestAllowedPaymentMethodsEnum> {
@@ -93,10 +129,46 @@ class _$CheckoutRequestAllowedPaymentMethodsEnumSerializer
           _fromWire[serialized] ?? (serialized is String ? serialized : ''));
 }
 
+class _$CheckoutRequestExcludeCardNetworksEnumSerializer
+    implements PrimitiveSerializer<CheckoutRequestExcludeCardNetworksEnum> {
+  static const Map<String, Object> _toWire = const <String, Object>{
+    'visa': 'visa',
+    'mastercard': 'mastercard',
+    'amex': 'amex',
+  };
+  static const Map<Object, String> _fromWire = const <Object, String>{
+    'visa': 'visa',
+    'mastercard': 'mastercard',
+    'amex': 'amex',
+  };
+
+  @override
+  final Iterable<Type> types = const <Type>[
+    CheckoutRequestExcludeCardNetworksEnum
+  ];
+  @override
+  final String wireName = 'CheckoutRequestExcludeCardNetworksEnum';
+
+  @override
+  Object serialize(Serializers serializers,
+          CheckoutRequestExcludeCardNetworksEnum object,
+          {FullType specifiedType = FullType.unspecified}) =>
+      _toWire[object.name] ?? object.name;
+
+  @override
+  CheckoutRequestExcludeCardNetworksEnum deserialize(
+          Serializers serializers, Object serialized,
+          {FullType specifiedType = FullType.unspecified}) =>
+      CheckoutRequestExcludeCardNetworksEnum.valueOf(
+          _fromWire[serialized] ?? (serialized is String ? serialized : ''));
+}
+
 class _$CheckoutRequest extends CheckoutRequest {
   @override
   final BuiltList<CheckoutRequestAllowedPaymentMethodsEnum>
       allowedPaymentMethods;
+  @override
+  final BuiltList<CheckoutRequestExcludeCardNetworksEnum>? excludeCardNetworks;
   @override
   final BuiltList<String>? planIds;
   @override
@@ -125,6 +197,7 @@ class _$CheckoutRequest extends CheckoutRequest {
 
   _$CheckoutRequest._(
       {required this.allowedPaymentMethods,
+      this.excludeCardNetworks,
       this.planIds,
       this.expiresAt,
       this.failureUrl,
@@ -154,6 +227,7 @@ class _$CheckoutRequest extends CheckoutRequest {
     if (identical(other, this)) return true;
     return other is CheckoutRequest &&
         allowedPaymentMethods == other.allowedPaymentMethods &&
+        excludeCardNetworks == other.excludeCardNetworks &&
         planIds == other.planIds &&
         expiresAt == other.expiresAt &&
         failureUrl == other.failureUrl &&
@@ -171,6 +245,7 @@ class _$CheckoutRequest extends CheckoutRequest {
   int get hashCode {
     var _$hash = 0;
     _$hash = $jc(_$hash, allowedPaymentMethods.hashCode);
+    _$hash = $jc(_$hash, excludeCardNetworks.hashCode);
     _$hash = $jc(_$hash, planIds.hashCode);
     _$hash = $jc(_$hash, expiresAt.hashCode);
     _$hash = $jc(_$hash, failureUrl.hashCode);
@@ -190,6 +265,7 @@ class _$CheckoutRequest extends CheckoutRequest {
   String toString() {
     return (newBuiltValueToStringHelper(r'CheckoutRequest')
           ..add('allowedPaymentMethods', allowedPaymentMethods)
+          ..add('excludeCardNetworks', excludeCardNetworks)
           ..add('planIds', planIds)
           ..add('expiresAt', expiresAt)
           ..add('failureUrl', failureUrl)
@@ -217,6 +293,15 @@ class CheckoutRequestBuilder
           ListBuilder<CheckoutRequestAllowedPaymentMethodsEnum>?
               allowedPaymentMethods) =>
       _$this._allowedPaymentMethods = allowedPaymentMethods;
+
+  ListBuilder<CheckoutRequestExcludeCardNetworksEnum>? _excludeCardNetworks;
+  ListBuilder<CheckoutRequestExcludeCardNetworksEnum> get excludeCardNetworks =>
+      _$this._excludeCardNetworks ??=
+          new ListBuilder<CheckoutRequestExcludeCardNetworksEnum>();
+  set excludeCardNetworks(
+          ListBuilder<CheckoutRequestExcludeCardNetworksEnum>?
+              excludeCardNetworks) =>
+      _$this._excludeCardNetworks = excludeCardNetworks;
 
   ListBuilder<String>? _planIds;
   ListBuilder<String> get planIds =>
@@ -278,6 +363,7 @@ class CheckoutRequestBuilder
     final $v = _$v;
     if ($v != null) {
       _allowedPaymentMethods = $v.allowedPaymentMethods.toBuilder();
+      _excludeCardNetworks = $v.excludeCardNetworks?.toBuilder();
       _planIds = $v.planIds?.toBuilder();
       _expiresAt = $v.expiresAt;
       _failureUrl = $v.failureUrl;
@@ -314,6 +400,7 @@ class CheckoutRequestBuilder
       _$result = _$v ??
           new _$CheckoutRequest._(
               allowedPaymentMethods: allowedPaymentMethods.build(),
+              excludeCardNetworks: _excludeCardNetworks?.build(),
               planIds: _planIds?.build(),
               expiresAt: expiresAt,
               failureUrl: failureUrl,
@@ -330,6 +417,8 @@ class CheckoutRequestBuilder
       try {
         _$failedField = 'allowedPaymentMethods';
         allowedPaymentMethods.build();
+        _$failedField = 'excludeCardNetworks';
+        _excludeCardNetworks?.build();
         _$failedField = 'planIds';
         _planIds?.build();
 
