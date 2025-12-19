@@ -1,3 +1,5 @@
+## 7.0.7 -2025-04-28
+   * Add new entities
 ## 7.0.2 -2025-04-28
    * Fix missing entities
 ## 7.0.1 -2025-04-28

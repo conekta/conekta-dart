@@ -14,3 +14,5 @@ dart:
 	 -o /local \
 	 -c /local/config-dart.json  \
 	 --global-property modelTests=false
+publish:
+	dart pub publish
