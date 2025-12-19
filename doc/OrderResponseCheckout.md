@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **allowedPaymentMethods** | **BuiltList&lt;String&gt;** | Are the payment methods available for this link | [optional] 
 **canNotExpire** | **bool** |  | [optional] 
 **emailsSent** | **int** |  | [optional] 
-**excludeCardNetworks** | [**BuiltList&lt;JsonObject&gt;**](JsonObject.md) |  | [optional] 
+**excludeCardNetworks** | **BuiltList&lt;String&gt;** |  | [optional] 
 **expiresAt** | **int** |  | [optional] 
 **failureUrl** | **String** |  | [optional] 
 **force3dsFlow** | **bool** |  | [optional] 

@@ -54,7 +54,8 @@ abstract class OrderResponseCheckout implements Built<OrderResponseCheckout, Ord
   int? get emailsSent;
 
   @BuiltValueField(wireName: r'exclude_card_networks')
-  BuiltList<JsonObject>? get excludeCardNetworks;
+  BuiltList<OrderResponseCheckoutExcludeCardNetworksEnum>? get excludeCardNetworks;
+  // enum excludeCardNetworksEnum {  visa,  mastercard,  amex,  };
 
   @BuiltValueField(wireName: r'expires_at')
   int? get expiresAt;
@@ -178,7 +179,7 @@ class _$OrderResponseCheckoutSerializer implements PrimitiveSerializer<OrderResp
       yield r'exclude_card_networks';
       yield serializers.serialize(
         object.excludeCardNetworks,
-        specifiedType: const FullType(BuiltList, [FullType(JsonObject)]),
+        specifiedType: const FullType(BuiltList, [FullType(OrderResponseCheckoutExcludeCardNetworksEnum)]),
       );
     }
     if (object.expiresAt != null) {
@@ -396,8 +397,8 @@ class _$OrderResponseCheckoutSerializer implements PrimitiveSerializer<OrderResp
         case r'exclude_card_networks':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(JsonObject)]),
-          ) as BuiltList<JsonObject>;
+            specifiedType: const FullType(BuiltList, [FullType(OrderResponseCheckoutExcludeCardNetworksEnum)]),
+          ) as BuiltList<OrderResponseCheckoutExcludeCardNetworksEnum>;
           result.excludeCardNetworks.replace(valueDes);
           break;
         case r'expires_at':
@@ -598,5 +599,22 @@ class _$OrderResponseCheckoutSerializer implements PrimitiveSerializer<OrderResp
     );
     return result.build();
   }
+}
+
+class OrderResponseCheckoutExcludeCardNetworksEnum extends EnumClass {
+
+  @BuiltValueEnumConst(wireName: r'visa')
+  static const OrderResponseCheckoutExcludeCardNetworksEnum visa = _$orderResponseCheckoutExcludeCardNetworksEnum_visa;
+  @BuiltValueEnumConst(wireName: r'mastercard')
+  static const OrderResponseCheckoutExcludeCardNetworksEnum mastercard = _$orderResponseCheckoutExcludeCardNetworksEnum_mastercard;
+  @BuiltValueEnumConst(wireName: r'amex')
+  static const OrderResponseCheckoutExcludeCardNetworksEnum amex = _$orderResponseCheckoutExcludeCardNetworksEnum_amex;
+
+  static Serializer<OrderResponseCheckoutExcludeCardNetworksEnum> get serializer => _$orderResponseCheckoutExcludeCardNetworksEnumSerializer;
+
+  const OrderResponseCheckoutExcludeCardNetworksEnum._(String name): super(name);
+
+  static BuiltSet<OrderResponseCheckoutExcludeCardNetworksEnum> get values => _$orderResponseCheckoutExcludeCardNetworksEnumValues;
+  static OrderResponseCheckoutExcludeCardNetworksEnum valueOf(String name) => _$orderResponseCheckoutExcludeCardNetworksEnumValueOf(name);
 }
 

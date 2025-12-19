@@ -9,6 +9,7 @@ import 'package:conekta/api.dart';
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **allowedPaymentMethods** | **BuiltList&lt;String&gt;** | Are the payment methods available for this link. For subscriptions, only 'card' is allowed due to the recurring nature of the payments. | 
+**excludeCardNetworks** | **BuiltList&lt;String&gt;** | List of card networks to exclude from the checkout. This field is only applicable for card payments. | [optional] 
 **planIds** | **BuiltList&lt;String&gt;** | List of plan IDs that will be available for subscription. This field is required for subscription payments. | [optional] 
 **expiresAt** | **int** | Unix timestamp of checkout expiration | [optional] 
 **failureUrl** | **String** | Redirection url back to the site in case of failed payment, applies only to HostedPayment. | [optional] 

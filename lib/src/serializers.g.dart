@@ -48,11 +48,14 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(ChargesOrderResponse.serializer)
       ..add(ChargesOrderResponseAllOfData.serializer)
       ..add(Checkout.serializer)
+      ..add(CheckoutExcludeCardNetworksEnum.serializer)
       ..add(CheckoutOrderTemplate.serializer)
       ..add(CheckoutOrderTemplateCustomerInfo.serializer)
       ..add(CheckoutRequest.serializer)
       ..add(CheckoutRequestAllowedPaymentMethodsEnum.serializer)
+      ..add(CheckoutRequestExcludeCardNetworksEnum.serializer)
       ..add(CheckoutResponse.serializer)
+      ..add(CheckoutResponseExcludeCardNetworksEnum.serializer)
       ..add(CheckoutsResponse.serializer)
       ..add(CompanyDocumentRequest.serializer)
       ..add(CompanyDocumentRequestFileClassificationEnum.serializer)
@@ -74,6 +77,7 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(CustomerAddress.serializer)
       ..add(CustomerAntifraudInfo.serializer)
       ..add(CustomerAntifraudInfoResponse.serializer)
+      ..add(CustomerDetails.serializer)
       ..add(CustomerFiscalEntitiesDataResponse.serializer)
       ..add(CustomerFiscalEntitiesResponse.serializer)
       ..add(CustomerInfo.serializer)
@@ -81,6 +85,7 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(CustomerPaymentMethodsData.serializer)
       ..add(CustomerPaymentMethodsRequest.serializer)
       ..add(CustomerPaymentMethodsResponse.serializer)
+      ..add(CustomerPortalResponse.serializer)
       ..add(CustomerResponse.serializer)
       ..add(CustomerResponseShippingContacts.serializer)
       ..add(CustomerShippingContactsAddress.serializer)
@@ -129,6 +134,7 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(OrderRequestCustomerInfo.serializer)
       ..add(OrderResponse.serializer)
       ..add(OrderResponseCheckout.serializer)
+      ..add(OrderResponseCheckoutExcludeCardNetworksEnum.serializer)
       ..add(OrderResponseCustomerInfo.serializer)
       ..add(OrderResponseProducts.serializer)
       ..add(OrderResponseShippingContact.serializer)
@@ -171,6 +177,9 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(RiskRulesList.serializer)
       ..add(ShippingOrderResponse.serializer)
       ..add(SmsCheckoutRequest.serializer)
+      ..add(SubscriptionDetails.serializer)
+      ..add(SubscriptionDetailsCard.serializer)
+      ..add(SubscriptionDetailsPlan.serializer)
       ..add(SubscriptionEventsResponse.serializer)
       ..add(SubscriptionRequest.serializer)
       ..add(SubscriptionResponse.serializer)
@@ -295,6 +304,10 @@ Serializers _$serializers = (new Serializers().toBuilder()
           const FullType(BuiltList,
               const [const FullType(CheckoutRequestAllowedPaymentMethodsEnum)]),
           () => new ListBuilder<CheckoutRequestAllowedPaymentMethodsEnum>())
+      ..addBuilderFactory(
+          const FullType(BuiltList,
+              const [const FullType(CheckoutRequestExcludeCardNetworksEnum)]),
+          () => new ListBuilder<CheckoutRequestExcludeCardNetworksEnum>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
           () => new ListBuilder<String>())
@@ -445,8 +458,23 @@ Serializers _$serializers = (new Serializers().toBuilder()
           const FullType(BuiltList, const [const FullType(String)]),
           () => new ListBuilder<String>())
       ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(JsonObject)]),
-          () => new ListBuilder<JsonObject>())
+          const FullType(BuiltList,
+              const [const FullType(CheckoutExcludeCardNetworksEnum)]),
+          () => new ListBuilder<CheckoutExcludeCardNetworksEnum>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(int)]),
+          () => new ListBuilder<int>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => new ListBuilder<String>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => new ListBuilder<String>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [
+            const FullType(OrderResponseCheckoutExcludeCardNetworksEnum)
+          ]),
+          () => new ListBuilder<OrderResponseCheckoutExcludeCardNetworksEnum>())
       ..addBuilderFactory(
           const FullType(BuiltMap, const [
             const FullType(String),
@@ -463,8 +491,9 @@ Serializers _$serializers = (new Serializers().toBuilder()
           const FullType(BuiltList, const [const FullType(String)]),
           () => new ListBuilder<String>())
       ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(JsonObject)]),
-          () => new ListBuilder<JsonObject>())
+          const FullType(BuiltList,
+              const [const FullType(CheckoutResponseExcludeCardNetworksEnum)]),
+          () => new ListBuilder<CheckoutResponseExcludeCardNetworksEnum>())
       ..addBuilderFactory(
           const FullType(BuiltMap, const [
             const FullType(String),
@@ -489,15 +518,6 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(int)]),
           () => new ListBuilder<int>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(int)]),
-          () => new ListBuilder<int>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
           () => new ListBuilder<String>())

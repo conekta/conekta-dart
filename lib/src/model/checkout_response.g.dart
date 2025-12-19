@@ -6,6 +6,77 @@ part of 'checkout_response.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
+const CheckoutResponseExcludeCardNetworksEnum
+    _$checkoutResponseExcludeCardNetworksEnum_visa =
+    const CheckoutResponseExcludeCardNetworksEnum._('visa');
+const CheckoutResponseExcludeCardNetworksEnum
+    _$checkoutResponseExcludeCardNetworksEnum_mastercard =
+    const CheckoutResponseExcludeCardNetworksEnum._('mastercard');
+const CheckoutResponseExcludeCardNetworksEnum
+    _$checkoutResponseExcludeCardNetworksEnum_amex =
+    const CheckoutResponseExcludeCardNetworksEnum._('amex');
+
+CheckoutResponseExcludeCardNetworksEnum
+    _$checkoutResponseExcludeCardNetworksEnumValueOf(String name) {
+  switch (name) {
+    case 'visa':
+      return _$checkoutResponseExcludeCardNetworksEnum_visa;
+    case 'mastercard':
+      return _$checkoutResponseExcludeCardNetworksEnum_mastercard;
+    case 'amex':
+      return _$checkoutResponseExcludeCardNetworksEnum_amex;
+    default:
+      throw new ArgumentError(name);
+  }
+}
+
+final BuiltSet<CheckoutResponseExcludeCardNetworksEnum>
+    _$checkoutResponseExcludeCardNetworksEnumValues =
+    new BuiltSet<CheckoutResponseExcludeCardNetworksEnum>(const <
+        CheckoutResponseExcludeCardNetworksEnum>[
+  _$checkoutResponseExcludeCardNetworksEnum_visa,
+  _$checkoutResponseExcludeCardNetworksEnum_mastercard,
+  _$checkoutResponseExcludeCardNetworksEnum_amex,
+]);
+
+Serializer<CheckoutResponseExcludeCardNetworksEnum>
+    _$checkoutResponseExcludeCardNetworksEnumSerializer =
+    new _$CheckoutResponseExcludeCardNetworksEnumSerializer();
+
+class _$CheckoutResponseExcludeCardNetworksEnumSerializer
+    implements PrimitiveSerializer<CheckoutResponseExcludeCardNetworksEnum> {
+  static const Map<String, Object> _toWire = const <String, Object>{
+    'visa': 'visa',
+    'mastercard': 'mastercard',
+    'amex': 'amex',
+  };
+  static const Map<Object, String> _fromWire = const <Object, String>{
+    'visa': 'visa',
+    'mastercard': 'mastercard',
+    'amex': 'amex',
+  };
+
+  @override
+  final Iterable<Type> types = const <Type>[
+    CheckoutResponseExcludeCardNetworksEnum
+  ];
+  @override
+  final String wireName = 'CheckoutResponseExcludeCardNetworksEnum';
+
+  @override
+  Object serialize(Serializers serializers,
+          CheckoutResponseExcludeCardNetworksEnum object,
+          {FullType specifiedType = FullType.unspecified}) =>
+      _toWire[object.name] ?? object.name;
+
+  @override
+  CheckoutResponseExcludeCardNetworksEnum deserialize(
+          Serializers serializers, Object serialized,
+          {FullType specifiedType = FullType.unspecified}) =>
+      CheckoutResponseExcludeCardNetworksEnum.valueOf(
+          _fromWire[serialized] ?? (serialized is String ? serialized : ''));
+}
+
 class _$CheckoutResponse extends CheckoutResponse {
   @override
   final BuiltList<String>? allowedPaymentMethods;
@@ -16,7 +87,7 @@ class _$CheckoutResponse extends CheckoutResponse {
   @override
   final int? emailsSent;
   @override
-  final BuiltList<JsonObject>? excludeCardNetworks;
+  final BuiltList<CheckoutResponseExcludeCardNetworksEnum>? excludeCardNetworks;
   @override
   final int? expiresAt;
   @override
@@ -229,10 +300,13 @@ class CheckoutResponseBuilder
   int? get emailsSent => _$this._emailsSent;
   set emailsSent(int? emailsSent) => _$this._emailsSent = emailsSent;
 
-  ListBuilder<JsonObject>? _excludeCardNetworks;
-  ListBuilder<JsonObject> get excludeCardNetworks =>
-      _$this._excludeCardNetworks ??= new ListBuilder<JsonObject>();
-  set excludeCardNetworks(ListBuilder<JsonObject>? excludeCardNetworks) =>
+  ListBuilder<CheckoutResponseExcludeCardNetworksEnum>? _excludeCardNetworks;
+  ListBuilder<CheckoutResponseExcludeCardNetworksEnum>
+      get excludeCardNetworks => _$this._excludeCardNetworks ??=
+          new ListBuilder<CheckoutResponseExcludeCardNetworksEnum>();
+  set excludeCardNetworks(
+          ListBuilder<CheckoutResponseExcludeCardNetworksEnum>?
+              excludeCardNetworks) =>
       _$this._excludeCardNetworks = excludeCardNetworks;
 
   int? _expiresAt;

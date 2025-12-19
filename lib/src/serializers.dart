@@ -57,6 +57,7 @@ import 'package:conekta/src/model/customer.dart';
 import 'package:conekta/src/model/customer_address.dart';
 import 'package:conekta/src/model/customer_antifraud_info.dart';
 import 'package:conekta/src/model/customer_antifraud_info_response.dart';
+import 'package:conekta/src/model/customer_details.dart';
 import 'package:conekta/src/model/customer_fiscal_entities_data_response.dart';
 import 'package:conekta/src/model/customer_fiscal_entities_request.dart';
 import 'package:conekta/src/model/customer_fiscal_entities_response.dart';
@@ -67,6 +68,7 @@ import 'package:conekta/src/model/customer_payment_method_request.dart';
 import 'package:conekta/src/model/customer_payment_methods_data.dart';
 import 'package:conekta/src/model/customer_payment_methods_request.dart';
 import 'package:conekta/src/model/customer_payment_methods_response.dart';
+import 'package:conekta/src/model/customer_portal_response.dart';
 import 'package:conekta/src/model/customer_response.dart';
 import 'package:conekta/src/model/customer_response_shipping_contacts.dart';
 import 'package:conekta/src/model/customer_shipping_contacts.dart';
@@ -170,6 +172,9 @@ import 'package:conekta/src/model/risk_rules_list.dart';
 import 'package:conekta/src/model/shipping_order_response.dart';
 import 'package:conekta/src/model/shipping_request.dart';
 import 'package:conekta/src/model/sms_checkout_request.dart';
+import 'package:conekta/src/model/subscription_details.dart';
+import 'package:conekta/src/model/subscription_details_card.dart';
+import 'package:conekta/src/model/subscription_details_plan.dart';
 import 'package:conekta/src/model/subscription_events_response.dart';
 import 'package:conekta/src/model/subscription_request.dart';
 import 'package:conekta/src/model/subscription_response.dart';
@@ -250,6 +255,7 @@ part 'serializers.g.dart';
   CustomerAddress,
   CustomerAntifraudInfo,
   CustomerAntifraudInfoResponse,
+  CustomerDetails,
   CustomerFiscalEntitiesDataResponse,
   CustomerFiscalEntitiesRequest,$CustomerFiscalEntitiesRequest,
   CustomerFiscalEntitiesResponse,
@@ -260,6 +266,7 @@ part 'serializers.g.dart';
   CustomerPaymentMethodsData,
   CustomerPaymentMethodsRequest,
   CustomerPaymentMethodsResponse,
+  CustomerPortalResponse,
   CustomerResponse,
   CustomerResponseShippingContacts,
   CustomerShippingContacts,$CustomerShippingContacts,
@@ -363,6 +370,9 @@ part 'serializers.g.dart';
   ShippingOrderResponse,
   ShippingRequest,$ShippingRequest,
   SmsCheckoutRequest,
+  SubscriptionDetails,
+  SubscriptionDetailsCard,
+  SubscriptionDetailsPlan,
   SubscriptionEventsResponse,
   SubscriptionRequest,
   SubscriptionResponse,

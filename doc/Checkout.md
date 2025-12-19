@@ -9,7 +9,8 @@ import 'package:conekta/api.dart';
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **allowedPaymentMethods** | **BuiltList&lt;String&gt;** | Those are the payment methods that will be available for the link | 
-**expiresAt** | **int** | It is the time when the link will expire. It is expressed in seconds since the Unix epoch. The valid range is from 2 to 365 days (the valid range will be taken from the next day of the creation date at 00:01 hrs)  | 
+**excludeCardNetworks** | **BuiltList&lt;String&gt;** | List of card networks to exclude from the checkout. This field is only applicable for card payments. | [optional] 
+**expiresAt** | **int** | It is the time when the link will expire.  It is expressed in seconds since the Unix epoch. The valid range is from 10 minutes to 365 days from the creation date.  | 
 **monthlyInstallmentsEnabled** | **bool** | This flag allows you to specify if months without interest will be active. | [optional] 
 **monthlyInstallmentsOptions** | **BuiltList&lt;int&gt;** | This field allows you to specify the number of months without interest. | [optional] 
 **threeDsMode** | **String** | Indicates the 3DS2 mode for the order, either smart or strict. This property is only applicable when 3DS is enabled. When 3DS is disabled, this field should be null. | [optional] 

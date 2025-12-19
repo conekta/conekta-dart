@@ -54,6 +54,7 @@ doc/Customer.md
 doc/CustomerAddress.md
 doc/CustomerAntifraudInfo.md
 doc/CustomerAntifraudInfoResponse.md
+doc/CustomerDetails.md
 doc/CustomerFiscalEntitiesDataResponse.md
 doc/CustomerFiscalEntitiesRequest.md
 doc/CustomerFiscalEntitiesResponse.md
@@ -64,6 +65,7 @@ doc/CustomerPaymentMethodRequest.md
 doc/CustomerPaymentMethodsData.md
 doc/CustomerPaymentMethodsRequest.md
 doc/CustomerPaymentMethodsResponse.md
+doc/CustomerPortalResponse.md
 doc/CustomerResponse.md
 doc/CustomerResponseShippingContacts.md
 doc/CustomerShippingContacts.md
@@ -179,11 +181,15 @@ doc/ShippingOrderResponse.md
 doc/ShippingRequest.md
 doc/ShippingsApi.md
 doc/SmsCheckoutRequest.md
+doc/SubscriptionDetails.md
+doc/SubscriptionDetailsCard.md
+doc/SubscriptionDetailsPlan.md
 doc/SubscriptionEventsResponse.md
 doc/SubscriptionRequest.md
 doc/SubscriptionResponse.md
 doc/SubscriptionUpdateRequest.md
 doc/SubscriptionsApi.md
+doc/SubscriptionsCustomerPortalApi.md
 doc/TaxesApi.md
 doc/Token.md
 doc/TokenCard.md
@@ -239,6 +245,7 @@ lib/src/api/products_api.dart
 lib/src/api/shipping_contacts_api.dart
 lib/src/api/shippings_api.dart
 lib/src/api/subscriptions_api.dart
+lib/src/api/subscriptions_customer_portal_api.dart
 lib/src/api/taxes_api.dart
 lib/src/api/tokens_api.dart
 lib/src/api/transactions_api.dart
@@ -295,6 +302,7 @@ lib/src/model/customer.dart
 lib/src/model/customer_address.dart
 lib/src/model/customer_antifraud_info.dart
 lib/src/model/customer_antifraud_info_response.dart
+lib/src/model/customer_details.dart
 lib/src/model/customer_fiscal_entities_data_response.dart
 lib/src/model/customer_fiscal_entities_request.dart
 lib/src/model/customer_fiscal_entities_response.dart
@@ -305,6 +313,7 @@ lib/src/model/customer_payment_method_request.dart
 lib/src/model/customer_payment_methods_data.dart
 lib/src/model/customer_payment_methods_request.dart
 lib/src/model/customer_payment_methods_response.dart
+lib/src/model/customer_portal_response.dart
 lib/src/model/customer_response.dart
 lib/src/model/customer_response_shipping_contacts.dart
 lib/src/model/customer_shipping_contacts.dart
@@ -409,6 +418,9 @@ lib/src/model/risk_rules_list.dart
 lib/src/model/shipping_order_response.dart
 lib/src/model/shipping_request.dart
 lib/src/model/sms_checkout_request.dart
+lib/src/model/subscription_details.dart
+lib/src/model/subscription_details_card.dart
+lib/src/model/subscription_details_plan.dart
 lib/src/model/subscription_events_response.dart
 lib/src/model/subscription_request.dart
 lib/src/model/subscription_response.dart
