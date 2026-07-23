@@ -88,9 +88,10 @@ class OrderFiscalEntityRequestBuilder
         Builder<OrderFiscalEntityRequest, OrderFiscalEntityRequestBuilder> {
   _$OrderFiscalEntityRequest? _$v;
 
-  FiscalEntityAddress? _address;
-  FiscalEntityAddress? get address => _$this._address;
-  set address(FiscalEntityAddress? address) => _$this._address = address;
+  FiscalEntityAddressBuilder? _address;
+  FiscalEntityAddressBuilder get address =>
+      _$this._address ??= new FiscalEntityAddressBuilder();
+  set address(FiscalEntityAddressBuilder? address) => _$this._address = address;
 
   String? _email;
   String? get email => _$this._email;
@@ -121,7 +122,7 @@ class OrderFiscalEntityRequestBuilder
   OrderFiscalEntityRequestBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _address = $v.address;
+      _address = $v.address.toBuilder();
       _email = $v.email;
       _metadata = $v.metadata?.toBuilder();
       _name = $v.name;
@@ -151,8 +152,7 @@ class OrderFiscalEntityRequestBuilder
     try {
       _$result = _$v ??
           new _$OrderFiscalEntityRequest._(
-              address: BuiltValueNullFieldError.checkNotNull(
-                  address, r'OrderFiscalEntityRequest', 'address'),
+              address: address.build(),
               email: email,
               metadata: _metadata?.build(),
               name: name,
@@ -161,6 +161,9 @@ class OrderFiscalEntityRequestBuilder
     } catch (_) {
       late String _$failedField;
       try {
+        _$failedField = 'address';
+        address.build();
+
         _$failedField = 'metadata';
         _metadata?.build();
       } catch (e) {

@@ -100,8 +100,9 @@ class _$OrderRefundRequestSerializer implements PrimitiveSerializer<OrderRefundR
         case r'expires_at':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.expiresAt = valueDes;
           break;
         case r'reason':

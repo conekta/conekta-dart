@@ -3,11 +3,11 @@
 //
 
 // ignore_for_file: unused_element
+import 'package:conekta/src/model/fiscal_entity_request.dart';
 import 'package:conekta/src/model/update_customer_antifraud_info.dart';
 import 'package:built_collection/built_collection.dart';
-import 'package:conekta/src/model/customer_fiscal_entities_request.dart';
 import 'package:conekta/src/model/customer_payment_methods_request.dart';
-import 'package:conekta/src/model/customer_shipping_contacts.dart';
+import 'package:conekta/src/model/customer_shipping_contacts_request.dart';
 import 'package:conekta/src/model/subscription_request.dart';
 import 'package:built_value/json_object.dart';
 import 'package:built_value/built_value.dart';
@@ -76,7 +76,7 @@ abstract class UpdateCustomer implements Built<UpdateCustomer, UpdateCustomerBui
   String? get customReference;
 
   @BuiltValueField(wireName: r'fiscal_entities')
-  BuiltList<CustomerFiscalEntitiesRequest>? get fiscalEntities;
+  BuiltList<FiscalEntityRequest>? get fiscalEntities;
 
   @BuiltValueField(wireName: r'metadata')
   BuiltMap<String, JsonObject?>? get metadata;
@@ -91,7 +91,7 @@ abstract class UpdateCustomer implements Built<UpdateCustomer, UpdateCustomerBui
 
   /// Contains the detail of the shipping addresses that the client has active or has used in Conekta
   @BuiltValueField(wireName: r'shipping_contacts')
-  BuiltList<CustomerShippingContacts>? get shippingContacts;
+  BuiltList<CustomerShippingContactsRequest>? get shippingContacts;
 
   @BuiltValueField(wireName: r'subscription')
   SubscriptionRequest? get subscription;
@@ -124,7 +124,7 @@ class _$UpdateCustomerSerializer implements PrimitiveSerializer<UpdateCustomer> 
       yield r'antifraud_info';
       yield serializers.serialize(
         object.antifraudInfo,
-        specifiedType: const FullType.nullable(UpdateCustomerAntifraudInfo),
+        specifiedType: const FullType(UpdateCustomerAntifraudInfo),
       );
     }
     if (object.dateOfBirth != null) {
@@ -194,7 +194,7 @@ class _$UpdateCustomerSerializer implements PrimitiveSerializer<UpdateCustomer> 
       yield r'fiscal_entities';
       yield serializers.serialize(
         object.fiscalEntities,
-        specifiedType: const FullType(BuiltList, [FullType(CustomerFiscalEntitiesRequest)]),
+        specifiedType: const FullType(BuiltList, [FullType(FiscalEntityRequest)]),
       );
     }
     if (object.metadata != null) {
@@ -222,7 +222,7 @@ class _$UpdateCustomerSerializer implements PrimitiveSerializer<UpdateCustomer> 
       yield r'shipping_contacts';
       yield serializers.serialize(
         object.shippingContacts,
-        specifiedType: const FullType(BuiltList, [FullType(CustomerShippingContacts)]),
+        specifiedType: const FullType(BuiltList, [FullType(CustomerShippingContactsRequest)]),
       );
     }
     if (object.subscription != null) {
@@ -266,106 +266,121 @@ class _$UpdateCustomerSerializer implements PrimitiveSerializer<UpdateCustomer> 
         case r'date_of_birth':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.dateOfBirth = valueDes;
           break;
         case r'default_payment_source_id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.defaultPaymentSourceId = valueDes;
           break;
         case r'email':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.email = valueDes;
           break;
         case r'name':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.name = valueDes;
           break;
         case r'phone':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.phone = valueDes;
           break;
         case r'plan_id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.planId = valueDes;
           break;
         case r'default_shipping_contact_id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.defaultShippingContactId = valueDes;
           break;
         case r'corporate':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(bool),
-          ) as bool;
+            specifiedType: const FullType.nullable(bool),
+          ) as bool?;
+          if (valueDes == null) continue;
           result.corporate = valueDes;
           break;
         case r'custom_reference':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.customReference = valueDes;
           break;
         case r'fiscal_entities':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(CustomerFiscalEntitiesRequest)]),
-          ) as BuiltList<CustomerFiscalEntitiesRequest>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(FiscalEntityRequest)]),
+          ) as BuiltList<FiscalEntityRequest>?;
+          if (valueDes == null) continue;
           result.fiscalEntities.replace(valueDes);
           break;
         case r'metadata':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
-          ) as BuiltMap<String, JsonObject?>;
+            specifiedType: const FullType.nullable(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
+          ) as BuiltMap<String, JsonObject?>?;
+          if (valueDes == null) continue;
           result.metadata.replace(valueDes);
           break;
         case r'national_id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.nationalId = valueDes;
           break;
         case r'payment_sources':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(CustomerPaymentMethodsRequest)]),
-          ) as BuiltList<CustomerPaymentMethodsRequest>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(CustomerPaymentMethodsRequest)]),
+          ) as BuiltList<CustomerPaymentMethodsRequest>?;
+          if (valueDes == null) continue;
           result.paymentSources.replace(valueDes);
           break;
         case r'shipping_contacts':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(CustomerShippingContacts)]),
-          ) as BuiltList<CustomerShippingContacts>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(CustomerShippingContactsRequest)]),
+          ) as BuiltList<CustomerShippingContactsRequest>?;
+          if (valueDes == null) continue;
           result.shippingContacts.replace(valueDes);
           break;
         case r'subscription':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(SubscriptionRequest),
-          ) as SubscriptionRequest;
+            specifiedType: const FullType.nullable(SubscriptionRequest),
+          ) as SubscriptionRequest?;
+          if (valueDes == null) continue;
           result.subscription.replace(valueDes);
           break;
         default:

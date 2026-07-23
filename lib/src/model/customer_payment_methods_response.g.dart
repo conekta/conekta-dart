@@ -8,26 +8,26 @@ part of 'customer_payment_methods_response.dart';
 
 class _$CustomerPaymentMethodsResponse extends CustomerPaymentMethodsResponse {
   @override
-  final BuiltList<CustomerPaymentMethodsData>? data;
+  final bool hasMore;
+  @override
+  final String object;
   @override
   final String? nextPageUrl;
   @override
   final String? previousPageUrl;
   @override
-  final bool hasMore;
-  @override
-  final String object;
+  final BuiltList<CustomerPaymentMethodsData>? data;
 
   factory _$CustomerPaymentMethodsResponse(
           [void Function(CustomerPaymentMethodsResponseBuilder)? updates]) =>
       (new CustomerPaymentMethodsResponseBuilder()..update(updates))._build();
 
   _$CustomerPaymentMethodsResponse._(
-      {this.data,
+      {required this.hasMore,
+      required this.object,
       this.nextPageUrl,
       this.previousPageUrl,
-      required this.hasMore,
-      required this.object})
+      this.data})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         hasMore, r'CustomerPaymentMethodsResponse', 'hasMore');
@@ -48,21 +48,21 @@ class _$CustomerPaymentMethodsResponse extends CustomerPaymentMethodsResponse {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is CustomerPaymentMethodsResponse &&
-        data == other.data &&
+        hasMore == other.hasMore &&
+        object == other.object &&
         nextPageUrl == other.nextPageUrl &&
         previousPageUrl == other.previousPageUrl &&
-        hasMore == other.hasMore &&
-        object == other.object;
+        data == other.data;
   }
 
   @override
   int get hashCode {
     var _$hash = 0;
-    _$hash = $jc(_$hash, data.hashCode);
-    _$hash = $jc(_$hash, nextPageUrl.hashCode);
-    _$hash = $jc(_$hash, previousPageUrl.hashCode);
     _$hash = $jc(_$hash, hasMore.hashCode);
     _$hash = $jc(_$hash, object.hashCode);
+    _$hash = $jc(_$hash, nextPageUrl.hashCode);
+    _$hash = $jc(_$hash, previousPageUrl.hashCode);
+    _$hash = $jc(_$hash, data.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -70,11 +70,11 @@ class _$CustomerPaymentMethodsResponse extends CustomerPaymentMethodsResponse {
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'CustomerPaymentMethodsResponse')
-          ..add('data', data)
+          ..add('hasMore', hasMore)
+          ..add('object', object)
           ..add('nextPageUrl', nextPageUrl)
           ..add('previousPageUrl', previousPageUrl)
-          ..add('hasMore', hasMore)
-          ..add('object', object))
+          ..add('data', data))
         .toString();
   }
 }
@@ -82,34 +82,31 @@ class _$CustomerPaymentMethodsResponse extends CustomerPaymentMethodsResponse {
 class CustomerPaymentMethodsResponseBuilder
     implements
         Builder<CustomerPaymentMethodsResponse,
-            CustomerPaymentMethodsResponseBuilder>,
-        PageBuilder,
-        PaginationBuilder {
+            CustomerPaymentMethodsResponseBuilder> {
   _$CustomerPaymentMethodsResponse? _$v;
+
+  bool? _hasMore;
+  bool? get hasMore => _$this._hasMore;
+  set hasMore(bool? hasMore) => _$this._hasMore = hasMore;
+
+  String? _object;
+  String? get object => _$this._object;
+  set object(String? object) => _$this._object = object;
+
+  String? _nextPageUrl;
+  String? get nextPageUrl => _$this._nextPageUrl;
+  set nextPageUrl(String? nextPageUrl) => _$this._nextPageUrl = nextPageUrl;
+
+  String? _previousPageUrl;
+  String? get previousPageUrl => _$this._previousPageUrl;
+  set previousPageUrl(String? previousPageUrl) =>
+      _$this._previousPageUrl = previousPageUrl;
 
   ListBuilder<CustomerPaymentMethodsData>? _data;
   ListBuilder<CustomerPaymentMethodsData> get data =>
       _$this._data ??= new ListBuilder<CustomerPaymentMethodsData>();
-  set data(covariant ListBuilder<CustomerPaymentMethodsData>? data) =>
+  set data(ListBuilder<CustomerPaymentMethodsData>? data) =>
       _$this._data = data;
-
-  String? _nextPageUrl;
-  String? get nextPageUrl => _$this._nextPageUrl;
-  set nextPageUrl(covariant String? nextPageUrl) =>
-      _$this._nextPageUrl = nextPageUrl;
-
-  String? _previousPageUrl;
-  String? get previousPageUrl => _$this._previousPageUrl;
-  set previousPageUrl(covariant String? previousPageUrl) =>
-      _$this._previousPageUrl = previousPageUrl;
-
-  bool? _hasMore;
-  bool? get hasMore => _$this._hasMore;
-  set hasMore(covariant bool? hasMore) => _$this._hasMore = hasMore;
-
-  String? _object;
-  String? get object => _$this._object;
-  set object(covariant String? object) => _$this._object = object;
 
   CustomerPaymentMethodsResponseBuilder() {
     CustomerPaymentMethodsResponse._defaults(this);
@@ -118,19 +115,18 @@ class CustomerPaymentMethodsResponseBuilder
   CustomerPaymentMethodsResponseBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _data = $v.data?.toBuilder();
-      _nextPageUrl = $v.nextPageUrl;
-      _previousPageUrl = $v.previousPageUrl;
       _hasMore = $v.hasMore;
       _object = $v.object;
+      _nextPageUrl = $v.nextPageUrl;
+      _previousPageUrl = $v.previousPageUrl;
+      _data = $v.data?.toBuilder();
       _$v = null;
     }
     return this;
   }
 
   @override
-// ignore: override_on_non_overriding_method
-  void replace(covariant CustomerPaymentMethodsResponse other) {
+  void replace(CustomerPaymentMethodsResponse other) {
     ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CustomerPaymentMethodsResponse;
   }
@@ -148,13 +144,13 @@ class CustomerPaymentMethodsResponseBuilder
     try {
       _$result = _$v ??
           new _$CustomerPaymentMethodsResponse._(
-              data: _data?.build(),
-              nextPageUrl: nextPageUrl,
-              previousPageUrl: previousPageUrl,
               hasMore: BuiltValueNullFieldError.checkNotNull(
                   hasMore, r'CustomerPaymentMethodsResponse', 'hasMore'),
               object: BuiltValueNullFieldError.checkNotNull(
-                  object, r'CustomerPaymentMethodsResponse', 'object'));
+                  object, r'CustomerPaymentMethodsResponse', 'object'),
+              nextPageUrl: nextPageUrl,
+              previousPageUrl: previousPageUrl,
+              data: _data?.build());
     } catch (_) {
       late String _$failedField;
       try {

@@ -1,0 +1,22 @@
+# conekta.model.PaymentMethodSpeiRecurrentResponse
+
+## Load the model package
+```dart
+import 'package:conekta/api.dart';
+```
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**type** | **String** |  | 
+**id** | **String** |  | 
+**object** | **String** |  | 
+**createdAt** | **int** |  | 
+**parentId** | **String** |  | [optional] 
+**bank** | **String** | Bank name for the SPEI payment method | [optional] 
+**reference** | **String** |  | [optional] 
+**expiresAt** | **String** |  | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

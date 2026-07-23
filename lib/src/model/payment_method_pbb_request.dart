@@ -3,7 +3,6 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:conekta/src/model/customer_payment_method_request.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -17,7 +16,11 @@ part 'payment_method_pbb_request.g.dart';
 /// * [expiresAt] - Expiration date of the payment method, in Unix timestamp format
 /// * [productType] - Product type of the payment method, use for the payment method to know the product type
 @BuiltValue()
-abstract class PaymentMethodPbbRequest implements CustomerPaymentMethodRequest, Built<PaymentMethodPbbRequest, PaymentMethodPbbRequestBuilder> {
+abstract class PaymentMethodPbbRequest implements Built<PaymentMethodPbbRequest, PaymentMethodPbbRequestBuilder> {
+  /// Type of the payment method
+  @BuiltValueField(wireName: r'type')
+  String get type;
+
   /// Expiration date of the payment method, in Unix timestamp format
   @BuiltValueField(wireName: r'expires_at')
   int? get expiresAt;
@@ -100,8 +103,9 @@ class _$PaymentMethodPbbRequestSerializer implements PrimitiveSerializer<Payment
         case r'expires_at':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.expiresAt = valueDes;
           break;
         case r'product_type':

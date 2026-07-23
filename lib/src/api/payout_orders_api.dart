@@ -10,7 +10,7 @@ import 'package:dio/dio.dart';
 
 import 'package:conekta/src/api_util.dart';
 import 'package:conekta/src/model/error.dart';
-import 'package:conekta/src/model/payout_order.dart';
+import 'package:conekta/src/model/payout_order_request.dart';
 import 'package:conekta/src/model/payout_order_response.dart';
 import 'package:conekta/src/model/payout_orders_response.dart';
 import 'package:conekta/src/utils/utils.dart';
@@ -56,13 +56,13 @@ class PayoutOrdersApi {
 
     // to determine the Accept header
     List<String> _accepts = [ 
-        "application/vnd.conekta-v2.2.0+json"
+        "application/vnd.conekta-v2.3.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
     final _options = Options(
       method: r'PUT',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/7.0.7',
+        r'User-Agent': r'Conekta/v2 DartBindings/9.0.0',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (localVarAccept != null) r'Accept': localVarAccept,
         if (localVarContentType != null) r'Content-Type': localVarContentType,
@@ -125,7 +125,7 @@ class PayoutOrdersApi {
   /// Create a new payout order.
   ///
   /// Parameters:
-  /// * [payoutOrder] - requested field for payout order
+  /// * [payoutOrderRequest] - requested field for payout order
   /// * [acceptLanguage] - Use for knowing which language to use
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
@@ -137,7 +137,7 @@ class PayoutOrdersApi {
   /// Returns a [Future] containing a [Response] with a [PayoutOrderResponse] as data
   /// Throws [DioException] if API call or serialization fails
   Future<Response<PayoutOrderResponse>> createPayoutOrder({ 
-    required PayoutOrder payoutOrder,
+    required PayoutOrderRequest payoutOrderRequest,
     String? acceptLanguage = 'es',
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -155,13 +155,13 @@ class PayoutOrdersApi {
 
     // to determine the Accept header
     List<String> _accepts = [ 
-        "application/vnd.conekta-v2.2.0+json"
+        "application/vnd.conekta-v2.3.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/7.0.7',
+        r'User-Agent': r'Conekta/v2 DartBindings/9.0.0',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (localVarAccept != null) r'Accept': localVarAccept,
         if (localVarContentType != null) r'Content-Type': localVarContentType,
@@ -185,8 +185,8 @@ class PayoutOrdersApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(PayoutOrder);
-      _bodyData = _serializers.serialize(payoutOrder, specifiedType: _type);
+      const _type = FullType(PayoutOrderRequest);
+      _bodyData = _serializers.serialize(payoutOrderRequest, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(
@@ -273,13 +273,13 @@ class PayoutOrdersApi {
 
     // to determine the Accept header
     List<String> _accepts = [ 
-        "application/vnd.conekta-v2.2.0+json"
+        "application/vnd.conekta-v2.3.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/7.0.7',
+        r'User-Agent': r'Conekta/v2 DartBindings/9.0.0',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (localVarAccept != null) r'Accept': localVarAccept,
         if (localVarContentType != null) r'Content-Type': localVarContentType,
@@ -377,13 +377,13 @@ class PayoutOrdersApi {
 
     // to determine the Accept header
     List<String> _accepts = [ 
-        "application/vnd.conekta-v2.2.0+json"
+        "application/vnd.conekta-v2.3.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/7.0.7',
+        r'User-Agent': r'Conekta/v2 DartBindings/9.0.0',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (localVarAccept != null) r'Accept': localVarAccept,
         if (localVarContentType != null) r'Content-Type': localVarContentType,

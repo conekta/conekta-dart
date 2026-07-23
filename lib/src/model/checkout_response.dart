@@ -14,6 +14,7 @@ part 'checkout_response.g.dart';
 ///
 /// Properties:
 /// * [allowedPaymentMethods] - Are the payment methods available for this link
+/// * [excludedPaymentMethods] - Payment methods excluded from the checkout. This field is only returned when excluded_payment_methods is provided in the request.
 /// * [planIds] - List of plan IDs that are available for subscription
 /// * [canNotExpire] 
 /// * [emailsSent] 
@@ -36,7 +37,7 @@ part 'checkout_response.g.dart';
 /// * [smsSent] 
 /// * [startsAt] 
 /// * [status] 
-/// * [successUrl] 
+/// * [successUrl] - The URL to redirect to after a successful payment.
 /// * [type] 
 /// * [url] 
 @BuiltValue()
@@ -44,6 +45,11 @@ abstract class CheckoutResponse implements Built<CheckoutResponse, CheckoutRespo
   /// Are the payment methods available for this link
   @BuiltValueField(wireName: r'allowed_payment_methods')
   BuiltList<String>? get allowedPaymentMethods;
+
+  /// Payment methods excluded from the checkout. This field is only returned when excluded_payment_methods is provided in the request.
+  @BuiltValueField(wireName: r'excluded_payment_methods')
+  BuiltList<CheckoutResponseExcludedPaymentMethodsEnum>? get excludedPaymentMethods;
+  // enum excludedPaymentMethodsEnum {  cash,  card,  bank_transfer,  bnpl,  pay_by_bank,  };
 
   /// List of plan IDs that are available for subscription
   @BuiltValueField(wireName: r'plan_ids')
@@ -114,6 +120,7 @@ abstract class CheckoutResponse implements Built<CheckoutResponse, CheckoutRespo
   @BuiltValueField(wireName: r'status')
   String? get status;
 
+  /// The URL to redirect to after a successful payment.
   @BuiltValueField(wireName: r'success_url')
   String? get successUrl;
 
@@ -151,6 +158,13 @@ class _$CheckoutResponseSerializer implements PrimitiveSerializer<CheckoutRespon
       yield serializers.serialize(
         object.allowedPaymentMethods,
         specifiedType: const FullType(BuiltList, [FullType(String)]),
+      );
+    }
+    if (object.excludedPaymentMethods != null) {
+      yield r'excluded_payment_methods';
+      yield serializers.serialize(
+        object.excludedPaymentMethods,
+        specifiedType: const FullType(BuiltList, [FullType(CheckoutResponseExcludedPaymentMethodsEnum)]),
       );
     }
     if (object.planIds != null) {
@@ -261,7 +275,7 @@ class _$CheckoutResponseSerializer implements PrimitiveSerializer<CheckoutRespon
       yield r'payments_limit_count';
       yield serializers.serialize(
         object.paymentsLimitCount,
-        specifiedType: const FullType.nullable(int),
+        specifiedType: const FullType(int),
       );
     }
     if (object.recurrent != null) {
@@ -346,57 +360,73 @@ class _$CheckoutResponseSerializer implements PrimitiveSerializer<CheckoutRespon
         case r'allowed_payment_methods':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(String)]),
-          ) as BuiltList<String>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
+          ) as BuiltList<String>?;
+          if (valueDes == null) continue;
           result.allowedPaymentMethods.replace(valueDes);
+          break;
+        case r'excluded_payment_methods':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(BuiltList, [FullType(CheckoutResponseExcludedPaymentMethodsEnum)]),
+          ) as BuiltList<CheckoutResponseExcludedPaymentMethodsEnum>?;
+          if (valueDes == null) continue;
+          result.excludedPaymentMethods.replace(valueDes);
           break;
         case r'plan_ids':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(String)]),
-          ) as BuiltList<String>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
+          ) as BuiltList<String>?;
+          if (valueDes == null) continue;
           result.planIds.replace(valueDes);
           break;
         case r'can_not_expire':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(bool),
-          ) as bool;
+            specifiedType: const FullType.nullable(bool),
+          ) as bool?;
+          if (valueDes == null) continue;
           result.canNotExpire = valueDes;
           break;
         case r'emails_sent':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.emailsSent = valueDes;
           break;
         case r'exclude_card_networks':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(CheckoutResponseExcludeCardNetworksEnum)]),
-          ) as BuiltList<CheckoutResponseExcludeCardNetworksEnum>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(CheckoutResponseExcludeCardNetworksEnum)]),
+          ) as BuiltList<CheckoutResponseExcludeCardNetworksEnum>?;
+          if (valueDes == null) continue;
           result.excludeCardNetworks.replace(valueDes);
           break;
         case r'expires_at':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.expiresAt = valueDes;
           break;
         case r'failure_url':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.failureUrl = valueDes;
           break;
         case r'force_3ds_flow':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(bool),
-          ) as bool;
+            specifiedType: const FullType.nullable(bool),
+          ) as bool?;
+          if (valueDes == null) continue;
           result.force3dsFlow = valueDes;
           break;
         case r'id':
@@ -416,22 +446,25 @@ class _$CheckoutResponseSerializer implements PrimitiveSerializer<CheckoutRespon
         case r'metadata':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
-          ) as BuiltMap<String, JsonObject?>;
+            specifiedType: const FullType.nullable(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
+          ) as BuiltMap<String, JsonObject?>?;
+          if (valueDes == null) continue;
           result.metadata.replace(valueDes);
           break;
         case r'monthly_installments_enabled':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(bool),
-          ) as bool;
+            specifiedType: const FullType.nullable(bool),
+          ) as bool?;
+          if (valueDes == null) continue;
           result.monthlyInstallmentsEnabled = valueDes;
           break;
         case r'monthly_installments_options':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(int)]),
-          ) as BuiltList<int>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(int)]),
+          ) as BuiltList<int>?;
+          if (valueDes == null) continue;
           result.monthlyInstallmentsOptions.replace(valueDes);
           break;
         case r'name':
@@ -444,8 +477,9 @@ class _$CheckoutResponseSerializer implements PrimitiveSerializer<CheckoutRespon
         case r'needs_shipping_contact':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(bool),
-          ) as bool;
+            specifiedType: const FullType.nullable(bool),
+          ) as bool?;
+          if (valueDes == null) continue;
           result.needsShippingContact = valueDes;
           break;
         case r'object':
@@ -458,8 +492,9 @@ class _$CheckoutResponseSerializer implements PrimitiveSerializer<CheckoutRespon
         case r'paid_payments_count':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.paidPaymentsCount = valueDes;
           break;
         case r'payments_limit_count':
@@ -473,57 +508,65 @@ class _$CheckoutResponseSerializer implements PrimitiveSerializer<CheckoutRespon
         case r'recurrent':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(bool),
-          ) as bool;
+            specifiedType: const FullType.nullable(bool),
+          ) as bool?;
+          if (valueDes == null) continue;
           result.recurrent = valueDes;
           break;
         case r'slug':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.slug = valueDes;
           break;
         case r'sms_sent':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.smsSent = valueDes;
           break;
         case r'starts_at':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.startsAt = valueDes;
           break;
         case r'status':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.status = valueDes;
           break;
         case r'success_url':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.successUrl = valueDes;
           break;
         case r'type':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.type = valueDes;
           break;
         case r'url':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.url = valueDes;
           break;
         default:
@@ -553,6 +596,27 @@ class _$CheckoutResponseSerializer implements PrimitiveSerializer<CheckoutRespon
     );
     return result.build();
   }
+}
+
+class CheckoutResponseExcludedPaymentMethodsEnum extends EnumClass {
+
+  @BuiltValueEnumConst(wireName: r'cash')
+  static const CheckoutResponseExcludedPaymentMethodsEnum cash = _$checkoutResponseExcludedPaymentMethodsEnum_cash;
+  @BuiltValueEnumConst(wireName: r'card')
+  static const CheckoutResponseExcludedPaymentMethodsEnum card = _$checkoutResponseExcludedPaymentMethodsEnum_card;
+  @BuiltValueEnumConst(wireName: r'bank_transfer')
+  static const CheckoutResponseExcludedPaymentMethodsEnum bankTransfer = _$checkoutResponseExcludedPaymentMethodsEnum_bankTransfer;
+  @BuiltValueEnumConst(wireName: r'bnpl')
+  static const CheckoutResponseExcludedPaymentMethodsEnum bnpl = _$checkoutResponseExcludedPaymentMethodsEnum_bnpl;
+  @BuiltValueEnumConst(wireName: r'pay_by_bank')
+  static const CheckoutResponseExcludedPaymentMethodsEnum payByBank = _$checkoutResponseExcludedPaymentMethodsEnum_payByBank;
+
+  static Serializer<CheckoutResponseExcludedPaymentMethodsEnum> get serializer => _$checkoutResponseExcludedPaymentMethodsEnumSerializer;
+
+  const CheckoutResponseExcludedPaymentMethodsEnum._(String name): super(name);
+
+  static BuiltSet<CheckoutResponseExcludedPaymentMethodsEnum> get values => _$checkoutResponseExcludedPaymentMethodsEnumValues;
+  static CheckoutResponseExcludedPaymentMethodsEnum valueOf(String name) => _$checkoutResponseExcludedPaymentMethodsEnumValueOf(name);
 }
 
 class CheckoutResponseExcludeCardNetworksEnum extends EnumClass {

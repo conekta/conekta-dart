@@ -8,18 +8,22 @@ import 'package:built_value/serializer.dart';
 
 part 'customer_shipping_contacts_address.g.dart';
 
-/// Address of the person who will receive the order
+/// CustomerShippingContactsAddress
 ///
 /// Properties:
+/// * [object] 
 /// * [street1] 
 /// * [street2] 
 /// * [postalCode] 
 /// * [city] 
 /// * [state] 
-/// * [country] - this field follows the [ISO 3166-1 alpha-2 standard](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
+/// * [country] 
 /// * [residential] 
 @BuiltValue()
 abstract class CustomerShippingContactsAddress implements Built<CustomerShippingContactsAddress, CustomerShippingContactsAddressBuilder> {
+  @BuiltValueField(wireName: r'object')
+  String? get object;
+
   @BuiltValueField(wireName: r'street1')
   String? get street1;
 
@@ -35,7 +39,6 @@ abstract class CustomerShippingContactsAddress implements Built<CustomerShipping
   @BuiltValueField(wireName: r'state')
   String? get state;
 
-  /// this field follows the [ISO 3166-1 alpha-2 standard](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
   @BuiltValueField(wireName: r'country')
   String? get country;
 
@@ -65,6 +68,13 @@ class _$CustomerShippingContactsAddressSerializer implements PrimitiveSerializer
     CustomerShippingContactsAddress object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
+    if (object.object != null) {
+      yield r'object';
+      yield serializers.serialize(
+        object.object,
+        specifiedType: const FullType(String),
+      );
+    }
     if (object.street1 != null) {
       yield r'street1';
       yield serializers.serialize(
@@ -111,7 +121,7 @@ class _$CustomerShippingContactsAddressSerializer implements PrimitiveSerializer
       yield r'residential';
       yield serializers.serialize(
         object.residential,
-        specifiedType: const FullType.nullable(bool),
+        specifiedType: const FullType(bool),
       );
     }
   }
@@ -137,46 +147,60 @@ class _$CustomerShippingContactsAddressSerializer implements PrimitiveSerializer
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
+        case r'object':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.object = valueDes;
+          break;
         case r'street1':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.street1 = valueDes;
           break;
         case r'street2':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.street2 = valueDes;
           break;
         case r'postal_code':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.postalCode = valueDes;
           break;
         case r'city':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.city = valueDes;
           break;
         case r'state':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.state = valueDes;
           break;
         case r'country':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.country = valueDes;
           break;
         case r'residential':

@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 
 # **createRuleBlacklist**
-> BlacklistRuleResponse createRuleBlacklist(createRiskRulesData, acceptLanguage)
+> BlacklistRuleResponse createRuleBlacklist(createRuleWhitelistRequest, acceptLanguage)
 
 Create blacklisted rule
 
@@ -27,13 +27,13 @@ Create blacklisted rule
 import 'package:conekta/api.dart';
 
 final api = Conekta().getAntifraudApi();
-final CreateRiskRulesData createRiskRulesData = ; // CreateRiskRulesData | requested field for blacklist rule
+final CreateRuleWhitelistRequest createRuleWhitelistRequest = ; // CreateRuleWhitelistRequest | requested field for blacklist rule
 final String acceptLanguage = es; // String | Use for knowing which language to use
 
 try {
-    final response = api.createRuleBlacklist(createRiskRulesData, acceptLanguage);
+    final response = api.createRuleBlacklist(createRuleWhitelistRequest, acceptLanguage);
     print(response);
-} catch on DioException (e) {
+} on DioException catch (e) {
     print('Exception when calling AntifraudApi->createRuleBlacklist: $e\n');
 }
 ```
@@ -42,7 +42,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createRiskRulesData** | [**CreateRiskRulesData**](CreateRiskRulesData.md)| requested field for blacklist rule | 
+ **createRuleWhitelistRequest** | [**CreateRuleWhitelistRequest**](CreateRuleWhitelistRequest.md)| requested field for blacklist rule | 
  **acceptLanguage** | **String**| Use for knowing which language to use | [optional] [default to 'es']
 
 ### Return type
@@ -56,12 +56,12 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/vnd.conekta-v2.2.0+json
+ - **Accept**: application/vnd.conekta-v2.3.0+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **createRuleWhitelist**
-> WhitelistlistRuleResponse createRuleWhitelist(acceptLanguage, createRiskRulesData)
+> WhitelistlistRuleResponse createRuleWhitelist(acceptLanguage, createRuleWhitelistRequest)
 
 Create whitelisted rule
 
@@ -71,12 +71,12 @@ import 'package:conekta/api.dart';
 
 final api = Conekta().getAntifraudApi();
 final String acceptLanguage = es; // String | Use for knowing which language to use
-final CreateRiskRulesData createRiskRulesData = ; // CreateRiskRulesData | 
+final CreateRuleWhitelistRequest createRuleWhitelistRequest = ; // CreateRuleWhitelistRequest | 
 
 try {
-    final response = api.createRuleWhitelist(acceptLanguage, createRiskRulesData);
+    final response = api.createRuleWhitelist(acceptLanguage, createRuleWhitelistRequest);
     print(response);
-} catch on DioException (e) {
+} on DioException catch (e) {
     print('Exception when calling AntifraudApi->createRuleWhitelist: $e\n');
 }
 ```
@@ -86,7 +86,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **acceptLanguage** | **String**| Use for knowing which language to use | [optional] [default to 'es']
- **createRiskRulesData** | [**CreateRiskRulesData**](CreateRiskRulesData.md)|  | [optional] 
+ **createRuleWhitelistRequest** | [**CreateRuleWhitelistRequest**](CreateRuleWhitelistRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -99,7 +99,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/vnd.conekta-v2.2.0+json
+ - **Accept**: application/vnd.conekta-v2.3.0+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -120,7 +120,7 @@ final String xChildCompanyId = 6441b6376b60c3a638da80af; // String | In the case
 try {
     final response = api.deleteRuleBlacklist(id, acceptLanguage, xChildCompanyId);
     print(response);
-} catch on DioException (e) {
+} on DioException catch (e) {
     print('Exception when calling AntifraudApi->deleteRuleBlacklist: $e\n');
 }
 ```
@@ -144,7 +144,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/vnd.conekta-v2.2.0+json
+ - **Accept**: application/vnd.conekta-v2.3.0+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -165,7 +165,7 @@ final String xChildCompanyId = 6441b6376b60c3a638da80af; // String | In the case
 try {
     final response = api.deleteRuleWhitelist(id, acceptLanguage, xChildCompanyId);
     print(response);
-} catch on DioException (e) {
+} on DioException catch (e) {
     print('Exception when calling AntifraudApi->deleteRuleWhitelist: $e\n');
 }
 ```
@@ -189,7 +189,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/vnd.conekta-v2.2.0+json
+ - **Accept**: application/vnd.conekta-v2.3.0+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -210,7 +210,7 @@ final String acceptLanguage = es; // String | Use for knowing which language to 
 try {
     final response = api.getRuleBlacklist(acceptLanguage);
     print(response);
-} catch on DioException (e) {
+} on DioException catch (e) {
     print('Exception when calling AntifraudApi->getRuleBlacklist: $e\n');
 }
 ```
@@ -232,7 +232,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/vnd.conekta-v2.2.0+json
+ - **Accept**: application/vnd.conekta-v2.3.0+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -253,7 +253,7 @@ final String acceptLanguage = es; // String | Use for knowing which language to 
 try {
     final response = api.getRuleWhitelist(acceptLanguage);
     print(response);
-} catch on DioException (e) {
+} on DioException catch (e) {
     print('Exception when calling AntifraudApi->getRuleWhitelist: $e\n');
 }
 ```
@@ -275,7 +275,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/vnd.conekta-v2.2.0+json
+ - **Accept**: application/vnd.conekta-v2.3.0+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

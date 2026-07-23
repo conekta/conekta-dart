@@ -19,7 +19,7 @@ Future<void> main() async {
         ..[('key1')] = JsonObject({'value': 'data1'})
         ..[('key2')] = JsonObject({'value': 'data2'});
 
-      var fiscalEntityAddress = $FiscalEntityAddressBuilder()
+      var fiscalEntityAddress = FiscalEntityAddressBuilder()
         ..street1 = '250 Alexis St'
         ..city = 'Red Deer'
         ..state = 'Alberta'
@@ -31,14 +31,14 @@ Future<void> main() async {
         ..taxId = 'XAXX010101000'
         ..email = 'email@email.com'
         ..metadata = metadata
-        ..address =fiscalEntityAddress.build()
+        ..address = fiscalEntityAddress
         ;
-      var shippingContact = $CustomerShippingContactsBuilder()
+      var shippingContact = CustomerShippingContactsRequestBuilder()
           ..phone = '55-5555-5555'
           ..receiver = 'Marvin Fuller'
           ..betweenStreets = 'Melrose St'
           ..metadata = metadata
-          ..address.replace(CustomerShippingContactsAddress((b) => b
+          ..address.replace(CustomerShippingContactsRequestAddress((b) => b
             ..street1 = '250 Alexis St'
             ..city = 'Red Deer'
             ..state = 'Alberta'
@@ -49,10 +49,10 @@ Future<void> main() async {
       final orderRequest = OrderRequest((b) => b
           ..currency = 'MXN'
           ..customerInfo.replace(customerInfo)
-          ..shippingContact = shippingContact.build()
+          ..shippingContact = shippingContact
           ..fiscalEntity =  fiscalEntity
           ..lineItems = ListBuilder<Product>([
-             $Product((b) => b
+             Product((ProductBuilder b) => b
               ..name = 'Box of Chocolates'
               ..unitPrice = 2000
               ..quantity = 1

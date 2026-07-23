@@ -3,7 +3,6 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:conekta/src/model/customer_payment_method_request.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -20,7 +19,11 @@ part 'payment_method_bnpl_request.g.dart';
 /// * [productType] - Product type of the payment method, use for the payment method to know the product type
 /// * [successUrl] - URL to redirect the customer after a successful payment
 @BuiltValue()
-abstract class PaymentMethodBnplRequest implements CustomerPaymentMethodRequest, Built<PaymentMethodBnplRequest, PaymentMethodBnplRequestBuilder> {
+abstract class PaymentMethodBnplRequest implements Built<PaymentMethodBnplRequest, PaymentMethodBnplRequestBuilder> {
+  /// Type of the payment method
+  @BuiltValueField(wireName: r'type')
+  String get type;
+
   /// URL to redirect the customer after a canceled payment
   @BuiltValueField(wireName: r'cancel_url')
   String get cancelUrl;
@@ -29,18 +32,18 @@ abstract class PaymentMethodBnplRequest implements CustomerPaymentMethodRequest,
   @BuiltValueField(wireName: r'can_not_expire')
   bool get canNotExpire;
 
-  /// URL to redirect the customer after a successful payment
-  @BuiltValueField(wireName: r'success_url')
-  String get successUrl;
+  /// URL to redirect the customer after a failed payment
+  @BuiltValueField(wireName: r'failure_url')
+  String get failureUrl;
 
   /// Product type of the payment method, use for the payment method to know the product type
   @BuiltValueField(wireName: r'product_type')
   PaymentMethodBnplRequestProductTypeEnum get productType;
-  // enum productTypeEnum {  aplazo_bnpl,  creditea_bnpl,  };
+  // enum productTypeEnum {  aplazo_bnpl,  azteca_bnpl,  coppel_bnpl,  creditea_bnpl,  };
 
-  /// URL to redirect the customer after a failed payment
-  @BuiltValueField(wireName: r'failure_url')
-  String get failureUrl;
+  /// URL to redirect the customer after a successful payment
+  @BuiltValueField(wireName: r'success_url')
+  String get successUrl;
 
   PaymentMethodBnplRequest._();
 
@@ -65,9 +68,9 @@ class _$PaymentMethodBnplRequestSerializer implements PrimitiveSerializer<Paymen
     PaymentMethodBnplRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    yield r'success_url';
+    yield r'type';
     yield serializers.serialize(
-      object.successUrl,
+      object.type,
       specifiedType: const FullType(String),
     );
     yield r'cancel_url';
@@ -80,9 +83,9 @@ class _$PaymentMethodBnplRequestSerializer implements PrimitiveSerializer<Paymen
       object.canNotExpire,
       specifiedType: const FullType(bool),
     );
-    yield r'type';
+    yield r'failure_url';
     yield serializers.serialize(
-      object.type,
+      object.failureUrl,
       specifiedType: const FullType(String),
     );
     yield r'product_type';
@@ -90,9 +93,9 @@ class _$PaymentMethodBnplRequestSerializer implements PrimitiveSerializer<Paymen
       object.productType,
       specifiedType: const FullType(PaymentMethodBnplRequestProductTypeEnum),
     );
-    yield r'failure_url';
+    yield r'success_url';
     yield serializers.serialize(
-      object.failureUrl,
+      object.successUrl,
       specifiedType: const FullType(String),
     );
   }
@@ -118,12 +121,12 @@ class _$PaymentMethodBnplRequestSerializer implements PrimitiveSerializer<Paymen
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
-        case r'success_url':
+        case r'type':
           final valueDes = serializers.deserialize(
             value,
             specifiedType: const FullType(String),
           ) as String;
-          result.successUrl = valueDes;
+          result.type = valueDes;
           break;
         case r'cancel_url':
           final valueDes = serializers.deserialize(
@@ -139,12 +142,12 @@ class _$PaymentMethodBnplRequestSerializer implements PrimitiveSerializer<Paymen
           ) as bool;
           result.canNotExpire = valueDes;
           break;
-        case r'type':
+        case r'failure_url':
           final valueDes = serializers.deserialize(
             value,
             specifiedType: const FullType(String),
           ) as String;
-          result.type = valueDes;
+          result.failureUrl = valueDes;
           break;
         case r'product_type':
           final valueDes = serializers.deserialize(
@@ -153,12 +156,12 @@ class _$PaymentMethodBnplRequestSerializer implements PrimitiveSerializer<Paymen
           ) as PaymentMethodBnplRequestProductTypeEnum;
           result.productType = valueDes;
           break;
-        case r'failure_url':
+        case r'success_url':
           final valueDes = serializers.deserialize(
             value,
             specifiedType: const FullType(String),
           ) as String;
-          result.failureUrl = valueDes;
+          result.successUrl = valueDes;
           break;
         default:
           unhandled.add(key);
@@ -194,6 +197,12 @@ class PaymentMethodBnplRequestProductTypeEnum extends EnumClass {
   /// Product type of the payment method, use for the payment method to know the product type
   @BuiltValueEnumConst(wireName: r'aplazo_bnpl')
   static const PaymentMethodBnplRequestProductTypeEnum aplazoBnpl = _$paymentMethodBnplRequestProductTypeEnum_aplazoBnpl;
+  /// Product type of the payment method, use for the payment method to know the product type
+  @BuiltValueEnumConst(wireName: r'azteca_bnpl')
+  static const PaymentMethodBnplRequestProductTypeEnum aztecaBnpl = _$paymentMethodBnplRequestProductTypeEnum_aztecaBnpl;
+  /// Product type of the payment method, use for the payment method to know the product type
+  @BuiltValueEnumConst(wireName: r'coppel_bnpl')
+  static const PaymentMethodBnplRequestProductTypeEnum coppelBnpl = _$paymentMethodBnplRequestProductTypeEnum_coppelBnpl;
   /// Product type of the payment method, use for the payment method to know the product type
   @BuiltValueEnumConst(wireName: r'creditea_bnpl')
   static const PaymentMethodBnplRequestProductTypeEnum crediteaBnpl = _$paymentMethodBnplRequestProductTypeEnum_crediteaBnpl;

@@ -8,20 +8,20 @@ part of 'payment_method_token_request.dart';
 
 class _$PaymentMethodTokenRequest extends PaymentMethodTokenRequest {
   @override
-  final String tokenId;
-  @override
   final String type;
+  @override
+  final String tokenId;
 
   factory _$PaymentMethodTokenRequest(
           [void Function(PaymentMethodTokenRequestBuilder)? updates]) =>
       (new PaymentMethodTokenRequestBuilder()..update(updates))._build();
 
-  _$PaymentMethodTokenRequest._({required this.tokenId, required this.type})
+  _$PaymentMethodTokenRequest._({required this.type, required this.tokenId})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        tokenId, r'PaymentMethodTokenRequest', 'tokenId');
-    BuiltValueNullFieldError.checkNotNull(
         type, r'PaymentMethodTokenRequest', 'type');
+    BuiltValueNullFieldError.checkNotNull(
+        tokenId, r'PaymentMethodTokenRequest', 'tokenId');
   }
 
   @override
@@ -37,15 +37,15 @@ class _$PaymentMethodTokenRequest extends PaymentMethodTokenRequest {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is PaymentMethodTokenRequest &&
-        tokenId == other.tokenId &&
-        type == other.type;
+        type == other.type &&
+        tokenId == other.tokenId;
   }
 
   @override
   int get hashCode {
     var _$hash = 0;
-    _$hash = $jc(_$hash, tokenId.hashCode);
     _$hash = $jc(_$hash, type.hashCode);
+    _$hash = $jc(_$hash, tokenId.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -53,25 +53,24 @@ class _$PaymentMethodTokenRequest extends PaymentMethodTokenRequest {
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'PaymentMethodTokenRequest')
-          ..add('tokenId', tokenId)
-          ..add('type', type))
+          ..add('type', type)
+          ..add('tokenId', tokenId))
         .toString();
   }
 }
 
 class PaymentMethodTokenRequestBuilder
     implements
-        Builder<PaymentMethodTokenRequest, PaymentMethodTokenRequestBuilder>,
-        CustomerPaymentMethodRequestBuilder {
+        Builder<PaymentMethodTokenRequest, PaymentMethodTokenRequestBuilder> {
   _$PaymentMethodTokenRequest? _$v;
-
-  String? _tokenId;
-  String? get tokenId => _$this._tokenId;
-  set tokenId(covariant String? tokenId) => _$this._tokenId = tokenId;
 
   String? _type;
   String? get type => _$this._type;
-  set type(covariant String? type) => _$this._type = type;
+  set type(String? type) => _$this._type = type;
+
+  String? _tokenId;
+  String? get tokenId => _$this._tokenId;
+  set tokenId(String? tokenId) => _$this._tokenId = tokenId;
 
   PaymentMethodTokenRequestBuilder() {
     PaymentMethodTokenRequest._defaults(this);
@@ -80,15 +79,15 @@ class PaymentMethodTokenRequestBuilder
   PaymentMethodTokenRequestBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _tokenId = $v.tokenId;
       _type = $v.type;
+      _tokenId = $v.tokenId;
       _$v = null;
     }
     return this;
   }
 
   @override
-  void replace(covariant PaymentMethodTokenRequest other) {
+  void replace(PaymentMethodTokenRequest other) {
     ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$PaymentMethodTokenRequest;
   }
@@ -104,10 +103,10 @@ class PaymentMethodTokenRequestBuilder
   _$PaymentMethodTokenRequest _build() {
     final _$result = _$v ??
         new _$PaymentMethodTokenRequest._(
-            tokenId: BuiltValueNullFieldError.checkNotNull(
-                tokenId, r'PaymentMethodTokenRequest', 'tokenId'),
             type: BuiltValueNullFieldError.checkNotNull(
-                type, r'PaymentMethodTokenRequest', 'type'));
+                type, r'PaymentMethodTokenRequest', 'type'),
+            tokenId: BuiltValueNullFieldError.checkNotNull(
+                tokenId, r'PaymentMethodTokenRequest', 'tokenId'));
     replace(_$result);
     return _$result;
   }

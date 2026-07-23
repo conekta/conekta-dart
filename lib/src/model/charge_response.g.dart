@@ -6,65 +6,7 @@ part of 'charge_response.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
-abstract class ChargeResponseBuilder {
-  void replace(ChargeResponse other);
-  void update(void Function(ChargeResponseBuilder) updates);
-  int? get amount;
-  set amount(int? amount);
-
-  ChargeResponseChannelBuilder get channel;
-  set channel(ChargeResponseChannelBuilder? channel);
-
-  int? get createdAt;
-  set createdAt(int? createdAt);
-
-  String? get currency;
-  set currency(String? currency);
-
-  String? get customerId;
-  set customerId(String? customerId);
-
-  String? get description;
-  set description(String? description);
-
-  String? get deviceFingerprint;
-  set deviceFingerprint(String? deviceFingerprint);
-
-  String? get failureCode;
-  set failureCode(String? failureCode);
-
-  String? get failureMessage;
-  set failureMessage(String? failureMessage);
-
-  String? get id;
-  set id(String? id);
-
-  bool? get livemode;
-  set livemode(bool? livemode);
-
-  String? get object;
-  set object(String? object);
-
-  String? get orderId;
-  set orderId(String? orderId);
-
-  int? get paidAt;
-  set paidAt(int? paidAt);
-
-  ChargeResponsePaymentMethodBuilder get paymentMethod;
-  set paymentMethod(ChargeResponsePaymentMethodBuilder? paymentMethod);
-
-  String? get referenceId;
-  set referenceId(String? referenceId);
-
-  ChargeResponseRefundsBuilder get refunds;
-  set refunds(ChargeResponseRefundsBuilder? refunds);
-
-  String? get status;
-  set status(String? status);
-}
-
-class _$$ChargeResponse extends $ChargeResponse {
+class _$ChargeResponse extends ChargeResponse {
   @override
   final int amount;
   @override
@@ -100,12 +42,14 @@ class _$$ChargeResponse extends $ChargeResponse {
   @override
   final ChargeResponseRefunds? refunds;
   @override
+  final ChargebackResponse? chargeback;
+  @override
   final String status;
 
-  factory _$$ChargeResponse([void Function($ChargeResponseBuilder)? updates]) =>
-      (new $ChargeResponseBuilder()..update(updates))._build();
+  factory _$ChargeResponse([void Function(ChargeResponseBuilder)? updates]) =>
+      (new ChargeResponseBuilder()..update(updates))._build();
 
-  _$$ChargeResponse._(
+  _$ChargeResponse._(
       {required this.amount,
       this.channel,
       required this.createdAt,
@@ -123,34 +67,35 @@ class _$$ChargeResponse extends $ChargeResponse {
       this.paymentMethod,
       this.referenceId,
       this.refunds,
+      this.chargeback,
       required this.status})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(amount, r'$ChargeResponse', 'amount');
+    BuiltValueNullFieldError.checkNotNull(amount, r'ChargeResponse', 'amount');
     BuiltValueNullFieldError.checkNotNull(
-        createdAt, r'$ChargeResponse', 'createdAt');
+        createdAt, r'ChargeResponse', 'createdAt');
     BuiltValueNullFieldError.checkNotNull(
-        currency, r'$ChargeResponse', 'currency');
-    BuiltValueNullFieldError.checkNotNull(id, r'$ChargeResponse', 'id');
+        currency, r'ChargeResponse', 'currency');
+    BuiltValueNullFieldError.checkNotNull(id, r'ChargeResponse', 'id');
     BuiltValueNullFieldError.checkNotNull(
-        livemode, r'$ChargeResponse', 'livemode');
-    BuiltValueNullFieldError.checkNotNull(object, r'$ChargeResponse', 'object');
+        livemode, r'ChargeResponse', 'livemode');
+    BuiltValueNullFieldError.checkNotNull(object, r'ChargeResponse', 'object');
     BuiltValueNullFieldError.checkNotNull(
-        orderId, r'$ChargeResponse', 'orderId');
-    BuiltValueNullFieldError.checkNotNull(status, r'$ChargeResponse', 'status');
+        orderId, r'ChargeResponse', 'orderId');
+    BuiltValueNullFieldError.checkNotNull(status, r'ChargeResponse', 'status');
   }
 
   @override
-  $ChargeResponse rebuild(void Function($ChargeResponseBuilder) updates) =>
+  ChargeResponse rebuild(void Function(ChargeResponseBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  $ChargeResponseBuilder toBuilder() =>
-      new $ChargeResponseBuilder()..replace(this);
+  ChargeResponseBuilder toBuilder() =>
+      new ChargeResponseBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is $ChargeResponse &&
+    return other is ChargeResponse &&
         amount == other.amount &&
         channel == other.channel &&
         createdAt == other.createdAt &&
@@ -168,6 +113,7 @@ class _$$ChargeResponse extends $ChargeResponse {
         paymentMethod == other.paymentMethod &&
         referenceId == other.referenceId &&
         refunds == other.refunds &&
+        chargeback == other.chargeback &&
         status == other.status;
   }
 
@@ -191,6 +137,7 @@ class _$$ChargeResponse extends $ChargeResponse {
     _$hash = $jc(_$hash, paymentMethod.hashCode);
     _$hash = $jc(_$hash, referenceId.hashCode);
     _$hash = $jc(_$hash, refunds.hashCode);
+    _$hash = $jc(_$hash, chargeback.hashCode);
     _$hash = $jc(_$hash, status.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
@@ -198,7 +145,7 @@ class _$$ChargeResponse extends $ChargeResponse {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper(r'$ChargeResponse')
+    return (newBuiltValueToStringHelper(r'ChargeResponse')
           ..add('amount', amount)
           ..add('channel', channel)
           ..add('createdAt', createdAt)
@@ -216,107 +163,107 @@ class _$$ChargeResponse extends $ChargeResponse {
           ..add('paymentMethod', paymentMethod)
           ..add('referenceId', referenceId)
           ..add('refunds', refunds)
+          ..add('chargeback', chargeback)
           ..add('status', status))
         .toString();
   }
 }
 
-class $ChargeResponseBuilder
-    implements
-        Builder<$ChargeResponse, $ChargeResponseBuilder>,
-        ChargeResponseBuilder {
-  _$$ChargeResponse? _$v;
+class ChargeResponseBuilder
+    implements Builder<ChargeResponse, ChargeResponseBuilder> {
+  _$ChargeResponse? _$v;
 
   int? _amount;
   int? get amount => _$this._amount;
-  set amount(covariant int? amount) => _$this._amount = amount;
+  set amount(int? amount) => _$this._amount = amount;
 
   ChargeResponseChannelBuilder? _channel;
   ChargeResponseChannelBuilder get channel =>
       _$this._channel ??= new ChargeResponseChannelBuilder();
-  set channel(covariant ChargeResponseChannelBuilder? channel) =>
+  set channel(ChargeResponseChannelBuilder? channel) =>
       _$this._channel = channel;
 
   int? _createdAt;
   int? get createdAt => _$this._createdAt;
-  set createdAt(covariant int? createdAt) => _$this._createdAt = createdAt;
+  set createdAt(int? createdAt) => _$this._createdAt = createdAt;
 
   String? _currency;
   String? get currency => _$this._currency;
-  set currency(covariant String? currency) => _$this._currency = currency;
+  set currency(String? currency) => _$this._currency = currency;
 
   String? _customerId;
   String? get customerId => _$this._customerId;
-  set customerId(covariant String? customerId) =>
-      _$this._customerId = customerId;
+  set customerId(String? customerId) => _$this._customerId = customerId;
 
   String? _description;
   String? get description => _$this._description;
-  set description(covariant String? description) =>
-      _$this._description = description;
+  set description(String? description) => _$this._description = description;
 
   String? _deviceFingerprint;
   String? get deviceFingerprint => _$this._deviceFingerprint;
-  set deviceFingerprint(covariant String? deviceFingerprint) =>
+  set deviceFingerprint(String? deviceFingerprint) =>
       _$this._deviceFingerprint = deviceFingerprint;
 
   String? _failureCode;
   String? get failureCode => _$this._failureCode;
-  set failureCode(covariant String? failureCode) =>
-      _$this._failureCode = failureCode;
+  set failureCode(String? failureCode) => _$this._failureCode = failureCode;
 
   String? _failureMessage;
   String? get failureMessage => _$this._failureMessage;
-  set failureMessage(covariant String? failureMessage) =>
+  set failureMessage(String? failureMessage) =>
       _$this._failureMessage = failureMessage;
 
   String? _id;
   String? get id => _$this._id;
-  set id(covariant String? id) => _$this._id = id;
+  set id(String? id) => _$this._id = id;
 
   bool? _livemode;
   bool? get livemode => _$this._livemode;
-  set livemode(covariant bool? livemode) => _$this._livemode = livemode;
+  set livemode(bool? livemode) => _$this._livemode = livemode;
 
   String? _object;
   String? get object => _$this._object;
-  set object(covariant String? object) => _$this._object = object;
+  set object(String? object) => _$this._object = object;
 
   String? _orderId;
   String? get orderId => _$this._orderId;
-  set orderId(covariant String? orderId) => _$this._orderId = orderId;
+  set orderId(String? orderId) => _$this._orderId = orderId;
 
   int? _paidAt;
   int? get paidAt => _$this._paidAt;
-  set paidAt(covariant int? paidAt) => _$this._paidAt = paidAt;
+  set paidAt(int? paidAt) => _$this._paidAt = paidAt;
 
   ChargeResponsePaymentMethodBuilder? _paymentMethod;
   ChargeResponsePaymentMethodBuilder get paymentMethod =>
       _$this._paymentMethod ??= new ChargeResponsePaymentMethodBuilder();
-  set paymentMethod(
-          covariant ChargeResponsePaymentMethodBuilder? paymentMethod) =>
+  set paymentMethod(ChargeResponsePaymentMethodBuilder? paymentMethod) =>
       _$this._paymentMethod = paymentMethod;
 
   String? _referenceId;
   String? get referenceId => _$this._referenceId;
-  set referenceId(covariant String? referenceId) =>
-      _$this._referenceId = referenceId;
+  set referenceId(String? referenceId) => _$this._referenceId = referenceId;
 
   ChargeResponseRefundsBuilder? _refunds;
   ChargeResponseRefundsBuilder get refunds =>
       _$this._refunds ??= new ChargeResponseRefundsBuilder();
-  set refunds(covariant ChargeResponseRefundsBuilder? refunds) =>
+  set refunds(ChargeResponseRefundsBuilder? refunds) =>
       _$this._refunds = refunds;
+
+  ChargebackResponseBuilder? _chargeback;
+  ChargebackResponseBuilder get chargeback =>
+      _$this._chargeback ??= new ChargebackResponseBuilder();
+  set chargeback(ChargebackResponseBuilder? chargeback) =>
+      _$this._chargeback = chargeback;
 
   String? _status;
   String? get status => _$this._status;
-  set status(covariant String? status) => _$this._status = status;
+  set status(String? status) => _$this._status = status;
 
-  $ChargeResponseBuilder() {
-    $ChargeResponse._defaults(this);
+  ChargeResponseBuilder() {
+    ChargeResponse._defaults(this);
   }
 
-  $ChargeResponseBuilder get _$this {
+  ChargeResponseBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _amount = $v.amount;
@@ -336,6 +283,7 @@ class $ChargeResponseBuilder
       _paymentMethod = $v.paymentMethod?.toBuilder();
       _referenceId = $v.referenceId;
       _refunds = $v.refunds?.toBuilder();
+      _chargeback = $v.chargeback?.toBuilder();
       _status = $v.status;
       _$v = null;
     }
@@ -343,50 +291,51 @@ class $ChargeResponseBuilder
   }
 
   @override
-  void replace(covariant $ChargeResponse other) {
+  void replace(ChargeResponse other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$$ChargeResponse;
+    _$v = other as _$ChargeResponse;
   }
 
   @override
-  void update(void Function($ChargeResponseBuilder)? updates) {
+  void update(void Function(ChargeResponseBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  $ChargeResponse build() => _build();
+  ChargeResponse build() => _build();
 
-  _$$ChargeResponse _build() {
-    _$$ChargeResponse _$result;
+  _$ChargeResponse _build() {
+    _$ChargeResponse _$result;
     try {
       _$result = _$v ??
-          new _$$ChargeResponse._(
+          new _$ChargeResponse._(
               amount: BuiltValueNullFieldError.checkNotNull(
-                  amount, r'$ChargeResponse', 'amount'),
+                  amount, r'ChargeResponse', 'amount'),
               channel: _channel?.build(),
               createdAt: BuiltValueNullFieldError.checkNotNull(
-                  createdAt, r'$ChargeResponse', 'createdAt'),
+                  createdAt, r'ChargeResponse', 'createdAt'),
               currency: BuiltValueNullFieldError.checkNotNull(
-                  currency, r'$ChargeResponse', 'currency'),
+                  currency, r'ChargeResponse', 'currency'),
               customerId: customerId,
               description: description,
               deviceFingerprint: deviceFingerprint,
               failureCode: failureCode,
               failureMessage: failureMessage,
               id: BuiltValueNullFieldError.checkNotNull(
-                  id, r'$ChargeResponse', 'id'),
+                  id, r'ChargeResponse', 'id'),
               livemode: BuiltValueNullFieldError.checkNotNull(
-                  livemode, r'$ChargeResponse', 'livemode'),
+                  livemode, r'ChargeResponse', 'livemode'),
               object: BuiltValueNullFieldError.checkNotNull(
-                  object, r'$ChargeResponse', 'object'),
+                  object, r'ChargeResponse', 'object'),
               orderId: BuiltValueNullFieldError.checkNotNull(
-                  orderId, r'$ChargeResponse', 'orderId'),
+                  orderId, r'ChargeResponse', 'orderId'),
               paidAt: paidAt,
               paymentMethod: _paymentMethod?.build(),
               referenceId: referenceId,
               refunds: _refunds?.build(),
+              chargeback: _chargeback?.build(),
               status: BuiltValueNullFieldError.checkNotNull(
-                  status, r'$ChargeResponse', 'status'));
+                  status, r'ChargeResponse', 'status'));
     } catch (_) {
       late String _$failedField;
       try {
@@ -398,9 +347,11 @@ class $ChargeResponseBuilder
 
         _$failedField = 'refunds';
         _refunds?.build();
+        _$failedField = 'chargeback';
+        _chargeback?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            r'$ChargeResponse', _$failedField, e.toString());
+            r'ChargeResponse', _$failedField, e.toString());
       }
       rethrow;
     }

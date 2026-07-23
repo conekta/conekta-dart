@@ -14,7 +14,7 @@ import 'package:conekta/src/model/create_customer_payment_methods_response.dart'
 import 'package:conekta/src/model/error.dart';
 import 'package:conekta/src/model/get_payment_method_response.dart';
 import 'package:conekta/src/model/update_customer_payment_methods_response.dart';
-import 'package:conekta/src/model/update_payment_methods.dart';
+import 'package:conekta/src/model/update_payment_methods_card.dart';
 import 'package:conekta/src/utils/utils.dart';
 
 class PaymentMethodsApi {
@@ -63,13 +63,13 @@ class PaymentMethodsApi {
 
     // to determine the Accept header
     List<String> _accepts = [ 
-        "application/vnd.conekta-v2.2.0+json"
+        "application/vnd.conekta-v2.3.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/7.0.7',
+        r'User-Agent': r'Conekta/v2 DartBindings/9.0.0',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
@@ -186,13 +186,13 @@ class PaymentMethodsApi {
 
     // to determine the Accept header
     List<String> _accepts = [ 
-        "application/vnd.conekta-v2.2.0+json"
+        "application/vnd.conekta-v2.3.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/7.0.7',
+        r'User-Agent': r'Conekta/v2 DartBindings/9.0.0',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
@@ -295,13 +295,13 @@ class PaymentMethodsApi {
 
     // to determine the Accept header
     List<String> _accepts = [ 
-        "application/vnd.conekta-v2.2.0+json"
+        "application/vnd.conekta-v2.3.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/7.0.7',
+        r'User-Agent': r'Conekta/v2 DartBindings/9.0.0',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
@@ -375,7 +375,7 @@ class PaymentMethodsApi {
   /// Parameters:
   /// * [id] - Identifier of the resource
   /// * [paymentMethodId] - Identifier of the payment method
-  /// * [updatePaymentMethods] - requested field for customer payment methods
+  /// * [updatePaymentMethodsCard] - requested field for customer payment methods
   /// * [acceptLanguage] - Use for knowing which language to use
   /// * [xChildCompanyId] - In the case of a holding company, the company id of the child company to which will process the request.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
@@ -390,7 +390,7 @@ class PaymentMethodsApi {
   Future<Response<UpdateCustomerPaymentMethodsResponse>> updateCustomerPaymentMethods({ 
     required String id,
     required String paymentMethodId,
-    required UpdatePaymentMethods updatePaymentMethods,
+    required UpdatePaymentMethodsCard updatePaymentMethodsCard,
     String? acceptLanguage = 'es',
     String? xChildCompanyId,
     CancelToken? cancelToken,
@@ -409,13 +409,13 @@ class PaymentMethodsApi {
 
     // to determine the Accept header
     List<String> _accepts = [ 
-        "application/vnd.conekta-v2.2.0+json"
+        "application/vnd.conekta-v2.3.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
     final _options = Options(
       method: r'PUT',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/7.0.7',
+        r'User-Agent': r'Conekta/v2 DartBindings/9.0.0',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
@@ -440,8 +440,8 @@ class PaymentMethodsApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(UpdatePaymentMethods);
-      _bodyData = _serializers.serialize(updatePaymentMethods, specifiedType: _type);
+      const _type = FullType(UpdatePaymentMethodsCard);
+      _bodyData = _serializers.serialize(updatePaymentMethodsCard, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(

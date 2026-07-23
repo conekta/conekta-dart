@@ -15,7 +15,7 @@ void main() {
     //
     //Future<TokenResponse> createToken(Token token, { String acceptLanguage }) async
     test('test createToken', () async {
-      var tokenCard = TokenCard((b) => b
+      var tokenCard = TokenRequestCard((b) => b
         ..cvc = '123'
         ..deviceFingerprint = 'device_fingerprint_value'
         ..expMonth = '12'
@@ -23,9 +23,9 @@ void main() {
         ..name = 'Nombre del Titular'
         ..number = '5475040095304607');
 
-      var token = Token((b) => b..card.replace(tokenCard));
+      var tokenRequest = TokenRequest((b) => b..card.replace(tokenCard));
 
-      final response = await api.createToken(token: token);
+      final response = await api.createToken(tokenRequest: tokenRequest);
 
       expect(response, isNotNull);
       expect("tok_2toPJUcZ27AH5LsZk", response.data?.id);

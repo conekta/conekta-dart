@@ -9,6 +9,8 @@ part of 'customer_shipping_contacts_address.dart';
 class _$CustomerShippingContactsAddress
     extends CustomerShippingContactsAddress {
   @override
+  final String? object;
+  @override
   final String? street1;
   @override
   final String? street2;
@@ -28,7 +30,8 @@ class _$CustomerShippingContactsAddress
       (new CustomerShippingContactsAddressBuilder()..update(updates))._build();
 
   _$CustomerShippingContactsAddress._(
-      {this.street1,
+      {this.object,
+      this.street1,
       this.street2,
       this.postalCode,
       this.city,
@@ -50,6 +53,7 @@ class _$CustomerShippingContactsAddress
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is CustomerShippingContactsAddress &&
+        object == other.object &&
         street1 == other.street1 &&
         street2 == other.street2 &&
         postalCode == other.postalCode &&
@@ -62,6 +66,7 @@ class _$CustomerShippingContactsAddress
   @override
   int get hashCode {
     var _$hash = 0;
+    _$hash = $jc(_$hash, object.hashCode);
     _$hash = $jc(_$hash, street1.hashCode);
     _$hash = $jc(_$hash, street2.hashCode);
     _$hash = $jc(_$hash, postalCode.hashCode);
@@ -76,6 +81,7 @@ class _$CustomerShippingContactsAddress
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'CustomerShippingContactsAddress')
+          ..add('object', object)
           ..add('street1', street1)
           ..add('street2', street2)
           ..add('postalCode', postalCode)
@@ -92,6 +98,10 @@ class CustomerShippingContactsAddressBuilder
         Builder<CustomerShippingContactsAddress,
             CustomerShippingContactsAddressBuilder> {
   _$CustomerShippingContactsAddress? _$v;
+
+  String? _object;
+  String? get object => _$this._object;
+  set object(String? object) => _$this._object = object;
 
   String? _street1;
   String? get street1 => _$this._street1;
@@ -128,6 +138,7 @@ class CustomerShippingContactsAddressBuilder
   CustomerShippingContactsAddressBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
+      _object = $v.object;
       _street1 = $v.street1;
       _street2 = $v.street2;
       _postalCode = $v.postalCode;
@@ -157,6 +168,7 @@ class CustomerShippingContactsAddressBuilder
   _$CustomerShippingContactsAddress _build() {
     final _$result = _$v ??
         new _$CustomerShippingContactsAddress._(
+            object: object,
             street1: street1,
             street2: street2,
             postalCode: postalCode,

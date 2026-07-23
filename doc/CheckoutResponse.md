@@ -9,6 +9,7 @@ import 'package:conekta/api.dart';
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **allowedPaymentMethods** | **BuiltList&lt;String&gt;** | Are the payment methods available for this link | [optional] 
+**excludedPaymentMethods** | **BuiltList&lt;String&gt;** | Payment methods excluded from the checkout. This field is only returned when excluded_payment_methods is provided in the request. | [optional] 
 **planIds** | **BuiltList&lt;String&gt;** | List of plan IDs that are available for subscription | [optional] 
 **canNotExpire** | **bool** |  | [optional] 
 **emailsSent** | **int** |  | [optional] 
@@ -31,7 +32,7 @@ Name | Type | Description | Notes
 **smsSent** | **int** |  | [optional] 
 **startsAt** | **int** |  | [optional] 
 **status** | **String** |  | [optional] 
-**successUrl** | **String** |  | [optional] 
+**successUrl** | **String** | The URL to redirect to after a successful payment. | [optional] 
 **type** | **String** |  | [optional] 
 **url** | **String** |  | [optional] 
 

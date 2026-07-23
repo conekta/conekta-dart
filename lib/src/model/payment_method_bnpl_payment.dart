@@ -3,7 +3,7 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:conekta/src/model/payment_method.dart';
+import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -21,10 +21,29 @@ part 'payment_method_bnpl_payment.g.dart';
 /// * [redirectUrl] - URL to redirect the customer to complete the payment
 /// * [successUrl] - URL to redirect the customer after a successful payment
 @BuiltValue()
-abstract class PaymentMethodBnplPayment implements PaymentMethod, Built<PaymentMethodBnplPayment, PaymentMethodBnplPaymentBuilder> {
+abstract class PaymentMethodBnplPayment implements Built<PaymentMethodBnplPayment, PaymentMethodBnplPaymentBuilder> {
+  @BuiltValueField(wireName: r'type')
+  String? get type;
+
+  @BuiltValueField(wireName: r'object')
+  PaymentMethodBnplPaymentObjectEnum get object;
+  // enum objectEnum {  bnpl_payment,  };
+
   /// URL to redirect the customer after a canceled payment
   @BuiltValueField(wireName: r'cancel_url')
   String? get cancelUrl;
+
+  /// Expiration date of the charge
+  @BuiltValueField(wireName: r'expires_at')
+  int get expiresAt;
+
+  /// URL to redirect the customer after a failed payment
+  @BuiltValueField(wireName: r'failure_url')
+  String? get failureUrl;
+
+  /// Product type of the charge
+  @BuiltValueField(wireName: r'product_type')
+  String get productType;
 
   /// URL to redirect the customer to complete the payment
   @BuiltValueField(wireName: r'redirect_url')
@@ -33,18 +52,6 @@ abstract class PaymentMethodBnplPayment implements PaymentMethod, Built<PaymentM
   /// URL to redirect the customer after a successful payment
   @BuiltValueField(wireName: r'success_url')
   String? get successUrl;
-
-  /// Expiration date of the charge
-  @BuiltValueField(wireName: r'expires_at')
-  int get expiresAt;
-
-  /// Product type of the charge
-  @BuiltValueField(wireName: r'product_type')
-  String get productType;
-
-  /// URL to redirect the customer after a failed payment
-  @BuiltValueField(wireName: r'failure_url')
-  String? get failureUrl;
 
   PaymentMethodBnplPayment._();
 
@@ -69,6 +76,18 @@ class _$PaymentMethodBnplPaymentSerializer implements PrimitiveSerializer<Paymen
     PaymentMethodBnplPayment object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
+    if (object.type != null) {
+      yield r'type';
+      yield serializers.serialize(
+        object.type,
+        specifiedType: const FullType(String),
+      );
+    }
+    yield r'object';
+    yield serializers.serialize(
+      object.object,
+      specifiedType: const FullType(PaymentMethodBnplPaymentObjectEnum),
+    );
     if (object.cancelUrl != null) {
       yield r'cancel_url';
       yield serializers.serialize(
@@ -76,6 +95,23 @@ class _$PaymentMethodBnplPaymentSerializer implements PrimitiveSerializer<Paymen
         specifiedType: const FullType(String),
       );
     }
+    yield r'expires_at';
+    yield serializers.serialize(
+      object.expiresAt,
+      specifiedType: const FullType(int),
+    );
+    if (object.failureUrl != null) {
+      yield r'failure_url';
+      yield serializers.serialize(
+        object.failureUrl,
+        specifiedType: const FullType(String),
+      );
+    }
+    yield r'product_type';
+    yield serializers.serialize(
+      object.productType,
+      specifiedType: const FullType(String),
+    );
     if (object.redirectUrl != null) {
       yield r'redirect_url';
       yield serializers.serialize(
@@ -90,35 +126,6 @@ class _$PaymentMethodBnplPaymentSerializer implements PrimitiveSerializer<Paymen
         specifiedType: const FullType(String),
       );
     }
-    if (object.type != null) {
-      yield r'type';
-      yield serializers.serialize(
-        object.type,
-        specifiedType: const FullType(String),
-      );
-    }
-    yield r'expires_at';
-    yield serializers.serialize(
-      object.expiresAt,
-      specifiedType: const FullType(int),
-    );
-    yield r'product_type';
-    yield serializers.serialize(
-      object.productType,
-      specifiedType: const FullType(String),
-    );
-    if (object.failureUrl != null) {
-      yield r'failure_url';
-      yield serializers.serialize(
-        object.failureUrl,
-        specifiedType: const FullType(String),
-      );
-    }
-    yield r'object';
-    yield serializers.serialize(
-      object.object,
-      specifiedType: const FullType(String),
-    );
   }
 
   @override
@@ -142,33 +149,28 @@ class _$PaymentMethodBnplPaymentSerializer implements PrimitiveSerializer<Paymen
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
-        case r'cancel_url':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.cancelUrl = valueDes;
-          break;
-        case r'redirect_url':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.redirectUrl = valueDes;
-          break;
-        case r'success_url':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.successUrl = valueDes;
-          break;
         case r'type':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.type = valueDes;
+          break;
+        case r'object':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(PaymentMethodBnplPaymentObjectEnum),
+          ) as PaymentMethodBnplPaymentObjectEnum;
+          result.object = valueDes;
+          break;
+        case r'cancel_url':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.cancelUrl = valueDes;
           break;
         case r'expires_at':
           final valueDes = serializers.deserialize(
@@ -177,6 +179,14 @@ class _$PaymentMethodBnplPaymentSerializer implements PrimitiveSerializer<Paymen
           ) as int;
           result.expiresAt = valueDes;
           break;
+        case r'failure_url':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.failureUrl = valueDes;
+          break;
         case r'product_type':
           final valueDes = serializers.deserialize(
             value,
@@ -184,19 +194,21 @@ class _$PaymentMethodBnplPaymentSerializer implements PrimitiveSerializer<Paymen
           ) as String;
           result.productType = valueDes;
           break;
-        case r'failure_url':
+        case r'redirect_url':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.failureUrl = valueDes;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.redirectUrl = valueDes;
           break;
-        case r'object':
+        case r'success_url':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.object = valueDes;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.successUrl = valueDes;
           break;
         default:
           unhandled.add(key);
@@ -225,5 +237,18 @@ class _$PaymentMethodBnplPaymentSerializer implements PrimitiveSerializer<Paymen
     );
     return result.build();
   }
+}
+
+class PaymentMethodBnplPaymentObjectEnum extends EnumClass {
+
+  @BuiltValueEnumConst(wireName: r'bnpl_payment')
+  static const PaymentMethodBnplPaymentObjectEnum bnplPayment = _$paymentMethodBnplPaymentObjectEnum_bnplPayment;
+
+  static Serializer<PaymentMethodBnplPaymentObjectEnum> get serializer => _$paymentMethodBnplPaymentObjectEnumSerializer;
+
+  const PaymentMethodBnplPaymentObjectEnum._(String name): super(name);
+
+  static BuiltSet<PaymentMethodBnplPaymentObjectEnum> get values => _$paymentMethodBnplPaymentObjectEnumValues;
+  static PaymentMethodBnplPaymentObjectEnum valueOf(String name) => _$paymentMethodBnplPaymentObjectEnumValueOf(name);
 }
 

@@ -74,7 +74,7 @@ abstract class ChargeOrderResponsePaymentMethod implements Built<ChargeOrderResp
     r'bnpl_payment': PaymentMethodBnplPayment,
     r'card_payment': PaymentMethodCard,
     r'cash_payment': PaymentMethodCash,
-    r'pbb_payment': PaymentMethodPbbPayment,
+    r'pay_by_bank_payment': PaymentMethodPbbPayment,
   };
 
   ChargeOrderResponsePaymentMethod._();
@@ -103,7 +103,7 @@ extension ChargeOrderResponsePaymentMethodDiscriminatorExt on ChargeOrderRespons
             return r'cash_payment';
         }
         if (this is PaymentMethodPbbPayment) {
-            return r'pbb_payment';
+            return r'pay_by_bank_payment';
         }
         return null;
     }
@@ -123,7 +123,7 @@ extension ChargeOrderResponsePaymentMethodBuilderDiscriminatorExt on ChargeOrder
             return r'cash_payment';
         }
         if (this is PaymentMethodPbbPaymentBuilder) {
-            return r'pbb_payment';
+            return r'pay_by_bank_payment';
         }
         return null;
     }
@@ -197,7 +197,7 @@ class _$ChargeOrderResponsePaymentMethodSerializer implements PrimitiveSerialize
         ) as PaymentMethodCash;
         oneOfType = PaymentMethodCash;
         break;
-      case r'pbb_payment':
+      case r'pay_by_bank_payment':
         oneOfResult = serializers.deserialize(
           oneOfDataSrc,
           specifiedType: FullType(PaymentMethodPbbPayment),

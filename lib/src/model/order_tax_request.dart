@@ -16,8 +16,8 @@ part 'order_tax_request.g.dart';
 /// * [amount] - The amount to be collected for tax in cents
 /// * [description] - description or tax's name
 /// * [metadata] 
-@BuiltValue(instantiable: false)
-abstract class OrderTaxRequest  {
+@BuiltValue()
+abstract class OrderTaxRequest implements Built<OrderTaxRequest, OrderTaxRequestBuilder> {
   /// The amount to be collected for tax in cents
   @BuiltValueField(wireName: r'amount')
   int get amount;
@@ -29,13 +29,20 @@ abstract class OrderTaxRequest  {
   @BuiltValueField(wireName: r'metadata')
   BuiltMap<String, JsonObject?>? get metadata;
 
+  OrderTaxRequest._();
+
+  factory OrderTaxRequest([void updates(OrderTaxRequestBuilder b)]) = _$OrderTaxRequest;
+
+  @BuiltValueHook(initializeBuilder: true)
+  static void _defaults(OrderTaxRequestBuilder b) => b;
+
   @BuiltValueSerializer(custom: true)
   static Serializer<OrderTaxRequest> get serializer => _$OrderTaxRequestSerializer();
 }
 
 class _$OrderTaxRequestSerializer implements PrimitiveSerializer<OrderTaxRequest> {
   @override
-  final Iterable<Type> types = const [OrderTaxRequest];
+  final Iterable<Type> types = const [OrderTaxRequest, _$OrderTaxRequest];
 
   @override
   final String wireName = r'OrderTaxRequest';
@@ -73,46 +80,6 @@ class _$OrderTaxRequestSerializer implements PrimitiveSerializer<OrderTaxRequest
     return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
   }
 
-  @override
-  OrderTaxRequest deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return serializers.deserialize(serialized, specifiedType: FullType($OrderTaxRequest)) as $OrderTaxRequest;
-  }
-}
-
-/// a concrete implementation of [OrderTaxRequest], since [OrderTaxRequest] is not instantiable
-@BuiltValue(instantiable: true)
-abstract class $OrderTaxRequest implements OrderTaxRequest, Built<$OrderTaxRequest, $OrderTaxRequestBuilder> {
-  $OrderTaxRequest._();
-
-  factory $OrderTaxRequest([void Function($OrderTaxRequestBuilder)? updates]) = _$$OrderTaxRequest;
-
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults($OrderTaxRequestBuilder b) => b;
-
-  @BuiltValueSerializer(custom: true)
-  static Serializer<$OrderTaxRequest> get serializer => _$$OrderTaxRequestSerializer();
-}
-
-class _$$OrderTaxRequestSerializer implements PrimitiveSerializer<$OrderTaxRequest> {
-  @override
-  final Iterable<Type> types = const [$OrderTaxRequest, _$$OrderTaxRequest];
-
-  @override
-  final String wireName = r'$OrderTaxRequest';
-
-  @override
-  Object serialize(
-    Serializers serializers,
-    $OrderTaxRequest object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return serializers.serialize(object, specifiedType: FullType(OrderTaxRequest))!;
-  }
-
   void _deserializeProperties(
     Serializers serializers,
     Object serialized, {
@@ -142,8 +109,9 @@ class _$$OrderTaxRequestSerializer implements PrimitiveSerializer<$OrderTaxReque
         case r'metadata':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
-          ) as BuiltMap<String, JsonObject?>;
+            specifiedType: const FullType.nullable(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
+          ) as BuiltMap<String, JsonObject?>?;
+          if (valueDes == null) continue;
           result.metadata.replace(valueDes);
           break;
         default:
@@ -155,12 +123,12 @@ class _$$OrderTaxRequestSerializer implements PrimitiveSerializer<$OrderTaxReque
   }
 
   @override
-  $OrderTaxRequest deserialize(
+  OrderTaxRequest deserialize(
     Serializers serializers,
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final result = $OrderTaxRequestBuilder();
+    final result = OrderTaxRequestBuilder();
     final serializedList = (serialized as Iterable<Object?>).toList();
     final unhandled = <Object?>[];
     _deserializeProperties(

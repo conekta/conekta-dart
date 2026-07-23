@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 
 # **ordersCreateTaxes**
-> UpdateOrderTaxResponse ordersCreateTaxes(id, orderTaxRequest, acceptLanguage, xChildCompanyId)
+> OrderTaxResponse ordersCreateTaxes(id, orderTaxRequest, acceptLanguage, xChildCompanyId)
 
 Create Tax
 
@@ -34,7 +34,7 @@ final String xChildCompanyId = 6441b6376b60c3a638da80af; // String | In the case
 try {
     final response = api.ordersCreateTaxes(id, orderTaxRequest, acceptLanguage, xChildCompanyId);
     print(response);
-} catch on DioException (e) {
+} on DioException catch (e) {
     print('Exception when calling TaxesApi->ordersCreateTaxes: $e\n');
 }
 ```
@@ -50,7 +50,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UpdateOrderTaxResponse**](UpdateOrderTaxResponse.md)
+[**OrderTaxResponse**](OrderTaxResponse.md)
 
 ### Authorization
 
@@ -59,12 +59,12 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/vnd.conekta-v2.2.0+json
+ - **Accept**: application/vnd.conekta-v2.3.0+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ordersDeleteTaxes**
-> UpdateOrderTaxResponse ordersDeleteTaxes(id, taxId, acceptLanguage, xChildCompanyId)
+> OrderTaxResponse ordersDeleteTaxes(id, taxId, acceptLanguage, xChildCompanyId)
 
 Delete Tax
 
@@ -83,7 +83,7 @@ final String xChildCompanyId = 6441b6376b60c3a638da80af; // String | In the case
 try {
     final response = api.ordersDeleteTaxes(id, taxId, acceptLanguage, xChildCompanyId);
     print(response);
-} catch on DioException (e) {
+} on DioException catch (e) {
     print('Exception when calling TaxesApi->ordersDeleteTaxes: $e\n');
 }
 ```
@@ -99,7 +99,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UpdateOrderTaxResponse**](UpdateOrderTaxResponse.md)
+[**OrderTaxResponse**](OrderTaxResponse.md)
 
 ### Authorization
 
@@ -108,12 +108,12 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/vnd.conekta-v2.2.0+json
+ - **Accept**: application/vnd.conekta-v2.3.0+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ordersUpdateTaxes**
-> UpdateOrderTaxResponse ordersUpdateTaxes(id, taxId, updateOrderTaxRequest, acceptLanguage, xChildCompanyId)
+> OrderTaxResponse ordersUpdateTaxes(id, taxId, ordersUpdateTaxesRequest, acceptLanguage, xChildCompanyId)
 
 Update Tax
 
@@ -126,14 +126,14 @@ import 'package:conekta/api.dart';
 final api = Conekta().getTaxesApi();
 final String id = 6307a60c41de27127515a575; // String | Identifier of the resource
 final String taxId = tax_lin_2tQ974hSHcsdeSZHG; // String | identifier
-final UpdateOrderTaxRequest updateOrderTaxRequest = ; // UpdateOrderTaxRequest | requested field for taxes
+final OrdersUpdateTaxesRequest ordersUpdateTaxesRequest = ; // OrdersUpdateTaxesRequest | requested field for taxes
 final String acceptLanguage = es; // String | Use for knowing which language to use
 final String xChildCompanyId = 6441b6376b60c3a638da80af; // String | In the case of a holding company, the company id of the child company to which will process the request.
 
 try {
-    final response = api.ordersUpdateTaxes(id, taxId, updateOrderTaxRequest, acceptLanguage, xChildCompanyId);
+    final response = api.ordersUpdateTaxes(id, taxId, ordersUpdateTaxesRequest, acceptLanguage, xChildCompanyId);
     print(response);
-} catch on DioException (e) {
+} on DioException catch (e) {
     print('Exception when calling TaxesApi->ordersUpdateTaxes: $e\n');
 }
 ```
@@ -144,13 +144,13 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**| Identifier of the resource | 
  **taxId** | **String**| identifier | 
- **updateOrderTaxRequest** | [**UpdateOrderTaxRequest**](UpdateOrderTaxRequest.md)| requested field for taxes | 
+ **ordersUpdateTaxesRequest** | [**OrdersUpdateTaxesRequest**](OrdersUpdateTaxesRequest.md)| requested field for taxes | 
  **acceptLanguage** | **String**| Use for knowing which language to use | [optional] [default to 'es']
  **xChildCompanyId** | **String**| In the case of a holding company, the company id of the child company to which will process the request. | [optional] 
 
 ### Return type
 
-[**UpdateOrderTaxResponse**](UpdateOrderTaxResponse.md)
+[**OrderTaxResponse**](OrderTaxResponse.md)
 
 ### Authorization
 
@@ -159,7 +159,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/vnd.conekta-v2.2.0+json
+ - **Accept**: application/vnd.conekta-v2.3.0+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

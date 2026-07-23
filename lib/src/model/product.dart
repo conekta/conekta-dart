@@ -22,8 +22,8 @@ part 'product.g.dart';
 /// * [sku] - The stock keeping unit for the item. It is used to identify the item in the order.
 /// * [tags] - List of tags for the item. It is used to identify the item in the order.
 /// * [unitPrice] - The price of the item in cents.
-@BuiltValue(instantiable: false)
-abstract class Product  {
+@BuiltValue()
+abstract class Product implements Built<Product, ProductBuilder> {
   @BuiltValueField(wireName: r'antifraud_info')
   BuiltMap<String, JsonObject?>? get antifraudInfo;
 
@@ -59,13 +59,21 @@ abstract class Product  {
   @BuiltValueField(wireName: r'unit_price')
   int get unitPrice;
 
+  Product._();
+
+  factory Product([void updates(ProductBuilder b)]) = _$Product;
+
+  @BuiltValueHook(initializeBuilder: true)
+  static void _defaults(ProductBuilder b) => b
+      ..metadata = MapBuilder();
+
   @BuiltValueSerializer(custom: true)
   static Serializer<Product> get serializer => _$ProductSerializer();
 }
 
 class _$ProductSerializer implements PrimitiveSerializer<Product> {
   @override
-  final Iterable<Type> types = const [Product];
+  final Iterable<Type> types = const [Product, _$Product];
 
   @override
   final String wireName = r'Product';
@@ -143,46 +151,6 @@ class _$ProductSerializer implements PrimitiveSerializer<Product> {
     return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
   }
 
-  @override
-  Product deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return serializers.deserialize(serialized, specifiedType: FullType($Product)) as $Product;
-  }
-}
-
-/// a concrete implementation of [Product], since [Product] is not instantiable
-@BuiltValue(instantiable: true)
-abstract class $Product implements Product, Built<$Product, $ProductBuilder> {
-  $Product._();
-
-  factory $Product([void Function($ProductBuilder)? updates]) = _$$Product;
-
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults($ProductBuilder b) => b;
-
-  @BuiltValueSerializer(custom: true)
-  static Serializer<$Product> get serializer => _$$ProductSerializer();
-}
-
-class _$$ProductSerializer implements PrimitiveSerializer<$Product> {
-  @override
-  final Iterable<Type> types = const [$Product, _$$Product];
-
-  @override
-  final String wireName = r'$Product';
-
-  @override
-  Object serialize(
-    Serializers serializers,
-    $Product object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return serializers.serialize(object, specifiedType: FullType(Product))!;
-  }
-
   void _deserializeProperties(
     Serializers serializers,
     Object serialized, {
@@ -198,29 +166,33 @@ class _$$ProductSerializer implements PrimitiveSerializer<$Product> {
         case r'antifraud_info':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
-          ) as BuiltMap<String, JsonObject?>;
+            specifiedType: const FullType.nullable(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
+          ) as BuiltMap<String, JsonObject?>?;
+          if (valueDes == null) continue;
           result.antifraudInfo.replace(valueDes);
           break;
         case r'brand':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.brand = valueDes;
           break;
         case r'description':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.description = valueDes;
           break;
         case r'metadata':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
-          ) as BuiltMap<String, JsonObject?>;
+            specifiedType: const FullType.nullable(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
+          ) as BuiltMap<String, JsonObject?>?;
+          if (valueDes == null) continue;
           result.metadata.replace(valueDes);
           break;
         case r'name':
@@ -240,15 +212,17 @@ class _$$ProductSerializer implements PrimitiveSerializer<$Product> {
         case r'sku':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.sku = valueDes;
           break;
         case r'tags':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(String)]),
-          ) as BuiltList<String>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
+          ) as BuiltList<String>?;
+          if (valueDes == null) continue;
           result.tags.replace(valueDes);
           break;
         case r'unit_price':
@@ -267,12 +241,12 @@ class _$$ProductSerializer implements PrimitiveSerializer<$Product> {
   }
 
   @override
-  $Product deserialize(
+  Product deserialize(
     Serializers serializers,
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final result = $ProductBuilder();
+    final result = ProductBuilder();
     final serializedList = (serialized as Iterable<Object?>).toList();
     final unhandled = <Object?>[];
     _deserializeProperties(

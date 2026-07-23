@@ -74,8 +74,9 @@ class _$ChargeUpdateRequestSerializer implements PrimitiveSerializer<ChargeUpdat
         case r'reference_id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.referenceId = valueDes;
           break;
         default:

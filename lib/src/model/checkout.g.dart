@@ -6,6 +6,51 @@ part of 'checkout.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
+const CheckoutExcludedPaymentMethodsEnum
+    _$checkoutExcludedPaymentMethodsEnum_cash =
+    const CheckoutExcludedPaymentMethodsEnum._('cash');
+const CheckoutExcludedPaymentMethodsEnum
+    _$checkoutExcludedPaymentMethodsEnum_card =
+    const CheckoutExcludedPaymentMethodsEnum._('card');
+const CheckoutExcludedPaymentMethodsEnum
+    _$checkoutExcludedPaymentMethodsEnum_bankTransfer =
+    const CheckoutExcludedPaymentMethodsEnum._('bankTransfer');
+const CheckoutExcludedPaymentMethodsEnum
+    _$checkoutExcludedPaymentMethodsEnum_bnpl =
+    const CheckoutExcludedPaymentMethodsEnum._('bnpl');
+const CheckoutExcludedPaymentMethodsEnum
+    _$checkoutExcludedPaymentMethodsEnum_payByBank =
+    const CheckoutExcludedPaymentMethodsEnum._('payByBank');
+
+CheckoutExcludedPaymentMethodsEnum _$checkoutExcludedPaymentMethodsEnumValueOf(
+    String name) {
+  switch (name) {
+    case 'cash':
+      return _$checkoutExcludedPaymentMethodsEnum_cash;
+    case 'card':
+      return _$checkoutExcludedPaymentMethodsEnum_card;
+    case 'bankTransfer':
+      return _$checkoutExcludedPaymentMethodsEnum_bankTransfer;
+    case 'bnpl':
+      return _$checkoutExcludedPaymentMethodsEnum_bnpl;
+    case 'payByBank':
+      return _$checkoutExcludedPaymentMethodsEnum_payByBank;
+    default:
+      throw new ArgumentError(name);
+  }
+}
+
+final BuiltSet<CheckoutExcludedPaymentMethodsEnum>
+    _$checkoutExcludedPaymentMethodsEnumValues =
+    new BuiltSet<CheckoutExcludedPaymentMethodsEnum>(const <
+        CheckoutExcludedPaymentMethodsEnum>[
+  _$checkoutExcludedPaymentMethodsEnum_cash,
+  _$checkoutExcludedPaymentMethodsEnum_card,
+  _$checkoutExcludedPaymentMethodsEnum_bankTransfer,
+  _$checkoutExcludedPaymentMethodsEnum_bnpl,
+  _$checkoutExcludedPaymentMethodsEnum_payByBank,
+]);
+
 const CheckoutExcludeCardNetworksEnum _$checkoutExcludeCardNetworksEnum_visa =
     const CheckoutExcludeCardNetworksEnum._('visa');
 const CheckoutExcludeCardNetworksEnum
@@ -37,9 +82,48 @@ final BuiltSet<CheckoutExcludeCardNetworksEnum>
   _$checkoutExcludeCardNetworksEnum_amex,
 ]);
 
+Serializer<CheckoutExcludedPaymentMethodsEnum>
+    _$checkoutExcludedPaymentMethodsEnumSerializer =
+    new _$CheckoutExcludedPaymentMethodsEnumSerializer();
 Serializer<CheckoutExcludeCardNetworksEnum>
     _$checkoutExcludeCardNetworksEnumSerializer =
     new _$CheckoutExcludeCardNetworksEnumSerializer();
+
+class _$CheckoutExcludedPaymentMethodsEnumSerializer
+    implements PrimitiveSerializer<CheckoutExcludedPaymentMethodsEnum> {
+  static const Map<String, Object> _toWire = const <String, Object>{
+    'cash': 'cash',
+    'card': 'card',
+    'bankTransfer': 'bank_transfer',
+    'bnpl': 'bnpl',
+    'payByBank': 'pay_by_bank',
+  };
+  static const Map<Object, String> _fromWire = const <Object, String>{
+    'cash': 'cash',
+    'card': 'card',
+    'bank_transfer': 'bankTransfer',
+    'bnpl': 'bnpl',
+    'pay_by_bank': 'payByBank',
+  };
+
+  @override
+  final Iterable<Type> types = const <Type>[CheckoutExcludedPaymentMethodsEnum];
+  @override
+  final String wireName = 'CheckoutExcludedPaymentMethodsEnum';
+
+  @override
+  Object serialize(
+          Serializers serializers, CheckoutExcludedPaymentMethodsEnum object,
+          {FullType specifiedType = FullType.unspecified}) =>
+      _toWire[object.name] ?? object.name;
+
+  @override
+  CheckoutExcludedPaymentMethodsEnum deserialize(
+          Serializers serializers, Object serialized,
+          {FullType specifiedType = FullType.unspecified}) =>
+      CheckoutExcludedPaymentMethodsEnum.valueOf(
+          _fromWire[serialized] ?? (serialized is String ? serialized : ''));
+}
 
 class _$CheckoutExcludeCardNetworksEnumSerializer
     implements PrimitiveSerializer<CheckoutExcludeCardNetworksEnum> {
@@ -75,7 +159,9 @@ class _$CheckoutExcludeCardNetworksEnumSerializer
 
 class _$Checkout extends Checkout {
   @override
-  final BuiltList<String> allowedPaymentMethods;
+  final BuiltList<String>? allowedPaymentMethods;
+  @override
+  final BuiltList<CheckoutExcludedPaymentMethodsEnum>? excludedPaymentMethods;
   @override
   final BuiltList<CheckoutExcludeCardNetworksEnum>? excludeCardNetworks;
   @override
@@ -99,6 +185,8 @@ class _$Checkout extends Checkout {
   @override
   final int? paymentsLimitCount;
   @override
+  final String? successUrl;
+  @override
   final bool recurrent;
   @override
   final String type;
@@ -107,7 +195,8 @@ class _$Checkout extends Checkout {
       (new CheckoutBuilder()..update(updates))._build();
 
   _$Checkout._(
-      {required this.allowedPaymentMethods,
+      {this.allowedPaymentMethods,
+      this.excludedPaymentMethods,
       this.excludeCardNetworks,
       required this.expiresAt,
       this.monthlyInstallmentsEnabled,
@@ -119,11 +208,10 @@ class _$Checkout extends Checkout {
       this.planIds,
       required this.orderTemplate,
       this.paymentsLimitCount,
+      this.successUrl,
       required this.recurrent,
       required this.type})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        allowedPaymentMethods, r'Checkout', 'allowedPaymentMethods');
     BuiltValueNullFieldError.checkNotNull(expiresAt, r'Checkout', 'expiresAt');
     BuiltValueNullFieldError.checkNotNull(name, r'Checkout', 'name');
     BuiltValueNullFieldError.checkNotNull(
@@ -144,6 +232,7 @@ class _$Checkout extends Checkout {
     if (identical(other, this)) return true;
     return other is Checkout &&
         allowedPaymentMethods == other.allowedPaymentMethods &&
+        excludedPaymentMethods == other.excludedPaymentMethods &&
         excludeCardNetworks == other.excludeCardNetworks &&
         expiresAt == other.expiresAt &&
         monthlyInstallmentsEnabled == other.monthlyInstallmentsEnabled &&
@@ -155,6 +244,7 @@ class _$Checkout extends Checkout {
         planIds == other.planIds &&
         orderTemplate == other.orderTemplate &&
         paymentsLimitCount == other.paymentsLimitCount &&
+        successUrl == other.successUrl &&
         recurrent == other.recurrent &&
         type == other.type;
   }
@@ -163,6 +253,7 @@ class _$Checkout extends Checkout {
   int get hashCode {
     var _$hash = 0;
     _$hash = $jc(_$hash, allowedPaymentMethods.hashCode);
+    _$hash = $jc(_$hash, excludedPaymentMethods.hashCode);
     _$hash = $jc(_$hash, excludeCardNetworks.hashCode);
     _$hash = $jc(_$hash, expiresAt.hashCode);
     _$hash = $jc(_$hash, monthlyInstallmentsEnabled.hashCode);
@@ -174,6 +265,7 @@ class _$Checkout extends Checkout {
     _$hash = $jc(_$hash, planIds.hashCode);
     _$hash = $jc(_$hash, orderTemplate.hashCode);
     _$hash = $jc(_$hash, paymentsLimitCount.hashCode);
+    _$hash = $jc(_$hash, successUrl.hashCode);
     _$hash = $jc(_$hash, recurrent.hashCode);
     _$hash = $jc(_$hash, type.hashCode);
     _$hash = $jf(_$hash);
@@ -184,6 +276,7 @@ class _$Checkout extends Checkout {
   String toString() {
     return (newBuiltValueToStringHelper(r'Checkout')
           ..add('allowedPaymentMethods', allowedPaymentMethods)
+          ..add('excludedPaymentMethods', excludedPaymentMethods)
           ..add('excludeCardNetworks', excludeCardNetworks)
           ..add('expiresAt', expiresAt)
           ..add('monthlyInstallmentsEnabled', monthlyInstallmentsEnabled)
@@ -195,6 +288,7 @@ class _$Checkout extends Checkout {
           ..add('planIds', planIds)
           ..add('orderTemplate', orderTemplate)
           ..add('paymentsLimitCount', paymentsLimitCount)
+          ..add('successUrl', successUrl)
           ..add('recurrent', recurrent)
           ..add('type', type))
         .toString();
@@ -209,6 +303,15 @@ class CheckoutBuilder implements Builder<Checkout, CheckoutBuilder> {
       _$this._allowedPaymentMethods ??= new ListBuilder<String>();
   set allowedPaymentMethods(ListBuilder<String>? allowedPaymentMethods) =>
       _$this._allowedPaymentMethods = allowedPaymentMethods;
+
+  ListBuilder<CheckoutExcludedPaymentMethodsEnum>? _excludedPaymentMethods;
+  ListBuilder<CheckoutExcludedPaymentMethodsEnum> get excludedPaymentMethods =>
+      _$this._excludedPaymentMethods ??=
+          new ListBuilder<CheckoutExcludedPaymentMethodsEnum>();
+  set excludedPaymentMethods(
+          ListBuilder<CheckoutExcludedPaymentMethodsEnum>?
+              excludedPaymentMethods) =>
+      _$this._excludedPaymentMethods = excludedPaymentMethods;
 
   ListBuilder<CheckoutExcludeCardNetworksEnum>? _excludeCardNetworks;
   ListBuilder<CheckoutExcludeCardNetworksEnum> get excludeCardNetworks =>
@@ -268,6 +371,10 @@ class CheckoutBuilder implements Builder<Checkout, CheckoutBuilder> {
   set paymentsLimitCount(int? paymentsLimitCount) =>
       _$this._paymentsLimitCount = paymentsLimitCount;
 
+  String? _successUrl;
+  String? get successUrl => _$this._successUrl;
+  set successUrl(String? successUrl) => _$this._successUrl = successUrl;
+
   bool? _recurrent;
   bool? get recurrent => _$this._recurrent;
   set recurrent(bool? recurrent) => _$this._recurrent = recurrent;
@@ -283,7 +390,8 @@ class CheckoutBuilder implements Builder<Checkout, CheckoutBuilder> {
   CheckoutBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _allowedPaymentMethods = $v.allowedPaymentMethods.toBuilder();
+      _allowedPaymentMethods = $v.allowedPaymentMethods?.toBuilder();
+      _excludedPaymentMethods = $v.excludedPaymentMethods?.toBuilder();
       _excludeCardNetworks = $v.excludeCardNetworks?.toBuilder();
       _expiresAt = $v.expiresAt;
       _monthlyInstallmentsEnabled = $v.monthlyInstallmentsEnabled;
@@ -295,6 +403,7 @@ class CheckoutBuilder implements Builder<Checkout, CheckoutBuilder> {
       _planIds = $v.planIds?.toBuilder();
       _orderTemplate = $v.orderTemplate.toBuilder();
       _paymentsLimitCount = $v.paymentsLimitCount;
+      _successUrl = $v.successUrl;
       _recurrent = $v.recurrent;
       _type = $v.type;
       _$v = null;
@@ -321,7 +430,8 @@ class CheckoutBuilder implements Builder<Checkout, CheckoutBuilder> {
     try {
       _$result = _$v ??
           new _$Checkout._(
-              allowedPaymentMethods: allowedPaymentMethods.build(),
+              allowedPaymentMethods: _allowedPaymentMethods?.build(),
+              excludedPaymentMethods: _excludedPaymentMethods?.build(),
               excludeCardNetworks: _excludeCardNetworks?.build(),
               expiresAt: BuiltValueNullFieldError.checkNotNull(
                   expiresAt, r'Checkout', 'expiresAt'),
@@ -335,6 +445,7 @@ class CheckoutBuilder implements Builder<Checkout, CheckoutBuilder> {
               planIds: _planIds?.build(),
               orderTemplate: orderTemplate.build(),
               paymentsLimitCount: paymentsLimitCount,
+              successUrl: successUrl,
               recurrent: BuiltValueNullFieldError.checkNotNull(
                   recurrent, r'Checkout', 'recurrent'),
               type: BuiltValueNullFieldError.checkNotNull(
@@ -343,7 +454,9 @@ class CheckoutBuilder implements Builder<Checkout, CheckoutBuilder> {
       late String _$failedField;
       try {
         _$failedField = 'allowedPaymentMethods';
-        allowedPaymentMethods.build();
+        _allowedPaymentMethods?.build();
+        _$failedField = 'excludedPaymentMethods';
+        _excludedPaymentMethods?.build();
         _$failedField = 'excludeCardNetworks';
         _excludeCardNetworks?.build();
 

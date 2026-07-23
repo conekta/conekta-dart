@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **expMonth** | **String** |  | [optional] 
 **expYear** | **String** |  | [optional] 
 **brand** | **String** |  | [optional] 
+**issuer** | **String** | Name of the institution that issued the card | [optional] 
 **name** | **String** |  | [optional] 
 **default_** | **bool** |  | [optional] 
 **visibleOnCheckout** | **bool** |  | [optional] 

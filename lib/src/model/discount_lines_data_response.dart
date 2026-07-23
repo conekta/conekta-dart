@@ -3,7 +3,6 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:conekta/src/model/discount_lines_response.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -19,7 +18,31 @@ part 'discount_lines_data_response.g.dart';
 /// * [object] - The object name
 /// * [parentId] - The order id
 @BuiltValue()
-abstract class DiscountLinesDataResponse implements DiscountLinesResponse, Built<DiscountLinesDataResponse, DiscountLinesDataResponseBuilder> {
+abstract class DiscountLinesDataResponse implements Built<DiscountLinesDataResponse, DiscountLinesDataResponseBuilder> {
+  /// The amount to be deducted from the total sum of all payments, in cents.
+  @BuiltValueField(wireName: r'amount')
+  int get amount;
+
+  /// Discount code.
+  @BuiltValueField(wireName: r'code')
+  String get code;
+
+  /// It can be 'loyalty', 'campaign', 'coupon' o 'sign'
+  @BuiltValueField(wireName: r'type')
+  String get type;
+
+  /// The discount line id
+  @BuiltValueField(wireName: r'id')
+  String get id;
+
+  /// The object name
+  @BuiltValueField(wireName: r'object')
+  String get object;
+
+  /// The order id
+  @BuiltValueField(wireName: r'parent_id')
+  String get parentId;
+
   DiscountLinesDataResponse._();
 
   factory DiscountLinesDataResponse([void updates(DiscountLinesDataResponseBuilder b)]) = _$DiscountLinesDataResponse;
@@ -53,24 +76,24 @@ class _$DiscountLinesDataResponseSerializer implements PrimitiveSerializer<Disco
       object.code,
       specifiedType: const FullType(String),
     );
-    yield r'id';
-    yield serializers.serialize(
-      object.id,
-      specifiedType: const FullType(String),
-    );
     yield r'type';
     yield serializers.serialize(
       object.type,
       specifiedType: const FullType(String),
     );
-    yield r'parent_id';
+    yield r'id';
     yield serializers.serialize(
-      object.parentId,
+      object.id,
       specifiedType: const FullType(String),
     );
     yield r'object';
     yield serializers.serialize(
       object.object,
+      specifiedType: const FullType(String),
+    );
+    yield r'parent_id';
+    yield serializers.serialize(
+      object.parentId,
       specifiedType: const FullType(String),
     );
   }
@@ -110,13 +133,6 @@ class _$DiscountLinesDataResponseSerializer implements PrimitiveSerializer<Disco
           ) as String;
           result.code = valueDes;
           break;
-        case r'id':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.id = valueDes;
-          break;
         case r'type':
           final valueDes = serializers.deserialize(
             value,
@@ -124,12 +140,12 @@ class _$DiscountLinesDataResponseSerializer implements PrimitiveSerializer<Disco
           ) as String;
           result.type = valueDes;
           break;
-        case r'parent_id':
+        case r'id':
           final valueDes = serializers.deserialize(
             value,
             specifiedType: const FullType(String),
           ) as String;
-          result.parentId = valueDes;
+          result.id = valueDes;
           break;
         case r'object':
           final valueDes = serializers.deserialize(
@@ -137,6 +153,13 @@ class _$DiscountLinesDataResponseSerializer implements PrimitiveSerializer<Disco
             specifiedType: const FullType(String),
           ) as String;
           result.object = valueDes;
+          break;
+        case r'parent_id':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.parentId = valueDes;
           break;
         default:
           unhandled.add(key);

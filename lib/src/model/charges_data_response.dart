@@ -4,7 +4,7 @@
 
 // ignore_for_file: unused_element
 import 'package:conekta/src/model/charge_response_payment_method.dart';
-import 'package:conekta/src/model/charge_response.dart';
+import 'package:conekta/src/model/chargeback_response.dart';
 import 'package:conekta/src/model/charge_response_refunds.dart';
 import 'package:conekta/src/model/charge_response_channel.dart';
 import 'package:built_value/built_value.dart';
@@ -28,13 +28,77 @@ part 'charges_data_response.g.dart';
 /// * [livemode] - Whether the charge was made in live mode or not
 /// * [object] 
 /// * [orderId] - Order ID
-/// * [paidAt] - Payment date
+/// * [paidAt] - charge Payment date
 /// * [paymentMethod] 
 /// * [referenceId] - Reference ID of the charge
 /// * [refunds] 
+/// * [chargeback] 
 /// * [status] - Charge status
 @BuiltValue()
-abstract class ChargesDataResponse implements ChargeResponse, Built<ChargesDataResponse, ChargesDataResponseBuilder> {
+abstract class ChargesDataResponse implements Built<ChargesDataResponse, ChargesDataResponseBuilder> {
+  @BuiltValueField(wireName: r'amount')
+  int get amount;
+
+  @BuiltValueField(wireName: r'channel')
+  ChargeResponseChannel? get channel;
+
+  @BuiltValueField(wireName: r'created_at')
+  int get createdAt;
+
+  @BuiltValueField(wireName: r'currency')
+  String get currency;
+
+  @BuiltValueField(wireName: r'customer_id')
+  String? get customerId;
+
+  @BuiltValueField(wireName: r'description')
+  String? get description;
+
+  @BuiltValueField(wireName: r'device_fingerprint')
+  String? get deviceFingerprint;
+
+  @BuiltValueField(wireName: r'failure_code')
+  String? get failureCode;
+
+  @BuiltValueField(wireName: r'failure_message')
+  String? get failureMessage;
+
+  /// Charge ID
+  @BuiltValueField(wireName: r'id')
+  String get id;
+
+  /// Whether the charge was made in live mode or not
+  @BuiltValueField(wireName: r'livemode')
+  bool get livemode;
+
+  @BuiltValueField(wireName: r'object')
+  String get object;
+
+  /// Order ID
+  @BuiltValueField(wireName: r'order_id')
+  String get orderId;
+
+  /// charge Payment date
+  @BuiltValueField(wireName: r'paid_at')
+  int? get paidAt;
+
+  @BuiltValueField(wireName: r'payment_method')
+  ChargeResponsePaymentMethod? get paymentMethod;
+
+  /// Reference ID of the charge
+  @BuiltValueField(wireName: r'reference_id')
+  String? get referenceId;
+
+  @BuiltValueField(wireName: r'refunds')
+  ChargeResponseRefunds? get refunds;
+
+  @BuiltValueField(wireName: r'chargeback')
+  ChargebackResponse? get chargeback;
+
+  /// Charge status
+  @BuiltValueField(wireName: r'status')
+  String get status;
+
   ChargesDataResponse._();
 
   factory ChargesDataResponse([void updates(ChargesDataResponseBuilder b)]) = _$ChargesDataResponse;
@@ -63,10 +127,34 @@ class _$ChargesDataResponseSerializer implements PrimitiveSerializer<ChargesData
       object.amount,
       specifiedType: const FullType(int),
     );
-    if (object.failureCode != null) {
-      yield r'failure_code';
+    if (object.channel != null) {
+      yield r'channel';
       yield serializers.serialize(
-        object.failureCode,
+        object.channel,
+        specifiedType: const FullType(ChargeResponseChannel),
+      );
+    }
+    yield r'created_at';
+    yield serializers.serialize(
+      object.createdAt,
+      specifiedType: const FullType(int),
+    );
+    yield r'currency';
+    yield serializers.serialize(
+      object.currency,
+      specifiedType: const FullType(String),
+    );
+    if (object.customerId != null) {
+      yield r'customer_id';
+      yield serializers.serialize(
+        object.customerId,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.description != null) {
+      yield r'description';
+      yield serializers.serialize(
+        object.description,
         specifiedType: const FullType(String),
       );
     }
@@ -77,61 +165,45 @@ class _$ChargesDataResponseSerializer implements PrimitiveSerializer<ChargesData
         specifiedType: const FullType(String),
       );
     }
+    if (object.failureCode != null) {
+      yield r'failure_code';
+      yield serializers.serialize(
+        object.failureCode,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.failureMessage != null) {
+      yield r'failure_message';
+      yield serializers.serialize(
+        object.failureMessage,
+        specifiedType: const FullType(String),
+      );
+    }
+    yield r'id';
+    yield serializers.serialize(
+      object.id,
+      specifiedType: const FullType(String),
+    );
     yield r'livemode';
     yield serializers.serialize(
       object.livemode,
       specifiedType: const FullType(bool),
+    );
+    yield r'object';
+    yield serializers.serialize(
+      object.object,
+      specifiedType: const FullType(String),
     );
     yield r'order_id';
     yield serializers.serialize(
       object.orderId,
       specifiedType: const FullType(String),
     );
-    if (object.channel != null) {
-      yield r'channel';
-      yield serializers.serialize(
-        object.channel,
-        specifiedType: const FullType(ChargeResponseChannel),
-      );
-    }
-    if (object.description != null) {
-      yield r'description';
-      yield serializers.serialize(
-        object.description,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.referenceId != null) {
-      yield r'reference_id';
-      yield serializers.serialize(
-        object.referenceId,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.refunds != null) {
-      yield r'refunds';
-      yield serializers.serialize(
-        object.refunds,
-        specifiedType: const FullType.nullable(ChargeResponseRefunds),
-      );
-    }
-    yield r'created_at';
-    yield serializers.serialize(
-      object.createdAt,
-      specifiedType: const FullType(int),
-    );
-    if (object.customerId != null) {
-      yield r'customer_id';
-      yield serializers.serialize(
-        object.customerId,
-        specifiedType: const FullType(String),
-      );
-    }
     if (object.paidAt != null) {
       yield r'paid_at';
       yield serializers.serialize(
         object.paidAt,
-        specifiedType: const FullType.nullable(int),
+        specifiedType: const FullType(int),
       );
     }
     if (object.paymentMethod != null) {
@@ -141,28 +213,27 @@ class _$ChargesDataResponseSerializer implements PrimitiveSerializer<ChargesData
         specifiedType: const FullType(ChargeResponsePaymentMethod),
       );
     }
-    yield r'currency';
-    yield serializers.serialize(
-      object.currency,
-      specifiedType: const FullType(String),
-    );
-    yield r'id';
-    yield serializers.serialize(
-      object.id,
-      specifiedType: const FullType(String),
-    );
-    if (object.failureMessage != null) {
-      yield r'failure_message';
+    if (object.referenceId != null) {
+      yield r'reference_id';
       yield serializers.serialize(
-        object.failureMessage,
+        object.referenceId,
         specifiedType: const FullType(String),
       );
     }
-    yield r'object';
-    yield serializers.serialize(
-      object.object,
-      specifiedType: const FullType(String),
-    );
+    if (object.refunds != null) {
+      yield r'refunds';
+      yield serializers.serialize(
+        object.refunds,
+        specifiedType: const FullType(ChargeResponseRefunds),
+      );
+    }
+    if (object.chargeback != null) {
+      yield r'chargeback';
+      yield serializers.serialize(
+        object.chargeback,
+        specifiedType: const FullType(ChargebackResponse),
+      );
+    }
     yield r'status';
     yield serializers.serialize(
       object.status,
@@ -198,19 +269,74 @@ class _$ChargesDataResponseSerializer implements PrimitiveSerializer<ChargesData
           ) as int;
           result.amount = valueDes;
           break;
-        case r'failure_code':
+        case r'channel':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(ChargeResponseChannel),
+          ) as ChargeResponseChannel?;
+          if (valueDes == null) continue;
+          result.channel.replace(valueDes);
+          break;
+        case r'created_at':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int;
+          result.createdAt = valueDes;
+          break;
+        case r'currency':
           final valueDes = serializers.deserialize(
             value,
             specifiedType: const FullType(String),
           ) as String;
-          result.failureCode = valueDes;
+          result.currency = valueDes;
+          break;
+        case r'customer_id':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.customerId = valueDes;
+          break;
+        case r'description':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.description = valueDes;
           break;
         case r'device_fingerprint':
           final valueDes = serializers.deserialize(
             value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.deviceFingerprint = valueDes;
+          break;
+        case r'failure_code':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.failureCode = valueDes;
+          break;
+        case r'failure_message':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.failureMessage = valueDes;
+          break;
+        case r'id':
+          final valueDes = serializers.deserialize(
+            value,
             specifiedType: const FullType(String),
           ) as String;
-          result.deviceFingerprint = valueDes;
+          result.id = valueDes;
           break;
         case r'livemode':
           final valueDes = serializers.deserialize(
@@ -219,6 +345,13 @@ class _$ChargesDataResponseSerializer implements PrimitiveSerializer<ChargesData
           ) as bool;
           result.livemode = valueDes;
           break;
+        case r'object':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.object = valueDes;
+          break;
         case r'order_id':
           final valueDes = serializers.deserialize(
             value,
@@ -226,19 +359,21 @@ class _$ChargesDataResponseSerializer implements PrimitiveSerializer<ChargesData
           ) as String;
           result.orderId = valueDes;
           break;
-        case r'channel':
+        case r'paid_at':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(ChargeResponseChannel),
-          ) as ChargeResponseChannel;
-          result.channel.replace(valueDes);
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.paidAt = valueDes;
           break;
-        case r'description':
+        case r'payment_method':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.description = valueDes;
+            specifiedType: const FullType.nullable(ChargeResponsePaymentMethod),
+          ) as ChargeResponsePaymentMethod?;
+          if (valueDes == null) continue;
+          result.paymentMethod.replace(valueDes);
           break;
         case r'reference_id':
           final valueDes = serializers.deserialize(
@@ -256,62 +391,13 @@ class _$ChargesDataResponseSerializer implements PrimitiveSerializer<ChargesData
           if (valueDes == null) continue;
           result.refunds.replace(valueDes);
           break;
-        case r'created_at':
+        case r'chargeback':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.createdAt = valueDes;
-          break;
-        case r'customer_id':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.customerId = valueDes;
-          break;
-        case r'paid_at':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(int),
-          ) as int?;
+            specifiedType: const FullType.nullable(ChargebackResponse),
+          ) as ChargebackResponse?;
           if (valueDes == null) continue;
-          result.paidAt = valueDes;
-          break;
-        case r'payment_method':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(ChargeResponsePaymentMethod),
-          ) as ChargeResponsePaymentMethod;
-          result.paymentMethod.replace(valueDes);
-          break;
-        case r'currency':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.currency = valueDes;
-          break;
-        case r'id':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.id = valueDes;
-          break;
-        case r'failure_message':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.failureMessage = valueDes;
-          break;
-        case r'object':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.object = valueDes;
+          result.chargeback.replace(valueDes);
           break;
         case r'status':
           final valueDes = serializers.deserialize(

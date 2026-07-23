@@ -10,6 +10,12 @@ const ChargeRequestPaymentMethodProductTypeEnum
     _$chargeRequestPaymentMethodProductTypeEnum_aplazoBnpl =
     const ChargeRequestPaymentMethodProductTypeEnum._('aplazoBnpl');
 const ChargeRequestPaymentMethodProductTypeEnum
+    _$chargeRequestPaymentMethodProductTypeEnum_aztecaBnpl =
+    const ChargeRequestPaymentMethodProductTypeEnum._('aztecaBnpl');
+const ChargeRequestPaymentMethodProductTypeEnum
+    _$chargeRequestPaymentMethodProductTypeEnum_coppelBnpl =
+    const ChargeRequestPaymentMethodProductTypeEnum._('coppelBnpl');
+const ChargeRequestPaymentMethodProductTypeEnum
     _$chargeRequestPaymentMethodProductTypeEnum_crediteaBnpl =
     const ChargeRequestPaymentMethodProductTypeEnum._('crediteaBnpl');
 
@@ -18,6 +24,10 @@ ChargeRequestPaymentMethodProductTypeEnum
   switch (name) {
     case 'aplazoBnpl':
       return _$chargeRequestPaymentMethodProductTypeEnum_aplazoBnpl;
+    case 'aztecaBnpl':
+      return _$chargeRequestPaymentMethodProductTypeEnum_aztecaBnpl;
+    case 'coppelBnpl':
+      return _$chargeRequestPaymentMethodProductTypeEnum_coppelBnpl;
     case 'crediteaBnpl':
       return _$chargeRequestPaymentMethodProductTypeEnum_crediteaBnpl;
     default:
@@ -30,6 +40,8 @@ final BuiltSet<ChargeRequestPaymentMethodProductTypeEnum>
     new BuiltSet<ChargeRequestPaymentMethodProductTypeEnum>(const <
         ChargeRequestPaymentMethodProductTypeEnum>[
   _$chargeRequestPaymentMethodProductTypeEnum_aplazoBnpl,
+  _$chargeRequestPaymentMethodProductTypeEnum_aztecaBnpl,
+  _$chargeRequestPaymentMethodProductTypeEnum_coppelBnpl,
   _$chargeRequestPaymentMethodProductTypeEnum_crediteaBnpl,
 ]);
 
@@ -41,10 +53,14 @@ class _$ChargeRequestPaymentMethodProductTypeEnumSerializer
     implements PrimitiveSerializer<ChargeRequestPaymentMethodProductTypeEnum> {
   static const Map<String, Object> _toWire = const <String, Object>{
     'aplazoBnpl': 'aplazo_bnpl',
+    'aztecaBnpl': 'azteca_bnpl',
+    'coppelBnpl': 'coppel_bnpl',
     'crediteaBnpl': 'creditea_bnpl',
   };
   static const Map<Object, String> _fromWire = const <Object, String>{
     'aplazo_bnpl': 'aplazoBnpl',
+    'azteca_bnpl': 'aztecaBnpl',
+    'coppel_bnpl': 'coppelBnpl',
     'creditea_bnpl': 'crediteaBnpl',
   };
 

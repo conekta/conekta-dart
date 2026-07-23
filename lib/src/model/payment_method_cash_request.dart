@@ -3,7 +3,6 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:conekta/src/model/customer_payment_method_request.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -15,7 +14,11 @@ part 'payment_method_cash_request.g.dart';
 /// * [type] - Type of payment method
 /// * [expiresAt] 
 @BuiltValue()
-abstract class PaymentMethodCashRequest implements CustomerPaymentMethodRequest, Built<PaymentMethodCashRequest, PaymentMethodCashRequestBuilder> {
+abstract class PaymentMethodCashRequest implements Built<PaymentMethodCashRequest, PaymentMethodCashRequestBuilder> {
+  /// Type of payment method
+  @BuiltValueField(wireName: r'type')
+  String get type;
+
   @BuiltValueField(wireName: r'expires_at')
   int? get expiresAt;
 
@@ -87,8 +90,9 @@ class _$PaymentMethodCashRequestSerializer implements PrimitiveSerializer<Paymen
         case r'expires_at':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.expiresAt = valueDes;
           break;
         default:

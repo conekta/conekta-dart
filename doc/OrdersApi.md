@@ -38,7 +38,7 @@ final String xChildCompanyId = 6441b6376b60c3a638da80af; // String | In the case
 try {
     final response = api.cancelOrder(id, acceptLanguage, xChildCompanyId);
     print(response);
-} catch on DioException (e) {
+} on DioException catch (e) {
     print('Exception when calling OrdersApi->cancelOrder: $e\n');
 }
 ```
@@ -62,7 +62,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/vnd.conekta-v2.2.0+json
+ - **Accept**: application/vnd.conekta-v2.3.0+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -78,14 +78,14 @@ Create a new order.
 import 'package:conekta/api.dart';
 
 final api = Conekta().getOrdersApi();
-final OrderRequest orderRequest = ; // OrderRequest | requested field for order
+final OrderRequest orderRequest = {"charges":[{"amount":40000,"expires_at":1677196303,"monthly_installments":0,"payment_method":{"type":"card","token_id":"tok_2897348234","payment_source_id":"src_2tLkkyfMPh6v7pFry","customer_ip_address":"0.0.0.0"},"reference_id":"string"}],"currency":"MXN","customer_info":{"name":"DevTest","email":"test@conekta.com","phone":"5522997233","corporate":false,"object":"customer_info"},"fiscal_entity":{"tax_id":"1234567890","name":"Conekta Inc","email":"test@gmail.com","phone":"525511223344","metadata":{"test":true,"company_id":"123"},"address":{"street1":"Nuevo Leon 254","street2":"Departamento 404","postal_code":"06100","city":"Ciudad de Mexico","state":"Ciudad de Mexico","country":"MX","external_number":"123"}},"discount_lines":[{"amount":500,"code":"123","type":"loyalty"}],"line_items":[{"antifraud_info":{"additionalProp1":{},"additionalProp2":{},"additionalProp3":{}},"description":"string","sku":"string","name":"Box of Cohiba S1s","unit_price":20000,"quantity":1,"tags":["string"],"brand":"string","metadata":{"additionalProp1":"string","additionalProp2":"string","additionalProp3":"string"}}],"metadata":{"test":true,"company_id":"123"},"pre_authorize":false,"shipping_contact":{"phone":"525511223344","receiver":"Marvin Fuller","between_streets":"Ackerman Crescent","metadata":{"test":true,"company_id":"123"},"address":{"street1":"Nuevo Leon 254","street2":"Departamento 404","postal_code":"06100","city":"Ciudad de Mexico","state":"Ciudad de Mexico","country":"MX","residential":true},"parent_id":"string","default":true,"deleted":true},"shipping_lines":[{"amount":100,"carrier":"FEDEX","tracking_number":"TRACK123","method":"TRAING","metadata":{"key":"value"}}],"tax_lines":[{"amount":100,"description":"testing","metadata":{"additionalProp1":{},"additionalProp2":{},"additionalProp3":{}}}]}; // OrderRequest | requested field for order
 final String acceptLanguage = es; // String | Use for knowing which language to use
 final String xChildCompanyId = 6441b6376b60c3a638da80af; // String | In the case of a holding company, the company id of the child company to which will process the request.
 
 try {
     final response = api.createOrder(orderRequest, acceptLanguage, xChildCompanyId);
     print(response);
-} catch on DioException (e) {
+} on DioException catch (e) {
     print('Exception when calling OrdersApi->createOrder: $e\n');
 }
 ```
@@ -109,12 +109,12 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/vnd.conekta-v2.2.0+json
+ - **Accept**: application/vnd.conekta-v2.3.0+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getOrderById**
-> OrderResponse getOrderById(id, acceptLanguage, xChildCompanyId)
+> OrderResponse getOrderById(id, acceptLanguage, xChildCompanyId, client)
 
 Get Order
 
@@ -128,11 +128,12 @@ final api = Conekta().getOrdersApi();
 final String id = 6307a60c41de27127515a575; // String | Identifier of the resource
 final String acceptLanguage = es; // String | Use for knowing which language to use
 final String xChildCompanyId = 6441b6376b60c3a638da80af; // String | In the case of a holding company, the company id of the child company to which will process the request.
+final String client = checkout; // String | client of the object to be retrieved
 
 try {
-    final response = api.getOrderById(id, acceptLanguage, xChildCompanyId);
+    final response = api.getOrderById(id, acceptLanguage, xChildCompanyId, client);
     print(response);
-} catch on DioException (e) {
+} on DioException catch (e) {
     print('Exception when calling OrdersApi->getOrderById: $e\n');
 }
 ```
@@ -144,6 +145,7 @@ Name | Type | Description  | Notes
  **id** | **String**| Identifier of the resource | 
  **acceptLanguage** | **String**| Use for knowing which language to use | [optional] [default to 'es']
  **xChildCompanyId** | **String**| In the case of a holding company, the company id of the child company to which will process the request. | [optional] 
+ **client** | **String**| client of the object to be retrieved | [optional] 
 
 ### Return type
 
@@ -156,7 +158,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/vnd.conekta-v2.2.0+json
+ - **Accept**: application/vnd.conekta-v2.3.0+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -189,7 +191,7 @@ final int updatedAtPeriodLte = 1612137600; // int | updated at less than or equa
 try {
     final response = api.getOrders(acceptLanguage, xChildCompanyId, limit, search, next, previous, paymentStatus, lastPaymentInfoPeriodStatus, createdAt, createdAtPeriodGte, createdAtPeriodLte, updatedAtPeriodGte, updatedAtPeriodLte);
     print(response);
-} catch on DioException (e) {
+} on DioException catch (e) {
     print('Exception when calling OrdersApi->getOrders: $e\n');
 }
 ```
@@ -223,7 +225,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/vnd.conekta-v2.2.0+json
+ - **Accept**: application/vnd.conekta-v2.3.0+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -247,7 +249,7 @@ final String xChildCompanyId = 6441b6376b60c3a638da80af; // String | In the case
 try {
     final response = api.orderCancelRefund(id, refundId, acceptLanguage, xChildCompanyId);
     print(response);
-} catch on DioException (e) {
+} on DioException catch (e) {
     print('Exception when calling OrdersApi->orderCancelRefund: $e\n');
 }
 ```
@@ -272,7 +274,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/vnd.conekta-v2.2.0+json
+ - **Accept**: application/vnd.conekta-v2.3.0+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -296,7 +298,7 @@ final String xChildCompanyId = 6441b6376b60c3a638da80af; // String | In the case
 try {
     final response = api.orderRefund(id, orderRefundRequest, acceptLanguage, xChildCompanyId);
     print(response);
-} catch on DioException (e) {
+} on DioException catch (e) {
     print('Exception when calling OrdersApi->orderRefund: $e\n');
 }
 ```
@@ -321,7 +323,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/vnd.conekta-v2.2.0+json
+ - **Accept**: application/vnd.conekta-v2.3.0+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -345,7 +347,7 @@ final OrderCaptureRequest orderCaptureRequest = ; // OrderCaptureRequest | reque
 try {
     final response = api.ordersCreateCapture(id, acceptLanguage, xChildCompanyId, orderCaptureRequest);
     print(response);
-} catch on DioException (e) {
+} on DioException catch (e) {
     print('Exception when calling OrdersApi->ordersCreateCapture: $e\n');
 }
 ```
@@ -370,12 +372,12 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/vnd.conekta-v2.2.0+json
+ - **Accept**: application/vnd.conekta-v2.3.0+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **updateOrder**
-> OrderResponse updateOrder(id, orderUpdateRequest, acceptLanguage)
+> OrderResponse updateOrder(id, orderUpdate, acceptLanguage)
 
 Update Order
 
@@ -387,13 +389,13 @@ import 'package:conekta/api.dart';
 
 final api = Conekta().getOrdersApi();
 final String id = 6307a60c41de27127515a575; // String | Identifier of the resource
-final OrderUpdateRequest orderUpdateRequest = ; // OrderUpdateRequest | requested field for an order
+final OrderUpdate orderUpdate = ; // OrderUpdate | requested field for an order
 final String acceptLanguage = es; // String | Use for knowing which language to use
 
 try {
-    final response = api.updateOrder(id, orderUpdateRequest, acceptLanguage);
+    final response = api.updateOrder(id, orderUpdate, acceptLanguage);
     print(response);
-} catch on DioException (e) {
+} on DioException catch (e) {
     print('Exception when calling OrdersApi->updateOrder: $e\n');
 }
 ```
@@ -403,7 +405,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**| Identifier of the resource | 
- **orderUpdateRequest** | [**OrderUpdateRequest**](OrderUpdateRequest.md)| requested field for an order | 
+ **orderUpdate** | [**OrderUpdate**](OrderUpdate.md)| requested field for an order | 
  **acceptLanguage** | **String**| Use for knowing which language to use | [optional] [default to 'es']
 
 ### Return type
@@ -417,7 +419,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/vnd.conekta-v2.2.0+json
+ - **Accept**: application/vnd.conekta-v2.3.0+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

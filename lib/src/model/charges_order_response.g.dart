@@ -8,18 +8,26 @@ part of 'charges_order_response.dart';
 
 class _$ChargesOrderResponse extends ChargesOrderResponse {
   @override
-  final BuiltList<ChargesOrderResponseAllOfData>? data;
-  @override
   final bool hasMore;
   @override
   final String object;
+  @override
+  final String? nextPageUrl;
+  @override
+  final String? previousPageUrl;
+  @override
+  final BuiltList<ChargeResponse>? data;
 
   factory _$ChargesOrderResponse(
           [void Function(ChargesOrderResponseBuilder)? updates]) =>
       (new ChargesOrderResponseBuilder()..update(updates))._build();
 
   _$ChargesOrderResponse._(
-      {this.data, required this.hasMore, required this.object})
+      {required this.hasMore,
+      required this.object,
+      this.nextPageUrl,
+      this.previousPageUrl,
+      this.data})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         hasMore, r'ChargesOrderResponse', 'hasMore');
@@ -40,17 +48,21 @@ class _$ChargesOrderResponse extends ChargesOrderResponse {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is ChargesOrderResponse &&
-        data == other.data &&
         hasMore == other.hasMore &&
-        object == other.object;
+        object == other.object &&
+        nextPageUrl == other.nextPageUrl &&
+        previousPageUrl == other.previousPageUrl &&
+        data == other.data;
   }
 
   @override
   int get hashCode {
     var _$hash = 0;
-    _$hash = $jc(_$hash, data.hashCode);
     _$hash = $jc(_$hash, hasMore.hashCode);
     _$hash = $jc(_$hash, object.hashCode);
+    _$hash = $jc(_$hash, nextPageUrl.hashCode);
+    _$hash = $jc(_$hash, previousPageUrl.hashCode);
+    _$hash = $jc(_$hash, data.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -58,32 +70,40 @@ class _$ChargesOrderResponse extends ChargesOrderResponse {
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'ChargesOrderResponse')
-          ..add('data', data)
           ..add('hasMore', hasMore)
-          ..add('object', object))
+          ..add('object', object)
+          ..add('nextPageUrl', nextPageUrl)
+          ..add('previousPageUrl', previousPageUrl)
+          ..add('data', data))
         .toString();
   }
 }
 
 class ChargesOrderResponseBuilder
-    implements
-        Builder<ChargesOrderResponse, ChargesOrderResponseBuilder>,
-        PaginationBuilder {
+    implements Builder<ChargesOrderResponse, ChargesOrderResponseBuilder> {
   _$ChargesOrderResponse? _$v;
-
-  ListBuilder<ChargesOrderResponseAllOfData>? _data;
-  ListBuilder<ChargesOrderResponseAllOfData> get data =>
-      _$this._data ??= new ListBuilder<ChargesOrderResponseAllOfData>();
-  set data(covariant ListBuilder<ChargesOrderResponseAllOfData>? data) =>
-      _$this._data = data;
 
   bool? _hasMore;
   bool? get hasMore => _$this._hasMore;
-  set hasMore(covariant bool? hasMore) => _$this._hasMore = hasMore;
+  set hasMore(bool? hasMore) => _$this._hasMore = hasMore;
 
   String? _object;
   String? get object => _$this._object;
-  set object(covariant String? object) => _$this._object = object;
+  set object(String? object) => _$this._object = object;
+
+  String? _nextPageUrl;
+  String? get nextPageUrl => _$this._nextPageUrl;
+  set nextPageUrl(String? nextPageUrl) => _$this._nextPageUrl = nextPageUrl;
+
+  String? _previousPageUrl;
+  String? get previousPageUrl => _$this._previousPageUrl;
+  set previousPageUrl(String? previousPageUrl) =>
+      _$this._previousPageUrl = previousPageUrl;
+
+  ListBuilder<ChargeResponse>? _data;
+  ListBuilder<ChargeResponse> get data =>
+      _$this._data ??= new ListBuilder<ChargeResponse>();
+  set data(ListBuilder<ChargeResponse>? data) => _$this._data = data;
 
   ChargesOrderResponseBuilder() {
     ChargesOrderResponse._defaults(this);
@@ -92,16 +112,18 @@ class ChargesOrderResponseBuilder
   ChargesOrderResponseBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _data = $v.data?.toBuilder();
       _hasMore = $v.hasMore;
       _object = $v.object;
+      _nextPageUrl = $v.nextPageUrl;
+      _previousPageUrl = $v.previousPageUrl;
+      _data = $v.data?.toBuilder();
       _$v = null;
     }
     return this;
   }
 
   @override
-  void replace(covariant ChargesOrderResponse other) {
+  void replace(ChargesOrderResponse other) {
     ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ChargesOrderResponse;
   }
@@ -119,11 +141,13 @@ class ChargesOrderResponseBuilder
     try {
       _$result = _$v ??
           new _$ChargesOrderResponse._(
-              data: _data?.build(),
               hasMore: BuiltValueNullFieldError.checkNotNull(
                   hasMore, r'ChargesOrderResponse', 'hasMore'),
               object: BuiltValueNullFieldError.checkNotNull(
-                  object, r'ChargesOrderResponse', 'object'));
+                  object, r'ChargesOrderResponse', 'object'),
+              nextPageUrl: nextPageUrl,
+              previousPageUrl: previousPageUrl,
+              data: _data?.build());
     } catch (_) {
       late String _$failedField;
       try {

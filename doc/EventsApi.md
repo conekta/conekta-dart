@@ -33,7 +33,7 @@ final String xChildCompanyId = 6441b6376b60c3a638da80af; // String | In the case
 try {
     final response = api.getEvent(id, acceptLanguage, xChildCompanyId);
     print(response);
-} catch on DioException (e) {
+} on DioException catch (e) {
     print('Exception when calling EventsApi->getEvent: $e\n');
 }
 ```
@@ -57,7 +57,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/vnd.conekta-v2.2.0+json
+ - **Accept**: application/vnd.conekta-v2.3.0+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -81,7 +81,7 @@ final String previous = previous_example; // String | previous page
 try {
     final response = api.getEvents(acceptLanguage, xChildCompanyId, limit, search, next, previous);
     print(response);
-} catch on DioException (e) {
+} on DioException catch (e) {
     print('Exception when calling EventsApi->getEvents: $e\n');
 }
 ```
@@ -108,12 +108,12 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/vnd.conekta-v2.2.0+json
+ - **Accept**: application/vnd.conekta-v2.3.0+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **resendEvent**
-> EventsResendResponse resendEvent(eventId, resendRequest, acceptLanguage)
+> EventsResendResponse resendEvent(eventId, resendEventRequest, acceptLanguage)
 
 Resend Event
 
@@ -125,13 +125,13 @@ import 'package:conekta/api.dart';
 
 final api = Conekta().getEventsApi();
 final String eventId = 6463d6e35a4c3e001819e760; // String | event identifier
-final ResendRequest resendRequest = ; // ResendRequest | requested fields for resend an event
+final ResendEventRequest resendEventRequest = ; // ResendEventRequest | requested fields for resend an event
 final String acceptLanguage = es; // String | Use for knowing which language to use
 
 try {
-    final response = api.resendEvent(eventId, resendRequest, acceptLanguage);
+    final response = api.resendEvent(eventId, resendEventRequest, acceptLanguage);
     print(response);
-} catch on DioException (e) {
+} on DioException catch (e) {
     print('Exception when calling EventsApi->resendEvent: $e\n');
 }
 ```
@@ -141,7 +141,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **eventId** | **String**| event identifier | 
- **resendRequest** | [**ResendRequest**](ResendRequest.md)| requested fields for resend an event | 
+ **resendEventRequest** | [**ResendEventRequest**](ResendEventRequest.md)| requested fields for resend an event | 
  **acceptLanguage** | **String**| Use for knowing which language to use | [optional] [default to 'es']
 
 ### Return type
@@ -155,7 +155,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/vnd.conekta-v2.2.0+json
+ - **Accept**: application/vnd.conekta-v2.3.0+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

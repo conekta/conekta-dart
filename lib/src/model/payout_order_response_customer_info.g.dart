@@ -93,38 +93,37 @@ class _$PayoutOrderResponseCustomerInfo
 class PayoutOrderResponseCustomerInfoBuilder
     implements
         Builder<PayoutOrderResponseCustomerInfo,
-            PayoutOrderResponseCustomerInfoBuilder>,
-        OrderCustomerInfoResponseBuilder {
+            PayoutOrderResponseCustomerInfoBuilder> {
   _$PayoutOrderResponseCustomerInfo? _$v;
 
   String? _id;
   String? get id => _$this._id;
-  set id(covariant String? id) => _$this._id = id;
+  set id(String? id) => _$this._id = id;
 
   String? _customerCustomReference;
   String? get customerCustomReference => _$this._customerCustomReference;
-  set customerCustomReference(covariant String? customerCustomReference) =>
+  set customerCustomReference(String? customerCustomReference) =>
       _$this._customerCustomReference = customerCustomReference;
 
   String? _name;
   String? get name => _$this._name;
-  set name(covariant String? name) => _$this._name = name;
+  set name(String? name) => _$this._name = name;
 
   String? _email;
   String? get email => _$this._email;
-  set email(covariant String? email) => _$this._email = email;
+  set email(String? email) => _$this._email = email;
 
   String? _phone;
   String? get phone => _$this._phone;
-  set phone(covariant String? phone) => _$this._phone = phone;
+  set phone(String? phone) => _$this._phone = phone;
 
   bool? _corporate;
   bool? get corporate => _$this._corporate;
-  set corporate(covariant bool? corporate) => _$this._corporate = corporate;
+  set corporate(bool? corporate) => _$this._corporate = corporate;
 
   String? _object;
   String? get object => _$this._object;
-  set object(covariant String? object) => _$this._object = object;
+  set object(String? object) => _$this._object = object;
 
   PayoutOrderResponseCustomerInfoBuilder() {
     PayoutOrderResponseCustomerInfo._defaults(this);
@@ -146,7 +145,7 @@ class PayoutOrderResponseCustomerInfoBuilder
   }
 
   @override
-  void replace(covariant PayoutOrderResponseCustomerInfo other) {
+  void replace(PayoutOrderResponseCustomerInfo other) {
     ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$PayoutOrderResponseCustomerInfo;
   }

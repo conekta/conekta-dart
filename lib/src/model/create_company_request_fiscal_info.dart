@@ -86,15 +86,17 @@ class _$CreateCompanyRequestFiscalInfoSerializer implements PrimitiveSerializer<
         case r'business_phone':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.businessPhone = valueDes;
           break;
         case r'fiscal_type':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.fiscalType = valueDes;
           break;
         default:

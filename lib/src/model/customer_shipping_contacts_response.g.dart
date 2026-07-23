@@ -6,45 +6,8 @@ part of 'customer_shipping_contacts_response.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
-abstract class CustomerShippingContactsResponseBuilder {
-  void replace(CustomerShippingContactsResponse other);
-  void update(void Function(CustomerShippingContactsResponseBuilder) updates);
-  String? get phone;
-  set phone(String? phone);
-
-  String? get receiver;
-  set receiver(String? receiver);
-
-  String? get betweenStreets;
-  set betweenStreets(String? betweenStreets);
-
-  CustomerShippingContactsResponseAddressBuilder get address;
-  set address(CustomerShippingContactsResponseAddressBuilder? address);
-
-  String? get parentId;
-  set parentId(String? parentId);
-
-  bool? get default_;
-  set default_(bool? default_);
-
-  String? get id;
-  set id(String? id);
-
-  int? get createdAt;
-  set createdAt(int? createdAt);
-
-  MapBuilder<String, JsonObject?> get metadata;
-  set metadata(MapBuilder<String, JsonObject?>? metadata);
-
-  String? get object;
-  set object(String? object);
-
-  bool? get deleted;
-  set deleted(bool? deleted);
-}
-
-class _$$CustomerShippingContactsResponse
-    extends $CustomerShippingContactsResponse {
+class _$CustomerShippingContactsResponse
+    extends CustomerShippingContactsResponse {
   @override
   final String? phone;
   @override
@@ -52,7 +15,7 @@ class _$$CustomerShippingContactsResponse
   @override
   final String? betweenStreets;
   @override
-  final CustomerShippingContactsResponseAddress? address;
+  final CustomerShippingContactsAddress? address;
   @override
   final String? parentId;
   @override
@@ -68,12 +31,11 @@ class _$$CustomerShippingContactsResponse
   @override
   final bool? deleted;
 
-  factory _$$CustomerShippingContactsResponse(
-          [void Function($CustomerShippingContactsResponseBuilder)? updates]) =>
-      (new $CustomerShippingContactsResponseBuilder()..update(updates))
-          ._build();
+  factory _$CustomerShippingContactsResponse(
+          [void Function(CustomerShippingContactsResponseBuilder)? updates]) =>
+      (new CustomerShippingContactsResponseBuilder()..update(updates))._build();
 
-  _$$CustomerShippingContactsResponse._(
+  _$CustomerShippingContactsResponse._(
       {this.phone,
       this.receiver,
       this.betweenStreets,
@@ -88,18 +50,18 @@ class _$$CustomerShippingContactsResponse
       : super._();
 
   @override
-  $CustomerShippingContactsResponse rebuild(
-          void Function($CustomerShippingContactsResponseBuilder) updates) =>
+  CustomerShippingContactsResponse rebuild(
+          void Function(CustomerShippingContactsResponseBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  $CustomerShippingContactsResponseBuilder toBuilder() =>
-      new $CustomerShippingContactsResponseBuilder()..replace(this);
+  CustomerShippingContactsResponseBuilder toBuilder() =>
+      new CustomerShippingContactsResponseBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is $CustomerShippingContactsResponse &&
+    return other is CustomerShippingContactsResponse &&
         phone == other.phone &&
         receiver == other.receiver &&
         betweenStreets == other.betweenStreets &&
@@ -133,7 +95,7 @@ class _$$CustomerShippingContactsResponse
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper(r'$CustomerShippingContactsResponse')
+    return (newBuiltValueToStringHelper(r'CustomerShippingContactsResponse')
           ..add('phone', phone)
           ..add('receiver', receiver)
           ..add('betweenStreets', betweenStreets)
@@ -149,68 +111,66 @@ class _$$CustomerShippingContactsResponse
   }
 }
 
-class $CustomerShippingContactsResponseBuilder
+class CustomerShippingContactsResponseBuilder
     implements
-        Builder<$CustomerShippingContactsResponse,
-            $CustomerShippingContactsResponseBuilder>,
-        CustomerShippingContactsResponseBuilder {
-  _$$CustomerShippingContactsResponse? _$v;
+        Builder<CustomerShippingContactsResponse,
+            CustomerShippingContactsResponseBuilder> {
+  _$CustomerShippingContactsResponse? _$v;
 
   String? _phone;
   String? get phone => _$this._phone;
-  set phone(covariant String? phone) => _$this._phone = phone;
+  set phone(String? phone) => _$this._phone = phone;
 
   String? _receiver;
   String? get receiver => _$this._receiver;
-  set receiver(covariant String? receiver) => _$this._receiver = receiver;
+  set receiver(String? receiver) => _$this._receiver = receiver;
 
   String? _betweenStreets;
   String? get betweenStreets => _$this._betweenStreets;
-  set betweenStreets(covariant String? betweenStreets) =>
+  set betweenStreets(String? betweenStreets) =>
       _$this._betweenStreets = betweenStreets;
 
-  CustomerShippingContactsResponseAddressBuilder? _address;
-  CustomerShippingContactsResponseAddressBuilder get address =>
-      _$this._address ??= new CustomerShippingContactsResponseAddressBuilder();
-  set address(
-          covariant CustomerShippingContactsResponseAddressBuilder? address) =>
+  CustomerShippingContactsAddressBuilder? _address;
+  CustomerShippingContactsAddressBuilder get address =>
+      _$this._address ??= new CustomerShippingContactsAddressBuilder();
+  set address(CustomerShippingContactsAddressBuilder? address) =>
       _$this._address = address;
 
   String? _parentId;
   String? get parentId => _$this._parentId;
-  set parentId(covariant String? parentId) => _$this._parentId = parentId;
+  set parentId(String? parentId) => _$this._parentId = parentId;
 
   bool? _default_;
   bool? get default_ => _$this._default_;
-  set default_(covariant bool? default_) => _$this._default_ = default_;
+  set default_(bool? default_) => _$this._default_ = default_;
 
   String? _id;
   String? get id => _$this._id;
-  set id(covariant String? id) => _$this._id = id;
+  set id(String? id) => _$this._id = id;
 
   int? _createdAt;
   int? get createdAt => _$this._createdAt;
-  set createdAt(covariant int? createdAt) => _$this._createdAt = createdAt;
+  set createdAt(int? createdAt) => _$this._createdAt = createdAt;
 
   MapBuilder<String, JsonObject?>? _metadata;
   MapBuilder<String, JsonObject?> get metadata =>
       _$this._metadata ??= new MapBuilder<String, JsonObject?>();
-  set metadata(covariant MapBuilder<String, JsonObject?>? metadata) =>
+  set metadata(MapBuilder<String, JsonObject?>? metadata) =>
       _$this._metadata = metadata;
 
   String? _object;
   String? get object => _$this._object;
-  set object(covariant String? object) => _$this._object = object;
+  set object(String? object) => _$this._object = object;
 
   bool? _deleted;
   bool? get deleted => _$this._deleted;
-  set deleted(covariant bool? deleted) => _$this._deleted = deleted;
+  set deleted(bool? deleted) => _$this._deleted = deleted;
 
-  $CustomerShippingContactsResponseBuilder() {
-    $CustomerShippingContactsResponse._defaults(this);
+  CustomerShippingContactsResponseBuilder() {
+    CustomerShippingContactsResponse._defaults(this);
   }
 
-  $CustomerShippingContactsResponseBuilder get _$this {
+  CustomerShippingContactsResponseBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _phone = $v.phone;
@@ -230,25 +190,24 @@ class $CustomerShippingContactsResponseBuilder
   }
 
   @override
-  void replace(covariant $CustomerShippingContactsResponse other) {
+  void replace(CustomerShippingContactsResponse other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$$CustomerShippingContactsResponse;
+    _$v = other as _$CustomerShippingContactsResponse;
   }
 
   @override
-  void update(
-      void Function($CustomerShippingContactsResponseBuilder)? updates) {
+  void update(void Function(CustomerShippingContactsResponseBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  $CustomerShippingContactsResponse build() => _build();
+  CustomerShippingContactsResponse build() => _build();
 
-  _$$CustomerShippingContactsResponse _build() {
-    _$$CustomerShippingContactsResponse _$result;
+  _$CustomerShippingContactsResponse _build() {
+    _$CustomerShippingContactsResponse _$result;
     try {
       _$result = _$v ??
-          new _$$CustomerShippingContactsResponse._(
+          new _$CustomerShippingContactsResponse._(
               phone: phone,
               receiver: receiver,
               betweenStreets: betweenStreets,
@@ -270,7 +229,7 @@ class $CustomerShippingContactsResponseBuilder
         _metadata?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            r'$CustomerShippingContactsResponse', _$failedField, e.toString());
+            r'CustomerShippingContactsResponse', _$failedField, e.toString());
       }
       rethrow;
     }

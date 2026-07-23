@@ -18,8 +18,8 @@ part 'shipping_request.g.dart';
 /// * [trackingNumber] - Tracking number can be used to track the shipment
 /// * [method] - Method of shipment
 /// * [metadata] - Hash where the user can send additional information for each 'shipping'.
-@BuiltValue(instantiable: false)
-abstract class ShippingRequest  {
+@BuiltValue()
+abstract class ShippingRequest implements Built<ShippingRequest, ShippingRequestBuilder> {
   /// Shipping amount in cents
   @BuiltValueField(wireName: r'amount')
   int get amount;
@@ -40,13 +40,20 @@ abstract class ShippingRequest  {
   @BuiltValueField(wireName: r'metadata')
   BuiltMap<String, JsonObject?>? get metadata;
 
+  ShippingRequest._();
+
+  factory ShippingRequest([void updates(ShippingRequestBuilder b)]) = _$ShippingRequest;
+
+  @BuiltValueHook(initializeBuilder: true)
+  static void _defaults(ShippingRequestBuilder b) => b;
+
   @BuiltValueSerializer(custom: true)
   static Serializer<ShippingRequest> get serializer => _$ShippingRequestSerializer();
 }
 
 class _$ShippingRequestSerializer implements PrimitiveSerializer<ShippingRequest> {
   @override
-  final Iterable<Type> types = const [ShippingRequest];
+  final Iterable<Type> types = const [ShippingRequest, _$ShippingRequest];
 
   @override
   final String wireName = r'ShippingRequest';
@@ -100,46 +107,6 @@ class _$ShippingRequestSerializer implements PrimitiveSerializer<ShippingRequest
     return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
   }
 
-  @override
-  ShippingRequest deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return serializers.deserialize(serialized, specifiedType: FullType($ShippingRequest)) as $ShippingRequest;
-  }
-}
-
-/// a concrete implementation of [ShippingRequest], since [ShippingRequest] is not instantiable
-@BuiltValue(instantiable: true)
-abstract class $ShippingRequest implements ShippingRequest, Built<$ShippingRequest, $ShippingRequestBuilder> {
-  $ShippingRequest._();
-
-  factory $ShippingRequest([void Function($ShippingRequestBuilder)? updates]) = _$$ShippingRequest;
-
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults($ShippingRequestBuilder b) => b;
-
-  @BuiltValueSerializer(custom: true)
-  static Serializer<$ShippingRequest> get serializer => _$$ShippingRequestSerializer();
-}
-
-class _$$ShippingRequestSerializer implements PrimitiveSerializer<$ShippingRequest> {
-  @override
-  final Iterable<Type> types = const [$ShippingRequest, _$$ShippingRequest];
-
-  @override
-  final String wireName = r'$ShippingRequest';
-
-  @override
-  Object serialize(
-    Serializers serializers,
-    $ShippingRequest object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return serializers.serialize(object, specifiedType: FullType(ShippingRequest))!;
-  }
-
   void _deserializeProperties(
     Serializers serializers,
     Object serialized, {
@@ -162,29 +129,33 @@ class _$$ShippingRequestSerializer implements PrimitiveSerializer<$ShippingReque
         case r'carrier':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.carrier = valueDes;
           break;
         case r'tracking_number':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.trackingNumber = valueDes;
           break;
         case r'method':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.method = valueDes;
           break;
         case r'metadata':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
-          ) as BuiltMap<String, JsonObject?>;
+            specifiedType: const FullType.nullable(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
+          ) as BuiltMap<String, JsonObject?>?;
+          if (valueDes == null) continue;
           result.metadata.replace(valueDes);
           break;
         default:
@@ -196,12 +167,12 @@ class _$$ShippingRequestSerializer implements PrimitiveSerializer<$ShippingReque
   }
 
   @override
-  $ShippingRequest deserialize(
+  ShippingRequest deserialize(
     Serializers serializers,
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final result = $ShippingRequestBuilder();
+    final result = ShippingRequestBuilder();
     final serializedList = (serialized as Iterable<Object?>).toList();
     final unhandled = <Object?>[];
     _deserializeProperties(

@@ -11,9 +11,9 @@ import 'package:dio/dio.dart';
 import 'package:conekta/src/api_util.dart';
 import 'package:conekta/src/model/error.dart';
 import 'package:conekta/src/model/get_webhooks_response.dart';
+import 'package:conekta/src/model/update_webhook.dart';
 import 'package:conekta/src/model/webhook_request.dart';
 import 'package:conekta/src/model/webhook_response.dart';
-import 'package:conekta/src/model/webhook_update_request.dart';
 import 'package:conekta/src/utils/utils.dart';
 
 class WebhooksApi {
@@ -58,13 +58,13 @@ class WebhooksApi {
 
     // to determine the Accept header
     List<String> _accepts = [ 
-        "application/vnd.conekta-v2.2.0+json"
+        "application/vnd.conekta-v2.3.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/7.0.7',
+        r'User-Agent': r'Conekta/v2 DartBindings/9.0.0',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (localVarAccept != null) r'Accept': localVarAccept,
         if (localVarContentType != null) r'Content-Type': localVarContentType,
@@ -176,13 +176,13 @@ class WebhooksApi {
 
     // to determine the Accept header
     List<String> _accepts = [ 
-        "application/vnd.conekta-v2.2.0+json"
+        "application/vnd.conekta-v2.3.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/7.0.7',
+        r'User-Agent': r'Conekta/v2 DartBindings/9.0.0',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (localVarAccept != null) r'Accept': localVarAccept,
         if (localVarContentType != null) r'Content-Type': localVarContentType,
@@ -276,13 +276,13 @@ class WebhooksApi {
 
     // to determine the Accept header
     List<String> _accepts = [ 
-        "application/vnd.conekta-v2.2.0+json"
+        "application/vnd.conekta-v2.3.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/7.0.7',
+        r'User-Agent': r'Conekta/v2 DartBindings/9.0.0',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
@@ -385,13 +385,13 @@ class WebhooksApi {
 
     // to determine the Accept header
     List<String> _accepts = [ 
-        "application/vnd.conekta-v2.2.0+json"
+        "application/vnd.conekta-v2.3.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/7.0.7',
+        r'User-Agent': r'Conekta/v2 DartBindings/9.0.0',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
@@ -493,13 +493,13 @@ class WebhooksApi {
 
     // to determine the Accept header
     List<String> _accepts = [ 
-        "application/vnd.conekta-v2.2.0+json"
+        "application/vnd.conekta-v2.3.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/7.0.7',
+        r'User-Agent': r'Conekta/v2 DartBindings/9.0.0',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (localVarAccept != null) r'Accept': localVarAccept,
         if (localVarContentType != null) r'Content-Type': localVarContentType,
@@ -563,7 +563,7 @@ class WebhooksApi {
   ///
   /// Parameters:
   /// * [id] - Identifier of the resource
-  /// * [webhookUpdateRequest] - requested fields in order to update a webhook
+  /// * [updateWebhook] - requested fields in order to update a webhook
   /// * [acceptLanguage] - Use for knowing which language to use
   /// * [xChildCompanyId] - In the case of a holding company, the company id of the child company to which will process the request.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
@@ -577,7 +577,7 @@ class WebhooksApi {
   /// Throws [DioException] if API call or serialization fails
   Future<Response<WebhookResponse>> updateWebhook({ 
     required String id,
-    required WebhookUpdateRequest webhookUpdateRequest,
+    required UpdateWebhook updateWebhook,
     String? acceptLanguage = 'es',
     String? xChildCompanyId,
     CancelToken? cancelToken,
@@ -596,13 +596,13 @@ class WebhooksApi {
 
     // to determine the Accept header
     List<String> _accepts = [ 
-        "application/vnd.conekta-v2.2.0+json"
+        "application/vnd.conekta-v2.3.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
     final _options = Options(
       method: r'PUT',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/7.0.7',
+        r'User-Agent': r'Conekta/v2 DartBindings/9.0.0',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
@@ -627,8 +627,8 @@ class WebhooksApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(WebhookUpdateRequest);
-      _bodyData = _serializers.serialize(webhookUpdateRequest, specifiedType: _type);
+      const _type = FullType(UpdateWebhook);
+      _bodyData = _serializers.serialize(updateWebhook, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(

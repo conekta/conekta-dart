@@ -3,12 +3,12 @@
 //
 
 // ignore_for_file: unused_element
+import 'package:conekta/src/model/cash_agreements_response.dart';
 import 'package:conekta/src/model/payment_method_cash_response.dart';
 import 'package:conekta/src/model/payment_method_card_response.dart';
-import 'package:conekta/src/model/payment_method_cash_response_all_of_agreements.dart';
 import 'package:built_collection/built_collection.dart';
-import 'package:conekta/src/model/payment_method_spei_recurrent.dart';
 import 'package:conekta/src/model/payment_method_cash_recurrent_response.dart';
+import 'package:conekta/src/model/payment_method_spei_recurrent_response.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:one_of/one_of.dart';
@@ -35,6 +35,7 @@ part 'create_customer_payment_methods_response.g.dart';
 /// * [expMonth] 
 /// * [expYear] 
 /// * [brand] 
+/// * [issuer] - Name of the institution that issued the card
 /// * [name] 
 /// * [default_] 
 /// * [visibleOnCheckout] 
@@ -42,7 +43,7 @@ part 'create_customer_payment_methods_response.g.dart';
 /// * [bank] - Bank name for the SPEI payment method
 @BuiltValue()
 abstract class CreateCustomerPaymentMethodsResponse implements Built<CreateCustomerPaymentMethodsResponse, CreateCustomerPaymentMethodsResponseBuilder> {
-  /// One Of [PaymentMethodCardResponse], [PaymentMethodCashRecurrentResponse], [PaymentMethodCashResponse], [PaymentMethodSpeiRecurrent]
+  /// One Of [PaymentMethodCardResponse], [PaymentMethodCashRecurrentResponse], [PaymentMethodCashResponse], [PaymentMethodSpeiRecurrentResponse]
   OneOf get oneOf;
 
   static const String discriminatorFieldName = r'type';
@@ -51,7 +52,7 @@ abstract class CreateCustomerPaymentMethodsResponse implements Built<CreateCusto
     r'card': PaymentMethodCardResponse,
     r'cash': PaymentMethodCashResponse,
     r'cash_recurrent': PaymentMethodCashRecurrentResponse,
-    r'spei_recurrent': PaymentMethodSpeiRecurrent,
+    r'spei_recurrent': PaymentMethodSpeiRecurrentResponse,
   };
 
   CreateCustomerPaymentMethodsResponse._();
@@ -76,7 +77,7 @@ extension CreateCustomerPaymentMethodsResponseDiscriminatorExt on CreateCustomer
         if (this is PaymentMethodCashRecurrentResponse) {
             return r'cash_recurrent';
         }
-        if (this is PaymentMethodSpeiRecurrent) {
+        if (this is PaymentMethodSpeiRecurrentResponse) {
             return r'spei_recurrent';
         }
         return null;
@@ -93,7 +94,7 @@ extension CreateCustomerPaymentMethodsResponseBuilderDiscriminatorExt on CreateC
         if (this is PaymentMethodCashRecurrentResponseBuilder) {
             return r'cash_recurrent';
         }
-        if (this is PaymentMethodSpeiRecurrentBuilder) {
+        if (this is PaymentMethodSpeiRecurrentResponseBuilder) {
             return r'spei_recurrent';
         }
         return null;
@@ -136,7 +137,7 @@ class _$CreateCustomerPaymentMethodsResponseSerializer implements PrimitiveSeria
     final discIndex = serializedList.indexOf(CreateCustomerPaymentMethodsResponse.discriminatorFieldName) + 1;
     final discValue = serializers.deserialize(serializedList[discIndex], specifiedType: FullType(String)) as String;
     oneOfDataSrc = serialized;
-    final oneOfTypes = [PaymentMethodCardResponse, PaymentMethodCashResponse, PaymentMethodCashRecurrentResponse, PaymentMethodSpeiRecurrent, ];
+    final oneOfTypes = [PaymentMethodCardResponse, PaymentMethodCashResponse, PaymentMethodCashRecurrentResponse, PaymentMethodSpeiRecurrentResponse, ];
     Object oneOfResult;
     Type oneOfType;
     switch (discValue) {
@@ -164,9 +165,9 @@ class _$CreateCustomerPaymentMethodsResponseSerializer implements PrimitiveSeria
       case r'spei_recurrent':
         oneOfResult = serializers.deserialize(
           oneOfDataSrc,
-          specifiedType: FullType(PaymentMethodSpeiRecurrent),
-        ) as PaymentMethodSpeiRecurrent;
-        oneOfType = PaymentMethodSpeiRecurrent;
+          specifiedType: FullType(PaymentMethodSpeiRecurrentResponse),
+        ) as PaymentMethodSpeiRecurrentResponse;
+        oneOfType = PaymentMethodSpeiRecurrentResponse;
         break;
       default:
         throw UnsupportedError("Couldn't deserialize oneOf for the discriminator value: ${discValue}");

@@ -18,7 +18,7 @@ class _$PayoutOrderResponse extends PayoutOrderResponse {
   @override
   final PayoutOrderResponseCustomerInfo customerInfo;
   @override
-  final int? expiresAt;
+  final int expiresAt;
   @override
   final String id;
   @override
@@ -32,7 +32,7 @@ class _$PayoutOrderResponse extends PayoutOrderResponse {
   @override
   final String reason;
   @override
-  final String? status;
+  final String status;
   @override
   final int updatedAt;
 
@@ -46,14 +46,14 @@ class _$PayoutOrderResponse extends PayoutOrderResponse {
       required this.createdAt,
       required this.currency,
       required this.customerInfo,
-      this.expiresAt,
+      required this.expiresAt,
       required this.id,
       required this.livemode,
       required this.object,
       this.metadata,
       required this.payouts,
       required this.reason,
-      this.status,
+      required this.status,
       required this.updatedAt})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
@@ -66,6 +66,8 @@ class _$PayoutOrderResponse extends PayoutOrderResponse {
         currency, r'PayoutOrderResponse', 'currency');
     BuiltValueNullFieldError.checkNotNull(
         customerInfo, r'PayoutOrderResponse', 'customerInfo');
+    BuiltValueNullFieldError.checkNotNull(
+        expiresAt, r'PayoutOrderResponse', 'expiresAt');
     BuiltValueNullFieldError.checkNotNull(id, r'PayoutOrderResponse', 'id');
     BuiltValueNullFieldError.checkNotNull(
         livemode, r'PayoutOrderResponse', 'livemode');
@@ -75,6 +77,8 @@ class _$PayoutOrderResponse extends PayoutOrderResponse {
         payouts, r'PayoutOrderResponse', 'payouts');
     BuiltValueNullFieldError.checkNotNull(
         reason, r'PayoutOrderResponse', 'reason');
+    BuiltValueNullFieldError.checkNotNull(
+        status, r'PayoutOrderResponse', 'status');
     BuiltValueNullFieldError.checkNotNull(
         updatedAt, r'PayoutOrderResponse', 'updatedAt');
   }
@@ -271,7 +275,8 @@ class PayoutOrderResponseBuilder
               currency: BuiltValueNullFieldError.checkNotNull(
                   currency, r'PayoutOrderResponse', 'currency'),
               customerInfo: customerInfo.build(),
-              expiresAt: expiresAt,
+              expiresAt: BuiltValueNullFieldError.checkNotNull(
+                  expiresAt, r'PayoutOrderResponse', 'expiresAt'),
               id: BuiltValueNullFieldError.checkNotNull(
                   id, r'PayoutOrderResponse', 'id'),
               livemode: BuiltValueNullFieldError.checkNotNull(
@@ -282,9 +287,9 @@ class PayoutOrderResponseBuilder
               payouts: payouts.build(),
               reason: BuiltValueNullFieldError.checkNotNull(
                   reason, r'PayoutOrderResponse', 'reason'),
-              status: status,
-              updatedAt: BuiltValueNullFieldError.checkNotNull(
-                  updatedAt, r'PayoutOrderResponse', 'updatedAt'));
+              status:
+                  BuiltValueNullFieldError.checkNotNull(status, r'PayoutOrderResponse', 'status'),
+              updatedAt: BuiltValueNullFieldError.checkNotNull(updatedAt, r'PayoutOrderResponse', 'updatedAt'));
     } catch (_) {
       late String _$failedField;
       try {

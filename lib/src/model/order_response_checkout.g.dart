@@ -6,6 +6,51 @@ part of 'order_response_checkout.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
+const OrderResponseCheckoutExcludedPaymentMethodsEnum
+    _$orderResponseCheckoutExcludedPaymentMethodsEnum_cash =
+    const OrderResponseCheckoutExcludedPaymentMethodsEnum._('cash');
+const OrderResponseCheckoutExcludedPaymentMethodsEnum
+    _$orderResponseCheckoutExcludedPaymentMethodsEnum_card =
+    const OrderResponseCheckoutExcludedPaymentMethodsEnum._('card');
+const OrderResponseCheckoutExcludedPaymentMethodsEnum
+    _$orderResponseCheckoutExcludedPaymentMethodsEnum_bankTransfer =
+    const OrderResponseCheckoutExcludedPaymentMethodsEnum._('bankTransfer');
+const OrderResponseCheckoutExcludedPaymentMethodsEnum
+    _$orderResponseCheckoutExcludedPaymentMethodsEnum_bnpl =
+    const OrderResponseCheckoutExcludedPaymentMethodsEnum._('bnpl');
+const OrderResponseCheckoutExcludedPaymentMethodsEnum
+    _$orderResponseCheckoutExcludedPaymentMethodsEnum_payByBank =
+    const OrderResponseCheckoutExcludedPaymentMethodsEnum._('payByBank');
+
+OrderResponseCheckoutExcludedPaymentMethodsEnum
+    _$orderResponseCheckoutExcludedPaymentMethodsEnumValueOf(String name) {
+  switch (name) {
+    case 'cash':
+      return _$orderResponseCheckoutExcludedPaymentMethodsEnum_cash;
+    case 'card':
+      return _$orderResponseCheckoutExcludedPaymentMethodsEnum_card;
+    case 'bankTransfer':
+      return _$orderResponseCheckoutExcludedPaymentMethodsEnum_bankTransfer;
+    case 'bnpl':
+      return _$orderResponseCheckoutExcludedPaymentMethodsEnum_bnpl;
+    case 'payByBank':
+      return _$orderResponseCheckoutExcludedPaymentMethodsEnum_payByBank;
+    default:
+      throw new ArgumentError(name);
+  }
+}
+
+final BuiltSet<OrderResponseCheckoutExcludedPaymentMethodsEnum>
+    _$orderResponseCheckoutExcludedPaymentMethodsEnumValues =
+    new BuiltSet<OrderResponseCheckoutExcludedPaymentMethodsEnum>(const <
+        OrderResponseCheckoutExcludedPaymentMethodsEnum>[
+  _$orderResponseCheckoutExcludedPaymentMethodsEnum_cash,
+  _$orderResponseCheckoutExcludedPaymentMethodsEnum_card,
+  _$orderResponseCheckoutExcludedPaymentMethodsEnum_bankTransfer,
+  _$orderResponseCheckoutExcludedPaymentMethodsEnum_bnpl,
+  _$orderResponseCheckoutExcludedPaymentMethodsEnum_payByBank,
+]);
+
 const OrderResponseCheckoutExcludeCardNetworksEnum
     _$orderResponseCheckoutExcludeCardNetworksEnum_visa =
     const OrderResponseCheckoutExcludeCardNetworksEnum._('visa');
@@ -39,9 +84,51 @@ final BuiltSet<OrderResponseCheckoutExcludeCardNetworksEnum>
   _$orderResponseCheckoutExcludeCardNetworksEnum_amex,
 ]);
 
+Serializer<OrderResponseCheckoutExcludedPaymentMethodsEnum>
+    _$orderResponseCheckoutExcludedPaymentMethodsEnumSerializer =
+    new _$OrderResponseCheckoutExcludedPaymentMethodsEnumSerializer();
 Serializer<OrderResponseCheckoutExcludeCardNetworksEnum>
     _$orderResponseCheckoutExcludeCardNetworksEnumSerializer =
     new _$OrderResponseCheckoutExcludeCardNetworksEnumSerializer();
+
+class _$OrderResponseCheckoutExcludedPaymentMethodsEnumSerializer
+    implements
+        PrimitiveSerializer<OrderResponseCheckoutExcludedPaymentMethodsEnum> {
+  static const Map<String, Object> _toWire = const <String, Object>{
+    'cash': 'cash',
+    'card': 'card',
+    'bankTransfer': 'bank_transfer',
+    'bnpl': 'bnpl',
+    'payByBank': 'pay_by_bank',
+  };
+  static const Map<Object, String> _fromWire = const <Object, String>{
+    'cash': 'cash',
+    'card': 'card',
+    'bank_transfer': 'bankTransfer',
+    'bnpl': 'bnpl',
+    'pay_by_bank': 'payByBank',
+  };
+
+  @override
+  final Iterable<Type> types = const <Type>[
+    OrderResponseCheckoutExcludedPaymentMethodsEnum
+  ];
+  @override
+  final String wireName = 'OrderResponseCheckoutExcludedPaymentMethodsEnum';
+
+  @override
+  Object serialize(Serializers serializers,
+          OrderResponseCheckoutExcludedPaymentMethodsEnum object,
+          {FullType specifiedType = FullType.unspecified}) =>
+      _toWire[object.name] ?? object.name;
+
+  @override
+  OrderResponseCheckoutExcludedPaymentMethodsEnum deserialize(
+          Serializers serializers, Object serialized,
+          {FullType specifiedType = FullType.unspecified}) =>
+      OrderResponseCheckoutExcludedPaymentMethodsEnum.valueOf(
+          _fromWire[serialized] ?? (serialized is String ? serialized : ''));
+}
 
 class _$OrderResponseCheckoutExcludeCardNetworksEnumSerializer
     implements
@@ -82,6 +169,9 @@ class _$OrderResponseCheckout extends OrderResponseCheckout {
   @override
   final BuiltList<String>? allowedPaymentMethods;
   @override
+  final BuiltList<OrderResponseCheckoutExcludedPaymentMethodsEnum>?
+      excludedPaymentMethods;
+  @override
   final bool? canNotExpire;
   @override
   final int? emailsSent;
@@ -95,11 +185,13 @@ class _$OrderResponseCheckout extends OrderResponseCheckout {
   @override
   final bool? force3dsFlow;
   @override
-  final String? id;
+  final bool? forceSaveCard;
+  @override
+  final String id;
   @override
   final bool? isRedirectOnFailure;
   @override
-  final bool? livemode;
+  final bool livemode;
   @override
   final int? maxFailedRetries;
   @override
@@ -109,11 +201,11 @@ class _$OrderResponseCheckout extends OrderResponseCheckout {
   @override
   final BuiltList<int>? monthlyInstallmentsOptions;
   @override
-  final String? name;
+  final String name;
   @override
   final bool? needsShippingContact;
   @override
-  final String? object;
+  final String object;
   @override
   final bool? onDemandEnabled;
   @override
@@ -133,7 +225,7 @@ class _$OrderResponseCheckout extends OrderResponseCheckout {
   @override
   final String? status;
   @override
-  final String? type;
+  final String type;
   @override
   final String? url;
 
@@ -143,22 +235,24 @@ class _$OrderResponseCheckout extends OrderResponseCheckout {
 
   _$OrderResponseCheckout._(
       {this.allowedPaymentMethods,
+      this.excludedPaymentMethods,
       this.canNotExpire,
       this.emailsSent,
       this.excludeCardNetworks,
       this.expiresAt,
       this.failureUrl,
       this.force3dsFlow,
-      this.id,
+      this.forceSaveCard,
+      required this.id,
       this.isRedirectOnFailure,
-      this.livemode,
+      required this.livemode,
       this.maxFailedRetries,
       this.metadata,
       this.monthlyInstallmentsEnabled,
       this.monthlyInstallmentsOptions,
-      this.name,
+      required this.name,
       this.needsShippingContact,
-      this.object,
+      required this.object,
       this.onDemandEnabled,
       this.paidPaymentsCount,
       this.recurrent,
@@ -168,9 +262,19 @@ class _$OrderResponseCheckout extends OrderResponseCheckout {
       this.successUrl,
       this.startsAt,
       this.status,
-      this.type,
+      required this.type,
       this.url})
-      : super._();
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(id, r'OrderResponseCheckout', 'id');
+    BuiltValueNullFieldError.checkNotNull(
+        livemode, r'OrderResponseCheckout', 'livemode');
+    BuiltValueNullFieldError.checkNotNull(
+        name, r'OrderResponseCheckout', 'name');
+    BuiltValueNullFieldError.checkNotNull(
+        object, r'OrderResponseCheckout', 'object');
+    BuiltValueNullFieldError.checkNotNull(
+        type, r'OrderResponseCheckout', 'type');
+  }
 
   @override
   OrderResponseCheckout rebuild(
@@ -186,12 +290,14 @@ class _$OrderResponseCheckout extends OrderResponseCheckout {
     if (identical(other, this)) return true;
     return other is OrderResponseCheckout &&
         allowedPaymentMethods == other.allowedPaymentMethods &&
+        excludedPaymentMethods == other.excludedPaymentMethods &&
         canNotExpire == other.canNotExpire &&
         emailsSent == other.emailsSent &&
         excludeCardNetworks == other.excludeCardNetworks &&
         expiresAt == other.expiresAt &&
         failureUrl == other.failureUrl &&
         force3dsFlow == other.force3dsFlow &&
+        forceSaveCard == other.forceSaveCard &&
         id == other.id &&
         isRedirectOnFailure == other.isRedirectOnFailure &&
         livemode == other.livemode &&
@@ -219,12 +325,14 @@ class _$OrderResponseCheckout extends OrderResponseCheckout {
   int get hashCode {
     var _$hash = 0;
     _$hash = $jc(_$hash, allowedPaymentMethods.hashCode);
+    _$hash = $jc(_$hash, excludedPaymentMethods.hashCode);
     _$hash = $jc(_$hash, canNotExpire.hashCode);
     _$hash = $jc(_$hash, emailsSent.hashCode);
     _$hash = $jc(_$hash, excludeCardNetworks.hashCode);
     _$hash = $jc(_$hash, expiresAt.hashCode);
     _$hash = $jc(_$hash, failureUrl.hashCode);
     _$hash = $jc(_$hash, force3dsFlow.hashCode);
+    _$hash = $jc(_$hash, forceSaveCard.hashCode);
     _$hash = $jc(_$hash, id.hashCode);
     _$hash = $jc(_$hash, isRedirectOnFailure.hashCode);
     _$hash = $jc(_$hash, livemode.hashCode);
@@ -254,12 +362,14 @@ class _$OrderResponseCheckout extends OrderResponseCheckout {
   String toString() {
     return (newBuiltValueToStringHelper(r'OrderResponseCheckout')
           ..add('allowedPaymentMethods', allowedPaymentMethods)
+          ..add('excludedPaymentMethods', excludedPaymentMethods)
           ..add('canNotExpire', canNotExpire)
           ..add('emailsSent', emailsSent)
           ..add('excludeCardNetworks', excludeCardNetworks)
           ..add('expiresAt', expiresAt)
           ..add('failureUrl', failureUrl)
           ..add('force3dsFlow', force3dsFlow)
+          ..add('forceSaveCard', forceSaveCard)
           ..add('id', id)
           ..add('isRedirectOnFailure', isRedirectOnFailure)
           ..add('livemode', livemode)
@@ -295,6 +405,16 @@ class OrderResponseCheckoutBuilder
   set allowedPaymentMethods(ListBuilder<String>? allowedPaymentMethods) =>
       _$this._allowedPaymentMethods = allowedPaymentMethods;
 
+  ListBuilder<OrderResponseCheckoutExcludedPaymentMethodsEnum>?
+      _excludedPaymentMethods;
+  ListBuilder<OrderResponseCheckoutExcludedPaymentMethodsEnum>
+      get excludedPaymentMethods => _$this._excludedPaymentMethods ??=
+          new ListBuilder<OrderResponseCheckoutExcludedPaymentMethodsEnum>();
+  set excludedPaymentMethods(
+          ListBuilder<OrderResponseCheckoutExcludedPaymentMethodsEnum>?
+              excludedPaymentMethods) =>
+      _$this._excludedPaymentMethods = excludedPaymentMethods;
+
   bool? _canNotExpire;
   bool? get canNotExpire => _$this._canNotExpire;
   set canNotExpire(bool? canNotExpire) => _$this._canNotExpire = canNotExpire;
@@ -324,6 +444,11 @@ class OrderResponseCheckoutBuilder
   bool? _force3dsFlow;
   bool? get force3dsFlow => _$this._force3dsFlow;
   set force3dsFlow(bool? force3dsFlow) => _$this._force3dsFlow = force3dsFlow;
+
+  bool? _forceSaveCard;
+  bool? get forceSaveCard => _$this._forceSaveCard;
+  set forceSaveCard(bool? forceSaveCard) =>
+      _$this._forceSaveCard = forceSaveCard;
 
   String? _id;
   String? get id => _$this._id;
@@ -429,12 +554,14 @@ class OrderResponseCheckoutBuilder
     final $v = _$v;
     if ($v != null) {
       _allowedPaymentMethods = $v.allowedPaymentMethods?.toBuilder();
+      _excludedPaymentMethods = $v.excludedPaymentMethods?.toBuilder();
       _canNotExpire = $v.canNotExpire;
       _emailsSent = $v.emailsSent;
       _excludeCardNetworks = $v.excludeCardNetworks?.toBuilder();
       _expiresAt = $v.expiresAt;
       _failureUrl = $v.failureUrl;
       _force3dsFlow = $v.force3dsFlow;
+      _forceSaveCard = $v.forceSaveCard;
       _id = $v.id;
       _isRedirectOnFailure = $v.isRedirectOnFailure;
       _livemode = $v.livemode;
@@ -481,22 +608,28 @@ class OrderResponseCheckoutBuilder
       _$result = _$v ??
           new _$OrderResponseCheckout._(
               allowedPaymentMethods: _allowedPaymentMethods?.build(),
+              excludedPaymentMethods: _excludedPaymentMethods?.build(),
               canNotExpire: canNotExpire,
               emailsSent: emailsSent,
               excludeCardNetworks: _excludeCardNetworks?.build(),
               expiresAt: expiresAt,
               failureUrl: failureUrl,
               force3dsFlow: force3dsFlow,
-              id: id,
+              forceSaveCard: forceSaveCard,
+              id: BuiltValueNullFieldError.checkNotNull(
+                  id, r'OrderResponseCheckout', 'id'),
               isRedirectOnFailure: isRedirectOnFailure,
-              livemode: livemode,
+              livemode: BuiltValueNullFieldError.checkNotNull(
+                  livemode, r'OrderResponseCheckout', 'livemode'),
               maxFailedRetries: maxFailedRetries,
               metadata: _metadata?.build(),
               monthlyInstallmentsEnabled: monthlyInstallmentsEnabled,
               monthlyInstallmentsOptions: _monthlyInstallmentsOptions?.build(),
-              name: name,
+              name: BuiltValueNullFieldError.checkNotNull(
+                  name, r'OrderResponseCheckout', 'name'),
               needsShippingContact: needsShippingContact,
-              object: object,
+              object: BuiltValueNullFieldError.checkNotNull(
+                  object, r'OrderResponseCheckout', 'object'),
               onDemandEnabled: onDemandEnabled,
               paidPaymentsCount: paidPaymentsCount,
               recurrent: recurrent,
@@ -506,13 +639,16 @@ class OrderResponseCheckoutBuilder
               successUrl: successUrl,
               startsAt: startsAt,
               status: status,
-              type: type,
+              type: BuiltValueNullFieldError.checkNotNull(
+                  type, r'OrderResponseCheckout', 'type'),
               url: url);
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'allowedPaymentMethods';
         _allowedPaymentMethods?.build();
+        _$failedField = 'excludedPaymentMethods';
+        _excludedPaymentMethods?.build();
 
         _$failedField = 'excludeCardNetworks';
         _excludeCardNetworks?.build();

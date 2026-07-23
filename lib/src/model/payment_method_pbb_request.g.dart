@@ -63,23 +63,23 @@ class _$PaymentMethodPbbRequestProductTypeEnumSerializer
 
 class _$PaymentMethodPbbRequest extends PaymentMethodPbbRequest {
   @override
+  final String type;
+  @override
   final int? expiresAt;
   @override
   final PaymentMethodPbbRequestProductTypeEnum productType;
-  @override
-  final String type;
 
   factory _$PaymentMethodPbbRequest(
           [void Function(PaymentMethodPbbRequestBuilder)? updates]) =>
       (new PaymentMethodPbbRequestBuilder()..update(updates))._build();
 
   _$PaymentMethodPbbRequest._(
-      {this.expiresAt, required this.productType, required this.type})
+      {required this.type, this.expiresAt, required this.productType})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        productType, r'PaymentMethodPbbRequest', 'productType');
-    BuiltValueNullFieldError.checkNotNull(
         type, r'PaymentMethodPbbRequest', 'type');
+    BuiltValueNullFieldError.checkNotNull(
+        productType, r'PaymentMethodPbbRequest', 'productType');
   }
 
   @override
@@ -95,17 +95,17 @@ class _$PaymentMethodPbbRequest extends PaymentMethodPbbRequest {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is PaymentMethodPbbRequest &&
+        type == other.type &&
         expiresAt == other.expiresAt &&
-        productType == other.productType &&
-        type == other.type;
+        productType == other.productType;
   }
 
   @override
   int get hashCode {
     var _$hash = 0;
+    _$hash = $jc(_$hash, type.hashCode);
     _$hash = $jc(_$hash, expiresAt.hashCode);
     _$hash = $jc(_$hash, productType.hashCode);
-    _$hash = $jc(_$hash, type.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -113,33 +113,31 @@ class _$PaymentMethodPbbRequest extends PaymentMethodPbbRequest {
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'PaymentMethodPbbRequest')
+          ..add('type', type)
           ..add('expiresAt', expiresAt)
-          ..add('productType', productType)
-          ..add('type', type))
+          ..add('productType', productType))
         .toString();
   }
 }
 
 class PaymentMethodPbbRequestBuilder
     implements
-        Builder<PaymentMethodPbbRequest, PaymentMethodPbbRequestBuilder>,
-        CustomerPaymentMethodRequestBuilder {
+        Builder<PaymentMethodPbbRequest, PaymentMethodPbbRequestBuilder> {
   _$PaymentMethodPbbRequest? _$v;
+
+  String? _type;
+  String? get type => _$this._type;
+  set type(String? type) => _$this._type = type;
 
   int? _expiresAt;
   int? get expiresAt => _$this._expiresAt;
-  set expiresAt(covariant int? expiresAt) => _$this._expiresAt = expiresAt;
+  set expiresAt(int? expiresAt) => _$this._expiresAt = expiresAt;
 
   PaymentMethodPbbRequestProductTypeEnum? _productType;
   PaymentMethodPbbRequestProductTypeEnum? get productType =>
       _$this._productType;
-  set productType(
-          covariant PaymentMethodPbbRequestProductTypeEnum? productType) =>
+  set productType(PaymentMethodPbbRequestProductTypeEnum? productType) =>
       _$this._productType = productType;
-
-  String? _type;
-  String? get type => _$this._type;
-  set type(covariant String? type) => _$this._type = type;
 
   PaymentMethodPbbRequestBuilder() {
     PaymentMethodPbbRequest._defaults(this);
@@ -148,16 +146,16 @@ class PaymentMethodPbbRequestBuilder
   PaymentMethodPbbRequestBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
+      _type = $v.type;
       _expiresAt = $v.expiresAt;
       _productType = $v.productType;
-      _type = $v.type;
       _$v = null;
     }
     return this;
   }
 
   @override
-  void replace(covariant PaymentMethodPbbRequest other) {
+  void replace(PaymentMethodPbbRequest other) {
     ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$PaymentMethodPbbRequest;
   }
@@ -173,11 +171,11 @@ class PaymentMethodPbbRequestBuilder
   _$PaymentMethodPbbRequest _build() {
     final _$result = _$v ??
         new _$PaymentMethodPbbRequest._(
+            type: BuiltValueNullFieldError.checkNotNull(
+                type, r'PaymentMethodPbbRequest', 'type'),
             expiresAt: expiresAt,
             productType: BuiltValueNullFieldError.checkNotNull(
-                productType, r'PaymentMethodPbbRequest', 'productType'),
-            type: BuiltValueNullFieldError.checkNotNull(
-                type, r'PaymentMethodPbbRequest', 'type'));
+                productType, r'PaymentMethodPbbRequest', 'productType'));
     replace(_$result);
     return _$result;
   }

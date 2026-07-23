@@ -10,7 +10,7 @@ class _$OrderRequest extends OrderRequest {
   @override
   final BuiltList<ChargeRequest>? charges;
   @override
-  final CheckoutRequest? checkout;
+  final OrderCheckoutRequest? checkout;
   @override
   final String currency;
   @override
@@ -32,7 +32,7 @@ class _$OrderRequest extends OrderRequest {
   @override
   final String? returnUrl;
   @override
-  final CustomerShippingContacts? shippingContact;
+  final CustomerShippingContactsRequest? shippingContact;
   @override
   final BuiltList<ShippingRequest>? shippingLines;
   @override
@@ -153,10 +153,11 @@ class OrderRequestBuilder
       _$this._charges ??= new ListBuilder<ChargeRequest>();
   set charges(ListBuilder<ChargeRequest>? charges) => _$this._charges = charges;
 
-  CheckoutRequestBuilder? _checkout;
-  CheckoutRequestBuilder get checkout =>
-      _$this._checkout ??= new CheckoutRequestBuilder();
-  set checkout(CheckoutRequestBuilder? checkout) => _$this._checkout = checkout;
+  OrderCheckoutRequestBuilder? _checkout;
+  OrderCheckoutRequestBuilder get checkout =>
+      _$this._checkout ??= new OrderCheckoutRequestBuilder();
+  set checkout(OrderCheckoutRequestBuilder? checkout) =>
+      _$this._checkout = checkout;
 
   String? _currency;
   String? get currency => _$this._currency;
@@ -210,9 +211,11 @@ class OrderRequestBuilder
   String? get returnUrl => _$this._returnUrl;
   set returnUrl(String? returnUrl) => _$this._returnUrl = returnUrl;
 
-  CustomerShippingContacts? _shippingContact;
-  CustomerShippingContacts? get shippingContact => _$this._shippingContact;
-  set shippingContact(CustomerShippingContacts? shippingContact) =>
+  CustomerShippingContactsRequestBuilder? _shippingContact;
+  CustomerShippingContactsRequestBuilder get shippingContact =>
+      _$this._shippingContact ??= new CustomerShippingContactsRequestBuilder();
+  set shippingContact(
+          CustomerShippingContactsRequestBuilder? shippingContact) =>
       _$this._shippingContact = shippingContact;
 
   ListBuilder<ShippingRequest>? _shippingLines;
@@ -250,7 +253,7 @@ class OrderRequestBuilder
       _preAuthorize = $v.preAuthorize;
       _processingMode = $v.processingMode;
       _returnUrl = $v.returnUrl;
-      _shippingContact = $v.shippingContact;
+      _shippingContact = $v.shippingContact?.toBuilder();
       _shippingLines = $v.shippingLines?.toBuilder();
       _taxLines = $v.taxLines?.toBuilder();
       _threeDsMode = $v.threeDsMode;
@@ -291,7 +294,7 @@ class OrderRequestBuilder
               preAuthorize: preAuthorize,
               processingMode: processingMode,
               returnUrl: returnUrl,
-              shippingContact: shippingContact,
+              shippingContact: _shippingContact?.build(),
               shippingLines: _shippingLines?.build(),
               taxLines: _taxLines?.build(),
               threeDsMode: threeDsMode);
@@ -314,6 +317,8 @@ class OrderRequestBuilder
         _$failedField = 'metadata';
         _metadata?.build();
 
+        _$failedField = 'shippingContact';
+        _shippingContact?.build();
         _$failedField = 'shippingLines';
         _shippingLines?.build();
         _$failedField = 'taxLines';

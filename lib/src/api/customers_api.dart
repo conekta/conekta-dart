@@ -11,13 +11,13 @@ import 'package:dio/dio.dart';
 import 'package:conekta/src/api_util.dart';
 import 'package:conekta/src/model/create_customer_fiscal_entities_response.dart';
 import 'package:conekta/src/model/customer.dart';
-import 'package:conekta/src/model/customer_fiscal_entities_request.dart';
 import 'package:conekta/src/model/customer_response.dart';
-import 'package:conekta/src/model/customer_update_fiscal_entities_request.dart';
 import 'package:conekta/src/model/customers_response.dart';
 import 'package:conekta/src/model/error.dart';
+import 'package:conekta/src/model/fiscal_entity_request.dart';
 import 'package:conekta/src/model/update_customer.dart';
 import 'package:conekta/src/model/update_customer_fiscal_entities_response.dart';
+import 'package:conekta/src/model/update_fiscal_entity_request.dart';
 import 'package:conekta/src/utils/utils.dart';
 
 class CustomersApi {
@@ -64,13 +64,13 @@ class CustomersApi {
 
     // to determine the Accept header
     List<String> _accepts = [ 
-        "application/vnd.conekta-v2.2.0+json"
+        "application/vnd.conekta-v2.3.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/7.0.7',
+        r'User-Agent': r'Conekta/v2 DartBindings/9.0.0',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
@@ -155,7 +155,7 @@ class CustomersApi {
   ///
   /// Parameters:
   /// * [id] - Identifier of the resource
-  /// * [customerFiscalEntitiesRequest] - requested field for customer fiscal entities
+  /// * [fiscalEntityRequest] - requested field for customer fiscal entities
   /// * [acceptLanguage] - Use for knowing which language to use
   /// * [xChildCompanyId] - In the case of a holding company, the company id of the child company to which will process the request.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
@@ -169,7 +169,7 @@ class CustomersApi {
   /// Throws [DioException] if API call or serialization fails
   Future<Response<CreateCustomerFiscalEntitiesResponse>> createCustomerFiscalEntities({ 
     required String id,
-    required CustomerFiscalEntitiesRequest customerFiscalEntitiesRequest,
+    required FiscalEntityRequest fiscalEntityRequest,
     String? acceptLanguage = 'es',
     String? xChildCompanyId,
     CancelToken? cancelToken,
@@ -188,13 +188,13 @@ class CustomersApi {
 
     // to determine the Accept header
     List<String> _accepts = [ 
-        "application/vnd.conekta-v2.2.0+json"
+        "application/vnd.conekta-v2.3.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/7.0.7',
+        r'User-Agent': r'Conekta/v2 DartBindings/9.0.0',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
@@ -219,8 +219,8 @@ class CustomersApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(CustomerFiscalEntitiesRequest);
-      _bodyData = _serializers.serialize(customerFiscalEntitiesRequest, specifiedType: _type);
+      const _type = FullType(FiscalEntityRequest);
+      _bodyData = _serializers.serialize(fiscalEntityRequest, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(
@@ -309,13 +309,13 @@ class CustomersApi {
 
     // to determine the Accept header
     List<String> _accepts = [ 
-        "application/vnd.conekta-v2.2.0+json"
+        "application/vnd.conekta-v2.3.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/7.0.7',
+        r'User-Agent': r'Conekta/v2 DartBindings/9.0.0',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
@@ -410,13 +410,13 @@ class CustomersApi {
 
     // to determine the Accept header
     List<String> _accepts = [ 
-        "application/vnd.conekta-v2.2.0+json"
+        "application/vnd.conekta-v2.3.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/7.0.7',
+        r'User-Agent': r'Conekta/v2 DartBindings/9.0.0',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
@@ -517,13 +517,13 @@ class CustomersApi {
 
     // to determine the Accept header
     List<String> _accepts = [ 
-        "application/vnd.conekta-v2.2.0+json"
+        "application/vnd.conekta-v2.3.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/7.0.7',
+        r'User-Agent': r'Conekta/v2 DartBindings/9.0.0',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
@@ -629,13 +629,13 @@ class CustomersApi {
 
     // to determine the Accept header
     List<String> _accepts = [ 
-        "application/vnd.conekta-v2.2.0+json"
+        "application/vnd.conekta-v2.3.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
     final _options = Options(
       method: r'PUT',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/7.0.7',
+        r'User-Agent': r'Conekta/v2 DartBindings/9.0.0',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
@@ -721,7 +721,7 @@ class CustomersApi {
   /// Parameters:
   /// * [id] - Identifier of the resource
   /// * [fiscalEntitiesId] - identifier
-  /// * [customerUpdateFiscalEntitiesRequest] - requested field for customer update fiscal entities
+  /// * [updateFiscalEntityRequest] - requested field for customer update fiscal entities
   /// * [acceptLanguage] - Use for knowing which language to use
   /// * [xChildCompanyId] - In the case of a holding company, the company id of the child company to which will process the request.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
@@ -736,7 +736,7 @@ class CustomersApi {
   Future<Response<UpdateCustomerFiscalEntitiesResponse>> updateCustomerFiscalEntities({ 
     required String id,
     required String fiscalEntitiesId,
-    required CustomerUpdateFiscalEntitiesRequest customerUpdateFiscalEntitiesRequest,
+    required UpdateFiscalEntityRequest updateFiscalEntityRequest,
     String? acceptLanguage = 'es',
     String? xChildCompanyId,
     CancelToken? cancelToken,
@@ -755,13 +755,13 @@ class CustomersApi {
 
     // to determine the Accept header
     List<String> _accepts = [ 
-        "application/vnd.conekta-v2.2.0+json"
+        "application/vnd.conekta-v2.3.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
     final _options = Options(
       method: r'PUT',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/7.0.7',
+        r'User-Agent': r'Conekta/v2 DartBindings/9.0.0',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
@@ -786,8 +786,8 @@ class CustomersApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(CustomerUpdateFiscalEntitiesRequest);
-      _bodyData = _serializers.serialize(customerUpdateFiscalEntitiesRequest, specifiedType: _type);
+      const _type = FullType(UpdateFiscalEntityRequest);
+      _bodyData = _serializers.serialize(updateFiscalEntityRequest, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(

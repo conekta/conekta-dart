@@ -3,7 +3,6 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:conekta/src/model/customer_payment_method_request.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -20,7 +19,11 @@ part 'payment_method_card_request.g.dart';
 /// * [number] - Card number
 /// * [customerIpAddress] - Optional field used to capture the customer's IP address for fraud prevention and security monitoring purposes
 @BuiltValue()
-abstract class PaymentMethodCardRequest implements CustomerPaymentMethodRequest, Built<PaymentMethodCardRequest, PaymentMethodCardRequestBuilder> {
+abstract class PaymentMethodCardRequest implements Built<PaymentMethodCardRequest, PaymentMethodCardRequestBuilder> {
+  /// Type of payment method
+  @BuiltValueField(wireName: r'type')
+  String get type;
+
   /// Card security code
   @BuiltValueField(wireName: r'cvc')
   String get cvc;
@@ -29,10 +32,6 @@ abstract class PaymentMethodCardRequest implements CustomerPaymentMethodRequest,
   @BuiltValueField(wireName: r'exp_month')
   String get expMonth;
 
-  /// Card number
-  @BuiltValueField(wireName: r'number')
-  String get number;
-
   /// Card expiration year
   @BuiltValueField(wireName: r'exp_year')
   String get expYear;
@@ -40,6 +39,10 @@ abstract class PaymentMethodCardRequest implements CustomerPaymentMethodRequest,
   /// Cardholder name
   @BuiltValueField(wireName: r'name')
   String get name;
+
+  /// Card number
+  @BuiltValueField(wireName: r'number')
+  String get number;
 
   /// Optional field used to capture the customer's IP address for fraud prevention and security monitoring purposes
   @BuiltValueField(wireName: r'customer_ip_address')
@@ -68,6 +71,11 @@ class _$PaymentMethodCardRequestSerializer implements PrimitiveSerializer<Paymen
     PaymentMethodCardRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
+    yield r'type';
+    yield serializers.serialize(
+      object.type,
+      specifiedType: const FullType(String),
+    );
     yield r'cvc';
     yield serializers.serialize(
       object.cvc,
@@ -76,11 +84,6 @@ class _$PaymentMethodCardRequestSerializer implements PrimitiveSerializer<Paymen
     yield r'exp_month';
     yield serializers.serialize(
       object.expMonth,
-      specifiedType: const FullType(String),
-    );
-    yield r'number';
-    yield serializers.serialize(
-      object.number,
       specifiedType: const FullType(String),
     );
     yield r'exp_year';
@@ -93,6 +96,11 @@ class _$PaymentMethodCardRequestSerializer implements PrimitiveSerializer<Paymen
       object.name,
       specifiedType: const FullType(String),
     );
+    yield r'number';
+    yield serializers.serialize(
+      object.number,
+      specifiedType: const FullType(String),
+    );
     if (object.customerIpAddress != null) {
       yield r'customer_ip_address';
       yield serializers.serialize(
@@ -100,11 +108,6 @@ class _$PaymentMethodCardRequestSerializer implements PrimitiveSerializer<Paymen
         specifiedType: const FullType(String),
       );
     }
-    yield r'type';
-    yield serializers.serialize(
-      object.type,
-      specifiedType: const FullType(String),
-    );
   }
 
   @override
@@ -128,6 +131,13 @@ class _$PaymentMethodCardRequestSerializer implements PrimitiveSerializer<Paymen
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
+        case r'type':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.type = valueDes;
+          break;
         case r'cvc':
           final valueDes = serializers.deserialize(
             value,
@@ -141,13 +151,6 @@ class _$PaymentMethodCardRequestSerializer implements PrimitiveSerializer<Paymen
             specifiedType: const FullType(String),
           ) as String;
           result.expMonth = valueDes;
-          break;
-        case r'number':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.number = valueDes;
           break;
         case r'exp_year':
           final valueDes = serializers.deserialize(
@@ -163,19 +166,20 @@ class _$PaymentMethodCardRequestSerializer implements PrimitiveSerializer<Paymen
           ) as String;
           result.name = valueDes;
           break;
+        case r'number':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.number = valueDes;
+          break;
         case r'customer_ip_address':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.customerIpAddress = valueDes;
-          break;
-        case r'type':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.type = valueDes;
           break;
         default:
           unhandled.add(key);

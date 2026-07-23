@@ -3,8 +3,8 @@
 //
 
 // ignore_for_file: unused_element
+import 'package:conekta/src/model/company_document_response.dart';
 import 'package:built_collection/built_collection.dart';
-import 'package:conekta/src/model/company_response_documents_inner.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -52,7 +52,7 @@ abstract class CompanyResponse implements Built<CompanyResponse, CompanyResponse
 
   /// A list of documents related to the company.
   @BuiltValueField(wireName: r'documents')
-  BuiltList<CompanyResponseDocumentsInner> get documents;
+  BuiltList<CompanyDocumentResponse> get documents;
 
   /// Timestamp of when the company was created.
   @BuiltValueField(wireName: r'created_at')
@@ -118,7 +118,7 @@ class _$CompanyResponseSerializer implements PrimitiveSerializer<CompanyResponse
       yield r'parent_company_id';
       yield serializers.serialize(
         object.parentCompanyId,
-        specifiedType: const FullType.nullable(String),
+        specifiedType: const FullType(String),
       );
     }
     yield r'onboarding_status';
@@ -129,7 +129,7 @@ class _$CompanyResponseSerializer implements PrimitiveSerializer<CompanyResponse
     yield r'documents';
     yield serializers.serialize(
       object.documents,
-      specifiedType: const FullType(BuiltList, [FullType(CompanyResponseDocumentsInner)]),
+      specifiedType: const FullType(BuiltList, [FullType(CompanyDocumentResponse)]),
     );
     yield r'created_at';
     yield serializers.serialize(
@@ -152,7 +152,7 @@ class _$CompanyResponseSerializer implements PrimitiveSerializer<CompanyResponse
       yield r'three_ds_mode';
       yield serializers.serialize(
         object.threeDsMode,
-        specifiedType: const FullType.nullable(CompanyResponseThreeDsModeEnum),
+        specifiedType: const FullType(CompanyResponseThreeDsModeEnum),
       );
     }
   }
@@ -224,8 +224,8 @@ class _$CompanyResponseSerializer implements PrimitiveSerializer<CompanyResponse
         case r'documents':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(CompanyResponseDocumentsInner)]),
-          ) as BuiltList<CompanyResponseDocumentsInner>;
+            specifiedType: const FullType(BuiltList, [FullType(CompanyDocumentResponse)]),
+          ) as BuiltList<CompanyDocumentResponse>;
           result.documents.replace(valueDes);
           break;
         case r'created_at':
@@ -245,8 +245,9 @@ class _$CompanyResponseSerializer implements PrimitiveSerializer<CompanyResponse
         case r'three_ds_enabled':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(bool),
-          ) as bool;
+            specifiedType: const FullType.nullable(bool),
+          ) as bool?;
+          if (valueDes == null) continue;
           result.threeDsEnabled = valueDes;
           break;
         case r'three_ds_mode':

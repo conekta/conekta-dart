@@ -100,15 +100,17 @@ class _$SubscriptionRequestSerializer implements PrimitiveSerializer<Subscriptio
         case r'card_id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.cardId = valueDes;
           break;
         case r'trial_end':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.trialEnd = valueDes;
           break;
         default:

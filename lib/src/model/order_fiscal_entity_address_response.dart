@@ -3,7 +3,6 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:conekta/src/model/fiscal_entity_address.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -21,7 +20,35 @@ part 'order_fiscal_entity_address_response.g.dart';
 /// * [externalNumber] - External number
 /// * [object] 
 @BuiltValue()
-abstract class OrderFiscalEntityAddressResponse implements FiscalEntityAddress, Built<OrderFiscalEntityAddressResponse, OrderFiscalEntityAddressResponseBuilder> {
+abstract class OrderFiscalEntityAddressResponse implements Built<OrderFiscalEntityAddressResponse, OrderFiscalEntityAddressResponseBuilder> {
+  /// Street name and number
+  @BuiltValueField(wireName: r'street1')
+  String get street1;
+
+  /// Street name and number
+  @BuiltValueField(wireName: r'street2')
+  String? get street2;
+
+  /// Postal code
+  @BuiltValueField(wireName: r'postal_code')
+  String get postalCode;
+
+  /// City
+  @BuiltValueField(wireName: r'city')
+  String get city;
+
+  /// State
+  @BuiltValueField(wireName: r'state')
+  String? get state;
+
+  /// this field follows the [ISO 3166-1 alpha-2 standard](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
+  @BuiltValueField(wireName: r'country')
+  String get country;
+
+  /// External number
+  @BuiltValueField(wireName: r'external_number')
+  String get externalNumber;
+
   @BuiltValueField(wireName: r'object')
   String? get object;
 
@@ -48,26 +75,6 @@ class _$OrderFiscalEntityAddressResponseSerializer implements PrimitiveSerialize
     OrderFiscalEntityAddressResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    yield r'country';
-    yield serializers.serialize(
-      object.country,
-      specifiedType: const FullType(String),
-    );
-    yield r'city';
-    yield serializers.serialize(
-      object.city,
-      specifiedType: const FullType(String),
-    );
-    yield r'external_number';
-    yield serializers.serialize(
-      object.externalNumber,
-      specifiedType: const FullType(String),
-    );
-    yield r'postal_code';
-    yield serializers.serialize(
-      object.postalCode,
-      specifiedType: const FullType(String),
-    );
     yield r'street1';
     yield serializers.serialize(
       object.street1,
@@ -77,9 +84,19 @@ class _$OrderFiscalEntityAddressResponseSerializer implements PrimitiveSerialize
       yield r'street2';
       yield serializers.serialize(
         object.street2,
-        specifiedType: const FullType.nullable(String),
+        specifiedType: const FullType(String),
       );
     }
+    yield r'postal_code';
+    yield serializers.serialize(
+      object.postalCode,
+      specifiedType: const FullType(String),
+    );
+    yield r'city';
+    yield serializers.serialize(
+      object.city,
+      specifiedType: const FullType(String),
+    );
     if (object.state != null) {
       yield r'state';
       yield serializers.serialize(
@@ -87,6 +104,16 @@ class _$OrderFiscalEntityAddressResponseSerializer implements PrimitiveSerialize
         specifiedType: const FullType(String),
       );
     }
+    yield r'country';
+    yield serializers.serialize(
+      object.country,
+      specifiedType: const FullType(String),
+    );
+    yield r'external_number';
+    yield serializers.serialize(
+      object.externalNumber,
+      specifiedType: const FullType(String),
+    );
     if (object.object != null) {
       yield r'object';
       yield serializers.serialize(
@@ -117,34 +144,6 @@ class _$OrderFiscalEntityAddressResponseSerializer implements PrimitiveSerialize
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
-        case r'country':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.country = valueDes;
-          break;
-        case r'city':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.city = valueDes;
-          break;
-        case r'external_number':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.externalNumber = valueDes;
-          break;
-        case r'postal_code':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.postalCode = valueDes;
-          break;
         case r'street1':
           final valueDes = serializers.deserialize(
             value,
@@ -160,18 +159,48 @@ class _$OrderFiscalEntityAddressResponseSerializer implements PrimitiveSerialize
           if (valueDes == null) continue;
           result.street2 = valueDes;
           break;
-        case r'state':
+        case r'postal_code':
           final valueDes = serializers.deserialize(
             value,
             specifiedType: const FullType(String),
           ) as String;
+          result.postalCode = valueDes;
+          break;
+        case r'city':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.city = valueDes;
+          break;
+        case r'state':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.state = valueDes;
+          break;
+        case r'country':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.country = valueDes;
+          break;
+        case r'external_number':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.externalNumber = valueDes;
           break;
         case r'object':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.object = valueDes;
           break;
         default:

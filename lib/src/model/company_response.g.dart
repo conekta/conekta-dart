@@ -78,7 +78,7 @@ class _$CompanyResponse extends CompanyResponse {
   @override
   final String onboardingStatus;
   @override
-  final BuiltList<CompanyResponseDocumentsInner> documents;
+  final BuiltList<CompanyDocumentResponse> documents;
   @override
   final int createdAt;
   @override
@@ -210,10 +210,10 @@ class CompanyResponseBuilder
   set onboardingStatus(String? onboardingStatus) =>
       _$this._onboardingStatus = onboardingStatus;
 
-  ListBuilder<CompanyResponseDocumentsInner>? _documents;
-  ListBuilder<CompanyResponseDocumentsInner> get documents =>
-      _$this._documents ??= new ListBuilder<CompanyResponseDocumentsInner>();
-  set documents(ListBuilder<CompanyResponseDocumentsInner>? documents) =>
+  ListBuilder<CompanyDocumentResponse>? _documents;
+  ListBuilder<CompanyDocumentResponse> get documents =>
+      _$this._documents ??= new ListBuilder<CompanyDocumentResponse>();
+  set documents(ListBuilder<CompanyDocumentResponse>? documents) =>
       _$this._documents = documents;
 
   int? _createdAt;

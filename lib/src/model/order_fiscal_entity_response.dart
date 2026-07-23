@@ -91,7 +91,7 @@ class _$OrderFiscalEntityResponseSerializer implements PrimitiveSerializer<Order
       yield r'email';
       yield serializers.serialize(
         object.email,
-        specifiedType: const FullType.nullable(String),
+        specifiedType: const FullType(String),
       );
     }
     if (object.metadata != null) {
@@ -105,14 +105,14 @@ class _$OrderFiscalEntityResponseSerializer implements PrimitiveSerializer<Order
       yield r'name';
       yield serializers.serialize(
         object.name,
-        specifiedType: const FullType.nullable(String),
+        specifiedType: const FullType(String),
       );
     }
     if (object.taxId != null) {
       yield r'tax_id';
       yield serializers.serialize(
         object.taxId,
-        specifiedType: const FullType.nullable(String),
+        specifiedType: const FullType(String),
       );
     }
     yield r'id';
@@ -134,7 +134,7 @@ class _$OrderFiscalEntityResponseSerializer implements PrimitiveSerializer<Order
       yield r'phone';
       yield serializers.serialize(
         object.phone,
-        specifiedType: const FullType.nullable(String),
+        specifiedType: const FullType(String),
       );
     }
   }
@@ -178,8 +178,9 @@ class _$OrderFiscalEntityResponseSerializer implements PrimitiveSerializer<Order
         case r'metadata':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
-          ) as BuiltMap<String, JsonObject?>;
+            specifiedType: const FullType.nullable(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
+          ) as BuiltMap<String, JsonObject?>?;
+          if (valueDes == null) continue;
           result.metadata.replace(valueDes);
           break;
         case r'name':

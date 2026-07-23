@@ -35,7 +35,7 @@ final String previous = previous_example; // String | previous page
 try {
     final response = api.getCharges(acceptLanguage, xChildCompanyId, limit, search, next, previous);
     print(response);
-} catch on DioException (e) {
+} on DioException catch (e) {
     print('Exception when calling ChargesApi->getCharges: $e\n');
 }
 ```
@@ -62,7 +62,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/vnd.conekta-v2.2.0+json
+ - **Accept**: application/vnd.conekta-v2.3.0+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -79,14 +79,14 @@ import 'package:conekta/api.dart';
 
 final api = Conekta().getChargesApi();
 final String id = 6307a60c41de27127515a575; // String | Identifier of the resource
-final ChargeRequest chargeRequest = ; // ChargeRequest | requested field for a charge
+final ChargeRequest chargeRequest = {"payment_method":{"can_not_expire":true,"cancel_url":"https://pay.conekta.io/payment-status/fdcb06d6-c9e1-44ee-921f-17723b63852f/cancel","failure_url":"https://pay.conekta.io/payment-status/fdcb06d6-c9e1-44ee-921f-17723b63852f/failure","product_type":"aplazo_bnpl","success_url":"https://pay.conekta.io/payment-status/fdcb06d6-c9e1-44ee-921f-17723b63852f/success","type":"bnpl"}}; // ChargeRequest | requested field for a charge
 final String acceptLanguage = es; // String | Use for knowing which language to use
 final String xChildCompanyId = 6441b6376b60c3a638da80af; // String | In the case of a holding company, the company id of the child company to which will process the request.
 
 try {
     final response = api.ordersCreateCharge(id, chargeRequest, acceptLanguage, xChildCompanyId);
     print(response);
-} catch on DioException (e) {
+} on DioException catch (e) {
     print('Exception when calling ChargesApi->ordersCreateCharge: $e\n');
 }
 ```
@@ -111,7 +111,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/vnd.conekta-v2.2.0+json
+ - **Accept**: application/vnd.conekta-v2.3.0+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -128,14 +128,14 @@ import 'package:conekta/api.dart';
 
 final api = Conekta().getChargesApi();
 final String id = 6307a60c41de27127515a575; // String | Identifier of the resource
-final ChargeRequest chargeRequest = ; // ChargeRequest | requested field for a charge
+final ChargeRequest chargeRequest = {payment_method={can_not_expire=true, cancel_url=https://pay.conekta.io/payment-status/fdcb06d6-c9e1-44ee-921f-17723b63852f/cancel, failure_url=https://pay.conekta.io/payment-status/fdcb06d6-c9e1-44ee-921f-17723b63852f/failure, product_type=aplazo_bnpl, success_url=https://pay.conekta.io/payment-status/fdcb06d6-c9e1-44ee-921f-17723b63852f/success, type=bnpl}}; // ChargeRequest | requested field for a charge
 final String acceptLanguage = es; // String | Use for knowing which language to use
 final String xChildCompanyId = 6441b6376b60c3a638da80af; // String | In the case of a holding company, the company id of the child company to which will process the request.
 
 try {
     final response = api.ordersCreateCharges(id, chargeRequest, acceptLanguage, xChildCompanyId);
     print(response);
-} catch on DioException (e) {
+} on DioException catch (e) {
     print('Exception when calling ChargesApi->ordersCreateCharges: $e\n');
 }
 ```
@@ -160,7 +160,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/vnd.conekta-v2.2.0+json
+ - **Accept**: application/vnd.conekta-v2.3.0+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -182,7 +182,7 @@ final String xChildCompanyId = 6441b6376b60c3a638da80af; // String | In the case
 try {
     final response = api.updateCharge(id, chargeUpdateRequest, acceptLanguage, xChildCompanyId);
     print(response);
-} catch on DioException (e) {
+} on DioException catch (e) {
     print('Exception when calling ChargesApi->updateCharge: $e\n');
 }
 ```
@@ -207,7 +207,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/vnd.conekta-v2.2.0+json
+ - **Accept**: application/vnd.conekta-v2.3.0+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

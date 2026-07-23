@@ -11,8 +11,8 @@ import 'package:dio/dio.dart';
 import 'package:conekta/src/api_util.dart';
 import 'package:conekta/src/model/error.dart';
 import 'package:conekta/src/model/order_tax_request.dart';
-import 'package:conekta/src/model/update_order_tax_request.dart';
-import 'package:conekta/src/model/update_order_tax_response.dart';
+import 'package:conekta/src/model/order_tax_response.dart';
+import 'package:conekta/src/model/orders_update_taxes_request.dart';
 import 'package:conekta/src/utils/utils.dart';
 
 class TaxesApi {
@@ -38,9 +38,9 @@ class TaxesApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [UpdateOrderTaxResponse] as data
+  /// Returns a [Future] containing a [Response] with a [OrderTaxResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<UpdateOrderTaxResponse>> ordersCreateTaxes({ 
+  Future<Response<OrderTaxResponse>> ordersCreateTaxes({ 
     required String id,
     required OrderTaxRequest orderTaxRequest,
     String? acceptLanguage = 'es',
@@ -61,13 +61,13 @@ class TaxesApi {
 
     // to determine the Accept header
     List<String> _accepts = [ 
-        "application/vnd.conekta-v2.2.0+json"
+        "application/vnd.conekta-v2.3.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/7.0.7',
+        r'User-Agent': r'Conekta/v2 DartBindings/9.0.0',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
@@ -116,14 +116,14 @@ class TaxesApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    UpdateOrderTaxResponse? _responseData;
+    OrderTaxResponse? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(UpdateOrderTaxResponse),
-      ) as UpdateOrderTaxResponse;
+        specifiedType: const FullType(OrderTaxResponse),
+      ) as OrderTaxResponse;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -135,7 +135,7 @@ class TaxesApi {
       );
     }
 
-    return Response<UpdateOrderTaxResponse>(
+    return Response<OrderTaxResponse>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -162,9 +162,9 @@ class TaxesApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [UpdateOrderTaxResponse] as data
+  /// Returns a [Future] containing a [Response] with a [OrderTaxResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<UpdateOrderTaxResponse>> ordersDeleteTaxes({ 
+  Future<Response<OrderTaxResponse>> ordersDeleteTaxes({ 
     required String id,
     required String taxId,
     String? acceptLanguage = 'es',
@@ -184,13 +184,13 @@ class TaxesApi {
 
     // to determine the Accept header
     List<String> _accepts = [ 
-        "application/vnd.conekta-v2.2.0+json"
+        "application/vnd.conekta-v2.3.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/7.0.7',
+        r'User-Agent': r'Conekta/v2 DartBindings/9.0.0',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
@@ -219,14 +219,14 @@ class TaxesApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    UpdateOrderTaxResponse? _responseData;
+    OrderTaxResponse? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(UpdateOrderTaxResponse),
-      ) as UpdateOrderTaxResponse;
+        specifiedType: const FullType(OrderTaxResponse),
+      ) as OrderTaxResponse;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -238,7 +238,7 @@ class TaxesApi {
       );
     }
 
-    return Response<UpdateOrderTaxResponse>(
+    return Response<OrderTaxResponse>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -256,7 +256,7 @@ class TaxesApi {
   /// Parameters:
   /// * [id] - Identifier of the resource
   /// * [taxId] - identifier
-  /// * [updateOrderTaxRequest] - requested field for taxes
+  /// * [ordersUpdateTaxesRequest] - requested field for taxes
   /// * [acceptLanguage] - Use for knowing which language to use
   /// * [xChildCompanyId] - In the case of a holding company, the company id of the child company to which will process the request.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
@@ -266,12 +266,12 @@ class TaxesApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [UpdateOrderTaxResponse] as data
+  /// Returns a [Future] containing a [Response] with a [OrderTaxResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<UpdateOrderTaxResponse>> ordersUpdateTaxes({ 
+  Future<Response<OrderTaxResponse>> ordersUpdateTaxes({ 
     required String id,
     required String taxId,
-    required UpdateOrderTaxRequest updateOrderTaxRequest,
+    required OrdersUpdateTaxesRequest ordersUpdateTaxesRequest,
     String? acceptLanguage = 'es',
     String? xChildCompanyId,
     CancelToken? cancelToken,
@@ -290,13 +290,13 @@ class TaxesApi {
 
     // to determine the Accept header
     List<String> _accepts = [ 
-        "application/vnd.conekta-v2.2.0+json"
+        "application/vnd.conekta-v2.3.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
     final _options = Options(
       method: r'PUT',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/7.0.7',
+        r'User-Agent': r'Conekta/v2 DartBindings/9.0.0',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
@@ -321,8 +321,8 @@ class TaxesApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(UpdateOrderTaxRequest);
-      _bodyData = _serializers.serialize(updateOrderTaxRequest, specifiedType: _type);
+      const _type = FullType(OrdersUpdateTaxesRequest);
+      _bodyData = _serializers.serialize(ordersUpdateTaxesRequest, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(
@@ -345,14 +345,14 @@ class TaxesApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    UpdateOrderTaxResponse? _responseData;
+    OrderTaxResponse? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(UpdateOrderTaxResponse),
-      ) as UpdateOrderTaxResponse;
+        specifiedType: const FullType(OrderTaxResponse),
+      ) as OrderTaxResponse;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -364,7 +364,7 @@ class TaxesApi {
       );
     }
 
-    return Response<UpdateOrderTaxResponse>(
+    return Response<OrderTaxResponse>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,

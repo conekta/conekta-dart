@@ -52,7 +52,7 @@ abstract class PayoutOrderResponse implements Built<PayoutOrderResponse, PayoutO
 
   /// The expiration date of the payout order.
   @BuiltValueField(wireName: r'expires_at')
-  int? get expiresAt;
+  int get expiresAt;
 
   /// The id of the payout order.
   @BuiltValueField(wireName: r'id')
@@ -80,7 +80,7 @@ abstract class PayoutOrderResponse implements Built<PayoutOrderResponse, PayoutO
 
   /// The status of the payout order.
   @BuiltValueField(wireName: r'status')
-  String? get status;
+  String get status;
 
   /// The update date of the payout order.
   @BuiltValueField(wireName: r'updated_at')
@@ -135,13 +135,11 @@ class _$PayoutOrderResponseSerializer implements PrimitiveSerializer<PayoutOrder
       object.customerInfo,
       specifiedType: const FullType(PayoutOrderResponseCustomerInfo),
     );
-    if (object.expiresAt != null) {
-      yield r'expires_at';
-      yield serializers.serialize(
-        object.expiresAt,
-        specifiedType: const FullType(int),
-      );
-    }
+    yield r'expires_at';
+    yield serializers.serialize(
+      object.expiresAt,
+      specifiedType: const FullType(int),
+    );
     yield r'id';
     yield serializers.serialize(
       object.id,
@@ -174,13 +172,11 @@ class _$PayoutOrderResponseSerializer implements PrimitiveSerializer<PayoutOrder
       object.reason,
       specifiedType: const FullType(String),
     );
-    if (object.status != null) {
-      yield r'status';
-      yield serializers.serialize(
-        object.status,
-        specifiedType: const FullType(String),
-      );
-    }
+    yield r'status';
+    yield serializers.serialize(
+      object.status,
+      specifiedType: const FullType(String),
+    );
     yield r'updated_at';
     yield serializers.serialize(
       object.updatedAt,
@@ -275,8 +271,9 @@ class _$PayoutOrderResponseSerializer implements PrimitiveSerializer<PayoutOrder
         case r'metadata':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
-          ) as BuiltMap<String, JsonObject?>;
+            specifiedType: const FullType.nullable(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
+          ) as BuiltMap<String, JsonObject?>?;
+          if (valueDes == null) continue;
           result.metadata.replace(valueDes);
           break;
         case r'payouts':

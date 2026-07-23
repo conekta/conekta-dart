@@ -69,13 +69,13 @@ abstract class LogsResponseData implements Built<LogsResponseData, LogsResponseD
   JsonObject? get requestBody;
 
   @BuiltValueField(wireName: r'request_headers')
-  BuiltMap<String, String>? get requestHeaders;
+  BuiltMap<String>? get requestHeaders;
 
   @BuiltValueField(wireName: r'response_body')
   JsonObject? get responseBody;
 
   @BuiltValueField(wireName: r'response_headers')
-  BuiltMap<String, String>? get responseHeaders;
+  BuiltMap<String>? get responseHeaders;
 
   @BuiltValueField(wireName: r'searchable_tags')
   BuiltList<String>? get searchableTags;
@@ -150,14 +150,14 @@ class _$LogsResponseDataSerializer implements PrimitiveSerializer<LogsResponseDa
       yield r'loggable_id';
       yield serializers.serialize(
         object.loggableId,
-        specifiedType: const FullType.nullable(String),
+        specifiedType: const FullType(String),
       );
     }
     if (object.loggableType != null) {
       yield r'loggable_type';
       yield serializers.serialize(
         object.loggableType,
-        specifiedType: const FullType.nullable(String),
+        specifiedType: const FullType(String),
       );
     }
     if (object.method != null) {
@@ -171,7 +171,7 @@ class _$LogsResponseDataSerializer implements PrimitiveSerializer<LogsResponseDa
       yield r'oauth_token_id';
       yield serializers.serialize(
         object.oauthTokenId,
-        specifiedType: const FullType.nullable(String),
+        specifiedType: const FullType(String),
       );
     }
     if (object.queryString != null) {
@@ -199,7 +199,7 @@ class _$LogsResponseDataSerializer implements PrimitiveSerializer<LogsResponseDa
       yield r'request_headers';
       yield serializers.serialize(
         object.requestHeaders,
-        specifiedType: const FullType(BuiltMap, [FullType(String), FullType(String)]),
+        specifiedType: const FullType.nullable(BuiltMap, [FullType(String)]),
       );
     }
     if (object.responseBody != null) {
@@ -213,7 +213,7 @@ class _$LogsResponseDataSerializer implements PrimitiveSerializer<LogsResponseDa
       yield r'response_headers';
       yield serializers.serialize(
         object.responseHeaders,
-        specifiedType: const FullType(BuiltMap, [FullType(String), FullType(String)]),
+        specifiedType: const FullType.nullable(BuiltMap, [FullType(String)]),
       );
     }
     if (object.searchableTags != null) {
@@ -284,29 +284,33 @@ class _$LogsResponseDataSerializer implements PrimitiveSerializer<LogsResponseDa
         case r'created_at':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.createdAt = valueDes;
           break;
         case r'id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.id = valueDes;
           break;
         case r'ip_address':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.ipAddress = valueDes;
           break;
         case r'livemode':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(bool),
-          ) as bool;
+            specifiedType: const FullType.nullable(bool),
+          ) as bool?;
+          if (valueDes == null) continue;
           result.livemode = valueDes;
           break;
         case r'loggable_id':
@@ -328,8 +332,9 @@ class _$LogsResponseDataSerializer implements PrimitiveSerializer<LogsResponseDa
         case r'method':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.method = valueDes;
           break;
         case r'oauth_token_id':
@@ -343,85 +348,97 @@ class _$LogsResponseDataSerializer implements PrimitiveSerializer<LogsResponseDa
         case r'query_string':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
-          ) as BuiltMap<String, JsonObject?>;
+            specifiedType: const FullType.nullable(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
+          ) as BuiltMap<String, JsonObject?>?;
+          if (valueDes == null) continue;
           result.queryString.replace(valueDes);
           break;
         case r'related':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.related = valueDes;
           break;
         case r'request_body':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(JsonObject),
-          ) as JsonObject;
+            specifiedType: const FullType.nullable(JsonObject),
+          ) as JsonObject?;
+          if (valueDes == null) continue;
           result.requestBody = valueDes;
           break;
         case r'request_headers':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltMap, [FullType(String), FullType(String)]),
-          ) as BuiltMap<String, String>;
+            specifiedType: const FullType.nullable(BuiltMap, [FullType(String)]),
+          ) as BuiltMap<String>?;
+          if (valueDes == null) continue;
           result.requestHeaders.replace(valueDes);
           break;
         case r'response_body':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(JsonObject),
-          ) as JsonObject;
+            specifiedType: const FullType.nullable(JsonObject),
+          ) as JsonObject?;
+          if (valueDes == null) continue;
           result.responseBody = valueDes;
           break;
         case r'response_headers':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltMap, [FullType(String), FullType(String)]),
-          ) as BuiltMap<String, String>;
+            specifiedType: const FullType.nullable(BuiltMap, [FullType(String)]),
+          ) as BuiltMap<String>?;
+          if (valueDes == null) continue;
           result.responseHeaders.replace(valueDes);
           break;
         case r'searchable_tags':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(String)]),
-          ) as BuiltList<String>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
+          ) as BuiltList<String>?;
+          if (valueDes == null) continue;
           result.searchableTags.replace(valueDes);
           break;
         case r'status':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.status = valueDes;
           break;
         case r'updated_at':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.updatedAt = valueDes;
           break;
         case r'url':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.url = valueDes;
           break;
         case r'user_account_id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.userAccountId = valueDes;
           break;
         case r'version':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.version = valueDes;
           break;
         default:

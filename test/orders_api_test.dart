@@ -30,14 +30,14 @@ void main() {
     test('test createOrder', () async {
     
       var customerInfo = OrderRequestCustomerInfo((b) => b
-            ..oneOf = OneOf1(value: CustomerInfoJustCustomerId((b) => b
+            ..oneOf = OneOf1(value: CustomerInfoCustomerId((b) => b
               ..customerId = 'cus_2tKcHxhTz7xU5SymF')
             ));
       var metadata = MapBuilder<String, JsonObject?>()
         ..[('key1')] = JsonObject({'value': 'data1'})
         ..[('key2')] = JsonObject({'value': 'data2'});
 
-      var fiscalEntityAddress = $FiscalEntityAddressBuilder()
+      var fiscalEntityAddress = FiscalEntityAddressBuilder()
         ..street1 = '250 Alexis St'
         ..city = 'Red Deer'
         ..state = 'Alberta'
@@ -49,14 +49,14 @@ void main() {
         ..taxId = 'XAXX010101000'
         ..email = 'email@email.com'
         ..metadata = metadata
-        ..address =fiscalEntityAddress.build()
+        ..address = fiscalEntityAddress
         ;
-      var shippingContact = $CustomerShippingContactsBuilder()
+      var shippingContact = CustomerShippingContactsRequestBuilder()
           ..phone = '55-5555-5555'
           ..receiver = 'Marvin Fuller'
           ..betweenStreets = 'Melrose St'
           ..metadata = metadata
-          ..address.replace(CustomerShippingContactsAddress((b) => b
+          ..address.replace(CustomerShippingContactsRequestAddress((b) => b
             ..street1 = '250 Alexis St'
             ..city = 'Red Deer'
             ..state = 'Alberta'
@@ -67,7 +67,7 @@ void main() {
       final orderRequest = OrderRequest((b) => b
           ..currency = 'MXN'
           ..customerInfo.replace(customerInfo)
-          ..shippingContact = shippingContact.build()
+          ..shippingContact = shippingContact
           ..fiscalEntity =  fiscalEntity
       );
       var response = await api.createOrder(orderRequest: orderRequest);
@@ -95,7 +95,7 @@ void main() {
         ..[('key1')] = JsonObject({'value': 'data1'})
         ..[('key2')] = JsonObject({'value': 'data2'});
 
-      var fiscalEntityAddress = $FiscalEntityAddressBuilder()
+      var fiscalEntityAddress = FiscalEntityAddressBuilder()
         ..street1 = '250 Alexis St'
         ..city = 'Red Deer'
         ..state = 'Alberta'
@@ -107,14 +107,14 @@ void main() {
         ..taxId = 'XAXX010101000'
         ..email = 'email@email.com'
         ..metadata = metadata
-        ..address =fiscalEntityAddress.build()
+        ..address = fiscalEntityAddress
         ;
-      var shippingContact = $CustomerShippingContactsBuilder()
+      var shippingContact = CustomerShippingContactsRequestBuilder()
           ..phone = '55-5555-5555'
           ..receiver = 'Marvin Fuller'
           ..betweenStreets = 'Melrose St'
           ..metadata = metadata
-          ..address.replace(CustomerShippingContactsAddress((b) => b
+          ..address.replace(CustomerShippingContactsRequestAddress((b) => b
             ..street1 = '250 Alexis St'
             ..city = 'Red Deer'
             ..state = 'Alberta'
@@ -125,10 +125,10 @@ void main() {
       final orderRequest = OrderRequest((b) => b
           ..currency = 'MXN'
           ..customerInfo.replace(customerInfo)
-          ..shippingContact = shippingContact.build()
+          ..shippingContact = shippingContact
           ..fiscalEntity =  fiscalEntity
           ..lineItems = ListBuilder<Product>([
-             $Product((b) => b
+             Product((ProductBuilder b) => b
               ..name = 'Box of Chocolates'
               ..unitPrice = 2000
               ..quantity = 1

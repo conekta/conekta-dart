@@ -3,7 +3,6 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:conekta/src/model/shipping_request.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/json_object.dart';
 import 'package:built_value/built_value.dart';
@@ -23,15 +22,35 @@ part 'shipping_order_response.g.dart';
 /// * [object] 
 /// * [parentId] 
 @BuiltValue()
-abstract class ShippingOrderResponse implements ShippingRequest, Built<ShippingOrderResponse, ShippingOrderResponseBuilder> {
+abstract class ShippingOrderResponse implements Built<ShippingOrderResponse, ShippingOrderResponseBuilder> {
+  /// Shipping amount in cents
+  @BuiltValueField(wireName: r'amount')
+  int get amount;
+
+  /// Carrier name for the shipment
+  @BuiltValueField(wireName: r'carrier')
+  String? get carrier;
+
+  /// Tracking number can be used to track the shipment
+  @BuiltValueField(wireName: r'tracking_number')
+  String? get trackingNumber;
+
+  /// Method of shipment
+  @BuiltValueField(wireName: r'method')
+  String? get method;
+
+  /// Hash where the user can send additional information for each 'shipping'.
+  @BuiltValueField(wireName: r'metadata')
+  BuiltMap<String, JsonObject?>? get metadata;
+
   @BuiltValueField(wireName: r'id')
   String? get id;
 
-  @BuiltValueField(wireName: r'parent_id')
-  String? get parentId;
-
   @BuiltValueField(wireName: r'object')
   String? get object;
+
+  @BuiltValueField(wireName: r'parent_id')
+  String? get parentId;
 
   ShippingOrderResponse._();
 
@@ -68,11 +87,11 @@ class _$ShippingOrderResponseSerializer implements PrimitiveSerializer<ShippingO
         specifiedType: const FullType(String),
       );
     }
-    if (object.metadata != null) {
-      yield r'metadata';
+    if (object.trackingNumber != null) {
+      yield r'tracking_number';
       yield serializers.serialize(
-        object.metadata,
-        specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
+        object.trackingNumber,
+        specifiedType: const FullType(String),
       );
     }
     if (object.method != null) {
@@ -82,6 +101,13 @@ class _$ShippingOrderResponseSerializer implements PrimitiveSerializer<ShippingO
         specifiedType: const FullType(String),
       );
     }
+    if (object.metadata != null) {
+      yield r'metadata';
+      yield serializers.serialize(
+        object.metadata,
+        specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
+      );
+    }
     if (object.id != null) {
       yield r'id';
       yield serializers.serialize(
@@ -89,10 +115,10 @@ class _$ShippingOrderResponseSerializer implements PrimitiveSerializer<ShippingO
         specifiedType: const FullType(String),
       );
     }
-    if (object.trackingNumber != null) {
-      yield r'tracking_number';
+    if (object.object != null) {
+      yield r'object';
       yield serializers.serialize(
-        object.trackingNumber,
+        object.object,
         specifiedType: const FullType(String),
       );
     }
@@ -100,13 +126,6 @@ class _$ShippingOrderResponseSerializer implements PrimitiveSerializer<ShippingO
       yield r'parent_id';
       yield serializers.serialize(
         object.parentId,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.object != null) {
-      yield r'object';
-      yield serializers.serialize(
-        object.object,
         specifiedType: const FullType(String),
       );
     }
@@ -143,51 +162,58 @@ class _$ShippingOrderResponseSerializer implements PrimitiveSerializer<ShippingO
         case r'carrier':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.carrier = valueDes;
-          break;
-        case r'metadata':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
-          ) as BuiltMap<String, JsonObject?>;
-          result.metadata.replace(valueDes);
-          break;
-        case r'method':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.method = valueDes;
-          break;
-        case r'id':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.id = valueDes;
           break;
         case r'tracking_number':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.trackingNumber = valueDes;
           break;
-        case r'parent_id':
+        case r'method':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.parentId = valueDes;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.method = valueDes;
+          break;
+        case r'metadata':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
+          ) as BuiltMap<String, JsonObject?>?;
+          if (valueDes == null) continue;
+          result.metadata.replace(valueDes);
+          break;
+        case r'id':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.id = valueDes;
           break;
         case r'object':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.object = valueDes;
+          break;
+        case r'parent_id':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.parentId = valueDes;
           break;
         default:
           unhandled.add(key);

@@ -13,9 +13,10 @@ part 'checkout.g.dart';
 /// It is a sub-resource of the Order model that can be stipulated in order to configure its corresponding checkout
 ///
 /// Properties:
-/// * [allowedPaymentMethods] - Those are the payment methods that will be available for the link
+/// * [allowedPaymentMethods] - Those are the payment methods that will be available for the link. This field is mutually exclusive with excluded_payment_methods.
+/// * [excludedPaymentMethods] - Payment methods to be excluded from the checkout. This field is mutually exclusive with allowed_payment_methods.
 /// * [excludeCardNetworks] - List of card networks to exclude from the checkout. This field is only applicable for card payments.
-/// * [expiresAt] - It is the time when the link will expire.  It is expressed in seconds since the Unix epoch. The valid range is from 10 minutes to 365 days from the creation date. 
+/// * [expiresAt] - It is the time when the link will expire.  It is expressed in seconds since the Unix epoch. The valid range is from 5 minutes to 365 days from the creation date. 
 /// * [monthlyInstallmentsEnabled] - This flag allows you to specify if months without interest will be active.
 /// * [monthlyInstallmentsOptions] - This field allows you to specify the number of months without interest.
 /// * [threeDsMode] - Indicates the 3DS2 mode for the order, either smart or strict. This property is only applicable when 3DS is enabled. When 3DS is disabled, this field should be null.
@@ -25,20 +26,26 @@ part 'checkout.g.dart';
 /// * [planIds] - It is a list of plan IDs that will be associated with the order.
 /// * [orderTemplate] 
 /// * [paymentsLimitCount] - It is the number of payments that can be made through the link.
+/// * [successUrl] - The URL to redirect to after a successful payment.
 /// * [recurrent] - false: single use. true: multiple payments
 /// * [type] - It is the type of link that will be created. It must be a valid type.
 @BuiltValue()
 abstract class Checkout implements Built<Checkout, CheckoutBuilder> {
-  /// Those are the payment methods that will be available for the link
+  /// Those are the payment methods that will be available for the link. This field is mutually exclusive with excluded_payment_methods.
   @BuiltValueField(wireName: r'allowed_payment_methods')
-  BuiltList<String> get allowedPaymentMethods;
+  BuiltList<String>? get allowedPaymentMethods;
+
+  /// Payment methods to be excluded from the checkout. This field is mutually exclusive with allowed_payment_methods.
+  @BuiltValueField(wireName: r'excluded_payment_methods')
+  BuiltList<CheckoutExcludedPaymentMethodsEnum>? get excludedPaymentMethods;
+  // enum excludedPaymentMethodsEnum {  cash,  card,  bank_transfer,  bnpl,  pay_by_bank,  };
 
   /// List of card networks to exclude from the checkout. This field is only applicable for card payments.
   @BuiltValueField(wireName: r'exclude_card_networks')
   BuiltList<CheckoutExcludeCardNetworksEnum>? get excludeCardNetworks;
   // enum excludeCardNetworksEnum {  visa,  mastercard,  amex,  };
 
-  /// It is the time when the link will expire.  It is expressed in seconds since the Unix epoch. The valid range is from 10 minutes to 365 days from the creation date. 
+  /// It is the time when the link will expire.  It is expressed in seconds since the Unix epoch. The valid range is from 5 minutes to 365 days from the creation date. 
   @BuiltValueField(wireName: r'expires_at')
   int get expiresAt;
 
@@ -77,6 +84,10 @@ abstract class Checkout implements Built<Checkout, CheckoutBuilder> {
   @BuiltValueField(wireName: r'payments_limit_count')
   int? get paymentsLimitCount;
 
+  /// The URL to redirect to after a successful payment.
+  @BuiltValueField(wireName: r'success_url')
+  String? get successUrl;
+
   /// false: single use. true: multiple payments
   @BuiltValueField(wireName: r'recurrent')
   bool get recurrent;
@@ -108,11 +119,20 @@ class _$CheckoutSerializer implements PrimitiveSerializer<Checkout> {
     Checkout object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    yield r'allowed_payment_methods';
-    yield serializers.serialize(
-      object.allowedPaymentMethods,
-      specifiedType: const FullType(BuiltList, [FullType(String)]),
-    );
+    if (object.allowedPaymentMethods != null) {
+      yield r'allowed_payment_methods';
+      yield serializers.serialize(
+        object.allowedPaymentMethods,
+        specifiedType: const FullType(BuiltList, [FullType(String)]),
+      );
+    }
+    if (object.excludedPaymentMethods != null) {
+      yield r'excluded_payment_methods';
+      yield serializers.serialize(
+        object.excludedPaymentMethods,
+        specifiedType: const FullType(BuiltList, [FullType(CheckoutExcludedPaymentMethodsEnum)]),
+      );
+    }
     if (object.excludeCardNetworks != null) {
       yield r'exclude_card_networks';
       yield serializers.serialize(
@@ -143,7 +163,7 @@ class _$CheckoutSerializer implements PrimitiveSerializer<Checkout> {
       yield r'three_ds_mode';
       yield serializers.serialize(
         object.threeDsMode,
-        specifiedType: const FullType.nullable(String),
+        specifiedType: const FullType(String),
       );
     }
     yield r'name';
@@ -162,7 +182,7 @@ class _$CheckoutSerializer implements PrimitiveSerializer<Checkout> {
       yield r'on_demand_enabled';
       yield serializers.serialize(
         object.onDemandEnabled,
-        specifiedType: const FullType.nullable(bool),
+        specifiedType: const FullType(bool),
       );
     }
     if (object.planIds != null) {
@@ -182,6 +202,13 @@ class _$CheckoutSerializer implements PrimitiveSerializer<Checkout> {
       yield serializers.serialize(
         object.paymentsLimitCount,
         specifiedType: const FullType(int),
+      );
+    }
+    if (object.successUrl != null) {
+      yield r'success_url';
+      yield serializers.serialize(
+        object.successUrl,
+        specifiedType: const FullType(String),
       );
     }
     yield r'recurrent';
@@ -220,15 +247,25 @@ class _$CheckoutSerializer implements PrimitiveSerializer<Checkout> {
         case r'allowed_payment_methods':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(String)]),
-          ) as BuiltList<String>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
+          ) as BuiltList<String>?;
+          if (valueDes == null) continue;
           result.allowedPaymentMethods.replace(valueDes);
+          break;
+        case r'excluded_payment_methods':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(BuiltList, [FullType(CheckoutExcludedPaymentMethodsEnum)]),
+          ) as BuiltList<CheckoutExcludedPaymentMethodsEnum>?;
+          if (valueDes == null) continue;
+          result.excludedPaymentMethods.replace(valueDes);
           break;
         case r'exclude_card_networks':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(CheckoutExcludeCardNetworksEnum)]),
-          ) as BuiltList<CheckoutExcludeCardNetworksEnum>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(CheckoutExcludeCardNetworksEnum)]),
+          ) as BuiltList<CheckoutExcludeCardNetworksEnum>?;
+          if (valueDes == null) continue;
           result.excludeCardNetworks.replace(valueDes);
           break;
         case r'expires_at':
@@ -241,15 +278,17 @@ class _$CheckoutSerializer implements PrimitiveSerializer<Checkout> {
         case r'monthly_installments_enabled':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(bool),
-          ) as bool;
+            specifiedType: const FullType.nullable(bool),
+          ) as bool?;
+          if (valueDes == null) continue;
           result.monthlyInstallmentsEnabled = valueDes;
           break;
         case r'monthly_installments_options':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(int)]),
-          ) as BuiltList<int>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(int)]),
+          ) as BuiltList<int>?;
+          if (valueDes == null) continue;
           result.monthlyInstallmentsOptions.replace(valueDes);
           break;
         case r'three_ds_mode':
@@ -270,8 +309,9 @@ class _$CheckoutSerializer implements PrimitiveSerializer<Checkout> {
         case r'needs_shipping_contact':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(bool),
-          ) as bool;
+            specifiedType: const FullType.nullable(bool),
+          ) as bool?;
+          if (valueDes == null) continue;
           result.needsShippingContact = valueDes;
           break;
         case r'on_demand_enabled':
@@ -285,8 +325,9 @@ class _$CheckoutSerializer implements PrimitiveSerializer<Checkout> {
         case r'plan_ids':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(String)]),
-          ) as BuiltList<String>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
+          ) as BuiltList<String>?;
+          if (valueDes == null) continue;
           result.planIds.replace(valueDes);
           break;
         case r'order_template':
@@ -299,9 +340,18 @@ class _$CheckoutSerializer implements PrimitiveSerializer<Checkout> {
         case r'payments_limit_count':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.paymentsLimitCount = valueDes;
+          break;
+        case r'success_url':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.successUrl = valueDes;
           break;
         case r'recurrent':
           final valueDes = serializers.deserialize(
@@ -344,6 +394,27 @@ class _$CheckoutSerializer implements PrimitiveSerializer<Checkout> {
     );
     return result.build();
   }
+}
+
+class CheckoutExcludedPaymentMethodsEnum extends EnumClass {
+
+  @BuiltValueEnumConst(wireName: r'cash')
+  static const CheckoutExcludedPaymentMethodsEnum cash = _$checkoutExcludedPaymentMethodsEnum_cash;
+  @BuiltValueEnumConst(wireName: r'card')
+  static const CheckoutExcludedPaymentMethodsEnum card = _$checkoutExcludedPaymentMethodsEnum_card;
+  @BuiltValueEnumConst(wireName: r'bank_transfer')
+  static const CheckoutExcludedPaymentMethodsEnum bankTransfer = _$checkoutExcludedPaymentMethodsEnum_bankTransfer;
+  @BuiltValueEnumConst(wireName: r'bnpl')
+  static const CheckoutExcludedPaymentMethodsEnum bnpl = _$checkoutExcludedPaymentMethodsEnum_bnpl;
+  @BuiltValueEnumConst(wireName: r'pay_by_bank')
+  static const CheckoutExcludedPaymentMethodsEnum payByBank = _$checkoutExcludedPaymentMethodsEnum_payByBank;
+
+  static Serializer<CheckoutExcludedPaymentMethodsEnum> get serializer => _$checkoutExcludedPaymentMethodsEnumSerializer;
+
+  const CheckoutExcludedPaymentMethodsEnum._(String name): super(name);
+
+  static BuiltSet<CheckoutExcludedPaymentMethodsEnum> get values => _$checkoutExcludedPaymentMethodsEnumValues;
+  static CheckoutExcludedPaymentMethodsEnum valueOf(String name) => _$checkoutExcludedPaymentMethodsEnumValueOf(name);
 }
 
 class CheckoutExcludeCardNetworksEnum extends EnumClass {

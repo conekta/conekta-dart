@@ -10,7 +10,7 @@ import 'package:dio/dio.dart';
 
 import 'package:conekta/src/api_util.dart';
 import 'package:conekta/src/model/blacklist_rule_response.dart';
-import 'package:conekta/src/model/create_risk_rules_data.dart';
+import 'package:conekta/src/model/create_rule_whitelist_request.dart';
 import 'package:conekta/src/model/deleted_blacklist_rule_response.dart';
 import 'package:conekta/src/model/deleted_whitelist_rule_response.dart';
 import 'package:conekta/src/model/error.dart';
@@ -30,7 +30,7 @@ class AntifraudApi {
   /// 
   ///
   /// Parameters:
-  /// * [createRiskRulesData] - requested field for blacklist rule
+  /// * [createRuleWhitelistRequest] - requested field for blacklist rule
   /// * [acceptLanguage] - Use for knowing which language to use
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
@@ -42,7 +42,7 @@ class AntifraudApi {
   /// Returns a [Future] containing a [Response] with a [BlacklistRuleResponse] as data
   /// Throws [DioException] if API call or serialization fails
   Future<Response<BlacklistRuleResponse>> createRuleBlacklist({ 
-    required CreateRiskRulesData createRiskRulesData,
+    required CreateRuleWhitelistRequest createRuleWhitelistRequest,
     String? acceptLanguage = 'es',
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -60,13 +60,13 @@ class AntifraudApi {
 
     // to determine the Accept header
     List<String> _accepts = [ 
-        "application/vnd.conekta-v2.2.0+json"
+        "application/vnd.conekta-v2.3.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/7.0.7',
+        r'User-Agent': r'Conekta/v2 DartBindings/9.0.0',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (localVarAccept != null) r'Accept': localVarAccept,
         if (localVarContentType != null) r'Content-Type': localVarContentType,
@@ -90,8 +90,8 @@ class AntifraudApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(CreateRiskRulesData);
-      _bodyData = _serializers.serialize(createRiskRulesData, specifiedType: _type);
+      const _type = FullType(CreateRuleWhitelistRequest);
+      _bodyData = _serializers.serialize(createRuleWhitelistRequest, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(
@@ -150,7 +150,7 @@ class AntifraudApi {
   ///
   /// Parameters:
   /// * [acceptLanguage] - Use for knowing which language to use
-  /// * [createRiskRulesData] 
+  /// * [createRuleWhitelistRequest] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -162,7 +162,7 @@ class AntifraudApi {
   /// Throws [DioException] if API call or serialization fails
   Future<Response<WhitelistlistRuleResponse>> createRuleWhitelist({ 
     String? acceptLanguage = 'es',
-    CreateRiskRulesData? createRiskRulesData,
+    CreateRuleWhitelistRequest? createRuleWhitelistRequest,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -179,13 +179,13 @@ class AntifraudApi {
 
     // to determine the Accept header
     List<String> _accepts = [ 
-        "application/vnd.conekta-v2.2.0+json"
+        "application/vnd.conekta-v2.3.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/7.0.7',
+        r'User-Agent': r'Conekta/v2 DartBindings/9.0.0',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (localVarAccept != null) r'Accept': localVarAccept,
         if (localVarContentType != null) r'Content-Type': localVarContentType,
@@ -209,8 +209,8 @@ class AntifraudApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(CreateRiskRulesData);
-      _bodyData = createRiskRulesData == null ? null : _serializers.serialize(createRiskRulesData, specifiedType: _type);
+      const _type = FullType(CreateRuleWhitelistRequest);
+      _bodyData = createRuleWhitelistRequest == null ? null : _serializers.serialize(createRuleWhitelistRequest, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(
@@ -299,13 +299,13 @@ class AntifraudApi {
 
     // to determine the Accept header
     List<String> _accepts = [ 
-        "application/vnd.conekta-v2.2.0+json"
+        "application/vnd.conekta-v2.3.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/7.0.7',
+        r'User-Agent': r'Conekta/v2 DartBindings/9.0.0',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
@@ -400,13 +400,13 @@ class AntifraudApi {
 
     // to determine the Accept header
     List<String> _accepts = [ 
-        "application/vnd.conekta-v2.2.0+json"
+        "application/vnd.conekta-v2.3.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/7.0.7',
+        r'User-Agent': r'Conekta/v2 DartBindings/9.0.0',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
@@ -497,13 +497,13 @@ class AntifraudApi {
 
     // to determine the Accept header
     List<String> _accepts = [ 
-        "application/vnd.conekta-v2.2.0+json"
+        "application/vnd.conekta-v2.3.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/7.0.7',
+        r'User-Agent': r'Conekta/v2 DartBindings/9.0.0',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (localVarAccept != null) r'Accept': localVarAccept,
         if (localVarContentType != null) r'Content-Type': localVarContentType,
@@ -593,13 +593,13 @@ class AntifraudApi {
 
     // to determine the Accept header
     List<String> _accepts = [ 
-        "application/vnd.conekta-v2.2.0+json"
+        "application/vnd.conekta-v2.3.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/7.0.7',
+        r'User-Agent': r'Conekta/v2 DartBindings/9.0.0',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (localVarAccept != null) r'Accept': localVarAccept,
         if (localVarContentType != null) r'Content-Type': localVarContentType,

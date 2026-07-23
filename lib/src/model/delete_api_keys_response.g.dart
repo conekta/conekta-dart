@@ -8,8 +8,6 @@ part of 'delete_api_keys_response.dart';
 
 class _$DeleteApiKeysResponse extends DeleteApiKeysResponse {
   @override
-  final bool? deleted;
-  @override
   final bool? active;
   @override
   final int? createdAt;
@@ -27,14 +25,15 @@ class _$DeleteApiKeysResponse extends DeleteApiKeysResponse {
   final int? lastUsedAt;
   @override
   final String? role;
+  @override
+  final bool? deleted;
 
   factory _$DeleteApiKeysResponse(
           [void Function(DeleteApiKeysResponseBuilder)? updates]) =>
       (new DeleteApiKeysResponseBuilder()..update(updates))._build();
 
   _$DeleteApiKeysResponse._(
-      {this.deleted,
-      this.active,
+      {this.active,
       this.createdAt,
       this.description,
       this.livemode,
@@ -42,7 +41,8 @@ class _$DeleteApiKeysResponse extends DeleteApiKeysResponse {
       this.id,
       this.object,
       this.lastUsedAt,
-      this.role})
+      this.role,
+      this.deleted})
       : super._();
 
   @override
@@ -58,7 +58,6 @@ class _$DeleteApiKeysResponse extends DeleteApiKeysResponse {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is DeleteApiKeysResponse &&
-        deleted == other.deleted &&
         active == other.active &&
         createdAt == other.createdAt &&
         description == other.description &&
@@ -67,13 +66,13 @@ class _$DeleteApiKeysResponse extends DeleteApiKeysResponse {
         id == other.id &&
         object == other.object &&
         lastUsedAt == other.lastUsedAt &&
-        role == other.role;
+        role == other.role &&
+        deleted == other.deleted;
   }
 
   @override
   int get hashCode {
     var _$hash = 0;
-    _$hash = $jc(_$hash, deleted.hashCode);
     _$hash = $jc(_$hash, active.hashCode);
     _$hash = $jc(_$hash, createdAt.hashCode);
     _$hash = $jc(_$hash, description.hashCode);
@@ -83,6 +82,7 @@ class _$DeleteApiKeysResponse extends DeleteApiKeysResponse {
     _$hash = $jc(_$hash, object.hashCode);
     _$hash = $jc(_$hash, lastUsedAt.hashCode);
     _$hash = $jc(_$hash, role.hashCode);
+    _$hash = $jc(_$hash, deleted.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -90,7 +90,6 @@ class _$DeleteApiKeysResponse extends DeleteApiKeysResponse {
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'DeleteApiKeysResponse')
-          ..add('deleted', deleted)
           ..add('active', active)
           ..add('createdAt', createdAt)
           ..add('description', description)
@@ -99,57 +98,55 @@ class _$DeleteApiKeysResponse extends DeleteApiKeysResponse {
           ..add('id', id)
           ..add('object', object)
           ..add('lastUsedAt', lastUsedAt)
-          ..add('role', role))
+          ..add('role', role)
+          ..add('deleted', deleted))
         .toString();
   }
 }
 
 class DeleteApiKeysResponseBuilder
-    implements
-        Builder<DeleteApiKeysResponse, DeleteApiKeysResponseBuilder>,
-        ApiKeyResponseOnDeleteBuilder {
+    implements Builder<DeleteApiKeysResponse, DeleteApiKeysResponseBuilder> {
   _$DeleteApiKeysResponse? _$v;
-
-  bool? _deleted;
-  bool? get deleted => _$this._deleted;
-  set deleted(covariant bool? deleted) => _$this._deleted = deleted;
 
   bool? _active;
   bool? get active => _$this._active;
-  set active(covariant bool? active) => _$this._active = active;
+  set active(bool? active) => _$this._active = active;
 
   int? _createdAt;
   int? get createdAt => _$this._createdAt;
-  set createdAt(covariant int? createdAt) => _$this._createdAt = createdAt;
+  set createdAt(int? createdAt) => _$this._createdAt = createdAt;
 
   String? _description;
   String? get description => _$this._description;
-  set description(covariant String? description) =>
-      _$this._description = description;
+  set description(String? description) => _$this._description = description;
 
   bool? _livemode;
   bool? get livemode => _$this._livemode;
-  set livemode(covariant bool? livemode) => _$this._livemode = livemode;
+  set livemode(bool? livemode) => _$this._livemode = livemode;
 
   String? _prefix;
   String? get prefix => _$this._prefix;
-  set prefix(covariant String? prefix) => _$this._prefix = prefix;
+  set prefix(String? prefix) => _$this._prefix = prefix;
 
   String? _id;
   String? get id => _$this._id;
-  set id(covariant String? id) => _$this._id = id;
+  set id(String? id) => _$this._id = id;
 
   String? _object;
   String? get object => _$this._object;
-  set object(covariant String? object) => _$this._object = object;
+  set object(String? object) => _$this._object = object;
 
   int? _lastUsedAt;
   int? get lastUsedAt => _$this._lastUsedAt;
-  set lastUsedAt(covariant int? lastUsedAt) => _$this._lastUsedAt = lastUsedAt;
+  set lastUsedAt(int? lastUsedAt) => _$this._lastUsedAt = lastUsedAt;
 
   String? _role;
   String? get role => _$this._role;
-  set role(covariant String? role) => _$this._role = role;
+  set role(String? role) => _$this._role = role;
+
+  bool? _deleted;
+  bool? get deleted => _$this._deleted;
+  set deleted(bool? deleted) => _$this._deleted = deleted;
 
   DeleteApiKeysResponseBuilder() {
     DeleteApiKeysResponse._defaults(this);
@@ -158,7 +155,6 @@ class DeleteApiKeysResponseBuilder
   DeleteApiKeysResponseBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _deleted = $v.deleted;
       _active = $v.active;
       _createdAt = $v.createdAt;
       _description = $v.description;
@@ -168,13 +164,14 @@ class DeleteApiKeysResponseBuilder
       _object = $v.object;
       _lastUsedAt = $v.lastUsedAt;
       _role = $v.role;
+      _deleted = $v.deleted;
       _$v = null;
     }
     return this;
   }
 
   @override
-  void replace(covariant DeleteApiKeysResponse other) {
+  void replace(DeleteApiKeysResponse other) {
     ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$DeleteApiKeysResponse;
   }
@@ -190,7 +187,6 @@ class DeleteApiKeysResponseBuilder
   _$DeleteApiKeysResponse _build() {
     final _$result = _$v ??
         new _$DeleteApiKeysResponse._(
-            deleted: deleted,
             active: active,
             createdAt: createdAt,
             description: description,
@@ -199,7 +195,8 @@ class DeleteApiKeysResponseBuilder
             id: id,
             object: object,
             lastUsedAt: lastUsedAt,
-            role: role);
+            role: role,
+            deleted: deleted);
     replace(_$result);
     return _$result;
   }

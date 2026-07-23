@@ -6,38 +6,7 @@ part of 'product.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
-abstract class ProductBuilder {
-  void replace(Product other);
-  void update(void Function(ProductBuilder) updates);
-  MapBuilder<String, JsonObject?> get antifraudInfo;
-  set antifraudInfo(MapBuilder<String, JsonObject?>? antifraudInfo);
-
-  String? get brand;
-  set brand(String? brand);
-
-  String? get description;
-  set description(String? description);
-
-  MapBuilder<String, JsonObject?> get metadata;
-  set metadata(MapBuilder<String, JsonObject?>? metadata);
-
-  String? get name;
-  set name(String? name);
-
-  int? get quantity;
-  set quantity(int? quantity);
-
-  String? get sku;
-  set sku(String? sku);
-
-  ListBuilder<String> get tags;
-  set tags(ListBuilder<String>? tags);
-
-  int? get unitPrice;
-  set unitPrice(int? unitPrice);
-}
-
-class _$$Product extends $Product {
+class _$Product extends Product {
   @override
   final BuiltMap<String, JsonObject?>? antifraudInfo;
   @override
@@ -57,10 +26,10 @@ class _$$Product extends $Product {
   @override
   final int unitPrice;
 
-  factory _$$Product([void Function($ProductBuilder)? updates]) =>
-      (new $ProductBuilder()..update(updates))._build();
+  factory _$Product([void Function(ProductBuilder)? updates]) =>
+      (new ProductBuilder()..update(updates))._build();
 
-  _$$Product._(
+  _$Product._(
       {this.antifraudInfo,
       this.brand,
       this.description,
@@ -71,22 +40,22 @@ class _$$Product extends $Product {
       this.tags,
       required this.unitPrice})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(name, r'$Product', 'name');
-    BuiltValueNullFieldError.checkNotNull(quantity, r'$Product', 'quantity');
-    BuiltValueNullFieldError.checkNotNull(unitPrice, r'$Product', 'unitPrice');
+    BuiltValueNullFieldError.checkNotNull(name, r'Product', 'name');
+    BuiltValueNullFieldError.checkNotNull(quantity, r'Product', 'quantity');
+    BuiltValueNullFieldError.checkNotNull(unitPrice, r'Product', 'unitPrice');
   }
 
   @override
-  $Product rebuild(void Function($ProductBuilder) updates) =>
+  Product rebuild(void Function(ProductBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  $ProductBuilder toBuilder() => new $ProductBuilder()..replace(this);
+  ProductBuilder toBuilder() => new ProductBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is $Product &&
+    return other is Product &&
         antifraudInfo == other.antifraudInfo &&
         brand == other.brand &&
         description == other.description &&
@@ -116,7 +85,7 @@ class _$$Product extends $Product {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper(r'$Product')
+    return (newBuiltValueToStringHelper(r'Product')
           ..add('antifraudInfo', antifraudInfo)
           ..add('brand', brand)
           ..add('description', description)
@@ -130,56 +99,54 @@ class _$$Product extends $Product {
   }
 }
 
-class $ProductBuilder
-    implements Builder<$Product, $ProductBuilder>, ProductBuilder {
-  _$$Product? _$v;
+class ProductBuilder implements Builder<Product, ProductBuilder> {
+  _$Product? _$v;
 
   MapBuilder<String, JsonObject?>? _antifraudInfo;
   MapBuilder<String, JsonObject?> get antifraudInfo =>
       _$this._antifraudInfo ??= new MapBuilder<String, JsonObject?>();
-  set antifraudInfo(covariant MapBuilder<String, JsonObject?>? antifraudInfo) =>
+  set antifraudInfo(MapBuilder<String, JsonObject?>? antifraudInfo) =>
       _$this._antifraudInfo = antifraudInfo;
 
   String? _brand;
   String? get brand => _$this._brand;
-  set brand(covariant String? brand) => _$this._brand = brand;
+  set brand(String? brand) => _$this._brand = brand;
 
   String? _description;
   String? get description => _$this._description;
-  set description(covariant String? description) =>
-      _$this._description = description;
+  set description(String? description) => _$this._description = description;
 
   MapBuilder<String, JsonObject?>? _metadata;
   MapBuilder<String, JsonObject?> get metadata =>
       _$this._metadata ??= new MapBuilder<String, JsonObject?>();
-  set metadata(covariant MapBuilder<String, JsonObject?>? metadata) =>
+  set metadata(MapBuilder<String, JsonObject?>? metadata) =>
       _$this._metadata = metadata;
 
   String? _name;
   String? get name => _$this._name;
-  set name(covariant String? name) => _$this._name = name;
+  set name(String? name) => _$this._name = name;
 
   int? _quantity;
   int? get quantity => _$this._quantity;
-  set quantity(covariant int? quantity) => _$this._quantity = quantity;
+  set quantity(int? quantity) => _$this._quantity = quantity;
 
   String? _sku;
   String? get sku => _$this._sku;
-  set sku(covariant String? sku) => _$this._sku = sku;
+  set sku(String? sku) => _$this._sku = sku;
 
   ListBuilder<String>? _tags;
   ListBuilder<String> get tags => _$this._tags ??= new ListBuilder<String>();
-  set tags(covariant ListBuilder<String>? tags) => _$this._tags = tags;
+  set tags(ListBuilder<String>? tags) => _$this._tags = tags;
 
   int? _unitPrice;
   int? get unitPrice => _$this._unitPrice;
-  set unitPrice(covariant int? unitPrice) => _$this._unitPrice = unitPrice;
+  set unitPrice(int? unitPrice) => _$this._unitPrice = unitPrice;
 
-  $ProductBuilder() {
-    $Product._defaults(this);
+  ProductBuilder() {
+    Product._defaults(this);
   }
 
-  $ProductBuilder get _$this {
+  ProductBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _antifraudInfo = $v.antifraudInfo?.toBuilder();
@@ -197,36 +164,36 @@ class $ProductBuilder
   }
 
   @override
-  void replace(covariant $Product other) {
+  void replace(Product other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$$Product;
+    _$v = other as _$Product;
   }
 
   @override
-  void update(void Function($ProductBuilder)? updates) {
+  void update(void Function(ProductBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  $Product build() => _build();
+  Product build() => _build();
 
-  _$$Product _build() {
-    _$$Product _$result;
+  _$Product _build() {
+    _$Product _$result;
     try {
       _$result = _$v ??
-          new _$$Product._(
+          new _$Product._(
               antifraudInfo: _antifraudInfo?.build(),
               brand: brand,
               description: description,
               metadata: _metadata?.build(),
               name: BuiltValueNullFieldError.checkNotNull(
-                  name, r'$Product', 'name'),
+                  name, r'Product', 'name'),
               quantity: BuiltValueNullFieldError.checkNotNull(
-                  quantity, r'$Product', 'quantity'),
+                  quantity, r'Product', 'quantity'),
               sku: sku,
               tags: _tags?.build(),
               unitPrice: BuiltValueNullFieldError.checkNotNull(
-                  unitPrice, r'$Product', 'unitPrice'));
+                  unitPrice, r'Product', 'unitPrice'));
     } catch (_) {
       late String _$failedField;
       try {
@@ -240,7 +207,7 @@ class $ProductBuilder
         _tags?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            r'$Product', _$failedField, e.toString());
+            r'Product', _$failedField, e.toString());
       }
       rethrow;
     }

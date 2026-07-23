@@ -113,21 +113,21 @@ class _$SubscriptionResponseSerializer implements PrimitiveSerializer<Subscripti
       yield r'billing_cycle_start';
       yield serializers.serialize(
         object.billingCycleStart,
-        specifiedType: const FullType.nullable(int),
+        specifiedType: const FullType(int),
       );
     }
     if (object.billingCycleEnd != null) {
       yield r'billing_cycle_end';
       yield serializers.serialize(
         object.billingCycleEnd,
-        specifiedType: const FullType.nullable(int),
+        specifiedType: const FullType(int),
       );
     }
     if (object.canceledAt != null) {
       yield r'canceled_at';
       yield serializers.serialize(
         object.canceledAt,
-        specifiedType: const FullType.nullable(int),
+        specifiedType: const FullType(int),
       );
     }
     if (object.canceledReason != null) {
@@ -148,7 +148,7 @@ class _$SubscriptionResponseSerializer implements PrimitiveSerializer<Subscripti
       yield r'charge_id';
       yield serializers.serialize(
         object.chargeId,
-        specifiedType: const FullType.nullable(String),
+        specifiedType: const FullType(String),
       );
     }
     if (object.createdAt != null) {
@@ -197,7 +197,7 @@ class _$SubscriptionResponseSerializer implements PrimitiveSerializer<Subscripti
       yield r'paused_at';
       yield serializers.serialize(
         object.pausedAt,
-        specifiedType: const FullType.nullable(int),
+        specifiedType: const FullType(int),
       );
     }
     if (object.planId != null) {
@@ -225,14 +225,14 @@ class _$SubscriptionResponseSerializer implements PrimitiveSerializer<Subscripti
       yield r'trial_start';
       yield serializers.serialize(
         object.trialStart,
-        specifiedType: const FullType.nullable(int),
+        specifiedType: const FullType(int),
       );
     }
     if (object.trialEnd != null) {
       yield r'trial_end';
       yield serializers.serialize(
         object.trialEnd,
-        specifiedType: const FullType.nullable(int),
+        specifiedType: const FullType(int),
       );
     }
   }
@@ -285,15 +285,17 @@ class _$SubscriptionResponseSerializer implements PrimitiveSerializer<Subscripti
         case r'canceled_reason':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.canceledReason = valueDes;
           break;
         case r'card_id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.cardId = valueDes;
           break;
         case r'charge_id':
@@ -307,43 +309,49 @@ class _$SubscriptionResponseSerializer implements PrimitiveSerializer<Subscripti
         case r'created_at':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.createdAt = valueDes;
           break;
         case r'customer_custom_reference':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.customerCustomReference = valueDes;
           break;
         case r'customer_id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.customerId = valueDes;
           break;
         case r'id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.id = valueDes;
           break;
         case r'last_billing_cycle_order_id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.lastBillingCycleOrderId = valueDes;
           break;
         case r'object':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.object = valueDes;
           break;
         case r'paused_at':
@@ -357,22 +365,25 @@ class _$SubscriptionResponseSerializer implements PrimitiveSerializer<Subscripti
         case r'plan_id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.planId = valueDes;
           break;
         case r'status':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.status = valueDes;
           break;
         case r'subscription_start':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.subscriptionStart = valueDes;
           break;
         case r'trial_start':

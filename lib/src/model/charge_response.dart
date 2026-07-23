@@ -4,6 +4,7 @@
 
 // ignore_for_file: unused_element
 import 'package:conekta/src/model/charge_response_payment_method.dart';
+import 'package:conekta/src/model/chargeback_response.dart';
 import 'package:conekta/src/model/charge_response_refunds.dart';
 import 'package:conekta/src/model/charge_response_channel.dart';
 import 'package:built_value/built_value.dart';
@@ -27,13 +28,14 @@ part 'charge_response.g.dart';
 /// * [livemode] - Whether the charge was made in live mode or not
 /// * [object] 
 /// * [orderId] - Order ID
-/// * [paidAt] - Payment date
+/// * [paidAt] - charge Payment date
 /// * [paymentMethod] 
 /// * [referenceId] - Reference ID of the charge
 /// * [refunds] 
+/// * [chargeback] 
 /// * [status] - Charge status
-@BuiltValue(instantiable: false)
-abstract class ChargeResponse  {
+@BuiltValue()
+abstract class ChargeResponse implements Built<ChargeResponse, ChargeResponseBuilder> {
   @BuiltValueField(wireName: r'amount')
   int get amount;
 
@@ -76,7 +78,7 @@ abstract class ChargeResponse  {
   @BuiltValueField(wireName: r'order_id')
   String get orderId;
 
-  /// Payment date
+  /// charge Payment date
   @BuiltValueField(wireName: r'paid_at')
   int? get paidAt;
 
@@ -90,9 +92,19 @@ abstract class ChargeResponse  {
   @BuiltValueField(wireName: r'refunds')
   ChargeResponseRefunds? get refunds;
 
+  @BuiltValueField(wireName: r'chargeback')
+  ChargebackResponse? get chargeback;
+
   /// Charge status
   @BuiltValueField(wireName: r'status')
   String get status;
+
+  ChargeResponse._();
+
+  factory ChargeResponse([void updates(ChargeResponseBuilder b)]) = _$ChargeResponse;
+
+  @BuiltValueHook(initializeBuilder: true)
+  static void _defaults(ChargeResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
   static Serializer<ChargeResponse> get serializer => _$ChargeResponseSerializer();
@@ -100,7 +112,7 @@ abstract class ChargeResponse  {
 
 class _$ChargeResponseSerializer implements PrimitiveSerializer<ChargeResponse> {
   @override
-  final Iterable<Type> types = const [ChargeResponse];
+  final Iterable<Type> types = const [ChargeResponse, _$ChargeResponse];
 
   @override
   final String wireName = r'ChargeResponse';
@@ -191,7 +203,7 @@ class _$ChargeResponseSerializer implements PrimitiveSerializer<ChargeResponse> 
       yield r'paid_at';
       yield serializers.serialize(
         object.paidAt,
-        specifiedType: const FullType.nullable(int),
+        specifiedType: const FullType(int),
       );
     }
     if (object.paymentMethod != null) {
@@ -205,14 +217,21 @@ class _$ChargeResponseSerializer implements PrimitiveSerializer<ChargeResponse> 
       yield r'reference_id';
       yield serializers.serialize(
         object.referenceId,
-        specifiedType: const FullType.nullable(String),
+        specifiedType: const FullType(String),
       );
     }
     if (object.refunds != null) {
       yield r'refunds';
       yield serializers.serialize(
         object.refunds,
-        specifiedType: const FullType.nullable(ChargeResponseRefunds),
+        specifiedType: const FullType(ChargeResponseRefunds),
+      );
+    }
+    if (object.chargeback != null) {
+      yield r'chargeback';
+      yield serializers.serialize(
+        object.chargeback,
+        specifiedType: const FullType(ChargebackResponse),
       );
     }
     yield r'status';
@@ -229,46 +248,6 @@ class _$ChargeResponseSerializer implements PrimitiveSerializer<ChargeResponse> 
     FullType specifiedType = FullType.unspecified,
   }) {
     return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
-  }
-
-  @override
-  ChargeResponse deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return serializers.deserialize(serialized, specifiedType: FullType($ChargeResponse)) as $ChargeResponse;
-  }
-}
-
-/// a concrete implementation of [ChargeResponse], since [ChargeResponse] is not instantiable
-@BuiltValue(instantiable: true)
-abstract class $ChargeResponse implements ChargeResponse, Built<$ChargeResponse, $ChargeResponseBuilder> {
-  $ChargeResponse._();
-
-  factory $ChargeResponse([void Function($ChargeResponseBuilder)? updates]) = _$$ChargeResponse;
-
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults($ChargeResponseBuilder b) => b;
-
-  @BuiltValueSerializer(custom: true)
-  static Serializer<$ChargeResponse> get serializer => _$$ChargeResponseSerializer();
-}
-
-class _$$ChargeResponseSerializer implements PrimitiveSerializer<$ChargeResponse> {
-  @override
-  final Iterable<Type> types = const [$ChargeResponse, _$$ChargeResponse];
-
-  @override
-  final String wireName = r'$ChargeResponse';
-
-  @override
-  Object serialize(
-    Serializers serializers,
-    $ChargeResponse object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return serializers.serialize(object, specifiedType: FullType(ChargeResponse))!;
   }
 
   void _deserializeProperties(
@@ -293,8 +272,9 @@ class _$$ChargeResponseSerializer implements PrimitiveSerializer<$ChargeResponse
         case r'channel':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(ChargeResponseChannel),
-          ) as ChargeResponseChannel;
+            specifiedType: const FullType.nullable(ChargeResponseChannel),
+          ) as ChargeResponseChannel?;
+          if (valueDes == null) continue;
           result.channel.replace(valueDes);
           break;
         case r'created_at':
@@ -314,36 +294,41 @@ class _$$ChargeResponseSerializer implements PrimitiveSerializer<$ChargeResponse
         case r'customer_id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.customerId = valueDes;
           break;
         case r'description':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.description = valueDes;
           break;
         case r'device_fingerprint':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.deviceFingerprint = valueDes;
           break;
         case r'failure_code':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.failureCode = valueDes;
           break;
         case r'failure_message':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.failureMessage = valueDes;
           break;
         case r'id':
@@ -385,8 +370,9 @@ class _$$ChargeResponseSerializer implements PrimitiveSerializer<$ChargeResponse
         case r'payment_method':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(ChargeResponsePaymentMethod),
-          ) as ChargeResponsePaymentMethod;
+            specifiedType: const FullType.nullable(ChargeResponsePaymentMethod),
+          ) as ChargeResponsePaymentMethod?;
+          if (valueDes == null) continue;
           result.paymentMethod.replace(valueDes);
           break;
         case r'reference_id':
@@ -405,6 +391,14 @@ class _$$ChargeResponseSerializer implements PrimitiveSerializer<$ChargeResponse
           if (valueDes == null) continue;
           result.refunds.replace(valueDes);
           break;
+        case r'chargeback':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(ChargebackResponse),
+          ) as ChargebackResponse?;
+          if (valueDes == null) continue;
+          result.chargeback.replace(valueDes);
+          break;
         case r'status':
           final valueDes = serializers.deserialize(
             value,
@@ -421,12 +415,12 @@ class _$$ChargeResponseSerializer implements PrimitiveSerializer<$ChargeResponse
   }
 
   @override
-  $ChargeResponse deserialize(
+  ChargeResponse deserialize(
     Serializers serializers,
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final result = $ChargeResponseBuilder();
+    final result = ChargeResponseBuilder();
     final serializedList = (serialized as Iterable<Object?>).toList();
     final unhandled = <Object?>[];
     _deserializeProperties(

@@ -35,7 +35,7 @@ final String xChildCompanyId = 6441b6376b60c3a638da80af; // String | In the case
 try {
     final response = api.createCustomerPaymentMethods(id, createCustomerPaymentMethodsRequest, acceptLanguage, xChildCompanyId);
     print(response);
-} catch on DioException (e) {
+} on DioException catch (e) {
     print('Exception when calling PaymentMethodsApi->createCustomerPaymentMethods: $e\n');
 }
 ```
@@ -60,7 +60,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/vnd.conekta-v2.2.0+json
+ - **Accept**: application/vnd.conekta-v2.3.0+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -84,7 +84,7 @@ final String xChildCompanyId = 6441b6376b60c3a638da80af; // String | In the case
 try {
     final response = api.deleteCustomerPaymentMethods(id, paymentMethodId, acceptLanguage, xChildCompanyId);
     print(response);
-} catch on DioException (e) {
+} on DioException catch (e) {
     print('Exception when calling PaymentMethodsApi->deleteCustomerPaymentMethods: $e\n');
 }
 ```
@@ -109,7 +109,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/vnd.conekta-v2.2.0+json
+ - **Accept**: application/vnd.conekta-v2.3.0+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -136,7 +136,7 @@ final String search = search_example; // String | General order search, e.g. by 
 try {
     final response = api.getCustomerPaymentMethods(id, acceptLanguage, xChildCompanyId, limit, next, previous, search);
     print(response);
-} catch on DioException (e) {
+} on DioException catch (e) {
     print('Exception when calling PaymentMethodsApi->getCustomerPaymentMethods: $e\n');
 }
 ```
@@ -164,12 +164,12 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/vnd.conekta-v2.2.0+json
+ - **Accept**: application/vnd.conekta-v2.3.0+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **updateCustomerPaymentMethods**
-> UpdateCustomerPaymentMethodsResponse updateCustomerPaymentMethods(id, paymentMethodId, updatePaymentMethods, acceptLanguage, xChildCompanyId)
+> UpdateCustomerPaymentMethodsResponse updateCustomerPaymentMethods(id, paymentMethodId, updatePaymentMethodsCard, acceptLanguage, xChildCompanyId)
 
 Update Payment Method
 
@@ -182,14 +182,14 @@ import 'package:conekta/api.dart';
 final api = Conekta().getPaymentMethodsApi();
 final String id = 6307a60c41de27127515a575; // String | Identifier of the resource
 final String paymentMethodId = src_2tQ974hSHcsdeSZHG; // String | Identifier of the payment method
-final UpdatePaymentMethods updatePaymentMethods = ; // UpdatePaymentMethods | requested field for customer payment methods
+final UpdatePaymentMethodsCard updatePaymentMethodsCard = ; // UpdatePaymentMethodsCard | requested field for customer payment methods
 final String acceptLanguage = es; // String | Use for knowing which language to use
 final String xChildCompanyId = 6441b6376b60c3a638da80af; // String | In the case of a holding company, the company id of the child company to which will process the request.
 
 try {
-    final response = api.updateCustomerPaymentMethods(id, paymentMethodId, updatePaymentMethods, acceptLanguage, xChildCompanyId);
+    final response = api.updateCustomerPaymentMethods(id, paymentMethodId, updatePaymentMethodsCard, acceptLanguage, xChildCompanyId);
     print(response);
-} catch on DioException (e) {
+} on DioException catch (e) {
     print('Exception when calling PaymentMethodsApi->updateCustomerPaymentMethods: $e\n');
 }
 ```
@@ -200,7 +200,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**| Identifier of the resource | 
  **paymentMethodId** | **String**| Identifier of the payment method | 
- **updatePaymentMethods** | [**UpdatePaymentMethods**](UpdatePaymentMethods.md)| requested field for customer payment methods | 
+ **updatePaymentMethodsCard** | [**UpdatePaymentMethodsCard**](UpdatePaymentMethodsCard.md)| requested field for customer payment methods | 
  **acceptLanguage** | **String**| Use for knowing which language to use | [optional] [default to 'es']
  **xChildCompanyId** | **String**| In the case of a holding company, the company id of the child company to which will process the request. | [optional] 
 
@@ -215,7 +215,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/vnd.conekta-v2.2.0+json
+ - **Accept**: application/vnd.conekta-v2.3.0+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

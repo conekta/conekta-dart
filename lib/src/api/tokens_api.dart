@@ -9,7 +9,7 @@ import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
 import 'package:conekta/src/model/error.dart';
-import 'package:conekta/src/model/token.dart';
+import 'package:conekta/src/model/token_request.dart';
 import 'package:conekta/src/model/token_response.dart';
 import 'package:conekta/src/utils/utils.dart';
 
@@ -22,10 +22,10 @@ class TokensApi {
   const TokensApi(this._dio, this._serializers);
 
   /// Create Token
-  /// Generate a payment token, to associate it with a card 
+  /// Generate a payment token, to associate it with a card, Endpoint could be use directly only for PCI compliance account 
   ///
   /// Parameters:
-  /// * [token] - requested field for token
+  /// * [tokenRequest] - requested field for token
   /// * [acceptLanguage] - Use for knowing which language to use
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
@@ -37,7 +37,7 @@ class TokensApi {
   /// Returns a [Future] containing a [Response] with a [TokenResponse] as data
   /// Throws [DioException] if API call or serialization fails
   Future<Response<TokenResponse>> createToken({ 
-    required Token token,
+    required TokenRequest tokenRequest,
     String? acceptLanguage = 'es',
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -55,13 +55,13 @@ class TokensApi {
 
     // to determine the Accept header
     List<String> _accepts = [ 
-        "application/vnd.conekta-v2.2.0+json"
+        "application/vnd.conekta-v2.3.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/7.0.7',
+        r'User-Agent': r'Conekta/v2 DartBindings/9.0.0',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (localVarAccept != null) r'Accept': localVarAccept,
         if (localVarContentType != null) r'Content-Type': localVarContentType,
@@ -85,8 +85,8 @@ class TokensApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(Token);
-      _bodyData = _serializers.serialize(token, specifiedType: _type);
+      const _type = FullType(TokenRequest);
+      _bodyData = _serializers.serialize(tokenRequest, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(

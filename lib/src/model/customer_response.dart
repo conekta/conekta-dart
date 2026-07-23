@@ -136,7 +136,7 @@ class _$CustomerResponseSerializer implements PrimitiveSerializer<CustomerRespon
       yield r'antifraud_info';
       yield serializers.serialize(
         object.antifraudInfo,
-        specifiedType: const FullType.nullable(CustomerAntifraudInfoResponse),
+        specifiedType: const FullType(CustomerAntifraudInfoResponse),
       );
     }
     if (object.corporate != null) {
@@ -169,7 +169,7 @@ class _$CustomerResponseSerializer implements PrimitiveSerializer<CustomerRespon
       yield r'default_fiscal_entity_id';
       yield serializers.serialize(
         object.defaultFiscalEntityId,
-        specifiedType: const FullType.nullable(String),
+        specifiedType: const FullType(String),
       );
     }
     if (object.defaultShippingContactId != null) {
@@ -183,7 +183,7 @@ class _$CustomerResponseSerializer implements PrimitiveSerializer<CustomerRespon
       yield r'default_payment_source_id';
       yield serializers.serialize(
         object.defaultPaymentSourceId,
-        specifiedType: const FullType.nullable(String),
+        specifiedType: const FullType(String),
       );
     }
     if (object.email != null) {
@@ -296,8 +296,9 @@ class _$CustomerResponseSerializer implements PrimitiveSerializer<CustomerRespon
         case r'corporate':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(bool),
-          ) as bool;
+            specifiedType: const FullType.nullable(bool),
+          ) as bool?;
+          if (valueDes == null) continue;
           result.corporate = valueDes;
           break;
         case r'created_at':
@@ -310,15 +311,17 @@ class _$CustomerResponseSerializer implements PrimitiveSerializer<CustomerRespon
         case r'custom_reference':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.customReference = valueDes;
           break;
         case r'date_of_birth':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.dateOfBirth = valueDes;
           break;
         case r'default_fiscal_entity_id':
@@ -332,8 +335,9 @@ class _$CustomerResponseSerializer implements PrimitiveSerializer<CustomerRespon
         case r'default_shipping_contact_id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.defaultShippingContactId = valueDes;
           break;
         case r'default_payment_source_id':
@@ -347,15 +351,17 @@ class _$CustomerResponseSerializer implements PrimitiveSerializer<CustomerRespon
         case r'email':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.email = valueDes;
           break;
         case r'fiscal_entities':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CustomerFiscalEntitiesResponse),
-          ) as CustomerFiscalEntitiesResponse;
+            specifiedType: const FullType.nullable(CustomerFiscalEntitiesResponse),
+          ) as CustomerFiscalEntitiesResponse?;
+          if (valueDes == null) continue;
           result.fiscalEntities.replace(valueDes);
           break;
         case r'id':
@@ -382,15 +388,17 @@ class _$CustomerResponseSerializer implements PrimitiveSerializer<CustomerRespon
         case r'national_id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.nationalId = valueDes;
           break;
         case r'metadata':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
-          ) as BuiltMap<String, JsonObject?>;
+            specifiedType: const FullType.nullable(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
+          ) as BuiltMap<String, JsonObject?>?;
+          if (valueDes == null) continue;
           result.metadata.replace(valueDes);
           break;
         case r'object':
@@ -403,29 +411,33 @@ class _$CustomerResponseSerializer implements PrimitiveSerializer<CustomerRespon
         case r'payment_sources':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CustomerPaymentMethodsResponse),
-          ) as CustomerPaymentMethodsResponse;
+            specifiedType: const FullType.nullable(CustomerPaymentMethodsResponse),
+          ) as CustomerPaymentMethodsResponse?;
+          if (valueDes == null) continue;
           result.paymentSources.replace(valueDes);
           break;
         case r'phone':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.phone = valueDes;
           break;
         case r'shipping_contacts':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CustomerResponseShippingContacts),
-          ) as CustomerResponseShippingContacts;
+            specifiedType: const FullType.nullable(CustomerResponseShippingContacts),
+          ) as CustomerResponseShippingContacts?;
+          if (valueDes == null) continue;
           result.shippingContacts.replace(valueDes);
           break;
         case r'subscription':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(SubscriptionResponse),
-          ) as SubscriptionResponse;
+            specifiedType: const FullType.nullable(SubscriptionResponse),
+          ) as SubscriptionResponse?;
+          if (valueDes == null) continue;
           result.subscription.replace(valueDes);
           break;
         default:

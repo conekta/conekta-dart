@@ -96,8 +96,9 @@ class _$ChargeRequestSerializer implements PrimitiveSerializer<ChargeRequest> {
         case r'amount':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.amount = valueDes;
           break;
         case r'payment_method':
@@ -110,8 +111,9 @@ class _$ChargeRequestSerializer implements PrimitiveSerializer<ChargeRequest> {
         case r'reference_id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.referenceId = valueDes;
           break;
         default:
