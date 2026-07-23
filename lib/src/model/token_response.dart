@@ -66,7 +66,7 @@ class _$TokenResponseSerializer implements PrimitiveSerializer<TokenResponse> {
       yield r'checkout';
       yield serializers.serialize(
         object.checkout,
-        specifiedType: const FullType.nullable(TokenResponseCheckout),
+        specifiedType: const FullType(TokenResponseCheckout),
       );
     }
     yield r'id';

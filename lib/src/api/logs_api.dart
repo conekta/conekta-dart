@@ -10,8 +10,8 @@ import 'package:dio/dio.dart';
 
 import 'package:conekta/src/api_util.dart';
 import 'package:conekta/src/model/error.dart';
-import 'package:conekta/src/model/log_response.dart';
-import 'package:conekta/src/model/logs_response.dart';
+import 'package:conekta/src/model/log_response_for_request.dart';
+import 'package:conekta/src/model/logs_response_for_request.dart';
 import 'package:conekta/src/utils/utils.dart';
 
 class LogsApi {
@@ -36,9 +36,9 @@ class LogsApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [LogResponse] as data
+  /// Returns a [Future] containing a [Response] with a [LogResponseForRequest] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<LogResponse>> getLogById({ 
+  Future<Response<LogResponseForRequest>> getLogById({ 
     required String id,
     String? acceptLanguage = 'es',
     String? xChildCompanyId,
@@ -57,13 +57,13 @@ class LogsApi {
 
     // to determine the Accept header
     List<String> _accepts = [ 
-        "application/vnd.conekta-v2.2.0+json"
+        "application/vnd.conekta-v2.3.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/7.0.7',
+        r'User-Agent': r'Conekta/v2 DartBindings/9.0.0',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
@@ -92,14 +92,14 @@ class LogsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    LogResponse? _responseData;
+    LogResponseForRequest? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(LogResponse),
-      ) as LogResponse;
+        specifiedType: const FullType(LogResponseForRequest),
+      ) as LogResponseForRequest;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -111,7 +111,7 @@ class LogsApi {
       );
     }
 
-    return Response<LogResponse>(
+    return Response<LogResponseForRequest>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -140,9 +140,9 @@ class LogsApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [LogsResponse] as data
+  /// Returns a [Future] containing a [Response] with a [LogsResponseForRequest] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<LogsResponse>> getLogs({ 
+  Future<Response<LogsResponseForRequest>> getLogs({ 
     String? acceptLanguage = 'es',
     String? xChildCompanyId,
     int? limit = 20,
@@ -164,13 +164,13 @@ class LogsApi {
 
     // to determine the Accept header
     List<String> _accepts = [ 
-        "application/vnd.conekta-v2.2.0+json"
+        "application/vnd.conekta-v2.3.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/7.0.7',
+        r'User-Agent': r'Conekta/v2 DartBindings/9.0.0',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
@@ -207,14 +207,14 @@ class LogsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    LogsResponse? _responseData;
+    LogsResponseForRequest? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(LogsResponse),
-      ) as LogsResponse;
+        specifiedType: const FullType(LogsResponseForRequest),
+      ) as LogsResponseForRequest;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -226,7 +226,7 @@ class LogsApi {
       );
     }
 
-    return Response<LogsResponse>(
+    return Response<LogsResponseForRequest>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,

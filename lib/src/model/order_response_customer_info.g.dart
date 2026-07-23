@@ -8,7 +8,7 @@ part of 'order_response_customer_info.dart';
 
 class _$OrderResponseCustomerInfo extends OrderResponseCustomerInfo {
   @override
-  final String? customerId;
+  final String? object;
   @override
   final String? customerCustomReference;
   @override
@@ -20,20 +20,20 @@ class _$OrderResponseCustomerInfo extends OrderResponseCustomerInfo {
   @override
   final bool? corporate;
   @override
-  final String? object;
+  final String? customerId;
 
   factory _$OrderResponseCustomerInfo(
           [void Function(OrderResponseCustomerInfoBuilder)? updates]) =>
       (new OrderResponseCustomerInfoBuilder()..update(updates))._build();
 
   _$OrderResponseCustomerInfo._(
-      {this.customerId,
+      {this.object,
       this.customerCustomReference,
       this.name,
       this.email,
       this.phone,
       this.corporate,
-      this.object})
+      this.customerId})
       : super._();
 
   @override
@@ -49,25 +49,25 @@ class _$OrderResponseCustomerInfo extends OrderResponseCustomerInfo {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is OrderResponseCustomerInfo &&
-        customerId == other.customerId &&
+        object == other.object &&
         customerCustomReference == other.customerCustomReference &&
         name == other.name &&
         email == other.email &&
         phone == other.phone &&
         corporate == other.corporate &&
-        object == other.object;
+        customerId == other.customerId;
   }
 
   @override
   int get hashCode {
     var _$hash = 0;
-    _$hash = $jc(_$hash, customerId.hashCode);
+    _$hash = $jc(_$hash, object.hashCode);
     _$hash = $jc(_$hash, customerCustomReference.hashCode);
     _$hash = $jc(_$hash, name.hashCode);
     _$hash = $jc(_$hash, email.hashCode);
     _$hash = $jc(_$hash, phone.hashCode);
     _$hash = $jc(_$hash, corporate.hashCode);
-    _$hash = $jc(_$hash, object.hashCode);
+    _$hash = $jc(_$hash, customerId.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -75,53 +75,50 @@ class _$OrderResponseCustomerInfo extends OrderResponseCustomerInfo {
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'OrderResponseCustomerInfo')
-          ..add('customerId', customerId)
+          ..add('object', object)
           ..add('customerCustomReference', customerCustomReference)
           ..add('name', name)
           ..add('email', email)
           ..add('phone', phone)
           ..add('corporate', corporate)
-          ..add('object', object))
+          ..add('customerId', customerId))
         .toString();
   }
 }
 
 class OrderResponseCustomerInfoBuilder
     implements
-        Builder<OrderResponseCustomerInfo, OrderResponseCustomerInfoBuilder>,
-        CustomerInfoJustCustomerIdResponseBuilder,
-        OrderCustomerInfoResponseBuilder {
+        Builder<OrderResponseCustomerInfo, OrderResponseCustomerInfoBuilder> {
   _$OrderResponseCustomerInfo? _$v;
 
-  String? _customerId;
-  String? get customerId => _$this._customerId;
-  set customerId(covariant String? customerId) =>
-      _$this._customerId = customerId;
+  String? _object;
+  String? get object => _$this._object;
+  set object(String? object) => _$this._object = object;
 
   String? _customerCustomReference;
   String? get customerCustomReference => _$this._customerCustomReference;
-  set customerCustomReference(covariant String? customerCustomReference) =>
+  set customerCustomReference(String? customerCustomReference) =>
       _$this._customerCustomReference = customerCustomReference;
 
   String? _name;
   String? get name => _$this._name;
-  set name(covariant String? name) => _$this._name = name;
+  set name(String? name) => _$this._name = name;
 
   String? _email;
   String? get email => _$this._email;
-  set email(covariant String? email) => _$this._email = email;
+  set email(String? email) => _$this._email = email;
 
   String? _phone;
   String? get phone => _$this._phone;
-  set phone(covariant String? phone) => _$this._phone = phone;
+  set phone(String? phone) => _$this._phone = phone;
 
   bool? _corporate;
   bool? get corporate => _$this._corporate;
-  set corporate(covariant bool? corporate) => _$this._corporate = corporate;
+  set corporate(bool? corporate) => _$this._corporate = corporate;
 
-  String? _object;
-  String? get object => _$this._object;
-  set object(covariant String? object) => _$this._object = object;
+  String? _customerId;
+  String? get customerId => _$this._customerId;
+  set customerId(String? customerId) => _$this._customerId = customerId;
 
   OrderResponseCustomerInfoBuilder() {
     OrderResponseCustomerInfo._defaults(this);
@@ -130,21 +127,20 @@ class OrderResponseCustomerInfoBuilder
   OrderResponseCustomerInfoBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _customerId = $v.customerId;
+      _object = $v.object;
       _customerCustomReference = $v.customerCustomReference;
       _name = $v.name;
       _email = $v.email;
       _phone = $v.phone;
       _corporate = $v.corporate;
-      _object = $v.object;
+      _customerId = $v.customerId;
       _$v = null;
     }
     return this;
   }
 
   @override
-// ignore: override_on_non_overriding_method
-  void replace(covariant OrderResponseCustomerInfo other) {
+  void replace(OrderResponseCustomerInfo other) {
     ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$OrderResponseCustomerInfo;
   }
@@ -160,13 +156,13 @@ class OrderResponseCustomerInfoBuilder
   _$OrderResponseCustomerInfo _build() {
     final _$result = _$v ??
         new _$OrderResponseCustomerInfo._(
-            customerId: customerId,
+            object: object,
             customerCustomReference: customerCustomReference,
             name: name,
             email: email,
             phone: phone,
             corporate: corporate,
-            object: object);
+            customerId: customerId);
     replace(_$result);
     return _$result;
   }

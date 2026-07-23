@@ -4,8 +4,10 @@
 
 // ignore_for_file: unused_element
 import 'package:built_collection/built_collection.dart';
+import 'package:conekta/src/model/order_discount_lines_request.dart';
 import 'package:conekta/src/model/checkout_order_template_customer_info.dart';
 import 'package:conekta/src/model/product.dart';
+import 'package:conekta/src/model/order_tax_request.dart';
 import 'package:built_value/json_object.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -19,6 +21,8 @@ part 'checkout_order_template.g.dart';
 /// * [customerInfo] 
 /// * [lineItems] - They are the products to buy. Each contains the \"unit price\" and \"quantity\" parameters that are used to calculate the total amount of the order.
 /// * [metadata] - It is a set of key-value pairs that you can attach to the order. It can be used to store additional information about the order in a structured format.
+/// * [taxLines] - List of [taxes](https://developers.conekta.com/v2.3.0/reference/orderscreatetaxes) that are applied to the order.
+/// * [discountLines] - List of [discounts](https://developers.conekta.com/v2.3.0/reference/orderscreatediscountline) that are applied to the order.
 @BuiltValue()
 abstract class CheckoutOrderTemplate implements Built<CheckoutOrderTemplate, CheckoutOrderTemplateBuilder> {
   /// It is the currency in which the order will be created. It must be a valid ISO 4217 currency code.
@@ -35,6 +39,14 @@ abstract class CheckoutOrderTemplate implements Built<CheckoutOrderTemplate, Che
   /// It is a set of key-value pairs that you can attach to the order. It can be used to store additional information about the order in a structured format.
   @BuiltValueField(wireName: r'metadata')
   BuiltMap<String, JsonObject?>? get metadata;
+
+  /// List of [taxes](https://developers.conekta.com/v2.3.0/reference/orderscreatetaxes) that are applied to the order.
+  @BuiltValueField(wireName: r'tax_lines')
+  BuiltList<OrderTaxRequest>? get taxLines;
+
+  /// List of [discounts](https://developers.conekta.com/v2.3.0/reference/orderscreatediscountline) that are applied to the order.
+  @BuiltValueField(wireName: r'discount_lines')
+  BuiltList<OrderDiscountLinesRequest>? get discountLines;
 
   CheckoutOrderTemplate._();
 
@@ -83,6 +95,20 @@ class _$CheckoutOrderTemplateSerializer implements PrimitiveSerializer<CheckoutO
         specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
       );
     }
+    if (object.taxLines != null) {
+      yield r'tax_lines';
+      yield serializers.serialize(
+        object.taxLines,
+        specifiedType: const FullType(BuiltList, [FullType(OrderTaxRequest)]),
+      );
+    }
+    if (object.discountLines != null) {
+      yield r'discount_lines';
+      yield serializers.serialize(
+        object.discountLines,
+        specifiedType: const FullType(BuiltList, [FullType(OrderDiscountLinesRequest)]),
+      );
+    }
   }
 
   @override
@@ -116,8 +142,9 @@ class _$CheckoutOrderTemplateSerializer implements PrimitiveSerializer<CheckoutO
         case r'customer_info':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CheckoutOrderTemplateCustomerInfo),
-          ) as CheckoutOrderTemplateCustomerInfo;
+            specifiedType: const FullType.nullable(CheckoutOrderTemplateCustomerInfo),
+          ) as CheckoutOrderTemplateCustomerInfo?;
+          if (valueDes == null) continue;
           result.customerInfo.replace(valueDes);
           break;
         case r'line_items':
@@ -130,9 +157,26 @@ class _$CheckoutOrderTemplateSerializer implements PrimitiveSerializer<CheckoutO
         case r'metadata':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
-          ) as BuiltMap<String, JsonObject?>;
+            specifiedType: const FullType.nullable(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
+          ) as BuiltMap<String, JsonObject?>?;
+          if (valueDes == null) continue;
           result.metadata.replace(valueDes);
+          break;
+        case r'tax_lines':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(BuiltList, [FullType(OrderTaxRequest)]),
+          ) as BuiltList<OrderTaxRequest>?;
+          if (valueDes == null) continue;
+          result.taxLines.replace(valueDes);
+          break;
+        case r'discount_lines':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(BuiltList, [FullType(OrderDiscountLinesRequest)]),
+          ) as BuiltList<OrderDiscountLinesRequest>?;
+          if (valueDes == null) continue;
+          result.discountLines.replace(valueDes);
           break;
         default:
           unhandled.add(key);

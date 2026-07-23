@@ -35,7 +35,7 @@ final String acceptLanguage = es; // String | Use for knowing which language to 
 try {
     final response = api.createWebhook(webhookRequest, acceptLanguage);
     print(response);
-} catch on DioException (e) {
+} on DioException catch (e) {
     print('Exception when calling WebhooksApi->createWebhook: $e\n');
 }
 ```
@@ -58,7 +58,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/vnd.conekta-v2.2.0+json
+ - **Accept**: application/vnd.conekta-v2.3.0+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -78,7 +78,7 @@ final String acceptLanguage = es; // String | Use for knowing which language to 
 try {
     final response = api.deleteWebhook(id, acceptLanguage);
     print(response);
-} catch on DioException (e) {
+} on DioException catch (e) {
     print('Exception when calling WebhooksApi->deleteWebhook: $e\n');
 }
 ```
@@ -101,7 +101,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/vnd.conekta-v2.2.0+json
+ - **Accept**: application/vnd.conekta-v2.3.0+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -122,7 +122,7 @@ final String xChildCompanyId = 6441b6376b60c3a638da80af; // String | In the case
 try {
     final response = api.getWebhook(id, acceptLanguage, xChildCompanyId);
     print(response);
-} catch on DioException (e) {
+} on DioException catch (e) {
     print('Exception when calling WebhooksApi->getWebhook: $e\n');
 }
 ```
@@ -146,7 +146,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/vnd.conekta-v2.2.0+json
+ - **Accept**: application/vnd.conekta-v2.3.0+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -173,7 +173,7 @@ final String previous = previous_example; // String | previous page
 try {
     final response = api.getWebhooks(acceptLanguage, xChildCompanyId, limit, search, url, next, previous);
     print(response);
-} catch on DioException (e) {
+} on DioException catch (e) {
     print('Exception when calling WebhooksApi->getWebhooks: $e\n');
 }
 ```
@@ -201,7 +201,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/vnd.conekta-v2.2.0+json
+ - **Accept**: application/vnd.conekta-v2.3.0+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -223,7 +223,7 @@ final String acceptLanguage = es; // String | Use for knowing which language to 
 try {
     final response = api.testWebhook(id, acceptLanguage);
     print(response);
-} catch on DioException (e) {
+} on DioException catch (e) {
     print('Exception when calling WebhooksApi->testWebhook: $e\n');
 }
 ```
@@ -246,12 +246,12 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/vnd.conekta-v2.2.0+json
+ - **Accept**: application/vnd.conekta-v2.3.0+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **updateWebhook**
-> WebhookResponse updateWebhook(id, webhookUpdateRequest, acceptLanguage, xChildCompanyId)
+> WebhookResponse updateWebhook(id, updateWebhook, acceptLanguage, xChildCompanyId)
 
 Update Webhook
 
@@ -263,14 +263,14 @@ import 'package:conekta/api.dart';
 
 final api = Conekta().getWebhooksApi();
 final String id = 6307a60c41de27127515a575; // String | Identifier of the resource
-final WebhookUpdateRequest webhookUpdateRequest = ; // WebhookUpdateRequest | requested fields in order to update a webhook
+final UpdateWebhook updateWebhook = ; // UpdateWebhook | requested fields in order to update a webhook
 final String acceptLanguage = es; // String | Use for knowing which language to use
 final String xChildCompanyId = 6441b6376b60c3a638da80af; // String | In the case of a holding company, the company id of the child company to which will process the request.
 
 try {
-    final response = api.updateWebhook(id, webhookUpdateRequest, acceptLanguage, xChildCompanyId);
+    final response = api.updateWebhook(id, updateWebhook, acceptLanguage, xChildCompanyId);
     print(response);
-} catch on DioException (e) {
+} on DioException catch (e) {
     print('Exception when calling WebhooksApi->updateWebhook: $e\n');
 }
 ```
@@ -280,7 +280,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**| Identifier of the resource | 
- **webhookUpdateRequest** | [**WebhookUpdateRequest**](WebhookUpdateRequest.md)| requested fields in order to update a webhook | 
+ **updateWebhook** | [**UpdateWebhook**](UpdateWebhook.md)| requested fields in order to update a webhook | 
  **acceptLanguage** | **String**| Use for knowing which language to use | [optional] [default to 'es']
  **xChildCompanyId** | **String**| In the case of a holding company, the company id of the child company to which will process the request. | [optional] 
 
@@ -295,7 +295,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/vnd.conekta-v2.2.0+json
+ - **Accept**: application/vnd.conekta-v2.3.0+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

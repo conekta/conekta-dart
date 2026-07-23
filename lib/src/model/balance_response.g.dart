@@ -8,25 +8,25 @@ part of 'balance_response.dart';
 
 class _$BalanceResponse extends BalanceResponse {
   @override
-  final BuiltList<BalanceCommonField>? available;
+  final BuiltList<BalanceCommonFielsResponse>? available;
   @override
-  final BuiltList<BalanceCommonField>? cashoutRetentionAmount;
+  final BuiltList<BalanceCommonFielsResponse>? cashoutRetentionAmount;
   @override
-  final BuiltList<BalanceCommonField>? conektaRetention;
+  final BuiltList<BalanceCommonFielsResponse>? conektaRetention;
   @override
-  final BuiltList<BalanceCommonField>? gateway;
+  final BuiltList<BalanceCommonFielsResponse>? gateway;
   @override
-  final BuiltList<BalanceCommonField>? pending;
+  final BuiltList<BalanceCommonFielsResponse>? pending;
   @override
-  final BuiltList<BalanceCommonField>? retained;
+  final BuiltList<BalanceCommonFielsResponse>? retained;
   @override
-  final BuiltList<BalanceCommonField>? retentionAmount;
+  final BuiltList<BalanceCommonFielsResponse>? retentionAmount;
   @override
   final JsonObject? targetCollateralAmount;
   @override
-  final BuiltList<BalanceCommonField>? targetRetentionAmount;
+  final BuiltList<BalanceCommonFielsResponse>? targetRetentionAmount;
   @override
-  final BuiltList<BalanceCommonField>? temporarilyRetained;
+  final BuiltList<BalanceCommonFielsResponse>? temporarilyRetained;
 
   factory _$BalanceResponse([void Function(BalanceResponseBuilder)? updates]) =>
       (new BalanceResponseBuilder()..update(updates))._build();
@@ -106,47 +106,51 @@ class BalanceResponseBuilder
     implements Builder<BalanceResponse, BalanceResponseBuilder> {
   _$BalanceResponse? _$v;
 
-  ListBuilder<BalanceCommonField>? _available;
-  ListBuilder<BalanceCommonField> get available =>
-      _$this._available ??= new ListBuilder<BalanceCommonField>();
-  set available(ListBuilder<BalanceCommonField>? available) =>
+  ListBuilder<BalanceCommonFielsResponse>? _available;
+  ListBuilder<BalanceCommonFielsResponse> get available =>
+      _$this._available ??= new ListBuilder<BalanceCommonFielsResponse>();
+  set available(ListBuilder<BalanceCommonFielsResponse>? available) =>
       _$this._available = available;
 
-  ListBuilder<BalanceCommonField>? _cashoutRetentionAmount;
-  ListBuilder<BalanceCommonField> get cashoutRetentionAmount =>
-      _$this._cashoutRetentionAmount ??= new ListBuilder<BalanceCommonField>();
+  ListBuilder<BalanceCommonFielsResponse>? _cashoutRetentionAmount;
+  ListBuilder<BalanceCommonFielsResponse> get cashoutRetentionAmount =>
+      _$this._cashoutRetentionAmount ??=
+          new ListBuilder<BalanceCommonFielsResponse>();
   set cashoutRetentionAmount(
-          ListBuilder<BalanceCommonField>? cashoutRetentionAmount) =>
+          ListBuilder<BalanceCommonFielsResponse>? cashoutRetentionAmount) =>
       _$this._cashoutRetentionAmount = cashoutRetentionAmount;
 
-  ListBuilder<BalanceCommonField>? _conektaRetention;
-  ListBuilder<BalanceCommonField> get conektaRetention =>
-      _$this._conektaRetention ??= new ListBuilder<BalanceCommonField>();
-  set conektaRetention(ListBuilder<BalanceCommonField>? conektaRetention) =>
+  ListBuilder<BalanceCommonFielsResponse>? _conektaRetention;
+  ListBuilder<BalanceCommonFielsResponse> get conektaRetention =>
+      _$this._conektaRetention ??=
+          new ListBuilder<BalanceCommonFielsResponse>();
+  set conektaRetention(
+          ListBuilder<BalanceCommonFielsResponse>? conektaRetention) =>
       _$this._conektaRetention = conektaRetention;
 
-  ListBuilder<BalanceCommonField>? _gateway;
-  ListBuilder<BalanceCommonField> get gateway =>
-      _$this._gateway ??= new ListBuilder<BalanceCommonField>();
-  set gateway(ListBuilder<BalanceCommonField>? gateway) =>
+  ListBuilder<BalanceCommonFielsResponse>? _gateway;
+  ListBuilder<BalanceCommonFielsResponse> get gateway =>
+      _$this._gateway ??= new ListBuilder<BalanceCommonFielsResponse>();
+  set gateway(ListBuilder<BalanceCommonFielsResponse>? gateway) =>
       _$this._gateway = gateway;
 
-  ListBuilder<BalanceCommonField>? _pending;
-  ListBuilder<BalanceCommonField> get pending =>
-      _$this._pending ??= new ListBuilder<BalanceCommonField>();
-  set pending(ListBuilder<BalanceCommonField>? pending) =>
+  ListBuilder<BalanceCommonFielsResponse>? _pending;
+  ListBuilder<BalanceCommonFielsResponse> get pending =>
+      _$this._pending ??= new ListBuilder<BalanceCommonFielsResponse>();
+  set pending(ListBuilder<BalanceCommonFielsResponse>? pending) =>
       _$this._pending = pending;
 
-  ListBuilder<BalanceCommonField>? _retained;
-  ListBuilder<BalanceCommonField> get retained =>
-      _$this._retained ??= new ListBuilder<BalanceCommonField>();
-  set retained(ListBuilder<BalanceCommonField>? retained) =>
+  ListBuilder<BalanceCommonFielsResponse>? _retained;
+  ListBuilder<BalanceCommonFielsResponse> get retained =>
+      _$this._retained ??= new ListBuilder<BalanceCommonFielsResponse>();
+  set retained(ListBuilder<BalanceCommonFielsResponse>? retained) =>
       _$this._retained = retained;
 
-  ListBuilder<BalanceCommonField>? _retentionAmount;
-  ListBuilder<BalanceCommonField> get retentionAmount =>
-      _$this._retentionAmount ??= new ListBuilder<BalanceCommonField>();
-  set retentionAmount(ListBuilder<BalanceCommonField>? retentionAmount) =>
+  ListBuilder<BalanceCommonFielsResponse>? _retentionAmount;
+  ListBuilder<BalanceCommonFielsResponse> get retentionAmount =>
+      _$this._retentionAmount ??= new ListBuilder<BalanceCommonFielsResponse>();
+  set retentionAmount(
+          ListBuilder<BalanceCommonFielsResponse>? retentionAmount) =>
       _$this._retentionAmount = retentionAmount;
 
   JsonObject? _targetCollateralAmount;
@@ -154,18 +158,20 @@ class BalanceResponseBuilder
   set targetCollateralAmount(JsonObject? targetCollateralAmount) =>
       _$this._targetCollateralAmount = targetCollateralAmount;
 
-  ListBuilder<BalanceCommonField>? _targetRetentionAmount;
-  ListBuilder<BalanceCommonField> get targetRetentionAmount =>
-      _$this._targetRetentionAmount ??= new ListBuilder<BalanceCommonField>();
+  ListBuilder<BalanceCommonFielsResponse>? _targetRetentionAmount;
+  ListBuilder<BalanceCommonFielsResponse> get targetRetentionAmount =>
+      _$this._targetRetentionAmount ??=
+          new ListBuilder<BalanceCommonFielsResponse>();
   set targetRetentionAmount(
-          ListBuilder<BalanceCommonField>? targetRetentionAmount) =>
+          ListBuilder<BalanceCommonFielsResponse>? targetRetentionAmount) =>
       _$this._targetRetentionAmount = targetRetentionAmount;
 
-  ListBuilder<BalanceCommonField>? _temporarilyRetained;
-  ListBuilder<BalanceCommonField> get temporarilyRetained =>
-      _$this._temporarilyRetained ??= new ListBuilder<BalanceCommonField>();
+  ListBuilder<BalanceCommonFielsResponse>? _temporarilyRetained;
+  ListBuilder<BalanceCommonFielsResponse> get temporarilyRetained =>
+      _$this._temporarilyRetained ??=
+          new ListBuilder<BalanceCommonFielsResponse>();
   set temporarilyRetained(
-          ListBuilder<BalanceCommonField>? temporarilyRetained) =>
+          ListBuilder<BalanceCommonFielsResponse>? temporarilyRetained) =>
       _$this._temporarilyRetained = temporarilyRetained;
 
   BalanceResponseBuilder() {

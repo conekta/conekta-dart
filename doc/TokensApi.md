@@ -13,24 +13,24 @@ Method | HTTP request | Description
 
 
 # **createToken**
-> TokenResponse createToken(token, acceptLanguage)
+> TokenResponse createToken(tokenRequest, acceptLanguage)
 
 Create Token
 
-Generate a payment token, to associate it with a card 
+Generate a payment token, to associate it with a card, Endpoint could be use directly only for PCI compliance account 
 
 ### Example
 ```dart
 import 'package:conekta/api.dart';
 
 final api = Conekta().getTokensApi();
-final Token token = ; // Token | requested field for token
+final TokenRequest tokenRequest = ; // TokenRequest | requested field for token
 final String acceptLanguage = es; // String | Use for knowing which language to use
 
 try {
-    final response = api.createToken(token, acceptLanguage);
+    final response = api.createToken(tokenRequest, acceptLanguage);
     print(response);
-} catch on DioException (e) {
+} on DioException catch (e) {
     print('Exception when calling TokensApi->createToken: $e\n');
 }
 ```
@@ -39,7 +39,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **token** | [**Token**](Token.md)| requested field for token | 
+ **tokenRequest** | [**TokenRequest**](TokenRequest.md)| requested field for token | 
  **acceptLanguage** | **String**| Use for knowing which language to use | [optional] [default to 'es']
 
 ### Return type
@@ -53,7 +53,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/vnd.conekta-v2.2.0+json
+ - **Accept**: application/vnd.conekta-v2.3.0+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

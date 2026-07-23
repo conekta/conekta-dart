@@ -34,7 +34,7 @@ final String xChildCompanyId = 6441b6376b60c3a638da80af; // String | In the case
 try {
     final response = api.ordersCreateShipping(id, shippingRequest, acceptLanguage, xChildCompanyId);
     print(response);
-} catch on DioException (e) {
+} on DioException catch (e) {
     print('Exception when calling ShippingsApi->ordersCreateShipping: $e\n');
 }
 ```
@@ -59,7 +59,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/vnd.conekta-v2.2.0+json
+ - **Accept**: application/vnd.conekta-v2.3.0+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -83,7 +83,7 @@ final String xChildCompanyId = 6441b6376b60c3a638da80af; // String | In the case
 try {
     final response = api.ordersDeleteShipping(id, shippingId, acceptLanguage, xChildCompanyId);
     print(response);
-} catch on DioException (e) {
+} on DioException catch (e) {
     print('Exception when calling ShippingsApi->ordersDeleteShipping: $e\n');
 }
 ```
@@ -108,7 +108,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/vnd.conekta-v2.2.0+json
+ - **Accept**: application/vnd.conekta-v2.3.0+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -133,7 +133,7 @@ final String xChildCompanyId = 6441b6376b60c3a638da80af; // String | In the case
 try {
     final response = api.ordersUpdateShipping(id, shippingId, shippingRequest, acceptLanguage, xChildCompanyId);
     print(response);
-} catch on DioException (e) {
+} on DioException catch (e) {
     print('Exception when calling ShippingsApi->ordersUpdateShipping: $e\n');
 }
 ```
@@ -159,7 +159,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/vnd.conekta-v2.2.0+json
+ - **Accept**: application/vnd.conekta-v2.3.0+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

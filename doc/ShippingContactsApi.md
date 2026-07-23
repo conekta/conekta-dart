@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 
 # **createCustomerShippingContacts**
-> CustomerShippingContactsResponse createCustomerShippingContacts(id, customerShippingContacts, acceptLanguage, xChildCompanyId)
+> CustomerShippingContactsResponse createCustomerShippingContacts(id, customerShippingContactsRequest, acceptLanguage, xChildCompanyId)
 
 Create a shipping contacts
 
@@ -27,14 +27,14 @@ import 'package:conekta/api.dart';
 
 final api = Conekta().getShippingContactsApi();
 final String id = 6307a60c41de27127515a575; // String | Identifier of the resource
-final CustomerShippingContacts customerShippingContacts = ; // CustomerShippingContacts | requested field for customer shippings contacts
+final CustomerShippingContactsRequest customerShippingContactsRequest = ; // CustomerShippingContactsRequest | requested field for customer shippings contacts
 final String acceptLanguage = es; // String | Use for knowing which language to use
 final String xChildCompanyId = 6441b6376b60c3a638da80af; // String | In the case of a holding company, the company id of the child company to which will process the request.
 
 try {
-    final response = api.createCustomerShippingContacts(id, customerShippingContacts, acceptLanguage, xChildCompanyId);
+    final response = api.createCustomerShippingContacts(id, customerShippingContactsRequest, acceptLanguage, xChildCompanyId);
     print(response);
-} catch on DioException (e) {
+} on DioException catch (e) {
     print('Exception when calling ShippingContactsApi->createCustomerShippingContacts: $e\n');
 }
 ```
@@ -44,7 +44,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**| Identifier of the resource | 
- **customerShippingContacts** | [**CustomerShippingContacts**](CustomerShippingContacts.md)| requested field for customer shippings contacts | 
+ **customerShippingContactsRequest** | [**CustomerShippingContactsRequest**](CustomerShippingContactsRequest.md)| requested field for customer shippings contacts | 
  **acceptLanguage** | **String**| Use for knowing which language to use | [optional] [default to 'es']
  **xChildCompanyId** | **String**| In the case of a holding company, the company id of the child company to which will process the request. | [optional] 
 
@@ -59,7 +59,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/vnd.conekta-v2.2.0+json
+ - **Accept**: application/vnd.conekta-v2.3.0+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -83,7 +83,7 @@ final String xChildCompanyId = 6441b6376b60c3a638da80af; // String | In the case
 try {
     final response = api.deleteCustomerShippingContacts(id, shippingContactsId, acceptLanguage, xChildCompanyId);
     print(response);
-} catch on DioException (e) {
+} on DioException catch (e) {
     print('Exception when calling ShippingContactsApi->deleteCustomerShippingContacts: $e\n');
 }
 ```
@@ -108,12 +108,12 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/vnd.conekta-v2.2.0+json
+ - **Accept**: application/vnd.conekta-v2.3.0+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **updateCustomerShippingContacts**
-> CustomerShippingContactsResponse updateCustomerShippingContacts(id, shippingContactsId, customerUpdateShippingContacts, acceptLanguage, xChildCompanyId)
+> CustomerShippingContactsResponse updateCustomerShippingContacts(id, shippingContactsId, customerUpdateShippingContactsRequest, acceptLanguage, xChildCompanyId)
 
 Update shipping contacts
 
@@ -126,14 +126,14 @@ import 'package:conekta/api.dart';
 final api = Conekta().getShippingContactsApi();
 final String id = 6307a60c41de27127515a575; // String | Identifier of the resource
 final String shippingContactsId = 6307a60c41de27127515a575; // String | identifier
-final CustomerUpdateShippingContacts customerUpdateShippingContacts = ; // CustomerUpdateShippingContacts | requested field for customer update shippings contacts
+final CustomerUpdateShippingContactsRequest customerUpdateShippingContactsRequest = ; // CustomerUpdateShippingContactsRequest | requested field for customer update shippings contacts
 final String acceptLanguage = es; // String | Use for knowing which language to use
 final String xChildCompanyId = 6441b6376b60c3a638da80af; // String | In the case of a holding company, the company id of the child company to which will process the request.
 
 try {
-    final response = api.updateCustomerShippingContacts(id, shippingContactsId, customerUpdateShippingContacts, acceptLanguage, xChildCompanyId);
+    final response = api.updateCustomerShippingContacts(id, shippingContactsId, customerUpdateShippingContactsRequest, acceptLanguage, xChildCompanyId);
     print(response);
-} catch on DioException (e) {
+} on DioException catch (e) {
     print('Exception when calling ShippingContactsApi->updateCustomerShippingContacts: $e\n');
 }
 ```
@@ -144,7 +144,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**| Identifier of the resource | 
  **shippingContactsId** | **String**| identifier | 
- **customerUpdateShippingContacts** | [**CustomerUpdateShippingContacts**](CustomerUpdateShippingContacts.md)| requested field for customer update shippings contacts | 
+ **customerUpdateShippingContactsRequest** | [**CustomerUpdateShippingContactsRequest**](CustomerUpdateShippingContactsRequest.md)| requested field for customer update shippings contacts | 
  **acceptLanguage** | **String**| Use for knowing which language to use | [optional] [default to 'es']
  **xChildCompanyId** | **String**| In the case of a holding company, the company id of the child company to which will process the request. | [optional] 
 
@@ -159,7 +159,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/vnd.conekta-v2.2.0+json
+ - **Accept**: application/vnd.conekta-v2.3.0+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

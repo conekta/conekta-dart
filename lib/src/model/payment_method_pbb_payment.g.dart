@@ -8,9 +8,9 @@ part of 'payment_method_pbb_payment.dart';
 
 class _$PaymentMethodPbbPayment extends PaymentMethodPbbPayment {
   @override
-  final String reference;
+  final String? type;
   @override
-  final String redirectUrl;
+  final String object;
   @override
   final String deepLink;
   @override
@@ -18,27 +18,25 @@ class _$PaymentMethodPbbPayment extends PaymentMethodPbbPayment {
   @override
   final String productType;
   @override
-  final String? type;
+  final String redirectUrl;
   @override
-  final String object;
+  final String reference;
 
   factory _$PaymentMethodPbbPayment(
           [void Function(PaymentMethodPbbPaymentBuilder)? updates]) =>
       (new PaymentMethodPbbPaymentBuilder()..update(updates))._build();
 
   _$PaymentMethodPbbPayment._(
-      {required this.reference,
-      required this.redirectUrl,
+      {this.type,
+      required this.object,
       required this.deepLink,
       required this.expiresAt,
       required this.productType,
-      this.type,
-      required this.object})
+      required this.redirectUrl,
+      required this.reference})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        reference, r'PaymentMethodPbbPayment', 'reference');
-    BuiltValueNullFieldError.checkNotNull(
-        redirectUrl, r'PaymentMethodPbbPayment', 'redirectUrl');
+        object, r'PaymentMethodPbbPayment', 'object');
     BuiltValueNullFieldError.checkNotNull(
         deepLink, r'PaymentMethodPbbPayment', 'deepLink');
     BuiltValueNullFieldError.checkNotNull(
@@ -46,7 +44,9 @@ class _$PaymentMethodPbbPayment extends PaymentMethodPbbPayment {
     BuiltValueNullFieldError.checkNotNull(
         productType, r'PaymentMethodPbbPayment', 'productType');
     BuiltValueNullFieldError.checkNotNull(
-        object, r'PaymentMethodPbbPayment', 'object');
+        redirectUrl, r'PaymentMethodPbbPayment', 'redirectUrl');
+    BuiltValueNullFieldError.checkNotNull(
+        reference, r'PaymentMethodPbbPayment', 'reference');
   }
 
   @override
@@ -62,25 +62,25 @@ class _$PaymentMethodPbbPayment extends PaymentMethodPbbPayment {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is PaymentMethodPbbPayment &&
-        reference == other.reference &&
-        redirectUrl == other.redirectUrl &&
+        type == other.type &&
+        object == other.object &&
         deepLink == other.deepLink &&
         expiresAt == other.expiresAt &&
         productType == other.productType &&
-        type == other.type &&
-        object == other.object;
+        redirectUrl == other.redirectUrl &&
+        reference == other.reference;
   }
 
   @override
   int get hashCode {
     var _$hash = 0;
-    _$hash = $jc(_$hash, reference.hashCode);
-    _$hash = $jc(_$hash, redirectUrl.hashCode);
+    _$hash = $jc(_$hash, type.hashCode);
+    _$hash = $jc(_$hash, object.hashCode);
     _$hash = $jc(_$hash, deepLink.hashCode);
     _$hash = $jc(_$hash, expiresAt.hashCode);
     _$hash = $jc(_$hash, productType.hashCode);
-    _$hash = $jc(_$hash, type.hashCode);
-    _$hash = $jc(_$hash, object.hashCode);
+    _$hash = $jc(_$hash, redirectUrl.hashCode);
+    _$hash = $jc(_$hash, reference.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -88,52 +88,49 @@ class _$PaymentMethodPbbPayment extends PaymentMethodPbbPayment {
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'PaymentMethodPbbPayment')
-          ..add('reference', reference)
-          ..add('redirectUrl', redirectUrl)
+          ..add('type', type)
+          ..add('object', object)
           ..add('deepLink', deepLink)
           ..add('expiresAt', expiresAt)
           ..add('productType', productType)
-          ..add('type', type)
-          ..add('object', object))
+          ..add('redirectUrl', redirectUrl)
+          ..add('reference', reference))
         .toString();
   }
 }
 
 class PaymentMethodPbbPaymentBuilder
     implements
-        Builder<PaymentMethodPbbPayment, PaymentMethodPbbPaymentBuilder>,
-        PaymentMethodBuilder {
+        Builder<PaymentMethodPbbPayment, PaymentMethodPbbPaymentBuilder> {
   _$PaymentMethodPbbPayment? _$v;
-
-  String? _reference;
-  String? get reference => _$this._reference;
-  set reference(covariant String? reference) => _$this._reference = reference;
-
-  String? _redirectUrl;
-  String? get redirectUrl => _$this._redirectUrl;
-  set redirectUrl(covariant String? redirectUrl) =>
-      _$this._redirectUrl = redirectUrl;
-
-  String? _deepLink;
-  String? get deepLink => _$this._deepLink;
-  set deepLink(covariant String? deepLink) => _$this._deepLink = deepLink;
-
-  int? _expiresAt;
-  int? get expiresAt => _$this._expiresAt;
-  set expiresAt(covariant int? expiresAt) => _$this._expiresAt = expiresAt;
-
-  String? _productType;
-  String? get productType => _$this._productType;
-  set productType(covariant String? productType) =>
-      _$this._productType = productType;
 
   String? _type;
   String? get type => _$this._type;
-  set type(covariant String? type) => _$this._type = type;
+  set type(String? type) => _$this._type = type;
 
   String? _object;
   String? get object => _$this._object;
-  set object(covariant String? object) => _$this._object = object;
+  set object(String? object) => _$this._object = object;
+
+  String? _deepLink;
+  String? get deepLink => _$this._deepLink;
+  set deepLink(String? deepLink) => _$this._deepLink = deepLink;
+
+  int? _expiresAt;
+  int? get expiresAt => _$this._expiresAt;
+  set expiresAt(int? expiresAt) => _$this._expiresAt = expiresAt;
+
+  String? _productType;
+  String? get productType => _$this._productType;
+  set productType(String? productType) => _$this._productType = productType;
+
+  String? _redirectUrl;
+  String? get redirectUrl => _$this._redirectUrl;
+  set redirectUrl(String? redirectUrl) => _$this._redirectUrl = redirectUrl;
+
+  String? _reference;
+  String? get reference => _$this._reference;
+  set reference(String? reference) => _$this._reference = reference;
 
   PaymentMethodPbbPaymentBuilder() {
     PaymentMethodPbbPayment._defaults(this);
@@ -142,20 +139,20 @@ class PaymentMethodPbbPaymentBuilder
   PaymentMethodPbbPaymentBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _reference = $v.reference;
-      _redirectUrl = $v.redirectUrl;
+      _type = $v.type;
+      _object = $v.object;
       _deepLink = $v.deepLink;
       _expiresAt = $v.expiresAt;
       _productType = $v.productType;
-      _type = $v.type;
-      _object = $v.object;
+      _redirectUrl = $v.redirectUrl;
+      _reference = $v.reference;
       _$v = null;
     }
     return this;
   }
 
   @override
-  void replace(covariant PaymentMethodPbbPayment other) {
+  void replace(PaymentMethodPbbPayment other) {
     ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$PaymentMethodPbbPayment;
   }
@@ -171,19 +168,19 @@ class PaymentMethodPbbPaymentBuilder
   _$PaymentMethodPbbPayment _build() {
     final _$result = _$v ??
         new _$PaymentMethodPbbPayment._(
-            reference: BuiltValueNullFieldError.checkNotNull(
-                reference, r'PaymentMethodPbbPayment', 'reference'),
-            redirectUrl: BuiltValueNullFieldError.checkNotNull(
-                redirectUrl, r'PaymentMethodPbbPayment', 'redirectUrl'),
+            type: type,
+            object: BuiltValueNullFieldError.checkNotNull(
+                object, r'PaymentMethodPbbPayment', 'object'),
             deepLink: BuiltValueNullFieldError.checkNotNull(
                 deepLink, r'PaymentMethodPbbPayment', 'deepLink'),
             expiresAt: BuiltValueNullFieldError.checkNotNull(
                 expiresAt, r'PaymentMethodPbbPayment', 'expiresAt'),
             productType: BuiltValueNullFieldError.checkNotNull(
                 productType, r'PaymentMethodPbbPayment', 'productType'),
-            type: type,
-            object: BuiltValueNullFieldError.checkNotNull(
-                object, r'PaymentMethodPbbPayment', 'object'));
+            redirectUrl: BuiltValueNullFieldError.checkNotNull(
+                redirectUrl, r'PaymentMethodPbbPayment', 'redirectUrl'),
+            reference: BuiltValueNullFieldError.checkNotNull(
+                reference, r'PaymentMethodPbbPayment', 'reference'));
     replace(_$result);
     return _$result;
   }

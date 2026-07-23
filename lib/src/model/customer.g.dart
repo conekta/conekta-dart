@@ -22,7 +22,7 @@ class _$Customer extends Customer {
   @override
   final String? defaultShippingContactId;
   @override
-  final BuiltList<CustomerFiscalEntitiesRequest>? fiscalEntities;
+  final BuiltList<FiscalEntityRequest>? fiscalEntities;
   @override
   final BuiltMap<String, JsonObject?>? metadata;
   @override
@@ -36,7 +36,7 @@ class _$Customer extends Customer {
   @override
   final String? planId;
   @override
-  final BuiltList<CustomerShippingContacts>? shippingContacts;
+  final BuiltList<CustomerShippingContactsRequest>? shippingContacts;
   @override
   final SubscriptionRequest? subscription;
 
@@ -177,12 +177,10 @@ class CustomerBuilder implements Builder<Customer, CustomerBuilder> {
   set defaultShippingContactId(String? defaultShippingContactId) =>
       _$this._defaultShippingContactId = defaultShippingContactId;
 
-  ListBuilder<CustomerFiscalEntitiesRequest>? _fiscalEntities;
-  ListBuilder<CustomerFiscalEntitiesRequest> get fiscalEntities =>
-      _$this._fiscalEntities ??=
-          new ListBuilder<CustomerFiscalEntitiesRequest>();
-  set fiscalEntities(
-          ListBuilder<CustomerFiscalEntitiesRequest>? fiscalEntities) =>
+  ListBuilder<FiscalEntityRequest>? _fiscalEntities;
+  ListBuilder<FiscalEntityRequest> get fiscalEntities =>
+      _$this._fiscalEntities ??= new ListBuilder<FiscalEntityRequest>();
+  set fiscalEntities(ListBuilder<FiscalEntityRequest>? fiscalEntities) =>
       _$this._fiscalEntities = fiscalEntities;
 
   MapBuilder<String, JsonObject?>? _metadata;
@@ -215,11 +213,12 @@ class CustomerBuilder implements Builder<Customer, CustomerBuilder> {
   String? get planId => _$this._planId;
   set planId(String? planId) => _$this._planId = planId;
 
-  ListBuilder<CustomerShippingContacts>? _shippingContacts;
-  ListBuilder<CustomerShippingContacts> get shippingContacts =>
-      _$this._shippingContacts ??= new ListBuilder<CustomerShippingContacts>();
+  ListBuilder<CustomerShippingContactsRequest>? _shippingContacts;
+  ListBuilder<CustomerShippingContactsRequest> get shippingContacts =>
+      _$this._shippingContacts ??=
+          new ListBuilder<CustomerShippingContactsRequest>();
   set shippingContacts(
-          ListBuilder<CustomerShippingContacts>? shippingContacts) =>
+          ListBuilder<CustomerShippingContactsRequest>? shippingContacts) =>
       _$this._shippingContacts = shippingContacts;
 
   SubscriptionRequestBuilder? _subscription;

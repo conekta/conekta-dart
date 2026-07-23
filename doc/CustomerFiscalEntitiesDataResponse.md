@@ -8,7 +8,7 @@ import 'package:conekta/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**address** | [**CustomerAddress**](CustomerAddress.md) |  | 
+**address** | [**FiscalEntityRequestAddress**](FiscalEntityRequestAddress.md) |  | 
 **taxId** | **String** |  | [optional] 
 **email** | **String** |  | [optional] 
 **phone** | **String** |  | [optional] 

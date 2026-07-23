@@ -14,8 +14,8 @@ part 'order_discount_lines_request.g.dart';
 /// * [amount] - The amount to be deducted from the total sum of all payments, in cents.
 /// * [code] - Discount code.
 /// * [type] - It can be 'loyalty', 'campaign', 'coupon' o 'sign'
-@BuiltValue(instantiable: false)
-abstract class OrderDiscountLinesRequest  {
+@BuiltValue()
+abstract class OrderDiscountLinesRequest implements Built<OrderDiscountLinesRequest, OrderDiscountLinesRequestBuilder> {
   /// The amount to be deducted from the total sum of all payments, in cents.
   @BuiltValueField(wireName: r'amount')
   int get amount;
@@ -28,13 +28,20 @@ abstract class OrderDiscountLinesRequest  {
   @BuiltValueField(wireName: r'type')
   String get type;
 
+  OrderDiscountLinesRequest._();
+
+  factory OrderDiscountLinesRequest([void updates(OrderDiscountLinesRequestBuilder b)]) = _$OrderDiscountLinesRequest;
+
+  @BuiltValueHook(initializeBuilder: true)
+  static void _defaults(OrderDiscountLinesRequestBuilder b) => b;
+
   @BuiltValueSerializer(custom: true)
   static Serializer<OrderDiscountLinesRequest> get serializer => _$OrderDiscountLinesRequestSerializer();
 }
 
 class _$OrderDiscountLinesRequestSerializer implements PrimitiveSerializer<OrderDiscountLinesRequest> {
   @override
-  final Iterable<Type> types = const [OrderDiscountLinesRequest];
+  final Iterable<Type> types = const [OrderDiscountLinesRequest, _$OrderDiscountLinesRequest];
 
   @override
   final String wireName = r'OrderDiscountLinesRequest';
@@ -68,46 +75,6 @@ class _$OrderDiscountLinesRequestSerializer implements PrimitiveSerializer<Order
     FullType specifiedType = FullType.unspecified,
   }) {
     return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
-  }
-
-  @override
-  OrderDiscountLinesRequest deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return serializers.deserialize(serialized, specifiedType: FullType($OrderDiscountLinesRequest)) as $OrderDiscountLinesRequest;
-  }
-}
-
-/// a concrete implementation of [OrderDiscountLinesRequest], since [OrderDiscountLinesRequest] is not instantiable
-@BuiltValue(instantiable: true)
-abstract class $OrderDiscountLinesRequest implements OrderDiscountLinesRequest, Built<$OrderDiscountLinesRequest, $OrderDiscountLinesRequestBuilder> {
-  $OrderDiscountLinesRequest._();
-
-  factory $OrderDiscountLinesRequest([void Function($OrderDiscountLinesRequestBuilder)? updates]) = _$$OrderDiscountLinesRequest;
-
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults($OrderDiscountLinesRequestBuilder b) => b;
-
-  @BuiltValueSerializer(custom: true)
-  static Serializer<$OrderDiscountLinesRequest> get serializer => _$$OrderDiscountLinesRequestSerializer();
-}
-
-class _$$OrderDiscountLinesRequestSerializer implements PrimitiveSerializer<$OrderDiscountLinesRequest> {
-  @override
-  final Iterable<Type> types = const [$OrderDiscountLinesRequest, _$$OrderDiscountLinesRequest];
-
-  @override
-  final String wireName = r'$OrderDiscountLinesRequest';
-
-  @override
-  Object serialize(
-    Serializers serializers,
-    $OrderDiscountLinesRequest object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return serializers.serialize(object, specifiedType: FullType(OrderDiscountLinesRequest))!;
   }
 
   void _deserializeProperties(
@@ -152,12 +119,12 @@ class _$$OrderDiscountLinesRequestSerializer implements PrimitiveSerializer<$Ord
   }
 
   @override
-  $OrderDiscountLinesRequest deserialize(
+  OrderDiscountLinesRequest deserialize(
     Serializers serializers,
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final result = $OrderDiscountLinesRequestBuilder();
+    final result = OrderDiscountLinesRequestBuilder();
     final serializedList = (serialized as Iterable<Object?>).toList();
     final unhandled = <Object?>[];
     _deserializeProperties(

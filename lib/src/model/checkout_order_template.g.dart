@@ -15,6 +15,10 @@ class _$CheckoutOrderTemplate extends CheckoutOrderTemplate {
   final BuiltList<Product> lineItems;
   @override
   final BuiltMap<String, JsonObject?>? metadata;
+  @override
+  final BuiltList<OrderTaxRequest>? taxLines;
+  @override
+  final BuiltList<OrderDiscountLinesRequest>? discountLines;
 
   factory _$CheckoutOrderTemplate(
           [void Function(CheckoutOrderTemplateBuilder)? updates]) =>
@@ -24,7 +28,9 @@ class _$CheckoutOrderTemplate extends CheckoutOrderTemplate {
       {required this.currency,
       this.customerInfo,
       required this.lineItems,
-      this.metadata})
+      this.metadata,
+      this.taxLines,
+      this.discountLines})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         currency, r'CheckoutOrderTemplate', 'currency');
@@ -48,7 +54,9 @@ class _$CheckoutOrderTemplate extends CheckoutOrderTemplate {
         currency == other.currency &&
         customerInfo == other.customerInfo &&
         lineItems == other.lineItems &&
-        metadata == other.metadata;
+        metadata == other.metadata &&
+        taxLines == other.taxLines &&
+        discountLines == other.discountLines;
   }
 
   @override
@@ -58,6 +66,8 @@ class _$CheckoutOrderTemplate extends CheckoutOrderTemplate {
     _$hash = $jc(_$hash, customerInfo.hashCode);
     _$hash = $jc(_$hash, lineItems.hashCode);
     _$hash = $jc(_$hash, metadata.hashCode);
+    _$hash = $jc(_$hash, taxLines.hashCode);
+    _$hash = $jc(_$hash, discountLines.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -68,7 +78,9 @@ class _$CheckoutOrderTemplate extends CheckoutOrderTemplate {
           ..add('currency', currency)
           ..add('customerInfo', customerInfo)
           ..add('lineItems', lineItems)
-          ..add('metadata', metadata))
+          ..add('metadata', metadata)
+          ..add('taxLines', taxLines)
+          ..add('discountLines', discountLines))
         .toString();
   }
 }
@@ -99,6 +111,18 @@ class CheckoutOrderTemplateBuilder
   set metadata(MapBuilder<String, JsonObject?>? metadata) =>
       _$this._metadata = metadata;
 
+  ListBuilder<OrderTaxRequest>? _taxLines;
+  ListBuilder<OrderTaxRequest> get taxLines =>
+      _$this._taxLines ??= new ListBuilder<OrderTaxRequest>();
+  set taxLines(ListBuilder<OrderTaxRequest>? taxLines) =>
+      _$this._taxLines = taxLines;
+
+  ListBuilder<OrderDiscountLinesRequest>? _discountLines;
+  ListBuilder<OrderDiscountLinesRequest> get discountLines =>
+      _$this._discountLines ??= new ListBuilder<OrderDiscountLinesRequest>();
+  set discountLines(ListBuilder<OrderDiscountLinesRequest>? discountLines) =>
+      _$this._discountLines = discountLines;
+
   CheckoutOrderTemplateBuilder() {
     CheckoutOrderTemplate._defaults(this);
   }
@@ -110,6 +134,8 @@ class CheckoutOrderTemplateBuilder
       _customerInfo = $v.customerInfo?.toBuilder();
       _lineItems = $v.lineItems.toBuilder();
       _metadata = $v.metadata?.toBuilder();
+      _taxLines = $v.taxLines?.toBuilder();
+      _discountLines = $v.discountLines?.toBuilder();
       _$v = null;
     }
     return this;
@@ -138,7 +164,9 @@ class CheckoutOrderTemplateBuilder
                   currency, r'CheckoutOrderTemplate', 'currency'),
               customerInfo: _customerInfo?.build(),
               lineItems: lineItems.build(),
-              metadata: _metadata?.build());
+              metadata: _metadata?.build(),
+              taxLines: _taxLines?.build(),
+              discountLines: _discountLines?.build());
     } catch (_) {
       late String _$failedField;
       try {
@@ -148,6 +176,10 @@ class CheckoutOrderTemplateBuilder
         lineItems.build();
         _$failedField = 'metadata';
         _metadata?.build();
+        _$failedField = 'taxLines';
+        _taxLines?.build();
+        _$failedField = 'discountLines';
+        _discountLines?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             r'CheckoutOrderTemplate', _$failedField, e.toString());

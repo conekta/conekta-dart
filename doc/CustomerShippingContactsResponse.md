@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **phone** | **String** |  | [optional] 
 **receiver** | **String** |  | [optional] 
 **betweenStreets** | **String** |  | [optional] 
-**address** | [**CustomerShippingContactsResponseAddress**](CustomerShippingContactsResponseAddress.md) |  | [optional] 
+**address** | [**CustomerShippingContactsAddress**](CustomerShippingContactsAddress.md) |  | [optional] 
 **parentId** | **String** |  | [optional] 
 **default_** | **bool** |  | [optional] 
 **id** | **String** |  | [optional] 

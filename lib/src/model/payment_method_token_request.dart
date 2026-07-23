@@ -3,7 +3,6 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:conekta/src/model/customer_payment_method_request.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -13,10 +12,14 @@ part 'payment_method_token_request.g.dart';
 ///
 /// Properties:
 /// * [type] - Type of payment method
-/// * [tokenId] - Token id that will be used to create a \"card\" type payment method. See the (subscriptions)[https://developers.conekta.com/v2.2.0/reference/createsubscription] tutorial for more information on how to tokenize cards.
+/// * [tokenId] - Token id that will be used to create a \"card\" type payment method. See the (subscriptions)[https://developers.conekta.com/v2.3.0/reference/createsubscription] tutorial for more information on how to tokenize cards.
 @BuiltValue()
-abstract class PaymentMethodTokenRequest implements CustomerPaymentMethodRequest, Built<PaymentMethodTokenRequest, PaymentMethodTokenRequestBuilder> {
-  /// Token id that will be used to create a \"card\" type payment method. See the (subscriptions)[https://developers.conekta.com/v2.2.0/reference/createsubscription] tutorial for more information on how to tokenize cards.
+abstract class PaymentMethodTokenRequest implements Built<PaymentMethodTokenRequest, PaymentMethodTokenRequestBuilder> {
+  /// Type of payment method
+  @BuiltValueField(wireName: r'type')
+  String get type;
+
+  /// Token id that will be used to create a \"card\" type payment method. See the (subscriptions)[https://developers.conekta.com/v2.3.0/reference/createsubscription] tutorial for more information on how to tokenize cards.
   @BuiltValueField(wireName: r'token_id')
   String get tokenId;
 
@@ -43,14 +46,14 @@ class _$PaymentMethodTokenRequestSerializer implements PrimitiveSerializer<Payme
     PaymentMethodTokenRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    yield r'token_id';
-    yield serializers.serialize(
-      object.tokenId,
-      specifiedType: const FullType(String),
-    );
     yield r'type';
     yield serializers.serialize(
       object.type,
+      specifiedType: const FullType(String),
+    );
+    yield r'token_id';
+    yield serializers.serialize(
+      object.tokenId,
       specifiedType: const FullType(String),
     );
   }
@@ -76,19 +79,19 @@ class _$PaymentMethodTokenRequestSerializer implements PrimitiveSerializer<Payme
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
-        case r'token_id':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.tokenId = valueDes;
-          break;
         case r'type':
           final valueDes = serializers.deserialize(
             value,
             specifiedType: const FullType(String),
           ) as String;
           result.type = valueDes;
+          break;
+        case r'token_id':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.tokenId = valueDes;
           break;
         default:
           unhandled.add(key);

@@ -9,9 +9,9 @@ import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
 import 'package:conekta/src/api_util.dart';
-import 'package:conekta/src/model/customer_shipping_contacts.dart';
+import 'package:conekta/src/model/customer_shipping_contacts_request.dart';
 import 'package:conekta/src/model/customer_shipping_contacts_response.dart';
-import 'package:conekta/src/model/customer_update_shipping_contacts.dart';
+import 'package:conekta/src/model/customer_update_shipping_contacts_request.dart';
 import 'package:conekta/src/model/error.dart';
 import 'package:conekta/src/utils/utils.dart';
 
@@ -28,7 +28,7 @@ class ShippingContactsApi {
   ///
   /// Parameters:
   /// * [id] - Identifier of the resource
-  /// * [customerShippingContacts] - requested field for customer shippings contacts
+  /// * [customerShippingContactsRequest] - requested field for customer shippings contacts
   /// * [acceptLanguage] - Use for knowing which language to use
   /// * [xChildCompanyId] - In the case of a holding company, the company id of the child company to which will process the request.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
@@ -42,7 +42,7 @@ class ShippingContactsApi {
   /// Throws [DioException] if API call or serialization fails
   Future<Response<CustomerShippingContactsResponse>> createCustomerShippingContacts({ 
     required String id,
-    required CustomerShippingContacts customerShippingContacts,
+    required CustomerShippingContactsRequest customerShippingContactsRequest,
     String? acceptLanguage = 'es',
     String? xChildCompanyId,
     CancelToken? cancelToken,
@@ -61,13 +61,13 @@ class ShippingContactsApi {
 
     // to determine the Accept header
     List<String> _accepts = [ 
-        "application/vnd.conekta-v2.2.0+json"
+        "application/vnd.conekta-v2.3.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/7.0.7',
+        r'User-Agent': r'Conekta/v2 DartBindings/9.0.0',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
@@ -92,8 +92,8 @@ class ShippingContactsApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(CustomerShippingContacts);
-      _bodyData = _serializers.serialize(customerShippingContacts, specifiedType: _type);
+      const _type = FullType(CustomerShippingContactsRequest);
+      _bodyData = _serializers.serialize(customerShippingContactsRequest, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(
@@ -184,13 +184,13 @@ class ShippingContactsApi {
 
     // to determine the Accept header
     List<String> _accepts = [ 
-        "application/vnd.conekta-v2.2.0+json"
+        "application/vnd.conekta-v2.3.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/7.0.7',
+        r'User-Agent': r'Conekta/v2 DartBindings/9.0.0',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
@@ -256,7 +256,7 @@ class ShippingContactsApi {
   /// Parameters:
   /// * [id] - Identifier of the resource
   /// * [shippingContactsId] - identifier
-  /// * [customerUpdateShippingContacts] - requested field for customer update shippings contacts
+  /// * [customerUpdateShippingContactsRequest] - requested field for customer update shippings contacts
   /// * [acceptLanguage] - Use for knowing which language to use
   /// * [xChildCompanyId] - In the case of a holding company, the company id of the child company to which will process the request.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
@@ -271,7 +271,7 @@ class ShippingContactsApi {
   Future<Response<CustomerShippingContactsResponse>> updateCustomerShippingContacts({ 
     required String id,
     required String shippingContactsId,
-    required CustomerUpdateShippingContacts customerUpdateShippingContacts,
+    required CustomerUpdateShippingContactsRequest customerUpdateShippingContactsRequest,
     String? acceptLanguage = 'es',
     String? xChildCompanyId,
     CancelToken? cancelToken,
@@ -290,13 +290,13 @@ class ShippingContactsApi {
 
     // to determine the Accept header
     List<String> _accepts = [ 
-        "application/vnd.conekta-v2.2.0+json"
+        "application/vnd.conekta-v2.3.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
     final _options = Options(
       method: r'PUT',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/7.0.7',
+        r'User-Agent': r'Conekta/v2 DartBindings/9.0.0',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
@@ -321,8 +321,8 @@ class ShippingContactsApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(CustomerUpdateShippingContacts);
-      _bodyData = _serializers.serialize(customerUpdateShippingContacts, specifiedType: _type);
+      const _type = FullType(CustomerUpdateShippingContactsRequest);
+      _bodyData = _serializers.serialize(customerUpdateShippingContactsRequest, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(

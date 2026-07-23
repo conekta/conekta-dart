@@ -91,7 +91,7 @@ class _$OrderFiscalEntityRequestSerializer implements PrimitiveSerializer<OrderF
       yield r'name';
       yield serializers.serialize(
         object.name,
-        specifiedType: const FullType.nullable(String),
+        specifiedType: const FullType(String),
       );
     }
     if (object.phone != null) {
@@ -105,7 +105,7 @@ class _$OrderFiscalEntityRequestSerializer implements PrimitiveSerializer<OrderF
       yield r'tax_id';
       yield serializers.serialize(
         object.taxId,
-        specifiedType: const FullType.nullable(String),
+        specifiedType: const FullType(String),
       );
     }
   }
@@ -136,20 +136,22 @@ class _$OrderFiscalEntityRequestSerializer implements PrimitiveSerializer<OrderF
             value,
             specifiedType: const FullType(FiscalEntityAddress),
           ) as FiscalEntityAddress;
-          result.address = valueDes;
+          result.address.replace(valueDes);
           break;
         case r'email':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.email = valueDes;
           break;
         case r'metadata':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
-          ) as BuiltMap<String, JsonObject?>;
+            specifiedType: const FullType.nullable(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
+          ) as BuiltMap<String, JsonObject?>?;
+          if (valueDes == null) continue;
           result.metadata.replace(valueDes);
           break;
         case r'name':
@@ -163,8 +165,9 @@ class _$OrderFiscalEntityRequestSerializer implements PrimitiveSerializer<OrderF
         case r'phone':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.phone = valueDes;
           break;
         case r'tax_id':

@@ -122,36 +122,41 @@ class _$CreateCompanyRequestSerializer implements PrimitiveSerializer<CreateComp
         case r'name':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.name = valueDes;
           break;
         case r'type_company':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.typeCompany = valueDes;
           break;
         case r'comercial_info':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CreateCompanyRequestComercialInfo),
-          ) as CreateCompanyRequestComercialInfo;
+            specifiedType: const FullType.nullable(CreateCompanyRequestComercialInfo),
+          ) as CreateCompanyRequestComercialInfo?;
+          if (valueDes == null) continue;
           result.comercialInfo.replace(valueDes);
           break;
         case r'fiscal_info':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CreateCompanyRequestFiscalInfo),
-          ) as CreateCompanyRequestFiscalInfo;
+            specifiedType: const FullType.nullable(CreateCompanyRequestFiscalInfo),
+          ) as CreateCompanyRequestFiscalInfo?;
+          if (valueDes == null) continue;
           result.fiscalInfo.replace(valueDes);
           break;
         case r'bank_account_info':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CreateCompanyRequestBankAccountInfo),
-          ) as CreateCompanyRequestBankAccountInfo;
+            specifiedType: const FullType.nullable(CreateCompanyRequestBankAccountInfo),
+          ) as CreateCompanyRequestBankAccountInfo?;
+          if (valueDes == null) continue;
           result.bankAccountInfo.replace(valueDes);
           break;
         default:

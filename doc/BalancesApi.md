@@ -29,7 +29,7 @@ final String acceptLanguage = es; // String | Use for knowing which language to 
 try {
     final response = api.getBalance(acceptLanguage);
     print(response);
-} catch on DioException (e) {
+} on DioException catch (e) {
     print('Exception when calling BalancesApi->getBalance: $e\n');
 }
 ```
@@ -51,7 +51,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/vnd.conekta-v2.2.0+json
+ - **Accept**: application/vnd.conekta-v2.3.0+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

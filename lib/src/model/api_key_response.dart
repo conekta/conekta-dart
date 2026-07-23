@@ -22,8 +22,8 @@ part 'api_key_response.g.dart';
 /// * [object] - Object name, value is 'api_key'
 /// * [prefix] - The first few characters of the authentication_token
 /// * [role] - Indicates if the api key is private or public
-@BuiltValue(instantiable: false)
-abstract class ApiKeyResponse  {
+@BuiltValue()
+abstract class ApiKeyResponse implements Built<ApiKeyResponse, ApiKeyResponseBuilder> {
   /// Indicates if the api key is active
   @BuiltValueField(wireName: r'active')
   bool? get active;
@@ -68,13 +68,20 @@ abstract class ApiKeyResponse  {
   @BuiltValueField(wireName: r'role')
   String? get role;
 
+  ApiKeyResponse._();
+
+  factory ApiKeyResponse([void updates(ApiKeyResponseBuilder b)]) = _$ApiKeyResponse;
+
+  @BuiltValueHook(initializeBuilder: true)
+  static void _defaults(ApiKeyResponseBuilder b) => b;
+
   @BuiltValueSerializer(custom: true)
   static Serializer<ApiKeyResponse> get serializer => _$ApiKeyResponseSerializer();
 }
 
 class _$ApiKeyResponseSerializer implements PrimitiveSerializer<ApiKeyResponse> {
   @override
-  final Iterable<Type> types = const [ApiKeyResponse];
+  final Iterable<Type> types = const [ApiKeyResponse, _$ApiKeyResponse];
 
   @override
   final String wireName = r'ApiKeyResponse';
@@ -109,14 +116,14 @@ class _$ApiKeyResponseSerializer implements PrimitiveSerializer<ApiKeyResponse> 
       yield r'deactivated_at';
       yield serializers.serialize(
         object.deactivatedAt,
-        specifiedType: const FullType.nullable(int),
+        specifiedType: const FullType(int),
       );
     }
     if (object.lastUsedAt != null) {
       yield r'last_used_at';
       yield serializers.serialize(
         object.lastUsedAt,
-        specifiedType: const FullType.nullable(int),
+        specifiedType: const FullType(int),
       );
     }
     if (object.description != null) {
@@ -172,46 +179,6 @@ class _$ApiKeyResponseSerializer implements PrimitiveSerializer<ApiKeyResponse> 
     return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
   }
 
-  @override
-  ApiKeyResponse deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return serializers.deserialize(serialized, specifiedType: FullType($ApiKeyResponse)) as $ApiKeyResponse;
-  }
-}
-
-/// a concrete implementation of [ApiKeyResponse], since [ApiKeyResponse] is not instantiable
-@BuiltValue(instantiable: true)
-abstract class $ApiKeyResponse implements ApiKeyResponse, Built<$ApiKeyResponse, $ApiKeyResponseBuilder> {
-  $ApiKeyResponse._();
-
-  factory $ApiKeyResponse([void Function($ApiKeyResponseBuilder)? updates]) = _$$ApiKeyResponse;
-
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults($ApiKeyResponseBuilder b) => b;
-
-  @BuiltValueSerializer(custom: true)
-  static Serializer<$ApiKeyResponse> get serializer => _$$ApiKeyResponseSerializer();
-}
-
-class _$$ApiKeyResponseSerializer implements PrimitiveSerializer<$ApiKeyResponse> {
-  @override
-  final Iterable<Type> types = const [$ApiKeyResponse, _$$ApiKeyResponse];
-
-  @override
-  final String wireName = r'$ApiKeyResponse';
-
-  @override
-  Object serialize(
-    Serializers serializers,
-    $ApiKeyResponse object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return serializers.serialize(object, specifiedType: FullType(ApiKeyResponse))!;
-  }
-
   void _deserializeProperties(
     Serializers serializers,
     Object serialized, {
@@ -227,22 +194,25 @@ class _$$ApiKeyResponseSerializer implements PrimitiveSerializer<$ApiKeyResponse
         case r'active':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(bool),
-          ) as bool;
+            specifiedType: const FullType.nullable(bool),
+          ) as bool?;
+          if (valueDes == null) continue;
           result.active = valueDes;
           break;
         case r'created_at':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.createdAt = valueDes;
           break;
         case r'updated_at':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.updatedAt = valueDes;
           break;
         case r'deactivated_at':
@@ -264,43 +234,49 @@ class _$$ApiKeyResponseSerializer implements PrimitiveSerializer<$ApiKeyResponse
         case r'description':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.description = valueDes;
           break;
         case r'id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.id = valueDes;
           break;
         case r'livemode':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(bool),
-          ) as bool;
+            specifiedType: const FullType.nullable(bool),
+          ) as bool?;
+          if (valueDes == null) continue;
           result.livemode = valueDes;
           break;
         case r'object':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.object = valueDes;
           break;
         case r'prefix':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.prefix = valueDes;
           break;
         case r'role':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.role = valueDes;
           break;
         default:
@@ -312,12 +288,12 @@ class _$$ApiKeyResponseSerializer implements PrimitiveSerializer<$ApiKeyResponse
   }
 
   @override
-  $ApiKeyResponse deserialize(
+  ApiKeyResponse deserialize(
     Serializers serializers,
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final result = $ApiKeyResponseBuilder();
+    final result = ApiKeyResponseBuilder();
     final serializedList = (serialized as Iterable<Object?>).toList();
     final unhandled = <Object?>[];
     _deserializeProperties(

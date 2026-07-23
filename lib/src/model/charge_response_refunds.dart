@@ -3,10 +3,8 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:conekta/src/model/pagination.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:conekta/src/model/charge_response_refunds_data.dart';
-import 'package:conekta/src/model/page.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -21,7 +19,23 @@ part 'charge_response_refunds.g.dart';
 /// * [previousPageUrl] - Url of the previous page.
 /// * [data] - refunds
 @BuiltValue()
-abstract class ChargeResponseRefunds implements Page, Pagination, Built<ChargeResponseRefunds, ChargeResponseRefundsBuilder> {
+abstract class ChargeResponseRefunds implements Built<ChargeResponseRefunds, ChargeResponseRefundsBuilder> {
+  /// Indicates if there are more pages to be requested
+  @BuiltValueField(wireName: r'has_more')
+  bool get hasMore;
+
+  /// Object type, in this case is list
+  @BuiltValueField(wireName: r'object')
+  String get object;
+
+  /// URL of the next page.
+  @BuiltValueField(wireName: r'next_page_url')
+  String? get nextPageUrl;
+
+  /// Url of the previous page.
+  @BuiltValueField(wireName: r'previous_page_url')
+  String? get previousPageUrl;
+
   /// refunds
   @BuiltValueField(wireName: r'data')
   BuiltList<ChargeResponseRefundsData>? get data;
@@ -54,11 +68,23 @@ class _$ChargeResponseRefundsSerializer implements PrimitiveSerializer<ChargeRes
       object.hasMore,
       specifiedType: const FullType(bool),
     );
+    yield r'object';
+    yield serializers.serialize(
+      object.object,
+      specifiedType: const FullType(String),
+    );
     if (object.nextPageUrl != null) {
       yield r'next_page_url';
       yield serializers.serialize(
         object.nextPageUrl,
-        specifiedType: const FullType.nullable(String),
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.previousPageUrl != null) {
+      yield r'previous_page_url';
+      yield serializers.serialize(
+        object.previousPageUrl,
+        specifiedType: const FullType(String),
       );
     }
     if (object.data != null) {
@@ -68,18 +94,6 @@ class _$ChargeResponseRefundsSerializer implements PrimitiveSerializer<ChargeRes
         specifiedType: const FullType(BuiltList, [FullType(ChargeResponseRefundsData)]),
       );
     }
-    if (object.previousPageUrl != null) {
-      yield r'previous_page_url';
-      yield serializers.serialize(
-        object.previousPageUrl,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    yield r'object';
-    yield serializers.serialize(
-      object.object,
-      specifiedType: const FullType(String),
-    );
   }
 
   @override
@@ -110,6 +124,13 @@ class _$ChargeResponseRefundsSerializer implements PrimitiveSerializer<ChargeRes
           ) as bool;
           result.hasMore = valueDes;
           break;
+        case r'object':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.object = valueDes;
+          break;
         case r'next_page_url':
           final valueDes = serializers.deserialize(
             value,
@@ -117,13 +138,6 @@ class _$ChargeResponseRefundsSerializer implements PrimitiveSerializer<ChargeRes
           ) as String?;
           if (valueDes == null) continue;
           result.nextPageUrl = valueDes;
-          break;
-        case r'data':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(BuiltList, [FullType(ChargeResponseRefundsData)]),
-          ) as BuiltList<ChargeResponseRefundsData>;
-          result.data.replace(valueDes);
           break;
         case r'previous_page_url':
           final valueDes = serializers.deserialize(
@@ -133,12 +147,13 @@ class _$ChargeResponseRefundsSerializer implements PrimitiveSerializer<ChargeRes
           if (valueDes == null) continue;
           result.previousPageUrl = valueDes;
           break;
-        case r'object':
+        case r'data':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.object = valueDes;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(ChargeResponseRefundsData)]),
+          ) as BuiltList<ChargeResponseRefundsData>?;
+          if (valueDes == null) continue;
+          result.data.replace(valueDes);
           break;
         default:
           unhandled.add(key);

@@ -6,6 +6,51 @@ part of 'checkout_response.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
+const CheckoutResponseExcludedPaymentMethodsEnum
+    _$checkoutResponseExcludedPaymentMethodsEnum_cash =
+    const CheckoutResponseExcludedPaymentMethodsEnum._('cash');
+const CheckoutResponseExcludedPaymentMethodsEnum
+    _$checkoutResponseExcludedPaymentMethodsEnum_card =
+    const CheckoutResponseExcludedPaymentMethodsEnum._('card');
+const CheckoutResponseExcludedPaymentMethodsEnum
+    _$checkoutResponseExcludedPaymentMethodsEnum_bankTransfer =
+    const CheckoutResponseExcludedPaymentMethodsEnum._('bankTransfer');
+const CheckoutResponseExcludedPaymentMethodsEnum
+    _$checkoutResponseExcludedPaymentMethodsEnum_bnpl =
+    const CheckoutResponseExcludedPaymentMethodsEnum._('bnpl');
+const CheckoutResponseExcludedPaymentMethodsEnum
+    _$checkoutResponseExcludedPaymentMethodsEnum_payByBank =
+    const CheckoutResponseExcludedPaymentMethodsEnum._('payByBank');
+
+CheckoutResponseExcludedPaymentMethodsEnum
+    _$checkoutResponseExcludedPaymentMethodsEnumValueOf(String name) {
+  switch (name) {
+    case 'cash':
+      return _$checkoutResponseExcludedPaymentMethodsEnum_cash;
+    case 'card':
+      return _$checkoutResponseExcludedPaymentMethodsEnum_card;
+    case 'bankTransfer':
+      return _$checkoutResponseExcludedPaymentMethodsEnum_bankTransfer;
+    case 'bnpl':
+      return _$checkoutResponseExcludedPaymentMethodsEnum_bnpl;
+    case 'payByBank':
+      return _$checkoutResponseExcludedPaymentMethodsEnum_payByBank;
+    default:
+      throw new ArgumentError(name);
+  }
+}
+
+final BuiltSet<CheckoutResponseExcludedPaymentMethodsEnum>
+    _$checkoutResponseExcludedPaymentMethodsEnumValues =
+    new BuiltSet<CheckoutResponseExcludedPaymentMethodsEnum>(const <
+        CheckoutResponseExcludedPaymentMethodsEnum>[
+  _$checkoutResponseExcludedPaymentMethodsEnum_cash,
+  _$checkoutResponseExcludedPaymentMethodsEnum_card,
+  _$checkoutResponseExcludedPaymentMethodsEnum_bankTransfer,
+  _$checkoutResponseExcludedPaymentMethodsEnum_bnpl,
+  _$checkoutResponseExcludedPaymentMethodsEnum_payByBank,
+]);
+
 const CheckoutResponseExcludeCardNetworksEnum
     _$checkoutResponseExcludeCardNetworksEnum_visa =
     const CheckoutResponseExcludeCardNetworksEnum._('visa');
@@ -39,9 +84,50 @@ final BuiltSet<CheckoutResponseExcludeCardNetworksEnum>
   _$checkoutResponseExcludeCardNetworksEnum_amex,
 ]);
 
+Serializer<CheckoutResponseExcludedPaymentMethodsEnum>
+    _$checkoutResponseExcludedPaymentMethodsEnumSerializer =
+    new _$CheckoutResponseExcludedPaymentMethodsEnumSerializer();
 Serializer<CheckoutResponseExcludeCardNetworksEnum>
     _$checkoutResponseExcludeCardNetworksEnumSerializer =
     new _$CheckoutResponseExcludeCardNetworksEnumSerializer();
+
+class _$CheckoutResponseExcludedPaymentMethodsEnumSerializer
+    implements PrimitiveSerializer<CheckoutResponseExcludedPaymentMethodsEnum> {
+  static const Map<String, Object> _toWire = const <String, Object>{
+    'cash': 'cash',
+    'card': 'card',
+    'bankTransfer': 'bank_transfer',
+    'bnpl': 'bnpl',
+    'payByBank': 'pay_by_bank',
+  };
+  static const Map<Object, String> _fromWire = const <Object, String>{
+    'cash': 'cash',
+    'card': 'card',
+    'bank_transfer': 'bankTransfer',
+    'bnpl': 'bnpl',
+    'pay_by_bank': 'payByBank',
+  };
+
+  @override
+  final Iterable<Type> types = const <Type>[
+    CheckoutResponseExcludedPaymentMethodsEnum
+  ];
+  @override
+  final String wireName = 'CheckoutResponseExcludedPaymentMethodsEnum';
+
+  @override
+  Object serialize(Serializers serializers,
+          CheckoutResponseExcludedPaymentMethodsEnum object,
+          {FullType specifiedType = FullType.unspecified}) =>
+      _toWire[object.name] ?? object.name;
+
+  @override
+  CheckoutResponseExcludedPaymentMethodsEnum deserialize(
+          Serializers serializers, Object serialized,
+          {FullType specifiedType = FullType.unspecified}) =>
+      CheckoutResponseExcludedPaymentMethodsEnum.valueOf(
+          _fromWire[serialized] ?? (serialized is String ? serialized : ''));
+}
 
 class _$CheckoutResponseExcludeCardNetworksEnumSerializer
     implements PrimitiveSerializer<CheckoutResponseExcludeCardNetworksEnum> {
@@ -80,6 +166,9 @@ class _$CheckoutResponseExcludeCardNetworksEnumSerializer
 class _$CheckoutResponse extends CheckoutResponse {
   @override
   final BuiltList<String>? allowedPaymentMethods;
+  @override
+  final BuiltList<CheckoutResponseExcludedPaymentMethodsEnum>?
+      excludedPaymentMethods;
   @override
   final BuiltList<String>? planIds;
   @override
@@ -137,6 +226,7 @@ class _$CheckoutResponse extends CheckoutResponse {
 
   _$CheckoutResponse._(
       {this.allowedPaymentMethods,
+      this.excludedPaymentMethods,
       this.planIds,
       this.canNotExpire,
       this.emailsSent,
@@ -184,6 +274,7 @@ class _$CheckoutResponse extends CheckoutResponse {
     if (identical(other, this)) return true;
     return other is CheckoutResponse &&
         allowedPaymentMethods == other.allowedPaymentMethods &&
+        excludedPaymentMethods == other.excludedPaymentMethods &&
         planIds == other.planIds &&
         canNotExpire == other.canNotExpire &&
         emailsSent == other.emailsSent &&
@@ -215,6 +306,7 @@ class _$CheckoutResponse extends CheckoutResponse {
   int get hashCode {
     var _$hash = 0;
     _$hash = $jc(_$hash, allowedPaymentMethods.hashCode);
+    _$hash = $jc(_$hash, excludedPaymentMethods.hashCode);
     _$hash = $jc(_$hash, planIds.hashCode);
     _$hash = $jc(_$hash, canNotExpire.hashCode);
     _$hash = $jc(_$hash, emailsSent.hashCode);
@@ -248,6 +340,7 @@ class _$CheckoutResponse extends CheckoutResponse {
   String toString() {
     return (newBuiltValueToStringHelper(r'CheckoutResponse')
           ..add('allowedPaymentMethods', allowedPaymentMethods)
+          ..add('excludedPaymentMethods', excludedPaymentMethods)
           ..add('planIds', planIds)
           ..add('canNotExpire', canNotExpire)
           ..add('emailsSent', emailsSent)
@@ -286,6 +379,16 @@ class CheckoutResponseBuilder
       _$this._allowedPaymentMethods ??= new ListBuilder<String>();
   set allowedPaymentMethods(ListBuilder<String>? allowedPaymentMethods) =>
       _$this._allowedPaymentMethods = allowedPaymentMethods;
+
+  ListBuilder<CheckoutResponseExcludedPaymentMethodsEnum>?
+      _excludedPaymentMethods;
+  ListBuilder<CheckoutResponseExcludedPaymentMethodsEnum>
+      get excludedPaymentMethods => _$this._excludedPaymentMethods ??=
+          new ListBuilder<CheckoutResponseExcludedPaymentMethodsEnum>();
+  set excludedPaymentMethods(
+          ListBuilder<CheckoutResponseExcludedPaymentMethodsEnum>?
+              excludedPaymentMethods) =>
+      _$this._excludedPaymentMethods = excludedPaymentMethods;
 
   ListBuilder<String>? _planIds;
   ListBuilder<String> get planIds =>
@@ -410,6 +513,7 @@ class CheckoutResponseBuilder
     final $v = _$v;
     if ($v != null) {
       _allowedPaymentMethods = $v.allowedPaymentMethods?.toBuilder();
+      _excludedPaymentMethods = $v.excludedPaymentMethods?.toBuilder();
       _planIds = $v.planIds?.toBuilder();
       _canNotExpire = $v.canNotExpire;
       _emailsSent = $v.emailsSent;
@@ -460,6 +564,7 @@ class CheckoutResponseBuilder
       _$result = _$v ??
           new _$CheckoutResponse._(
               allowedPaymentMethods: _allowedPaymentMethods?.build(),
+              excludedPaymentMethods: _excludedPaymentMethods?.build(),
               planIds: _planIds?.build(),
               canNotExpire: canNotExpire,
               emailsSent: emailsSent,
@@ -494,6 +599,8 @@ class CheckoutResponseBuilder
       try {
         _$failedField = 'allowedPaymentMethods';
         _allowedPaymentMethods?.build();
+        _$failedField = 'excludedPaymentMethods';
+        _excludedPaymentMethods?.build();
         _$failedField = 'planIds';
         _planIds?.build();
 

@@ -117,61 +117,58 @@ class _$ApiKeyCreateResponse extends ApiKeyCreateResponse {
 }
 
 class ApiKeyCreateResponseBuilder
-    implements
-        Builder<ApiKeyCreateResponse, ApiKeyCreateResponseBuilder>,
-        ApiKeyResponseBuilder {
+    implements Builder<ApiKeyCreateResponse, ApiKeyCreateResponseBuilder> {
   _$ApiKeyCreateResponse? _$v;
 
   String? _authenticationToken;
   String? get authenticationToken => _$this._authenticationToken;
-  set authenticationToken(covariant String? authenticationToken) =>
+  set authenticationToken(String? authenticationToken) =>
       _$this._authenticationToken = authenticationToken;
 
   bool? _active;
   bool? get active => _$this._active;
-  set active(covariant bool? active) => _$this._active = active;
+  set active(bool? active) => _$this._active = active;
 
   int? _createdAt;
   int? get createdAt => _$this._createdAt;
-  set createdAt(covariant int? createdAt) => _$this._createdAt = createdAt;
+  set createdAt(int? createdAt) => _$this._createdAt = createdAt;
 
   int? _updatedAt;
   int? get updatedAt => _$this._updatedAt;
-  set updatedAt(covariant int? updatedAt) => _$this._updatedAt = updatedAt;
+  set updatedAt(int? updatedAt) => _$this._updatedAt = updatedAt;
 
   int? _deactivatedAt;
   int? get deactivatedAt => _$this._deactivatedAt;
-  set deactivatedAt(covariant int? deactivatedAt) =>
+  set deactivatedAt(int? deactivatedAt) =>
       _$this._deactivatedAt = deactivatedAt;
 
   int? _lastUsedAt;
   int? get lastUsedAt => _$this._lastUsedAt;
-  set lastUsedAt(covariant int? lastUsedAt) => _$this._lastUsedAt = lastUsedAt;
+  set lastUsedAt(int? lastUsedAt) => _$this._lastUsedAt = lastUsedAt;
 
   String? _description;
   String? get description => _$this._description;
-  set description(covariant String? description) =>
-      _$this._description = description;
+  set description(String? description) => _$this._description = description;
 
   String? _id;
   String? get id => _$this._id;
-  set id(covariant String? id) => _$this._id = id;
+  set id(String? id) => _$this._id = id;
 
   bool? _livemode;
   bool? get livemode => _$this._livemode;
-  set livemode(covariant bool? livemode) => _$this._livemode = livemode;
+  set livemode(bool? livemode) => _$this._livemode = livemode;
 
   String? _object;
   String? get object => _$this._object;
-  set object(covariant String? object) => _$this._object = object;
+  set object(String? object) => _$this._object = object;
 
   String? _prefix;
   String? get prefix => _$this._prefix;
-  set prefix(covariant String? prefix) => _$this._prefix = prefix;
+  set prefix(String? prefix) => _$this._prefix = prefix;
 
   String? _role;
   String? get role => _$this._role;
-  set role(covariant String? role) => _$this._role = role;
+  set role(String? role) => _$this._role = role;
 
   ApiKeyCreateResponseBuilder() {
     ApiKeyCreateResponse._defaults(this);
@@ -198,7 +195,7 @@ class ApiKeyCreateResponseBuilder
   }
 
   @override
-  void replace(covariant ApiKeyCreateResponse other) {
+  void replace(ApiKeyCreateResponse other) {
     ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ApiKeyCreateResponse;
   }

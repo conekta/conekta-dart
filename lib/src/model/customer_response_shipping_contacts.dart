@@ -3,7 +3,6 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:conekta/src/model/pagination.dart';
 import 'package:conekta/src/model/customer_shipping_contacts_data_response.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
@@ -18,7 +17,15 @@ part 'customer_response_shipping_contacts.g.dart';
 /// * [object] - Object type, in this case is list
 /// * [data] 
 @BuiltValue()
-abstract class CustomerResponseShippingContacts implements Pagination, Built<CustomerResponseShippingContacts, CustomerResponseShippingContactsBuilder> {
+abstract class CustomerResponseShippingContacts implements Built<CustomerResponseShippingContacts, CustomerResponseShippingContactsBuilder> {
+  /// Indicates if there are more pages to be requested
+  @BuiltValueField(wireName: r'has_more')
+  bool get hasMore;
+
+  /// Object type, in this case is list
+  @BuiltValueField(wireName: r'object')
+  String get object;
+
   @BuiltValueField(wireName: r'data')
   BuiltList<CustomerShippingContactsDataResponse>? get data;
 
@@ -45,13 +52,6 @@ class _$CustomerResponseShippingContactsSerializer implements PrimitiveSerialize
     CustomerResponseShippingContacts object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    if (object.data != null) {
-      yield r'data';
-      yield serializers.serialize(
-        object.data,
-        specifiedType: const FullType(BuiltList, [FullType(CustomerShippingContactsDataResponse)]),
-      );
-    }
     yield r'has_more';
     yield serializers.serialize(
       object.hasMore,
@@ -62,6 +62,13 @@ class _$CustomerResponseShippingContactsSerializer implements PrimitiveSerialize
       object.object,
       specifiedType: const FullType(String),
     );
+    if (object.data != null) {
+      yield r'data';
+      yield serializers.serialize(
+        object.data,
+        specifiedType: const FullType(BuiltList, [FullType(CustomerShippingContactsDataResponse)]),
+      );
+    }
   }
 
   @override
@@ -85,13 +92,6 @@ class _$CustomerResponseShippingContactsSerializer implements PrimitiveSerialize
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
-        case r'data':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(BuiltList, [FullType(CustomerShippingContactsDataResponse)]),
-          ) as BuiltList<CustomerShippingContactsDataResponse>;
-          result.data.replace(valueDes);
-          break;
         case r'has_more':
           final valueDes = serializers.deserialize(
             value,
@@ -105,6 +105,14 @@ class _$CustomerResponseShippingContactsSerializer implements PrimitiveSerialize
             specifiedType: const FullType(String),
           ) as String;
           result.object = valueDes;
+          break;
+        case r'data':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(BuiltList, [FullType(CustomerShippingContactsDataResponse)]),
+          ) as BuiltList<CustomerShippingContactsDataResponse>?;
+          if (valueDes == null) continue;
+          result.data.replace(valueDes);
           break;
         default:
           unhandled.add(key);

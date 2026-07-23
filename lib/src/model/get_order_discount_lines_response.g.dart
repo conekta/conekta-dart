@@ -8,26 +8,26 @@ part of 'get_order_discount_lines_response.dart';
 
 class _$GetOrderDiscountLinesResponse extends GetOrderDiscountLinesResponse {
   @override
-  final BuiltList<DiscountLinesResponse>? data;
+  final bool hasMore;
+  @override
+  final String object;
   @override
   final String? nextPageUrl;
   @override
   final String? previousPageUrl;
   @override
-  final bool hasMore;
-  @override
-  final String object;
+  final BuiltList<DiscountLinesResponse>? data;
 
   factory _$GetOrderDiscountLinesResponse(
           [void Function(GetOrderDiscountLinesResponseBuilder)? updates]) =>
       (new GetOrderDiscountLinesResponseBuilder()..update(updates))._build();
 
   _$GetOrderDiscountLinesResponse._(
-      {this.data,
+      {required this.hasMore,
+      required this.object,
       this.nextPageUrl,
       this.previousPageUrl,
-      required this.hasMore,
-      required this.object})
+      this.data})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         hasMore, r'GetOrderDiscountLinesResponse', 'hasMore');
@@ -48,21 +48,21 @@ class _$GetOrderDiscountLinesResponse extends GetOrderDiscountLinesResponse {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is GetOrderDiscountLinesResponse &&
-        data == other.data &&
+        hasMore == other.hasMore &&
+        object == other.object &&
         nextPageUrl == other.nextPageUrl &&
         previousPageUrl == other.previousPageUrl &&
-        hasMore == other.hasMore &&
-        object == other.object;
+        data == other.data;
   }
 
   @override
   int get hashCode {
     var _$hash = 0;
-    _$hash = $jc(_$hash, data.hashCode);
-    _$hash = $jc(_$hash, nextPageUrl.hashCode);
-    _$hash = $jc(_$hash, previousPageUrl.hashCode);
     _$hash = $jc(_$hash, hasMore.hashCode);
     _$hash = $jc(_$hash, object.hashCode);
+    _$hash = $jc(_$hash, nextPageUrl.hashCode);
+    _$hash = $jc(_$hash, previousPageUrl.hashCode);
+    _$hash = $jc(_$hash, data.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -70,11 +70,11 @@ class _$GetOrderDiscountLinesResponse extends GetOrderDiscountLinesResponse {
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'GetOrderDiscountLinesResponse')
-          ..add('data', data)
+          ..add('hasMore', hasMore)
+          ..add('object', object)
           ..add('nextPageUrl', nextPageUrl)
           ..add('previousPageUrl', previousPageUrl)
-          ..add('hasMore', hasMore)
-          ..add('object', object))
+          ..add('data', data))
         .toString();
   }
 }
@@ -82,34 +82,30 @@ class _$GetOrderDiscountLinesResponse extends GetOrderDiscountLinesResponse {
 class GetOrderDiscountLinesResponseBuilder
     implements
         Builder<GetOrderDiscountLinesResponse,
-            GetOrderDiscountLinesResponseBuilder>,
-        PageBuilder,
-        PaginationBuilder {
+            GetOrderDiscountLinesResponseBuilder> {
   _$GetOrderDiscountLinesResponse? _$v;
+
+  bool? _hasMore;
+  bool? get hasMore => _$this._hasMore;
+  set hasMore(bool? hasMore) => _$this._hasMore = hasMore;
+
+  String? _object;
+  String? get object => _$this._object;
+  set object(String? object) => _$this._object = object;
+
+  String? _nextPageUrl;
+  String? get nextPageUrl => _$this._nextPageUrl;
+  set nextPageUrl(String? nextPageUrl) => _$this._nextPageUrl = nextPageUrl;
+
+  String? _previousPageUrl;
+  String? get previousPageUrl => _$this._previousPageUrl;
+  set previousPageUrl(String? previousPageUrl) =>
+      _$this._previousPageUrl = previousPageUrl;
 
   ListBuilder<DiscountLinesResponse>? _data;
   ListBuilder<DiscountLinesResponse> get data =>
       _$this._data ??= new ListBuilder<DiscountLinesResponse>();
-  set data(covariant ListBuilder<DiscountLinesResponse>? data) =>
-      _$this._data = data;
-
-  String? _nextPageUrl;
-  String? get nextPageUrl => _$this._nextPageUrl;
-  set nextPageUrl(covariant String? nextPageUrl) =>
-      _$this._nextPageUrl = nextPageUrl;
-
-  String? _previousPageUrl;
-  String? get previousPageUrl => _$this._previousPageUrl;
-  set previousPageUrl(covariant String? previousPageUrl) =>
-      _$this._previousPageUrl = previousPageUrl;
-
-  bool? _hasMore;
-  bool? get hasMore => _$this._hasMore;
-  set hasMore(covariant bool? hasMore) => _$this._hasMore = hasMore;
-
-  String? _object;
-  String? get object => _$this._object;
-  set object(covariant String? object) => _$this._object = object;
+  set data(ListBuilder<DiscountLinesResponse>? data) => _$this._data = data;
 
   GetOrderDiscountLinesResponseBuilder() {
     GetOrderDiscountLinesResponse._defaults(this);
@@ -118,19 +114,18 @@ class GetOrderDiscountLinesResponseBuilder
   GetOrderDiscountLinesResponseBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _data = $v.data?.toBuilder();
-      _nextPageUrl = $v.nextPageUrl;
-      _previousPageUrl = $v.previousPageUrl;
       _hasMore = $v.hasMore;
       _object = $v.object;
+      _nextPageUrl = $v.nextPageUrl;
+      _previousPageUrl = $v.previousPageUrl;
+      _data = $v.data?.toBuilder();
       _$v = null;
     }
     return this;
   }
 
   @override
-// ignore: override_on_non_overriding_method
-  void replace(covariant GetOrderDiscountLinesResponse other) {
+  void replace(GetOrderDiscountLinesResponse other) {
     ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GetOrderDiscountLinesResponse;
   }
@@ -148,13 +143,13 @@ class GetOrderDiscountLinesResponseBuilder
     try {
       _$result = _$v ??
           new _$GetOrderDiscountLinesResponse._(
-              data: _data?.build(),
-              nextPageUrl: nextPageUrl,
-              previousPageUrl: previousPageUrl,
               hasMore: BuiltValueNullFieldError.checkNotNull(
                   hasMore, r'GetOrderDiscountLinesResponse', 'hasMore'),
               object: BuiltValueNullFieldError.checkNotNull(
-                  object, r'GetOrderDiscountLinesResponse', 'object'));
+                  object, r'GetOrderDiscountLinesResponse', 'object'),
+              nextPageUrl: nextPageUrl,
+              previousPageUrl: previousPageUrl,
+              data: _data?.build());
     } catch (_) {
       late String _$failedField;
       try {

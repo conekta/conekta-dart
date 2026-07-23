@@ -113,7 +113,7 @@ class _$PlanResponseSerializer implements PrimitiveSerializer<PlanResponse> {
       yield r'expiry_count';
       yield serializers.serialize(
         object.expiryCount,
-        specifiedType: const FullType.nullable(int),
+        specifiedType: const FullType(int),
       );
     }
     if (object.frequency != null) {
@@ -162,7 +162,7 @@ class _$PlanResponseSerializer implements PrimitiveSerializer<PlanResponse> {
       yield r'trial_period_days';
       yield serializers.serialize(
         object.trialPeriodDays,
-        specifiedType: const FullType.nullable(int),
+        specifiedType: const FullType(int),
       );
     }
     if (object.maxRetries != null) {
@@ -205,22 +205,25 @@ class _$PlanResponseSerializer implements PrimitiveSerializer<PlanResponse> {
         case r'amount':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.amount = valueDes;
           break;
         case r'created_at':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.createdAt = valueDes;
           break;
         case r'currency':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.currency = valueDes;
           break;
         case r'expiry_count':
@@ -234,43 +237,49 @@ class _$PlanResponseSerializer implements PrimitiveSerializer<PlanResponse> {
         case r'frequency':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.frequency = valueDes;
           break;
         case r'id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.id = valueDes;
           break;
         case r'interval':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.interval = valueDes;
           break;
         case r'livemode':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(bool),
-          ) as bool;
+            specifiedType: const FullType.nullable(bool),
+          ) as bool?;
+          if (valueDes == null) continue;
           result.livemode = valueDes;
           break;
         case r'name':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.name = valueDes;
           break;
         case r'object':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.object = valueDes;
           break;
         case r'trial_period_days':
@@ -284,15 +293,17 @@ class _$PlanResponseSerializer implements PrimitiveSerializer<PlanResponse> {
         case r'max_retries':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.maxRetries = valueDes;
           break;
         case r'retry_delay_hours':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.retryDelayHours = valueDes;
           break;
         default:

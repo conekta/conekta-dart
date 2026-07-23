@@ -18,8 +18,8 @@ part 'fiscal_entity_address.g.dart';
 /// * [state] - State
 /// * [country] - this field follows the [ISO 3166-1 alpha-2 standard](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
 /// * [externalNumber] - External number
-@BuiltValue(instantiable: false)
-abstract class FiscalEntityAddress  {
+@BuiltValue()
+abstract class FiscalEntityAddress implements Built<FiscalEntityAddress, FiscalEntityAddressBuilder> {
   /// Street name and number
   @BuiltValueField(wireName: r'street1')
   String get street1;
@@ -48,13 +48,20 @@ abstract class FiscalEntityAddress  {
   @BuiltValueField(wireName: r'external_number')
   String get externalNumber;
 
+  FiscalEntityAddress._();
+
+  factory FiscalEntityAddress([void updates(FiscalEntityAddressBuilder b)]) = _$FiscalEntityAddress;
+
+  @BuiltValueHook(initializeBuilder: true)
+  static void _defaults(FiscalEntityAddressBuilder b) => b;
+
   @BuiltValueSerializer(custom: true)
   static Serializer<FiscalEntityAddress> get serializer => _$FiscalEntityAddressSerializer();
 }
 
 class _$FiscalEntityAddressSerializer implements PrimitiveSerializer<FiscalEntityAddress> {
   @override
-  final Iterable<Type> types = const [FiscalEntityAddress];
+  final Iterable<Type> types = const [FiscalEntityAddress, _$FiscalEntityAddress];
 
   @override
   final String wireName = r'FiscalEntityAddress';
@@ -73,7 +80,7 @@ class _$FiscalEntityAddressSerializer implements PrimitiveSerializer<FiscalEntit
       yield r'street2';
       yield serializers.serialize(
         object.street2,
-        specifiedType: const FullType.nullable(String),
+        specifiedType: const FullType(String),
       );
     }
     yield r'postal_code';
@@ -112,46 +119,6 @@ class _$FiscalEntityAddressSerializer implements PrimitiveSerializer<FiscalEntit
     FullType specifiedType = FullType.unspecified,
   }) {
     return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
-  }
-
-  @override
-  FiscalEntityAddress deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return serializers.deserialize(serialized, specifiedType: FullType($FiscalEntityAddress)) as $FiscalEntityAddress;
-  }
-}
-
-/// a concrete implementation of [FiscalEntityAddress], since [FiscalEntityAddress] is not instantiable
-@BuiltValue(instantiable: true)
-abstract class $FiscalEntityAddress implements FiscalEntityAddress, Built<$FiscalEntityAddress, $FiscalEntityAddressBuilder> {
-  $FiscalEntityAddress._();
-
-  factory $FiscalEntityAddress([void Function($FiscalEntityAddressBuilder)? updates]) = _$$FiscalEntityAddress;
-
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults($FiscalEntityAddressBuilder b) => b;
-
-  @BuiltValueSerializer(custom: true)
-  static Serializer<$FiscalEntityAddress> get serializer => _$$FiscalEntityAddressSerializer();
-}
-
-class _$$FiscalEntityAddressSerializer implements PrimitiveSerializer<$FiscalEntityAddress> {
-  @override
-  final Iterable<Type> types = const [$FiscalEntityAddress, _$$FiscalEntityAddress];
-
-  @override
-  final String wireName = r'$FiscalEntityAddress';
-
-  @override
-  Object serialize(
-    Serializers serializers,
-    $FiscalEntityAddress object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return serializers.serialize(object, specifiedType: FullType(FiscalEntityAddress))!;
   }
 
   void _deserializeProperties(
@@ -198,8 +165,9 @@ class _$$FiscalEntityAddressSerializer implements PrimitiveSerializer<$FiscalEnt
         case r'state':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.state = valueDes;
           break;
         case r'country':
@@ -225,12 +193,12 @@ class _$$FiscalEntityAddressSerializer implements PrimitiveSerializer<$FiscalEnt
   }
 
   @override
-  $FiscalEntityAddress deserialize(
+  FiscalEntityAddress deserialize(
     Serializers serializers,
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final result = $FiscalEntityAddressBuilder();
+    final result = FiscalEntityAddressBuilder();
     final serializedList = (serialized as Iterable<Object?>).toList();
     final unhandled = <Object?>[];
     _deserializeProperties(

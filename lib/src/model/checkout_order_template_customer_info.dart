@@ -3,7 +3,7 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:conekta/src/model/customer_info_just_customer_id.dart';
+import 'package:conekta/src/model/customer_info_customer_id.dart';
 import 'package:conekta/src/model/customer_info.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -22,7 +22,7 @@ part 'checkout_order_template_customer_info.g.dart';
 /// * [customerId] 
 @BuiltValue()
 abstract class CheckoutOrderTemplateCustomerInfo implements Built<CheckoutOrderTemplateCustomerInfo, CheckoutOrderTemplateCustomerInfoBuilder> {
-  /// One Of [CustomerInfo], [CustomerInfoJustCustomerId]
+  /// One Of [CustomerInfo], [CustomerInfoCustomerId]
   OneOf get oneOf;
 
   CheckoutOrderTemplateCustomerInfo._();
@@ -68,7 +68,7 @@ class _$CheckoutOrderTemplateCustomerInfoSerializer implements PrimitiveSerializ
   }) {
     final result = CheckoutOrderTemplateCustomerInfoBuilder();
     Object? oneOfDataSrc;
-    final targetType = const FullType(OneOf, [FullType(CustomerInfo), FullType(CustomerInfoJustCustomerId), ]);
+    final targetType = const FullType(OneOf, [FullType(CustomerInfo), FullType(CustomerInfoCustomerId), ]);
     oneOfDataSrc = serialized;
     result.oneOf = serializers.deserialize(oneOfDataSrc, specifiedType: targetType) as OneOf;
     return result.build();

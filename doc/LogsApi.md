@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 
 # **getLogById**
-> LogResponse getLogById(id, acceptLanguage, xChildCompanyId)
+> LogResponseForRequest getLogById(id, acceptLanguage, xChildCompanyId)
 
 Get Log
 
@@ -32,7 +32,7 @@ final String xChildCompanyId = 6441b6376b60c3a638da80af; // String | In the case
 try {
     final response = api.getLogById(id, acceptLanguage, xChildCompanyId);
     print(response);
-} catch on DioException (e) {
+} on DioException catch (e) {
     print('Exception when calling LogsApi->getLogById: $e\n');
 }
 ```
@@ -47,7 +47,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**LogResponse**](LogResponse.md)
+[**LogResponseForRequest**](LogResponseForRequest.md)
 
 ### Authorization
 
@@ -56,12 +56,12 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/vnd.conekta-v2.2.0+json
+ - **Accept**: application/vnd.conekta-v2.3.0+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getLogs**
-> LogsResponse getLogs(acceptLanguage, xChildCompanyId, limit, search, next, previous)
+> LogsResponseForRequest getLogs(acceptLanguage, xChildCompanyId, limit, search, next, previous)
 
 Get List Of Logs
 
@@ -82,7 +82,7 @@ final String previous = previous_example; // String | previous page
 try {
     final response = api.getLogs(acceptLanguage, xChildCompanyId, limit, search, next, previous);
     print(response);
-} catch on DioException (e) {
+} on DioException catch (e) {
     print('Exception when calling LogsApi->getLogs: $e\n');
 }
 ```
@@ -100,7 +100,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**LogsResponse**](LogsResponse.md)
+[**LogsResponseForRequest**](LogsResponseForRequest.md)
 
 ### Authorization
 
@@ -109,7 +109,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/vnd.conekta-v2.2.0+json
+ - **Accept**: application/vnd.conekta-v2.3.0+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

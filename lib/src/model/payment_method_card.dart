@@ -3,7 +3,6 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:conekta/src/model/payment_method.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/json_object.dart';
 import 'package:built_value/built_value.dart';
@@ -29,7 +28,28 @@ part 'payment_method_card.g.dart';
 /// * [name] - Name of the cardholder
 /// * [customerIpAddress] - Optional field used to capture the customer's IP address for fraud prevention and security monitoring purposes
 @BuiltValue()
-abstract class PaymentMethodCard implements PaymentMethod, Built<PaymentMethodCard, PaymentMethodCardBuilder> {
+abstract class PaymentMethodCard implements Built<PaymentMethodCard, PaymentMethodCardBuilder> {
+  @BuiltValueField(wireName: r'type')
+  String? get type;
+
+  @BuiltValueField(wireName: r'object')
+  String get object;
+
+  /// Account type of the card
+  @BuiltValueField(wireName: r'account_type')
+  String? get accountType;
+
+  @BuiltValueField(wireName: r'auth_code')
+  String? get authCode;
+
+  /// Brand of the card
+  @BuiltValueField(wireName: r'brand')
+  String? get brand;
+
+  /// Id sent for recurrent charges.
+  @BuiltValueField(wireName: r'contract_id')
+  String? get contractId;
+
   /// Country of the card
   @BuiltValueField(wireName: r'country')
   String? get country;
@@ -38,24 +58,20 @@ abstract class PaymentMethodCard implements PaymentMethod, Built<PaymentMethodCa
   @BuiltValueField(wireName: r'exp_month')
   String? get expMonth;
 
-  /// Last 4 digits of the card
-  @BuiltValueField(wireName: r'last4')
-  String? get last4;
-
-  @BuiltValueField(wireName: r'auth_code')
-  String? get authCode;
-
   /// Expiration year of the card
   @BuiltValueField(wireName: r'exp_year')
   String? get expYear;
 
-  /// Account type of the card
-  @BuiltValueField(wireName: r'account_type')
-  String? get accountType;
+  @BuiltValueField(wireName: r'fraud_indicators')
+  BuiltList<JsonObject?>? get fraudIndicators;
 
-  /// Id sent for recurrent charges.
-  @BuiltValueField(wireName: r'contract_id')
-  String? get contractId;
+  /// Issuer of the card
+  @BuiltValueField(wireName: r'issuer')
+  String? get issuer;
+
+  /// Last 4 digits of the card
+  @BuiltValueField(wireName: r'last4')
+  String? get last4;
 
   /// Name of the cardholder
   @BuiltValueField(wireName: r'name')
@@ -64,17 +80,6 @@ abstract class PaymentMethodCard implements PaymentMethod, Built<PaymentMethodCa
   /// Optional field used to capture the customer's IP address for fraud prevention and security monitoring purposes
   @BuiltValueField(wireName: r'customer_ip_address')
   String? get customerIpAddress;
-
-  /// Brand of the card
-  @BuiltValueField(wireName: r'brand')
-  String? get brand;
-
-  @BuiltValueField(wireName: r'fraud_indicators')
-  BuiltList<JsonObject?>? get fraudIndicators;
-
-  /// Issuer of the card
-  @BuiltValueField(wireName: r'issuer')
-  String? get issuer;
 
   PaymentMethodCard._();
 
@@ -99,17 +104,22 @@ class _$PaymentMethodCardSerializer implements PrimitiveSerializer<PaymentMethod
     PaymentMethodCard object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    if (object.country != null) {
-      yield r'country';
+    if (object.type != null) {
+      yield r'type';
       yield serializers.serialize(
-        object.country,
+        object.type,
         specifiedType: const FullType(String),
       );
     }
-    if (object.last4 != null) {
-      yield r'last4';
+    yield r'object';
+    yield serializers.serialize(
+      object.object,
+      specifiedType: const FullType(String),
+    );
+    if (object.accountType != null) {
+      yield r'account_type';
       yield serializers.serialize(
-        object.last4,
+        object.accountType,
         specifiedType: const FullType(String),
       );
     }
@@ -120,31 +130,24 @@ class _$PaymentMethodCardSerializer implements PrimitiveSerializer<PaymentMethod
         specifiedType: const FullType(String),
       );
     }
-    if (object.accountType != null) {
-      yield r'account_type';
+    if (object.brand != null) {
+      yield r'brand';
       yield serializers.serialize(
-        object.accountType,
+        object.brand,
         specifiedType: const FullType(String),
       );
     }
-    if (object.customerIpAddress != null) {
-      yield r'customer_ip_address';
+    if (object.contractId != null) {
+      yield r'contract_id';
       yield serializers.serialize(
-        object.customerIpAddress,
+        object.contractId,
         specifiedType: const FullType(String),
       );
     }
-    if (object.type != null) {
-      yield r'type';
+    if (object.country != null) {
+      yield r'country';
       yield serializers.serialize(
-        object.type,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.issuer != null) {
-      yield r'issuer';
-      yield serializers.serialize(
-        object.issuer,
+        object.country,
         specifiedType: const FullType(String),
       );
     }
@@ -162,10 +165,24 @@ class _$PaymentMethodCardSerializer implements PrimitiveSerializer<PaymentMethod
         specifiedType: const FullType(String),
       );
     }
-    if (object.contractId != null) {
-      yield r'contract_id';
+    if (object.fraudIndicators != null) {
+      yield r'fraud_indicators';
       yield serializers.serialize(
-        object.contractId,
+        object.fraudIndicators,
+        specifiedType: const FullType(BuiltList, [FullType.nullable(JsonObject)]),
+      );
+    }
+    if (object.issuer != null) {
+      yield r'issuer';
+      yield serializers.serialize(
+        object.issuer,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.last4 != null) {
+      yield r'last4';
+      yield serializers.serialize(
+        object.last4,
         specifiedType: const FullType(String),
       );
     }
@@ -176,25 +193,13 @@ class _$PaymentMethodCardSerializer implements PrimitiveSerializer<PaymentMethod
         specifiedType: const FullType(String),
       );
     }
-    if (object.brand != null) {
-      yield r'brand';
+    if (object.customerIpAddress != null) {
+      yield r'customer_ip_address';
       yield serializers.serialize(
-        object.brand,
+        object.customerIpAddress,
         specifiedType: const FullType(String),
       );
     }
-    if (object.fraudIndicators != null) {
-      yield r'fraud_indicators';
-      yield serializers.serialize(
-        object.fraudIndicators,
-        specifiedType: const FullType(BuiltList, [FullType.nullable(JsonObject)]),
-      );
-    }
-    yield r'object';
-    yield serializers.serialize(
-      object.object,
-      specifiedType: const FullType(String),
-    );
   }
 
   @override
@@ -218,96 +223,13 @@ class _$PaymentMethodCardSerializer implements PrimitiveSerializer<PaymentMethod
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
-        case r'country':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.country = valueDes;
-          break;
-        case r'last4':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.last4 = valueDes;
-          break;
-        case r'auth_code':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.authCode = valueDes;
-          break;
-        case r'account_type':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.accountType = valueDes;
-          break;
-        case r'customer_ip_address':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.customerIpAddress = valueDes;
-          break;
         case r'type':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.type = valueDes;
-          break;
-        case r'issuer':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.issuer = valueDes;
-          break;
-        case r'exp_month':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.expMonth = valueDes;
-          break;
-        case r'exp_year':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.expYear = valueDes;
-          break;
-        case r'contract_id':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.contractId = valueDes;
-          break;
-        case r'name':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.name = valueDes;
-          break;
-        case r'brand':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.brand = valueDes;
-          break;
-        case r'fraud_indicators':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(BuiltList, [FullType.nullable(JsonObject)]),
-          ) as BuiltList<JsonObject?>;
-          result.fraudIndicators.replace(valueDes);
           break;
         case r'object':
           final valueDes = serializers.deserialize(
@@ -315,6 +237,102 @@ class _$PaymentMethodCardSerializer implements PrimitiveSerializer<PaymentMethod
             specifiedType: const FullType(String),
           ) as String;
           result.object = valueDes;
+          break;
+        case r'account_type':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.accountType = valueDes;
+          break;
+        case r'auth_code':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.authCode = valueDes;
+          break;
+        case r'brand':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.brand = valueDes;
+          break;
+        case r'contract_id':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.contractId = valueDes;
+          break;
+        case r'country':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.country = valueDes;
+          break;
+        case r'exp_month':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.expMonth = valueDes;
+          break;
+        case r'exp_year':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.expYear = valueDes;
+          break;
+        case r'fraud_indicators':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(BuiltList, [FullType.nullable(JsonObject)]),
+          ) as BuiltList<JsonObject?>?;
+          if (valueDes == null) continue;
+          result.fraudIndicators.replace(valueDes);
+          break;
+        case r'issuer':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.issuer = valueDes;
+          break;
+        case r'last4':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.last4 = valueDes;
+          break;
+        case r'name':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.name = valueDes;
+          break;
+        case r'customer_ip_address':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.customerIpAddress = valueDes;
           break;
         default:
           unhandled.add(key);

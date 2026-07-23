@@ -3,7 +3,6 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:conekta/src/model/payment_method.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -20,14 +19,12 @@ part 'payment_method_pbb_payment.g.dart';
 /// * [redirectUrl] - URL to redirect the customer to complete the payment
 /// * [reference] - Reference for the payment
 @BuiltValue()
-abstract class PaymentMethodPbbPayment implements PaymentMethod, Built<PaymentMethodPbbPayment, PaymentMethodPbbPaymentBuilder> {
-  /// Reference for the payment
-  @BuiltValueField(wireName: r'reference')
-  String get reference;
+abstract class PaymentMethodPbbPayment implements Built<PaymentMethodPbbPayment, PaymentMethodPbbPaymentBuilder> {
+  @BuiltValueField(wireName: r'type')
+  String? get type;
 
-  /// URL to redirect the customer to complete the payment
-  @BuiltValueField(wireName: r'redirect_url')
-  String get redirectUrl;
+  @BuiltValueField(wireName: r'object')
+  String get object;
 
   /// Deep link for the payment, use for mobile apps/flows
   @BuiltValueField(wireName: r'deep_link')
@@ -40,6 +37,14 @@ abstract class PaymentMethodPbbPayment implements PaymentMethod, Built<PaymentMe
   /// Product type of the charge
   @BuiltValueField(wireName: r'product_type')
   String get productType;
+
+  /// URL to redirect the customer to complete the payment
+  @BuiltValueField(wireName: r'redirect_url')
+  String get redirectUrl;
+
+  /// Reference for the payment
+  @BuiltValueField(wireName: r'reference')
+  String get reference;
 
   PaymentMethodPbbPayment._();
 
@@ -64,21 +69,6 @@ class _$PaymentMethodPbbPaymentSerializer implements PrimitiveSerializer<Payment
     PaymentMethodPbbPayment object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    yield r'reference';
-    yield serializers.serialize(
-      object.reference,
-      specifiedType: const FullType(String),
-    );
-    yield r'redirect_url';
-    yield serializers.serialize(
-      object.redirectUrl,
-      specifiedType: const FullType(String),
-    );
-    yield r'deep_link';
-    yield serializers.serialize(
-      object.deepLink,
-      specifiedType: const FullType(String),
-    );
     if (object.type != null) {
       yield r'type';
       yield serializers.serialize(
@@ -86,6 +76,16 @@ class _$PaymentMethodPbbPaymentSerializer implements PrimitiveSerializer<Payment
         specifiedType: const FullType(String),
       );
     }
+    yield r'object';
+    yield serializers.serialize(
+      object.object,
+      specifiedType: const FullType(String),
+    );
+    yield r'deep_link';
+    yield serializers.serialize(
+      object.deepLink,
+      specifiedType: const FullType(String),
+    );
     yield r'expires_at';
     yield serializers.serialize(
       object.expiresAt,
@@ -96,9 +96,14 @@ class _$PaymentMethodPbbPaymentSerializer implements PrimitiveSerializer<Payment
       object.productType,
       specifiedType: const FullType(String),
     );
-    yield r'object';
+    yield r'redirect_url';
     yield serializers.serialize(
-      object.object,
+      object.redirectUrl,
+      specifiedType: const FullType(String),
+    );
+    yield r'reference';
+    yield serializers.serialize(
+      object.reference,
       specifiedType: const FullType(String),
     );
   }
@@ -124,19 +129,20 @@ class _$PaymentMethodPbbPaymentSerializer implements PrimitiveSerializer<Payment
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
-        case r'reference':
+        case r'type':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.reference = valueDes;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.type = valueDes;
           break;
-        case r'redirect_url':
+        case r'object':
           final valueDes = serializers.deserialize(
             value,
             specifiedType: const FullType(String),
           ) as String;
-          result.redirectUrl = valueDes;
+          result.object = valueDes;
           break;
         case r'deep_link':
           final valueDes = serializers.deserialize(
@@ -144,13 +150,6 @@ class _$PaymentMethodPbbPaymentSerializer implements PrimitiveSerializer<Payment
             specifiedType: const FullType(String),
           ) as String;
           result.deepLink = valueDes;
-          break;
-        case r'type':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.type = valueDes;
           break;
         case r'expires_at':
           final valueDes = serializers.deserialize(
@@ -166,12 +165,19 @@ class _$PaymentMethodPbbPaymentSerializer implements PrimitiveSerializer<Payment
           ) as String;
           result.productType = valueDes;
           break;
-        case r'object':
+        case r'redirect_url':
           final valueDes = serializers.deserialize(
             value,
             specifiedType: const FullType(String),
           ) as String;
-          result.object = valueDes;
+          result.redirectUrl = valueDes;
+          break;
+        case r'reference':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.reference = valueDes;
           break;
         default:
           unhandled.add(key);

@@ -4,7 +4,6 @@
 
 // ignore_for_file: unused_element
 import 'package:built_collection/built_collection.dart';
-import 'package:conekta/src/model/product.dart';
 import 'package:built_value/json_object.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -27,15 +26,50 @@ part 'product_order_response.g.dart';
 /// * [object] 
 /// * [parentId] 
 @BuiltValue()
-abstract class ProductOrderResponse implements Product, Built<ProductOrderResponse, ProductOrderResponseBuilder> {
+abstract class ProductOrderResponse implements Built<ProductOrderResponse, ProductOrderResponseBuilder> {
+  @BuiltValueField(wireName: r'antifraud_info')
+  BuiltMap<String, JsonObject?>? get antifraudInfo;
+
+  /// The brand of the item.
+  @BuiltValueField(wireName: r'brand')
+  String? get brand;
+
+  /// Short description of the item
+  @BuiltValueField(wireName: r'description')
+  String? get description;
+
+  /// It is a key/value hash that can hold custom fields. Maximum 100 elements and allows special characters.
+  @BuiltValueField(wireName: r'metadata')
+  BuiltMap<String, JsonObject?>? get metadata;
+
+  /// The name of the item. It will be displayed in the order.
+  @BuiltValueField(wireName: r'name')
+  String get name;
+
+  /// The quantity of the item in the order.
+  @BuiltValueField(wireName: r'quantity')
+  int get quantity;
+
+  /// The stock keeping unit for the item. It is used to identify the item in the order.
+  @BuiltValueField(wireName: r'sku')
+  String? get sku;
+
+  /// List of tags for the item. It is used to identify the item in the order.
+  @BuiltValueField(wireName: r'tags')
+  BuiltList<String>? get tags;
+
+  /// The price of the item in cents.
+  @BuiltValueField(wireName: r'unit_price')
+  int get unitPrice;
+
   @BuiltValueField(wireName: r'id')
   String? get id;
 
-  @BuiltValueField(wireName: r'parent_id')
-  String? get parentId;
-
   @BuiltValueField(wireName: r'object')
   String? get object;
+
+  @BuiltValueField(wireName: r'parent_id')
+  String? get parentId;
 
   ProductOrderResponse._();
 
@@ -61,54 +95,11 @@ class _$ProductOrderResponseSerializer implements PrimitiveSerializer<ProductOrd
     ProductOrderResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    yield r'unit_price';
-    yield serializers.serialize(
-      object.unitPrice,
-      specifiedType: const FullType(int),
-    );
-    if (object.metadata != null) {
-      yield r'metadata';
-      yield serializers.serialize(
-        object.metadata,
-        specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
-      );
-    }
-    yield r'quantity';
-    yield serializers.serialize(
-      object.quantity,
-      specifiedType: const FullType(int),
-    );
-    yield r'name';
-    yield serializers.serialize(
-      object.name,
-      specifiedType: const FullType(String),
-    );
-    if (object.description != null) {
-      yield r'description';
-      yield serializers.serialize(
-        object.description,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.id != null) {
-      yield r'id';
-      yield serializers.serialize(
-        object.id,
-        specifiedType: const FullType(String),
-      );
-    }
     if (object.antifraudInfo != null) {
       yield r'antifraud_info';
       yield serializers.serialize(
         object.antifraudInfo,
         specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
-      );
-    }
-    if (object.sku != null) {
-      yield r'sku';
-      yield serializers.serialize(
-        object.sku,
-        specifiedType: const FullType(String),
       );
     }
     if (object.brand != null) {
@@ -118,10 +109,53 @@ class _$ProductOrderResponseSerializer implements PrimitiveSerializer<ProductOrd
         specifiedType: const FullType(String),
       );
     }
-    if (object.parentId != null) {
-      yield r'parent_id';
+    if (object.description != null) {
+      yield r'description';
       yield serializers.serialize(
-        object.parentId,
+        object.description,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.metadata != null) {
+      yield r'metadata';
+      yield serializers.serialize(
+        object.metadata,
+        specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
+      );
+    }
+    yield r'name';
+    yield serializers.serialize(
+      object.name,
+      specifiedType: const FullType(String),
+    );
+    yield r'quantity';
+    yield serializers.serialize(
+      object.quantity,
+      specifiedType: const FullType(int),
+    );
+    if (object.sku != null) {
+      yield r'sku';
+      yield serializers.serialize(
+        object.sku,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.tags != null) {
+      yield r'tags';
+      yield serializers.serialize(
+        object.tags,
+        specifiedType: const FullType(BuiltList, [FullType(String)]),
+      );
+    }
+    yield r'unit_price';
+    yield serializers.serialize(
+      object.unitPrice,
+      specifiedType: const FullType(int),
+    );
+    if (object.id != null) {
+      yield r'id';
+      yield serializers.serialize(
+        object.id,
         specifiedType: const FullType(String),
       );
     }
@@ -132,11 +166,11 @@ class _$ProductOrderResponseSerializer implements PrimitiveSerializer<ProductOrd
         specifiedType: const FullType(String),
       );
     }
-    if (object.tags != null) {
-      yield r'tags';
+    if (object.parentId != null) {
+      yield r'parent_id';
       yield serializers.serialize(
-        object.tags,
-        specifiedType: const FullType(BuiltList, [FullType(String)]),
+        object.parentId,
+        specifiedType: const FullType(String),
       );
     }
   }
@@ -162,26 +196,37 @@ class _$ProductOrderResponseSerializer implements PrimitiveSerializer<ProductOrd
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
-        case r'unit_price':
+        case r'antifraud_info':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.unitPrice = valueDes;
+            specifiedType: const FullType.nullable(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
+          ) as BuiltMap<String, JsonObject?>?;
+          if (valueDes == null) continue;
+          result.antifraudInfo.replace(valueDes);
+          break;
+        case r'brand':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.brand = valueDes;
+          break;
+        case r'description':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.description = valueDes;
           break;
         case r'metadata':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
-          ) as BuiltMap<String, JsonObject?>;
+            specifiedType: const FullType.nullable(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
+          ) as BuiltMap<String, JsonObject?>?;
+          if (valueDes == null) continue;
           result.metadata.replace(valueDes);
-          break;
-        case r'quantity':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.quantity = valueDes;
           break;
         case r'name':
           final valueDes = serializers.deserialize(
@@ -190,61 +235,59 @@ class _$ProductOrderResponseSerializer implements PrimitiveSerializer<ProductOrd
           ) as String;
           result.name = valueDes;
           break;
-        case r'description':
+        case r'quantity':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.description = valueDes;
-          break;
-        case r'id':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.id = valueDes;
-          break;
-        case r'antifraud_info':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
-          ) as BuiltMap<String, JsonObject?>;
-          result.antifraudInfo.replace(valueDes);
+            specifiedType: const FullType(int),
+          ) as int;
+          result.quantity = valueDes;
           break;
         case r'sku':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.sku = valueDes;
-          break;
-        case r'brand':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.brand = valueDes;
-          break;
-        case r'parent_id':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.parentId = valueDes;
-          break;
-        case r'object':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.object = valueDes;
           break;
         case r'tags':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(String)]),
-          ) as BuiltList<String>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
+          ) as BuiltList<String>?;
+          if (valueDes == null) continue;
           result.tags.replace(valueDes);
+          break;
+        case r'unit_price':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int;
+          result.unitPrice = valueDes;
+          break;
+        case r'id':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.id = valueDes;
+          break;
+        case r'object':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.object = valueDes;
+          break;
+        case r'parent_id':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.parentId = valueDes;
           break;
         default:
           unhandled.add(key);

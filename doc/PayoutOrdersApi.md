@@ -33,7 +33,7 @@ final String acceptLanguage = es; // String | Use for knowing which language to 
 try {
     final response = api.cancelPayoutOrderById(id, acceptLanguage);
     print(response);
-} catch on DioException (e) {
+} on DioException catch (e) {
     print('Exception when calling PayoutOrdersApi->cancelPayoutOrderById: $e\n');
 }
 ```
@@ -56,12 +56,12 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/vnd.conekta-v2.2.0+json
+ - **Accept**: application/vnd.conekta-v2.3.0+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **createPayoutOrder**
-> PayoutOrderResponse createPayoutOrder(payoutOrder, acceptLanguage)
+> PayoutOrderResponse createPayoutOrder(payoutOrderRequest, acceptLanguage)
 
 Create payout order
 
@@ -72,13 +72,13 @@ Create a new payout order.
 import 'package:conekta/api.dart';
 
 final api = Conekta().getPayoutOrdersApi();
-final PayoutOrder payoutOrder = ; // PayoutOrder | requested field for payout order
+final PayoutOrderRequest payoutOrderRequest = ; // PayoutOrderRequest | requested field for payout order
 final String acceptLanguage = es; // String | Use for knowing which language to use
 
 try {
-    final response = api.createPayoutOrder(payoutOrder, acceptLanguage);
+    final response = api.createPayoutOrder(payoutOrderRequest, acceptLanguage);
     print(response);
-} catch on DioException (e) {
+} on DioException catch (e) {
     print('Exception when calling PayoutOrdersApi->createPayoutOrder: $e\n');
 }
 ```
@@ -87,7 +87,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **payoutOrder** | [**PayoutOrder**](PayoutOrder.md)| requested field for payout order | 
+ **payoutOrderRequest** | [**PayoutOrderRequest**](PayoutOrderRequest.md)| requested field for payout order | 
  **acceptLanguage** | **String**| Use for knowing which language to use | [optional] [default to 'es']
 
 ### Return type
@@ -101,7 +101,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/vnd.conekta-v2.2.0+json
+ - **Accept**: application/vnd.conekta-v2.3.0+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -123,7 +123,7 @@ final String acceptLanguage = es; // String | Use for knowing which language to 
 try {
     final response = api.getPayoutOrderById(id, acceptLanguage);
     print(response);
-} catch on DioException (e) {
+} on DioException catch (e) {
     print('Exception when calling PayoutOrdersApi->getPayoutOrderById: $e\n');
 }
 ```
@@ -146,7 +146,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/vnd.conekta-v2.2.0+json
+ - **Accept**: application/vnd.conekta-v2.3.0+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -171,7 +171,7 @@ final String previous = previous_example; // String | previous page
 try {
     final response = api.getPayoutOrders(acceptLanguage, limit, search, next, previous);
     print(response);
-} catch on DioException (e) {
+} on DioException catch (e) {
     print('Exception when calling PayoutOrdersApi->getPayoutOrders: $e\n');
 }
 ```
@@ -197,7 +197,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/vnd.conekta-v2.2.0+json
+ - **Accept**: application/vnd.conekta-v2.3.0+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

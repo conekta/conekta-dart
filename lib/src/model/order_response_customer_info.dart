@@ -3,8 +3,6 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:conekta/src/model/customer_info_just_customer_id_response.dart';
-import 'package:conekta/src/model/order_customer_info_response.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -13,15 +11,37 @@ part 'order_response_customer_info.g.dart';
 /// OrderResponseCustomerInfo
 ///
 /// Properties:
+/// * [object] 
 /// * [customerCustomReference] - Custom reference
 /// * [name] 
 /// * [email] 
 /// * [phone] 
 /// * [corporate] 
-/// * [object] 
 /// * [customerId] 
 @BuiltValue()
-abstract class OrderResponseCustomerInfo implements CustomerInfoJustCustomerIdResponse, OrderCustomerInfoResponse, Built<OrderResponseCustomerInfo, OrderResponseCustomerInfoBuilder> {
+abstract class OrderResponseCustomerInfo implements Built<OrderResponseCustomerInfo, OrderResponseCustomerInfoBuilder> {
+  @BuiltValueField(wireName: r'object')
+  String? get object;
+
+  /// Custom reference
+  @BuiltValueField(wireName: r'customer_custom_reference')
+  String? get customerCustomReference;
+
+  @BuiltValueField(wireName: r'name')
+  String? get name;
+
+  @BuiltValueField(wireName: r'email')
+  String? get email;
+
+  @BuiltValueField(wireName: r'phone')
+  String? get phone;
+
+  @BuiltValueField(wireName: r'corporate')
+  bool? get corporate;
+
+  @BuiltValueField(wireName: r'customer_id')
+  String? get customerId;
+
   OrderResponseCustomerInfo._();
 
   factory OrderResponseCustomerInfo([void updates(OrderResponseCustomerInfoBuilder b)]) = _$OrderResponseCustomerInfo;
@@ -46,11 +66,32 @@ class _$OrderResponseCustomerInfoSerializer implements PrimitiveSerializer<Order
     OrderResponseCustomerInfo object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
+    if (object.object != null) {
+      yield r'object';
+      yield serializers.serialize(
+        object.object,
+        specifiedType: const FullType(String),
+      );
+    }
     if (object.customerCustomReference != null) {
       yield r'customer_custom_reference';
       yield serializers.serialize(
         object.customerCustomReference,
-        specifiedType: const FullType.nullable(String),
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.name != null) {
+      yield r'name';
+      yield serializers.serialize(
+        object.name,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.email != null) {
+      yield r'email';
+      yield serializers.serialize(
+        object.email,
+        specifiedType: const FullType(String),
       );
     }
     if (object.phone != null) {
@@ -71,27 +112,6 @@ class _$OrderResponseCustomerInfoSerializer implements PrimitiveSerializer<Order
       yield r'customer_id';
       yield serializers.serialize(
         object.customerId,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.name != null) {
-      yield r'name';
-      yield serializers.serialize(
-        object.name,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.email != null) {
-      yield r'email';
-      yield serializers.serialize(
-        object.email,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.object != null) {
-      yield r'object';
-      yield serializers.serialize(
-        object.object,
         specifiedType: const FullType(String),
       );
     }
@@ -118,6 +138,14 @@ class _$OrderResponseCustomerInfoSerializer implements PrimitiveSerializer<Order
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
+        case r'object':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.object = valueDes;
+          break;
         case r'customer_custom_reference':
           final valueDes = serializers.deserialize(
             value,
@@ -126,47 +154,45 @@ class _$OrderResponseCustomerInfoSerializer implements PrimitiveSerializer<Order
           if (valueDes == null) continue;
           result.customerCustomReference = valueDes;
           break;
-        case r'phone':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.phone = valueDes;
-          break;
-        case r'corporate':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(bool),
-          ) as bool;
-          result.corporate = valueDes;
-          break;
-        case r'customer_id':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.customerId = valueDes;
-          break;
         case r'name':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.name = valueDes;
           break;
         case r'email':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.email = valueDes;
           break;
-        case r'object':
+        case r'phone':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.object = valueDes;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.phone = valueDes;
+          break;
+        case r'corporate':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(bool),
+          ) as bool?;
+          if (valueDes == null) continue;
+          result.corporate = valueDes;
+          break;
+        case r'customer_id':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.customerId = valueDes;
           break;
         default:
           unhandled.add(key);

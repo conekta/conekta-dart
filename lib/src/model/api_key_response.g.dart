@@ -6,44 +6,7 @@ part of 'api_key_response.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
-abstract class ApiKeyResponseBuilder {
-  void replace(ApiKeyResponse other);
-  void update(void Function(ApiKeyResponseBuilder) updates);
-  bool? get active;
-  set active(bool? active);
-
-  int? get createdAt;
-  set createdAt(int? createdAt);
-
-  int? get updatedAt;
-  set updatedAt(int? updatedAt);
-
-  int? get deactivatedAt;
-  set deactivatedAt(int? deactivatedAt);
-
-  int? get lastUsedAt;
-  set lastUsedAt(int? lastUsedAt);
-
-  String? get description;
-  set description(String? description);
-
-  String? get id;
-  set id(String? id);
-
-  bool? get livemode;
-  set livemode(bool? livemode);
-
-  String? get object;
-  set object(String? object);
-
-  String? get prefix;
-  set prefix(String? prefix);
-
-  String? get role;
-  set role(String? role);
-}
-
-class _$$ApiKeyResponse extends $ApiKeyResponse {
+class _$ApiKeyResponse extends ApiKeyResponse {
   @override
   final bool? active;
   @override
@@ -67,10 +30,10 @@ class _$$ApiKeyResponse extends $ApiKeyResponse {
   @override
   final String? role;
 
-  factory _$$ApiKeyResponse([void Function($ApiKeyResponseBuilder)? updates]) =>
-      (new $ApiKeyResponseBuilder()..update(updates))._build();
+  factory _$ApiKeyResponse([void Function(ApiKeyResponseBuilder)? updates]) =>
+      (new ApiKeyResponseBuilder()..update(updates))._build();
 
-  _$$ApiKeyResponse._(
+  _$ApiKeyResponse._(
       {this.active,
       this.createdAt,
       this.updatedAt,
@@ -85,17 +48,17 @@ class _$$ApiKeyResponse extends $ApiKeyResponse {
       : super._();
 
   @override
-  $ApiKeyResponse rebuild(void Function($ApiKeyResponseBuilder) updates) =>
+  ApiKeyResponse rebuild(void Function(ApiKeyResponseBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  $ApiKeyResponseBuilder toBuilder() =>
-      new $ApiKeyResponseBuilder()..replace(this);
+  ApiKeyResponseBuilder toBuilder() =>
+      new ApiKeyResponseBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is $ApiKeyResponse &&
+    return other is ApiKeyResponse &&
         active == other.active &&
         createdAt == other.createdAt &&
         updatedAt == other.updatedAt &&
@@ -129,7 +92,7 @@ class _$$ApiKeyResponse extends $ApiKeyResponse {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper(r'$ApiKeyResponse')
+    return (newBuiltValueToStringHelper(r'ApiKeyResponse')
           ..add('active', active)
           ..add('createdAt', createdAt)
           ..add('updatedAt', updatedAt)
@@ -145,63 +108,60 @@ class _$$ApiKeyResponse extends $ApiKeyResponse {
   }
 }
 
-class $ApiKeyResponseBuilder
-    implements
-        Builder<$ApiKeyResponse, $ApiKeyResponseBuilder>,
-        ApiKeyResponseBuilder {
-  _$$ApiKeyResponse? _$v;
+class ApiKeyResponseBuilder
+    implements Builder<ApiKeyResponse, ApiKeyResponseBuilder> {
+  _$ApiKeyResponse? _$v;
 
   bool? _active;
   bool? get active => _$this._active;
-  set active(covariant bool? active) => _$this._active = active;
+  set active(bool? active) => _$this._active = active;
 
   int? _createdAt;
   int? get createdAt => _$this._createdAt;
-  set createdAt(covariant int? createdAt) => _$this._createdAt = createdAt;
+  set createdAt(int? createdAt) => _$this._createdAt = createdAt;
 
   int? _updatedAt;
   int? get updatedAt => _$this._updatedAt;
-  set updatedAt(covariant int? updatedAt) => _$this._updatedAt = updatedAt;
+  set updatedAt(int? updatedAt) => _$this._updatedAt = updatedAt;
 
   int? _deactivatedAt;
   int? get deactivatedAt => _$this._deactivatedAt;
-  set deactivatedAt(covariant int? deactivatedAt) =>
+  set deactivatedAt(int? deactivatedAt) =>
       _$this._deactivatedAt = deactivatedAt;
 
   int? _lastUsedAt;
   int? get lastUsedAt => _$this._lastUsedAt;
-  set lastUsedAt(covariant int? lastUsedAt) => _$this._lastUsedAt = lastUsedAt;
+  set lastUsedAt(int? lastUsedAt) => _$this._lastUsedAt = lastUsedAt;
 
   String? _description;
   String? get description => _$this._description;
-  set description(covariant String? description) =>
-      _$this._description = description;
+  set description(String? description) => _$this._description = description;
 
   String? _id;
   String? get id => _$this._id;
-  set id(covariant String? id) => _$this._id = id;
+  set id(String? id) => _$this._id = id;
 
   bool? _livemode;
   bool? get livemode => _$this._livemode;
-  set livemode(covariant bool? livemode) => _$this._livemode = livemode;
+  set livemode(bool? livemode) => _$this._livemode = livemode;
 
   String? _object;
   String? get object => _$this._object;
-  set object(covariant String? object) => _$this._object = object;
+  set object(String? object) => _$this._object = object;
 
   String? _prefix;
   String? get prefix => _$this._prefix;
-  set prefix(covariant String? prefix) => _$this._prefix = prefix;
+  set prefix(String? prefix) => _$this._prefix = prefix;
 
   String? _role;
   String? get role => _$this._role;
-  set role(covariant String? role) => _$this._role = role;
+  set role(String? role) => _$this._role = role;
 
-  $ApiKeyResponseBuilder() {
-    $ApiKeyResponse._defaults(this);
+  ApiKeyResponseBuilder() {
+    ApiKeyResponse._defaults(this);
   }
 
-  $ApiKeyResponseBuilder get _$this {
+  ApiKeyResponseBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _active = $v.active;
@@ -221,22 +181,22 @@ class $ApiKeyResponseBuilder
   }
 
   @override
-  void replace(covariant $ApiKeyResponse other) {
+  void replace(ApiKeyResponse other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$$ApiKeyResponse;
+    _$v = other as _$ApiKeyResponse;
   }
 
   @override
-  void update(void Function($ApiKeyResponseBuilder)? updates) {
+  void update(void Function(ApiKeyResponseBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  $ApiKeyResponse build() => _build();
+  ApiKeyResponse build() => _build();
 
-  _$$ApiKeyResponse _build() {
+  _$ApiKeyResponse _build() {
     final _$result = _$v ??
-        new _$$ApiKeyResponse._(
+        new _$ApiKeyResponse._(
             active: active,
             createdAt: createdAt,
             updatedAt: updatedAt,

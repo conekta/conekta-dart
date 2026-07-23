@@ -84,15 +84,17 @@ class _$CustomerAntifraudInfoResponseSerializer implements PrimitiveSerializer<C
         case r'first_paid_at':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.firstPaidAt = valueDes;
           break;
         case r'account_created_at':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.accountCreatedAt = valueDes;
           break;
         default:

@@ -3,16 +3,18 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:conekta/src/model/order_charges_response.dart';
-import 'package:conekta/src/model/order_discount_lines_response.dart';
+import 'package:conekta/src/model/order_response_discount_lines.dart';
 import 'package:conekta/src/model/order_next_action_response.dart';
+import 'package:conekta/src/model/order_response_tax_lines.dart';
+import 'package:conekta/src/model/order_channel_response.dart';
+import 'package:conekta/src/model/order_fiscal_entity_response.dart';
+import 'package:conekta/src/model/order_response_shipping_lines.dart';
+import 'package:conekta/src/model/order_charges_response.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:conekta/src/model/order_response_customer_info.dart';
 import 'package:conekta/src/model/order_response_checkout.dart';
 import 'package:conekta/src/model/order_response_products.dart';
 import 'package:conekta/src/model/order_response_shipping_contact.dart';
-import 'package:conekta/src/model/order_channel_response.dart';
-import 'package:conekta/src/model/order_fiscal_entity_response.dart';
 import 'package:built_value/json_object.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -31,6 +33,8 @@ part 'order_response.g.dart';
 /// * [currency] - The three-letter ISO 4217 currency code. The currency of the order.
 /// * [customerInfo] 
 /// * [discountLines] 
+/// * [taxLines] 
+/// * [shippingLines] 
 /// * [fiscalEntity] 
 /// * [id] 
 /// * [isRefundable] 
@@ -74,7 +78,13 @@ abstract class OrderResponse implements Built<OrderResponse, OrderResponseBuilde
   OrderResponseCustomerInfo? get customerInfo;
 
   @BuiltValueField(wireName: r'discount_lines')
-  OrderDiscountLinesResponse? get discountLines;
+  OrderResponseDiscountLines? get discountLines;
+
+  @BuiltValueField(wireName: r'tax_lines')
+  OrderResponseTaxLines? get taxLines;
+
+  @BuiltValueField(wireName: r'shipping_lines')
+  OrderResponseShippingLines? get shippingLines;
 
   @BuiltValueField(wireName: r'fiscal_entity')
   OrderFiscalEntityResponse? get fiscalEntity;
@@ -201,14 +211,28 @@ class _$OrderResponseSerializer implements PrimitiveSerializer<OrderResponse> {
       yield r'discount_lines';
       yield serializers.serialize(
         object.discountLines,
-        specifiedType: const FullType(OrderDiscountLinesResponse),
+        specifiedType: const FullType(OrderResponseDiscountLines),
+      );
+    }
+    if (object.taxLines != null) {
+      yield r'tax_lines';
+      yield serializers.serialize(
+        object.taxLines,
+        specifiedType: const FullType(OrderResponseTaxLines),
+      );
+    }
+    if (object.shippingLines != null) {
+      yield r'shipping_lines';
+      yield serializers.serialize(
+        object.shippingLines,
+        specifiedType: const FullType(OrderResponseShippingLines),
       );
     }
     if (object.fiscalEntity != null) {
       yield r'fiscal_entity';
       yield serializers.serialize(
         object.fiscalEntity,
-        specifiedType: const FullType.nullable(OrderFiscalEntityResponse),
+        specifiedType: const FullType(OrderFiscalEntityResponse),
       );
     }
     if (object.id != null) {
@@ -314,65 +338,90 @@ class _$OrderResponseSerializer implements PrimitiveSerializer<OrderResponse> {
         case r'amount':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.amount = valueDes;
           break;
         case r'amount_refunded':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.amountRefunded = valueDes;
           break;
         case r'channel':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(OrderChannelResponse),
-          ) as OrderChannelResponse;
+            specifiedType: const FullType.nullable(OrderChannelResponse),
+          ) as OrderChannelResponse?;
+          if (valueDes == null) continue;
           result.channel.replace(valueDes);
           break;
         case r'charges':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(OrderChargesResponse),
-          ) as OrderChargesResponse;
+            specifiedType: const FullType.nullable(OrderChargesResponse),
+          ) as OrderChargesResponse?;
+          if (valueDes == null) continue;
           result.charges.replace(valueDes);
           break;
         case r'checkout':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(OrderResponseCheckout),
-          ) as OrderResponseCheckout;
+            specifiedType: const FullType.nullable(OrderResponseCheckout),
+          ) as OrderResponseCheckout?;
+          if (valueDes == null) continue;
           result.checkout.replace(valueDes);
           break;
         case r'created_at':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.createdAt = valueDes;
           break;
         case r'currency':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.currency = valueDes;
           break;
         case r'customer_info':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(OrderResponseCustomerInfo),
-          ) as OrderResponseCustomerInfo;
+            specifiedType: const FullType.nullable(OrderResponseCustomerInfo),
+          ) as OrderResponseCustomerInfo?;
+          if (valueDes == null) continue;
           result.customerInfo.replace(valueDes);
           break;
         case r'discount_lines':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(OrderDiscountLinesResponse),
-          ) as OrderDiscountLinesResponse;
+            specifiedType: const FullType.nullable(OrderResponseDiscountLines),
+          ) as OrderResponseDiscountLines?;
+          if (valueDes == null) continue;
           result.discountLines.replace(valueDes);
+          break;
+        case r'tax_lines':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(OrderResponseTaxLines),
+          ) as OrderResponseTaxLines?;
+          if (valueDes == null) continue;
+          result.taxLines.replace(valueDes);
+          break;
+        case r'shipping_lines':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(OrderResponseShippingLines),
+          ) as OrderResponseShippingLines?;
+          if (valueDes == null) continue;
+          result.shippingLines.replace(valueDes);
           break;
         case r'fiscal_entity':
           final valueDes = serializers.deserialize(
@@ -385,78 +434,89 @@ class _$OrderResponseSerializer implements PrimitiveSerializer<OrderResponse> {
         case r'id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.id = valueDes;
           break;
         case r'is_refundable':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(bool),
-          ) as bool;
+            specifiedType: const FullType.nullable(bool),
+          ) as bool?;
+          if (valueDes == null) continue;
           result.isRefundable = valueDes;
           break;
         case r'line_items':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(OrderResponseProducts),
-          ) as OrderResponseProducts;
+            specifiedType: const FullType.nullable(OrderResponseProducts),
+          ) as OrderResponseProducts?;
+          if (valueDes == null) continue;
           result.lineItems.replace(valueDes);
           break;
         case r'livemode':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(bool),
-          ) as bool;
+            specifiedType: const FullType.nullable(bool),
+          ) as bool?;
+          if (valueDes == null) continue;
           result.livemode = valueDes;
           break;
         case r'metadata':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
-          ) as BuiltMap<String, JsonObject?>;
+            specifiedType: const FullType.nullable(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
+          ) as BuiltMap<String, JsonObject?>?;
+          if (valueDes == null) continue;
           result.metadata.replace(valueDes);
           break;
         case r'next_action':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(OrderNextActionResponse),
-          ) as OrderNextActionResponse;
+            specifiedType: const FullType.nullable(OrderNextActionResponse),
+          ) as OrderNextActionResponse?;
+          if (valueDes == null) continue;
           result.nextAction.replace(valueDes);
           break;
         case r'object':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.object = valueDes;
           break;
         case r'payment_status':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.paymentStatus = valueDes;
           break;
         case r'processing_mode':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.processingMode = valueDes;
           break;
         case r'shipping_contact':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(OrderResponseShippingContact),
-          ) as OrderResponseShippingContact;
+            specifiedType: const FullType.nullable(OrderResponseShippingContact),
+          ) as OrderResponseShippingContact?;
+          if (valueDes == null) continue;
           result.shippingContact.replace(valueDes);
           break;
         case r'updated_at':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.updatedAt = valueDes;
           break;
         default:

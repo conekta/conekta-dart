@@ -95,6 +95,12 @@ class ChargeRequestPaymentMethodProductTypeEnum extends EnumClass {
   @BuiltValueEnumConst(wireName: r'aplazo_bnpl')
   static const ChargeRequestPaymentMethodProductTypeEnum aplazoBnpl = _$chargeRequestPaymentMethodProductTypeEnum_aplazoBnpl;
   /// Product type of the payment method, use for the payment method to know the product type
+  @BuiltValueEnumConst(wireName: r'azteca_bnpl')
+  static const ChargeRequestPaymentMethodProductTypeEnum aztecaBnpl = _$chargeRequestPaymentMethodProductTypeEnum_aztecaBnpl;
+  /// Product type of the payment method, use for the payment method to know the product type
+  @BuiltValueEnumConst(wireName: r'coppel_bnpl')
+  static const ChargeRequestPaymentMethodProductTypeEnum coppelBnpl = _$chargeRequestPaymentMethodProductTypeEnum_coppelBnpl;
+  /// Product type of the payment method, use for the payment method to know the product type
   @BuiltValueEnumConst(wireName: r'creditea_bnpl')
   static const ChargeRequestPaymentMethodProductTypeEnum crediteaBnpl = _$chargeRequestPaymentMethodProductTypeEnum_crediteaBnpl;
 

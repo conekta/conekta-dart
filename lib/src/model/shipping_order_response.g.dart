@@ -8,12 +8,6 @@ part of 'shipping_order_response.dart';
 
 class _$ShippingOrderResponse extends ShippingOrderResponse {
   @override
-  final String? id;
-  @override
-  final String? parentId;
-  @override
-  final String? object;
-  @override
   final int amount;
   @override
   final String? carrier;
@@ -23,20 +17,26 @@ class _$ShippingOrderResponse extends ShippingOrderResponse {
   final String? method;
   @override
   final BuiltMap<String, JsonObject?>? metadata;
+  @override
+  final String? id;
+  @override
+  final String? object;
+  @override
+  final String? parentId;
 
   factory _$ShippingOrderResponse(
           [void Function(ShippingOrderResponseBuilder)? updates]) =>
       (new ShippingOrderResponseBuilder()..update(updates))._build();
 
   _$ShippingOrderResponse._(
-      {this.id,
-      this.parentId,
-      this.object,
-      required this.amount,
+      {required this.amount,
       this.carrier,
       this.trackingNumber,
       this.method,
-      this.metadata})
+      this.metadata,
+      this.id,
+      this.object,
+      this.parentId})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         amount, r'ShippingOrderResponse', 'amount');
@@ -55,27 +55,27 @@ class _$ShippingOrderResponse extends ShippingOrderResponse {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is ShippingOrderResponse &&
-        id == other.id &&
-        parentId == other.parentId &&
-        object == other.object &&
         amount == other.amount &&
         carrier == other.carrier &&
         trackingNumber == other.trackingNumber &&
         method == other.method &&
-        metadata == other.metadata;
+        metadata == other.metadata &&
+        id == other.id &&
+        object == other.object &&
+        parentId == other.parentId;
   }
 
   @override
   int get hashCode {
     var _$hash = 0;
-    _$hash = $jc(_$hash, id.hashCode);
-    _$hash = $jc(_$hash, parentId.hashCode);
-    _$hash = $jc(_$hash, object.hashCode);
     _$hash = $jc(_$hash, amount.hashCode);
     _$hash = $jc(_$hash, carrier.hashCode);
     _$hash = $jc(_$hash, trackingNumber.hashCode);
     _$hash = $jc(_$hash, method.hashCode);
     _$hash = $jc(_$hash, metadata.hashCode);
+    _$hash = $jc(_$hash, id.hashCode);
+    _$hash = $jc(_$hash, object.hashCode);
+    _$hash = $jc(_$hash, parentId.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -83,58 +83,56 @@ class _$ShippingOrderResponse extends ShippingOrderResponse {
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'ShippingOrderResponse')
-          ..add('id', id)
-          ..add('parentId', parentId)
-          ..add('object', object)
           ..add('amount', amount)
           ..add('carrier', carrier)
           ..add('trackingNumber', trackingNumber)
           ..add('method', method)
-          ..add('metadata', metadata))
+          ..add('metadata', metadata)
+          ..add('id', id)
+          ..add('object', object)
+          ..add('parentId', parentId))
         .toString();
   }
 }
 
 class ShippingOrderResponseBuilder
-    implements
-        Builder<ShippingOrderResponse, ShippingOrderResponseBuilder>,
-        ShippingRequestBuilder {
+    implements Builder<ShippingOrderResponse, ShippingOrderResponseBuilder> {
   _$ShippingOrderResponse? _$v;
-
-  String? _id;
-  String? get id => _$this._id;
-  set id(covariant String? id) => _$this._id = id;
-
-  String? _parentId;
-  String? get parentId => _$this._parentId;
-  set parentId(covariant String? parentId) => _$this._parentId = parentId;
-
-  String? _object;
-  String? get object => _$this._object;
-  set object(covariant String? object) => _$this._object = object;
 
   int? _amount;
   int? get amount => _$this._amount;
-  set amount(covariant int? amount) => _$this._amount = amount;
+  set amount(int? amount) => _$this._amount = amount;
 
   String? _carrier;
   String? get carrier => _$this._carrier;
-  set carrier(covariant String? carrier) => _$this._carrier = carrier;
+  set carrier(String? carrier) => _$this._carrier = carrier;
 
   String? _trackingNumber;
   String? get trackingNumber => _$this._trackingNumber;
-  set trackingNumber(covariant String? trackingNumber) =>
+  set trackingNumber(String? trackingNumber) =>
       _$this._trackingNumber = trackingNumber;
 
   String? _method;
   String? get method => _$this._method;
-  set method(covariant String? method) => _$this._method = method;
+  set method(String? method) => _$this._method = method;
 
   MapBuilder<String, JsonObject?>? _metadata;
   MapBuilder<String, JsonObject?> get metadata =>
       _$this._metadata ??= new MapBuilder<String, JsonObject?>();
-  set metadata(covariant MapBuilder<String, JsonObject?>? metadata) =>
+  set metadata(MapBuilder<String, JsonObject?>? metadata) =>
       _$this._metadata = metadata;
+
+  String? _id;
+  String? get id => _$this._id;
+  set id(String? id) => _$this._id = id;
+
+  String? _object;
+  String? get object => _$this._object;
+  set object(String? object) => _$this._object = object;
+
+  String? _parentId;
+  String? get parentId => _$this._parentId;
+  set parentId(String? parentId) => _$this._parentId = parentId;
 
   ShippingOrderResponseBuilder() {
     ShippingOrderResponse._defaults(this);
@@ -143,21 +141,21 @@ class ShippingOrderResponseBuilder
   ShippingOrderResponseBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _id = $v.id;
-      _parentId = $v.parentId;
-      _object = $v.object;
       _amount = $v.amount;
       _carrier = $v.carrier;
       _trackingNumber = $v.trackingNumber;
       _method = $v.method;
       _metadata = $v.metadata?.toBuilder();
+      _id = $v.id;
+      _object = $v.object;
+      _parentId = $v.parentId;
       _$v = null;
     }
     return this;
   }
 
   @override
-  void replace(covariant ShippingOrderResponse other) {
+  void replace(ShippingOrderResponse other) {
     ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ShippingOrderResponse;
   }
@@ -175,15 +173,15 @@ class ShippingOrderResponseBuilder
     try {
       _$result = _$v ??
           new _$ShippingOrderResponse._(
-              id: id,
-              parentId: parentId,
-              object: object,
               amount: BuiltValueNullFieldError.checkNotNull(
                   amount, r'ShippingOrderResponse', 'amount'),
               carrier: carrier,
               trackingNumber: trackingNumber,
               method: method,
-              metadata: _metadata?.build());
+              metadata: _metadata?.build(),
+              id: id,
+              object: object,
+              parentId: parentId);
     } catch (_) {
       late String _$failedField;
       try {

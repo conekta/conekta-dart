@@ -86,15 +86,17 @@ class _$OrderNextActionResponseSerializer implements PrimitiveSerializer<OrderNe
         case r'redirect_to_url':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(OrderNextActionResponseRedirectToUrl),
-          ) as OrderNextActionResponseRedirectToUrl;
+            specifiedType: const FullType.nullable(OrderNextActionResponseRedirectToUrl),
+          ) as OrderNextActionResponseRedirectToUrl?;
+          if (valueDes == null) continue;
           result.redirectToUrl.replace(valueDes);
           break;
         case r'type':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.type = valueDes;
           break;
         default:

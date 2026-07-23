@@ -8,7 +8,7 @@ part of 'update_product.dart';
 
 class _$UpdateProduct extends UpdateProduct {
   @override
-  final BuiltMap<String, JsonObject>? antifraudInfo;
+  final BuiltMap<dynamic, dynamic>? antifraudInfo;
   @override
   final String? description;
   @override
@@ -24,7 +24,7 @@ class _$UpdateProduct extends UpdateProduct {
   @override
   final String? brand;
   @override
-  final BuiltMap<String, String>? metadata;
+  final BuiltMap<dynamic, dynamic>? metadata;
 
   factory _$UpdateProduct([void Function(UpdateProductBuilder)? updates]) =>
       (new UpdateProductBuilder()..update(updates))._build();
@@ -99,10 +99,10 @@ class UpdateProductBuilder
     implements Builder<UpdateProduct, UpdateProductBuilder> {
   _$UpdateProduct? _$v;
 
-  MapBuilder<String, JsonObject>? _antifraudInfo;
-  MapBuilder<String, JsonObject> get antifraudInfo =>
-      _$this._antifraudInfo ??= new MapBuilder<String, JsonObject>();
-  set antifraudInfo(MapBuilder<String, JsonObject>? antifraudInfo) =>
+  MapBuilder<dynamic, dynamic>? _antifraudInfo;
+  MapBuilder<dynamic, dynamic> get antifraudInfo =>
+      _$this._antifraudInfo ??= new MapBuilder<dynamic, dynamic>();
+  set antifraudInfo(MapBuilder<dynamic, dynamic>? antifraudInfo) =>
       _$this._antifraudInfo = antifraudInfo;
 
   String? _description;
@@ -133,10 +133,10 @@ class UpdateProductBuilder
   String? get brand => _$this._brand;
   set brand(String? brand) => _$this._brand = brand;
 
-  MapBuilder<String, String>? _metadata;
-  MapBuilder<String, String> get metadata =>
-      _$this._metadata ??= new MapBuilder<String, String>();
-  set metadata(MapBuilder<String, String>? metadata) =>
+  MapBuilder<dynamic, dynamic>? _metadata;
+  MapBuilder<dynamic, dynamic> get metadata =>
+      _$this._metadata ??= new MapBuilder<dynamic, dynamic>();
+  set metadata(MapBuilder<dynamic, dynamic>? metadata) =>
       _$this._metadata = metadata;
 
   UpdateProductBuilder() {

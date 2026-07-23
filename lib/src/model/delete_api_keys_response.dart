@@ -3,7 +3,6 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:conekta/src/model/api_key_response_on_delete.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -23,7 +22,43 @@ part 'delete_api_keys_response.g.dart';
 /// * [role] - Indicates if the api key is private or public
 /// * [deleted] 
 @BuiltValue()
-abstract class DeleteApiKeysResponse implements ApiKeyResponseOnDelete, Built<DeleteApiKeysResponse, DeleteApiKeysResponseBuilder> {
+abstract class DeleteApiKeysResponse implements Built<DeleteApiKeysResponse, DeleteApiKeysResponseBuilder> {
+  /// Indicates if the api key is active
+  @BuiltValueField(wireName: r'active')
+  bool? get active;
+
+  /// Unix timestamp in seconds of when the api key was created
+  @BuiltValueField(wireName: r'created_at')
+  int? get createdAt;
+
+  /// A name or brief explanation of what this api key is used for
+  @BuiltValueField(wireName: r'description')
+  String? get description;
+
+  /// Indicates if the api key is in production
+  @BuiltValueField(wireName: r'livemode')
+  bool? get livemode;
+
+  /// The first few characters of the authentication_token
+  @BuiltValueField(wireName: r'prefix')
+  String? get prefix;
+
+  /// Unique identifier of the api key
+  @BuiltValueField(wireName: r'id')
+  String? get id;
+
+  /// Object name, value is 'api_key'
+  @BuiltValueField(wireName: r'object')
+  String? get object;
+
+  /// Unix timestamp in seconds with the api key was used
+  @BuiltValueField(wireName: r'last_used_at')
+  int? get lastUsedAt;
+
+  /// Indicates if the api key is private or public
+  @BuiltValueField(wireName: r'role')
+  String? get role;
+
   @BuiltValueField(wireName: r'deleted')
   bool? get deleted;
 
@@ -50,6 +85,13 @@ class _$DeleteApiKeysResponseSerializer implements PrimitiveSerializer<DeleteApi
     DeleteApiKeysResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
+    if (object.active != null) {
+      yield r'active';
+      yield serializers.serialize(
+        object.active,
+        specifiedType: const FullType(bool),
+      );
+    }
     if (object.createdAt != null) {
       yield r'created_at';
       yield serializers.serialize(
@@ -57,17 +99,10 @@ class _$DeleteApiKeysResponseSerializer implements PrimitiveSerializer<DeleteApi
         specifiedType: const FullType(int),
       );
     }
-    if (object.deleted != null) {
-      yield r'deleted';
+    if (object.description != null) {
+      yield r'description';
       yield serializers.serialize(
-        object.deleted,
-        specifiedType: const FullType(bool),
-      );
-    }
-    if (object.role != null) {
-      yield r'role';
-      yield serializers.serialize(
-        object.role,
+        object.description,
         specifiedType: const FullType(String),
       );
     }
@@ -78,31 +113,10 @@ class _$DeleteApiKeysResponseSerializer implements PrimitiveSerializer<DeleteApi
         specifiedType: const FullType(bool),
       );
     }
-    if (object.lastUsedAt != null) {
-      yield r'last_used_at';
-      yield serializers.serialize(
-        object.lastUsedAt,
-        specifiedType: const FullType.nullable(int),
-      );
-    }
     if (object.prefix != null) {
       yield r'prefix';
       yield serializers.serialize(
         object.prefix,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.active != null) {
-      yield r'active';
-      yield serializers.serialize(
-        object.active,
-        specifiedType: const FullType(bool),
-      );
-    }
-    if (object.description != null) {
-      yield r'description';
-      yield serializers.serialize(
-        object.description,
         specifiedType: const FullType(String),
       );
     }
@@ -118,6 +132,27 @@ class _$DeleteApiKeysResponseSerializer implements PrimitiveSerializer<DeleteApi
       yield serializers.serialize(
         object.object,
         specifiedType: const FullType(String),
+      );
+    }
+    if (object.lastUsedAt != null) {
+      yield r'last_used_at';
+      yield serializers.serialize(
+        object.lastUsedAt,
+        specifiedType: const FullType(int),
+      );
+    }
+    if (object.role != null) {
+      yield r'role';
+      yield serializers.serialize(
+        object.role,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.deleted != null) {
+      yield r'deleted';
+      yield serializers.serialize(
+        object.deleted,
+        specifiedType: const FullType(bool),
       );
     }
   }
@@ -143,33 +178,61 @@ class _$DeleteApiKeysResponseSerializer implements PrimitiveSerializer<DeleteApi
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
+        case r'active':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(bool),
+          ) as bool?;
+          if (valueDes == null) continue;
+          result.active = valueDes;
+          break;
         case r'created_at':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.createdAt = valueDes;
           break;
-        case r'deleted':
+        case r'description':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(bool),
-          ) as bool;
-          result.deleted = valueDes;
-          break;
-        case r'role':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.role = valueDes;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.description = valueDes;
           break;
         case r'livemode':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(bool),
-          ) as bool;
+            specifiedType: const FullType.nullable(bool),
+          ) as bool?;
+          if (valueDes == null) continue;
           result.livemode = valueDes;
+          break;
+        case r'prefix':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.prefix = valueDes;
+          break;
+        case r'id':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.id = valueDes;
+          break;
+        case r'object':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.object = valueDes;
           break;
         case r'last_used_at':
           final valueDes = serializers.deserialize(
@@ -179,40 +242,21 @@ class _$DeleteApiKeysResponseSerializer implements PrimitiveSerializer<DeleteApi
           if (valueDes == null) continue;
           result.lastUsedAt = valueDes;
           break;
-        case r'prefix':
+        case r'role':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.prefix = valueDes;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.role = valueDes;
           break;
-        case r'active':
+        case r'deleted':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(bool),
-          ) as bool;
-          result.active = valueDes;
-          break;
-        case r'description':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.description = valueDes;
-          break;
-        case r'id':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.id = valueDes;
-          break;
-        case r'object':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.object = valueDes;
+            specifiedType: const FullType.nullable(bool),
+          ) as bool?;
+          if (valueDes == null) continue;
+          result.deleted = valueDes;
           break;
         default:
           unhandled.add(key);

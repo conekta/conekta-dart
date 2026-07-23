@@ -63,7 +63,7 @@ class _$DetailsErrorSerializer implements PrimitiveSerializer<DetailsError> {
       yield r'param';
       yield serializers.serialize(
         object.param,
-        specifiedType: const FullType.nullable(String),
+        specifiedType: const FullType(String),
       );
     }
     if (object.message != null) {
@@ -106,8 +106,9 @@ class _$DetailsErrorSerializer implements PrimitiveSerializer<DetailsError> {
         case r'code':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.code = valueDes;
           break;
         case r'param':
@@ -121,15 +122,17 @@ class _$DetailsErrorSerializer implements PrimitiveSerializer<DetailsError> {
         case r'message':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.message = valueDes;
           break;
         case r'debug_message':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.debugMessage = valueDes;
           break;
         default:

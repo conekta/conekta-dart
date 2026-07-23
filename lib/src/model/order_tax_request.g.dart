@@ -6,20 +6,7 @@ part of 'order_tax_request.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
-abstract class OrderTaxRequestBuilder {
-  void replace(OrderTaxRequest other);
-  void update(void Function(OrderTaxRequestBuilder) updates);
-  int? get amount;
-  set amount(int? amount);
-
-  String? get description;
-  set description(String? description);
-
-  MapBuilder<String, JsonObject?> get metadata;
-  set metadata(MapBuilder<String, JsonObject?>? metadata);
-}
-
-class _$$OrderTaxRequest extends $OrderTaxRequest {
+class _$OrderTaxRequest extends OrderTaxRequest {
   @override
   final int amount;
   @override
@@ -27,31 +14,29 @@ class _$$OrderTaxRequest extends $OrderTaxRequest {
   @override
   final BuiltMap<String, JsonObject?>? metadata;
 
-  factory _$$OrderTaxRequest(
-          [void Function($OrderTaxRequestBuilder)? updates]) =>
-      (new $OrderTaxRequestBuilder()..update(updates))._build();
+  factory _$OrderTaxRequest([void Function(OrderTaxRequestBuilder)? updates]) =>
+      (new OrderTaxRequestBuilder()..update(updates))._build();
 
-  _$$OrderTaxRequest._(
+  _$OrderTaxRequest._(
       {required this.amount, required this.description, this.metadata})
       : super._() {
+    BuiltValueNullFieldError.checkNotNull(amount, r'OrderTaxRequest', 'amount');
     BuiltValueNullFieldError.checkNotNull(
-        amount, r'$OrderTaxRequest', 'amount');
-    BuiltValueNullFieldError.checkNotNull(
-        description, r'$OrderTaxRequest', 'description');
+        description, r'OrderTaxRequest', 'description');
   }
 
   @override
-  $OrderTaxRequest rebuild(void Function($OrderTaxRequestBuilder) updates) =>
+  OrderTaxRequest rebuild(void Function(OrderTaxRequestBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  $OrderTaxRequestBuilder toBuilder() =>
-      new $OrderTaxRequestBuilder()..replace(this);
+  OrderTaxRequestBuilder toBuilder() =>
+      new OrderTaxRequestBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is $OrderTaxRequest &&
+    return other is OrderTaxRequest &&
         amount == other.amount &&
         description == other.description &&
         metadata == other.metadata;
@@ -69,7 +54,7 @@ class _$$OrderTaxRequest extends $OrderTaxRequest {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper(r'$OrderTaxRequest')
+    return (newBuiltValueToStringHelper(r'OrderTaxRequest')
           ..add('amount', amount)
           ..add('description', description)
           ..add('metadata', metadata))
@@ -77,32 +62,29 @@ class _$$OrderTaxRequest extends $OrderTaxRequest {
   }
 }
 
-class $OrderTaxRequestBuilder
-    implements
-        Builder<$OrderTaxRequest, $OrderTaxRequestBuilder>,
-        OrderTaxRequestBuilder {
-  _$$OrderTaxRequest? _$v;
+class OrderTaxRequestBuilder
+    implements Builder<OrderTaxRequest, OrderTaxRequestBuilder> {
+  _$OrderTaxRequest? _$v;
 
   int? _amount;
   int? get amount => _$this._amount;
-  set amount(covariant int? amount) => _$this._amount = amount;
+  set amount(int? amount) => _$this._amount = amount;
 
   String? _description;
   String? get description => _$this._description;
-  set description(covariant String? description) =>
-      _$this._description = description;
+  set description(String? description) => _$this._description = description;
 
   MapBuilder<String, JsonObject?>? _metadata;
   MapBuilder<String, JsonObject?> get metadata =>
       _$this._metadata ??= new MapBuilder<String, JsonObject?>();
-  set metadata(covariant MapBuilder<String, JsonObject?>? metadata) =>
+  set metadata(MapBuilder<String, JsonObject?>? metadata) =>
       _$this._metadata = metadata;
 
-  $OrderTaxRequestBuilder() {
-    $OrderTaxRequest._defaults(this);
+  OrderTaxRequestBuilder() {
+    OrderTaxRequest._defaults(this);
   }
 
-  $OrderTaxRequestBuilder get _$this {
+  OrderTaxRequestBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _amount = $v.amount;
@@ -114,28 +96,28 @@ class $OrderTaxRequestBuilder
   }
 
   @override
-  void replace(covariant $OrderTaxRequest other) {
+  void replace(OrderTaxRequest other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$$OrderTaxRequest;
+    _$v = other as _$OrderTaxRequest;
   }
 
   @override
-  void update(void Function($OrderTaxRequestBuilder)? updates) {
+  void update(void Function(OrderTaxRequestBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  $OrderTaxRequest build() => _build();
+  OrderTaxRequest build() => _build();
 
-  _$$OrderTaxRequest _build() {
-    _$$OrderTaxRequest _$result;
+  _$OrderTaxRequest _build() {
+    _$OrderTaxRequest _$result;
     try {
       _$result = _$v ??
-          new _$$OrderTaxRequest._(
+          new _$OrderTaxRequest._(
               amount: BuiltValueNullFieldError.checkNotNull(
-                  amount, r'$OrderTaxRequest', 'amount'),
+                  amount, r'OrderTaxRequest', 'amount'),
               description: BuiltValueNullFieldError.checkNotNull(
-                  description, r'$OrderTaxRequest', 'description'),
+                  description, r'OrderTaxRequest', 'description'),
               metadata: _metadata?.build());
     } catch (_) {
       late String _$failedField;
@@ -144,7 +126,7 @@ class $OrderTaxRequestBuilder
         _metadata?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            r'$OrderTaxRequest', _$failedField, e.toString());
+            r'OrderTaxRequest', _$failedField, e.toString());
       }
       rethrow;
     }

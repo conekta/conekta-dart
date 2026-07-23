@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **phone** | **String** | Phone contact | [optional] 
 **receiver** | **String** | Name of the person who will receive the order | [optional] 
 **betweenStreets** | **String** | The street names between which the order will be delivered. | [optional] 
-**address** | [**CustomerShippingContactsAddress**](CustomerShippingContactsAddress.md) |  | 
+**address** | [**CustomerShippingContactsRequestAddress**](CustomerShippingContactsRequestAddress.md) |  | 
 **parentId** | **String** |  | [optional] 
 **default_** | **bool** |  | [optional] 
 **deleted** | **bool** |  | [optional] 

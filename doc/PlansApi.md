@@ -35,7 +35,7 @@ final String xChildCompanyId = 6441b6376b60c3a638da80af; // String | In the case
 try {
     final response = api.createPlan(planRequest, acceptLanguage, xChildCompanyId);
     print(response);
-} catch on DioException (e) {
+} on DioException catch (e) {
     print('Exception when calling PlansApi->createPlan: $e\n');
 }
 ```
@@ -59,7 +59,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/vnd.conekta-v2.2.0+json
+ - **Accept**: application/vnd.conekta-v2.3.0+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -79,7 +79,7 @@ final String acceptLanguage = es; // String | Use for knowing which language to 
 try {
     final response = api.deletePlan(id, acceptLanguage);
     print(response);
-} catch on DioException (e) {
+} on DioException catch (e) {
     print('Exception when calling PlansApi->deletePlan: $e\n');
 }
 ```
@@ -102,7 +102,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/vnd.conekta-v2.2.0+json
+ - **Accept**: application/vnd.conekta-v2.3.0+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -123,7 +123,7 @@ final String xChildCompanyId = 6441b6376b60c3a638da80af; // String | In the case
 try {
     final response = api.getPlan(id, acceptLanguage, xChildCompanyId);
     print(response);
-} catch on DioException (e) {
+} on DioException catch (e) {
     print('Exception when calling PlansApi->getPlan: $e\n');
 }
 ```
@@ -147,12 +147,12 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/vnd.conekta-v2.2.0+json
+ - **Accept**: application/vnd.conekta-v2.3.0+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getPlans**
-> GetPlansResponse getPlans(acceptLanguage, xChildCompanyId, limit, search, next, previous)
+> GetPlansResponse getPlans(acceptLanguage, xChildCompanyId, limit, search, next, previous, currency, frequency)
 
 Get A List of Plans
 
@@ -167,11 +167,13 @@ final int limit = 56; // int | The numbers of items to return, the maximum value
 final String search = search_example; // String | General order search, e.g. by mail, reference etc.
 final String next = next_example; // String | next page
 final String previous = previous_example; // String | previous page
+final String currency = MXN; // String | currency of the object to be retrieved
+final int frequency = 1; // int | frequency of the object to be retrieved
 
 try {
-    final response = api.getPlans(acceptLanguage, xChildCompanyId, limit, search, next, previous);
+    final response = api.getPlans(acceptLanguage, xChildCompanyId, limit, search, next, previous, currency, frequency);
     print(response);
-} catch on DioException (e) {
+} on DioException catch (e) {
     print('Exception when calling PlansApi->getPlans: $e\n');
 }
 ```
@@ -186,6 +188,8 @@ Name | Type | Description  | Notes
  **search** | **String**| General order search, e.g. by mail, reference etc. | [optional] 
  **next** | **String**| next page | [optional] 
  **previous** | **String**| previous page | [optional] 
+ **currency** | **String**| currency of the object to be retrieved | [optional] 
+ **frequency** | **int**| frequency of the object to be retrieved | [optional] 
 
 ### Return type
 
@@ -198,12 +202,12 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/vnd.conekta-v2.2.0+json
+ - **Accept**: application/vnd.conekta-v2.3.0+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **updatePlan**
-> PlanResponse updatePlan(id, planUpdateRequest, acceptLanguage, xChildCompanyId)
+> PlanResponse updatePlan(id, updatePlan, acceptLanguage, xChildCompanyId)
 
 Update Plan
 
@@ -213,14 +217,14 @@ import 'package:conekta/api.dart';
 
 final api = Conekta().getPlansApi();
 final String id = 6307a60c41de27127515a575; // String | Identifier of the resource
-final PlanUpdateRequest planUpdateRequest = ; // PlanUpdateRequest | requested field for plan
+final UpdatePlan updatePlan = ; // UpdatePlan | requested field for plan
 final String acceptLanguage = es; // String | Use for knowing which language to use
 final String xChildCompanyId = 6441b6376b60c3a638da80af; // String | In the case of a holding company, the company id of the child company to which will process the request.
 
 try {
-    final response = api.updatePlan(id, planUpdateRequest, acceptLanguage, xChildCompanyId);
+    final response = api.updatePlan(id, updatePlan, acceptLanguage, xChildCompanyId);
     print(response);
-} catch on DioException (e) {
+} on DioException catch (e) {
     print('Exception when calling PlansApi->updatePlan: $e\n');
 }
 ```
@@ -230,7 +234,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**| Identifier of the resource | 
- **planUpdateRequest** | [**PlanUpdateRequest**](PlanUpdateRequest.md)| requested field for plan | 
+ **updatePlan** | [**UpdatePlan**](UpdatePlan.md)| requested field for plan | 
  **acceptLanguage** | **String**| Use for knowing which language to use | [optional] [default to 'es']
  **xChildCompanyId** | **String**| In the case of a holding company, the company id of the child company to which will process the request. | [optional] 
 
@@ -245,7 +249,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/vnd.conekta-v2.2.0+json
+ - **Accept**: application/vnd.conekta-v2.3.0+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

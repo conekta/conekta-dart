@@ -89,7 +89,7 @@ abstract class ChargeOrderResponse implements Built<ChargeOrderResponse, ChargeO
   String? get referenceId;
 
   @BuiltValueField(wireName: r'refunds')
-  BuiltList<JsonObject>? get refunds;
+  BuiltList<JsonObject?>? get refunds;
 
   @BuiltValueField(wireName: r'status')
   String? get status;
@@ -163,7 +163,7 @@ class _$ChargeOrderResponseSerializer implements PrimitiveSerializer<ChargeOrder
       yield r'device_fingerprint';
       yield serializers.serialize(
         object.deviceFingerprint,
-        specifiedType: const FullType.nullable(String),
+        specifiedType: const FullType(String),
       );
     }
     if (object.failureCode != null) {
@@ -198,7 +198,7 @@ class _$ChargeOrderResponseSerializer implements PrimitiveSerializer<ChargeOrder
       yield r'monthly_installments';
       yield serializers.serialize(
         object.monthlyInstallments,
-        specifiedType: const FullType.nullable(int),
+        specifiedType: const FullType(int),
       );
     }
     if (object.object != null) {
@@ -219,7 +219,7 @@ class _$ChargeOrderResponseSerializer implements PrimitiveSerializer<ChargeOrder
       yield r'paid_at';
       yield serializers.serialize(
         object.paidAt,
-        specifiedType: const FullType.nullable(int),
+        specifiedType: const FullType(int),
       );
     }
     if (object.paymentMethod != null) {
@@ -233,14 +233,14 @@ class _$ChargeOrderResponseSerializer implements PrimitiveSerializer<ChargeOrder
       yield r'reference_id';
       yield serializers.serialize(
         object.referenceId,
-        specifiedType: const FullType.nullable(String),
+        specifiedType: const FullType(String),
       );
     }
     if (object.refunds != null) {
       yield r'refunds';
       yield serializers.serialize(
         object.refunds,
-        specifiedType: const FullType(BuiltList, [FullType(JsonObject)]),
+        specifiedType: const FullType(BuiltList, [FullType.nullable(JsonObject)]),
       );
     }
     if (object.status != null) {
@@ -276,43 +276,49 @@ class _$ChargeOrderResponseSerializer implements PrimitiveSerializer<ChargeOrder
         case r'amount':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.amount = valueDes;
           break;
         case r'channel':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(ChargeResponseChannel),
-          ) as ChargeResponseChannel;
+            specifiedType: const FullType.nullable(ChargeResponseChannel),
+          ) as ChargeResponseChannel?;
+          if (valueDes == null) continue;
           result.channel.replace(valueDes);
           break;
         case r'created_at':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.createdAt = valueDes;
           break;
         case r'currency':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.currency = valueDes;
           break;
         case r'customer_id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.customerId = valueDes;
           break;
         case r'description':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.description = valueDes;
           break;
         case r'device_fingerprint':
@@ -326,29 +332,33 @@ class _$ChargeOrderResponseSerializer implements PrimitiveSerializer<ChargeOrder
         case r'failure_code':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.failureCode = valueDes;
           break;
         case r'failure_message':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.failureMessage = valueDes;
           break;
         case r'id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.id = valueDes;
           break;
         case r'livemode':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(bool),
-          ) as bool;
+            specifiedType: const FullType.nullable(bool),
+          ) as bool?;
+          if (valueDes == null) continue;
           result.livemode = valueDes;
           break;
         case r'monthly_installments':
@@ -362,15 +372,17 @@ class _$ChargeOrderResponseSerializer implements PrimitiveSerializer<ChargeOrder
         case r'object':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.object = valueDes;
           break;
         case r'order_id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.orderId = valueDes;
           break;
         case r'paid_at':
@@ -384,8 +396,9 @@ class _$ChargeOrderResponseSerializer implements PrimitiveSerializer<ChargeOrder
         case r'payment_method':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(ChargeOrderResponsePaymentMethod),
-          ) as ChargeOrderResponsePaymentMethod;
+            specifiedType: const FullType.nullable(ChargeOrderResponsePaymentMethod),
+          ) as ChargeOrderResponsePaymentMethod?;
+          if (valueDes == null) continue;
           result.paymentMethod.replace(valueDes);
           break;
         case r'reference_id':
@@ -399,15 +412,17 @@ class _$ChargeOrderResponseSerializer implements PrimitiveSerializer<ChargeOrder
         case r'refunds':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(JsonObject)]),
-          ) as BuiltList<JsonObject>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType.nullable(JsonObject)]),
+          ) as BuiltList<JsonObject?>?;
+          if (valueDes == null) continue;
           result.refunds.replace(valueDes);
           break;
         case r'status':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.status = valueDes;
           break;
         default:

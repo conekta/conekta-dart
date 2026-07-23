@@ -25,7 +25,7 @@ part 'update_product.g.dart';
 @BuiltValue()
 abstract class UpdateProduct implements Built<UpdateProduct, UpdateProductBuilder> {
   @BuiltValueField(wireName: r'antifraud_info')
-  BuiltMap<String, JsonObject>? get antifraudInfo;
+  BuiltMap<JsonObject>? get antifraudInfo;
 
   @BuiltValueField(wireName: r'description')
   String? get description;
@@ -49,7 +49,7 @@ abstract class UpdateProduct implements Built<UpdateProduct, UpdateProductBuilde
   String? get brand;
 
   @BuiltValueField(wireName: r'metadata')
-  BuiltMap<String, String>? get metadata;
+  BuiltMap<String>? get metadata;
 
   UpdateProduct._();
 
@@ -78,7 +78,7 @@ class _$UpdateProductSerializer implements PrimitiveSerializer<UpdateProduct> {
       yield r'antifraud_info';
       yield serializers.serialize(
         object.antifraudInfo,
-        specifiedType: const FullType(BuiltMap, [FullType(String), FullType(JsonObject)]),
+        specifiedType: const FullType.nullable(BuiltMap, [FullType(JsonObject)]),
       );
     }
     if (object.description != null) {
@@ -134,7 +134,7 @@ class _$UpdateProductSerializer implements PrimitiveSerializer<UpdateProduct> {
       yield r'metadata';
       yield serializers.serialize(
         object.metadata,
-        specifiedType: const FullType(BuiltMap, [FullType(String), FullType(String)]),
+        specifiedType: const FullType.nullable(BuiltMap, [FullType(String)]),
       );
     }
   }
@@ -163,64 +163,73 @@ class _$UpdateProductSerializer implements PrimitiveSerializer<UpdateProduct> {
         case r'antifraud_info':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltMap, [FullType(String), FullType(JsonObject)]),
-          ) as BuiltMap<String, JsonObject>;
+            specifiedType: const FullType.nullable(BuiltMap, [FullType(JsonObject)]),
+          ) as BuiltMap<JsonObject>?;
+          if (valueDes == null) continue;
           result.antifraudInfo.replace(valueDes);
           break;
         case r'description':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.description = valueDes;
           break;
         case r'sku':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.sku = valueDes;
           break;
         case r'name':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.name = valueDes;
           break;
         case r'unit_price':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.unitPrice = valueDes;
           break;
         case r'quantity':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.quantity = valueDes;
           break;
         case r'tags':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(String)]),
-          ) as BuiltList<String>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
+          ) as BuiltList<String>?;
+          if (valueDes == null) continue;
           result.tags.replace(valueDes);
           break;
         case r'brand':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.brand = valueDes;
           break;
         case r'metadata':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltMap, [FullType(String), FullType(String)]),
-          ) as BuiltMap<String, String>;
+            specifiedType: const FullType.nullable(BuiltMap, [FullType(String)]),
+          ) as BuiltMap<String>?;
+          if (valueDes == null) continue;
           result.metadata.replace(valueDes);
           break;
         default:

@@ -30,11 +30,11 @@ class _$LogsResponseData extends LogsResponseData {
   @override
   final JsonObject? requestBody;
   @override
-  final BuiltMap<String, String>? requestHeaders;
+  final BuiltMap<dynamic, dynamic>? requestHeaders;
   @override
   final JsonObject? responseBody;
   @override
-  final BuiltMap<String, String>? responseHeaders;
+  final BuiltMap<dynamic, dynamic>? responseHeaders;
   @override
   final BuiltList<String>? searchableTags;
   @override
@@ -213,10 +213,10 @@ class LogsResponseDataBuilder
   JsonObject? get requestBody => _$this._requestBody;
   set requestBody(JsonObject? requestBody) => _$this._requestBody = requestBody;
 
-  MapBuilder<String, String>? _requestHeaders;
-  MapBuilder<String, String> get requestHeaders =>
-      _$this._requestHeaders ??= new MapBuilder<String, String>();
-  set requestHeaders(MapBuilder<String, String>? requestHeaders) =>
+  MapBuilder<dynamic, dynamic>? _requestHeaders;
+  MapBuilder<dynamic, dynamic> get requestHeaders =>
+      _$this._requestHeaders ??= new MapBuilder<dynamic, dynamic>();
+  set requestHeaders(MapBuilder<dynamic, dynamic>? requestHeaders) =>
       _$this._requestHeaders = requestHeaders;
 
   JsonObject? _responseBody;
@@ -224,10 +224,10 @@ class LogsResponseDataBuilder
   set responseBody(JsonObject? responseBody) =>
       _$this._responseBody = responseBody;
 
-  MapBuilder<String, String>? _responseHeaders;
-  MapBuilder<String, String> get responseHeaders =>
-      _$this._responseHeaders ??= new MapBuilder<String, String>();
-  set responseHeaders(MapBuilder<String, String>? responseHeaders) =>
+  MapBuilder<dynamic, dynamic>? _responseHeaders;
+  MapBuilder<dynamic, dynamic> get responseHeaders =>
+      _$this._responseHeaders ??= new MapBuilder<dynamic, dynamic>();
+  set responseHeaders(MapBuilder<dynamic, dynamic>? responseHeaders) =>
       _$this._responseHeaders = responseHeaders;
 
   ListBuilder<String>? _searchableTags;

@@ -24,7 +24,11 @@ class _$OrderResponse extends OrderResponse {
   @override
   final OrderResponseCustomerInfo? customerInfo;
   @override
-  final OrderDiscountLinesResponse? discountLines;
+  final OrderResponseDiscountLines? discountLines;
+  @override
+  final OrderResponseTaxLines? taxLines;
+  @override
+  final OrderResponseShippingLines? shippingLines;
   @override
   final OrderFiscalEntityResponse? fiscalEntity;
   @override
@@ -63,6 +67,8 @@ class _$OrderResponse extends OrderResponse {
       this.currency,
       this.customerInfo,
       this.discountLines,
+      this.taxLines,
+      this.shippingLines,
       this.fiscalEntity,
       this.id,
       this.isRefundable,
@@ -97,6 +103,8 @@ class _$OrderResponse extends OrderResponse {
         currency == other.currency &&
         customerInfo == other.customerInfo &&
         discountLines == other.discountLines &&
+        taxLines == other.taxLines &&
+        shippingLines == other.shippingLines &&
         fiscalEntity == other.fiscalEntity &&
         id == other.id &&
         isRefundable == other.isRefundable &&
@@ -123,6 +131,8 @@ class _$OrderResponse extends OrderResponse {
     _$hash = $jc(_$hash, currency.hashCode);
     _$hash = $jc(_$hash, customerInfo.hashCode);
     _$hash = $jc(_$hash, discountLines.hashCode);
+    _$hash = $jc(_$hash, taxLines.hashCode);
+    _$hash = $jc(_$hash, shippingLines.hashCode);
     _$hash = $jc(_$hash, fiscalEntity.hashCode);
     _$hash = $jc(_$hash, id.hashCode);
     _$hash = $jc(_$hash, isRefundable.hashCode);
@@ -151,6 +161,8 @@ class _$OrderResponse extends OrderResponse {
           ..add('currency', currency)
           ..add('customerInfo', customerInfo)
           ..add('discountLines', discountLines)
+          ..add('taxLines', taxLines)
+          ..add('shippingLines', shippingLines)
           ..add('fiscalEntity', fiscalEntity)
           ..add('id', id)
           ..add('isRefundable', isRefundable)
@@ -212,11 +224,23 @@ class OrderResponseBuilder
   set customerInfo(OrderResponseCustomerInfoBuilder? customerInfo) =>
       _$this._customerInfo = customerInfo;
 
-  OrderDiscountLinesResponseBuilder? _discountLines;
-  OrderDiscountLinesResponseBuilder get discountLines =>
-      _$this._discountLines ??= new OrderDiscountLinesResponseBuilder();
-  set discountLines(OrderDiscountLinesResponseBuilder? discountLines) =>
+  OrderResponseDiscountLinesBuilder? _discountLines;
+  OrderResponseDiscountLinesBuilder get discountLines =>
+      _$this._discountLines ??= new OrderResponseDiscountLinesBuilder();
+  set discountLines(OrderResponseDiscountLinesBuilder? discountLines) =>
       _$this._discountLines = discountLines;
+
+  OrderResponseTaxLinesBuilder? _taxLines;
+  OrderResponseTaxLinesBuilder get taxLines =>
+      _$this._taxLines ??= new OrderResponseTaxLinesBuilder();
+  set taxLines(OrderResponseTaxLinesBuilder? taxLines) =>
+      _$this._taxLines = taxLines;
+
+  OrderResponseShippingLinesBuilder? _shippingLines;
+  OrderResponseShippingLinesBuilder get shippingLines =>
+      _$this._shippingLines ??= new OrderResponseShippingLinesBuilder();
+  set shippingLines(OrderResponseShippingLinesBuilder? shippingLines) =>
+      _$this._shippingLines = shippingLines;
 
   OrderFiscalEntityResponseBuilder? _fiscalEntity;
   OrderFiscalEntityResponseBuilder get fiscalEntity =>
@@ -294,6 +318,8 @@ class OrderResponseBuilder
       _currency = $v.currency;
       _customerInfo = $v.customerInfo?.toBuilder();
       _discountLines = $v.discountLines?.toBuilder();
+      _taxLines = $v.taxLines?.toBuilder();
+      _shippingLines = $v.shippingLines?.toBuilder();
       _fiscalEntity = $v.fiscalEntity?.toBuilder();
       _id = $v.id;
       _isRefundable = $v.isRefundable;
@@ -339,6 +365,8 @@ class OrderResponseBuilder
               currency: currency,
               customerInfo: _customerInfo?.build(),
               discountLines: _discountLines?.build(),
+              taxLines: _taxLines?.build(),
+              shippingLines: _shippingLines?.build(),
               fiscalEntity: _fiscalEntity?.build(),
               id: id,
               isRefundable: isRefundable,
@@ -365,6 +393,10 @@ class OrderResponseBuilder
         _customerInfo?.build();
         _$failedField = 'discountLines';
         _discountLines?.build();
+        _$failedField = 'taxLines';
+        _taxLines?.build();
+        _$failedField = 'shippingLines';
+        _shippingLines?.build();
         _$failedField = 'fiscalEntity';
         _fiscalEntity?.build();
 

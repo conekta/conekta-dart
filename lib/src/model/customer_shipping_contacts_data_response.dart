@@ -4,8 +4,7 @@
 
 // ignore_for_file: unused_element
 import 'package:built_collection/built_collection.dart';
-import 'package:conekta/src/model/customer_shipping_contacts.dart';
-import 'package:conekta/src/model/customer_shipping_contacts_address.dart';
+import 'package:conekta/src/model/customer_shipping_contacts_request_address.dart';
 import 'package:built_value/json_object.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -27,15 +26,43 @@ part 'customer_shipping_contacts_data_response.g.dart';
 /// * [object] 
 /// * [createdAt] 
 @BuiltValue()
-abstract class CustomerShippingContactsDataResponse implements CustomerShippingContacts, Built<CustomerShippingContactsDataResponse, CustomerShippingContactsDataResponseBuilder> {
-  @BuiltValueField(wireName: r'created_at')
-  int get createdAt;
+abstract class CustomerShippingContactsDataResponse implements Built<CustomerShippingContactsDataResponse, CustomerShippingContactsDataResponseBuilder> {
+  /// Phone contact
+  @BuiltValueField(wireName: r'phone')
+  String? get phone;
+
+  /// Name of the person who will receive the order
+  @BuiltValueField(wireName: r'receiver')
+  String? get receiver;
+
+  /// The street names between which the order will be delivered.
+  @BuiltValueField(wireName: r'between_streets')
+  String? get betweenStreets;
+
+  @BuiltValueField(wireName: r'address')
+  CustomerShippingContactsRequestAddress get address;
+
+  @BuiltValueField(wireName: r'parent_id')
+  String? get parentId;
+
+  @BuiltValueField(wireName: r'default')
+  bool? get default_;
+
+  @BuiltValueField(wireName: r'deleted')
+  bool? get deleted;
+
+  /// Metadata associated with the shipping contact
+  @BuiltValueField(wireName: r'metadata')
+  BuiltMap<String, JsonObject?>? get metadata;
 
   @BuiltValueField(wireName: r'id')
   String get id;
 
   @BuiltValueField(wireName: r'object')
   String get object;
+
+  @BuiltValueField(wireName: r'created_at')
+  int get createdAt;
 
   CustomerShippingContactsDataResponse._();
 
@@ -60,41 +87,17 @@ class _$CustomerShippingContactsDataResponseSerializer implements PrimitiveSeria
     CustomerShippingContactsDataResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    yield r'created_at';
-    yield serializers.serialize(
-      object.createdAt,
-      specifiedType: const FullType(int),
-    );
-    if (object.metadata != null) {
-      yield r'metadata';
+    if (object.phone != null) {
+      yield r'phone';
       yield serializers.serialize(
-        object.metadata,
-        specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
-      );
-    }
-    yield r'address';
-    yield serializers.serialize(
-      object.address,
-      specifiedType: const FullType(CustomerShippingContactsAddress),
-    );
-    if (object.deleted != null) {
-      yield r'deleted';
-      yield serializers.serialize(
-        object.deleted,
-        specifiedType: const FullType.nullable(bool),
+        object.phone,
+        specifiedType: const FullType(String),
       );
     }
     if (object.receiver != null) {
       yield r'receiver';
       yield serializers.serialize(
         object.receiver,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.phone != null) {
-      yield r'phone';
-      yield serializers.serialize(
-        object.phone,
         specifiedType: const FullType(String),
       );
     }
@@ -105,17 +108,10 @@ class _$CustomerShippingContactsDataResponseSerializer implements PrimitiveSeria
         specifiedType: const FullType(String),
       );
     }
-    if (object.default_ != null) {
-      yield r'default';
-      yield serializers.serialize(
-        object.default_,
-        specifiedType: const FullType.nullable(bool),
-      );
-    }
-    yield r'id';
+    yield r'address';
     yield serializers.serialize(
-      object.id,
-      specifiedType: const FullType(String),
+      object.address,
+      specifiedType: const FullType(CustomerShippingContactsRequestAddress),
     );
     if (object.parentId != null) {
       yield r'parent_id';
@@ -124,10 +120,41 @@ class _$CustomerShippingContactsDataResponseSerializer implements PrimitiveSeria
         specifiedType: const FullType(String),
       );
     }
+    if (object.default_ != null) {
+      yield r'default';
+      yield serializers.serialize(
+        object.default_,
+        specifiedType: const FullType(bool),
+      );
+    }
+    if (object.deleted != null) {
+      yield r'deleted';
+      yield serializers.serialize(
+        object.deleted,
+        specifiedType: const FullType(bool),
+      );
+    }
+    if (object.metadata != null) {
+      yield r'metadata';
+      yield serializers.serialize(
+        object.metadata,
+        specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
+      );
+    }
+    yield r'id';
+    yield serializers.serialize(
+      object.id,
+      specifiedType: const FullType(String),
+    );
     yield r'object';
     yield serializers.serialize(
       object.object,
       specifiedType: const FullType(String),
+    );
+    yield r'created_at';
+    yield serializers.serialize(
+      object.createdAt,
+      specifiedType: const FullType(int),
     );
   }
 
@@ -152,55 +179,44 @@ class _$CustomerShippingContactsDataResponseSerializer implements PrimitiveSeria
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
-        case r'created_at':
+        case r'phone':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.createdAt = valueDes;
-          break;
-        case r'metadata':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
-          ) as BuiltMap<String, JsonObject?>;
-          result.metadata.replace(valueDes);
-          break;
-        case r'address':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(CustomerShippingContactsAddress),
-          ) as CustomerShippingContactsAddress;
-          result.address.replace(valueDes);
-          break;
-        case r'deleted':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(bool),
-          ) as bool?;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
           if (valueDes == null) continue;
-          result.deleted = valueDes;
+          result.phone = valueDes;
           break;
         case r'receiver':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.receiver = valueDes;
-          break;
-        case r'phone':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.phone = valueDes;
           break;
         case r'between_streets':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.betweenStreets = valueDes;
+          break;
+        case r'address':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(CustomerShippingContactsRequestAddress),
+          ) as CustomerShippingContactsRequestAddress;
+          result.address.replace(valueDes);
+          break;
+        case r'parent_id':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.parentId = valueDes;
           break;
         case r'default':
           final valueDes = serializers.deserialize(
@@ -210,6 +226,22 @@ class _$CustomerShippingContactsDataResponseSerializer implements PrimitiveSeria
           if (valueDes == null) continue;
           result.default_ = valueDes;
           break;
+        case r'deleted':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(bool),
+          ) as bool?;
+          if (valueDes == null) continue;
+          result.deleted = valueDes;
+          break;
+        case r'metadata':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
+          ) as BuiltMap<String, JsonObject?>?;
+          if (valueDes == null) continue;
+          result.metadata.replace(valueDes);
+          break;
         case r'id':
           final valueDes = serializers.deserialize(
             value,
@@ -217,19 +249,19 @@ class _$CustomerShippingContactsDataResponseSerializer implements PrimitiveSeria
           ) as String;
           result.id = valueDes;
           break;
-        case r'parent_id':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.parentId = valueDes;
-          break;
         case r'object':
           final valueDes = serializers.deserialize(
             value,
             specifiedType: const FullType(String),
           ) as String;
           result.object = valueDes;
+          break;
+        case r'created_at':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int;
+          result.createdAt = valueDes;
           break;
         default:
           unhandled.add(key);

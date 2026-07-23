@@ -6,192 +6,167 @@ part of 'discount_lines_response.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
-abstract class DiscountLinesResponseBuilder
-    implements OrderDiscountLinesRequestBuilder {
-  void replace(covariant DiscountLinesResponse other);
-  void update(void Function(DiscountLinesResponseBuilder) updates);
-  String? get id;
-  set id(covariant String? id);
-
-  String? get parentId;
-  set parentId(covariant String? parentId);
-
-  String? get object;
-  set object(covariant String? object);
-
-  int? get amount;
-  set amount(covariant int? amount);
-
-  String? get code;
-  set code(covariant String? code);
-
-  String? get type;
-  set type(covariant String? type);
-}
-
-class _$$DiscountLinesResponse extends $DiscountLinesResponse {
-  @override
-  final String id;
-  @override
-  final String parentId;
-  @override
-  final String object;
+class _$DiscountLinesResponse extends DiscountLinesResponse {
   @override
   final int amount;
   @override
   final String code;
   @override
   final String type;
+  @override
+  final String id;
+  @override
+  final String object;
+  @override
+  final String parentId;
 
-  factory _$$DiscountLinesResponse(
-          [void Function($DiscountLinesResponseBuilder)? updates]) =>
-      (new $DiscountLinesResponseBuilder()..update(updates))._build();
+  factory _$DiscountLinesResponse(
+          [void Function(DiscountLinesResponseBuilder)? updates]) =>
+      (new DiscountLinesResponseBuilder()..update(updates))._build();
 
-  _$$DiscountLinesResponse._(
-      {required this.id,
-      required this.parentId,
-      required this.object,
-      required this.amount,
+  _$DiscountLinesResponse._(
+      {required this.amount,
       required this.code,
-      required this.type})
+      required this.type,
+      required this.id,
+      required this.object,
+      required this.parentId})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(id, r'$DiscountLinesResponse', 'id');
     BuiltValueNullFieldError.checkNotNull(
-        parentId, r'$DiscountLinesResponse', 'parentId');
+        amount, r'DiscountLinesResponse', 'amount');
     BuiltValueNullFieldError.checkNotNull(
-        object, r'$DiscountLinesResponse', 'object');
+        code, r'DiscountLinesResponse', 'code');
     BuiltValueNullFieldError.checkNotNull(
-        amount, r'$DiscountLinesResponse', 'amount');
+        type, r'DiscountLinesResponse', 'type');
+    BuiltValueNullFieldError.checkNotNull(id, r'DiscountLinesResponse', 'id');
     BuiltValueNullFieldError.checkNotNull(
-        code, r'$DiscountLinesResponse', 'code');
+        object, r'DiscountLinesResponse', 'object');
     BuiltValueNullFieldError.checkNotNull(
-        type, r'$DiscountLinesResponse', 'type');
+        parentId, r'DiscountLinesResponse', 'parentId');
   }
 
   @override
-  $DiscountLinesResponse rebuild(
-          void Function($DiscountLinesResponseBuilder) updates) =>
+  DiscountLinesResponse rebuild(
+          void Function(DiscountLinesResponseBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  $DiscountLinesResponseBuilder toBuilder() =>
-      new $DiscountLinesResponseBuilder()..replace(this);
+  DiscountLinesResponseBuilder toBuilder() =>
+      new DiscountLinesResponseBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is $DiscountLinesResponse &&
-        id == other.id &&
-        parentId == other.parentId &&
-        object == other.object &&
+    return other is DiscountLinesResponse &&
         amount == other.amount &&
         code == other.code &&
-        type == other.type;
+        type == other.type &&
+        id == other.id &&
+        object == other.object &&
+        parentId == other.parentId;
   }
 
   @override
   int get hashCode {
     var _$hash = 0;
-    _$hash = $jc(_$hash, id.hashCode);
-    _$hash = $jc(_$hash, parentId.hashCode);
-    _$hash = $jc(_$hash, object.hashCode);
     _$hash = $jc(_$hash, amount.hashCode);
     _$hash = $jc(_$hash, code.hashCode);
     _$hash = $jc(_$hash, type.hashCode);
+    _$hash = $jc(_$hash, id.hashCode);
+    _$hash = $jc(_$hash, object.hashCode);
+    _$hash = $jc(_$hash, parentId.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper(r'$DiscountLinesResponse')
-          ..add('id', id)
-          ..add('parentId', parentId)
-          ..add('object', object)
+    return (newBuiltValueToStringHelper(r'DiscountLinesResponse')
           ..add('amount', amount)
           ..add('code', code)
-          ..add('type', type))
+          ..add('type', type)
+          ..add('id', id)
+          ..add('object', object)
+          ..add('parentId', parentId))
         .toString();
   }
 }
 
-class $DiscountLinesResponseBuilder
-    implements
-        Builder<$DiscountLinesResponse, $DiscountLinesResponseBuilder>,
-        DiscountLinesResponseBuilder {
-  _$$DiscountLinesResponse? _$v;
-
-  String? _id;
-  String? get id => _$this._id;
-  set id(covariant String? id) => _$this._id = id;
-
-  String? _parentId;
-  String? get parentId => _$this._parentId;
-  set parentId(covariant String? parentId) => _$this._parentId = parentId;
-
-  String? _object;
-  String? get object => _$this._object;
-  set object(covariant String? object) => _$this._object = object;
+class DiscountLinesResponseBuilder
+    implements Builder<DiscountLinesResponse, DiscountLinesResponseBuilder> {
+  _$DiscountLinesResponse? _$v;
 
   int? _amount;
   int? get amount => _$this._amount;
-  set amount(covariant int? amount) => _$this._amount = amount;
+  set amount(int? amount) => _$this._amount = amount;
 
   String? _code;
   String? get code => _$this._code;
-  set code(covariant String? code) => _$this._code = code;
+  set code(String? code) => _$this._code = code;
 
   String? _type;
   String? get type => _$this._type;
-  set type(covariant String? type) => _$this._type = type;
+  set type(String? type) => _$this._type = type;
 
-  $DiscountLinesResponseBuilder() {
-    $DiscountLinesResponse._defaults(this);
+  String? _id;
+  String? get id => _$this._id;
+  set id(String? id) => _$this._id = id;
+
+  String? _object;
+  String? get object => _$this._object;
+  set object(String? object) => _$this._object = object;
+
+  String? _parentId;
+  String? get parentId => _$this._parentId;
+  set parentId(String? parentId) => _$this._parentId = parentId;
+
+  DiscountLinesResponseBuilder() {
+    DiscountLinesResponse._defaults(this);
   }
 
-  $DiscountLinesResponseBuilder get _$this {
+  DiscountLinesResponseBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _id = $v.id;
-      _parentId = $v.parentId;
-      _object = $v.object;
       _amount = $v.amount;
       _code = $v.code;
       _type = $v.type;
+      _id = $v.id;
+      _object = $v.object;
+      _parentId = $v.parentId;
       _$v = null;
     }
     return this;
   }
 
   @override
-  void replace(covariant $DiscountLinesResponse other) {
+  void replace(DiscountLinesResponse other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$$DiscountLinesResponse;
+    _$v = other as _$DiscountLinesResponse;
   }
 
   @override
-  void update(void Function($DiscountLinesResponseBuilder)? updates) {
+  void update(void Function(DiscountLinesResponseBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  $DiscountLinesResponse build() => _build();
+  DiscountLinesResponse build() => _build();
 
-  _$$DiscountLinesResponse _build() {
+  _$DiscountLinesResponse _build() {
     final _$result = _$v ??
-        new _$$DiscountLinesResponse._(
-            id: BuiltValueNullFieldError.checkNotNull(
-                id, r'$DiscountLinesResponse', 'id'),
-            parentId: BuiltValueNullFieldError.checkNotNull(
-                parentId, r'$DiscountLinesResponse', 'parentId'),
-            object: BuiltValueNullFieldError.checkNotNull(
-                object, r'$DiscountLinesResponse', 'object'),
+        new _$DiscountLinesResponse._(
             amount: BuiltValueNullFieldError.checkNotNull(
-                amount, r'$DiscountLinesResponse', 'amount'),
+                amount, r'DiscountLinesResponse', 'amount'),
             code: BuiltValueNullFieldError.checkNotNull(
-                code, r'$DiscountLinesResponse', 'code'),
+                code, r'DiscountLinesResponse', 'code'),
             type: BuiltValueNullFieldError.checkNotNull(
-                type, r'$DiscountLinesResponse', 'type'));
+                type, r'DiscountLinesResponse', 'type'),
+            id: BuiltValueNullFieldError.checkNotNull(
+                id, r'DiscountLinesResponse', 'id'),
+            object: BuiltValueNullFieldError.checkNotNull(
+                object, r'DiscountLinesResponse', 'object'),
+            parentId: BuiltValueNullFieldError.checkNotNull(
+                parentId, r'DiscountLinesResponse', 'parentId'));
     replace(_$result);
     return _$result;
   }

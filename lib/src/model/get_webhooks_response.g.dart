@@ -8,26 +8,26 @@ part of 'get_webhooks_response.dart';
 
 class _$GetWebhooksResponse extends GetWebhooksResponse {
   @override
-  final BuiltList<WebhookResponse>? data;
+  final bool hasMore;
+  @override
+  final String object;
   @override
   final String? nextPageUrl;
   @override
   final String? previousPageUrl;
   @override
-  final bool hasMore;
-  @override
-  final String object;
+  final BuiltList<WebhookResponse>? data;
 
   factory _$GetWebhooksResponse(
           [void Function(GetWebhooksResponseBuilder)? updates]) =>
       (new GetWebhooksResponseBuilder()..update(updates))._build();
 
   _$GetWebhooksResponse._(
-      {this.data,
+      {required this.hasMore,
+      required this.object,
       this.nextPageUrl,
       this.previousPageUrl,
-      required this.hasMore,
-      required this.object})
+      this.data})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         hasMore, r'GetWebhooksResponse', 'hasMore');
@@ -48,21 +48,21 @@ class _$GetWebhooksResponse extends GetWebhooksResponse {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is GetWebhooksResponse &&
-        data == other.data &&
+        hasMore == other.hasMore &&
+        object == other.object &&
         nextPageUrl == other.nextPageUrl &&
         previousPageUrl == other.previousPageUrl &&
-        hasMore == other.hasMore &&
-        object == other.object;
+        data == other.data;
   }
 
   @override
   int get hashCode {
     var _$hash = 0;
-    _$hash = $jc(_$hash, data.hashCode);
-    _$hash = $jc(_$hash, nextPageUrl.hashCode);
-    _$hash = $jc(_$hash, previousPageUrl.hashCode);
     _$hash = $jc(_$hash, hasMore.hashCode);
     _$hash = $jc(_$hash, object.hashCode);
+    _$hash = $jc(_$hash, nextPageUrl.hashCode);
+    _$hash = $jc(_$hash, previousPageUrl.hashCode);
+    _$hash = $jc(_$hash, data.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -70,44 +70,40 @@ class _$GetWebhooksResponse extends GetWebhooksResponse {
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'GetWebhooksResponse')
-          ..add('data', data)
+          ..add('hasMore', hasMore)
+          ..add('object', object)
           ..add('nextPageUrl', nextPageUrl)
           ..add('previousPageUrl', previousPageUrl)
-          ..add('hasMore', hasMore)
-          ..add('object', object))
+          ..add('data', data))
         .toString();
   }
 }
 
 class GetWebhooksResponseBuilder
-    implements
-        Builder<GetWebhooksResponse, GetWebhooksResponseBuilder>,
-        PageBuilder,
-        PaginationBuilder {
+    implements Builder<GetWebhooksResponse, GetWebhooksResponseBuilder> {
   _$GetWebhooksResponse? _$v;
+
+  bool? _hasMore;
+  bool? get hasMore => _$this._hasMore;
+  set hasMore(bool? hasMore) => _$this._hasMore = hasMore;
+
+  String? _object;
+  String? get object => _$this._object;
+  set object(String? object) => _$this._object = object;
+
+  String? _nextPageUrl;
+  String? get nextPageUrl => _$this._nextPageUrl;
+  set nextPageUrl(String? nextPageUrl) => _$this._nextPageUrl = nextPageUrl;
+
+  String? _previousPageUrl;
+  String? get previousPageUrl => _$this._previousPageUrl;
+  set previousPageUrl(String? previousPageUrl) =>
+      _$this._previousPageUrl = previousPageUrl;
 
   ListBuilder<WebhookResponse>? _data;
   ListBuilder<WebhookResponse> get data =>
       _$this._data ??= new ListBuilder<WebhookResponse>();
-  set data(covariant ListBuilder<WebhookResponse>? data) => _$this._data = data;
-
-  String? _nextPageUrl;
-  String? get nextPageUrl => _$this._nextPageUrl;
-  set nextPageUrl(covariant String? nextPageUrl) =>
-      _$this._nextPageUrl = nextPageUrl;
-
-  String? _previousPageUrl;
-  String? get previousPageUrl => _$this._previousPageUrl;
-  set previousPageUrl(covariant String? previousPageUrl) =>
-      _$this._previousPageUrl = previousPageUrl;
-
-  bool? _hasMore;
-  bool? get hasMore => _$this._hasMore;
-  set hasMore(covariant bool? hasMore) => _$this._hasMore = hasMore;
-
-  String? _object;
-  String? get object => _$this._object;
-  set object(covariant String? object) => _$this._object = object;
+  set data(ListBuilder<WebhookResponse>? data) => _$this._data = data;
 
   GetWebhooksResponseBuilder() {
     GetWebhooksResponse._defaults(this);
@@ -116,19 +112,18 @@ class GetWebhooksResponseBuilder
   GetWebhooksResponseBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _data = $v.data?.toBuilder();
-      _nextPageUrl = $v.nextPageUrl;
-      _previousPageUrl = $v.previousPageUrl;
       _hasMore = $v.hasMore;
       _object = $v.object;
+      _nextPageUrl = $v.nextPageUrl;
+      _previousPageUrl = $v.previousPageUrl;
+      _data = $v.data?.toBuilder();
       _$v = null;
     }
     return this;
   }
 
   @override
-// ignore: override_on_non_overriding_method
-  void replace(covariant GetWebhooksResponse other) {
+  void replace(GetWebhooksResponse other) {
     ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GetWebhooksResponse;
   }
@@ -146,13 +141,13 @@ class GetWebhooksResponseBuilder
     try {
       _$result = _$v ??
           new _$GetWebhooksResponse._(
-              data: _data?.build(),
-              nextPageUrl: nextPageUrl,
-              previousPageUrl: previousPageUrl,
               hasMore: BuiltValueNullFieldError.checkNotNull(
                   hasMore, r'GetWebhooksResponse', 'hasMore'),
               object: BuiltValueNullFieldError.checkNotNull(
-                  object, r'GetWebhooksResponse', 'object'));
+                  object, r'GetWebhooksResponse', 'object'),
+              nextPageUrl: nextPageUrl,
+              previousPageUrl: previousPageUrl,
+              data: _data?.build());
     } catch (_) {
       late String _$failedField;
       try {

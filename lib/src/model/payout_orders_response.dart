@@ -3,9 +3,7 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:conekta/src/model/pagination.dart';
 import 'package:built_collection/built_collection.dart';
-import 'package:conekta/src/model/page.dart';
 import 'package:conekta/src/model/payout_order_response.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -15,15 +13,31 @@ part 'payout_orders_response.g.dart';
 /// PayoutOrdersResponse
 ///
 /// Properties:
+/// * [data] 
 /// * [hasMore] - Indicates if there are more pages to be requested
 /// * [object] - Object type, in this case is list
 /// * [nextPageUrl] - URL of the next page.
 /// * [previousPageUrl] - Url of the previous page.
-/// * [data] 
 @BuiltValue()
-abstract class PayoutOrdersResponse implements Page, Pagination, Built<PayoutOrdersResponse, PayoutOrdersResponseBuilder> {
+abstract class PayoutOrdersResponse implements Built<PayoutOrdersResponse, PayoutOrdersResponseBuilder> {
   @BuiltValueField(wireName: r'data')
   BuiltList<PayoutOrderResponse>? get data;
+
+  /// Indicates if there are more pages to be requested
+  @BuiltValueField(wireName: r'has_more')
+  bool get hasMore;
+
+  /// Object type, in this case is list
+  @BuiltValueField(wireName: r'object')
+  String get object;
+
+  /// URL of the next page.
+  @BuiltValueField(wireName: r'next_page_url')
+  String? get nextPageUrl;
+
+  /// Url of the previous page.
+  @BuiltValueField(wireName: r'previous_page_url')
+  String? get previousPageUrl;
 
   PayoutOrdersResponse._();
 
@@ -48,18 +62,6 @@ class _$PayoutOrdersResponseSerializer implements PrimitiveSerializer<PayoutOrde
     PayoutOrdersResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    yield r'has_more';
-    yield serializers.serialize(
-      object.hasMore,
-      specifiedType: const FullType(bool),
-    );
-    if (object.nextPageUrl != null) {
-      yield r'next_page_url';
-      yield serializers.serialize(
-        object.nextPageUrl,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
     if (object.data != null) {
       yield r'data';
       yield serializers.serialize(
@@ -67,18 +69,30 @@ class _$PayoutOrdersResponseSerializer implements PrimitiveSerializer<PayoutOrde
         specifiedType: const FullType(BuiltList, [FullType(PayoutOrderResponse)]),
       );
     }
-    if (object.previousPageUrl != null) {
-      yield r'previous_page_url';
-      yield serializers.serialize(
-        object.previousPageUrl,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
+    yield r'has_more';
+    yield serializers.serialize(
+      object.hasMore,
+      specifiedType: const FullType(bool),
+    );
     yield r'object';
     yield serializers.serialize(
       object.object,
       specifiedType: const FullType(String),
     );
+    if (object.nextPageUrl != null) {
+      yield r'next_page_url';
+      yield serializers.serialize(
+        object.nextPageUrl,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.previousPageUrl != null) {
+      yield r'previous_page_url';
+      yield serializers.serialize(
+        object.previousPageUrl,
+        specifiedType: const FullType(String),
+      );
+    }
   }
 
   @override
@@ -102,12 +116,27 @@ class _$PayoutOrdersResponseSerializer implements PrimitiveSerializer<PayoutOrde
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
+        case r'data':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(BuiltList, [FullType(PayoutOrderResponse)]),
+          ) as BuiltList<PayoutOrderResponse>?;
+          if (valueDes == null) continue;
+          result.data.replace(valueDes);
+          break;
         case r'has_more':
           final valueDes = serializers.deserialize(
             value,
             specifiedType: const FullType(bool),
           ) as bool;
           result.hasMore = valueDes;
+          break;
+        case r'object':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.object = valueDes;
           break;
         case r'next_page_url':
           final valueDes = serializers.deserialize(
@@ -117,13 +146,6 @@ class _$PayoutOrdersResponseSerializer implements PrimitiveSerializer<PayoutOrde
           if (valueDes == null) continue;
           result.nextPageUrl = valueDes;
           break;
-        case r'data':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(BuiltList, [FullType(PayoutOrderResponse)]),
-          ) as BuiltList<PayoutOrderResponse>;
-          result.data.replace(valueDes);
-          break;
         case r'previous_page_url':
           final valueDes = serializers.deserialize(
             value,
@@ -131,13 +153,6 @@ class _$PayoutOrdersResponseSerializer implements PrimitiveSerializer<PayoutOrde
           ) as String?;
           if (valueDes == null) continue;
           result.previousPageUrl = valueDes;
-          break;
-        case r'object':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.object = valueDes;
           break;
         default:
           unhandled.add(key);

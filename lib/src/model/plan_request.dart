@@ -183,15 +183,17 @@ class _$PlanRequestSerializer implements PrimitiveSerializer<PlanRequest> {
         case r'currency':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.currency = valueDes;
           break;
         case r'expiry_count':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.expiryCount = valueDes;
           break;
         case r'frequency':
@@ -204,8 +206,9 @@ class _$PlanRequestSerializer implements PrimitiveSerializer<PlanRequest> {
         case r'id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.id = valueDes;
           break;
         case r'interval':
@@ -225,22 +228,25 @@ class _$PlanRequestSerializer implements PrimitiveSerializer<PlanRequest> {
         case r'trial_period_days':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.trialPeriodDays = valueDes;
           break;
         case r'max_retries':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.maxRetries = valueDes;
           break;
         case r'retry_delay_hours':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.retryDelayHours = valueDes;
           break;
         default:

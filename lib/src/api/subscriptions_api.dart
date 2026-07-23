@@ -13,7 +13,7 @@ import 'package:conekta/src/model/error.dart';
 import 'package:conekta/src/model/subscription_events_response.dart';
 import 'package:conekta/src/model/subscription_request.dart';
 import 'package:conekta/src/model/subscription_response.dart';
-import 'package:conekta/src/model/subscription_update_request.dart';
+import 'package:conekta/src/model/updates_a_subscription.dart';
 import 'package:conekta/src/utils/utils.dart';
 
 class SubscriptionsApi {
@@ -60,13 +60,13 @@ class SubscriptionsApi {
 
     // to determine the Accept header
     List<String> _accepts = [ 
-        "application/vnd.conekta-v2.2.0+json"
+        "application/vnd.conekta-v2.3.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/7.0.7',
+        r'User-Agent': r'Conekta/v2 DartBindings/9.0.0',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
@@ -165,13 +165,13 @@ class SubscriptionsApi {
 
     // to determine the Accept header
     List<String> _accepts = [ 
-        "application/vnd.conekta-v2.2.0+json"
+        "application/vnd.conekta-v2.3.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/7.0.7',
+        r'User-Agent': r'Conekta/v2 DartBindings/9.0.0',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
@@ -285,13 +285,13 @@ class SubscriptionsApi {
 
     // to determine the Accept header
     List<String> _accepts = [ 
-        "application/vnd.conekta-v2.2.0+json"
+        "application/vnd.conekta-v2.3.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/7.0.7',
+        r'User-Agent': r'Conekta/v2 DartBindings/9.0.0',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (localVarAccept != null) r'Accept': localVarAccept,
         if (localVarContentType != null) r'Content-Type': localVarContentType,
@@ -386,13 +386,13 @@ class SubscriptionsApi {
 
     // to determine the Accept header
     List<String> _accepts = [ 
-        "application/vnd.conekta-v2.2.0+json"
+        "application/vnd.conekta-v2.3.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/7.0.7',
+        r'User-Agent': r'Conekta/v2 DartBindings/9.0.0',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
@@ -488,13 +488,13 @@ class SubscriptionsApi {
 
     // to determine the Accept header
     List<String> _accepts = [ 
-        "application/vnd.conekta-v2.2.0+json"
+        "application/vnd.conekta-v2.3.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/7.0.7',
+        r'User-Agent': r'Conekta/v2 DartBindings/9.0.0',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
@@ -590,13 +590,13 @@ class SubscriptionsApi {
 
     // to determine the Accept header
     List<String> _accepts = [ 
-        "application/vnd.conekta-v2.2.0+json"
+        "application/vnd.conekta-v2.3.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/7.0.7',
+        r'User-Agent': r'Conekta/v2 DartBindings/9.0.0',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
@@ -693,13 +693,13 @@ class SubscriptionsApi {
 
     // to determine the Accept header
     List<String> _accepts = [ 
-        "application/vnd.conekta-v2.2.0+json"
+        "application/vnd.conekta-v2.3.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/7.0.7',
+        r'User-Agent': r'Conekta/v2 DartBindings/9.0.0',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
@@ -797,13 +797,13 @@ class SubscriptionsApi {
 
     // to determine the Accept header
     List<String> _accepts = [ 
-        "application/vnd.conekta-v2.2.0+json"
+        "application/vnd.conekta-v2.3.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/7.0.7',
+        r'User-Agent': r'Conekta/v2 DartBindings/9.0.0',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
@@ -928,13 +928,13 @@ class SubscriptionsApi {
 
     // to determine the Accept header
     List<String> _accepts = [ 
-        "application/vnd.conekta-v2.2.0+json"
+        "application/vnd.conekta-v2.3.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/7.0.7',
+        r'User-Agent': r'Conekta/v2 DartBindings/9.0.0',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
@@ -1045,13 +1045,13 @@ class SubscriptionsApi {
 
     // to determine the Accept header
     List<String> _accepts = [ 
-        "application/vnd.conekta-v2.2.0+json"
+        "application/vnd.conekta-v2.3.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/7.0.7',
+        r'User-Agent': r'Conekta/v2 DartBindings/9.0.0',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
@@ -1156,13 +1156,13 @@ class SubscriptionsApi {
 
     // to determine the Accept header
     List<String> _accepts = [ 
-        "application/vnd.conekta-v2.2.0+json"
+        "application/vnd.conekta-v2.3.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/7.0.7',
+        r'User-Agent': r'Conekta/v2 DartBindings/9.0.0',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
@@ -1259,13 +1259,13 @@ class SubscriptionsApi {
 
     // to determine the Accept header
     List<String> _accepts = [ 
-        "application/vnd.conekta-v2.2.0+json"
+        "application/vnd.conekta-v2.3.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/7.0.7',
+        r'User-Agent': r'Conekta/v2 DartBindings/9.0.0',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
@@ -1331,7 +1331,7 @@ class SubscriptionsApi {
   /// Parameters:
   /// * [customerId] - Identifier of the customer resource
   /// * [id] - Identifier of the subscription resource
-  /// * [subscriptionUpdateRequest] - requested field for update a subscription
+  /// * [updatesASubscription] - requested field for update a subscription
   /// * [acceptLanguage] - Use for knowing which language to use
   /// * [xChildCompanyId] - In the case of a holding company, the company id of the child company to which will process the request.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
@@ -1346,7 +1346,7 @@ class SubscriptionsApi {
   Future<Response<SubscriptionResponse>> subscriptionUpdate({ 
     required String customerId,
     required String id,
-    required SubscriptionUpdateRequest subscriptionUpdateRequest,
+    required UpdatesASubscription updatesASubscription,
     String? acceptLanguage = 'es',
     String? xChildCompanyId,
     CancelToken? cancelToken,
@@ -1365,13 +1365,13 @@ class SubscriptionsApi {
 
     // to determine the Accept header
     List<String> _accepts = [ 
-        "application/vnd.conekta-v2.2.0+json"
+        "application/vnd.conekta-v2.3.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
     final _options = Options(
       method: r'PUT',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/7.0.7',
+        r'User-Agent': r'Conekta/v2 DartBindings/9.0.0',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
@@ -1396,8 +1396,8 @@ class SubscriptionsApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(SubscriptionUpdateRequest);
-      _bodyData = _serializers.serialize(subscriptionUpdateRequest, specifiedType: _type);
+      const _type = FullType(UpdatesASubscription);
+      _bodyData = _serializers.serialize(updatesASubscription, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(
@@ -1488,13 +1488,13 @@ class SubscriptionsApi {
 
     // to determine the Accept header
     List<String> _accepts = [ 
-        "application/vnd.conekta-v2.2.0+json"
+        "application/vnd.conekta-v2.3.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/7.0.7',
+        r'User-Agent': r'Conekta/v2 DartBindings/9.0.0',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
@@ -1591,13 +1591,13 @@ class SubscriptionsApi {
 
     // to determine the Accept header
     List<String> _accepts = [ 
-        "application/vnd.conekta-v2.2.0+json"
+        "application/vnd.conekta-v2.3.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/7.0.7',
+        r'User-Agent': r'Conekta/v2 DartBindings/9.0.0',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
@@ -1662,7 +1662,7 @@ class SubscriptionsApi {
   ///
   /// Parameters:
   /// * [id] - Identifier of the resource
-  /// * [subscriptionUpdateRequest] - requested field for update a subscription
+  /// * [updatesASubscription] - requested field for update a subscription
   /// * [acceptLanguage] - Use for knowing which language to use
   /// * [xChildCompanyId] - In the case of a holding company, the company id of the child company to which will process the request.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
@@ -1677,7 +1677,7 @@ class SubscriptionsApi {
   @Deprecated('This operation has been deprecated')
   Future<Response<SubscriptionResponse>> updateSubscription({ 
     required String id,
-    required SubscriptionUpdateRequest subscriptionUpdateRequest,
+    required UpdatesASubscription updatesASubscription,
     String? acceptLanguage = 'es',
     String? xChildCompanyId,
     CancelToken? cancelToken,
@@ -1696,13 +1696,13 @@ class SubscriptionsApi {
 
     // to determine the Accept header
     List<String> _accepts = [ 
-        "application/vnd.conekta-v2.2.0+json"
+        "application/vnd.conekta-v2.3.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
     final _options = Options(
       method: r'PUT',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/7.0.7',
+        r'User-Agent': r'Conekta/v2 DartBindings/9.0.0',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
@@ -1727,8 +1727,8 @@ class SubscriptionsApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(SubscriptionUpdateRequest);
-      _bodyData = _serializers.serialize(subscriptionUpdateRequest, specifiedType: _type);
+      const _type = FullType(UpdatesASubscription);
+      _bodyData = _serializers.serialize(updatesASubscription, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(

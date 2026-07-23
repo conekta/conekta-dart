@@ -13,7 +13,7 @@ import 'package:conekta/src/model/error.dart';
 import 'package:conekta/src/model/event_response.dart';
 import 'package:conekta/src/model/events_resend_response.dart';
 import 'package:conekta/src/model/get_events_response.dart';
-import 'package:conekta/src/model/resend_request.dart';
+import 'package:conekta/src/model/resend_event_request.dart';
 import 'package:conekta/src/utils/utils.dart';
 
 class EventsApi {
@@ -59,13 +59,13 @@ class EventsApi {
 
     // to determine the Accept header
     List<String> _accepts = [ 
-        "application/vnd.conekta-v2.2.0+json"
+        "application/vnd.conekta-v2.3.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/7.0.7',
+        r'User-Agent': r'Conekta/v2 DartBindings/9.0.0',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
@@ -166,13 +166,13 @@ class EventsApi {
 
     // to determine the Accept header
     List<String> _accepts = [ 
-        "application/vnd.conekta-v2.2.0+json"
+        "application/vnd.conekta-v2.3.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/7.0.7',
+        r'User-Agent': r'Conekta/v2 DartBindings/9.0.0',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
@@ -245,7 +245,7 @@ class EventsApi {
   ///
   /// Parameters:
   /// * [eventId] - event identifier
-  /// * [resendRequest] - requested fields for resend an event
+  /// * [resendEventRequest] - requested fields for resend an event
   /// * [acceptLanguage] - Use for knowing which language to use
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
@@ -258,7 +258,7 @@ class EventsApi {
   /// Throws [DioException] if API call or serialization fails
   Future<Response<EventsResendResponse>> resendEvent({ 
     required String eventId,
-    required ResendRequest resendRequest,
+    required ResendEventRequest resendEventRequest,
     String? acceptLanguage = 'es',
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -276,13 +276,13 @@ class EventsApi {
 
     // to determine the Accept header
     List<String> _accepts = [ 
-        "application/vnd.conekta-v2.2.0+json"
+        "application/vnd.conekta-v2.3.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/7.0.7',
+        r'User-Agent': r'Conekta/v2 DartBindings/9.0.0',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (localVarAccept != null) r'Accept': localVarAccept,
         if (localVarContentType != null) r'Content-Type': localVarContentType,
@@ -306,8 +306,8 @@ class EventsApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(ResendRequest);
-      _bodyData = _serializers.serialize(resendRequest, specifiedType: _type);
+      const _type = FullType(ResendEventRequest);
+      _bodyData = _serializers.serialize(resendEventRequest, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(

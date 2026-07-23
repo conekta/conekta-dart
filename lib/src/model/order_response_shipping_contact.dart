@@ -3,9 +3,8 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:conekta/src/model/customer_shipping_contacts_response.dart';
 import 'package:built_collection/built_collection.dart';
-import 'package:conekta/src/model/customer_shipping_contacts_response_address.dart';
+import 'package:conekta/src/model/customer_shipping_contacts_address.dart';
 import 'package:built_value/json_object.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -15,19 +14,53 @@ part 'order_response_shipping_contact.g.dart';
 /// OrderResponseShippingContact
 ///
 /// Properties:
+/// * [createdAt] 
+/// * [id] 
+/// * [object] 
 /// * [phone] 
 /// * [receiver] 
 /// * [betweenStreets] 
 /// * [address] 
 /// * [parentId] 
 /// * [default_] 
-/// * [id] 
-/// * [createdAt] 
 /// * [metadata] - Metadata associated with the shipping contact
-/// * [object] 
 /// * [deleted] 
 @BuiltValue()
-abstract class OrderResponseShippingContact implements CustomerShippingContactsResponse, Built<OrderResponseShippingContact, OrderResponseShippingContactBuilder> {
+abstract class OrderResponseShippingContact implements Built<OrderResponseShippingContact, OrderResponseShippingContactBuilder> {
+  @BuiltValueField(wireName: r'created_at')
+  int? get createdAt;
+
+  @BuiltValueField(wireName: r'id')
+  String? get id;
+
+  @BuiltValueField(wireName: r'object')
+  String? get object;
+
+  @BuiltValueField(wireName: r'phone')
+  String? get phone;
+
+  @BuiltValueField(wireName: r'receiver')
+  String? get receiver;
+
+  @BuiltValueField(wireName: r'between_streets')
+  String? get betweenStreets;
+
+  @BuiltValueField(wireName: r'address')
+  CustomerShippingContactsAddress? get address;
+
+  @BuiltValueField(wireName: r'parent_id')
+  String? get parentId;
+
+  @BuiltValueField(wireName: r'default')
+  bool? get default_;
+
+  /// Metadata associated with the shipping contact
+  @BuiltValueField(wireName: r'metadata')
+  BuiltMap<String, JsonObject?>? get metadata;
+
+  @BuiltValueField(wireName: r'deleted')
+  bool? get deleted;
+
   OrderResponseShippingContact._();
 
   factory OrderResponseShippingContact([void updates(OrderResponseShippingContactBuilder b)]) = _$OrderResponseShippingContact;
@@ -58,31 +91,17 @@ class _$OrderResponseShippingContactSerializer implements PrimitiveSerializer<Or
         specifiedType: const FullType(int),
       );
     }
-    if (object.metadata != null) {
-      yield r'metadata';
+    if (object.id != null) {
+      yield r'id';
       yield serializers.serialize(
-        object.metadata,
-        specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
+        object.id,
+        specifiedType: const FullType(String),
       );
     }
-    if (object.address != null) {
-      yield r'address';
+    if (object.object != null) {
+      yield r'object';
       yield serializers.serialize(
-        object.address,
-        specifiedType: const FullType(CustomerShippingContactsResponseAddress),
-      );
-    }
-    if (object.deleted != null) {
-      yield r'deleted';
-      yield serializers.serialize(
-        object.deleted,
-        specifiedType: const FullType(bool),
-      );
-    }
-    if (object.receiver != null) {
-      yield r'receiver';
-      yield serializers.serialize(
-        object.receiver,
+        object.object,
         specifiedType: const FullType(String),
       );
     }
@@ -93,25 +112,25 @@ class _$OrderResponseShippingContactSerializer implements PrimitiveSerializer<Or
         specifiedType: const FullType(String),
       );
     }
+    if (object.receiver != null) {
+      yield r'receiver';
+      yield serializers.serialize(
+        object.receiver,
+        specifiedType: const FullType(String),
+      );
+    }
     if (object.betweenStreets != null) {
       yield r'between_streets';
       yield serializers.serialize(
         object.betweenStreets,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.default_ != null) {
-      yield r'default';
-      yield serializers.serialize(
-        object.default_,
-        specifiedType: const FullType(bool),
-      );
-    }
-    if (object.id != null) {
-      yield r'id';
-      yield serializers.serialize(
-        object.id,
         specifiedType: const FullType(String),
+      );
+    }
+    if (object.address != null) {
+      yield r'address';
+      yield serializers.serialize(
+        object.address,
+        specifiedType: const FullType(CustomerShippingContactsAddress),
       );
     }
     if (object.parentId != null) {
@@ -121,11 +140,25 @@ class _$OrderResponseShippingContactSerializer implements PrimitiveSerializer<Or
         specifiedType: const FullType(String),
       );
     }
-    if (object.object != null) {
-      yield r'object';
+    if (object.default_ != null) {
+      yield r'default';
       yield serializers.serialize(
-        object.object,
-        specifiedType: const FullType(String),
+        object.default_,
+        specifiedType: const FullType(bool),
+      );
+    }
+    if (object.metadata != null) {
+      yield r'metadata';
+      yield serializers.serialize(
+        object.metadata,
+        specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
+      );
+    }
+    if (object.deleted != null) {
+      yield r'deleted';
+      yield serializers.serialize(
+        object.deleted,
+        specifiedType: const FullType(bool),
       );
     }
   }
@@ -154,44 +187,42 @@ class _$OrderResponseShippingContactSerializer implements PrimitiveSerializer<Or
         case r'created_at':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.createdAt = valueDes;
           break;
-        case r'metadata':
+        case r'id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
-          ) as BuiltMap<String, JsonObject?>;
-          result.metadata.replace(valueDes);
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.id = valueDes;
           break;
-        case r'address':
+        case r'object':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CustomerShippingContactsResponseAddress),
-          ) as CustomerShippingContactsResponseAddress;
-          result.address.replace(valueDes);
-          break;
-        case r'deleted':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(bool),
-          ) as bool;
-          result.deleted = valueDes;
-          break;
-        case r'receiver':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.receiver = valueDes;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.object = valueDes;
           break;
         case r'phone':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.phone = valueDes;
+          break;
+        case r'receiver':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.receiver = valueDes;
           break;
         case r'between_streets':
           final valueDes = serializers.deserialize(
@@ -201,33 +232,45 @@ class _$OrderResponseShippingContactSerializer implements PrimitiveSerializer<Or
           if (valueDes == null) continue;
           result.betweenStreets = valueDes;
           break;
-        case r'default':
+        case r'address':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(bool),
-          ) as bool;
-          result.default_ = valueDes;
-          break;
-        case r'id':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.id = valueDes;
+            specifiedType: const FullType.nullable(CustomerShippingContactsAddress),
+          ) as CustomerShippingContactsAddress?;
+          if (valueDes == null) continue;
+          result.address.replace(valueDes);
           break;
         case r'parent_id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.parentId = valueDes;
           break;
-        case r'object':
+        case r'default':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.object = valueDes;
+            specifiedType: const FullType.nullable(bool),
+          ) as bool?;
+          if (valueDes == null) continue;
+          result.default_ = valueDes;
+          break;
+        case r'metadata':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
+          ) as BuiltMap<String, JsonObject?>?;
+          if (valueDes == null) continue;
+          result.metadata.replace(valueDes);
+          break;
+        case r'deleted':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(bool),
+          ) as bool?;
+          if (valueDes == null) continue;
+          result.deleted = valueDes;
           break;
         default:
           unhandled.add(key);

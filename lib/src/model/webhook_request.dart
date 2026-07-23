@@ -92,8 +92,9 @@ class _$WebhookRequestSerializer implements PrimitiveSerializer<WebhookRequest> 
         case r'subscribed_events':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(String)]),
-          ) as BuiltList<String>;
+            specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
+          ) as BuiltList<String>?;
+          if (valueDes == null) continue;
           result.subscribedEvents.replace(valueDes);
           break;
         default:

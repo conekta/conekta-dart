@@ -140,8 +140,9 @@ class _$ChargeResponseRefundsDataSerializer implements PrimitiveSerializer<Charg
         case r'auth_code':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.authCode = valueDes;
           break;
         case r'created_at':
@@ -154,8 +155,9 @@ class _$ChargeResponseRefundsDataSerializer implements PrimitiveSerializer<Charg
         case r'expires_at':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.expiresAt = valueDes;
           break;
         case r'id':
@@ -175,8 +177,9 @@ class _$ChargeResponseRefundsDataSerializer implements PrimitiveSerializer<Charg
         case r'status':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.status = valueDes;
           break;
         default:

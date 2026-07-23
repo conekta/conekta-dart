@@ -13,7 +13,7 @@ import 'package:conekta/src/model/error.dart';
 import 'package:conekta/src/model/get_plans_response.dart';
 import 'package:conekta/src/model/plan_request.dart';
 import 'package:conekta/src/model/plan_response.dart';
-import 'package:conekta/src/model/plan_update_request.dart';
+import 'package:conekta/src/model/update_plan.dart';
 import 'package:conekta/src/utils/utils.dart';
 
 class PlansApi {
@@ -60,13 +60,13 @@ class PlansApi {
 
     // to determine the Accept header
     List<String> _accepts = [ 
-        "application/vnd.conekta-v2.2.0+json"
+        "application/vnd.conekta-v2.3.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/7.0.7',
+        r'User-Agent': r'Conekta/v2 DartBindings/9.0.0',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
@@ -179,13 +179,13 @@ class PlansApi {
 
     // to determine the Accept header
     List<String> _accepts = [ 
-        "application/vnd.conekta-v2.2.0+json"
+        "application/vnd.conekta-v2.3.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/7.0.7',
+        r'User-Agent': r'Conekta/v2 DartBindings/9.0.0',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (localVarAccept != null) r'Accept': localVarAccept,
         if (localVarContentType != null) r'Content-Type': localVarContentType,
@@ -279,13 +279,13 @@ class PlansApi {
 
     // to determine the Accept header
     List<String> _accepts = [ 
-        "application/vnd.conekta-v2.2.0+json"
+        "application/vnd.conekta-v2.3.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/7.0.7',
+        r'User-Agent': r'Conekta/v2 DartBindings/9.0.0',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
@@ -355,6 +355,8 @@ class PlansApi {
   /// * [search] - General order search, e.g. by mail, reference etc.
   /// * [next] - next page
   /// * [previous] - previous page
+  /// * [currency] - currency of the object to be retrieved
+  /// * [frequency] - frequency of the object to be retrieved
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -371,6 +373,8 @@ class PlansApi {
     String? search,
     String? next,
     String? previous,
+    String? currency,
+    int? frequency,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -386,13 +390,13 @@ class PlansApi {
 
     // to determine the Accept header
     List<String> _accepts = [ 
-        "application/vnd.conekta-v2.2.0+json"
+        "application/vnd.conekta-v2.3.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/7.0.7',
+        r'User-Agent': r'Conekta/v2 DartBindings/9.0.0',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
@@ -418,6 +422,8 @@ class PlansApi {
       if (search != null) r'search': encodeQueryParameter(_serializers, search, const FullType(String)),
       if (next != null) r'next': encodeQueryParameter(_serializers, next, const FullType(String)),
       if (previous != null) r'previous': encodeQueryParameter(_serializers, previous, const FullType(String)),
+      if (currency != null) r'currency': encodeQueryParameter(_serializers, currency, const FullType(String)),
+      if (frequency != null) r'frequency': encodeQueryParameter(_serializers, frequency, const FullType(int)),
     };
 
     final _response = await _dio.request<Object>(
@@ -465,7 +471,7 @@ class PlansApi {
   ///
   /// Parameters:
   /// * [id] - Identifier of the resource
-  /// * [planUpdateRequest] - requested field for plan
+  /// * [updatePlan] - requested field for plan
   /// * [acceptLanguage] - Use for knowing which language to use
   /// * [xChildCompanyId] - In the case of a holding company, the company id of the child company to which will process the request.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
@@ -479,7 +485,7 @@ class PlansApi {
   /// Throws [DioException] if API call or serialization fails
   Future<Response<PlanResponse>> updatePlan({ 
     required String id,
-    required PlanUpdateRequest planUpdateRequest,
+    required UpdatePlan updatePlan,
     String? acceptLanguage = 'es',
     String? xChildCompanyId,
     CancelToken? cancelToken,
@@ -498,13 +504,13 @@ class PlansApi {
 
     // to determine the Accept header
     List<String> _accepts = [ 
-        "application/vnd.conekta-v2.2.0+json"
+        "application/vnd.conekta-v2.3.0+json"
     ];
     final localVarAccept = selectHeaderAccept(_accepts);
     final _options = Options(
       method: r'PUT',
       headers: <String, dynamic>{
-        r'User-Agent': r'Conekta/v2 DartBindings/7.0.7',
+        r'User-Agent': r'Conekta/v2 DartBindings/9.0.0',
         if (acceptLanguage != null) r'Accept-Language': acceptLanguage,
         if (xChildCompanyId != null) r'X-Child-Company-Id': xChildCompanyId,
         if (localVarAccept != null) r'Accept': localVarAccept,
@@ -529,8 +535,8 @@ class PlansApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(PlanUpdateRequest);
-      _bodyData = _serializers.serialize(planUpdateRequest, specifiedType: _type);
+      const _type = FullType(UpdatePlan);
+      _bodyData = _serializers.serialize(updatePlan, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(

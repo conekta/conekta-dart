@@ -42,7 +42,7 @@ class _$ChargeOrderResponse extends ChargeOrderResponse {
   @override
   final String? referenceId;
   @override
-  final BuiltList<JsonObject>? refunds;
+  final BuiltList<JsonObject?>? refunds;
   @override
   final String? status;
 
@@ -237,10 +237,10 @@ class ChargeOrderResponseBuilder
   String? get referenceId => _$this._referenceId;
   set referenceId(String? referenceId) => _$this._referenceId = referenceId;
 
-  ListBuilder<JsonObject>? _refunds;
-  ListBuilder<JsonObject> get refunds =>
-      _$this._refunds ??= new ListBuilder<JsonObject>();
-  set refunds(ListBuilder<JsonObject>? refunds) => _$this._refunds = refunds;
+  ListBuilder<JsonObject?>? _refunds;
+  ListBuilder<JsonObject?> get refunds =>
+      _$this._refunds ??= new ListBuilder<JsonObject?>();
+  set refunds(ListBuilder<JsonObject?>? refunds) => _$this._refunds = refunds;
 
   String? _status;
   String? get status => _$this._status;

@@ -3,8 +3,7 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:conekta/src/model/payment_method_cash_response.dart';
-import 'package:conekta/src/model/payment_method_cash_response_all_of_agreements.dart';
+import 'package:conekta/src/model/cash_agreements_response.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -26,7 +25,41 @@ part 'payment_method_cash_recurrent_response.g.dart';
 /// * [expiresAt] 
 /// * [provider] 
 @BuiltValue()
-abstract class PaymentMethodCashRecurrentResponse implements PaymentMethodCashResponse, Built<PaymentMethodCashRecurrentResponse, PaymentMethodCashRecurrentResponseBuilder> {
+abstract class PaymentMethodCashRecurrentResponse implements Built<PaymentMethodCashRecurrentResponse, PaymentMethodCashRecurrentResponseBuilder> {
+  @BuiltValueField(wireName: r'type')
+  String get type;
+
+  @BuiltValueField(wireName: r'id')
+  String get id;
+
+  @BuiltValueField(wireName: r'object')
+  String get object;
+
+  @BuiltValueField(wireName: r'created_at')
+  int get createdAt;
+
+  @BuiltValueField(wireName: r'parent_id')
+  String? get parentId;
+
+  @BuiltValueField(wireName: r'agreements')
+  BuiltList<CashAgreementsResponse>? get agreements;
+
+  @BuiltValueField(wireName: r'reference')
+  String? get reference;
+
+  @BuiltValueField(wireName: r'barcode')
+  String? get barcode;
+
+  /// URL to the barcode image, reference is the same as barcode
+  @BuiltValueField(wireName: r'barcode_url')
+  String? get barcodeUrl;
+
+  @BuiltValueField(wireName: r'expires_at')
+  int? get expiresAt;
+
+  @BuiltValueField(wireName: r'provider')
+  String? get provider;
+
   PaymentMethodCashRecurrentResponse._();
 
   factory PaymentMethodCashRecurrentResponse([void updates(PaymentMethodCashRecurrentResponseBuilder b)]) = _$PaymentMethodCashRecurrentResponse;
@@ -50,22 +83,30 @@ class _$PaymentMethodCashRecurrentResponseSerializer implements PrimitiveSeriali
     PaymentMethodCashRecurrentResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    if (object.reference != null) {
-      yield r'reference';
-      yield serializers.serialize(
-        object.reference,
-        specifiedType: const FullType(String),
-      );
-    }
+    yield r'type';
+    yield serializers.serialize(
+      object.type,
+      specifiedType: const FullType(String),
+    );
+    yield r'id';
+    yield serializers.serialize(
+      object.id,
+      specifiedType: const FullType(String),
+    );
+    yield r'object';
+    yield serializers.serialize(
+      object.object,
+      specifiedType: const FullType(String),
+    );
     yield r'created_at';
     yield serializers.serialize(
       object.createdAt,
       specifiedType: const FullType(int),
     );
-    if (object.provider != null) {
-      yield r'provider';
+    if (object.parentId != null) {
+      yield r'parent_id';
       yield serializers.serialize(
-        object.provider,
+        object.parentId,
         specifiedType: const FullType(String),
       );
     }
@@ -73,26 +114,16 @@ class _$PaymentMethodCashRecurrentResponseSerializer implements PrimitiveSeriali
       yield r'agreements';
       yield serializers.serialize(
         object.agreements,
-        specifiedType: const FullType(BuiltList, [FullType(PaymentMethodCashResponseAllOfAgreements)]),
+        specifiedType: const FullType(BuiltList, [FullType(CashAgreementsResponse)]),
       );
     }
-    yield r'id';
-    yield serializers.serialize(
-      object.id,
-      specifiedType: const FullType(String),
-    );
-    if (object.barcodeUrl != null) {
-      yield r'barcode_url';
+    if (object.reference != null) {
+      yield r'reference';
       yield serializers.serialize(
-        object.barcodeUrl,
+        object.reference,
         specifiedType: const FullType(String),
       );
     }
-    yield r'type';
-    yield serializers.serialize(
-      object.type,
-      specifiedType: const FullType(String),
-    );
     if (object.barcode != null) {
       yield r'barcode';
       yield serializers.serialize(
@@ -100,10 +131,10 @@ class _$PaymentMethodCashRecurrentResponseSerializer implements PrimitiveSeriali
         specifiedType: const FullType(String),
       );
     }
-    if (object.parentId != null) {
-      yield r'parent_id';
+    if (object.barcodeUrl != null) {
+      yield r'barcode_url';
       yield serializers.serialize(
-        object.parentId,
+        object.barcodeUrl,
         specifiedType: const FullType(String),
       );
     }
@@ -114,11 +145,13 @@ class _$PaymentMethodCashRecurrentResponseSerializer implements PrimitiveSeriali
         specifiedType: const FullType(int),
       );
     }
-    yield r'object';
-    yield serializers.serialize(
-      object.object,
-      specifiedType: const FullType(String),
-    );
+    if (object.provider != null) {
+      yield r'provider';
+      yield serializers.serialize(
+        object.provider,
+        specifiedType: const FullType(String),
+      );
+    }
   }
 
   @override
@@ -142,33 +175,12 @@ class _$PaymentMethodCashRecurrentResponseSerializer implements PrimitiveSeriali
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
-        case r'reference':
+        case r'type':
           final valueDes = serializers.deserialize(
             value,
             specifiedType: const FullType(String),
           ) as String;
-          result.reference = valueDes;
-          break;
-        case r'created_at':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.createdAt = valueDes;
-          break;
-        case r'provider':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.provider = valueDes;
-          break;
-        case r'agreements':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(BuiltList, [FullType(PaymentMethodCashResponseAllOfAgreements)]),
-          ) as BuiltList<PaymentMethodCashResponseAllOfAgreements>;
-          result.agreements.replace(valueDes);
+          result.type = valueDes;
           break;
         case r'id':
           final valueDes = serializers.deserialize(
@@ -177,47 +189,75 @@ class _$PaymentMethodCashRecurrentResponseSerializer implements PrimitiveSeriali
           ) as String;
           result.id = valueDes;
           break;
-        case r'barcode_url':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.barcodeUrl = valueDes;
-          break;
-        case r'type':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.type = valueDes;
-          break;
-        case r'barcode':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.barcode = valueDes;
-          break;
-        case r'parent_id':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.parentId = valueDes;
-          break;
-        case r'expires_at':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.expiresAt = valueDes;
-          break;
         case r'object':
           final valueDes = serializers.deserialize(
             value,
             specifiedType: const FullType(String),
           ) as String;
           result.object = valueDes;
+          break;
+        case r'created_at':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int;
+          result.createdAt = valueDes;
+          break;
+        case r'parent_id':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.parentId = valueDes;
+          break;
+        case r'agreements':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(BuiltList, [FullType(CashAgreementsResponse)]),
+          ) as BuiltList<CashAgreementsResponse>?;
+          if (valueDes == null) continue;
+          result.agreements.replace(valueDes);
+          break;
+        case r'reference':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.reference = valueDes;
+          break;
+        case r'barcode':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.barcode = valueDes;
+          break;
+        case r'barcode_url':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.barcodeUrl = valueDes;
+          break;
+        case r'expires_at':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
+          result.expiresAt = valueDes;
+          break;
+        case r'provider':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.provider = valueDes;
           break;
         default:
           unhandled.add(key);

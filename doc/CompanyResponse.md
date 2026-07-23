@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **accountStatus** | **String** | The current status of the company's account. | 
 **parentCompanyId** | **String** | The identifier of the parent company, if any. | [optional] 
 **onboardingStatus** | **String** | The current status of the company's onboarding process. | 
-**documents** | [**BuiltList&lt;CompanyResponseDocumentsInner&gt;**](CompanyResponseDocumentsInner.md) | A list of documents related to the company. | 
+**documents** | [**BuiltList&lt;CompanyDocumentResponse&gt;**](CompanyDocumentResponse.md) | A list of documents related to the company. | 
 **createdAt** | **int** | Timestamp of when the company was created. | 
 **object** | **String** | The type of object, typically \"company\". | 
 **threeDsEnabled** | **bool** | Indicates if 3DS authentication is enabled for the company. | [optional] 

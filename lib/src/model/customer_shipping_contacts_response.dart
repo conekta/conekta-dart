@@ -4,7 +4,7 @@
 
 // ignore_for_file: unused_element
 import 'package:built_collection/built_collection.dart';
-import 'package:conekta/src/model/customer_shipping_contacts_response_address.dart';
+import 'package:conekta/src/model/customer_shipping_contacts_address.dart';
 import 'package:built_value/json_object.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -25,8 +25,8 @@ part 'customer_shipping_contacts_response.g.dart';
 /// * [metadata] - Metadata associated with the shipping contact
 /// * [object] 
 /// * [deleted] 
-@BuiltValue(instantiable: false)
-abstract class CustomerShippingContactsResponse  {
+@BuiltValue()
+abstract class CustomerShippingContactsResponse implements Built<CustomerShippingContactsResponse, CustomerShippingContactsResponseBuilder> {
   @BuiltValueField(wireName: r'phone')
   String? get phone;
 
@@ -37,7 +37,7 @@ abstract class CustomerShippingContactsResponse  {
   String? get betweenStreets;
 
   @BuiltValueField(wireName: r'address')
-  CustomerShippingContactsResponseAddress? get address;
+  CustomerShippingContactsAddress? get address;
 
   @BuiltValueField(wireName: r'parent_id')
   String? get parentId;
@@ -61,13 +61,20 @@ abstract class CustomerShippingContactsResponse  {
   @BuiltValueField(wireName: r'deleted')
   bool? get deleted;
 
+  CustomerShippingContactsResponse._();
+
+  factory CustomerShippingContactsResponse([void updates(CustomerShippingContactsResponseBuilder b)]) = _$CustomerShippingContactsResponse;
+
+  @BuiltValueHook(initializeBuilder: true)
+  static void _defaults(CustomerShippingContactsResponseBuilder b) => b;
+
   @BuiltValueSerializer(custom: true)
   static Serializer<CustomerShippingContactsResponse> get serializer => _$CustomerShippingContactsResponseSerializer();
 }
 
 class _$CustomerShippingContactsResponseSerializer implements PrimitiveSerializer<CustomerShippingContactsResponse> {
   @override
-  final Iterable<Type> types = const [CustomerShippingContactsResponse];
+  final Iterable<Type> types = const [CustomerShippingContactsResponse, _$CustomerShippingContactsResponse];
 
   @override
   final String wireName = r'CustomerShippingContactsResponse';
@@ -95,14 +102,14 @@ class _$CustomerShippingContactsResponseSerializer implements PrimitiveSerialize
       yield r'between_streets';
       yield serializers.serialize(
         object.betweenStreets,
-        specifiedType: const FullType.nullable(String),
+        specifiedType: const FullType(String),
       );
     }
     if (object.address != null) {
       yield r'address';
       yield serializers.serialize(
         object.address,
-        specifiedType: const FullType(CustomerShippingContactsResponseAddress),
+        specifiedType: const FullType(CustomerShippingContactsAddress),
       );
     }
     if (object.parentId != null) {
@@ -165,46 +172,6 @@ class _$CustomerShippingContactsResponseSerializer implements PrimitiveSerialize
     return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
   }
 
-  @override
-  CustomerShippingContactsResponse deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return serializers.deserialize(serialized, specifiedType: FullType($CustomerShippingContactsResponse)) as $CustomerShippingContactsResponse;
-  }
-}
-
-/// a concrete implementation of [CustomerShippingContactsResponse], since [CustomerShippingContactsResponse] is not instantiable
-@BuiltValue(instantiable: true)
-abstract class $CustomerShippingContactsResponse implements CustomerShippingContactsResponse, Built<$CustomerShippingContactsResponse, $CustomerShippingContactsResponseBuilder> {
-  $CustomerShippingContactsResponse._();
-
-  factory $CustomerShippingContactsResponse([void Function($CustomerShippingContactsResponseBuilder)? updates]) = _$$CustomerShippingContactsResponse;
-
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults($CustomerShippingContactsResponseBuilder b) => b;
-
-  @BuiltValueSerializer(custom: true)
-  static Serializer<$CustomerShippingContactsResponse> get serializer => _$$CustomerShippingContactsResponseSerializer();
-}
-
-class _$$CustomerShippingContactsResponseSerializer implements PrimitiveSerializer<$CustomerShippingContactsResponse> {
-  @override
-  final Iterable<Type> types = const [$CustomerShippingContactsResponse, _$$CustomerShippingContactsResponse];
-
-  @override
-  final String wireName = r'$CustomerShippingContactsResponse';
-
-  @override
-  Object serialize(
-    Serializers serializers,
-    $CustomerShippingContactsResponse object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return serializers.serialize(object, specifiedType: FullType(CustomerShippingContactsResponse))!;
-  }
-
   void _deserializeProperties(
     Serializers serializers,
     Object serialized, {
@@ -220,15 +187,17 @@ class _$$CustomerShippingContactsResponseSerializer implements PrimitiveSerializ
         case r'phone':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.phone = valueDes;
           break;
         case r'receiver':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.receiver = valueDes;
           break;
         case r'between_streets':
@@ -242,57 +211,65 @@ class _$$CustomerShippingContactsResponseSerializer implements PrimitiveSerializ
         case r'address':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CustomerShippingContactsResponseAddress),
-          ) as CustomerShippingContactsResponseAddress;
+            specifiedType: const FullType.nullable(CustomerShippingContactsAddress),
+          ) as CustomerShippingContactsAddress?;
+          if (valueDes == null) continue;
           result.address.replace(valueDes);
           break;
         case r'parent_id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.parentId = valueDes;
           break;
         case r'default':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(bool),
-          ) as bool;
+            specifiedType: const FullType.nullable(bool),
+          ) as bool?;
+          if (valueDes == null) continue;
           result.default_ = valueDes;
           break;
         case r'id':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.id = valueDes;
           break;
         case r'created_at':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType.nullable(int),
+          ) as int?;
+          if (valueDes == null) continue;
           result.createdAt = valueDes;
           break;
         case r'metadata':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
-          ) as BuiltMap<String, JsonObject?>;
+            specifiedType: const FullType.nullable(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
+          ) as BuiltMap<String, JsonObject?>?;
+          if (valueDes == null) continue;
           result.metadata.replace(valueDes);
           break;
         case r'object':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.object = valueDes;
           break;
         case r'deleted':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(bool),
-          ) as bool;
+            specifiedType: const FullType.nullable(bool),
+          ) as bool?;
+          if (valueDes == null) continue;
           result.deleted = valueDes;
           break;
         default:
@@ -304,12 +281,12 @@ class _$$CustomerShippingContactsResponseSerializer implements PrimitiveSerializ
   }
 
   @override
-  $CustomerShippingContactsResponse deserialize(
+  CustomerShippingContactsResponse deserialize(
     Serializers serializers,
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final result = $CustomerShippingContactsResponseBuilder();
+    final result = CustomerShippingContactsResponseBuilder();
     final serializedList = (serialized as Iterable<Object?>).toList();
     final unhandled = <Object?>[];
     _deserializeProperties(
